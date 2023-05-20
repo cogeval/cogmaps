@@ -1,6 +1,6 @@
 const chatContainer = document.getElementById('chat-container');
 const jsonFileInput = document.getElementById('jsonFile');
-const baseUrl = "https://cogeval.github.io/";
+const baseUrl = "https://cogeval.github.io/cogmaps";
 const graphTypes = [
   "n7line", 
   "n7tree",
