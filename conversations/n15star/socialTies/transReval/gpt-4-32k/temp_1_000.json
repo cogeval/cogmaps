@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_transReval_temp_1_0",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the connection path that yields the most reward, we will first list out all the connections, and then identify the connections that provide the most reward.\n\n1. Vivian - Salma, Shanshan, Vadim, Gongxue\n2. Salma - Vivian, Shanshan, Vadim, Noah, Anisha\n3. Shanshan - Vivian, Salma, Vadim, Noah, Anisha\n4. Vadim - Vivian, Salma, Shanshan, Noah, Anisha\n5. Gongxue - Vivian, Paul, Solomon, Soheil, Alice\n6. Paul - Solomon, Soheil, Gongxue, Alice\n7. Solomon - Paul, Soheil, Gongxue, Alice\n8. Soheil - Paul, Solomon, Gongxue, Alice, Pierre, Abdul, Durga, Ajit\n9. Alice - Paul, Solomon, Soheil, Gongxue\n10. Pierre - Soheil, Abdul, Durga, Ajit, Vivian\n11. Abdul - Pierre, Durga, Ajit, Noah\n12. Durga - Pierre, Abdul, Ajit, Noah, Anisha\n13. Ajit - Pierre, Abdul, Durga, Noah, Anisha\n14. Noah - Salma, Shanshan, Vadim, Abdul, Durga, Ajit, Anisha\n15. Anisha - Salma, Shanshan, Vadim, Abdul, Durga, Ajit, Noah\n\nStarting from Vivian, we can follow these steps to find the connection path that yields the most reward:\n\n1. Connect to Pierre: Vivian (1) -> Pierre (10)\n2. Connect to Soheil: Pierre (10) -> Soheil (8)\n3. Connect to Alice: Soheil (8) -> Alice (9)\n4. Connect to Gongxue: Alice (9) -> Gongxue (5)\n5. Connect to Vadim: Gongxue (5) -> Vivian (1) -> Vadim (4)\n6. Connect to Salma: Vadim (4) -> Salma (2)\n7. Connect to Shanshan: Salma (2) -> Shanshan (3)\n\nAnswer: Vivian, Pierre, Soheil, Alice, Gongxue, Vadim, Salma, Shanshan"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Vivian, Pierre, Soheil"
+            ],
+            "parsed_response": "Answer: Vivian, Pierre, Soheil, Alice, Gongxue, Vadim, Salma, Shanshan"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n7tree_unordSpatial_exp_transReval_temp_0.5_26",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Answer: Mad Tea Party, Entrance, Left Passage, Fantasyland."
+        },
+        {
+            "role": "user",
+            "content": "Now assume that you have been told that the Mad Tea Party is now closed. Assume you can pick one attraction, from entrance, which one should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Answer: Space Mountain, Entrance, Right Passage, Tomorrowland."
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Entrance, Tomorrowland, Space Mountain",
+                "Answer: entrance, Tomorrowland, Space Mountain"
+            ],
+            "parsed_response": "Answer: Space Mountain, Entrance, Right Passage, Tomorrowland"
+        }
+    }
+}

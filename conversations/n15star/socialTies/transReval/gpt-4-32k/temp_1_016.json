@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_transReval_temp_1_16",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Start with Vivian.\n2. Connect to a student in her group (Salma, Shanshan, or Vadim).\n3. From the chosen student in step 2, connect to a student in another group that they are connected to (e.g., Salma -> Noah).\n4. Repeat step 3 until all possible connections are made through the different groups.\n5. Compare the connection paths and identify the one with the most reward.\n6. List the student names in the most rewarding connection path, separated by commas.\n\nAnswer: Vivian, Salma, Noah, Shanshan, Vadim, Anisha, Ajit, Durga, Abdul, Pierre, Soheil, Solomon, Paul, Gongxue, Alice"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Vivian, Pierre, Soheil"
+            ],
+            "parsed_response": "Answer: Vivian, Salma, Noah, Shanshan, Vadim, Anisha, Ajit, Durga, Abdul, Pierre, Soheil, Solomon, Paul, Gongxue, Alice"
+        }
+    }
+}

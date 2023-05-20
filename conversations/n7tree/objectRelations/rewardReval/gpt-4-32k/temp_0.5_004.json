@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n7tree_objectRelations_exp_rewardReval_temp_0.5_4",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome as 'Answer: [room]'"
+        },
+        {
+            "role": "user",
+            "content": "You are exploring a building. You enter the lobby and then go upstairs, where there's a large image of a tree. You see two doors. You can choose to enter the room on the left or the right. You enter the room on the right, and there's a chest. You open it and find $50 but remember you're only exploring so you don't take any money. Then you go back to the tree image, and this time you go to the room on the left. You find a chest; you open it and there's 10$ (but you don't take any money).\n You go back to the lobby. This time you go downstairs. Now you see a large image of the ocean. Again, you see two doors, and you can choose to enter the room on the left or the room on the right. You enter the room on the right, and there's a chest. You open it and find $22. Then you go back to the ocean image, and this time you go to the room on the left. You find a chest; you open it and there's 56$ (you still don't take any money). You go back to the lobby.\nGiven you didn't take any money during exploration, assume you can pick one path to one room to collect money. From the lobby, where do you go to make the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Recall the amounts found in each room.\n- Upstairs, right room: $50\n- Upstairs, left room: $10\n- Downstairs, right room: $22\n- Downstairs, left room: $56\n\nStep 2: Compare the amounts to find the highest value.\n- The highest value is $56, found in the downstairs left room.\n\nAnswer: Downstairs left room"
+        },
+        {
+            "role": "user",
+            "content": "Now imagine before you can act on that decision, someone comes back from the ocean image and says the room on the left had $30 and the room on the right had 40. Another person comes back from the tree image and says the room on the left has 60 and the room on the right has 20. Given you didn't take any money yet, assume you can pick one path to one room to collect money. From the lobby, which room do you choose to make the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Update the amounts found in each room based on the new information.\n- Upstairs, right room: $20\n- Upstairs, left room: $60\n- Downstairs, right room: $40\n- Downstairs, left room: $30\n\nStep 2: Compare the updated amounts to find the highest value.\n- The highest value is $60, found in the upstairs left room.\n\nAnswer: Upstairs left room"
+        }
+    ],
+    "tests": {
+        "rewardReval": {
+            "expected_answer": [
+                "Answer: Upstairs left room",
+                "Answer: tree left room "
+            ],
+            "parsed_response": "Answer: Upstairs left room"
+        }
+    }
+}

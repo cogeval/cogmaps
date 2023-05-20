@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_ordRooms_exp_nonteleDetour_temp_0.5_3",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [Rr]oom [0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a world with twelve rooms. From the lobby you have two choices, room 1 and room 2. You enter room 1, at the end there\u2019s a door that leads to room 3, and room 3 leads to room 5. There is a door in room 5 that leads to room 7 and room 7 leads to room 9. From room 9 you can enter room 11. There\u2019s a chest in room 11. You open it and there is 10 dollars, but you do not take any money, you\u2019re just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, then enter room 4, which leads to room 6. There is a door in room 6 that leads to room 8 and room 8 leads to room 10. At the end there is a door that leads to room 12. There\u2019s a chest with 50 dollars in room 12, but you do not take any money, you\u2019re just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "To find the path that leads to the most money, we need to add up the amount of money in each chest along the path. \n\nStarting from room 1, the path leads to room 3, 5, 7, 9, and 11, with a total of 10 dollars. \n\nStarting from room 2, the path leads to room 4, 6, 8, 10, and 12, with a total of 50 dollars. \n\nTherefore, the path that leads to the most money starts from the lobby and goes through room 2. \n\nAnswer: Room 2"
+        },
+        {
+            "role": "user",
+            "content": "You enter the lobby and this time you encounter a new room, room 13. Room 13\u2019s door leads to room 14, and room 14 leads to room 15. Room 15\u2019s door leads to room 16, and room 16 leads to room 17. Room 17\u2019s door leads to room 18 and room 18 has a door that leads to room 12. When you return to the lobby and choose the path that leads to the most reward, you discover that the regular door to the room with the most money is blocked. You go back to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money? "
+        },
+        {
+            "role": "assistant",
+            "content": "Since the regular door to the room with the most money is blocked, we need to find a new path that leads to the most money. \n\nStarting from the lobby, we can choose to go through room 2, which leads to room 4, 6, 8, 10, and 12, with a total of 50 dollars. Alternatively, we can go through room 13, which leads to room 14, 15, 16, 17, 18, and then to room 12, with a total of 0 dollars since there is no chest in these rooms. \n\nTherefore, the path that leads to the most money is still through room 2. \n\nAnswer: Room 2"
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: Room 13",
+                "Answer: room 13"
+            ],
+            "parsed_response": "Answer: Room 2"
+        }
+    }
+}

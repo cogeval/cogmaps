@@ -1,0 +1,39 @@
+{
+    "conversation_id": "task_community_graph_Schapiro_2013_room_num_exp_exp01_temp_1_24",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle?"
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the unique connections between rooms.\nStep 2: Group the rooms that are connected to each other.\nStep 3: Combine any overlapping groups to form complete clusters.\nStep 4: Count the number of densely-connected room clusters.\n\nUnique connections:\n1-7-10-13-11\n2-5-8-11-14\n3-6-9-12-8\n4-7-10-13-15\n5-8-11-14\n6-9-12-15\n7-10-13\n8-14\n9-12-15\n10-13\n11-14\n12-15\n\nGrouping connected rooms:\nCluster 1: 1-7-10-13-11\nCluster 2: 2-5-8-11-14\nCluster 3: 3-6-9-12-8\nCluster 4: 4-7-10-13-15\nCluster 5: 6-9-12-15\nCluster 6: 9-12-15\n\nCombining overlapping groups:\nCluster 1: 1-7-10-13-11\nCluster 2: 2-5-8-11-14\nCluster 3: 3-6-9-12-8\nCluster 4: 4-7-10-13-15\nClusters 5 & 6 are subsets of cluster 3, so they are not separate clusters.\n\nCounting clusters:\nAnswer: there are 4 clusters."
+        },
+        {
+            "role": "user",
+            "content": "Please draw the map of the environment"
+        },
+        {
+            "role": "assistant",
+            "content": "Since I cannot draw here, I will describe the connections between rooms using text.\n\nRoom Connections:\n1 - 7, 11\n2 - 5, 8, 14\n3 - 6, 9, 12\n4 - 7, 10, 13, 15\n5 - 2, 8, 11, 14\n6 - 3, 9, 12, 15\n7 - 1, 4, 10, 13\n8 - 2, 3, 5, 11, 14\n9 - 3, 6, 12, 15\n10 - 1, 4, 7, 13\n11 - 1, 2, 5, 8, 14\n12 - 3, 6, 9, 15\n13 - 1, 4, 7, 10\n14 - 2, 5, 8, 11\n15 - 4, 6, 9, 12\n\nCluster 1: (1 - 7 - 10 - 13 - 11)\n1 - 7 - 10 - 13\n|         |\n11--------\n\nCluster 2: (2 - 5 - 8 - 11 - 14)\n2 - 5 - 8 - 11 - 14\n|       |      |\n------8 - 14---\n\nCluster 3: (3 - 6 - 9 - 12 - 8)\n3 - 6 - 9 - 12\n|       |      |\n------8--------\n\nCluster 4: (4 - 7 - 10 - 13 - 15)\n4 - 7 - 10 - 13\n|         |\n15--------\n\nThese are the room connections visualized using text. Each cluster is represented by a series of dashes and vertical lines indicating direct connections between rooms."
+        }
+    ],
+    "tests": {
+        "CLUSTER_COUNT": {
+            "expected_answer": "Answer: there are 3 clusters",
+            "parsed_response": "Answer: there are 4 clusters"
+        }
+    }
+}

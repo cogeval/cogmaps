@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n15star_unordSpatial_exp_transReval_temp_0.5_4",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": " Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. Assume now that Starbucks and Chickflea are connected. From Starbucks what is the path that yields the most reward? Please list the store names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the starting point, which is Starbucks.\nStep 2: List the stores connected to Starbucks: Paris Baguette, H&M, Zara, Sephora.\nStep 3: List the stores connected to each of those stores:\n- Paris Baguette: H&M, Zara, Marshalls, Target.\n- H&M: Zara, Paris Baguette, Marshalls, Target.\n- Zara: H&M, Paris Baguette, Marshalls, Target.\n- Sephora: Starbucks, Pete's Coffee, Carter Children, Nike, Bath and Body Works.\n\nStep 4: List the stores connected to each of those stores:\n- Marshalls: Paris Baguette, H&M, Zara, Target.\n- Target: Marshalls, Paris Baguette, H&M, Zara, Baskins and Robins, Levis, GNC Live Well.\n- Pete's Coffee: Sephora, Carter Children, Nike, Bath and Body Works.\n- Carter Children: Pete's Coffee, Nike, Sephora, Bath and Body Works.\n- Nike: Pete's Coffee, Carter Children, Sephora, Bath and Body Works, Chickflea, Baskins and Robins, Levis, GNC Live Well.\n- Bath and Body Works: Pete's Coffee, Carter Children, Nike, Sephora.\n\nStep 5: Identify the path that yields the most reward by visiting the most unique stores:\nStarbucks -> Sephora -> Nike -> Chickflea -> Baskins and Robins -> Levis -> GNC Live Well -> Target -> Marshalls -> Paris Baguette -> H&M -> Zara\n\nAnswer: Starbucks, Sephora, Nike, Chickflea, Baskins and Robins, Levis, GNC Live Well, Target, Marshalls, Paris Baguette, H&M, Zara"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Starbucks, Chickflea, Nike"
+            ],
+            "parsed_response": "Answer: Starbucks, Sephora, Nike, Chickflea, Baskins and Robins, Levis, GNC Live Well, Target, Marshalls, Paris Baguette, H"
+        }
+    }
+}

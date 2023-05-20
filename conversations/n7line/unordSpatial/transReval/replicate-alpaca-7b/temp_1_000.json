@@ -1,0 +1,41 @@
+{
+    "conversation_id": "task_n7line_unordSpatial_exp_transReval_temp_1_0",
+    "model": "replicate:alpaca-7b",
+    "version": null,
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine you are traveling through Asia. You start in New Delhi and have two choices, you can go to Islamabad or Kathmandu. From Islamabad, you can go to Kabul and from there to Tehran. In Tehran, your total expenses will be $1000 including hotels, shopping and sight-seeing. After learning this, you return to New Delhi. This time, you choose Kathmandu, which leads to Beijing, and from there you can go to Thimphu, where you have $400 total expenses. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+        },
+        {
+            "role": "assistant",
+            "content": "To find the least expensive destination from New Delhi, we need to compare the total expenses of both paths. From New Delhi, if you go to Islamabad and then travel to Kabul and Tehran, your total expenses will be $1000. If you choose Kathmandu instead and travel to Beijing and Thimphu, your total expenses will be $400. Therefore, going through Kathmandu is the that leads to the least expensive destination.\nAnswer: Kathmandu"
+        },
+        {
+            "role": "user",
+            "content": "Now, the route from Kabul to Tehran is blocked, and instead, the route from Kabul leads to Thimphu. The route from Beijing now leads to Tehran. You start again in New Delhi. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+        },
+        {
+            "role": "assistant",
+            "content": "assistant: From New Delhi, if you go to Islamabad and then travel to Kabul which leads to Thimphu, your total expenses will be $400. If you choose Kathmandu instead and travel to Beijing and Tehran, your total expenses will be $1000. Therefore, going through Islamabad is the path that leads to the least expensive destination.\nAnswer: Islamabad"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Islamabad"
+            ],
+            "parsed_response": "Answer: Islamabad"
+        }
+    }
+}

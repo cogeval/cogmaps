@@ -1,0 +1,105 @@
+{
+    "SYSTEM_MSG": {
+        "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+    },
+    "valuePath": {
+        "content": "You are exploring a zoo. You enter zone 1 and you see two passages one on the right and one on the left. You choose the passage on the right and enter zone 3. You see two passages in zone 3. You can choose the passage on the left or the passage on the right. You choose the passage on the right, and your enter zone 7 and there's a cage. You open it and find $50 but remember you're only exploring so you don't take any money. Then you go back to zone 3, and this time you go to the passage on the left to zone 6. You find another cage; you open it and there's $10 (but you don't take any money). You go back to zone 1. This time you choose the passage on the left and you go to zone 2. Again, you see two passages, one on the left and one on the right. You enter the passage on the right, and you find yourself in zone 5. There's a cage in zone 5. You open it and find $22. Then you go back to zone 2, and this time you go to the passage on the left. You find a cage; you open it and there's 56$ (you still don't take any money). You go back to zone 1. Given you didn't take any money during exploration, assume you can pick one path to collect money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "transReval": {
+        "content": "Now assume that you have been told that the left passage in zone 2 is now closed. Assume you can pick one path to collect money, from zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "rewardReval": {
+        "content": "Now imagine before you can act on that decision, someone comes back from zone 2 and says the passage on the left leads to $30 and the passage on the right leads to $40. Another person comes back from zone 3 and says the passage on the left leads to $60 and the passage on the right leads to $20. Given you didn't take any money yet, assume you can pick one path to collect money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "teleShortcut": {
+        "content": "In zone 1 you're presented with a portal and you can choose which zone to teleport into. From zone 1 which zone do you choose to make the most money? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "teleDetour": {
+        "content": "This time you in zone 1 your encounter a new passage that leads to zone 8. Zone 8 has a portal and you can choose which room to teleport into. When you return to zone 1 and choose the path that led to the most reward previously, you discover that the path is now blocked. You go back to zone 1. You will only be able to choose one path that leads to the most money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "nonteleShortcut": {
+        "content": "In zone 1 you discover a new passage which leads to zone 4. Remember that you will only be able to choose one path that leads to the most money. From zone 1 where do you go to make the most money? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "nonteleDetour": {
+        "content": "In zone 1 you discover a new passage which leads to a new zone, zone 8. From zone 8 there is a passage to zone 4. When you return to zone 1 and choose the path that led to the most reward previously, you discover that the regular passage to the zone with the most money is blocked. You go back to zone 1. You will only be able to choose one path that leads to the most money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "1stepPath": {
+        "content": "From zone 3 what is the shortest path to zone 6? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "2stepPath": {
+        "content": "From zone 1 what is the shortest path to zone 6? Please list the zone numbers in order, separated by commas.",
+        "response_pattern": "Answer: ([0-9]+,\\s*)*[0-9]+"
+    },
+    "CONVERSATIONS": [
+        {
+            "valuePath": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath", "expected_answer": ["Answer: 1, 2, 4", "Answer: 1,2,4"]}
+            ]
+        },
+        {
+            "transReval": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath"},
+                {"prompt_id":"transReval", "expected_answer": ["Answer: 1, 3, 7", "Answer: 1,3,7"]}
+            ]
+        },
+        {
+            "rewardReval": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath"},
+                {"prompt_id":"rewardReval", "expected_answer": ["Answer: 1, 3, 6", "Answer: 1,3,6"]}
+            ]
+        },
+        {
+            "teleShortcut": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath"},
+                {"prompt_id":"teleShortcut", "expected_answer": ["Answer: 4", "Answer: 1, 4", "Answer: 1,4"]}
+            ]
+        },
+        {
+            "teleDetour": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath"},
+                {"prompt_id":"teleDetour", "expected_answer": ["Answer: 1, 8, 4", "Answer: 1,8,4"]}
+            ]
+        },
+        {
+            "nonteleShortcut": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath"},
+                {"prompt_id":"nonteleShortcut", "expected_answer": ["Answer: 1, 4", "Answer: 1,4"]}
+            ]
+        },
+        {
+            "nonteleDetour": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath"},
+                {"prompt_id":"nonteleDetour", "expected_answer": ["Answer: 1, 8, 4", "Answer: 1,8,4"]}
+            ]
+        },
+        {
+            "1stepPath": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath"},
+                {"prompt_id":"1stepPath", "expected_answer": ["Answer: 3, 6", "Answer: 3,6"]}
+            ]
+        },
+        {
+            "2stepPath": [
+                {"prompt_id": "SYSTEM_MSG"},
+                {"prompt_id":"valuePath"},
+                {"prompt_id":"2stepPath", "expected_answer": ["Answer: 1, 3, 6", "Answer: 1,3,6"]}
+            ]
+        }
+    ]
+}

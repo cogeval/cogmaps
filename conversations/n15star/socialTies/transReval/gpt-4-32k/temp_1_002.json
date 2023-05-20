@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_transReval_temp_1_2",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Start from Vivian.\n2. Check all immediate connections of Vivian (Salma, Shanshan, Vadim, and Gongxue).\n3. Determine the rewards of each path from Vivian's connections, considering each student as a reward point.\n4. From Salma: Vivian -> Salma -> (Shanshan, Vadim, Noah, Anisha) = 3 reward points\n5. From Shanshan: Vivian -> Shanshan -> (Salma, Vadim, Noah, Anisha) = 3 reward points\n6. From Vadim: Vivian -> Vadim -> (Salma, Shanshan, Noah, Anisha) = 3 reward points\n7. From Gongxue: Vivian -> Gongxue -> (Salma, Shanshan, Vadim, Paul, Solomon, Soheil, Alice) = 6 reward points\n8. Select the path with the highest reward points: Vivian -> Gongxue -> (Salma, Shanshan, Vadim, Paul, Solomon, Soheil, Alice)\n9. Order the student names in the path.\n\nAnswer: Vivian, Gongxue, Salma, Shanshan, Vadim, Paul, Solomon, Soheil, Alice"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Vivian, Pierre, Soheil"
+            ],
+            "parsed_response": "Answer: Vivian, Gongxue, Salma, Shanshan, Vadim, Paul, Solomon, Soheil, Alice"
+        }
+    }
+}

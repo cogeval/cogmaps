@@ -1,0 +1,251 @@
+{
+  "SYSTEM_MSG_1": {
+    "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+  },
+  "SYSTEM_MSG_2": {
+    "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+  },
+  "valuePath": {
+    "content": "Imagine you are a film director looking for producers to invest in your. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you’re just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you’re just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?",
+    "response_pattern": "Answer: [A-Za-z ]+"
+  },
+  "transReval": {
+    "content": "Now you found out that Peter is friends with Ajay while Yakub can introduce you to Shikha. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?",
+    "response_pattern": "Answer: [A-Za-z ]+"
+  },
+  "transRevalStochastic": {
+    "content": "Now you are told that Peter can introduce you to Shikha with probability of 0.1 and to Ajay with probability of 0.9. Also, Yakub can introduce you to Ajay with probability of 0.1 and to Shikha with probability of 0.9. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?",
+    "response_pattern": "Answer: [A-Za-z ]+"
+  },
+  "rewardReval": {
+    "content": "You talk to Alex who introduces you to David. Now, David has $10M to invest in film production. But you do not take it, you’re just learning about the environment. Then you get introduced to Rachel who in turn introduces you to Harry and he has the same budget as before, but you do not take anything, you’re just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?",
+    "response_pattern": "Answer:[A-Za-z ]+"
+  },
+  "teleShortcut": {
+    "content": "You find a friendship app where you can be friends with anyone you want. But you have to clearly write the name of the person you want to be friends with. Remember that You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?",
+    "response_pattern": "Answer:[A-Za-z ]+"
+  },
+  "teleDetour": {
+    "content": "You now have a new friend Rajeev who can introduce you to Sophia. Sophia can introduce you to Faisal who can introduce you to Anurag. Anurag can introduce you to Imran who can introduce you to Guneet. Guneet gives you the app where you can be friends with anyone you want. When you choose the path that leads to the most money, you discover that the regular way to get introduced to the person with the most money is blocked. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money? ",
+    "response_pattern": "Answer:[A-Za-z ]+"
+  },
+  "nonteleShortcut": {
+    "content": "You make a new friend, Rajeev. Rajeev can directly introduce you to Harry. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?",
+    "response_pattern": "Answer:[A-Za-z ]+"
+  },
+  "nonteleDetour": {
+    "content": "You now have a new friend Rajeev who can introduce you to Sophia. Sophia can introduce you to Faisal who can introduce you to Anurag. Anurag can introduce you to Imran who can introduce you to Guneet. Guneet can introduce you to Harry. When you ask your friends for introductions and choose the path that leads to the most money, you discover that the regular way to meet the person with the most money is blocked. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the shortest path where one can find the most money? ",
+    "response_pattern": "Answer: [A-Za-z ]+"
+  },
+  "1stepPath": {
+    "content": "From Nora, what is the shortest path to Peter? Please list the names in order, separated by commas.",
+    "response_pattern": "Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+"
+  },
+  "2stepPath": {
+    "content": "From Philip what is the shortest path to Ajay? Please list the names in order, separated by commas.",
+    "response_pattern": "Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+"
+  },
+  "3stepPath": {
+    "content": "From Peter what is the shortest path to Alex? Please list the names in order, separated by commas.",
+    "response_pattern": "Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+"
+  },
+  "nstepPath": {
+    "content": "From Philip what is the shortest path to Harry? Please list the areas in order, separated by commas.",
+    "response_pattern": "Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+"
+  },
+  "CONVERSATIONS": [
+    {
+      "valuePath": [
+        {
+          "prompt_id": "SYSTEM_MSG_1"
+        },
+        {
+          "prompt_id": "valuePath",
+          "expected_answer": [
+            "Answer: Philip"
+          ]
+        }
+      ]
+    },
+    {
+      "transReval": [
+        {
+          "prompt_id": "SYSTEM_MSG_1"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "transReval",
+          "expected_answer": [
+            "Answer: Nora"
+          ]
+        }
+      ]
+    },
+    {
+      "transRevalStochastic": [
+        {
+          "prompt_id": "SYSTEM_MSG_1"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "transRevalStochastic",
+          "expected_answer": [
+            "Answer: Nora"
+          ]
+        }
+      ]
+    },
+    {
+      "rewardReval": [
+        {
+          "prompt_id": "SYSTEM_MSG_1"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "rewardReval",
+          "expected_answer": [
+            "Answer: Philip"
+          ]
+        }
+      ]
+    },
+    {
+      "teleShortcut": [
+        {
+          "prompt_id": "SYSTEM_MSG_1"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "teleShortcut",
+          "expected_answer": [
+            "Answer: Harry"
+          ]
+        }
+      ]
+    },
+    {
+      "teleDetour": [
+        {
+          "prompt_id": "SYSTEM_MSG_1"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "teleDetour",
+          "expected_answer": [
+            "Answer: Rajeev"
+          ]
+        }
+      ]
+    },
+    {
+      "nonteleShortcut": [
+        {
+          "prompt_id": "SYSTEM_MSG_1"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "nonteleShortcut",
+          "expected_answer": [
+            "Answer: Rajeev"
+          ]
+        }
+      ]
+    },
+    {
+      "nonteleDetour": [
+        {
+          "prompt_id": "SYSTEM_MSG_1"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "nonteleDetour",
+          "expected_answer": [
+            "Answer: Rajeev"
+          ]
+        }
+      ]
+    },
+    {
+      "1stepPath": [
+        {
+          "prompt_id": "SYSTEM_MSG_2"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "1stepPath",
+          "expected_answer": [
+            "Answer: Oak trees, Highline trail",
+            "Answer: oak trees, highline trail"
+          ]
+        }
+      ]
+    },
+    {
+      "2stepPath": [
+        {
+          "prompt_id": "SYSTEM_MSG_2"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "2stepPath",
+          "expected_answer": [
+            "Answer: Redwood trees, Grove trail, Mountain",
+            "Answer: redwood trees, grove trail, mountain"
+          ]
+        }
+      ]
+    },
+    {
+      "3stepPath": [
+        {
+          "prompt_id": "SYSTEM_MSG_2"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "3stepPath",
+          "expected_answer": [
+            "Answer: Highline trail, Creek, Cypress trees, Ferry",
+            "Answer: highline trail, creek, cypress trees, ferry"
+          ]
+        }
+      ]
+    },
+    {
+      "nstepPath": [
+        {
+          "prompt_id": "SYSTEM_MSG_2"
+        },
+        {
+          "prompt_id": "valuePath"
+        },
+        {
+          "prompt_id": "nstepPath",
+          "expected_answer": [
+            "Answer: Redwood trees, Grove trail, Mountain, Sequoia trees, Zipline, Wildflower valley",
+            "Answer: redwood trees, grove trail, mountain, sequoia trees, zipline, wildflower valley"
+          ]
+        }
+      ]
+    }
+  ]
+}

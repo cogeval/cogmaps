@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_ordRooms_exp_transReval_temp_1_8",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [Rr]oom [0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a building with six rooms. From the lobby you have two choices, you can go to room 1 or room 2. You enter room 1, at the other end of room 1 there's a door that leads to room 3, and room 3 leads to room 5. There's a chest in room 5. You open it and there's 10 dollars, but you do not take any money, you\u2019re just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, which has a door to room 4, and room 4 has a door that leads to room 6. You find a chest with 50 dollars in room 6, but you do not take any money, you\u2019re just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "To maximize the amount of money obtained, we need to compare the amount of money in each path. \n\nTaking path 1-3-5, there is 10 dollars. \n\nTaking path 2-4-6, there is 50 dollars. \n\nTherefore, the path with the most money is room 2, which leads to room 4 and then room 6. \n\nAnswer: Room 6."
+        },
+        {
+            "role": "user",
+            "content": "Now you're dropped in room 3 and the door at its end suddenly leads to room 6. Then you're taken out, and you're dropped in room 4 and the door at its end leads to room 5. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "If you start from room 3 and take the door at the end, it will lead to room 6 where there is 50 dollars. \n\nIf you start from room 4 and take the door at the end, it will lead to room 5 where there is only 10 dollars. \n\nTherefore, the path with the most money is to start from room 3 and take the door at its end, which leads to room 6. \n\nAnswer: Room 3."
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Room 1",
+                "Answer: room 1"
+            ],
+            "parsed_response": "Answer: Room 3"
+        }
+    }
+}

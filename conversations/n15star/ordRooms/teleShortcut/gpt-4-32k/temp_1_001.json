@@ -1,0 +1,34 @@
+{
+    "conversation_id": "task_n15star_ordRooms_exp_teleShortcut_temp_1_1",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You are in room 1 and a portal appears with which you can teleport to any room only once. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the different room connections\n- Group 1: 1, 7, 10, 13, 11\n- Group 2: 2, 5, 8, 11, 14\n- Group 3: 3, 6, 9, 12, 8\n- Group 4: 4, 7, 10, 13, 15\n- Group 5: 5, 8, 11, 14\n- Group 6: 6, 9, 12, 15\n- Group 7: 7, 10, 13\n- Group 8: 8, 14\n- Group 9: 9, 12, 15\n- Group 10: 10, 13\n- Group 11: 11, 14\n- Group 12: 12, 15\n\nStep 2: Starting at room 1, find the groups that can be accessed\n- Group 1: 7, 10, 13, 11\n\nStep 3: Identify the next possible groups to access from each of the connected rooms\n- From room 7: Group 4 (4, 10, 13, 15) and Group 7 (10, 13)\n- From room 10: Group 1 (1, 7, 13, 11), Group 4 (4, 7, 13, 15), Group 7 (7, 13), and Group 10 (13)\n- From room 13: Group 1 (1, 7, 10, 11), Group 4 (4, 7, 10, 15), Group 7 (7, 10), Group 10 (10), and Group 11 (11, 14)\n- From room 11: Group 1 (1, 7, 10, 13), Group 2 (2, 5, 8, 14), Group 5 (5, 8, 14), and Group 11 (14)\n\nStep 4: Choose the paths that yield the most rewards by covering the most unique rooms\n- Path 1: 1, 7, 4, 15 (4 unique rooms)\n- Path 2: 1, 10, 4, 15 (4 unique rooms)\n- Path 3: 1, 13, 4, 15 (4 unique rooms)\n- Path 4: 1, 11, 14, 2 (4 unique rooms)\n\nStep 5: Select the path with the highest room number as the most rewarding path\n- Path 4: 1, 11, 14, 2\n\nAnswer: 1, 11, 14, 2"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: 1, 8",
+                "Answer: 1,8"
+            ],
+            "parsed_response": "Answer: 1, 11, 14, 2"
+        }
+    }
+}

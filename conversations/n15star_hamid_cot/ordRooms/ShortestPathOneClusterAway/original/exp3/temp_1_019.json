@@ -1,0 +1,38 @@
+{
+    "conversation_id": "task_community_graph_Schapiro_2013_room_num_exp_exp03_temp_1_19",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 12? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the starting point as room 1.\nStep 2: Find the rooms connected to room 1: room 7, room 10, room 13, and room 11.\nStep 3: From the rooms connected to room 1, find the next set of connected rooms.\n- From room 7: room 1, room 10, room 13, room 4.\n- From room 10: room 1, room 7, room 13, room 4.\n- From room 13: room 1, room 7, room 10, room 4.\n- From room 11: room 1, room 7, room 10, room 13, room 2, room 5, room 8, room 14.\n\nStep 4: Eliminate paths that loop back to room 1.\nStep 5: Analyze the remaining paths:\n- From room 11: room 2, room 5, room 8, room 14.\n\nStep 6: Find the next set of connected rooms:\n- From room 2: room 5, room 8, room 11, room 14.\n- From room 5: room 2, room 8, room 11, room 14.\n- From room 8: room 2, room 5, room 11, room 14, room 3, room 6, room 9, room 12.\n- From room 14: room 2, room 5, room 8, room 11.\n\nStep 7: Among the paths from step 6, find a path leading to room 12.\n- From room 8: room 12\n\nStep 8: Compile the path from room 1 to room 12: 1, 11, 8, 12.\n\nAnswer: 1, 11, 8, 12"
+        }
+    ],
+    "tests": {
+        "SHORTEST_PATH_ONE_CLUSTER_AWAY": {
+            "expected_answer": [
+                "Answer: 1, 7, 4, 15, 12",
+                "Answer: 1, 10, 4, 15, 12",
+                "Answer: 1, 13, 4, 15, 12",
+                "Answer: 1,7,4,15,12",
+                "Answer: 1,10,4,15,12",
+                "Answer: 1,13,4,15,12"
+            ],
+            "parsed_response": "Answer: 1, 11, 8, 12"
+        }
+    }
+}

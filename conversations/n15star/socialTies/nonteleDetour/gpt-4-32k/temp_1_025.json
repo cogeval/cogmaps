@@ -1,0 +1,35 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleDetour_temp_1_25",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. You are connected with Vivian and you have been told that there is no connection between Vivian and Gongxue, but Vivian and Anisha are now connected. From Vivian, what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Start with Vivian as the initial point.\n2. Identify the connections from Vivian: Anisha\n3. Determine the most rewarding connections from Anisha: Noah, Salma, Shanshan, Vadim, Abdul, Durga, and Ajit\n4. Explore the most rewarding connections:\n    - Noah, Salma, Shanshan, Vadim: can connect back to Salma, Shanshan, and Vadim, but there's no further reward.\n    - Abdul, Durga, Ajit: can connect back to Pierre and Soheil (not yet in the path).\n5. Add Pierre and Soheil to the path: Vivian, Anisha, Abdul, Durga, Ajit, Pierre, Soheil\n6. Determine the most rewarding connections from Soheil: Paul, Solomon, Gongxue, and Alice (not yet in the path)\n7. Add Paul, Solomon, Gongxue, and Alice to the path: Vivian, Anisha, Abdul, Durga, Ajit, Pierre, Soheil, Paul, Solomon, Gongxue, Alice\n\nAnswer: Vivian, Anisha, Abdul, Durga, Ajit, Pierre, Soheil, Paul, Solomon, Gongxue, Alice"
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: Vivian, Anisha, Ajit, Pierre, Soheil",
+                "Answer: Vivian, Anisha, Durga, Pierre, Soheil ",
+                "Answer: Vivian, Anisha, Abdul, Pierre, Soheil "
+            ],
+            "parsed_response": "Answer: Vivian, Anisha, Abdul, Durga, Ajit, Pierre, Soheil, Paul, Solomon, Gongxue, Alice"
+        }
+    }
+}

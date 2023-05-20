@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_transReval_temp_1_20",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Start at Vivian.\n2. Determine the connection groups that Vivian is part of, which is the group with Salma, Shanshan, Vadim, and Gongxue.\n3. Evaluate the connections of each student in this group to other groups.\n   a. Salma is also connected to Noah, Shanshan, Vadim, and Anisha.\n   b. Shanshan is also connected to Salma, Vadim, Noah, and Anisha.\n   c. Vadim is also connected to Salma, Shanshan, Noah, and Anisha.\n   d. Gongxue is also connected to Paul, Solomon, Soheil, and Alice.\n4. Choose the next student with the most connections to other groups.\n   - Gongxue has the most connections to a different group (Paul, Solomon, Soheil, and Alice).\n5. Move to Gongxue and evaluate connections to other groups.\n   a. Paul is connected to Solomon, Soheil, and Alice.\n   b. Solomon is connected to Soheil, Alice, and Pierre.\n   c. Soheil is connected to Solomon, Alice, Pierre, Abdul, Durga, and Ajit.\n   d. Alice is connected to Solomon, Soheil, and Gongxue.\n6. Choose the next student with the most connections to other groups.\n   - Soheil has the most connections to a different group (Solomon, Alice, Pierre, Abdul, Durga, and Ajit).\n7. Move to Soheil and evaluate connections to other groups.\n   a. Solomon is connected to Pierre.\n   b. Alice is connected to Solomon and Gongxue.\n   c. Pierre is connected to Abdul, Durga, and Ajit.\n   d. Abdul is connected to Durga, Ajit, and Anisha.\n   e. Durga is connected to Abdul, Ajit, and Anisha.\n   f. Ajit is connected to Abdul, Durga, and Anisha.\n8. Choose the next student with the most connections to other groups.\n   - Pierre has the most connections to a different group (Abdul, Durga, and Ajit).\n9. Move to Pierre, and since Vivian is now connected to Pierre, the most rewarding connection path is complete.\n\nAnswer: Vivian, Gongxue, Soheil, Pierre"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Vivian, Pierre, Soheil"
+            ],
+            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Pierre"
+        }
+    }
+}

@@ -1,0 +1,187 @@
+{
+    "SYSTEM_MSG_1": {
+      "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z]+\\s*'"
+    },
+    "SYSTEM_MSG_2": {
+      "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z]+,\\s*)[A-Za-z]+'"
+    },
+    "valuePath": {
+      "content": "Imagine a group of friends: Fatima, Ana, Robert, Sophie, Nick, Kiran, and Julia. Fatima introduces you to two of her friends, Ana and Robert. Ana introduces you to Sophie, who introduces you to Kiran. Kiran has a Toyota Camry to give away. You do not take the car, you’re just learning about the environment. Then you start over with Fatima introducing you to Robert, who introduces you to Nick, and Nick introduces you to Julia. Julia has a Ferrari to give away. You do not take the car, you’re just learning about the environment. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?",
+      "response_pattern": "Answer: [A-Za-z]+\\s"
+    },
+    "transReval": {
+      "content": "Now imagine that Sophie introduces you to Julia instead of Kiran. And Nick introduces you to Kiran instead of Julia. You know only Fatima. You will only be able to choose one path of introductions that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?",
+      "response_pattern": "Answer: [A-Za-z]+\\s*"
+    },
+    "rewardReval": {
+      "content": "Now imagine that Kiran has a Lamborghini to give away instead of a Camry, while Julia still has the Ferrari. You are friends with only Fatima. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?",
+      "response_pattern": "Answer: [A-Za-z]+\\s*"
+    },
+    "teleShortcut": {
+      "content": "In Fatima's introductions, you're now allowed to directly ask any of her friends for their cars. You will only be able to choose one path that leads to the most valuable car. Which friend will lead to the path where one can get the most valuable car?",
+      "response_pattern": "Answer: [A-Za-z]+\\s*"
+    },
+    "teleDetour": {
+      "content": "Now imagine you meet a new friend, Mike, who introduces you to Alex, and then Alex introduces you to Krishna. Krishna can introduce you to any of Fatima's friends. When you talk to Fatima and choose the introduction path that leads to the most valuable car, you discover that the friendship leading to the most valuable car is over. You go back to Fatima. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?",
+      "response_pattern": "Answer: [A-Za-z]+\\s*"
+    },
+    "nonteleShortcut": {
+      "content": "In Fatima's introductions, you now meet a new friend, Mike, who directly introduces you to Julia. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?",
+      "response_pattern": "Answer: [A-Za-z]+\\s*"
+    },
+    "nonteleDetour": {
+      "content": "Now imagine you meet a new friend, Mike, who introduces you to Alex, and then Alex introduces you to Julia. You call Fatima and choose the previous path that led to the most valuable car, Fatima tells you that the friend with the most valuable car is not talking to anyone. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?",
+      "response_pattern": "Answer: [A-Za-z]+\\s*"
+    },
+    "1stepPath": {
+      "content": "From Ana, what is the shortest path to Sophie? Please list the friend names in order, separated by commas.",
+      "response_pattern": "Answer: ([A-Za-z]+,\\s*)[A-Za-z]+"
+    },
+    "2stepPath": {
+      "content": "From Robert, what is the shortest path to Julia? Please list the friend names in order, separated by commas.",
+      "response_pattern": "Answer: ([A-Za-z]+,\\s)*[A-Za-z]+"
+    },
+    "CONVERSATIONS": [
+      {
+        "valuePath": [
+          {
+            "prompt_id": "SYSTEM_MSG_1"
+          },
+          {
+            "prompt_id": "valuePath",
+            "expected_answer": [
+              "Answer: Robert"
+            ]
+          }
+        ]
+      },
+      {
+        "transReval": [
+          {
+            "prompt_id": "SYSTEM_MSG_1"
+          },
+          {
+            "prompt_id": "valuePath"
+          },
+          {
+            "prompt_id": "transReval",
+            "expected_answer": [
+              "Answer: Ana"
+            ]
+          }
+        ]
+      },
+      {
+        "rewardReval": [
+          {
+            "prompt_id": "SYSTEM_MSG_1"
+          },
+          {
+            "prompt_id": "valuePath"
+          },
+          {
+            "prompt_id": "rewardReval",
+            "expected_answer": [
+              "Answer: Ana"
+            ]
+          }
+        ]
+      },
+      {
+        "teleShortcut": [
+          {
+            "prompt_id": "SYSTEM_MSG_1"
+          },
+          {
+            "prompt_id": "valuePath"
+          },
+          {
+            "prompt_id": "teleShortcut",
+            "expected_answer": [
+              "Answer: Julia"
+            ]
+          }
+        ]
+      },
+      {
+        "teleDetour": [
+          {
+            "prompt_id": "SYSTEM_MSG_1"
+          },
+          {
+            "prompt_id": "valuePath"
+          },
+          {
+            "prompt_id": "teleDetour",
+            "expected_answer": [
+              "Answer: Mike"
+            ]
+          }
+        ]
+      },
+      {
+        "nonteleShortcut": [
+          {
+            "prompt_id": "SYSTEM_MSG_1"
+          },
+          {
+            "prompt_id": "valuePath"
+          },
+          {
+            "prompt_id": "nonteleShortcut",
+            "expected_answer": [
+              "Answer: Mike"
+            ]
+          }
+        ]
+      },
+      {
+        "nonteleDetour": [
+          {
+            "prompt_id": "SYSTEM_MSG_1"
+          },
+          {
+            "prompt_id": "valuePath"
+          },
+          {
+            "prompt_id": "nonteleDetour",
+            "expected_answer": [
+              "Answer: Mike"
+            ]
+          }
+        ]
+      },
+      {
+        "1stepPath": [
+          {
+            "prompt_id": "SYSTEM_MSG_2"
+          },
+          {
+            "prompt_id": "valuePath"
+          },
+          {
+            "prompt_id": "1stepPath",
+            "expected_answer": [
+              "Answer: Ana, Sophie"
+            ]
+          }
+        ]
+      },
+      {
+        "2stepPath": [
+          {
+            "prompt_id": "SYSTEM_MSG_2"
+          },
+          {
+            "prompt_id": "valuePath"
+          },
+          {
+            "prompt_id": "2stepPath",
+            "expected_answer": [
+              "Answer: Robert, Nick, Julia"
+            ]
+          }
+        ]
+      }
+    ]
+  }

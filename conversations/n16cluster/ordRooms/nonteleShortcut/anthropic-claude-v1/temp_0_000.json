@@ -1,0 +1,34 @@
+{
+    "conversation_id": "task_n16cluster_ordRooms_exp_nonteleShortcut_temp_0_0",
+    "model": "anthropic:claude-v1",
+    "version": null,
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and  7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4  and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to  rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is  connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10.  Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11,  8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also  connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and  11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13,  14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Initially, you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. You have been told that room 16 is now connected to room 9. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Here is the step-by-step thinking process:  1) There are 16 rooms with connections between some rooms. Room 16 has a reward of 5 and room 10 has a reward of 10. Room 5 has a penalty of 15. 2) Room 16 is now connected to room 9.  3) Starting from room 1, I need to find a path that yields the most reward. 4) From room 1, I can go to rooms 2, 3, 4 or 7. Room 7 leads to rooms with no rewards or penalties.  5) From room 2, I can go to rooms 1, 3, 4 or 16. Going to room 16 would give a reward of 5.  6) From room 3, I can go to rooms 1, 2, 4 or 5. Going to room 5 would give a penalty of 15, so I should avoid that. 7) From room 4, I can go to rooms 1, 2, 3 or 14. None of these rooms have rewards or penalties. 8) The best path is: 1, 2, 16 which gives a reward of 5.  Answer: 1,2,16"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: 1, 2, 16, 9, 10",
+                "Answer: 1,2,16,9,10"
+            ],
+            "parsed_response": "Answer: 1,2,16"
+        }
+    }
+}

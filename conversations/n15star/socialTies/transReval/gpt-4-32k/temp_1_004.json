@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_transReval_temp_1_4",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the connection path that yields the most reward from Vivian, let's break down the connections and look for connections that involve multiple overlapping students. \n\n1. Vivian is directly connected to Salma, Shanshan, Vadim, and Gongxue.\n2. Salma is connected to Noah, Shanshan, Vadim, and Anisha.\n3. Shanshan is connected to Noah, Salma, Vadim, and Anisha.\n4. Vadim is connected to Noah, Salma, Shanshan, and Anisha.\n5. Gongxue is connected to Paul, Solomon, Soheil, and Alice.\n6. Alice is connected to Solomon, Soheil, and Gongxue.\n\nThe most rewarding path from Vivian seems to be connecting to Gongxue first because Gongxue is connected to the largest different group of students. From there, we can connect to Alice, who is connected to Solomon and Soheil. After reaching Alice, we can move to Solomon and Soheil, who are both connected to Pierre. Since Pierre is our final target, the connection path would be:\n\nAnswer: Vivian, Gongxue, Alice, Solomon, Pierre"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Vivian, Pierre, Soheil"
+            ],
+            "parsed_response": "Answer: Vivian, Gongxue, Alice, Solomon, Pierre"
+        }
+    }
+}

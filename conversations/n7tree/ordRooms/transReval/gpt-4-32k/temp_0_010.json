@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_ordRooms_exp_transReval_temp_0_10",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are exploring a zoo. You enter zone 1 and you see two passages one on the right and one on the left. You choose the passage on the right and enter zone 3. You see two passages in zone 3. You can choose the passage on the left or the passage on the right. You choose the passage on the right, and your enter zone 7 and there's a cage. You open it and find $50 but remember you're only exploring so you don't take any money. Then you go back to zone 3, and this time you go to the passage on the left to zone 6. You find another cage; you open it and there's $10 (but you don't take any money). You go back to zone 1. This time you choose the passage on the left and you go to zone 2. Again, you see two passages, one on the left and one on the right. You enter the passage on the right, and you find yourself in zone 5. There's a cage in zone 5. You open it and find $22. Then you go back to zone 2, and this time you go to the passage on the left. You find a cage; you open it and there's 56$ (you still don't take any money). You go back to zone 1. Given you didn't take any money during exploration, assume you can pick one path to collect money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Analyze the paths and the money found in each zone.\n- Path 1: Zone 1 (right) -> Zone 3 (right) -> Zone 7 ($50)\n- Path 2: Zone 1 (right) -> Zone 3 (left) -> Zone 6 ($10)\n- Path 3: Zone 1 (left) -> Zone 2 (right) -> Zone 5 ($22)\n- Path 4: Zone 1 (left) -> Zone 2 (left) -> Zone 4 ($56)\n\nStep 2: Compare the money found in each path.\n- Path 1: $50\n- Path 2: $10\n- Path 3: $22\n- Path 4: $56\n\nStep 3: Determine the path with the most money.\n- Path 4 has the most money ($56).\n\nStep 4: List the zone numbers in order for the path with the most money.\n- Zone 1, Zone 2, Zone 4\n\nAnswer: 1, 2, 4"
+        },
+        {
+            "role": "user",
+            "content": "Now assume that you have been told that the left passage in zone 2 is now closed. Assume you can pick one path to collect money, from zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Analyze the paths and the money found in each zone with the updated information (left passage in zone 2 is closed).\n- Path 1: Zone 1 (right) -> Zone 3 (right) -> Zone 7 ($50)\n- Path 2: Zone 1 (right) -> Zone 3 (left) -> Zone 6 ($10)\n- Path 3: Zone 1 (left) -> Zone 2 (right) -> Zone 5 ($22)\n- Path 4: Zone 1 (left) -> Zone 2 (left) -> Zone 4 ($56) - This path is now closed.\n\nStep 2: Compare the money found in each remaining path.\n- Path 1: $50\n- Path 2: $10\n- Path 3: $22\n\nStep 3: Determine the path with the most money among the available paths.\n- Path 1 has the most money ($50).\n\nStep 4: List the zone numbers in order for the path with the most money.\n- Zone 1, Zone 3, Zone 7\n\nAnswer: 1, 3, 7"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: 1, 3, 7",
+                "Answer: 1,3,7"
+            ],
+            "parsed_response": "Answer: 1, 3, 7"
+        }
+    }
+}

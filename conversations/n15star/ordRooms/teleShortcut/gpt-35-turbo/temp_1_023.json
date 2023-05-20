@@ -1,0 +1,34 @@
+{
+    "conversation_id": "task_ordRooms_exp_teleShortcut_temp_1_23",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You are in room 1 and a portal appears with which you can teleport to any room only once. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To maximize the reward, we need to calculate the total number of rooms that we can visit starting from room 1. \n\nFirst, we can reach room 7, 10, 11, and 13 from room 1. From room 7, we can visit rooms 4, 10, 13, and 15. From room 10, we can visit room 13. From room 13, we can visit room 4 and 15. This completes one set of rooms that we can visit.\n\nNext, we can reach room 2, 5, 8, and 14 from room 1. From room 2, we can't visit any additional room. From room 5, we can visit rooms 8, 11, and 14. From room 8, we can visit room 14. From room 14, we can't visit any additional room. This completes another set of rooms that we can visit.\n\nFinally, we can reach room 3, 6, 9, and 12 from room 1. From room 3, we can visit rooms 6, 9, 12, and 8. From room 6, we can visit rooms 9, 12, and 15. From room 9, we can visit rooms 12 and 15. From room 12, we can visit room 15. This completes the third set of rooms that we can visit.\n\nTherefore, we can visit a total of 15 rooms: 1, 4, 7, 10, 13, 15, 2, 5, 8, 11, 14, 3, 6, 9, and 12. \n\nAs we can only use the portal once, we need to choose the best set of rooms to visit. In this case, we can choose the first set of rooms (1, 4, 7, 10, 13, 15), which has the most number of rooms we can visit. \n\nTherefore, the path that yields the most reward starting from room 1 is: 1, 4, 7, 10, 13, 15.\n\nAnswer: 1, 4, 7, 10, 13, 15"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: 1, 8",
+                "Answer: 1,8"
+            ],
+            "parsed_response": "Answer: 1, 4, 7, 10, 13, 15"
+        }
+    }
+}

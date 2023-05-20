@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleShortcut_temp_1_0",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. You have been told that Gongxue is now connected to Soheil. From Vivian, what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify all the connections Vivian has.\nVivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n\nStep 2: Identify the connections each of Vivian's connected students has.\n- Salma is connected to Shanshan, Vadim, and Noah.\n- Shanshan is connected to Salma, Vadim, and Noah.\n- Vadim is connected to Salma, Shanshan, and Noah.\n- Gongxue is connected to Alice, Soheil, and Solomon.\n\nStep 3: Identify the connections each of the next level of connected students has.\n- Noah is connected to Anisha.\n- Alice is connected to Solomon, Soheil, and Gongxue.\n- Soheil is connected to Alice, Solomon, Pierre, Abdul, Durga, and Ajit.\n- Solomon is connected to Alice, Soheil, and Gongxue.\n- Pierre, Abdul, Durga, and Ajit are connected to each other and to Soheil.\n\nStep 4: Determine the most rewarding connection path.\nTo get the most rewarding connection path, we should connect with as many unique students as possible. \n\nVivian -> Gongxue -> Soheil -> Alice, Solomon, Pierre, Abdul, Durga, and Ajit\nThis path connects Vivian to 9 unique students.\n\nThe other paths yield fewer rewards:\n- Vivian -> Salma -> Shanshan, Vadim, and Noah (3 unique students)\n- Vivian -> Shanshan -> Salma, Vadim, and Noah (3 unique students)\n- Vivian -> Vadim -> Salma, Shanshan, and Noah (3 unique students)\n\nAnswer: Vivian, Gongxue, Soheil, Alice, Solomon, Pierre, Abdul, Durga, Ajit"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Vivian, Gongxue, Soheil"
+            ],
+            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Alice, Solomon, Pierre, Abdul, Durga, Ajit"
+        }
+    }
+}

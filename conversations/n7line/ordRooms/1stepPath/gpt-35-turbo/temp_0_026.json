@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_ordRooms_exp_1stepPath_temp_0_26",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a building with six rooms. From the lobby you have two choices, you can go to room 1 or room 2. You enter room 1, at the other end of room 1 there's a door that leads to room 3, and room 3 leads to room 5. There's a chest in room 5. You open it and there's 10 dollars, but you do not take any money, you\u2019re just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, which has a door to room 4, and room 4 has a door that leads to room 6. You find a chest with 50 dollars in room 6, but you do not take any money, you\u2019re just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "To find the path that leads to the most money, we need to add up the amount of money in each chest along each path. \n\nPath 1: Lobby -> Room 1 -> Room 3 -> Room 5 = 10 dollars\nPath 2: Lobby -> Room 2 -> Room 4 -> Room 6 = 50 dollars\n\nTherefore, the path that leads to the most money is Path 2, which starts in the lobby and goes through Room 2, Room 4, and Room 6, and has a total of 50 dollars.\n\nAnswer: 50"
+        },
+        {
+            "role": "user",
+            "content": "From room 1 what is the shortest path to room 3? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "The shortest path from Room 1 to Room 3 is:\n\nRoom 1 -> Room 3\n\nAnswer: 1, 3"
+        }
+    ],
+    "tests": {
+        "1stepPath": {
+            "expected_answer": [
+                "Answer: 1, 3",
+                "Answer: 1,3"
+            ],
+            "parsed_response": "Answer: 1, 3"
+        }
+    }
+}

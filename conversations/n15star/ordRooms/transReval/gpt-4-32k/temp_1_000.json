@@ -1,0 +1,34 @@
+{
+    "conversation_id": "task_n15star_ordRooms_exp_transReval_temp_1_0",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. Assume now that rooms 1 and 3 are connected. From room 1 what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the rooms connected to room 1.\nRooms: 7, 10, 13, 11, and 3.\n\nStep 2: Determine the paths and connected rooms for each choice from room 1.\n- Room 7: Rooms 4, 10, 13\n- Room 10: Rooms 4, 7, 13\n- Room 13: Rooms 4, 7, 10\n- Room 11: Rooms 2, 5, 8, 14\n- Room 3: Rooms 6, 9, 12, 8\n\nStep 3: Find the total number of unique rooms that can be visited for each path.\n- Room 7: 1, 7, 4, 10, 13 (5 rooms)\n- Room 10: 1, 10, 4, 7, 13 (5 rooms)\n- Room 13: 1, 13, 4, 7, 10 (5 rooms)\n- Room 11: 1, 11, 2, 5, 8, 14 (6 rooms)\n- Room 3: 1, 3, 6, 9, 12, 8 (6 rooms)\n\nStep 4: Choose the path with the most unique rooms visited.\nThere are two paths with the same amount of unique rooms (6 rooms): Room 11 and Room 3.\n\nStep 5: Select one of the paths to provide as an answer. In this case, we will choose the path through Room 11.\n\nAnswer: 1, 11, 2, 5, 8, 14"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: 1, 3, 8",
+                "Answer: 1,3,8"
+            ],
+            "parsed_response": "Answer: 1, 11, 2, 5, 8, 14"
+        }
+    }
+}

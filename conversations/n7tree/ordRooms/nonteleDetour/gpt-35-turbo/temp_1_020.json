@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_ordRooms_exp_nonteleDetour_temp_1_20",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are exploring a zoo. You enter zone 1 and you see two passages one on the right and one on the left. You choose the passage on the right and enter zone 3. You see two passages in zone 3. You can choose the passage on the left or the passage on the right. You choose the passage on the right, and your enter zone 7 and there's a cage. You open it and find $50 but remember you're only exploring so you don't take any money. Then you go back to zone 3, and this time you go to the passage on the left to zone 6. You find another cage; you open it and there's $10 (but you don't take any money). You go back to zone 1. This time you choose the passage on the left and you go to zone 2. Again, you see two passages, one on the left and one on the right. You enter the passage on the right, and you find yourself in zone 5. There's a cage in zone 5. You open it and find $22. Then you go back to zone 2, and this time you go to the passage on the left. You find a cage; you open it and there's 56$ (you still don't take any money). You go back to zone 1. Given you didn't take any money during exploration, assume you can pick one path to collect money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To make the most money, you should go to zone 5 and collect the $22. Therefore, the zone numbers in order are: 1, 2,  right passage, zone 5. \n\nAnswer: 1,2,right passage,5"
+        },
+        {
+            "role": "user",
+            "content": "In zone 1 you discover a new passage which leads to a new zone, zone 8. From zone 8 there is a passage to zone 4. When you return to zone 1 and choose the path that led to the most reward previously, you discover that the regular passage to the zone with the most money is blocked. You go back to zone 1. You will only be able to choose one path that leads to the most money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Since the regular passage to the zone with the most money is blocked, we cannot use the previous path. Therefore, to make the most money, we need to find an alternative path. \n\nSince we know that zone 8 has a passage to zone 4, and zone 4 may have a cage with money, we should go to zone 8 first. Then, we can go to zone 4 and check if there is any money in the cage. If there is money in the cage in zone 4, we can collect it and go back to zone 1.\n\nTherefore, the zone numbers in order are: 1, new passage, 8, passage to zone 4, (if there's money in the cage in zone 4), zone 1.\n\nAnswer: 1, new passage, 8, passage to zone 4."
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: 1, 8, 4",
+                "Answer: 1,8,4"
+            ],
+            "parsed_response": "Answer: 1"
+        }
+    }
+}

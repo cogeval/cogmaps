@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_ordRooms_exp_teleDetour_temp_1_24",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are exploring a zoo. You enter zone 1 and you see two passages one on the right and one on the left. You choose the passage on the right and enter zone 3. You see two passages in zone 3. You can choose the passage on the left or the passage on the right. You choose the passage on the right, and your enter zone 7 and there's a cage. You open it and find $50 but remember you're only exploring so you don't take any money. Then you go back to zone 3, and this time you go to the passage on the left to zone 6. You find another cage; you open it and there's $10 (but you don't take any money). You go back to zone 1. This time you choose the passage on the left and you go to zone 2. Again, you see two passages, one on the left and one on the right. You enter the passage on the right, and you find yourself in zone 5. There's a cage in zone 5. You open it and find $22. Then you go back to zone 2, and this time you go to the passage on the left. You find a cage; you open it and there's 56$ (you still don't take any money). You go back to zone 1. Given you didn't take any money during exploration, assume you can pick one path to collect money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Start at zone 1.\n2. Consider the passage on the right.\n3. In zone 3, check the amount found in the cages of zone 7 (50$) and zone 6 (10$).\n4. Choose the path with the highest amount found, which is zone 7.\n5. Note down the path: zone 1, zone 3, zone 7.\n\n6. Go back to zone 1.\n7. Consider the passage on the left.\n8. In zone 2, check the amount found in the cages of zone 5 (22$) and zone 4 (56$).\n9. Choose the path with the highest amount found, which is zone 4.\n10. Note down the path: zone 1, zone 2, zone 4.\n\n11. Compare the maximum amounts found in each path: zone 7 (50$) and zone 4 (56$).\n12. Choose the path with the highest amount.\n\nAnswer: 1, 2, 4"
+        },
+        {
+            "role": "user",
+            "content": "This time you in zone 1 your encounter a new passage that leads to zone 8. Zone 8 has an all-access portal that can take you to any zone you want. When you return to zone 1 and choose the path that led to the most reward previously, you discover that the passage from zone 2 to zone 4 is now blocked. You go back to zone 1. You will only be able to choose one path that leads to the most money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Start at zone 1.\n2. Consider the previously most rewarding path: zone 1, zone 2, zone 4 (56$).\n3. Note that the passage from zone 2 to zone 4 is now blocked.\n4. Reconsider the other path from zone 1, zone 3, zone 7 (50$).\n5. Note the new passage leading to zone 8 (with an all-access portal).\n\n6. Go to zone 1 and choose the passage to zone 8.\n7. Use the all-access portal in zone 8 to find the highest available reward.\n8. Compare the amounts found in the accessible cages: zone 6 (10$), zone 5 (22$), zone 7 (50$).\n9. Choose the path with the highest amount found, which is zone 7.\n\nAnswer: 1, 8, 7"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: 1, 8, 4",
+                "Answer: 1,8,4"
+            ],
+            "parsed_response": "Answer: 1, 8, 7"
+        }
+    }
+}

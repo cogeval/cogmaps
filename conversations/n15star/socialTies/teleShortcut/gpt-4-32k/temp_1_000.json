@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_1_0",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. You are connected with Vivian and a new app appears in which you can connect to anyone only once. From Vivian, what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Make a list of all students and the connections given.\nStep 2: Determine the connections of Vivian and choose the next person in the path.\nStep 3: From the chosen person, identify their connections, excluding Vivian and the previous connections in the path.\nStep 4: Repeat steps 2 and 3 until no more connections can be made.\nStep 5: Record the path that yields the most reward (the longest path without repeating connections).\n\n1. List of students and connections:\n   Vivian: (Vivian, Salma, Shanshan, Vadim, Gongxue)\n   Salma: (Vivian, Shanshan, Vadim, Noah, Shanshan, Vadim)\n   Shanshan: (Vivian, Salma, Vadim, Noah, Salma, Vadim)\n   Vadim: (Vivian, Salma, Shanshan, Noah, Salma, Shanshan)\n   Gongxue: (Vivian, Paul, Solomon, Soheil, Alice)\n   Paul: (Solomon, Soheil, Gongxue, Alice)\n   Solomon: (Paul, Soheil, Gongxue, Alice, Soheil, Gongxue, Alice)\n   Soheil: (Paul, Solomon, Gongxue, Alice, Pierre, Abdul, Durga, Ajit, Solomon, Gongxue, Alice, Alice)\n   Alice: (Paul, Solomon, Soheil, Gongxue, Solomon, Soheil, Gongxue, Soheil)\n   Pierre: (Abdul, Durga, Ajit, Soheil)\n   Abdul: (Pierre, Durga, Ajit, Durga, Ajit, Anisha)\n   Durga: (Pierre, Abdul, Ajit, Abdul, Ajit, Anisha, Ajit, Anisha)\n   Ajit: (Pierre, Abdul, Durga, Abdul, Durga, Anisha, Durga, Anisha, Anisha)\n   Noah: (Salma, Shanshan, Vadim, Anisha)\n   Anisha: (Noah, Salma, Shanshan, Vadim, Abdul, Durga, Ajit, Durga, Ajit, Ajit)\n\n2. From Vivian, we can choose Salma, Shanshan, Vadim, or Gongxue.\n   Let's choose Salma.\n3. From Salma, we can choose Noah, Shanshan, or Vadim.\n   Let's choose Noah.\n4. From Noah, we can choose Anisha.\n5. From Anisha, we can choose Abdul or Durga.\n   Let's choose Abdul.\n6. From Abdul, we can choose Pierre.\n7. From Pierre, we can choose Soheil.\n8. From Soheil, we can choose Paul or Solomon.\n   Let's choose Paul.\n9. From Paul, we can choose Alice.\n10. From Alice, we can choose no one new.\n\nSo the connection path that yields the most reward is: Vivian, Salma, Noah, Anisha, Abdul, Pierre, Soheil, Paul, Alice.\n\nAnswer: Vivian, Salma, Noah, Anisha, Abdul, Pierre, Soheil, Paul, Alice"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Vivian, Soheil"
+            ],
+            "parsed_response": "Answer: Vivian, Salma, Noah, Anisha, Abdul, Pierre, Soheil, Paul, Alice"
+        }
+    }
+}

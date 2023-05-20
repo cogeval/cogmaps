@@ -1,0 +1,33 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_policyReval_temp_0.5_0",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to Paul, Nick, Sherry, and Rose. Nick is connected to  Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. Initially, you were told that Rose can donate $250K while Maggie can donate $500K. Also, if you want to get connected with Amanda, you need to pay $10K to her company. Now you have been told that Rose cannot donate anything. From Paul, what is the path to the person who can donate the most money? Please list the names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the path from Paul to the person who can donate the most money, we will follow the connections step by step:\n\n1. Start at Paul.\n2. Paul is connected to Bob, Nick, Sherry, and John. Since we want to find the path to the person who can donate the most money, we need to find a connection to Maggie, who can donate $500K.\n3. From Paul's connections, Nick is connected to Amanda, who is connected to Daisy, who is connected to Maggie.\n4. Therefore, the path from Paul to the person who can donate the most money is: Paul, Nick, Amanda, Daisy, Maggie.\n\nAnswer: Paul, Nick, Amanda, Daisy, Maggie"
+        }
+    ],
+    "tests": {
+        "policyReval": {
+            "expected_answer": [
+                "Answer: Paul, John, Daisy, Maggie "
+            ],
+            "parsed_response": "Answer: Paul, Nick, Amanda, Daisy, Maggie"
+        }
+    }
+}

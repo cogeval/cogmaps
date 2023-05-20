@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n7tree_unordSpatial_exp_nonteleDetour_temp_0.5_20",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Think about the attractions and their wait times.\n2. Identify the attraction with the shortest wait time.\n3. Determine the path to the attraction with the shortest wait time.\n4. List the path to the attraction in order, separated by commas.\n\nAnswer: Entrance, Fantasyland, Mad Tea Party"
+        },
+        {
+            "role": "user",
+            "content": "In entrance you discover a new passage which leads to a new attraction, Neverland. From Neverland there is a passage to Mad Tea Party. When you return to the entrance and choose the path that led to the attraction with shortest wait time previously, you discover that the regular path to that attraction is blocked. You go back to the entrance. You will only be able to choose one attraction with the shortest wait time. From the entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Recall the previous path to the attraction with the shortest wait time.\n2. Consider the new passage to Neverland and its connection to Mad Tea Party.\n3. Determine the new path to the attraction with the shortest wait time.\n4. List the new path to the attraction in order, separated by commas.\n\nAnswer: Entrance, Neverland, Mad Tea Party"
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: Entrance, Snow White\u2019s Castle, Mad Tea Party",
+                "Answer: entrance, Snow White\u2019s Castle, Mad Tea Party"
+            ],
+            "parsed_response": "Answer: Entrance, Neverland, Mad Tea Party"
+        }
+    }
+}

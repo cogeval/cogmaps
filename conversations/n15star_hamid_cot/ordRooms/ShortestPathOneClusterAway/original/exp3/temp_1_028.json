@@ -1,0 +1,38 @@
+{
+    "conversation_id": "task_community_graph_Schapiro_2013_room_num_exp_exp03_temp_1_28",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 12? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the connected rooms.\nStep 2: Determine possible paths from room 1 to room 12.\nStep 3: Calculate the length of each path.\nStep 4: Identify the shortest path.\n\nConnected rooms:\n1 -> 7, 10, 11, 13\n2 -> 5, 8, 11, 14\n3 -> 6, 9, 12, 8\n4 -> 7, 10, 13, 15\n5 -> 2, 8, 11, 14\n6 -> 3, 9, 12, 15\n7 -> 1, 4, 10, 13\n8 -> 2, 3, 5, 14\n9 -> 3, 6, 12, 15\n10 -> 1, 4, 7, 13\n11 -> 1, 2, 5, 14\n12 -> 3, 6, 9, 15\n13 -> 1, 4, 7, 10\n14 -> 2, 5, 8, 11\n15 -> 4, 6, 9, 12\n\nPossible paths from room 1 to room 12:\n1 -> 7 -> 13 -> 10 -> 4 -> 15 -> 12 (6 steps)\n1 -> 10 -> 13 -> 7 -> 4 -> 15 -> 12 (6 steps)\n1 -> 11 -> 5 -> 2 -> 14 -> 8 -> 3 -> 12 (7 steps)\n1 -> 13 -> 7 -> 10 -> 4 -> 15 -> 12 (6 steps)\n\nThe shortest path from room 1 to room 12 is 6 steps long. There are three paths with the same length:\n\nAnswer: 1, 7, 13, 10, 4, 15, 12\nor\nAnswer: 1, 10, 13, 7, 4, 15, 12\nor\nAnswer: 1, 13, 7, 10, 4, 15, 12"
+        }
+    ],
+    "tests": {
+        "SHORTEST_PATH_ONE_CLUSTER_AWAY": {
+            "expected_answer": [
+                "Answer: 1, 7, 4, 15, 12",
+                "Answer: 1, 10, 4, 15, 12",
+                "Answer: 1, 13, 4, 15, 12",
+                "Answer: 1,7,4,15,12",
+                "Answer: 1,10,4,15,12",
+                "Answer: 1,13,4,15,12"
+            ],
+            "parsed_response": "Answer: 1, 7, 13, 10, 4, 15, 12"
+        }
+    }
+}

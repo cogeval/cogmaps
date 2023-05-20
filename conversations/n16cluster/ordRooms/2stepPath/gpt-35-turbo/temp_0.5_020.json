@@ -1,0 +1,34 @@
+{
+    "conversation_id": "task_ordRooms_exp_2stepPath_temp_0.5_20",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. What is the shortest path from room 14 to room 9? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from room 14 to room 9, we can use Dijkstra's algorithm. Starting from room 14, we can calculate the shortest distance to all other rooms in the network. The shortest path from room 14 to room 9 is:\n\n14, 4, 1, 3, 5, 6, 12, 9\n\nAnswer: 14, 4, 1, 3, 5, 6, 12, 9"
+        }
+    ],
+    "tests": {
+        "2stepPath": {
+            "expected_answer": [
+                "Answer: 14, 15, 9",
+                "Answer: 14,15,9"
+            ],
+            "parsed_response": "Answer: 14, 4, 1, 3, 5, 6, 12, 9"
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "conversation_id": "task_ordRooms_exp_3stepPath_temp_1_5",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 15? Please list the room numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from room 1 to room 15, we can use Dijkstra's algorithm. \n\n1. Start at room 1 and mark its distance as 0. \n2. Look at all rooms connected to room 1 (room 7, 10, 11, 13). Calculate the distance from room 1 to each connected room and mark it. \n    - Distance to room 7 = 1 \n    - Distance to room 10 = 1 \n    - Distance to room 11 = 1 \n    - Distance to room 13 = 1 \n3. Among the connected rooms, pick the one with the shortest distance (in this case, they all have the same distance). Move to that room (room 7). \n4. Look at all rooms connected to the current room (room 7) that have not been visited (room 1 is visited). Calculate the distance to each connected room and mark it. \n    - Distance to room 4 = 2 \n    - Distance to room 10 = 2 \n    - Distance to room 13 = 2 \n5. Among the connected rooms, pick the one with the shortest distance (in this case, it's room 13). Move to that room. \n6. Look at all rooms connected to the current room (room 13) that have not been visited. Calculate the distance to each connected room and mark it.\n    - Distance to room 4 = 3 \n    - Distance to room 10 = 3 \n    - Distance to room 15 = 3 \n7. Among the connected rooms, pick the one with the shortest distance (in this case, it's room 15). Move to that room. \n8. We have reached our destination (room 15). The shortest path from room 1 to room 15 is: \n    Answer: 1, 13, 15"
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: 1, 7, 4, 15",
+                "Answer: 1, 10, 4, 15",
+                "Answer: 1, 13, 4, 15",
+                "Answer: 1,7,4,15",
+                "Answer: 1,10,4,15",
+                "Answer: 1,13,4,15"
+            ],
+            "parsed_response": "Answer: 1, 13, 15"
+        }
+    }
+}
