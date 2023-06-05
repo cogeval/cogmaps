@@ -167,7 +167,9 @@ function displayChatFromLocalFile(data) {
     addMessageToContainer(message, chatContainer);
   });
 
-  addTestToContainer(data.tests, data.scores, chatContainer);
+  if (data.scores != null) {
+    addTestToContainer(data.tests, data.scores, chatContainer);
+  }
 }
 
 function displayChat() {
@@ -192,8 +194,9 @@ function displayChat() {
       data.messages.forEach(message => {
         addMessageToContainer(message, chatContainer);
       });
-  
-      addTestToContainer(data.tests, data.scores, chatContainer);
+      if (data.scores != null) {
+        addTestToContainer(data.tests, data.scores, chatContainer);
+      }
     })
     .catch(error => {
       const chatContainer = document.getElementById('chat-container');
