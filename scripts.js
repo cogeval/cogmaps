@@ -11,7 +11,7 @@ const graphTypes = [
 ];
 const domains = [
   "ordRooms", 
-  "socialTiles", 
+  "socialTies", 
   "unordSpatial"
 ];
 const conditions = [
