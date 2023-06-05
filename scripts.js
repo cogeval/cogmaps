@@ -135,7 +135,7 @@ function addMessageToContainer(message, container) {
 
 function addTestToContainer(tests, scores, container) {
   const testElement = document.createElement('div');
-  testElement.className = 'test';
+  testElement.className = 'message test-score';
 
   // Loop through each test and add it to the container
   for(const key of Object.keys(tests)) {
@@ -152,7 +152,7 @@ function addTestToContainer(tests, scores, container) {
       colorClass = 'red';
     }
 
-    testElement.innerText = `Test: ${key}\nExpected: [${tests[key].expected_answer}]\n\nScore: ${score} / ${scores[key].max_score}\nRubric: ${rubric}`;
+    testElement.innerText= `Test: ${key}\nExpected: [${tests[key].expected_answer}]\n\nScore: ${score} / ${scores[key].max_score}\nRubric: ${rubric}`;
     // Add the color class to the test element
     testElement.classList.add(colorClass);
     container.appendChild(testElement);
