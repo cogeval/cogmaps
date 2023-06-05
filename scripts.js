@@ -193,7 +193,7 @@ function displayChat() {
         addMessageToContainer(message, chatContainer);
       });
   
-      addTestToContainer(data.tests, chatContainer);
+      addTestToContainer(data.tests, data.scores, chatContainer);
     })
     .catch(error => {
       const chatContainer = document.getElementById('chat-container');
