@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Sara? Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups Vivian and Ajit belong to.\nVivian is in the group with Salma, Shanshan, Vadim, and Gongxue.\nAjit is in the group with Pierre, Abdul, Durga, and Soheil, and also in the group with Abdul, Durga, and Anisha.\n\nStep 2: Find a common connection between the two groups.\nGongxue is connected to Alice, and Alice is connected to Soheil. Soheil is connected to Ajit.\n\nStep 3: Form the shortest connection path using the identified connections.\nVivian -> Gongxue -> Alice -> Soheil -> Ajit\n\nAnswer: Vivian, Gongxue, Alice, Soheil, Ajit"
+            "content": "Step 1: Identify the connections from Amir.\nAmir is connected to Reza, Moin, Pari, and Puja.\n\nStep 2: Identify the connections from Reza, Moin, Pari, and Puja.\nReza is connected to Moin and Pari.\nMoin is connected to Pari.\nPari has no further connections.\nPuja is connected to Pam.\n\nStep 3: Identify the connections from Moin, Pari, Pam.\nMoin is connected to Pari.\nPari has no further connections.\nPam is connected to Kim.\n\nStep 4: Identify the connections from Kim.\nKim is connected to Pam and Wei.\n\nStep 5: Identify the connections from Wei.\nWei is connected to Kim, Puja, and Pam.\n\nStep 6: Identify the connections from Puja and Pam.\nPuja is connected to Pam.\nPam is connected to Kim.\n\nStep 7: We have reached a loop with no connection to Sara. So, we need to backtrack and explore other connections.\n\nStep 8: Identify the connections from Jing, Raj, and Wim.\nJing is connected to Reza, Moin, Pari, and Max.\nRaj is connected to Nisha, Ian, Sara, and Kim.\nWim is connected to Wei, Kim, Puja, and Pam.\n\nStep 9: Identify the connections from Max.\nMax is connected to Ian and Sara.\n\nStep 10: Identify the connections from Ian.\nIan is connected to Sara and Max.\n\nStep 11: We have found a connection from Amir to Sara through Jing, Max, and Ian.\n\nAnswer: Amir, Jing, Max, Ian, Sara"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Amir, Reza, Jing, Max, Sara",
+                "Answer: Amir, Moin, Jing, Max, Sara ",
+                "Answer: Amir, Pari, Jing, Max, Sara "
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Alice, Soheil, Ajit"
+            "parsed_response": "Answer: Amir, Jing, Max, Ian, Sara"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

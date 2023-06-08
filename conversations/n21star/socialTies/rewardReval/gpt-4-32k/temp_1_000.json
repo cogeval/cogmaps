@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify Dan's connections.\nDan is working with Amy, Bob, Cal, Gus, and Kim.\n\nStep 2: Identify the connections of Dan's connections.\nAmy is working with Bob, Cal, Eva, Fay, and Gus.\nBob is working with Amy, Cal, Dan, Eva, and Gus.\nCal is working with Amy, Bob, Dan, Eva, and Gus.\nGus is working with Amy, Bob, Cal, Dan, and Eva.\nKim is working with Dan, Leo, Max, Ned, and Ola.\n\nStep 3: Identify the connections of the second level connections.\nEva is working with Amy, Bob, Cal, Gus, and Zac.\nFay is not connected to Dan.\nLeo is working with Kim, Max, Ola, and Joe.\nMax is connected to Kim, Leo, Ola, and Joe.\nNed is working with Kim, Joe, Leo, Max, and Ola.\nOla is working with Kim, Leo, Max, and Joe.\n\nStep 4: Identify the connections that lead to Joe or Ned.\n- Kim is connected to both Joe (through Leo) and Ned.\n- Leo is connected to Joe.\n- Max is connected to Joe.\n- Ned is directly connected.\n- Ola is connected to Joe.\n\nStep 5: Determine the shortest path that gives the most reward.\n- Path to Joe: Dan -> Kim -> Leo -> Joe ($100 reward)\n- Path to Ned: Dan -> Kim -> Ned ($50 reward)\n\nAnswer: Dan, Kim, Leo, Joe"
+            "content": "To get the most reward, Dan should work with a person who is connected to Joe, as Joe can get $100 worth of art supplies for free. To find the shortest path from Dan to Joe, let's analyze the connections:\n\n1. Dan is working with Amy, Fay, Cal, Gus, and Bob.\n2. From this list, let's see who is connected to someone working with Joe:\n    a) Amy is not connected to anyone working with Joe.\n    b) Fay is also not connected to anyone working with Joe.\n    c) Cal is working with Dan, Eva, Gus, and Bob, but none of them are working with Joe.\n    d) Gus is working with Bob and Dan, but neither of them are working with Joe.\n    e) Bob is working with Dan and Gus, but they are also not connected to Joe.\n3. Since there is no direct connection from Dan's collaborators to someone working with Joe, we need to look for a longer path.\n4. From the list of Dan's connections, let's look for the next connections:\n    a) Amy is working with Eva. Eva is not working with Joe, but she is working with Zac.\n    b) Fay has no additional connections.\n    c) Cal has no additional connections.\n    d) Gus has no additional connections.\n    e) Bob has no additional connections.\n5. Now let's look at the connections of Eva and Zac:\n    a) Eva is working with Gus, Bob, and Zac.\n    b) Zac is working with Sue, Kai, Pam, Gia, and Tom.\n6. Finally, let's check if anyone from Zac's connections works with Joe:\n    a) Sue does not work with Joe.\n    b) Kai works with Joe.\n\nSo, the path from Dan to the person Dan should work with to get the most reward is: Dan, Eva, Zac, Kai, Joe.\n\nAnswer: Dan, Eva, Zac, Kai, Joe"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: Dan, Kim, Ned, Joe"
             ],
-            "parsed_response": "Answer: Dan, Kim, Leo, Joe"
+            "parsed_response": "Answer: Dan, Eva, Zac, Kai, Joe"
+        }
+    },
+    "scores": {
+        "rewardReval": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

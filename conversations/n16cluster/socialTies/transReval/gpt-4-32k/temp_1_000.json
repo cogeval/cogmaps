@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to  Paul, Nick, Sherry, and Rose. Nick is connected to  Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to  Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. Initially, you were told that Rose can donate $250K while Maggie can donate $500K. Also, if you want to get connected with Amanda, you need to pay $10K to her company. Assume now that Bob and Rose are not connected. Also, Peter and Adam are not connected anymore. You have been told that Paul and John are not connected. Also, Andrew and Jennifer are not connected anymore. From Paul, what is the path to the person who can donate the most money? Please list the names in order, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Remove the incorrect connections mentioned in the text (Bob-Rose, Peter-Adam, Paul-John, and Andrew-Jennifer).\n\nStep 2: List the current connections:\n\nPaul -> Nick, Sherry\nBob -> Paul, Nick, Sherry\nNick -> Paul, Bob, Sherry, Amanda\nSherry -> Paul, Bob, Nick, William\nAmanda -> Peter, John, Daisy, Nick\nPeter -> Amanda, John, Daisy\nJohn -> Daisy, Peter, Amanda\nDaisy -> Amanda, Peter, John, Maggie\nAlisha -> Maggie, Jennifer, Adam, Russell\nMaggie -> Alisha, Jennifer, Daisy, Adam\nJennifer -> Alisha, Adam, Maggie\nAdam -> Alisha, Maggie, Jennifer\nAndrew -> William, Russell, Rose\nWilliam -> Sherry, Andrew, Russell, Rose\nRussell -> Andrew, William, Rose, Alisha\nRose -> Andrew, William, Russell\n\nStep 3: Identify the person who can donate the most money - Maggie ($500K)\n\nStep 4: Find the path from Paul to Maggie\n\nPaul -> Nick -> Amanda -> Daisy -> Maggie\n\nAnswer: Paul, Nick, Amanda, Daisy, Maggie"
+            "content": "Step 1: Identify Amir's connections (Wim, Raj, Jing, and Reza).\nStep 2: Identify the connections of Amir's connections to see if Moin or Matt is in their connections.\n    - Wim's connections: Amir, Raj, Jing, and Eva\n    - Raj's connections: Amir, Wim, Jing, and Wei\n    - Jing's connections: Amir, Wim, Raj, and Pam\n    - Reza's connections: Amir, Kim, Nisha, and Wei\nStep 3: Observe that Moin is connected to Kim, which is connected to Reza. Since Reza is connected to Amir, we find a path from Amir to Moin.\nStep 4: List the scholar names in order, starting from Amir: Amir, Reza, Kim, Moin.\n\nAnswer: Amir, Reza, Kim, Moin"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Wim and Eva had a disagreement and are no longer connected and, instead, Wim is now connected to Sara. Also, Nisha is no longer connected to Sara and, instead, Nisha is now connected to Eva. Also, Jing is no longer connected to Pam and, instead, Jing is now connected to Reza. Amir and Reza are not connected anymore. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Update the connections based on the new information:\n- Wim is connected to Amir, Raj, Jing, and Sara (not Eva anymore).\n- Eva is connected to Pari, Pam, Matt, and Nisha (not Wim anymore).\n- Nisha is connected to Wei, Reza, Kim, and Eva (not Sara anymore).\n- Sara is connected to Ian, Moin, Puja, and Wim (not Nisha anymore).\n- Jing is connected to Amir, Wim, Raj, and Reza (not Pam anymore).\n- Reza is connected to Kim, Nisha, Wei, and Jing (not Amir anymore).\n\nStep 2: Identify Amir's connections (Wim, Raj, and Jing).\nStep 3: Identify the connections of Amir's connections to see if Moin or Matt is in their connections.\n- Wim's connections: Amir, Raj, Jing, and Sara\n- Raj's connections: Amir, Wim, Jing, and Wei\n- Jing's connections: Amir, Wim, Raj, and Reza\n\nStep 4: Observe that Moin is connected to Sara, which is connected to Wim. Since Wim is connected to Amir, we find a path from Amir to Moin.\nStep 5: List the scholar names in order, starting from Amir: Amir, Wim, Sara, Moin.\n\nAnswer: Amir, Wim, Sara, Moin"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Paul, Sherry, William, Rose, Russell, Alisha, Maggie"
+                "Answer: Amir, Wim, Sara, Moin"
             ],
-            "parsed_response": "Answer: Paul, Nick, Amanda, Daisy, Maggie"
+            "parsed_response": "Answer: Amir, Wim, Sara, Moin"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

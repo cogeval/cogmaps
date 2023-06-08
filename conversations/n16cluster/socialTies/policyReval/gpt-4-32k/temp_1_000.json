@@ -15,19 +15,35 @@
         },
         {
             "role": "user",
-            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to Paul, Nick, Sherry, and Rose. Nick is connected to  Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. Initially, you were told that Rose can donate $250K while Maggie can donate $500K. Also, if you want to get connected with Amanda, you need to pay $10K to her company. Now you have been told that Rose cannot donate anything. From Paul, what is the path to the person who can donate the most money? Please list the names in order, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books, Matt is donating 10 books and Pari is not donating any book. Now, from Amir what is the shortest path to the person with maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "First, we need to identify the person who can donate the most money, which is Maggie with $500K. Now, we need to find the shortest path from Paul to Maggie.\n\n1. Paul is connected to Bob, Nick, Sherry, and John.\n2. From Paul's connections, Nick is connected to Amanda.\n3. Amanda is connected to Daisy.\n4. Daisy is connected to Maggie.\n\nTherefore, the shortest path from Paul to the person who can donate the most money (Maggie) is: Paul, Nick, Amanda, Daisy, Maggie.\n\nAnswer: Paul, Nick, Amanda, Daisy, Maggie"
+            "content": "Step 1: Identify the connections of Amir, who are Wim, Raj, Jing, and Reza.\nStep 2: Determine if any of Amir's connections are connected to Moin, Matt, or Pari. Wim is connected to Eva, Raj is connected to Wei, Jing is connected to Pam, and Reza is connected to Wei.\nStep 3: Identify the connections from step 2 (Eva, Wei, Pam, and Wei) and find their connection to Moin, Matt, or Pari. Eva is connected to Pari and Matt. Wei is connected to Nisha and Raj, who is already part of the path. Pam is connected to Pari. Since Moin has the most books, we want to find the shortest path to Moin.\nStep 4: Examine the remaining connections of Eva (Pari and Matt). Neither is connected to Moin, so go to Wei's connections (Nisha and Raj). Nisha is connected to Moin.\nStep 5: Trace the shortest path back to Amir. The path is Amir -> Reza -> Wei -> Nisha -> Moin.\n\nAnswer: Amir, Reza, Wei, Nisha, Moin"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Pari is donating 100 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the connections of Amir, who are Wim, Raj, Jing, and Reza.\nStep 2: Determine if any of Amir's connections are connected to Moin, Matt, or Pari. Wim is connected to Eva, Raj is connected to Wei, Jing is connected to Pam, and Reza is connected to Wei.\nStep 3: Identify the connections from step 2 (Eva, Wei, Pam, and Wei) and find their connection to Moin, Matt, or Pari. Eva is connected to Pari and Matt. Wei is connected to Nisha and Raj, who is already part of the path. Pam is connected to Pari. Since Pari now has the most books, we want to find the shortest path to Pari.\nStep 4: Examine the connections of Eva (Pari and Matt) and Pam (Pari). Eva is connected to Pari, and Pam is connected to Pari.\nStep 5: Trace the shortest path back to Amir. The path is Amir -> Wim -> Eva -> Pari.\n\nAnswer: Amir, Wim, Eva, Pari"
         }
     ],
     "tests": {
         "policyReval": {
             "expected_answer": [
-                "Answer: Paul, John, Daisy, Maggie "
+                "Answer: Amir, Wim, Eva, Pari",
+                "Answer: Amir, Jing, Pam, Pari"
             ],
-            "parsed_response": "Answer: Paul, Nick, Amanda, Daisy, Maggie"
+            "parsed_response": "Answer: Amir, Wim, Eva, Pari"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine you are a film director looking for producers to invest in your. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you\u00e2\u20ac\u2122re just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you\u00e2\u20ac\u2122re just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you're just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
         },
         {
             "role": "assistant",
-            "content": "To find the path that leads to the most money, it seems that Philip's network is the better option. Through Philip, you can get in touch with Yakub, who can introduce you to Ajay. Ajay is friends with Joe, who is married to Rachel. And Rachel's brother Harry has a $5M budget for producing a movie. Therefore, Philip's network can lead to the most money. \n\nAnswer: Philip"
+            "content": "To find the friend who can lead to the most money, I will analyze the two paths. The first path involves Nora -> Peter -> Shikha -> Gal -> Alex -> David who can invest $1M. The second path involves Philip -> Yakub -> Ajay -> Joe -> Rachel -> Harry who has a budget of $5M for producing a movie. \n\nSince we're looking for the friend who can lead to the most money, the second path seems more promising as Harry has a higher budget than David's investment. \n\nTherefore, Philip is the friend who can lead to the path where one can find the most money. \n\nAnswer: Philip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Considering the probabilities, there are two possible paths:\n1. Peter (0.1) -> Shikha -> Gal -> Alex -> David\n2. Peter (0.9) -> Ajay -> Joe -> Rachel -> Harry\n\nAnd\n\n1. Yakub (0.9) -> Shikha -> Gal -> Alex -> David\n2. Yakub (0.1) -> Ajay -> Joe -> Rachel -> Harry\n\nTo calculate the expected return from each path, we can use the following formula: \nExpected return = (probability of each step) * (money at the end of the path)\n\nFor the path through Peter and Shikha, the expected return would be:\n0.1 * 0 + 0.9 * 0 + 1 * 1M = 0.9M\n\nFor the path through Peter and Ajay, the expected return would be:\n0.1 * 0 + 0.9 * 5M = 4.5M\n\nFor the path through Yakub and Shikha, the expected return would be:\n0.9 * 0 + 0.1 * 1M = 0.1M\n\nFor the path through Yakub and Ajay, the expected return would be:\n0.9 * 5M + 0.1 * 0 = 4.5M\n\nTherefore, Yakub's network is the better option as it leads to the path with the higher expected return of 4.5M.\n\nAnswer: Yakub"
+            "content": "Based on the given probabilities, there are two possible paths to follow:\n\n1. Peter -> Shikha -> Gal -> Alex -> David (with probability 0.1 * 1 * 1 * 1 = 0.1)\n2. Philip -> Yakub -> Shikha -> Gal -> Alex -> David (with probability 0.9 * 0.1 * 1 * 1 * 1 = 0.09)\n3. Philip -> Yakub -> Ajay -> Joe -> Rachel -> Harry (with probability 0.9 * 0.9 * 1 * 1 * 1 * 1 = 0.729)\n\nSince we're looking for the friend who can lead to the path where one can find the most money, the third path seems more promising as Harry has a higher budget than David's investment. \n\nTherefore, Philip is the friend who can lead to the path where one can find the most money.\n\nAnswer: Philip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: Nora"
             ],
-            "parsed_response": "Answer: Yakub"
+            "parsed_response": "Answer: Philip"
+        }
+    },
+    "scores": {
+        "transRevalStochastic": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

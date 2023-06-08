@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine you are a film director looking for producers to invest in your. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you\u00e2\u20ac\u2122re just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you\u00e2\u20ac\u2122re just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you're just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two paths.\nStep 2: Determine the amount of money available through each path.\nStep 3: Compare the amounts of money available in each path.\n\nPath 1:\n- Talk to Nora\n- Nora is married to Peter\n- Peter is friends with Shikha\n- Shikha knows Gal\n- Gal can introduce you to Alex\n- Alex can introduce you to David\n- David can invest $1M in your movie\n\nPath 2:\n- Talk to Philip\n- Philip is friends with Yakub\n- Yakub can introduce you to Ajay\n- Ajay is friends with Joe\n- Joe is married to Rachel\n- Rachel's brother Harry has $5M budget for producing a movie\n\nComparison:\n- Path 1 leads to a potential investment of $1M\n- Path 2 leads to a potential investment of $5M\n\nAnswer: Philip"
+            "content": "Step 1: Analyze the two paths and the amount of money available through each path.\nPath 1: You -> Nora -> Peter -> Shikha -> Gal -> Alex -> David -> $1M investment\nPath 2: You -> Philip -> Yakub -> Ajay -> Joe -> Rachel -> Harry -> $5M budget\n\nStep 2: Compare the amounts of money available through each path.\n$1M from Path 1 vs $5M from Path 2\n\nStep 3: Determine which path leads to the most money.\nPath 2 leads to the most money.\n\nStep 4: Identify the friend that leads to the path with the most money.\nPhilip is the friend that leads to the path with the most money.\n\nAnswer: Philip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Calculate the expected value for each path.\nStep 2: Determine the path with the highest expected value.\n\nExpected Value Calculation:\n\nPath 1 (Nora):\n- Talk to Nora\n- Nora is married to Peter\n- Peter can introduce you to Shikha with probability of 0.1\n- Shikha knows Gal\n- Gal can introduce you to Alex\n- Alex can introduce you to David\n- David can invest $1M in your movie\n\nExpected Value for Path 1: $1M * 0.1 = $100,000\n\nPath 2 (Philip):\n- Talk to Philip\n- Philip is friends with Yakub\n- Yakub can introduce you to Ajay with probability of 0.1\n- Ajay is friends with Joe\n- Joe is married to Rachel\n- Rachel's brother Harry has $5M budget for producing a movie\n\nExpected Value for Path 2: $5M * 0.1 = $500,000\n\nComparison:\n- Path 1 has an expected value of $100,000\n- Path 2 has an expected value of $500,000\n\nAnswer: Philip"
+            "content": "Step 1: Calculate the expected value of each path by multiplying the probability of each connection with the amount of money available through that path.\n\nExpected value of Path 1 (through Nora and Peter):\nProbability of reaching Shikha through Peter: 0.1\nAmount of money available through Shikha: $1M\nExpected value of Path 1: 0.1 * $1M = $100,000\n\nExpected value of Path 1 (through Nora and Peter to Ajay):\nProbability of reaching Ajay through Peter: 0.9\nAmount of money available through Ajay: $5M\nExpected value of Path 1 to Ajay: 0.9 * $5M = $4.5M\n\nTotal Expected value of Path 1: $100,000 + $4.5M = $4.6M\n\nExpected value of Path 2 (through Philip and Yakub):\nProbability of reaching Ajay through Yakub: 0.1\nAmount of money available through Ajay: $5M\nExpected value of Path 2: 0.1 * $5M = $500,000\n\nExpected value of Path 2 (through Philip and Yakub to Shikha):\nProbability of reaching Shikha through Yakub: 0.9\nAmount of money available through Shikha: $1M\nExpected value of Path 2 to Shikha: 0.9 * $1M = $900,000\n\nTotal Expected value of Path 2: $500,000 + $900,000 = $1.4M\n\nStep 2: Compare the expected values of the two paths.\n$4.6M from Path 1 vs $1.4M from Path 2\n\nStep 3: Determine which path has the highest expected value.\nPath 1 has the highest expected value.\n\nStep 4: Identify the friend that leads to the path with the highest expected value.\nNora is the friend that leads to the path with the highest expected value.\n\nAnswer: Nora"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: Nora"
             ],
-            "parsed_response": "Answer: Philip"
+            "parsed_response": "Answer: Nora"
+        }
+    },
+    "scores": {
+        "transRevalStochastic": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

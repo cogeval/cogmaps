@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. What is the shortest path from room 3 to room 15? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. From room 3 what is the shortest path to room 15? Starting from room 3, please list the room numbers in order, including 3, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 3 to room 15, we can use Dijkstra's algorithm. Starting from room 3, we can calculate the shortest distance to each of the connected rooms and update the distances as we explore the graph. Here is the shortest path from room 3 to room 15:\n\n3 -> 1 -> 7 -> 5 -> 6 -> 12 -> 9 -> 15\n\nAnswer: 3, 1, 7, 5, 6, 12, 9, 15"
+            "content": "To find the shortest path from room 3 to room 15, we can use Dijkstra's algorithm. Here are the steps:\n\n1. Create a table with all the rooms and their distances from room 3. Set the distance of room 3 to 0 and all other distances to infinity.\n\n| Room | Distance |\n|------|----------|\n| 1    | \u221e        |\n| 2    | \u221e        |\n| 3    | 0        |\n| 4    | \u221e        |\n| 5    | 1        |\n| 6    | 2        |\n| 7    | 1        |\n| 8    | 2        |\n| 9    | \u221e        |\n| 10   | \u221e        |\n| 11   | \u221e        |\n| 12   | \u221e        |\n| 13   | \u221e        |\n| 14   | \u221e        |\n| 15   | \u221e        |\n| 16   | \u221e        |\n\n2. Mark room 3 as visited.\n\n3. For each room connected to room 3, update its distance in the table if it is shorter than the current distance. For example, room 5 has a distance of 1 from room 3, so we update its distance in the table.\n\n| Room | Distance |\n|------|----------|\n| 1    | \u221e        |\n| 2    | \u221e        |\n| 3    | 0        |\n| 4    | \u221e        |\n| 5    | 1        |\n| 6    | 2        |\n| 7    | 1        |\n| 8    | 2        |\n| 9    | \u221e        |\n| 10   | \u221e        |\n| 11   | \u221e        |\n| 12   | \u221e        |\n| 13   | \u221e        |\n| 14   | \u221e        |\n| 15   | \u221e        |\n| 16   | \u221e        |\n\n4. Choose the unvisited room with the shortest distance from room 3. In this case, it is room 5.\n\n5. Mark room 5 as visited.\n\n6. For each room connected to room 5 that is unvisited, update its distance in the table if it is shorter than the current distance plus the distance from room 5. For example, room 8 has a distance of 2 from room 5, so we update its distance in the table to 3 (1 + 2).\n\n| Room | Distance |\n|------|----------|\n| 1    | \u221e        |\n| 2    | \u221e        |\n| 3    | 0        |\n| 4    | \u221e        |\n| 5    | 1        |\n| 6    | 2        |\n| 7    | 1        |\n| 8    | 3        |\n| 9    | \u221e        |\n| 10   | \u221e        |\n| 11   | \u221e        |\n| 12   | \u221e        |\n| 13   | \u221e        |\n| 14   | \u221e        |\n| 15   | \u221e        |\n| 16   | \u221e        |\n\n7. Repeat steps 4-6 until room 15 is visited.\n\n8. The shortest path from room 3 to room 15 is: 3, 5, 8, 15.\n\nAnswer: 3, 5, 8, 15."
         }
     ],
     "tests": {
@@ -30,7 +30,14 @@
                 "Answer: 3,2,16,15",
                 "Answer: 3,4,14,15"
             ],
-            "parsed_response": "Answer: 3, 1, 7, 5, 6, 12, 9, 15"
+            "parsed_response": "Answer: 3, 5, 8, 15"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

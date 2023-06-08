@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Sara? Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections for Vivian and Ajit.\nVivian is connected to Salma, Shanshan, Vadim, and Gongxue.\nAjit is connected to Pierre, Abdul, Durga, Soheil, and Anisha.\n\nStep 2: Find common connections between Vivian and Ajit.\nThere is no direct common connection between Vivian and Ajit.\n\nStep 3: Look for a one-intermediate student path from Vivian to Ajit.\nVivian -> Salma -> Noah, Shanshan, Vadim, Anisha\nVivian -> Shanshan -> Salma, Vadim\nVivian -> Vadim -> Salma, Shanshan\nVivian -> Gongxue -> Paul, Solomon, Soheil, Alice\n\nStep 4: Check for any common connections from Vivian's connections to Ajit's connections.\nSalma -> Anisha -> Ajit\n\nStep 5: Write down the shortest connection path from Vivian to Ajit.\nAnswer: Vivian, Salma, Anisha, Ajit"
+            "content": "First, let's break down the connections between the scholars:\n\n1. Amir: Reza, Moin, Pari, Puja\n2. Wim: Wei, Kim, Puja, Pam\n3. Raj: Nisha, Ian, Sara, Kim\n4. Jing: Reza, Moin, Pari, Max\n5. Wei: Kim, Puja, Pam\n6. Nisha: Ian, Sara, Max\n7. Reza: Moin, Pari\n8. Kim: Pam\n9. Ian: Sara, Max\n10. Moin: Pari\n11. Puja: Pam\n12. Sara: Max\n\nNow, let's find the shortest path from Amir to Sara:\n\n1. Start at Amir: Reza, Moin, Pari, Puja\n2. Move to Puja: Pam\n3. Move to Pam: (connected to Wei, Kim, Wim)\n4. Move to Wim: Wei, Kim, Puja, Pam\n5. Move to Raj: Nisha, Ian, Sara, Kim\n6. Move to Sara\n\nThe shortest path is Amir, Puja, Pam, Wim, Raj, Sara.\n\nAnswer: Amir, Puja, Pam, Wim, Raj, Sara"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Amir, Reza, Jing, Max, Sara",
+                "Answer: Amir, Moin, Jing, Max, Sara ",
+                "Answer: Amir, Pari, Jing, Max, Sara "
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha, Ajit"
+            "parsed_response": "Answer: Amir, Puja, Pam, Wim, Raj, Sara"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

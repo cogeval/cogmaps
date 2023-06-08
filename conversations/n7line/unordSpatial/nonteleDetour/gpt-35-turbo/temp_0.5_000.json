@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the least expensive destination, we need to compare the total expenses of both paths. \n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran\nTotal expenses = $1000\n\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu\nTotal expenses = $400\n\nTherefore, the path that leads to the least expensive destination is the second path, which starts from New Delhi and goes through Kathmandu, Beijing, and Thimphu.\n\nAnswer: Kathmandu"
+            "content": "To find the least expensive destination, we need to compare the total expenses of both paths. \n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran -> New Delhi \nTotal expenses = $1000 \n\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu -> New Delhi \nTotal expenses = $400 \n\nTherefore, the path that leads to the least expensive destination is the second path, which starts from New Delhi to Kathmandu, then Beijing, and finally to Thimphu. \n\nAnswer: Thimphu"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Based on the previous information, we know that the path from New Delhi to Kathmandu, Beijing, and Thimphu is the least expensive path. However, since the flights to that path are cancelled due to bad weather, we need to consider the next least expensive path.\n\nThe new path that leads to Yangon, Dhaka, and Thimphu is a longer path compared to the previous one, and we don't know the expenses yet. Therefore, we need to compare the expenses of this new path to the expenses of the path that leads to Islamabad, Kabul, and Tehran.\n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran\nTotal expenses = $1000\n\nPath 2: New Delhi -> Yangon -> Dhaka -> Thimphu\nExpenses unknown\n\nSince we don't know the expenses of the second path, we cannot determine which path leads to the least expensive destination. Therefore, we need to gather more information about the expenses of the second path to make a comparison.\n\nAnswer: Insufficient information to determine the least expensive destination."
+            "content": "Since the flights to the city with the least expensive destination are cancelled due to bad weather, we need to compare the total expenses of the remaining paths. \n\nPath 1: New Delhi -> Yangon -> Dhaka -> Thimphu -> New Delhi \nTotal expenses = Unknown\n\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu -> New Delhi \nTotal expenses = $400 \n\nTherefore, the path that leads to the least expensive destination is still the second path, which starts from New Delhi to Kathmandu, then Beijing, and finally to Thimphu. \n\nAnswer: Thimphu"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: Yangon"
             ],
-            "parsed_response": "Answer: Insufficient information to determine the least expensive destination"
+            "parsed_response": "Answer: Thimphu"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

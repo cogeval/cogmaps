@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the least expensive destination, we need to compare the total expenses of both paths. \n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran\nTotal expenses = $1000\n\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu\nTotal expenses = $400\n\nTherefore, the path that leads to the least expensive destination is the one that goes through Kathmandu. \n\nAnswer: Kathmandu"
+            "content": "To find the least expensive destination, we need to compare the total expenses of both paths. \n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran -> New Delhi\nTotal expenses = $1000\n\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu -> New Delhi\nTotal expenses = $400\n\nTherefore, the path that leads to the least expensive destination is the second path, which starts from New Delhi and goes to Kathmandu. \n\nAnswer: Kathmandu"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Since all the flights to the city with the least expensive destination are cancelled, we need to compare the total expenses of the remaining paths. \n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran\nTotal expenses = $1000\n\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu\nTotal expenses = $400\n\nPath 3: New Delhi -> Yangon -> Dhaka -> Bangkok\nTotal expenses = unknown\n\nSince we don't know the total expenses of Path 3, we cannot compare it with the other paths. Therefore, we cannot determine which city from New Delhi will lead to the path where one can find the least expensive destination.\n\nAnswer: Not enough information provided to determine the city."
+            "content": "Since all the flights to the city with the least expensive destination are cancelled, we need to compare the total expenses of the remaining paths. \n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran -> New Delhi\nTotal expenses = $1000\n\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu -> New Delhi\nTotal expenses = $400\n\nPath 3: New Delhi -> Yangon -> Dhaka -> Bangkok -> New Delhi\nTotal expenses = unknown\n\nSince we don't know the total expenses of Path 3, we cannot compare it with the other two paths. Therefore, we cannot determine which city from New Delhi will lead to the path where one can find the least expensive destination.\n\nAnswer: Cannot be determined."
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: Yangon"
             ],
-            "parsed_response": "Answer: Not enough information provided to determine the city"
+            "parsed_response": "Answer: Cannot be determined"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

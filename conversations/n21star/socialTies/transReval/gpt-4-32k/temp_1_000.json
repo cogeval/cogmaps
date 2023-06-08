@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": " Imagine an art office with 21 artists. Amy is working with Bob, Cal, Dan, Eva, Fay, and Gus. Ian is working with Joe, Kim, Leo, Max, Ned, and Ola. Sue is working with Tom, Zac, Kai, Liv, Pam, and Gia. Fay is working with Gus, Bob, Cal, Dan, and Eva. Cal is working with Dan, Eva, Gus, and Bob. Kim is working with Dan, Leo, Max, Ned, and Ola. Ned is working with Ola, Joe, Leo, and Max. Pam is working with Gia, Tom, Zac, Kai, and Liv. Eva is working with Gus, Bob and Zac. Leo is working with Max, Ola, and Joe. Max is connected to Ola and Joe. Liv is working with Gia, Tom, Zac, and Kai. Gus is working with Bob, and Dan. Ola is working with Joe. Gia is working Tom, Zac, and Kai. Bob is working with Dan. Joe is working with Kai. Kai is working with Tom. Tom is working with Zac. You have been told that if you  work with Joe, he can get you art supplies worth $100 for free. Assume now that Dan and Kai are working together. From Dan what is the path to the person you should work with to get the most reward? Please list the names in order, separated by commas."
+            "content": "Imagine an art office with 21 artists. Amy is working with Bob, Cal, Dan, Eva, Fay, and Gus. Ian is working with Joe, Kim, Leo, Max, Ned, and Ola. Sue is working with Tom, Zac, Kai, Liv, Pam, and Gia. Fay is working with Gus, Bob, Cal, Dan, and Eva. Cal is working with Dan, Eva, Gus, and Bob. Kim is working with Dan, Leo, Max, Ned, and Ola. Ned is working with Ola, Joe, Leo, and Max. Pam is working with Gia, Tom, Zac, Kai, and Liv. Eva is working with Gus, Bob and Zac. Leo is working with Max, Ola, and Joe. Max is connected to Ola and Joe. Liv is working with Gia, Tom, Zac, and Kai. Gus is working with Bob, and Dan. Ola is working with Joe. Gia is working Tom, Zac, and Kai. Bob is working with Dan. Joe is working with Kai. Kai is working with Tom. Tom is working with Zac. You have been told that if you  work with Joe, he can get you art supplies worth $100 for free. Assume now that Dan and Kai are working together. From Dan what is the path to the person you should work with to get the most reward? Please list the names in order, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "First, let's list all the connections we know of:\n\n1. Dan is working with Amy, Fay, Cal, Bob, Gus, and now Kai.\n\n2. Kai is working with Sue, Pam, Liv, Gia, Joe, Tom, and now Dan.\n\nGiven this new connection, we want to find a path from Dan to Joe.\n\nDan -> Kai -> Joe\n\nAnswer: Dan, Kai, Joe"
+            "content": "First, let's trace the path from Dan to Joe through their connections:\n1. Dan is connected to Kim.\n2. Kim is connected to Joe.\n\nNow, let's include the additional connection between Dan and Kai that we need to consider:\n1. Dan is connected to Kai.\n2. Kai is connected to Joe.\n\nSo, there are two possible paths to reach Joe from Dan: Dan -> Kim -> Joe, and Dan -> Kai -> Joe.\n\nAnswer: Dan, Kim, Joe"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: Dan, Kai, Joe"
             ],
-            "parsed_response": "Answer: Dan, Kai, Joe"
+            "parsed_response": "Answer: Dan, Kim, Joe"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

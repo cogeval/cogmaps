@@ -15,20 +15,27 @@
         },
         {
             "role": "user",
-            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to Paul, Nick, Sherry, and Rose. Nick is connected to Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. What is the shortest path from Nick to Russell? Please list the names in order, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Raj what is the shortest path to Matt? Starting from Raj, please list the scholar numbers in order, including Raj, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the starting point (Nick) and the destination (Russell).\nStep 2: List all the connections for each person.\nStep 3: Find the shortest path from Nick to Russell using the connections.\n\nPath 1: Nick -> Paul -> Bob -> Rose -> Russell (4 connections)\nPath 2: Nick -> Sherry -> William -> Russell (3 connections)\nPath 3: Nick -> Amanda -> Peter -> Adam -> Alisha -> Russell (5 connections)\n\nThe shortest path is Path 2 with 3 connections.\n\nAnswer: Nick, Sherry, William, Russell"
+            "content": "1. Start at Raj\n2. List Raj's connections: Amir, Wim, Jing, Wei\n3. Check each connection for a direct connection to Matt:\n   - Amir: no direct connection to Matt\n   - Wim: no direct connection to Matt\n   - Jing: no direct connection to Matt\n   - Wei: no direct connection to Matt\n4. Check each connection's connections for a direct connection to Matt:\n   - Amir: Wim, Raj, Jing, Reza\n   - Wim: Amir, Raj, Jing, Eva\n   - Jing: Amir, Wim, Raj, Pam\n   - Wei: Nisha, Reza, Kim, Raj\n     - Eva: Pari, Pam, Matt, Wim (Matt found through Eva)\n5. The shortest path from Raj to Matt is through Wim and Eva.\n\nAnswer: Raj, Wim, Eva, Matt"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Nick, Bob, Rose, Russell",
-                "Answer: Nick, Sherry, William, Russell"
+                "Answer: Raj, Wim, Eva, Matt",
+                "Answer: Raj, Jing, Pam, Matt"
             ],
-            "parsed_response": "Answer: Nick, Sherry, William, Russell"
+            "parsed_response": "Answer: Raj, Wim, Eva, Matt"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

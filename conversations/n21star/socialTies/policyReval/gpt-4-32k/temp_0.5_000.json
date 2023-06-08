@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the path from Dan to the person who can get the most reward, we need to trace connections between artists. Let's follow the connections from Dan:\n\n1. Dan is working with Amy, Cal, Fay, Gus, and Kim.\n2. From Amy, there are no connections to Joe or Ned.\n3. From Cal, there are no connections to Joe or Ned.\n4. From Fay, there are no connections to Joe or Ned.\n5. From Gus, there are no connections to Joe or Ned.\n6. From Kim, we can reach Joe through Leo, Max, Ned, and Ola.\n\nSo, the path from Dan to the person who can get the most reward (Joe) is: Dan, Kim, Leo, Max, Ola, and Joe.\n\nAnswer: Dan, Kim, Leo, Max, Ola, Joe"
+            "content": "First, let's find the path from Dan to Joe:\nDan is working with Bob, who is working with Joe.\nSo the path is: Dan, Bob, Joe.\n\nNow, let's find the path from Dan to Ned:\nDan is working with Kim, who is working with Ned.\nSo the path is: Dan, Kim, Ned.\n\nSince working with Joe gets you more art supplies ($100 worth), the path to the person you should work with to get the most reward is: Dan, Bob, Joe.\n\nAnswer: Dan, Bob, Joe"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: Dan, Kim, Ned, Joe "
             ],
-            "parsed_response": "Answer: Dan, Kim, Leo, Max, Ola, Joe"
+            "parsed_response": "Answer: Dan, Bob, Joe"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

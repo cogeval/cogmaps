@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "1. Start with Gus.\n2. Gus is working with Bob and Dan.\n3. Bob is working with Dan and Eva.\n4. Dan is working with Cal, Eva, and Kim.\n5. Eva is working with Zac.\n6. Zac is working with Tom and Sue.\n7. Tom is working with Kai, Liv, Pam, and Gia.\n8. Since Liv is working with Tom, the shortest path is: \n\nAnswer: Gus, Bob, Eva, Zac, Tom, Liv"
+            "content": "1. Start with Gus.\n2. Gus is working with Bob and Dan.\n3. From Bob and Dan, look for connections to reach Liv:\n   - Bob is working with Dan, Eva, and Zac.\n   - Dan is working with Eva, Cal, and Kim.\n4. From the connections above, examine their connections:\n   - Eva is working with Gus, Bob, and Zac.\n   - Zac is working with Tom, Gia, and Kai.\n   - Cal is working with Dan, Eva, Gus, and Bob.\n   - Kim is working with Dan, Leo, Max, Ned, and Ola.\n5. From these connections, we find a shorter path through Zac (Gus -> Bob -> Zac -> Tom -> Liv).\n\nAnswer: Gus, Bob, Zac, Tom, Liv"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: Gus, Eva, Zac, Liv"
             ],
-            "parsed_response": "Answer: Gus, Bob, Eva, Zac, Tom, Liv"
+            "parsed_response": "Answer: Gus, Bob, Zac, Tom, Liv"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Paul? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Wim? Starting from Amir, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify Vivian's connections. Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\nStep 2: Identify the connections of Vivian's connections to find Paul.\n- Salma is connected to Vivian, Shanshan, Vadim, Noah, and Anisha.\n- Shanshan is connected to Vivian, Salma, Vadim, Noah, Anisha, and Gongxue.\n- Vadim is connected to Vivian, Salma, Shanshan, Noah, and Anisha.\n- Gongxue is connected to Vivian, Shanshan, Paul, Solomon, Soheil, Alice, and Abdul.\nStep 3: From the connections listed above, Gongxue is connected to Paul.\n\nAnswer: Vivian, Gongxue, Paul"
+            "content": "1. Start with Amir.\n2. Find all connections from Amir: Reza, Moin, Pari, Puja.\n3. Check connections of Reza: Moin, Pari - no direct path to Wim.\n4. Check connections of Moin: Pari - no direct path to Wim.\n5. Check connections of Pari - no direct path to Wim.\n6. Check connections of Puja: Pam.\n7. Check connections of Pam: Wim.\n8. Found path: Amir -> Puja -> Pam -> Wim.\n\nAnswer: Amir, Puja, Pam, Wim"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul"
+                "Answer: Amir, Puja, Wim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Paul"
+            "parsed_response": "Answer: Amir, Puja, Pam, Wim"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

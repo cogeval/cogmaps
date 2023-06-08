@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. You are connected with Vivian and a new app appears in which you can connect to anyone only once. From Vivian, what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Make a list of all students and the connections given.\nStep 2: Determine the connections of Vivian and choose the next person in the path.\nStep 3: From the chosen person, identify their connections, excluding Vivian and the previous connections in the path.\nStep 4: Repeat steps 2 and 3 until no more connections can be made.\nStep 5: Record the path that yields the most reward (the longest path without repeating connections).\n\n1. List of students and connections:\n   Vivian: (Vivian, Salma, Shanshan, Vadim, Gongxue)\n   Salma: (Vivian, Shanshan, Vadim, Noah, Shanshan, Vadim)\n   Shanshan: (Vivian, Salma, Vadim, Noah, Salma, Vadim)\n   Vadim: (Vivian, Salma, Shanshan, Noah, Salma, Shanshan)\n   Gongxue: (Vivian, Paul, Solomon, Soheil, Alice)\n   Paul: (Solomon, Soheil, Gongxue, Alice)\n   Solomon: (Paul, Soheil, Gongxue, Alice, Soheil, Gongxue, Alice)\n   Soheil: (Paul, Solomon, Gongxue, Alice, Pierre, Abdul, Durga, Ajit, Solomon, Gongxue, Alice, Alice)\n   Alice: (Paul, Solomon, Soheil, Gongxue, Solomon, Soheil, Gongxue, Soheil)\n   Pierre: (Abdul, Durga, Ajit, Soheil)\n   Abdul: (Pierre, Durga, Ajit, Durga, Ajit, Anisha)\n   Durga: (Pierre, Abdul, Ajit, Abdul, Ajit, Anisha, Ajit, Anisha)\n   Ajit: (Pierre, Abdul, Durga, Abdul, Durga, Anisha, Durga, Anisha, Anisha)\n   Noah: (Salma, Shanshan, Vadim, Anisha)\n   Anisha: (Noah, Salma, Shanshan, Vadim, Abdul, Durga, Ajit, Durga, Ajit, Ajit)\n\n2. From Vivian, we can choose Salma, Shanshan, Vadim, or Gongxue.\n   Let's choose Salma.\n3. From Salma, we can choose Noah, Shanshan, or Vadim.\n   Let's choose Noah.\n4. From Noah, we can choose Anisha.\n5. From Anisha, we can choose Abdul or Durga.\n   Let's choose Abdul.\n6. From Abdul, we can choose Pierre.\n7. From Pierre, we can choose Soheil.\n8. From Soheil, we can choose Paul or Solomon.\n   Let's choose Paul.\n9. From Paul, we can choose Alice.\n10. From Alice, we can choose no one new.\n\nSo the connection path that yields the most reward is: Vivian, Salma, Noah, Anisha, Abdul, Pierre, Soheil, Paul, Alice.\n\nAnswer: Vivian, Salma, Noah, Anisha, Abdul, Pierre, Soheil, Paul, Alice"
+            "content": "First, let's find the shortest path from Amir to both Kim and Max.\n\n1. Amir to Kim:\nAmir - Puja - Kim (3 connections)\n\n2. Amir to Max:\nAmir - Reza - Moin - Pari - Max (5 connections)\n\nThe shortest path is to Kim, who is donating 50 books. Therefore, the path is Amir, Puja, Kim.\n\nAnswer: Amir, Puja, Kim"
+        },
+        {
+            "role": "user",
+            "content": "You are told Pari has an instant connection portal, through which she can connect you to any scholar, but one at a time. This means that once you connect with Pari, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Since Pari has an instant connection portal, we can find the shortest path by connecting Amir to Pari and then directly to the scholar donating the maximum number of books.\n\n1. Amir to Pari (1 connection)\n2. Pari to Kim (using the instant connection portal, 1 connection)\n\nThe shortest path is Amir, Pari, Kim.\n\nAnswer: Amir, Pari, Kim"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Vivian, Soheil"
+                "Answer: Amir, Pari, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Noah, Anisha, Abdul, Pierre, Soheil, Paul, Alice"
+            "parsed_response": "Answer: Amir, Pari, Kim"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

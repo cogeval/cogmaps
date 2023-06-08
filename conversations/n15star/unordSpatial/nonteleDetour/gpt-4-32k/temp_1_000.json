@@ -15,21 +15,36 @@
         },
         {
             "role": "user",
-            "content": " Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. You are in Starbucks and you have been told that the path between Starbucks and Sephora is now closed for cleaning, but there is a new open path between Starbucks and Target. From Starbucks, what is the path that yields the most reward? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. You have been told that you can get a bunch of 50 peony flowers for free if you visit peony field and you can get a bunch of 10 lavender flowers for free if you choose to visit lavender field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "First, let's analyze the connections and create a list of possible paths from Starbucks to Sephora without using the direct path:\n\n1. Starbucks - Target - Levis - GNC Live Well - Baskins and Robins - Chickflea - Nike - Sephora\n2. Starbucks - Target - Marshalls - Paris Baguette - H&M - Zara - Sephora\n3. Starbucks - Target - Levis - GNC Live Well - Baskins and Robins - Chickflea - Nike - Carter Children - Sephora\n\nNow let's assign rewards for each store:\n- Starbucks: 0 (since you're already there)\n- Target: 5\n- Levis: 4\n- GNC Live Well: 3\n- Baskins and Robins: 2\n- Chickflea: 1\n- Nike: 3\n- Sephora: 5\n- Marshalls: 4\n- Paris Baguette: 3\n- H&M: 2\n- Zara: 2\n- Carter Children: 1\n- Bath and Body Works: 0 (since it's not in any path to Sephora)\n\nCalculate the total rewards for each path:\n1. 0 + 5 + 4 + 3 + 2 + 1 + 3 + 5 = 23\n2. 0 + 5 + 4 + 3 + 2 + 2 + 5 = 21\n3. 0 + 5 + 4 + 3 + 2 + 1 + 3 + 1 + 5 = 24\n\nPath 3 has the highest reward. So, the best path from Starbucks to Sephora is:\n\nAnswer: Starbucks, Target, Levis, GNC Live Well, Baskins and Robins, Chickflea, Nike, Carter Children, Sephora"
+            "content": "Step 1: Identify the starting point (Rose field) and the destinations (Peony and Lavender fields).\nStep 2: Determine the paths from Rose field to both destinations.\nStep 3: Calculate the number of flowers obtained from each destination (Peony: 50, Lavender: 10).\nStep 4: Choose the destination with the maximum number of flowers (Peony field).\nStep 5: Find the shortest path from the Rose field to the chosen destination.\n\nShortest path from Rose field to Peony field:\nRose field -> Carnation field -> Zinnia field -> Peony field\n\nAnswer: Rose, Carnation, Zinnia, Peony"
+        },
+        {
+            "role": "user",
+            "content": "The door from the rose field to the carnation field is locked and now the poppy field is connected to the carnation field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the new starting point (Rose field) and the destinations (Peony and Lavender fields).\nStep 2: Update the connections based on the locked door between Rose field and Carnation field, and the new connection between Poppy field and Carnation field.\nStep 3: Determine the paths from Rose field to both destinations with the updated connections.\nStep 4: Calculate the number of flowers obtained from each destination (Peony: 50, Lavender: 10).\nStep 5: Choose the destination with the maximum number of flowers (Peony field).\nStep 6: Find the shortest path from the Rose field to the chosen destination with the updated connections.\n\nShortest path from Rose field to Peony field:\nRose field -> Poppy field -> Carnation field -> Zinnia field -> Peony field\n\nAnswer: Rose, Poppy, Carnation, Zinnia, Peony"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: Starbucks, Target, GNC Live Well, Chickflea, Nike",
-                "Answer: Starbucks, Target, Levis, Chickflea, Nike",
-                "Answer: Starbucks, Target, Baskins and Robins, Chickflea, Nike"
+                "Answer: Rose, Poppy, Carnation, Sunflower, Peony",
+                "Answer: Rose, Poppy, Carnation, Zinnia, Peony",
+                "Answer: Rose, Poppy, Carnation, Orchid, Peony"
             ],
-            "parsed_response": "Answer: Starbucks, Target, Levis, GNC Live Well, Baskins and Robins, Chickflea, Nike, Carter Children, Sephora"
+            "parsed_response": "Answer: Rose, Poppy, Carnation, Zinnia, Peony"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

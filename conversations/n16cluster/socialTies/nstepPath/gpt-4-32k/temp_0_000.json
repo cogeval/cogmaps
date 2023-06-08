@@ -15,20 +15,27 @@
         },
         {
             "role": "user",
-            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to Paul, Nick, Sherry, and Rose. Nick is connected to Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. What is the shortest path from Russell to John? Please list the names in order, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Matt what is the shortest path to Reza? Starting from Matt, please list the scholar names in order, including Matt, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "First, let's identify the connections between the socialites:\n\n1. Russell is connected to Andrew, William, Rose, and Alisha.\n2. Andrew is connected to William, Russell, Rose, and Jennifer.\n3. Jennifer is connected to Andrew, Alisha, Adam, and Maggie.\n4. Adam is connected to Alisha, Maggie, Jennifer, and Peter.\n5. Peter is connected to Amanda, John, Daisy, and Adam.\n6. John is connected to Paul, Daisy, Peter, and Amanda.\n\nNow, let's find the shortest path from Russell to John:\n\n1. Russell -> Alisha\n2. Alisha -> Maggie\n3. Maggie -> Daisy\n4. Daisy -> John\n\nAnswer: Russell, Alisha, Maggie, Daisy, John"
+            "content": "1. Start at Matt.\n2. Consider Matt's connections: Pari, Pam, Eva, and Ian.\n3. Check if any of them are directly connected to Reza: None.\n4. Consider the connections of Matt's connections:\n   - Pari: Pam, Matt, Eva, and Puja.\n   - Pam: Jing, Pari, Matt, and Eva.\n   - Eva: Pari, Pam, Matt, and Wim.\n   - Ian: Moin, Puja, Sara, and Matt.\n5. Check if any of them are directly connected to Reza: None.\n6. Consider the connections of the second-degree connections:\n   - Jing: Amir, Wim, Raj, and Pam.\n   - Wim: Amir, Raj, Jing, and Eva.\n   - Moin: Ian, Puja, Kim, and Sara.\n   - Puja: Pari, Ian, Sara, and Moin.\n   - Sara: Ian, Moin, Puja, and Nisha.\n   - Nisha: Wei, Reza, Kim, and Sara.\n7. Check if any of them are directly connected to Reza: Nisha is connected to Reza.\n8. Trace the path back to Matt: Reza -> Nisha -> Sara -> Ian -> Matt.\n\nAnswer: Matt, Ian, Sara, Nisha, Reza"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Russell, Alisha, Adam, Peter, John",
-                "Answer: Russell, William, Sherry, Paul, John"
+                "Answer: Matt, Ian, Sara, Nisha, Reza",
+                "Answer: Matt, Pam, Jing, Amir, Reza"
             ],
-            "parsed_response": "Answer: Russell, Alisha, Maggie, Daisy, John"
+            "parsed_response": "Answer: Matt, Ian, Sara, Nisha, Reza"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

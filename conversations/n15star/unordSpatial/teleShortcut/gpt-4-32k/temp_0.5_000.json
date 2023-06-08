@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": " Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. You are in Starbucks and you find a magic coffee bean with which you can teleport to any room only once. From Starbucks, what is the path that yields the most reward? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. You have been told that you can get a bunch of 50 peony flowers for free if you visit peony field and you can get a bunch of 10 lavender flowers for free if you choose to visit lavender field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "First, let's identify the connections from Starbucks:\n1. Starbucks -> Paris Baguette\n2. Starbucks -> H&M\n3. Starbucks -> Zara\n4. Starbucks -> Sephora\n\nNext, let's explore the connections from each of these stores:\n\n1. Paris Baguette:\n   - H&M\n   - Zara\n   - Marshalls\n   - Target\n\n2. H&M:\n   - Zara\n   - Paris Baguette\n   - Marshalls\n   - Target\n\n3. Zara:\n   - H&M\n   - Paris Baguette\n   - Marshalls\n   - Target\n\n4. Sephora:\n   - Pete's Coffee\n   - Carter Children\n   - Nike\n   - Bath and Body Works\n\nFrom the connections, we can see that starting from Starbucks and going to either Paris Baguette, H&M, or Zara will lead to the same set of connected stores. Going to Sephora will lead to a different set of connected stores, but it has fewer connections. Therefore, the path that yields the most reward would be starting from Starbucks and going to Paris Baguette, H&M, or Zara.\n\nAnswer: Starbucks, Paris Baguette, H&M, Zara, Marshalls, Target"
+            "content": "Step 1: Identify the fields connected to the rose field: lily, chrysanthemum, poppy, and carnation.\nStep 2: Determine the shortest paths to the peony and lavender fields from each of these fields.\n  - Lily: no direct path to peony or lavender\n  - Chrysanthemum: no direct path to peony or lavender\n  - Poppy: no direct path to peony or lavender\n  - Carnation: connected to zinnia, which is connected to peony (2 steps)\nStep 3: Compare the paths to the peony and lavender fields.\n  - Peony field: Rose, Carnation, Zinnia, Peony (50 flowers)\n  - Lavender field: no direct or indirect path from the connected fields\nStep 4: Choose the path that yields the maximum number of flowers.\n\nAnswer: Rose, Carnation, Zinnia, Peony"
+        },
+        {
+            "role": "user",
+            "content": "You are told that a teleportation portal appears in the poppy field, through which you can teleport to any field one at a time. This means that from the poppy field you can go to any field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the fields connected to the rose field: lily, chrysanthemum, poppy, and carnation.\nStep 2: Determine the shortest paths to the peony and lavender fields from each of these fields, considering the teleportation portal in the poppy field.\n  - Lily: no direct path to peony or lavender\n  - Chrysanthemum: no direct path to peony or lavender\n  - Poppy: teleport directly to peony or lavender (1 step)\n  - Carnation: connected to zinnia, which is connected to peony (2 steps)\nStep 3: Compare the paths to the peony and lavender fields.\n  - Peony field: Rose, Poppy (teleport), Peony (50 flowers)\n  - Lavender field: Rose, Poppy (teleport), Lavender (10 flowers)\nStep 4: Choose the path that yields the maximum number of flowers.\n\nAnswer: Rose, Poppy, Peony"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Starbucks, Nike"
+                "Answer: Rose, Poppy, Peony"
             ],
-            "parsed_response": "Answer: Starbucks, Paris Baguette, H"
+            "parsed_response": "Answer: Rose, Poppy, Peony"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

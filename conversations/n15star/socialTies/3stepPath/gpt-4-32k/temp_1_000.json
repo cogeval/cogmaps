@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Max? Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Analyze the connections between students.\n2. Identify the shortest path from Vivian to Anisha using the connections.\n3. List the student names in order along the shortest path.\n\nFrom the information given, we know that Vivian is connected to Salma, Shanshan, Vadim, and Gongxue. Analyzing the connections, we find the shortest path:\n\nVivian -> Salma -> Shanshan -> Vadim -> Noah -> Anisha\n\nAnswer: Vivian, Salma, Shanshan, Vadim, Noah, Anisha"
+            "content": "Step 1: Identify the connections of Amir.\nStep 2: Find connections of Amir's connections.\nStep 3: Check if Max is directly or indirectly connected to any of Amir's connections.\nStep 4: Determine the shortest path from Amir to Max through the connections.\n\nAmir's connections: Reza, Moin, Pari, Puja\nReza's connections: Amir, Jing, Moin, Pari\nMoin's connections: Amir, Reza, Jing, Pari\nPari's connections: Amir, Reza, Jing, Moin\nPuja's connections: Amir, Wim, Wei, Pam\n\nJing's connections: Reza, Moin, Pari, Max\n\nThe shortest path from Amir to Max: Amir, Reza, Jing, Max\n\nAnswer: Amir, Reza, Jing, Max"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Amir, Reza, Jing, Max",
+                "Answer: Amir, Moin, Jing, Max ",
+                "Answer: Amir, Pari, Jing, Max "
             ],
-            "parsed_response": "Answer: Vivian, Salma, Shanshan, Vadim, Noah, Anisha"
+            "parsed_response": "Answer: Amir, Reza, Jing, Max"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

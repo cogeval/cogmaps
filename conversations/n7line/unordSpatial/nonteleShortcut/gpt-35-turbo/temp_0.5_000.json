@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the least expensive destination, we need to compare the total expenses of both paths. \n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran = $1000\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu = $400\n\nTherefore, the path that leads to the least expensive destination is the second path, which starts in New Delhi and goes to Kathmandu, then Beijing, and finally Thimphu. \n\nAnswer: Thimphu"
+            "content": "If you choose Islamabad, the total expenses will be $1000 + the expenses of traveling to Islamabad, Kabul, and Tehran. If you choose Kathmandu, the total expenses will be $400 + the expenses of traveling to Beijing and Thimphu. To find the least expensive destination, we need to compare the expenses of both paths. \n\nIf we assume that the expenses of traveling to Islamabad, Kabul, and Tehran are less than the expenses of traveling to Beijing and Thimphu, then the least expensive destination will be Tehran. Therefore, the path that leads to the least expensive destination is New Delhi -> Islamabad -> Kabul -> Tehran.\n\nAnswer: Tehran."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the least expensive destination, we need to compare the total expenses of all paths.\n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran = $1000\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu = $400\nPath 3: New Delhi -> Yangon -> Thimphu = unknown\n\nSince we don't know the total expenses of Path 3, we cannot compare it with the other paths. However, we can compare the expenses of Path 2 and Path 3 from Thimphu onwards. \n\nPath 2: Thimphu -> Beijing = unknown\nPath 3: Thimphu -> Yangon = unknown\n\nTherefore, we cannot determine which path is the least expensive from New Delhi to Thimphu. We need to know the total expenses of Path 3 to make a comparison.\n\nAnswer: Unknown."
+            "content": "To find the least expensive destination, we need to compare the expenses of all possible paths. \n\nIf you choose Islamabad, the total expenses will be $1000 + the expenses of traveling to Islamabad, Kabul, and Tehran. \n\nIf you choose Kathmandu, the total expenses will be $400 + the expenses of traveling to Beijing and Thimphu. \n\nIf you choose Yangon, the total expenses will be the expenses of traveling to Thimphu from Yangon.\n\nTo find the least expensive destination, we need to compare the expenses of all three paths. Without knowing the expenses of traveling to Thimphu from Yangon, we cannot make a definitive decision. However, if we assume that the expenses of traveling to Thimphu from Yangon are less than the expenses of traveling to Tehran or Thimphu from Islamabad or Kathmandu, respectively, then the least expensive destination will be Thimphu via Yangon. \n\nTherefore, the path that leads to the least expensive destination is New Delhi -> Yangon -> Thimphu.\n\nAnswer: Thimphu."
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: Yangon"
             ],
-            "parsed_response": "Answer: Unknown"
+            "parsed_response": "Answer: Thimphu"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }

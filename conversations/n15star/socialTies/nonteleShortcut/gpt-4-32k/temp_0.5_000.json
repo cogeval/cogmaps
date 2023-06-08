@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. You have been told that Gongxue is now connected to Soheil. From Vivian, what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start with Vivian.\n2. Connect to the first group of students: Vivian, Salma, Shanshan, Vadim, and Gongxue.\n3. From Gongxue, connect to the second group of students: Paul, Solomon, Soheil, Gongxue, and Alice.\n4. From Soheil, connect to the third group of students: Pierre, Abdul, Durga, Ajit, and Soheil.\n5. From Ajit, connect to the fourth group of students: Abdul, Durga, Ajit, and Anisha.\n\nAnswer: Vivian, Salma, Shanshan, Vadim, Gongxue, Paul, Solomon, Soheil, Pierre, Abdul, Durga, Ajit, Anisha"
+            "content": "First, let's list down the connections for each scholar:\n\n1. Amir: Reza, Moin, Pari, Puja\n2. Wim: Wei, Kim, Puja, Pam\n3. Raj: Nisha, Ian, Sara, Kim\n4. Jing: Reza, Moin, Pari, Max\n5. Wei: Kim, Puja, Pam\n6. Nisha: Ian, Sara, Max\n7. Reza: Moin, Pari\n8. Kim: Pam\n9. Ian: Sara, Max\n10. Moin: Pari\n11. Puja: Pam\n12. Sara: Max\n\nNow, let's find the shortest path from Amir to the person donating the maximum number of books (which is Kim, who is donating 50 books).\n\n1. Amir -> Puja -> Pam -> Kim\n\nAnswer: Amir, Puja, Pam, Kim"
+        },
+        {
+            "role": "user",
+            "content": "You have been told that Amir is now connected to Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Now that Amir is connected to Pam, let's update the connections for each scholar:\n\n1. Amir: Reza, Moin, Pari, Puja, Pam\n2. Wim: Wei, Kim, Puja, Pam\n3. Raj: Nisha, Ian, Sara, Kim\n4. Jing: Reza, Moin, Pari, Max\n5. Wei: Kim, Puja, Pam\n6. Nisha: Ian, Sara, Max\n7. Reza: Moin, Pari\n8. Kim: Pam\n9. Ian: Sara, Max\n10. Moin: Pari\n11. Puja: Pam\n12. Sara: Max\n\nLet's find the new shortest path from Amir to the person donating the maximum number of books (which is still Kim, who is donating 50 books).\n\n1. Amir -> Pam -> Kim\n\nAnswer: Amir, Pam, Kim"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Soheil"
+                "Answer: Amir, Pam, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Shanshan, Vadim, Gongxue, Paul, Solomon, Soheil, Pierre, Abdul, Durga, Ajit, Anisha"
+            "parsed_response": "Answer: Amir, Pam, Kim"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 1,
+            "max_score": 1,
+            "rubric": "exact_str_matching_rubric"
         }
     }
 }
