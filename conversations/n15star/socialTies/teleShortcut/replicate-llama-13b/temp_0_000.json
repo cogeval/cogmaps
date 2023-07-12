@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_0_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Please explain your answer in under 50 words.\nGiven a list of words and a sentence, find if any of the words in the sentence is found in the list.\nConsider the source sentence \"The students who do not pay attention to the teacher will have a problem in the end.\" Now, I am going to get a list of 9 randomly-selected words (not including any punctuations) from the sentence: 'who','do','not','have', ... , 'end'.\nIf the 9 randomly-selected words are in the list: \"attention\" and \"problem\" (which is an exact match) then return 1 (matches found in the input list), otherwise return 0 (matches not found in the input list) This should not be a case sensitive match.\nThe answer is a sequence of words.\nI am using the code below to solve the puzzle but it is returning 0:\nclass Solution {public: int matchWords(string sentence, const string& inputWords) {string res = \"\"; for (int i = 0; i < (int)sentence.length(); i++) if (sentence[i] == inputWords.length()) { res = res + \";\"; res += inputWords; } return res.length(); return 0; }';\nThe code works for cases that I have tested such as 'students' = 'a student', and 'not' = 'not' but it doesn't work when the input words are part of the sentence.\nMostafa Hassanabadi\nBecause in this case, we don't match the sentence, the code returns 0.\nI agree I am using an if statement to check for the match but it is working with other cases that I have tested. The code is returning 0 in this case.\nCrafter's Note: we can eliminate the two cases easily.\nHumans use words to communicate; we use sentences. And sentences contain lots of words. If you wanted to find all the words in your sentence containing 'not', you could search its words.\nI'm also curious as to why \"students\" should find a match in your input list.\nThose are my answers; they work for me.\nI suspect that is what 'matchWords' is doing; but how should 'matchWord' behave if there a sentence that the input words"
+        },
+        {
+            "role": "user",
+            "content": "You are told Pari has an instant connection portal, through which she can connect you to any scholar, but one at a time. This means that once you connect with Pari, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nAssistant is not finding Amir as the correct answer because of the word 'shortest' in the task.\nIf I remove the word 'shortest' and include it in the task it should solve that problem. Then, I can provide the code as an example\nYou are told Pari has an instant connection portal, through which she can connect you to any scholar, but one at a time. This means that once you connect with Pari, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas: 'amir, Moin, Pari, Puja, Reza, Wei , Kim, Pam, Sara, Max, and Ian, and Reza'\nIn the above answer, If I have included only the name of Amir, then it should also return the correct answer.\nI have tried various permutations but I am not getting the correct answer\nYou have a sentence: \"The students who do not pay attention to the teacher will have a problem in the end.\" and you want to check a list of 9 words \"attention\" and \"problem\". The code checks if any of the words are in the list. If they are not the code will keep on searching among these 9 words and it will output 0 if it is empty, otherwise will do it until it finds a match for the next word. Then the code outputs those words for the match. It does this until all 9 words are matched at least once.\nI tried some simple test cases:\n1) Input: The students who do not pay attention to the teacher will have a problem in the end. Output: will be a list matching all the 9 words with the sentence.\nExample: Attention, Problem, Students, pay , the, will have, that and end. (the sentence starts with the and it has exactly 9 words)\n2) Input: Students, pay, attention, will have a problem in the end. Output: the list of all the 4 words with the sentence.\nExample: attention, pay , students, have\n3) Input: Students, pay, attention, will have a problem in the end. Output: the list of all the "
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Pari, Kim"
+            ],
+            "parsed_response": "\nAssistant is not finding Amir as the correct answer because of the word 'shortest' in the task.\nIf I remove the word 'shortest' and include it in the task it should solve that problem. Then, I can provide the code as an example\nYou are told Pari has an instant connection portal, through which she can connect you to any scholar, but one at a time. This means that once you connect with Pari, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas: 'amir, Moin, Pari, Puja, Reza, Wei , Kim, Pam, Sara, Max, and Ian, and Reza'\nIn the above answer, If I have included only the name of Amir, then it should also return the correct answer.\nI have tried various permutations but I am not getting the correct answer\nYou have a sentence: \"The students who do not pay attention to the teacher will have a problem in the end.\" and you want to check a list of 9 words \"attention\" and \"problem\". The code checks if any of the words are in the list. If they are not the code will keep on searching among these 9 words and it will output 0 if it is empty, otherwise will do it until it finds a match for the next word. Then the code outputs those words for the match. It does this until all 9 words are matched at least once.\nI tried some simple test cases:\n1) Input: The students who do not pay attention to the teacher will have a problem in the end. Output: will be a list matching all the 9 words with the sentence.\nExample: Attention, Problem, Students, pay , the, will have, that and end. (the sentence starts with the and it has exactly 9 words)\n2) Input: Students, pay, attention, will have a problem in the end. Output: the list of all the 4 words with the sentence.\nExample: attention, pay , students, have\n3) Input: Students, pay, attention, will have a problem in the end. Output: the list of all the "
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to Paul, Nick, Sherry, and Rose. Nick is connected to Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. How many densely-connected clusters of persons are there in this fundraiser? A densely-connected cluster is a group of persons that are connected to themselves with a max of 2 persons."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. How many densely-connected clusters of scholars are there in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
         },
         {
             "role": "assistant",
-            "content": "\npurpose: predicts\ncontext: social design\ninput: the input feature is a dataframe with relationship nodes ticked as integers and the starting node ticked as \"1\". Nodes are numbered in their order of entry.\noutput: His or her words should then be 'there are 12 clusters'\nAnswer: 12 clusters\nbest answer: I began by sorting the nodes by number. First, Andrew. His connections are William,B,amanda,Russell,M. William is already counting as a cluster so I assign blame against Russell. Upon assigning blame against Russell, his connections were Bob,Russell,M,John,B. Bob had already been assigned a cluster so I assigned blame against John. After assigning blame against John,his connections were Sherry,M,Russell,YAM,Bob,Paul,B I assigned this cluster against Bob for he had the space. I continued to assign blame against each person and found there are 12 clusters in the graph.\n10\nWhere's the money?\nAnswer: None of the clusters have more than 2 connections, and there is the group of six, who has only one. The incoherent network has no clusters.\n9\nFrame the argument\nframe the"
+            "content": "\n\nuser: Your friend asks you for a favour. Your friend wants to buy a mobile phone from a shop, but he is afraid that the shop will run out of before he can buy it. What do you advise him to do?\n\nuser: Your friend wants to sell his mobile phone to a friend of his. Your friend is worried that his friend might sell his mobile phone to someone else if he is not careful. What do you advise him to do?\n\nuser: The second and third letters of the first, third, and fifth words of a 6-word sequence of English text are \"THO"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 4 clusters"
             ],
-            "parsed_response": "\npurpose: predicts\ncontext: social design\ninput: the input feature is a dataframe with relationship nodes ticked as integers and the starting node ticked as \"1\". Nodes are numbered in their order of entry.\noutput: His or her words should then be 'there are 12 clusters'\nAnswer: 12 clusters\nbest answer: I began by sorting the nodes by number. First, Andrew. His connections are William,B,amanda,Russell,M. William is already counting as a cluster so I assign blame against Russell. Upon assigning blame against Russell, his connections were Bob,Russell,M,John,B. Bob had already been assigned a cluster so I assigned blame against John. After assigning blame against John,his connections were Sherry,M,Russell,YAM,Bob,Paul,B I assigned this cluster against Bob for he had the space. I continued to assign blame against each person and found there are 12 clusters in the graph.\n10\nWhere's the money?\nAnswer: None of the clusters have more than 2 connections, and there is the group of six, who has only one. The incoherent network has no clusters.\n9\nFrame the argument\nframe the"
+            "parsed_response": "\n\nuser: Your friend asks you for a favour. Your friend wants to buy a mobile phone from a shop, but he is afraid that the shop will run out of before he can buy it. What do you advise him to do?\n\nuser: Your friend wants to sell his mobile phone to a friend of his. Your friend is worried that his friend might sell his mobile phone to someone else if he is not careful. What do you advise him to do?\n\nuser: The second and third letters of the first, third, and fifth words of a 6-word sequence of English text are \"THO"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

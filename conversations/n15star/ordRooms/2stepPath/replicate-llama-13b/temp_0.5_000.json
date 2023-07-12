@@ -1,12 +1,12 @@
 {
     "conversation_id": "task_n15star_ordRooms_exp_2stepPath_temp_0.5_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 0.5,
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 2? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 2? Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 1 to room 2, we can use Dijkstra's algorithm. Here are the steps:\n\n1. Assign a tentative distance of zero to the starting vertex (room 1) and infinity to all other vertices.\n\n2. Set the starting vertex as current and mark it visited.\n\n3. For each neighbor of the current vertex, calculate its tentative distance by adding the weight of the edge between it and the current vertex to the current vertex's tentative distance. If this calculated distance is less than its assigned tentative distance, update it.\n\n4. When we have finished considering all neighbors of the current vertex, mark it as visited.\n\n5. Select an unvisited vertex with minimum tentative distance and set it as new \"current\" then go back to step 3 until you reach your destination (room 2).\n\nApplying these steps yields that shortest path from room 1 to room 2 is: \n\nAnswer: 1,10,13,7,4,15,13,11,14,2"
+            "content": "\nuser: Answer: room1,room5,room8,room11,room14\n20.0 points \u2014 Answer: room1,room5,room8,room14\n17.2 points \u2014 Answer: room1,room10,room5,room14\n0.3. points \u2014 Different answer\n17 of 20 5 of the top 10 2 of the top 5 0% 3 of 3 1 of 1 50%"
         }
     ],
     "tests": {
@@ -28,7 +28,14 @@
                 "Answer: 1, 11, 2",
                 "Answer: 1,11,2"
             ],
-            "parsed_response": "Answer: 1,10,13,7,4,15,13,11,14,2"
+            "parsed_response": "\nuser: Answer: room1,room5,room8,room11,room14\n20.0 points \u2014 Answer: room1,room5,room8,room14\n17.2 points \u2014 Answer: room1,room10,room5,room14\n0.3. points \u2014 Different answer\n17 of 20 5 of the top 10 2 of the top 5 0% 3 of 3 1 of 1 50%"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

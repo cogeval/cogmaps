@@ -1,0 +1,49 @@
+{
+    "conversation_id": "task_n7tree_unordSpatial_exp_nonteleShortcut_temp_0_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\noutput: (Mad Tea party, Space Mountain)\nWe are going to use NLTK to solve this challenge, where the \"NLTK\" is \"Natural Language Toolkit for Python\". The following picture is from a recent class on Python.\nThere are hundreds of packages for processing text but they usually take time. NLTK is a very intuitive python package for natural language processing(NLP for short). It's well known for its simplicity. Most python users probably have no idea that NLTK is also a super easy to use machine learning framework.\nYou can learn more about NLTK here: https://www.nltk.org/\nWe are going to write a bot to solve the above challenge. NLTK has a bunch of utilities of various tasks ranging from simple string parsing such as tokenization, to more complex things like text classification. However, for our case we only need two functions. One is the tokenization function, named \"sent_tokenize()\", the other function is called \"pos_tagger()\", which is used to identify the part of speech of words in the sentence. In this post we are just going to focus on the tokenization function, later I will post another post for the pos_tagger. Please note that we still need to import all relevant modules.\nstep 1: define a function which is going to receive an input sentence and returns a tuple which includes three parts such as words, token sequence and their label.\nfunction_name = 'SentenceProcessing'\n#define args and return.\ndef SentenceProcessing(sentence):\nresult = tuple(sentence.split())\nresult[0] = list(map(lambda x: x.lower(), result[0]))\nresult[1] = SentenceTokenize(result[1])\nWe have a function \"SentenceTokenize\". Function \"pos_tagger\" will be used in later posts. Therefore, we have to define parameters.\n#parameters for the tokenization function called 'sentenceTokenize():'\ndef sentenceTokenize(sentence):\n#the sentence tokenization algorithm will remove stop words, spaces and punctuation from the input sentence, and return a list of tokenized words.\n#tokenization is going to remove some words from the input sentence: \"You...\" to \"You\", \"hit\" to \"hit\", ...\nresult= word"
+        },
+        {
+            "role": "user",
+            "content": "At entrance you discover a new passage which leads to Mad Tea Party. Remember that You will only be able to choose one attraction with the least wait time. From the  entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\noutput: (Mad Tea Party, Space Mountain, Mad Tea Party, Mad Tea Party)"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Entrance, Mad Tea Party",
+                "Answer: entrance, Mad Tea Party"
+            ],
+            "parsed_response": "\noutput: (Mad Tea Party, Space Mountain, Mad Tea Party, Mad Tea Party)"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

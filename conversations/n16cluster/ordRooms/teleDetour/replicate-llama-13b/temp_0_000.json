@@ -1,12 +1,12 @@
 {
     "conversation_id": "task_n16cluster_ordRooms_exp_teleDetour_temp_0_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 0,
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and  7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4  and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to  rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is  connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10.  Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11,  8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also  connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and  11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13,  14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Initially, you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. You are in room 1 and a portal appears with which you can teleport to any room only  once. At the same time, you have been told that there is no connection between room  13 and 11 and also there is no connection between room 15 and room 9. From room 1,  what is the path that yields the most reward? Please list the room numbers in  order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the path that yields the most reward, we can use Dijkstra's algorithm. We start at room 1 and calculate the shortest paths to all other rooms while keeping track of the rewards and penalties along each path. We also make sure not to visit rooms 13 or 15 from their respective connected rooms.\n\nThe optimal path is: 1, 4, 14, 13, 11, 9, 10, 12,16\n\nThis path has a total reward of (5+10)-15 = Answer:20"
+            "content": "\nanswer:8,5,4,3,1\nExample(s): Your user says start me off at 1 and ends with room 1 1 room,0, 1, 4, 1.\nSolution : Given user task : Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14,\nYou can take input in the below format.\nIn the input, each room name starts with a digit and followed by space. Total 6 rooms are there.\nFirst Room=1\nSecond Room=2\nThird Room=3\nFourth Room=4\nFifth Room=5\nSixth Room=6\nThe output must contain room numbers which can give result of shortest path yielding the highest reward. So we have to traverse the entire"
+        },
+        {
+            "role": "user",
+            "content": "You are told that the door from room 1 to room 7 is locked. You are also told that a teleportation portal appears in room 5, through which you can teleport to any room. This means that from room 5 you can go to any room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Starting from the door which is locked you cannot enter, but if you start from the door of a room, which you can enter then you can go to all rooms which are reachable(through the teleportation portal).\nassistant: \nanswer:0,3,2,8\nExample(s): Given the following rooms in ABCDE(in arbitrary order): 5,2,6,4,3,5,1,8,1,9,7,10,11,12,8,13,6,12,2,15,12,1,9,8,7,14,15,13,14,11,9,10,11,8,13,12,5,6,4,15,10,7,8,9,5,1,4,14,11,12,3,5,6,2. Output: 8,2,5,1,4,3,6,9 You can assume that A, B, C, and D are never connected to each other and the number of rooms doesn't exceed 20.\nSolution : Given the following rooms in ABCDE(in arbitrary order): 5,2,6,4,3,5,1,8,1,9,7,10,11,12,8,13,6,12,2,15,12,1,9,8,7,14,15,13,14,11,9,10,11,8,13,12,5,6,4,15,10,7,8,9,5,1,4,14,11,12,3,5,6,2. Output: 8,2,5,1,4,3,6,9 Note :\nAssume that given rooms in ABCDE are in the order in ABCDE not the any other order.\nYou have to count in such a way that if the number of rooms is odd, then we have to take the largest numbers in the input numbers while if the number of rooms is even, then we have to take the highest digits in the input numbers.\nIn the above solution, you have to put '9' in the last"
         }
     ],
     "tests": {
         "teleDetour": {
             "expected_answer": [
-                "Answer: 16, 2, 1, 7, 6, 12, 10",
-                "Answer: 16,2,1,7,6,12,10"
+                "Answer: 1, 3, 5, 10",
+                "Answer: 1,3,5,10"
             ],
-            "parsed_response": "To find the path that yields the most reward, we can use Dijkstra's algorithm. We start at room 1 and calculate the shortest paths to all other rooms while keeping track of the rewards and penalties along each path. We also make sure not to visit rooms 13 or 15 from their respective connected rooms.\n\nThe optimal path is: 1, 4, 14, 13, 11, 9, 10, 12,16\n\nThis path has a total reward of (5+10)-15 = Answer:20"
+            "parsed_response": "Starting from the door which is locked you cannot enter, but if you start from the door of a room, which you can enter then you can go to all rooms which are reachable(through the teleportation portal).\nassistant: \nanswer:0,3,2,8\nExample(s): Given the following rooms in ABCDE(in arbitrary order): 5,2,6,4,3,5,1,8,1,9,7,10,11,12,8,13,6,12,2,15,12,1,9,8,7,14,15,13,14,11,9,10,11,8,13,12,5,6,4,15,10,7,8,9,5,1,4,14,11,12,3,5,6,2. Output: 8,2,5,1,4,3,6,9 You can assume that A, B, C, and D are never connected to each other and the number of rooms doesn't exceed 20.\nSolution : Given the following rooms in ABCDE(in arbitrary order): 5,2,6,4,3,5,1,8,1,9,7,10,11,12,8,13,6,12,2,15,12,1,9,8,7,14,15,13,14,11,9,10,11,8,13,12,5,6,4,15,10,7,8,9,5,1,4,14,11,12,3,5,6,2. Output: 8,2,5,1,4,3,6,9 Note :\nAssume that given rooms in ABCDE are in the order in ABCDE not the any other order.\nYou have to count in such a way that if the number of rooms is odd, then we have to take the largest numbers in the input numbers while if the number of rooms is even, then we have to take the highest digits in the input numbers.\nIn the above solution, you have to put '9' in the last"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

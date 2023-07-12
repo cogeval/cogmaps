@@ -1,0 +1,41 @@
+{
+    "conversation_id": "task_n16cluster_unordSpatial_exp_3stepPath_temp_0_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a flower county with 16 flower fields. The rose field is connected to the sunflower field, tulip field, daisy field, and lily field. The sunflower field is connected to the rose field, tulip field, daisy field, and aster fields. The tulip field is connected to the rose field, sunflower field, daisy field and orchid field. The daisy field is also connected to the rose field, sunflower field, tulip field, and zinnia field. The orchid field is connected to the hydrangea field, lily field, daffodil field, and tulip field. The hydrangea field is connected to the orchid field, lily field, peony field, and marigold field. The lily field is connected to rose field, peony field, hydrangea field, and orchid field. The peony field is also connected to the orchid field, hydrangea field, lily field, and chrysanthemum field. The daffodil field is connected to the chrysanthemum field, carnation field, marigold field, and lavender field. The chrysanthemum field is connected to the daffodil field, carnation field, peony field, and marigold field. The carnation field is connected to the poppy field, daffodil field, marigold field, and chrysanthemum field. The marigold field is also connected to the daffodil field, chrysanthemum field, carnation field, and hydrangea field. The poppy field is connected to the zinnia field, lavender field, aster field, and carnation field. The zinnia field is connected to the daisy field, poppy field, lavender field, and aster field. The lavender field is connected to poppy field, zinnia field, aster field, and daffodil field. The aster field is also connected to the poppy field, zinnia field, lavender field, and sunflower field. From the tulip field what is the shortest path to the lavender field? Starting from tulip, please list the flower names in order, including tulip, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nThe most optimal solution would allow for each flower to be listed at most once. The shortest path to the flower would be a linear solution, where if the name was \u201cRose\u201d, the path would be \u201cRose > Sunflower > Aster\u201d, and could be listed in the string as \u201cTulip, Sunflower, Aster, Rose.\u201d From the tulip field the path is to the sunflower, to the aster, then to the lavender.\nAnswer: Tulip, Sunflower, Aster, Lily, Rose\nThe following example shows how to implement a recursive function. The sample strings contains 16 lists, where the 1st line includes the flower names, the second contains the connections of the 1st field to the 2nd field and so on.\nThis is not a question about how to do recursion. This is about a more complicated question of how to handle when you have a situation in an application where people may have multiple possible answers (or the same answer multiple times), or multiple answers that are all valid.\nLet\u2019s assume you are the creator of a product that gives users information. Your product will never give multiple answers, but it would give answers that are all similar and don\u2019t have strict definitions around them. Your users may be confused about how to answer your app\u2019s questions. A sample of a question may be. \u201cWhere would you put this?\u201d \u201cThe bedroom\u201d \u201cThe kitchen\u201d \u201cThe living room\u201d \u201cThe dining room\u201d \u201cI would hang this in the living room.\u201d This person answered your question \u201cWhere would you hang this?\u201d 3 times. The person who answered \u201cI would hang this in the living room\u201d answered this question 1 time. There are a lot of possible answers in a situation like this and you need to make sure you give a specific answer to help the user.\nLet\u2019s also assume your product provides multiple information (a task) to your user, but your product has only a single way to provide this information. Let\u2019s imagine this task is to give a user a choice of colors (a list). But imagine if I told you my product had to answer every question your user could give you.\nNow imagine something similar, but the user didn\u2019t answer the question so your app can\u2019t give them an answer. Instead, your app tells the user he needs to do something new, and the user doesn\u2019t"
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: Tulip, Sunflower, Aster, Lavender",
+                "Answer: Tulip, Daisy, Zinnia, Lavender"
+            ],
+            "parsed_response": "\nThe most optimal solution would allow for each flower to be listed at most once. The shortest path to the flower would be a linear solution, where if the name was \u201cRose\u201d, the path would be \u201cRose > Sunflower > Aster\u201d, and could be listed in the string as \u201cTulip, Sunflower, Aster, Rose.\u201d From the tulip field the path is to the sunflower, to the aster, then to the lavender.\nAnswer: Tulip, Sunflower, Aster, Lily, Rose\nThe following example shows how to implement a recursive function. The sample strings contains 16 lists, where the 1st line includes the flower names, the second contains the connections of the 1st field to the 2nd field and so on.\nThis is not a question about how to do recursion. This is about a more complicated question of how to handle when you have a situation in an application where people may have multiple possible answers (or the same answer multiple times), or multiple answers that are all valid.\nLet\u2019s assume you are the creator of a product that gives users information. Your product will never give multiple answers, but it would give answers that are all similar and don\u2019t have strict definitions around them. Your users may be confused about how to answer your app\u2019s questions. A sample of a question may be. \u201cWhere would you put this?\u201d \u201cThe bedroom\u201d \u201cThe kitchen\u201d \u201cThe living room\u201d \u201cThe dining room\u201d \u201cI would hang this in the living room.\u201d This person answered your question \u201cWhere would you hang this?\u201d 3 times. The person who answered \u201cI would hang this in the living room\u201d answered this question 1 time. There are a lot of possible answers in a situation like this and you need to make sure you give a specific answer to help the user.\nLet\u2019s also assume your product provides multiple information (a task) to your user, but your product has only a single way to provide this information. Let\u2019s imagine this task is to give a user a choice of colors (a list). But imagine if I told you my product had to answer every question your user could give you.\nNow imagine something similar, but the user didn\u2019t answer the question so your app can\u2019t give them an answer. Instead, your app tells the user he needs to do something new, and the user doesn\u2019t"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

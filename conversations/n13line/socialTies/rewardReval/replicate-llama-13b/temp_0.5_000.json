@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n13line_socialTies_exp_rewardReval_temp_0.5_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you're just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "\nA Nora Peter David can invest most money, because Peter is a friend of Shikha and she's connected to Alex.\nB Philip Nora David can invest most money, because Nora is friends with Yakub and he's connected with Ajay.\nC Nora Philip Nora Harry can invest most money, because Nora is a friend of Yakub and Yakub is connected with Ajay and Ajay is connected to Joe.\nD Philip Nora Philip Ajay Harry David can invest most money, because Philip is a friend of Yakub and Yakub is a connection of Ajay and Ajay is connected to Joe."
+        },
+        {
+            "role": "user",
+            "content": "You talk to Alex who introduces you to David. Now, David has $10M to invest in film production. But you do not take it, you're just learning about the environment. Then you get introduced to Rachel who in turn introduces you to Harry and he has the same budget as before, but you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant: \nA Nora Harry George can invest most money, because Nora is friends with Yakub and Yakub is connected with Ajay and Ajay is connected to Joe.\nB Philip Harry George David can invest most money, because Philip is friends with Yakub, whom is connected with Ajay, and Ajay is connected to Joe.\nC Philip David George David can invest most money, because Philip is friends with Yakub and Yakub is connected with Ajay and Ajay is connected to Joe.\nD Philip David Nora George Philip Alex and David Alexander Rachel and Harry have the same amount of money, but you cannot get there with steps.\nassistant: \nThe answer is Nora."
+        }
+    ],
+    "tests": {
+        "rewardReval": {
+            "expected_answer": [
+                "Answer: Philip"
+            ],
+            "parsed_response": "\nassistant: \nA Nora Harry George can invest most money, because Nora is friends with Yakub and Yakub is connected with Ajay and Ajay is connected to Joe.\nB Philip Harry George David can invest most money, because Philip is friends with Yakub, whom is connected with Ajay, and Ajay is connected to Joe.\nC Philip David George David can invest most money, because Philip is friends with Yakub and Yakub is connected with Ajay and Ajay is connected to Joe.\nD Philip David Nora George Philip Alex and David Alexander Rachel and Harry have the same amount of money, but you cannot get there with steps.\nassistant: \nThe answer is Nora."
+        }
+    },
+    "scores": {
+        "rewardReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

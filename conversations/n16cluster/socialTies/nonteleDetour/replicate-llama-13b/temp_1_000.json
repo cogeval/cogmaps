@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to Paul, Nick, Sherry, and Rose. Nick is connected to Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. Initially, you were told that Rose can donate $250K while Maggie can donate $500K. Also, if you want to get connected with Amanda, you need to pay $10K to her company. While connecting with Paul, you come to know that Jennifer and Andrew are not talking anymore and also Alisha and Russell are fighting so the connection between them is gone. From Paul, what is the path to the person who can donate the most money? Please list the names in order, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "The shortest path is to donate to Paul and ask for his help:\nPaul -> Jennifer -> Maggie -> Amanda -> William -> Rose -> Sherry -> Bob -> John -> Nick -> Nick -> Rose -> Bob -> Paul"
+            "content": "\nAmir Wim Raj Jing Reza Ian Moin Puja Kim Matt Eva Sara Pam Pari Nisha Wei Moin Kim Puja Ian Pam Sara Nisha Matt Reza Pam Eva Moin Kim Pari Sara Eva Ian Moin Puja Pam Matt Pari\nI'll be checking your solution using this code:\nimport java.util.Scanner;\nScanner in = new Scanner(System.in);\nString s = readString();\nString[] parts = s.split(\",\");\nFile file = new File(parts[parts.length-1]);\nSystem.out.println(file.length());\nThe user should do this by printing the answer.\nThe task will be given to the user to follow a series of steps and then provide the final answer at the very end.\nThe program should print its output as the expected result\n(answer is not provided, please work on your own)\nFollow these steps to do the task:\nGiven a number N:\nCreate an empty array of size N = 16\nFor every person in the group,\nConnect the person to every person they are not connected to yet (the number of neighbours is the shortest path length)\nThe final set of neighbours is the shortest path length to the person with the maximum books\nIf the shortest path to any person is longer than (for example) 40 books, then break the ties (take whatever book they are holding)\nPrint this array in order from Amir, separated by commas\nWhat is the shortest path to the person with the maximum number of books?\nHints and example\nPaste the code snippet and output result to your profile. Feel free to ping or DM me if you have questions or would like some code review.\nPaste the code snippet in the comments section. If anyone wants a quick review, let me know\n#Hiring #Python #Data Science #Artificial Intelligence\nI have experience in Python (with DataScience), SQL, Matlab, Machine Learning and Deep Learning (2018-till now)\nI have completed a project on Sentiment Analysis using ML techniques.\nhttps://drive.google.com/drive/folders/1pK8xR9-06FpQ-60JDH5q0fhQy5cH39gK"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir and Reza had a disagreement and are no longer connected. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant:  (answer is not provided, please work on your own)\nPaste code snippet and output result to the profile.\nI am a software developer who has learned deep learning on my own and want to get full time job as a data engineer who would develop APIs, build models, and provide data reports.\nPython (250%), JavaScript/Typescript (85%)"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: Paul, Bob, Rose, Bob, Paul, John, Peter, Adam, Maggie"
+                "Answer: Amir, Raj, Wei, Kim, Moin"
             ],
-            "parsed_response": "The shortest path is to donate to Paul and ask for his help:\nPaul -> Jennifer -> Maggie -> Amanda -> William -> Rose -> Sherry -> Bob -> John -> Nick -> Nick -> Rose -> Bob -> Paul"
+            "parsed_response": "\nassistant:  (answer is not provided, please work on your own)\nPaste code snippet and output result to the profile.\nI am a software developer who has learned deep learning on my own and want to get full time job as a data engineer who would develop APIs, build models, and provide data reports.\nPython (250%), JavaScript/Typescript (85%)"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

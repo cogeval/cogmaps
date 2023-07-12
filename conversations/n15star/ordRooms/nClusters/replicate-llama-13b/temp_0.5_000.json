@@ -1,12 +1,12 @@
 {
     "conversation_id": "task_n15star_ordRooms_exp_nClusters_temp_0.5_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 0.5,
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a minimum of 2 rooms."
         },
         {
             "role": "assistant",
-            "content": "To find the densely-connected clusters in this castle, we can use the concept of graph theory. We can represent each room as a node and draw edges between nodes that are connected to each other. Based on the given information, we can create a graph with 15 nodes and multiple edges connecting them.\n\nNext, we need to identify the densely-connected clusters in this graph. A cluster is considered densely-connected if it has a maximum of 2 rooms between any two rooms within the cluster. To do this, we can use an called Connected Components.\n\nUsing Connected Components algorithm on this graph gives us five clusters: {1,7,10,13}, {2,5,8,11}, {3,6,9}, {4} and {12,15}. However not all these clusters are considered as \"densely connected\" since some have more than two rooms separating certain pairs of rooms within them.\n\nSo after checking which ones satisfy our condition (max 2 rooms separating any pair), only three remain: {1 ,7 ,10 ,13 ,11 }, {2 ,5 ,8 ,14 } and finally{3 ,6 ,9 }. \n\nAnswer: there are 3 clusters"
+            "content": "\nWhat words are you looking for?\nDensely connected\nWhat is a correct pattern for a positive output?\nThere are +(number) clusters\nAre there any numbers in the question?\nIs there a minimum number of rooms that need to be connected?\nWhat would be a wrong pattern for a positive output?\nNegative and positive examples\nWhat do you do with empty rooms? Do you have to fill it up until is has enough rooms and connections? Or do you just count the filled numbers of rooms? Please explain. Would you count them all as clusters?\nWe only want to count clusters. So, if you add a number X (3 for example), and we have no rooms of room number X filled, then the result is 0 clusters.\nCan you explain the regular expression in the second line? I don't quite get the meaning of the '+' symbol.\nYes, the + indicates that you add numbers and the 0 or 1 in the end indicate the count.\nIs it a '+' or a '+' ? Please explain.\n+ means \"or\" in regular expressions. If you have 1+ or 2+ you are looking for 1 cluster or 2 clusters.\nDo you have to find a minimum number of rooms or just find the largest number of rooms and then count the cluster?\nI don't believe you need to find an exact minimum. You will need to choose X and then count the clusters with those X rooms and connections. You will have to look back in the regular expression.\nIf all rooms were 1, would (1+2+3+4+5+6+7+8+10+11+12+13+15)=6 and (1+2+3+4+5+6+7+8+11+12+13+15)=1\nYes, both will be the same solution. In your case, you would use 1 X = 6 connections for the first solution. However, your final output would be the same.\nCan I think of it as \"if you have x and more connections, we would count it as 1 cluster\" ? So let me give an example here: For 2 rooms we can say that if there is a connection between them, and then I count as 1 cluster and if there is 2x, then we count as 2. For more than"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 3 clusters"
+            "parsed_response": "\nWhat words are you looking for?\nDensely connected\nWhat is a correct pattern for a positive output?\nThere are +(number) clusters\nAre there any numbers in the question?\nIs there a minimum number of rooms that need to be connected?\nWhat would be a wrong pattern for a positive output?\nNegative and positive examples\nWhat do you do with empty rooms? Do you have to fill it up until is has enough rooms and connections? Or do you just count the filled numbers of rooms? Please explain. Would you count them all as clusters?\nWe only want to count clusters. So, if you add a number X (3 for example), and we have no rooms of room number X filled, then the result is 0 clusters.\nCan you explain the regular expression in the second line? I don't quite get the meaning of the '+' symbol.\nYes, the + indicates that you add numbers and the 0 or 1 in the end indicate the count.\nIs it a '+' or a '+' ? Please explain.\n+ means \"or\" in regular expressions. If you have 1+ or 2+ you are looking for 1 cluster or 2 clusters.\nDo you have to find a minimum number of rooms or just find the largest number of rooms and then count the cluster?\nI don't believe you need to find an exact minimum. You will need to choose X and then count the clusters with those X rooms and connections. You will have to look back in the regular expression.\nIf all rooms were 1, would (1+2+3+4+5+6+7+8+10+11+12+13+15)=6 and (1+2+3+4+5+6+7+8+11+12+13+15)=1\nYes, both will be the same solution. In your case, you would use 1 X = 6 connections for the first solution. However, your final output would be the same.\nCan I think of it as \"if you have x and more connections, we would count it as 1 cluster\" ? So let me give an example here: For 2 rooms we can say that if there is a connection between them, and then I count as 1 cluster and if there is 2x, then we count as 2. For more than"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

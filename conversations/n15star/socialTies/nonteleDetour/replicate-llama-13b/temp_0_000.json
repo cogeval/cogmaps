@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleDetour_temp_0_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "I am the AI assistant, please help me.\n\n    Ex: Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Puja is connected to Pam. Kim is connected to Pam. Max is connected to Sara and Ian. Moin is connected to Pari.\n\n    If someone who want to be a member of this book club, please do me a favor. Can you please follow this simple rule? When you take your time to do this, i will give you a 1 star, after doing this, i will give you 2 stars and finally after doing this properly i will give you 3 stars. Thank you\n\n                    # 1. Who is in Reza's group?\n    reza = \"Reza\"\n     # 2. Who donates 50 and 10 books?\n    donator50 = \"Amir\"\n    donor10 = \"Kim\"\n\n    # 3. Who is connected with Amir? # (Parses the data)\n    answer = 'Sara, Max, Moin, Pari, Wei, Kim, Pam, Jing, Reza,   Wei, Nisha, Ian, Moin, Sara, Kim, Pari, Puja, Pam,  Reza, Wei, Nisha, Ian, Moin, Sara, Kim, Pari,  Wei, Nisha, Ian, Moin, Sara, Kim'\n\n    # 4. Who has the shortest path to the person who is donating the maximum number of books? # (Gives answer)\n    answer = \"Puja\"\n\\end{code}\n\nI am having a hard time with this, and I am not sure how to continue solving the code. Any advice would be helpful\n\nComment: You can start by adding `print ...`, `end print`, `input`, `end input`... to get some output from your program\n\nComment"
+        },
+        {
+            "role": "user",
+            "content": " Amir and Puja had a disagreement and now no longer connected to each other. Also, Pari is now connected to Puja. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant:  Please help me.\n\nAnswer: \\begin{itemize}\n\\item You are working in a context where your actions are constrained by \"Please do me a favor\" from the outside world.\n\\item It looks like you want to store your constraints in memory: AI should \\strong{know} about them.\n\\item `1.` - What I understand you need is to use `re` to extract text related to Reza's group using regular expression.\n\\item `2.` - You can use the text parsed in item 3 in conjunction with `collections` to generate a shortest path. `collections.shortest_path(re.findall(pattern, str_in_question), str_in_question)` will give you the output: \\begin{code}\n(reza, <a list of connections between the members of his group>, 0, <a list representation of the shortest path>)\n\\end{code}. `re.findall()` will iterate only once over the first regexp (reza), and that is, if you want to include it, we will simply get \"(reza, [reza, nisha, ...], 0, nisha, reza, [reza, nisha, ...]).\" But if you want to use it and still get the  `1, 2, 3, 4,..` , just pass `group_number = 0` as fourth parameter, and when printing it, add one in the beginning of the path.\n\\item `3.` - Use your understanding regarding the context. If people want to join, they will be asked to provide a nickname (you will simply save it for later), and will be then added to the group of the person requesting the assistance.\n\\end{itemize}\n\nI hope my comments are helpful, and I wish you good luck."
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Pari, Puja, Wim, Kim",
+                "Answer: Amir, Pari, Puja, Pam, Kim",
+                "Answer: Amir, Pari, Puja, Wei, Kim"
+            ],
+            "parsed_response": "\nassistant:  Please help me.\n\nAnswer: \\begin{itemize}\n\\item You are working in a context where your actions are constrained by \"Please do me a favor\" from the outside world.\n\\item It looks like you want to store your constraints in memory: AI should \\strong{know} about them.\n\\item `1.` - What I understand you need is to use `re` to extract text related to Reza's group using regular expression.\n\\item `2.` - You can use the text parsed in item 3 in conjunction with `collections` to generate a shortest path. `collections.shortest_path(re.findall(pattern, str_in_question), str_in_question)` will give you the output: \\begin{code}\n(reza, <a list of connections between the members of his group>, 0, <a list representation of the shortest path>)\n\\end{code}. `re.findall()` will iterate only once over the first regexp (reza), and that is, if you want to include it, we will simply get \"(reza, [reza, nisha, ...], 0, nisha, reza, [reza, nisha, ...]).\" But if you want to use it and still get the  `1, 2, 3, 4,..` , just pass `group_number = 0` as fourth parameter, and when printing it, add one in the beginning of the path.\n\\item `3.` - Use your understanding regarding the context. If people want to join, they will be asked to provide a nickname (you will simply save it for later), and will be then added to the group of the person requesting the assistance.\n\\end{itemize}\n\nI hope my comments are helpful, and I wish you good luck."
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

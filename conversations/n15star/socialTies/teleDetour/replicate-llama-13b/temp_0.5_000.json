@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleDetour_temp_0.5_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nhttps://github.com/google/python-tpmcs/blob/master/examples/answer.py\nComment: @SidharthAggarwal you can do it on your own. There's actually an example on the link i have provided in the comment above! :)"
+        },
+        {
+            "role": "user",
+            "content": "Amir and Puja had a disagreement and now no longer connected to each other, and now Jing has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Jing, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant: \n```\n# Step  1:\nuser: 1 Amir\n\n# Step  2(a):\nuser: 2 Amir Reza\n\n# Step  2(b):\nuser: 3 Puja Amir\n\n# Step  2(c):\nuser: 4 Puja Max\n\n# Step  2(d):\nuser: 5 Max Donor: Kim\n\n# Step  2(e):\nuser: 6 Max Donor: Jing\n\n# Step  2(f):\nuser: 7 Jing Reza\n\n# Step  3:\nuser: 8 Reza\n\n# Step  4:\nuser: 9 Donor: Max\n\n# Step  5(a):\nuser: 11 Amir Donor: Kim\n\n# Step  5(b):\nuser: 12 Jing Donor: Wei\n\n# Step  5(c):\nuser: 13 Jing Donor: Max\n\n# Step  5(d):\nuser: 14 Reza Moin\n\n# Step  5(e):\nuser: 15 Amir\n```\n# Output:\nuser: Amir Reza Moin Pari Puja\namir  2        3        5     12     15\n\nComment: @shivshankar7274 This is your result and it must be in above answer format.\n\nComment: https://stackoverflow.com/questions/55113229/google-python-tpmcs-regex-question\n\nAnswer: \\section{Python 3.7, 390 chars, TPMCS}\n\nAnswer can easily be 2 more chars\n\n\\begin{code}\n(i+1==max(x.keys())) and 1*min(map(x.get, x.values())) or 0\n\\end{code}\n\nAnswer: \\strong{185} chars, TPMCS\n\n\\begin{code}\nn = int(1e6)\ng = (i+1==max(x.keys())) and 1*min(map(x.get, x.values(),n)) or 0\n\\end{code}\n\ng == 0 or g == "
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Kim",
+                "Answer: Amir, Moin, Jing, Kim ",
+                "Answer: Amir, Pari, Jing, Kim"
+            ],
+            "parsed_response": "\nassistant: \n```\n# Step  1:\nuser: 1 Amir\n\n# Step  2(a):\nuser: 2 Amir Reza\n\n# Step  2(b):\nuser: 3 Puja Amir\n\n# Step  2(c):\nuser: 4 Puja Max\n\n# Step  2(d):\nuser: 5 Max Donor: Kim\n\n# Step  2(e):\nuser: 6 Max Donor: Jing\n\n# Step  2(f):\nuser: 7 Jing Reza\n\n# Step  3:\nuser: 8 Reza\n\n# Step  4:\nuser: 9 Donor: Max\n\n# Step  5(a):\nuser: 11 Amir Donor: Kim\n\n# Step  5(b):\nuser: 12 Jing Donor: Wei\n\n# Step  5(c):\nuser: 13 Jing Donor: Max\n\n# Step  5(d):\nuser: 14 Reza Moin\n\n# Step  5(e):\nuser: 15 Amir\n```\n# Output:\nuser: Amir Reza Moin Pari Puja\namir  2        3        5     12     15\n\nComment: @shivshankar7274 This is your result and it must be in above answer format.\n\nComment: https://stackoverflow.com/questions/55113229/google-python-tpmcs-regex-question\n\nAnswer: \\section{Python 3.7, 390 chars, TPMCS}\n\nAnswer can easily be 2 more chars\n\n\\begin{code}\n(i+1==max(x.keys())) and 1*min(map(x.get, x.values())) or 0\n\\end{code}\n\nAnswer: \\strong{185} chars, TPMCS\n\n\\begin{code}\nn = int(1e6)\ng = (i+1==max(x.keys())) and 1*min(map(x.get, x.values(),n)) or 0\n\\end{code}\n\ng == 0 or g == "
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

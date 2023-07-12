@@ -1,12 +1,12 @@
 {
     "conversation_id": "task_n15star_ordRooms_exp_nClusters_temp_0_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 0,
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a minimum of 2 rooms."
         },
         {
             "role": "assistant",
-            "content": "To find the densely-connected room clusters in this castle, we can use the concept of connected components. We can represent each room as a node and draw edges between nodes that are connected to each other with a max of 2 rooms. Then, we can use an algorithm like depth-first search or breadth-first search to identify all the connected components in this graph.\n\nAfter applying these algorithms, we find that there are 5 densely-connected room clusters in this castle. \n\nAnswer: there are 5 clusters"
+            "content": "This castle contains 15 rooms where exactly two rooms are connected, and exactly seven rooms share four other rooms.\n10 + clusters in 4 rooms\nAnswer: there are 3+ clusters of 4 different rooms.\nIn Room 1 there are only 3 connections to these rooms (room 7, 11 and 2) so we can't count the room itself as a cluster because we are looking for exactly 4 connected room clusters.\nSo 3 - 1 = 2, meaning there are 2 clusters.\nThen, we will need to look for number of clusters in each room, ignoring Room 1.\nIn room 2, 7, 8 and 9 are connected, so there are 3 = 1 clusters (each room clusters with 3 rooms)\nIn room 3, there are only 3- 1 - 1 = 1 cluster.\nIn room 4, there is 1 cluster (12,13,14) and 2 rooms are connected by a 3rd element (7) and then there are 5 clusters.\nIn room 5, 8, 11 and 14 are connected so 3- 1 - 1 = 1 cluster again\nIn room 6, 9, 10, 12 and 15 are connected\n6 - 2 = 4 clusters. This castle has\n1 clusters in Room 1 (3,11,2)\n2 rooms connect to each other in Room 2 (7,8,9,12)\n3- 1 - 1 clusters in Room 3 (5,10,15)\n2 clusters in Room 4 (12,13,14)\n4 clusters in Room 5 (9,11,14,15)\n1 cluster in Room 6 (2,9,12)\n3 + clusters in 6 different rooms\nYou should only consider 4 rooms instead of the whole castle.\nThe Room that only has one connection should not be included in the answer count.\nThus, this castle contains 10 rooms for clusters.\nThe castle has 10+ Clusters as 1 room has only one connection.\nThere are (3+1+0)=4 densely-connected clusters.\nThe only room that does not"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 5 clusters"
+            "parsed_response": "This castle contains 15 rooms where exactly two rooms are connected, and exactly seven rooms share four other rooms.\n10 + clusters in 4 rooms\nAnswer: there are 3+ clusters of 4 different rooms.\nIn Room 1 there are only 3 connections to these rooms (room 7, 11 and 2) so we can't count the room itself as a cluster because we are looking for exactly 4 connected room clusters.\nSo 3 - 1 = 2, meaning there are 2 clusters.\nThen, we will need to look for number of clusters in each room, ignoring Room 1.\nIn room 2, 7, 8 and 9 are connected, so there are 3 = 1 clusters (each room clusters with 3 rooms)\nIn room 3, there are only 3- 1 - 1 = 1 cluster.\nIn room 4, there is 1 cluster (12,13,14) and 2 rooms are connected by a 3rd element (7) and then there are 5 clusters.\nIn room 5, 8, 11 and 14 are connected so 3- 1 - 1 = 1 cluster again\nIn room 6, 9, 10, 12 and 15 are connected\n6 - 2 = 4 clusters. This castle has\n1 clusters in Room 1 (3,11,2)\n2 rooms connect to each other in Room 2 (7,8,9,12)\n3- 1 - 1 clusters in Room 3 (5,10,15)\n2 clusters in Room 4 (12,13,14)\n4 clusters in Room 5 (9,11,14,15)\n1 cluster in Room 6 (2,9,12)\n3 + clusters in 6 different rooms\nYou should only consider 4 rooms instead of the whole castle.\nThe Room that only has one connection should not be included in the answer count.\nThus, this castle contains 10 rooms for clusters.\nThe castle has 10+ Clusters as 1 room has only one connection.\nThere are (3+1+0)=4 densely-connected clusters.\nThe only room that does not"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

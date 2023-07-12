@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_2stepPath_temp_1_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Wim? Starting from Amir, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nAnswer: Amir, Reza, Moin, Pari, Puja.\n\nComment: Hi Tracy, I think this is a different problem from [this](https://stackoverflow.com/questions/55570228/solving-shortest-path-for-any-group)\n\nComment: @YeungTingYam Hi Yeung. When you edit, take a look if it resolves the issue. I found the answer to the other problem in a separate question. Please take a look at that one and copy the answer here if it fixes the issue, otherwise leave a comment on the other problem. Thanks for your help.\n\nAnswer: This is a more difficult question. There are a few things we have to notice:-\n\\begin{itemize}\n\\item There can be only one connection between two people\n\\item We have to start with the person who knows Amir, and move in the order of people\n\\item When someone connects to another person, they must include all possible directions (I mean they must mention Amir, Reza, then Moin,...). They are not restricted to a particular order\n\\end{itemize}\n\nThere are three possible shortest paths which I have mentioned in the below code.\n\n\\begin{code}\nimport re\nfrom collections import defaultdict\n\nans = {}\n\ndef main():\n    input_file = open(\"input.txt\",\"r\")\n    data_lines = []\n    line = \"\"\n\n    for line in input_file.readlines():\n        line = line.rstrip(\"\\n\")\n        data_lines.append(line)\n\n    input_file.close()\n\n    print()\n    shortest_paths_dict = {}\n\n    for line in data_lines:\n        line = line.rstrip()\n\n        group_names = line.split(\" and \")\n\n        current_person = group_names[0]\n        previous_person = group_names[1]\n\n        current_name = current_person.split(\",\")\n        previous_name = previous_person.split(\",\")\n\n        # This holds every connection in the path.\n        # So when we enter Reza, we need to have Amir here.\n        shortest_paths = defaultdict(list)\n        # This holds"
+        }
+    ],
+    "tests": {
+        "2stepPath": {
+            "expected_answer": [
+                "Answer: Amir, Puja, Wim"
+            ],
+            "parsed_response": "\nAnswer: Amir, Reza, Moin, Pari, Puja.\n\nComment: Hi Tracy, I think this is a different problem from [this](https://stackoverflow.com/questions/55570228/solving-shortest-path-for-any-group)\n\nComment: @YeungTingYam Hi Yeung. When you edit, take a look if it resolves the issue. I found the answer to the other problem in a separate question. Please take a look at that one and copy the answer here if it fixes the issue, otherwise leave a comment on the other problem. Thanks for your help.\n\nAnswer: This is a more difficult question. There are a few things we have to notice:-\n\\begin{itemize}\n\\item There can be only one connection between two people\n\\item We have to start with the person who knows Amir, and move in the order of people\n\\item When someone connects to another person, they must include all possible directions (I mean they must mention Amir, Reza, then Moin,...). They are not restricted to a particular order\n\\end{itemize}\n\nThere are three possible shortest paths which I have mentioned in the below code.\n\n\\begin{code}\nimport re\nfrom collections import defaultdict\n\nans = {}\n\ndef main():\n    input_file = open(\"input.txt\",\"r\")\n    data_lines = []\n    line = \"\"\n\n    for line in input_file.readlines():\n        line = line.rstrip(\"\\n\")\n        data_lines.append(line)\n\n    input_file.close()\n\n    print()\n    shortest_paths_dict = {}\n\n    for line in data_lines:\n        line = line.rstrip()\n\n        group_names = line.split(\" and \")\n\n        current_person = group_names[0]\n        previous_person = group_names[1]\n\n        current_name = current_person.split(\",\")\n        previous_name = previous_person.split(\",\")\n\n        # This holds every connection in the path.\n        # So when we enter Reza, we need to have Amir here.\n        shortest_paths = defaultdict(list)\n        # This holds"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

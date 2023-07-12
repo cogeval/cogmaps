@@ -15,19 +15,35 @@
         },
         {
             "role": "user",
-            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to Paul, Nick, Sherry, and Rose. Nick is connected to  Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. Initially, you were told that Rose can donate $250K while Maggie can donate $500K. Also, if you want to get connected with Amanda, you need to pay $10K to her company. Now you have been told that Rose cannot donate anything. From Paul, what is the path to the person who can donate the most money? Please list the names in order, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books, Matt is donating 10 books and Pari is not donating any book. Now, from Amir what is the shortest path to the person with maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": " {flatten[([[[(' a ,',',',', ') a ,',',',',, \t  a ,',',',', ,'] a ,',',', ,']'] a ,,`,',',, ,'' ',`), ,',,' ,',', ']])}Something like this: Keyword exampleEngineer Value Association Lawyer Chief Data Officer Company Name Cisco Systems Oracle Corporation Result Way Justin Kajoni Chief Data Officer 200 Oracle Corporation 600 Cisco Systems Kiminer Chief Data Officer175 Oracle Corporation 400 Cisco Systems Geraldine Martin Chief Data Officer 150 Oracle Corporation 1 Oracle Corporation 1,000 These types of questions users give ask, The algorithm used to answer questions like this are off the top of my head, so I'm making up the straw-man implementation. That said, as I understand it, instead of storing 1 trillion strings of the form \"Kim Mariner is linked to Joe Person, Bob Crazyball and so on.\" we store it differently. First, turn every row in the question into a map where column to column is a string. Pivot the row restrictions into a new column in the map. Add together each of the pivot columns and you have the boolean answer to your question. Vectorize that and it traverses the"
+            "content": "\n\nthe list should be generated according to the pattern [A-Za-z ]+,\\s*)*[-Za-z+\nwe should first list A, followed by the number of books, the book name, and the name of the person donating the book.\n\n2.\nuse the same pattern, but instead of [A-Za-z ]+,\\s*)*[A-Za-z ]+\nwe should use [a-z ]+,\\s*)*[a-z ]+\n\nThe solution with the shortest code will be considered as the best. Please"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Pari is donating 100 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": " \n\nassistant: \n\nThe solution with the shortest code will be considered as the best. Please check the sample input and output.\n\n  2. Q4.\nWrite a program that finds all the numbers from 1 to 5 that are divisible by each of following numbers 1,2,3,4,5.\n\nuser: \n\nThe numbers 1, 2, 3, 4, and 5 are the divisors of 5. 1, 2, 3, 4, and 5 are the divisors of 3. 1, 2, 3, 4, and 5 are the divisors of 2."
         }
     ],
     "tests": {
         "policyReval": {
             "expected_answer": [
-                "Answer: Paul, John, Daisy, Maggie "
+                "Answer: Amir, Wim, Eva, Pari",
+                "Answer: Amir, Jing, Pam, Pari"
             ],
-            "parsed_response": " {flatten[([[[(' a ,',',',', ') a ,',',',',, \t  a ,',',',', ,'] a ,',',', ,']'] a ,,`,',',, ,'' ',`), ,',,' ,',', ']])}Something like this: Keyword exampleEngineer Value Association Lawyer Chief Data Officer Company Name Cisco Systems Oracle Corporation Result Way Justin Kajoni Chief Data Officer 200 Oracle Corporation 600 Cisco Systems Kiminer Chief Data Officer175 Oracle Corporation 400 Cisco Systems Geraldine Martin Chief Data Officer 150 Oracle Corporation 1 Oracle Corporation 1,000 These types of questions users give ask, The algorithm used to answer questions like this are off the top of my head, so I'm making up the straw-man implementation. That said, as I understand it, instead of storing 1 trillion strings of the form \"Kim Mariner is linked to Joe Person, Bob Crazyball and so on.\" we store it differently. First, turn every row in the question into a map where column to column is a string. Pivot the row restrictions into a new column in the map. Add together each of the pivot columns and you have the boolean answer to your question. Vectorize that and it traverses the"
+            "parsed_response": " \n\nassistant: \n\nThe solution with the shortest code will be considered as the best. Please check the sample input and output.\n\n  2. Q4.\nWrite a program that finds all the numbers from 1 to 5 that are divisible by each of following numbers 1,2,3,4,5.\n\nuser: \n\nThe numbers 1, 2, 3, 4, and 5 are the divisors of 5. 1, 2, 3, 4, and 5 are the divisors of 3. 1, 2, 3, 4, and 5 are the divisors of 2."
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

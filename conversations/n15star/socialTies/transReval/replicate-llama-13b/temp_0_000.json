@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_transReval_temp_0_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nThe only answer I can think of is Amir, Moin, Nisha, Kim, Max, but I believe thare's something wrong with that because if I were in a group of 15 people I wouldn't take all books from just 1 person and Amir has to take some books from someone else.\n\nAnswer: Well the answer you have is at least the longest answer you can have, so it's correct. In fact, you can make it even longer just by being pedantic: The longest path is from Amir to Nisha to Ian to Kim to Max. So a longer answer goes:\n\nAmir, Moin, Pari, Ian, KIm, Max\n\nHowever, I feel that this answer is wrong, because it isn't unique. Any answer that has Max in it is just changing where you put Kim and who gets 1 or 2 books. Max could take 1 or 2 books also, which would allow the same path. So I think that the correct (longest) answer is\n\nAmir, Moin, Nisha, Kim, Max\n\nSo if the question was:\n\nA group has 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest number of books that he would get? Remember, you can take books only from one person. Starting from Amir, how many books would he receive ?\n\nComment: I tried that as well... \"Amir, Moin, Nisha, Kim, Max, Ian, Wim, Nisha, Kim, Moin, Pari, Ian, Wim, Nisha"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Amir and Puja had an argument and are no longer connected and instead, Amir is now connected to Sara. Also, Jing is no longer connected to Max and instead, Jing is now connected to Puja. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\"\n\nComment: \"Amir, Moin, nisha, Kim, Max, Ian, Wim, Nisha, Kim, Moin, Pari, Ian, Nisha, Kim, Moin, Pam, Max, Ian, Pam, Nisha, Wim, Puja, Sara, Max, Ian, Wim, Kim, Moin, Pam, Max, Ian, Nisha, Kim, Moin, Pam, Sara, Wim, Nisha, Pam, Kim, Moin, Pam, Max, Nisha, Sara, Wang, Kim, Pam, Nisha, Wim, Jing, Max, Wang, Puja, Pam, Max, Nisha, Jing, Wang, Pam, Max, Nisha\n\"   I get confused with connecting Puja to Pam for the answer but that is the longest I can find right now. There has to be a shorter and better answer\n\nComment: @Kai, \"longest\" is correct, because the question says \"longest possible\" path, but for me it is also \"best\" because you can't connect to more than one scholar from one node. The shortest path, though, is not very clear. How does the new information help? Max is still connected to Nisha so his books should still be in Nisha's library. You have no obligation go to Amir now, and you have no information to help you figure out what to pick. The answer is 10 books, which should be more clear.\n\nAnswer: Here's how I worked it out from the original input:\n\\begin{itemize}\n\\item Amir => Moin => Nisha => Kim => (20 from Max) => (1 from all others) => (1 from Amir) => (20 from Max) => Amir => (30 from all others) => (1 from Amir) => (8 from Kim) => (7 from Wei)\n\\end{itemize}"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Amir, Sara, Raj, Kim"
+            ],
+            "parsed_response": "\"\n\nComment: \"Amir, Moin, nisha, Kim, Max, Ian, Wim, Nisha, Kim, Moin, Pari, Ian, Nisha, Kim, Moin, Pam, Max, Ian, Pam, Nisha, Wim, Puja, Sara, Max, Ian, Wim, Kim, Moin, Pam, Max, Ian, Nisha, Kim, Moin, Pam, Sara, Wim, Nisha, Pam, Kim, Moin, Pam, Max, Nisha, Sara, Wang, Kim, Pam, Nisha, Wim, Jing, Max, Wang, Puja, Pam, Max, Nisha, Jing, Wang, Pam, Max, Nisha\n\"   I get confused with connecting Puja to Pam for the answer but that is the longest I can find right now. There has to be a shorter and better answer\n\nComment: @Kai, \"longest\" is correct, because the question says \"longest possible\" path, but for me it is also \"best\" because you can't connect to more than one scholar from one node. The shortest path, though, is not very clear. How does the new information help? Max is still connected to Nisha so his books should still be in Nisha's library. You have no obligation go to Amir now, and you have no information to help you figure out what to pick. The answer is 10 books, which should be more clear.\n\nAnswer: Here's how I worked it out from the original input:\n\\begin{itemize}\n\\item Amir => Moin => Nisha => Kim => (20 from Max) => (1 from all others) => (1 from Amir) => (20 from Max) => Amir => (30 from all others) => (1 from Amir) => (8 from Kim) => (7 from Wei)\n\\end{itemize}"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

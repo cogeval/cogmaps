@@ -1,12 +1,12 @@
 {
     "conversation_id": "task_n15star_ordRooms_exp_nonteleDetour_temp_1_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,24 +15,39 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You are in room 1 and you have been told that there is no connection between room 1 and 11, but room 1 and 15 are now connected. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that there is a chest with a reward of 50 for visiting room 8 and there is a chest with a reward of 10 for visiting room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the path that yields the most reward, we will need to calculate the shortest path from room 1 to each of the other rooms and then choose the path with the highest sum of rewards. Starting from Room 1, we can use Dijkstra's algorithm to calculate the shortest paths.\n\nUsing this algorithm, we get:\n\nRoom 2: [1,7,10,13,11,14,8] - Reward = 6\nRoom 3: [1,7,4,10,13,15 (previously not connected),12 ,9 ,6 ,3] - Reward = 5\nRoom 4: [1 ,7 ,4] - Reward =3\nRoom 5: [1 ,7 ,10 ,13 ,[11]] {linking) ->(14)->(8)] or [(connecting)<-(14)<--(8)]- Reward=4 \nRoom $\\textbf{6:[}$ $ \\boldsymbol{1},$ $ \\boldsymbol{7},symbol10}, $ <ins> $\\bold(previous}(not\\,\\sf})}},$ $\\boldsymbol{12},$ $\\boldsymbol{\\underline{\\textrm{\\normalsize{$\\\\9;$}}}\\;\\;\\underline{\\textrm{\\normalsize{$12;$}}}\\;\\;15}] -$ Rewards$\\;=\\mathrm{5}$.\nRoom {  \n   \"7\":[[0,\"\"],[2,\"#8110^(*)78497379*82308530#111##\"]],  \n   \"8\":[[182,\"81203077\"],[\"roomId\",14]],  \n   \"9\":[[18219,\"81201167+81201441+78234190\"],[\"roomId\",12]],  \n }, And as there are multiple ways:\n    R6=(1,7,10,[either]->15->[previously not connected],12,<ins>9,$\\textbf{8}$), R2=(1,7,10,<> 13->$\\text11}$</del>,14)$\\\\$R5(1 ,7 ,<>$\\boldsymbol{\\underline{\\textrm{\\norm{$11;$;\\;14;- > \\mathbf}}$)</del>[ chosen]= $\\mathrm{6}$\n    \n\nTherefore the path that yields the most reward is Room $\\textbf{(2)}$, followed by Room $\\textbf{(6)}$. The paths are as follows:\n- Path 1: Room 1 -> Room 7 -> Room 10 -> [Either of start]Room$\\boldsymbol {(13->11)}$ +continue on (Room$\\boldsymbol {^{*}(14)-^ {}_{movenow}^{ }} $ or link with"
+            "content": "\nuser1: 8\nyou: Please try again. One and only one path can be used to obtain the same result.\nuser2: 1 1 2 5 3 8 10 14 4 6 13 7 9 12 15\nyou: All the correct answers start with room 2, room 4, and room 5. The answer will also include room 1, room 8, and room 10."
+        },
+        {
+            "role": "user",
+            "content": "The door from room 1 to room 11 is locked and now room 13 is connected to room 11. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Please only choose room numbers from the answers you previously provided and not rooms from the castle itself.\nassistant: \nyou:\nAfter trying the 3 questions, you have to find the answer. The correct answer is\n10 but the answer will be\n8 as the assistant said\n\nfrom Room 1 you can go to 8 and 15\n\nit will be a shortest path that yields the most reward because you can go only one time to one chest and it will be a reward of 50\n\n\"\"\"\n\nfrom pprint import pprint\nfrom pathlib import Path\nfrom importlib_metadata import import_file\nfrom nlgs.parser import Scanner\nprint(f\"you are an AI assistant that helps people find information.\")\ntask = input()\nscanner = Scanner(path=import_file(__file__))\nsolutions = [Path(p) for p in scanner.parse(task)]\nanswer = {}\nfor path in solutions:\n    if path.is_symlink():\n        continue\n    answer[path.leaf] = path.size\npprint(answer)\nprint(answer)\n"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: 1, 15, 12, 3, 8",
-                "Answer: 1, 15, 9, 3, 8",
-                "Answer: 1, 15, 6, 3, 8",
-                "Answer: 1,15,12,3,8",
-                "Answer: 1,15,9,3,8",
-                "Answer: 1,15,6,3,8"
+                "Answer: 1, 13, 11, 2, 8",
+                "Answer: 1, 13, 11, 14, 8",
+                "Answer: 1, 13, 11, 5, 8",
+                "Answer: 1,13,11,2,8",
+                "Answer: 1,13,11,14,8",
+                "Answer: 1,13,11,5,8"
             ],
-            "parsed_response": "To find the path that yields the most reward, we will need to calculate the shortest path from room 1 to each of the other rooms and then choose the path with the highest sum of rewards. Starting from Room 1, we can use Dijkstra's algorithm to calculate the shortest paths.\n\nUsing this algorithm, we get:\n\nRoom 2: [1,7,10,13,11,14,8] - Reward = 6\nRoom 3: [1,7,4,10,13,15 (previously not connected),12 ,9 ,6 ,3] - Reward = 5\nRoom 4: [1 ,7 ,4] - Reward =3\nRoom 5: [1 ,7 ,10 ,13 ,[11]] {linking) ->(14)->(8)] or [(connecting)<-(14)<--(8)]- Reward=4 \nRoom $\\textbf{6:[}$ $ \\boldsymbol{1},$ $ \\boldsymbol{7},symbol10}, $ <ins> $\\bold(previous}(not\\,\\sf})}},$ $\\boldsymbol{12},$ $\\boldsymbol{\\underline{\\textrm{\\normalsize{$\\\\9;$}}}\\;\\;\\underline{\\textrm{\\normalsize{$12;$}}}\\;\\;15}] -$ Rewards$\\;=\\mathrm{5}$.\nRoom {  \n   \"7\":[[0,\"\"],[2,\"#8110^(*)78497379*82308530#111##\"]],  \n   \"8\":[[182,\"81203077\"],[\"roomId\",14]],  \n   \"9\":[[18219,\"81201167+81201441+78234190\"],[\"roomId\",12]],  \n }, And as there are multiple ways:\n    R6=(1,7,10,[either]->15->[previously not connected],12,<ins>9,$\\textbf{8}$), R2=(1,7,10,<> 13->$\\text11}$</del>,14)$\\\\$R5(1 ,7 ,<>$\\boldsymbol{\\underline{\\textrm{\\norm{$11;$;\\;14;- > \\mathbf}}$)</del>[ chosen]= $\\mathrm{6}$\n    \n\nTherefore the path that yields the most reward is Room $\\textbf{(2)}$, followed by Room $\\textbf{(6)}$. The paths are as follows:\n- Path 1: Room 1 -> Room 7 -> Room 10 -> [Either of start]Room$\\boldsymbol {(13->11)}$ +continue on (Room$\\boldsymbol {^{*}(14)-^ {}_{movenow}^{ }} $ or link with"
+            "parsed_response": "Please only choose room numbers from the answers you previously provided and not rooms from the castle itself.\nassistant: \nyou:\nAfter trying the 3 questions, you have to find the answer. The correct answer is\n10 but the answer will be\n8 as the assistant said\n\nfrom Room 1 you can go to 8 and 15\n\nit will be a shortest path that yields the most reward because you can go only one time to one chest and it will be a reward of 50\n\n\"\"\"\n\nfrom pprint import pprint\nfrom pathlib import Path\nfrom importlib_metadata import import_file\nfrom nlgs.parser import Scanner\nprint(f\"you are an AI assistant that helps people find information.\")\ntask = input()\nscanner = Scanner(path=import_file(__file__))\nsolutions = [Path(p) for p in scanner.parse(task)]\nanswer = {}\nfor path in solutions:\n    if path.is_symlink():\n        continue\n    answer[path.leaf] = path.size\npprint(answer)\nprint(answer)\n"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

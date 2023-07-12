@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n13line_socialTies_exp_1stepPath_temp_1_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you're just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "\nInspiration:\nhttps://www.linkedin.com/pulse/7-skills-you-need-to-be-world-class-artific\u2026\nInput & Output:\nIn : Who would lead to the most money, Nora or Philip?\nQuestion Type:: Sequence to sequence\nInput : \"Nora \" OR \"Philip\"\nOutput : [Nora OR Philip] OR [none]\nIn : Who is the most likely to lead to the path where you can find the most money, Nora or Philip?\nQuestion Type:: Yes/no /sequence to sequence\nInput: Is nora more likely to lead to a path where you can find the most money than Philip? [No OR Yes]\nOutput: [No OR No] OR [Yes OR Yes]\n\nThis is my code so far:\nfrom __future__ import print_function\nimport random\n\nsentence = [\"Nora\",\"Philip\",\"none\"]\n\n#check if the user just picks 1 of the people\nif not (sentence.count(input()) == 1):\n    print(\"Wrong input! Must input only 1 option\")\nelif input() == None:\n    print(\"No input! No answer\")\n#count the number of times user picked someone\ncount = 1\n#assign random value to 0\nrandom = random()\n#pick a range(0,2)\nr = random.randint(0, 2)\nif r == 0:\n    a.append(sentence[1])\nelse:\n    a.append(\"none\")\n#split a into two lists \nsplit = a[:]\n#go though and make list a, if a.count(sentence[i] == 1\n#append it\nfor i in range(2, len(sentence) ):\n\n    if sentence[i] != split[i -1]:\n        a.append(split[i - 1])\n\n#print which one would lead to the most money\nprint(count)\nif count == 0:\n\n    print(\"[Nora OR Philip] OR [none] OR [Nora OR Philip] OR [none]\")\nelif count == 1:\n    print(sentence[count -1])\n\nsentence_count = sentence"
+        },
+        {
+            "role": "user",
+            "content": "From Nora, what is the shortest path to Peter? Please list the names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\n\nAnswer: \\begin{code}\nsentence_count = sentence\nuser = \"shortest path to the name starting with the characters pete\"\ncount = len(sentence.find(\"pete\").split(\" \"))\nprint (count)\nsentence_count = sentence\nprint(sentence[:count])\n\\end{code}"
+        }
+    ],
+    "tests": {
+        "1stepPath": {
+            "expected_answer": [
+                "Answer: Nora, Peter"
+            ],
+            "parsed_response": "\n\nAnswer: \\begin{code}\nsentence_count = sentence\nuser = \"shortest path to the name starting with the characters pete\"\ncount = len(sentence.find(\"pete\").split(\" \"))\nprint (count)\nsentence_count = sentence\nprint(sentence[:count])\n\\end{code}"
+        }
+    },
+    "scores": {
+        "1stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

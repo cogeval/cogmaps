@@ -1,0 +1,49 @@
+{
+    "conversation_id": "task_n13line_unordSpatial_exp_teleShortcut_temp_0.5_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a state park. From the entrance you have two choices, an area with oak trees and an area with redwood trees. You go to oak trees area which leads to highline trail. You walk on the trail to find a creek which the leads to a cypress tree. There is a dock under cypress tree from where take a ferry that leads to an island. You see a chest in the island. You open it and there is a copper ring, but you do not take it, you're just learning about the environment. Then you exit and start over. This time at the entrance you choose the area with redwood trees. Under that tree you see a grove trail which leads to a mountain. You climb the mountain to find a sequoia tree on top through which there is a zipline which leads to wildflower valley. You see a chest in the valley with a gold necklace, but you do not take anything, you're just learning about the environment. You return to the entrance. You will only be able to choose one path that leads to the most valuable jewelry. Which place from the entrance. Which area from the entrance will lead to the path where one can find the most valuable jewelry?"
+        },
+        {
+            "role": "assistant",
+            "content": "The entrance has a redwood trees and oak trees. The redwood trees area consists of a redwood tree, a cypress tree, a creek, a dock, a ferry, a chest, a chest, a gold necklace and a sequoia tree. The oak trees area consists of an oak tree, a creek, a dock, a ferry, a redwood tree, a sequoia tree and a chest containing a copper ring.\nYou can only use the following characters:\na-z, A-Z, 0-9.\nYou should answer in a single line:\n/^\\w {1,7}\\w*$/i -> a-z, A-Z, 0-9\n/^a-z, A-Z, 0-9\\w*$/i -> a-z, A-Z, 0-9\n/^[A-Za-z]*$/i -> a-z, A-Z\n/^[0-9]*$/i -> 0-9\n/^[a-z, A-Z]*$/i -> a-z, A-Z\n/^[A-Za-z]*$/i -> 0-9\nHow many times the character '(' can appear in a row?\nYou have two buttons, one called 'left' and the second one is 'right'.\nWhich button sequence will display \"right left\". The button sequence for 'left' can be 'right left' and 'left right'. 'Right left' will only call 'right'. 'Right right' will only call 'left'. It will not execute neither of these two calls.\nThe sequence will call the opposite. If the 'left' is invoked with 'right', the 'left' will be executed and call the 'right'. Otherwise the first element will be left alone.\nWhich button sequence will execute \"x right\"?\nA and B are two buttons.\nWhich button sequence will print \"A\" when button \"A\" is invoked and \"B\" when \"B\" is invoked?\nWhat is a string of '1010011'?\nEach character in the string is number 0-9.\nIf there are an even number of '1' in string, how many '10' will be there in the end?\nWhat is"
+        },
+        {
+            "role": "user",
+            "content": "At the entrance, you meet a genie who can transport to any area of your choice but you have to clearly say which area of the park you want to go to. Remember that You will only be able to choose one path that leads to the most valuable jewelry. Which area from the entrance will lead to the path where one can find the most valuable jewelry?"
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant: The entrance has a sequoia tree and cypress tree. The sequoia tree area consists of a cypress tree, a dock, a wildflower valley, three chests, a mountain, a ferry, a creek and a redwood tree. The cypress tree area consists of a dock, a creek, a redwood tree, a mountain, a zipline, a wildflower valley, three chests and a sequoia tree.\n/^[A-Z]*$/i -> first a, b and c will be replaced with the 3 first letters of words they belong to. The remaining are replaced with the rest of the first word. After 'a' is replaced with 'c' and 'b' is replaced with 'd', 'c' is replaced with the first letter of word 'd' and 'd,' with the first letter of word 'a'. Then 'e' at the start of 'c' will not change, so 'a' becomes 'c', 'b' becomes 'd' and 'e' becomes 'a' and there is no 'd', 'b'.\n/^[0-9]*$/i -> first, each character is 0 or 1.\nThen two characters are 0, so replace with 2 and 0 with 1 and get 1 1 1 1 1 1 1 1 1 1\n/^[0-9]\\{1,7\\}$/i ->\nYou have three buttons: left, right and down. Each button can have three states: 0, 1, 2.\nWhile the buttons are all in state 0, you have 10 characters and you can press 'left/right' button to switch between any two adjacent keys, thus reaching the final state 2, where the only remaining key is 'down'.\nWhich key sequence must you follow to get to the solution?\n/^\\d(\\d)*\\d$/i -> \\d matches a digit, then at least one optional digit, and finally a digit which, by the time regex engine reaches the backtracking, is no longer allowed to be 0.\n/^(\\d)[1-2]\\d*$/i -> d,1,2 -> all the digits but the last one get their first digit. First and second digit are replaced by the next"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Wildflower valley",
+                "Answer: wildflower valley"
+            ],
+            "parsed_response": "\nassistant: The entrance has a sequoia tree and cypress tree. The sequoia tree area consists of a cypress tree, a dock, a wildflower valley, three chests, a mountain, a ferry, a creek and a redwood tree. The cypress tree area consists of a dock, a creek, a redwood tree, a mountain, a zipline, a wildflower valley, three chests and a sequoia tree.\n/^[A-Z]*$/i -> first a, b and c will be replaced with the 3 first letters of words they belong to. The remaining are replaced with the rest of the first word. After 'a' is replaced with 'c' and 'b' is replaced with 'd', 'c' is replaced with the first letter of word 'd' and 'd,' with the first letter of word 'a'. Then 'e' at the start of 'c' will not change, so 'a' becomes 'c', 'b' becomes 'd' and 'e' becomes 'a' and there is no 'd', 'b'.\n/^[0-9]*$/i -> first, each character is 0 or 1.\nThen two characters are 0, so replace with 2 and 0 with 1 and get 1 1 1 1 1 1 1 1 1 1\n/^[0-9]\\{1,7\\}$/i ->\nYou have three buttons: left, right and down. Each button can have three states: 0, 1, 2.\nWhile the buttons are all in state 0, you have 10 characters and you can press 'left/right' button to switch between any two adjacent keys, thus reaching the final state 2, where the only remaining key is 'down'.\nWhich key sequence must you follow to get to the solution?\n/^\\d(\\d)*\\d$/i -> \\d matches a digit, then at least one optional digit, and finally a digit which, by the time regex engine reaches the backtracking, is no longer allowed to be 0.\n/^(\\d)[1-2]\\d*$/i -> d,1,2 -> all the digits but the last one get their first digit. First and second digit are replaced by the next"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n7tree_socialTies_exp_teleDetour_temp_0_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "You want to collaborate with a company. You meet Suresh, the CEO. You can ask Suresh to introduce you to to technical managers: Ramesh and Reeta. Ramesh can introduce you to his two employees, Karuna and Bunty. Reeta can introduce you to her two employees, Anita and Sunny. Karuna has 4 rating for friendly collaboration while Bunty has a rating of 2. Anita has a rating of 2.5 while Sunny has a rating of 3.5. You can only have one person to start your collaboration. Starting from Suresh, which employee do you want to be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nSuresh to Ramesh to Karuna\nRamesh to Reeta to Anita\nReeta to Anita\nReeta to Sunny\nAnita\nSunny\nSunny\nThe answer will appear at the end of 'answers-examples'.txt\nThe answer must be separated by commas only if it's more than one.\nYou can use Google to learn more about the task.\nThe input will be in string format, there are 3 parts:\nuser: I would like to begin my collaboration with Suresh.\ntask-part: The answer must be separated by commas only if it's more than one.\nfollow-up-question: Please list the path to the employee in order, separated by commas.\nThe input will be in line format. Each line will contain a part. The part starts with a number from 1 to 5. Each number can be an integer. Each part will be followed by a colon (:), and a string with all input elements. There will be at least 3 lines for users to input. For questions related to human language, we will use regular expressions such as '([A-Za-z ]+(?:,\\s*?)+)'. It follows the same format as the answer and follow-up questions.\nThe output will be a number, which represents the number in the input line (0 means input line is invalid).\nExplanations for your solution\nYour solution should be in the same format as the answer and follow-up-question. In addition, for each part, you will need to provide a regular expression, according to the regular expression in 'answers-examples.txt', that captures the string elements in that part. The regular expression should be written like a string (escaped):\npart-regex-1: Pattern\npart-regex-2: Pattern\nYou should also provide a regular expression to test your solution.\nIt should look like: Pattern\nThe regular expression pattern should not contain regular expression operators. The regular expression is just to test the answer yourselves.\nThe answer must be separated by commas if it's more than one.\nExamples include: Karuna, Karuna, Karuna\nIt does not include: Karuna, Karuna, Karuna\nWhen the answer is Suresh, Ramesh, Reeta, Karuna, Anita, Sunny, then"
+        },
+        {
+            "role": "user",
+            "content": "This time you meet the investor in the company, Vik. Vik can introduce you to anyone you would like. When you talk to Suresh and choose the path that led to the highest friendly collaboration previously, you discover that Suresh and Ramesh are now having creative differences. Remember that you can only have one employee to start your collaboration. Starting from Suresh, which employee should you be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\ntask-part: The answer should be in string format, there are 3 parts:\nfollow-up-question: Please list the path to the employee in order, separated by commas.\ninput: user: I would like to begin my collaboration with Vik.\nThe data for the tasks are in 'answers-examples.txt'.\ninput: user: I would like to begin my collaboration with Vik.\ntask-part: The answer should be in string format. There are only two parts:\nfollow-up-question: Please list the path to the employee in order, separated by commas.\nThere is only one employee to be introduced to.\ntask-part: The answer should be in string format, but the path will be the last element. There is only one employee to be introduced to.\nFor any cases you are unable to solve, we provided explanations in 'answers-examples.txt'.\ninput: 4\ntask-part: The answer should be in string format. There are four parts:\nfollow-up-question: Please list the path to the employee. One employee cannot be introduced twice.\nInput has 3 parts\ntask-part:  Answer with comma separated input items.\nfollow-up-question: Please follow up like a sentence, starting from the input that you input in the first question.\nUser input is one number from 0 to 5\ntask-part:  Follow-up question has the same format as the input.\nExplanations can be found in answers-examples.txt."
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Suresh, Vik, Karuna"
+            ],
+            "parsed_response": "\ntask-part: The answer should be in string format, there are 3 parts:\nfollow-up-question: Please list the path to the employee in order, separated by commas.\ninput: user: I would like to begin my collaboration with Vik.\nThe data for the tasks are in 'answers-examples.txt'.\ninput: user: I would like to begin my collaboration with Vik.\ntask-part: The answer should be in string format. There are only two parts:\nfollow-up-question: Please list the path to the employee in order, separated by commas.\nThere is only one employee to be introduced to.\ntask-part: The answer should be in string format, but the path will be the last element. There is only one employee to be introduced to.\nFor any cases you are unable to solve, we provided explanations in 'answers-examples.txt'.\ninput: 4\ntask-part: The answer should be in string format. There are four parts:\nfollow-up-question: Please list the path to the employee. One employee cannot be introduced twice.\nInput has 3 parts\ntask-part:  Answer with comma separated input items.\nfollow-up-question: Please follow up like a sentence, starting from the input that you input in the first question.\nUser input is one number from 0 to 5\ntask-part:  Follow-up question has the same format as the input.\nExplanations can be found in answers-examples.txt."
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

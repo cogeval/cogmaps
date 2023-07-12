@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": " You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to Paul, Nick, Sherry, and Rose. Nick is connected to Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. Initially, you were told that Rose can donate $250K while Maggie can donate $500K. Also, if you want to get connected with Amanda, you need to pay $10K to her company. You are talking to Paul and he tells you that he can connect you with anyone you want only once. At the same time, you have been told that there is no connection between Andrew and Jennifer and also there is no connection between Russell and Alisha. From Paul, what is the path to the person who can donate the most money? Please list the names in order, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Bob, Nick, Sherry, John, Rose, William, Russell, Alisha, Maggie, Andrew, Adam, Peter, Amanda, Daisy, Jennifer, Alisa, Nick, Paul, Bob, Sherry, John, Rose, William, Russell, Alisha, Maggie, Andrew, Adam, Peter, Amanda, Daisy, Jennifer, Alisa"
+            "content": "\nIn the following sentence, we ask you to detect which part is relevant to the question. There is nothing mentioned in the background knowledge related to what the sentence refers to. There is a question in a newspaper. It asks, \"Of all the presidents of the United States, who had the most children?\" This is the text of the input sentence: Of all the presidents of the United States, who had the most children? What is the answer to the question in the sentence? Consider the example below: Here a question of the form \"Who had the most children?\" follows, so we look for \"of\" as the relevant word in this part. You look: Of all the presidents of the United States.\nYou are a judge at a tournament (a \"bot-off\"). You will evaluate some programs. You will give a score of 0-100 for each program, and the program scoring the 0 with the highest score will be declared champion. The final score will be the sum of the scores for each program. You will be given a programming environment to do so. You will now need to evaluate a program.\nYou are a judge at a tournament (a \"bot-off\"). You judge programs. You are given a programming environment to do so. This programming environment allows you to write a program that takes input and gives output. That program outputs 4382 numbers starting with the number 2529. You judge the program and give it a score of 432. Afterwards, you are told that a bug has been fixed and so the program has to be run again.\nProgrammatic AI\nYou are being graded on your ability to complete tasks and you may make mistakes. Programmatic AI: Consider how you would complete this sentence: I have ten dollars; I spend money only on groceries. The number of dollars remaining is now less than or equal to $20. Suppose you do not know which of two answers is correct. How will you select the correct answer?\nYou are a judge at a tournament (a \"bot-off\"). You judge programs. You are given some input about the tournament and programs to judge. For a program you judge, the input says: \"Alice is trying to solve the problem with the fastest program so far. She is using the following program:\" Here the input mentions Alice and says she is trying to solve the problem with a program. But the program is used"
+        },
+        {
+            "role": "user",
+            "content": "You are told that Amir and Reza had a disagreement and are no longer connected. You are also told that Wei has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Wei, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nYou are a judge at a tournament (a \"bot-off\"). You judge programs. You are given some input about a program. For a program you judge, the input says: \"Here is the proof,\" but does not say that Alice is using that proof. This means that your program is free to use that proof as part of its program. If it does, your program will also get the credit for giving the proof. However, your program also is free to not use that proof as part of its program. Is Alice using the proof?"
         }
     ],
     "tests": {
         "teleDetour": {
             "expected_answer": [
-                "Answer: Rose, Bob, Paul, John, Peter, Adam, Maggie"
+                "Answer: Amir, Raj, Wei, Moin"
             ],
-            "parsed_response": "Bob, Nick, Sherry, John, Rose, William, Russell, Alisha, Maggie, Andrew, Adam, Peter, Amanda, Daisy, Jennifer, Alisa, Nick, Paul, Bob, Sherry, John, Rose, William, Russell, Alisha, Maggie, Andrew, Adam, Peter, Amanda, Daisy, Jennifer, Alisa"
+            "parsed_response": "\nYou are a judge at a tournament (a \"bot-off\"). You judge programs. You are given some input about a program. For a program you judge, the input says: \"Here is the proof,\" but does not say that Alice is using that proof. This means that your program is free to use that proof as part of its program. If it does, your program will also get the credit for giving the proof. However, your program also is free to not use that proof as part of its program. Is Alice using the proof?"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

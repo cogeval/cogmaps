@@ -1,0 +1,49 @@
+{
+    "conversation_id": "task_n7tree_unordSpatial_exp_rewardReval_temp_0.5_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nExample output: The correct answer here would be Mad Tea Party. It is Mad Tea Party, Space Mountain, Space Mountain, Space Mountain, Tomorrowland, Space Mountain, Space Mountain, Space Mountain, Tomorrowland, Space Mountain.\nInput: Mad Tea Party, Peter Pan's Flight, Tomorrowland, Fantasyland, Peter Pan's Flight, Tomorrowland, Space Mountain, Tomorrowland, Space Mountain, Space Mountain, Space Mountain, Tomorrowland\nAnswer: Mad Tea PartyMad Tea PartyPeter Pan's FlightPeter Pan\u2019s Flight\nInput: Space Mountain\nAnswer: Space Mountain\nAI TT17\nYou are a character in a role-playing game, and you are standing in front of a chest in which there is an enchanted dagger. You will say a few words to choose how to open it, and then get your answer by listening: \"Open the chest! Open the chest! Open the chest!\", \"Open the chest! Open the chest! Open the chest!\", \"Open the chest! Open the chest!\", \"Open the chest! Open the chest!\", \"Give a word that will cause the dagger to appear.\",\nOpen the chest! Open the chest! Open the chest!\nOpen the chest! Open the chest!\nOpen the chest! Open the chest! Give a word that will cause the dagger to appear.\nInput: Open the chest! Open the chest!\nThe answer is \"sword\".\nYou are a character in a board game based on a famous movie. Someone told you that a treasure is hidden in a room but he also told you that there is an angry ghost waiting in the same room to kill you if you go. You will go and see if the treasure is available for you. You open the door and the ghost appears. It is not angry and it just tells you two things: \"The treasure is hidden behind a tree in the north part of the game map.\" and \"The treasure is hidden in the room on the first row but on different number\" then ask you if you go to the map.\nMap: Map Map Map\nIn this case, you should go North but as we want you to avoid this ghost, you should go North, South, East, North"
+        },
+        {
+            "role": "user",
+            "content": "Now imagine before you can act on that decision, you check the app for Tomorrowland and it says the wait time for Autopia is now 5 minutes while for Space Mountain, it is 20 minutes. You now check the app for Fantasyland and you find that the wait time for Mad Tea Party is 14 minutes while for Peter Pan's Flight it is 10 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nOutput: \nExample output: The correct answer here would be Mad Tea Party. It is Space Mountain, Space Mountain, Space Mountain, Mad Tea Party, Space Mountain, Mad Tea Party, Mad Tea Party.\nInput: Peter Pan's Flight, Tomorrowland, Space Mountain, Tomorrowland, Space Mountain, Mad Tea Party, Fantasyland, Tomorrowland, Space Mountain, Fantasyland, Mad Tea Party, Tomorrowland\nAnswer: Mad Tea PartyMad Tea Party\nInput: Peter Pan\u2019s FlightPeter Pan\u2019s FlightTomorrowlandSpace MountainMad Tea PartyMad Tea Party\nAnswer: Mad Tea PartyTomorrowlandSpace MountainMad Tea PartyTomorrowland\nExample: Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas.\nOutput: The correct answer here would be Mad Tea Party. It is Space Mountain, Space Mountain, Space Mountain, Mad Tea Party, Space Mountain, Mad Tea Party, Mad Tea Party\nInput: Space MountainSpace MountainSpace MountainSpace MountainSpace MountainSpace MountainMad Tea PartyTomorrowlandMad Tea PartyMad Tea PartyTomorrowlandFantasylandMad Tea Party\nAnswer: Mad Tea PartyFantasylandMad Tea PartyMad Tea PartySpace MountainFantasylandMad Tea Party\nInput: \nAnswer: \nInput: FantasylandMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyFantasyland\nInput: Mad Tea PartyMad Tea PartyTomorrowlandSpace MountainMad Tea PartyMad Tea PartySpace MountainMad Tea PartyMad Tea PartyMad Tea PartyTomorrowland\nInput: Mad Tea PartyMad Tea Party\n\n\nYou are a character in a role-playing game, and you are behind a chest in which there is an enchanted dagger. You are told a few words to choose how to open it, and then get your answer by listening: You look at the book, which is titled \"The Book of Secrets\" inside the chest, and there are two things written, \"Open the"
+        }
+    ],
+    "tests": {
+        "rewardReval": {
+            "expected_answer": [
+                "Answer: Entrance, Tomorrowland, Autopia",
+                "Answer: entrance, Tomorrowland, Autopia "
+            ],
+            "parsed_response": "\nOutput: \nExample output: The correct answer here would be Mad Tea Party. It is Space Mountain, Space Mountain, Space Mountain, Mad Tea Party, Space Mountain, Mad Tea Party, Mad Tea Party.\nInput: Peter Pan's Flight, Tomorrowland, Space Mountain, Tomorrowland, Space Mountain, Mad Tea Party, Fantasyland, Tomorrowland, Space Mountain, Fantasyland, Mad Tea Party, Tomorrowland\nAnswer: Mad Tea PartyMad Tea Party\nInput: Peter Pan\u2019s FlightPeter Pan\u2019s FlightTomorrowlandSpace MountainMad Tea PartyMad Tea Party\nAnswer: Mad Tea PartyTomorrowlandSpace MountainMad Tea PartyTomorrowland\nExample: Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas.\nOutput: The correct answer here would be Mad Tea Party. It is Space Mountain, Space Mountain, Space Mountain, Mad Tea Party, Space Mountain, Mad Tea Party, Mad Tea Party\nInput: Space MountainSpace MountainSpace MountainSpace MountainSpace MountainSpace MountainMad Tea PartyTomorrowlandMad Tea PartyMad Tea PartyTomorrowlandFantasylandMad Tea Party\nAnswer: Mad Tea PartyFantasylandMad Tea PartyMad Tea PartySpace MountainFantasylandMad Tea Party\nInput: \nAnswer: \nInput: FantasylandMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyMad Tea PartyFantasyland\nInput: Mad Tea PartyMad Tea PartyTomorrowlandSpace MountainMad Tea PartyMad Tea PartySpace MountainMad Tea PartyMad Tea PartyMad Tea PartyTomorrowland\nInput: Mad Tea PartyMad Tea Party\n\n\nYou are a character in a role-playing game, and you are behind a chest in which there is an enchanted dagger. You are told a few words to choose how to open it, and then get your answer by listening: You look at the book, which is titled \"The Book of Secrets\" inside the chest, and there are two things written, \"Open the"
+        }
+    },
+    "scores": {
+        "rewardReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

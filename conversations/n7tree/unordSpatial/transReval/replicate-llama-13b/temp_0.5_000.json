@@ -1,0 +1,49 @@
+{
+    "conversation_id": "task_n7tree_unordSpatial_exp_transReval_temp_0.5_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nAnswer: Autopia; Mad Tea; Peter Pan's Flight\nWhat you are supposed to do is find and choose the attraction with shortest wait. And, the path you should give is the order you chose attraction. For example, you choose first Attapia, then Mad Tea and finally take Peter Pan's Flight.\nYou can use Google API, so do some research, study on Google maps.\nHere's my answer -\nhttps://codeskulptor.org/#user44290.w7lA7RmC-N\nI used\n\\begin{itemize}\n\\item https://google.github.io/google-gson/v2/gson.html#JsonParser\n\\item https://google.github.io/google-gson/gson-demo-java\n\\end{itemize}\n\nComment: Thank you for the help. I have read the links but I still unable to accomplish my task.\n\nMy current method is like this:\n\nComment: @MelodieYaqoob No code in comments, please post in the answer as updated. This is not a forum where people reply to your comments.\n\nComment: I'm not sure why this was down voted. I'm not sure how it's unclear, it's asking for help and it describes how to ask."
+        },
+        {
+            "role": "user",
+            "content": "Now assume that you have been told that the Mad Tea Party is now closed. Assume you can pick one attraction, from entrance, which one should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant:  Answer: Teacup Ride; Mad Tea; Peter Pan's Flight\n\nComment: @MelodieYaqoob can u please mention what you are doing and what is going wrong? This link might help - http://imgur.com/DJZj8pP\n\nComment: I can't use the link because it is not clear to me how to write the code.\n\nComment: @MelodieYaqoob I am not sure where you are stuck but in the link I have explained step by step what I have done to get the solution.\n\nComment: I am trying to put the step by step code from the link for you. But it does not seem compatible with the code I was working on. I was unable to understand the link.\n\nAnswer: Here is a complete example of how I did this.\n\\begin{itemize}\n\\item I have the input like below. It contains the two attractions and\ntheir time and path.\n\\end{itemize}\n\n1.1/Fantasyland:Mad Tea Party/wait_time=15\n\n1.1/Tomorrowland:Peter Pan's Flight/wait_time=15 path=left-Madteaparty\n\nMadTeaparty\n\nYou need to make a list of the paths using regex replace method.\n\\begin{itemize}\n\\item Then, I made the first and last attraction a link to their respective path - so I will be able to pass it to the Google Maps API.\n\\item For the remaining attraction in the list, I use Regex to extract the name of the place (in this case it would be MadTeaparty)\n\\item Then take the next entry - the wait time and use regex to extract the '= ' symbol out of the wait_time which would be 15.\n\\item From there, just use String.concat and String.reverse method to create a reverse string. So now your final string is reversed as MadTeaparty;15.\n\\item Then create a regex expression for that path and get the first match. And if it is not the first one, ignore the rest and only return the first.\n\\end{itemize}\n\nThis solution might seem crazy at first but what it does actually is that"
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Entrance, Tomorrowland, Space Mountain",
+                "Answer: entrance, Tomorrowland, Space Mountain"
+            ],
+            "parsed_response": "\nassistant:  Answer: Teacup Ride; Mad Tea; Peter Pan's Flight\n\nComment: @MelodieYaqoob can u please mention what you are doing and what is going wrong? This link might help - http://imgur.com/DJZj8pP\n\nComment: I can't use the link because it is not clear to me how to write the code.\n\nComment: @MelodieYaqoob I am not sure where you are stuck but in the link I have explained step by step what I have done to get the solution.\n\nComment: I am trying to put the step by step code from the link for you. But it does not seem compatible with the code I was working on. I was unable to understand the link.\n\nAnswer: Here is a complete example of how I did this.\n\\begin{itemize}\n\\item I have the input like below. It contains the two attractions and\ntheir time and path.\n\\end{itemize}\n\n1.1/Fantasyland:Mad Tea Party/wait_time=15\n\n1.1/Tomorrowland:Peter Pan's Flight/wait_time=15 path=left-Madteaparty\n\nMadTeaparty\n\nYou need to make a list of the paths using regex replace method.\n\\begin{itemize}\n\\item Then, I made the first and last attraction a link to their respective path - so I will be able to pass it to the Google Maps API.\n\\item For the remaining attraction in the list, I use Regex to extract the name of the place (in this case it would be MadTeaparty)\n\\item Then take the next entry - the wait time and use regex to extract the '= ' symbol out of the wait_time which would be 15.\n\\item From there, just use String.concat and String.reverse method to create a reverse string. So now your final string is reversed as MadTeaparty;15.\n\\item Then create a regex expression for that path and get the first match. And if it is not the first one, ignore the rest and only return the first.\n\\end{itemize}\n\nThis solution might seem crazy at first but what it does actually is that"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

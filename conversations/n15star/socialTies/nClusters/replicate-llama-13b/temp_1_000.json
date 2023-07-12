@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nClusters_temp_1_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
+        },
+        {
+            "role": "assistant",
+            "content": "\nuser: Answer: there are 6 clusters   \n \nuser: Reza, Moin, and Pari form a cluster. Amir, Sara, and Max form a cluster. Kim, Puja, and Pam form a cluster. Reza, Moin, and Pari form a cluster again. We also have Amir, Sara, and Max in a cluster. \n\n\n# Pseudocode\n# Please add your code here.\n\n# Defines a method answer(input)\n# # Input: - input - a string representing a task\n# # Output: Answer - a string representing an answer to a given task\ndef answer(input)\n\t# Get the user input - the task description\n\ttask = input\n\n\t# Use regexp to split input into tokens\n\ttask_stem = task.split(\"?\")[0].strip\n\n\t# Create a hash from keys and values from the tasks stem\n\tinput_hash = {}\n\tinput_hash[\"tokens\"] = []\n\tinput_hash[\"token\"] = []\n\n\t# For each token in tasks stem\n\ttask_stem.scan(/\\w+/) do |token|\n\t\t# Add token and token's value to input\n\t\tinput_hash[\"tokens\"].append({\"token\" => token, \"value\" => \"#{token}\".class})\n\n\tend\n\n\n\n\t# Create a hash from tokens as values and its key as an index\n\tinput_hash[\"token\"]= input_hash[\"tokens\"].sort_by{ |t| t[\"value\"] }\n\tinput_hash[\"token\"].each_key {| k| input_hash[\"tokens\"][k].nil? ? input_hash[\"tokens][k] = 0 : input_hash[\"tokens\"][k] = input_hash[\"tokens\"][k]+1}\n\tinput_hash[\"token\"].delete_if {|k, v| v == 0}\n\n\t# Use n'th value as key and get the connected entities \n\tinput_hash[\"token\"].delete_if {|k, v| v == 0}\n\n\t# In the above case, we get rid of empty tokens with the above step\n\t# And have only the tokens that the count are more than one,"
+        }
+    ],
+    "tests": {
+        "nClusters": {
+            "expected_answer": [
+                "Answer: there are 3 clusters"
+            ],
+            "parsed_response": "Answer: there are 6 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

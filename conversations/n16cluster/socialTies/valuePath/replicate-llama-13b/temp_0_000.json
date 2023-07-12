@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,20 +15,26 @@
         },
         {
             "role": "user",
-            "content": "You want to organize a fundraiser with 16 socialites. Paul is connected to Bob, Nick, Sherry, and John. Bob is connected to  Paul, Nick, Sherry, and Rose. Nick is connected to  Paul, Bob, Sherry and Amanda. Sherry is also connected to Paul, Bob, Nick, and William. Amanda is connected to  Peter, John, Daisy, and Nick. Peter is connected to Amanda, John, Daisy, and Adam. John is connected to Paul, Daisy, Peter, and Amanda. Daisy is also connected to Amanda, Peter, John, and Maggie. Alisa is connected to Maggie, Jennifer, Adam, and Russell. Maggie is connected to Alisha, Jennifer, Daisy, and Adam. Jennifer is connected to Andrew, Alisha, Adam, and Maggie. Adam is also connected to Alisha, Maggie, Jennifer, and Peter. Andrew is connected to William, Russell, Rose, and Jennifer. William is connected to Sherry, Andrew, Russell, Rose. Russell is connected to Andrew, William, Rose, and Alsiha. Rose is also connected to Andrew, William, Russell, and Bob. Now you are told that Rose can donate $250K while Maggie can donate $500K. Also, if you want to get connected with Amanda, you need to pay $10K to her company. From Paul, what is the path to the person who can donate the most money? Please list the names in order, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Paul, Bob, Nick, Sherry, John, Rose, Amanda, Peter, John, Daisy, Nick, William, Russell, Rose, Andrew, Russell, Rose, Bob"
+            "content": "Please also include Amir, separated by commas. The output should be formatted like: Amir: Moin, Wim, Sara, Nisha, Puja, Pari, Matt, Eva, Pam Pam: Sara, Matt, Pari, Eva, Joanne Moin: Wim, Sara, Moin, Kim, Pam, Nisha, Puja, Joanne, Amir, Ian Pam: Amir, Puja, Moin, Ian, Eva, Joanne, Pam Kim: Amir, Joanne, Puja, Ian, Nisha, Pam, Sara, Moin Wei: Moin, Kim, Pari, Joanne, Sara, Pam Pam: Sara, Pam, Pari, Joanne Amir: Nisha, Reza, Moin, Puja, Ji An, Jing, Mat, Pam Pam Pam: Joanne, Moin, Pam Jing: Wei, Moin, Amir, Kim, Sara, Pam Pam Pam: Puja, Nisha, Pam, Joanne, Jing, Amir Pam: Puja, Nisha, Pam, Sara, Joanne: Moin, Puja, Jing, Amir, Ian Pam: Puja, Pam, Joanne, Sara, Moin, Ev\nClever people\nThe question says \"Now, from Amir what is the shortest path to the person with the maximum number of books?\"\nThe answer is: Sara who has 11 books\nTo get the shortest path from Amir to Sara Amir has to do one step with 5 people, two steps with 4 people, and two steps with 3 people, which gives us the following equation:\nx = 5^2 + 4^2 + 3^2 = 163\n50% of people has books and the maximum number of books is 11. Therefore, there must be fewer than 11 people for the shortest path to be 163. That means there are 35 people less than 11 and 4 less than 5.\nNow, there are 35 people to solve and the solution must be in the form of: Amir, Nisha, Reza, Moin, Pam, Jing, Wim, Joanne, Nisha.\nIt has to be \"Am"
         }
     ],
     "tests": {
         "valuePath": {
             "expected_answer": [
-                "Answer: Paul, Bob, Rose, Russell, Alisha, Maggie",
-                "Answer: Paul, Bob, Rose, Andrew, Jennifer, Maggie"
+                "Answer: Amir, Reza, Kim, Moin"
             ],
-            "parsed_response": "Paul, Bob, Nick, Sherry, John, Rose, Amanda, Peter, John, Daisy, Nick, William, Russell, Rose, Andrew, Russell, Rose, Bob"
+            "parsed_response": "Please also include Amir, separated by commas. The output should be formatted like: Amir: Moin, Wim, Sara, Nisha, Puja, Pari, Matt, Eva, Pam Pam: Sara, Matt, Pari, Eva, Joanne Moin: Wim, Sara, Moin, Kim, Pam, Nisha, Puja, Joanne, Amir, Ian Pam: Amir, Puja, Moin, Ian, Eva, Joanne, Pam Kim: Amir, Joanne, Puja, Ian, Nisha, Pam, Sara, Moin Wei: Moin, Kim, Pari, Joanne, Sara, Pam Pam: Sara, Pam, Pari, Joanne Amir: Nisha, Reza, Moin, Puja, Ji An, Jing, Mat, Pam Pam Pam: Joanne, Moin, Pam Jing: Wei, Moin, Amir, Kim, Sara, Pam Pam Pam: Puja, Nisha, Pam, Joanne, Jing, Amir Pam: Puja, Nisha, Pam, Sara, Joanne: Moin, Puja, Jing, Amir, Ian Pam: Puja, Pam, Joanne, Sara, Moin, Ev\nClever people\nThe question says \"Now, from Amir what is the shortest path to the person with the maximum number of books?\"\nThe answer is: Sara who has 11 books\nTo get the shortest path from Amir to Sara Amir has to do one step with 5 people, two steps with 4 people, and two steps with 3 people, which gives us the following equation:\nx = 5^2 + 4^2 + 3^2 = 163\n50% of people has books and the maximum number of books is 11. Therefore, there must be fewer than 11 people for the shortest path to be 163. That means there are 35 people less than 11 and 4 less than 5.\nNow, there are 35 people to solve and the solution must be in the form of: Amir, Nisha, Reza, Moin, Pam, Jing, Wim, Joanne, Nisha.\nIt has to be \"Am"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

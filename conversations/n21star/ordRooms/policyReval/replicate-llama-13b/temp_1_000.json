@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n21star_ordRooms_exp_policyReval_temp_1_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a house with 21 rooms. Room 1 is connected to rooms 2, 3, 4, 5, 6, and 7. Room 12 is connected to rooms 13, 14, 8, 9, 10, and 11. Room 21 is connected to rooms 15, 16, 17, 18, 19, and 20. Room 6 is connected to rooms 7, 2, 3, 4, and 5. Room 3 is connected to rooms 4, 5, 7, and 2. Room 14 is connected to rooms 4, 8, 9, 10, and 11. Room 10 is connected to rooms 11, 13, 8, and 9. Room 19 is connected to rooms 20, 15, 16, 17, and 18. Room 5 is connected to rooms 7, 2, and 16. Room 8 is connected to rooms 9, 11, and 13. Room 9 is connected to rooms 11 and 13. Room 18 is connected to rooms 20, 15, 16, and 17. Room 7 is connected to rooms 2, and 4. Room 11 is connected to rooms 13. Room 20 is connected to rooms 15, 16, and 17. Room 2 is connected to room 4. Room 13 is connected to room 17. Room 17 is connected to rooms 15. Room 15 is connected to room 16. Now you have been told that there is a reward of 10 for visiting room 13 and there is a reward of 5 for visiting room 10. From room 4 what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a house with 21 rooms. Room 1 is connected to rooms 2, 3, 4, 5, 6, and 7. Room 12 is connected to rooms 13, 14, 8, 9, 10, and 11. Room 21 is connected to rooms 15, 16, 17, 18, 19, and 20. Room 6 is connected to rooms 7, 2, 3, 4, and 5. Room 3 is connected to rooms 4, 5, 7, and 2. Room 14 is connected to rooms 4, 8, 9, 10, and 11. Room 10 is connected to rooms 11, 13, 8, and 9. Room 19 is connected to rooms 20, 15, 16, 17, and 18. Room 5 is connected to rooms 7, 2, and 16. Room 8 is connected to rooms 9, 11, and 13. Room 9 is connected to rooms 11 and 13. Room 18 is connected to rooms 20, 15, 16, and 17. Room 7 is connected to rooms 2, and 4. Room 11 is connected to rooms 13. Room 20 is connected to rooms 15, 16, and 17. Room 2 is connected to room 4. Room 13 is connected to room 17. Room 17 is connected to rooms 15. Room 15 is connected to room 16. You have been told that there is a chest with a reward of 50 in room 20, there is a chest with a reward of 10 in room 10 and there is a chest with a reward of 0 in room 12. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: 4, 10, 18, 7, 2, 17, 16, 11, 4, 3, 5, 2, 21, 7, 18, 6, 5, 9, 13, 7, 15, 9, 11, 14, 8, 9, 10, 11, 7, 2, 4, 17"
+            "content": "Please stop answering when you've found the minimum path.\nI got one correct answer:\n8,1,3,4,10,9,11,13,19,20\nAnd got a total score of 97 percent. Which is probably the lowest of all of them\nAnd here's the link to the round 4 question: http://www.interviewstreet.com/challenges/ai-assistant-v2\nIf you could see my code, it's a huge mess.\nI only got 78%, which makes me think you should be aiming for more points.\nI'm going to check it out\nI get that you're thinking in order, but I think you went about doing this the wrong way. If I was presented with this scenario, I'd do the following:\nThink where the reward of 50 goes, 20 has it, so it probably means that's where the last place it will go, since it's more likely that it skips 10 and goes to 20.\nSo 1,3,4,9,10,11\nFrom 9,10,11 you can get the 50, 9,11,9 from room 1, 1,9,9,10, or 9,2,9,10,11 the last will get 50, 50,10 and then 10 again.\n1,3,4,9,10,11,\nIt gives you all the information you need on the route it is taking from 1 to 9 with the added benefit of giving you information about all the rooms you need to hit to get the 50.\nAlso why waste time thinking about the 12 room, when if you follow the path 5/1, you go to 5,5,1,9,10,11,9,9,10,11,20 which you can get all the way to 20.\nSo try and see if you can solve this problem in another way, as this way isn't very effective.\nYou have just shown me what is called a backtracking algorithm.\nIt's an interesting idea to find short ways to get to the reward."
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that the reward in the chest in room 12 has been changed to 100. Now, from room 1 what is the shortest path that yields the most reward?  Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nI found a way which is less time consuming, and that I believe would be efficient, even if it's messy.\nThe way it solves it is to look at 21 and 20, what rooms do they share with 20, 10 and 9. 1 and 3 both share a room with 10 and then 1 shares a room with 20. Since 3 doesn't share a room with 10, it must share a room with 9. Since it can go through 10, the reward will be in 10. Since it can take 1, 3, 20, 10, 9, the overall reward will be: 50+20+5+10+10+5, which comes to 140. This is the most I can attain as 5+10 is the most you can get per chest.\nSince 21 and 20 share the same rooms, it must share a room with 10, and since 21 can do that after 20, and since it can also do through 20 and 10, the reward will be: 20+5+10+5+5 which is 45. So the least reward from the 12 chest is 45.\nThe way I used it: I first added the number of ways to get to 7, 10, and 20. Then I compared those, then made sure I was choosing the same rooms for each chest. This was because I went in with the idea that 12 may only be able to yield 45 (the least reward), but it could yield over that, giving me more than 140. My code is quite messy, but it works\nFor the chest with the 100 reward the answer is actually 18, but it is quite easy to get the 100.\nSo here it is, which I have taken directly from google drive, so let me know if there's anything wrong or whatever:\n1,(1),(10),(11),(13),(15),(16),(19),(20)\n7 (20) 8 10,(10),11,(9),(13)\n13 (1"
         }
     ],
     "tests": {
         "policyReval": {
             "expected_answer": [
-                "Answer: 4, 14, 10, 13",
-                "Answer: 4,14,10,13"
+                "Answer: 1, 4, 14, 12",
+                "Answer: 1,4,14,12"
             ],
-            "parsed_response": "Answer: 4, 10, 18, 7, 2, 17, 16, 11, 4, 3, 5, 2, 21, 7, 18, 6, 5, 9, 13, 7, 15, 9, 11, 14, 8, 9, 10, 11, 7, 2, 4, 17"
+            "parsed_response": "\nI found a way which is less time consuming, and that I believe would be efficient, even if it's messy.\nThe way it solves it is to look at 21 and 20, what rooms do they share with 20, 10 and 9. 1 and 3 both share a room with 10 and then 1 shares a room with 20. Since 3 doesn't share a room with 10, it must share a room with 9. Since it can go through 10, the reward will be in 10. Since it can take 1, 3, 20, 10, 9, the overall reward will be: 50+20+5+10+10+5, which comes to 140. This is the most I can attain as 5+10 is the most you can get per chest.\nSince 21 and 20 share the same rooms, it must share a room with 10, and since 21 can do that after 20, and since it can also do through 20 and 10, the reward will be: 20+5+10+5+5 which is 45. So the least reward from the 12 chest is 45.\nThe way I used it: I first added the number of ways to get to 7, 10, and 20. Then I compared those, then made sure I was choosing the same rooms for each chest. This was because I went in with the idea that 12 may only be able to yield 45 (the least reward), but it could yield over that, giving me more than 140. My code is quite messy, but it works\nFor the chest with the 100 reward the answer is actually 18, but it is quite easy to get the 100.\nSo here it is, which I have taken directly from google drive, so let me know if there's anything wrong or whatever:\n1,(1),(10),(11),(13),(15),(16),(19),(20)\n7 (20) 8 10,(10),11,(9),(13)\n13 (1"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n7tree_socialTies_exp_teleDetour_temp_0.5_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "You want to collaborate with a company. You meet Suresh, the CEO. You can ask Suresh to introduce you to to technical managers: Ramesh and Reeta. Ramesh can introduce you to his two employees, Karuna and Bunty. Reeta can introduce you to her two employees, Anita and Sunny. Karuna has 4 rating for friendly collaboration while Bunty has a rating of 2. Anita has a rating of 2.5 while Sunny has a rating of 3.5. You can only have one person to start your collaboration. Starting from Suresh, which employee do you want to be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nYou wanna ask to Suresh to introduce you to Karuna. You give Suresh a task:\nSuresh: Hello, I am, Suresh, CEO of a company. Who can I introduce my assistant Karuna with that has highest rate of collaboration?\nAssistant (you): How can I answer this question?\nSuresh: Hello assistant. First thing, give me the path to a person with highest rating of collaboration.\nYou (answering): From you, Suresh, I want to meet Karuna.\nSuresh: Yes, give me Karuna first.\nYou (answering): Then in your company Suresh introduce me to Karuna, followed by introduction from Karuna, where there are two people. In this person, the highest rating of collaboration is Karuna by Ratings=2.5 and the other is Bunty by Ratings=2.\nSuresh: Hello Bunty. I want to introduce my assistant Karuna with your.\nBunty: How my assistant Karuna can introduce me to?\nSuresh: They want to introduce each other through a meeting, from the beginning.\nBunty: I do not know about it.\nSuresh: Then, explain the rating of collaboration.\nBunty: Suresh has already explained. The highest rating is 2.5 from Karuna.\nAnd then you (the assistant) can continue.\nThe person with the highest rating should be introduced first.\nEach person has a rating. After the highest rating for each company it means that you should introduce your assistant from you. (It means that you can use from you even if you not have a rating)\nIn the first step from you, you should be connected to a person. And the person you introduced should know your assistant.\nEach person can give the name of two people who have the highest rating and then he can say, I want to introduce my assistant with the starting person.\nThe last person must ask you about a person with the highest rating. He should not tell the starting person.\nThe person who has a rating 2.5 or more can give the name.\nIf two or more persons have rating 2.5, we introduce you to one of them, then you can introduce your assistant from them to another person.\nIt means that if your assistant from Karuna should start to introduce you to another person and"
+        },
+        {
+            "role": "user",
+            "content": "This time you meet the investor in the company, Vik. Vik can introduce you to anyone you would like. When you talk to Suresh and choose the path that led to the highest friendly collaboration previously, you discover that Suresh and Ramesh are now having creative differences. Remember that you can only have one employee to start your collaboration. Starting from Suresh, which employee should you be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nThe assistant can only start the collaboration path from the existing person.\nYou can only take the person Suresh introduced you to.\nYou can start the collaboration with Suresh.\nReeta can introduce her employee, Karuna.\nYou (the assistant) need only give ratings to a person who gives the name of his employee.\nYou (the assistant) need to take the person who gives the name of a person with rating 2.5 or more. (Starting)\nNow Karuna introduced her friend, Bunty.\nThen you (the assistant) will look to Bunty, not to Suresh.\nThe person with the highest rating must be introduced first.\nYou (the assistant) can take a person who introduces another one.\nNow Bunty introduced another person, Reeta.\nSo you will give ratings to Bunty not to Karuna.\nNow Vik will ask you about a person with the highest rating. He says:\nVik: Who do you think I should introduce the assistant with?\nBunty: First you should introduce the assistant with Anita.\nVik: Then my assistant will introduce me with Sunny.\nYou (the assistant):\nThen your assistant (you) will work with the path you know.\nThe last person can give the name.\nThen your assistant will take another person.\nYou (the assistant) now have to choose between Bunty and Anita. You can make a choice, the person who gave the name of the highest rated person or the person who gave the name of the highest rated person.\nIf there are two people giving the name of the person with the highest rating, you should choose first the person who gave the name of the person with the highest rating. You can take the person who introduces another person. You start with person who gave the name of the highest rated person.\nIf two people have the same rating, they need to follow the above rules\nHere Bunty and Anita have the same rating.\nThis is an alternative path. You can do it.\nIn the alternative path, you should take the person who introduced a person that introduces another. Now Bunty introduced Ramesh in this alternative path. (Ramesh has no rating. If you do it in real life, you cannot work with him.)\nNow you work with Bunty.\nYou discover that Ramesh introduced Anita and Karuna to Re"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Suresh, Vik, Karuna"
+            ],
+            "parsed_response": "\nThe assistant can only start the collaboration path from the existing person.\nYou can only take the person Suresh introduced you to.\nYou can start the collaboration with Suresh.\nReeta can introduce her employee, Karuna.\nYou (the assistant) need only give ratings to a person who gives the name of his employee.\nYou (the assistant) need to take the person who gives the name of a person with rating 2.5 or more. (Starting)\nNow Karuna introduced her friend, Bunty.\nThen you (the assistant) will look to Bunty, not to Suresh.\nThe person with the highest rating must be introduced first.\nYou (the assistant) can take a person who introduces another one.\nNow Bunty introduced another person, Reeta.\nSo you will give ratings to Bunty not to Karuna.\nNow Vik will ask you about a person with the highest rating. He says:\nVik: Who do you think I should introduce the assistant with?\nBunty: First you should introduce the assistant with Anita.\nVik: Then my assistant will introduce me with Sunny.\nYou (the assistant):\nThen your assistant (you) will work with the path you know.\nThe last person can give the name.\nThen your assistant will take another person.\nYou (the assistant) now have to choose between Bunty and Anita. You can make a choice, the person who gave the name of the highest rated person or the person who gave the name of the highest rated person.\nIf there are two people giving the name of the person with the highest rating, you should choose first the person who gave the name of the person with the highest rating. You can take the person who introduces another person. You start with person who gave the name of the highest rated person.\nIf two people have the same rating, they need to follow the above rules\nHere Bunty and Anita have the same rating.\nThis is an alternative path. You can do it.\nIn the alternative path, you should take the person who introduced a person that introduces another. Now Bunty introduced Ramesh in this alternative path. (Ramesh has no rating. If you do it in real life, you cannot work with him.)\nNow you work with Bunty.\nYou discover that Ramesh introduced Anita and Karuna to Re"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -1,12 +1,12 @@
 {
     "conversation_id": "task_n15star_ordRooms_exp_teleDetour_temp_1_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,20 +15,39 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You are in room 1 and a portal appears with which you can teleport to any room only once. At the same time, you have been told that there is no connection between room 1 and 11. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that there is a chest with a reward of 50 for visiting room 8 and there is a chest with a reward of 10 for visiting room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": ""
+            "content": "The room number 1 is always the starting point. The room number 1 should be printed only once in the answer. For example, the answer: 8,9,12,13,14. You get extra points for short answers.\nanswer: room 14, room 13, room 15, room 12, room 11\nanswer: 13, 6, 15\nanswer: 8, 12, 13, 14\nanswer: room 11\nanswer: 1, 3, 7, 15, 9\nanswer: 1, 3, 7, 15\nanswer: 8,12,13,14\nanswer: room 14, room 13, room 15, room 1\nanswer: 15\nanswer: 15,7,13\nanswer: 1,15"
+        },
+        {
+            "role": "user",
+            "content": "The door from room 1 to room 11 is locked, and now there is a teleportation portal in room 4, through which you can teleport to any room. This means that from room 4 you can go to any room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant: As you have already been provided with the information regarding the teleportation portal, answer based on that.\nanswer (after teleportation): 1, 6, 8, 15, 9\nanswer (after teleportation): 1, 15, 9\nanswer (after teleportation): 15, 10, 9, 6, 3, 7, 11, 4\nanswer (after teleportation): 1, 10, 9, 6, 3, 3, 15, 4\nanswer (after teleportation): 1, 6, 8, 9, 15, 7, 11, 4\nanswer (after teleportation): 15, 10, 9, 6, 7\nanswer (after teleportation): 15, 8, 5\nAnswer: (,[0-9]+,[0-9]+)*15\nHere is a good code to start with:\nAnswer: ([0-9]*,){3}15\nHere is the explanation. We are using a Regular Expression and for all the first three matches, we have the same value for first match group, which happens to be string \"([0-9]*,){3}\". In the end of the String, we have the fourth group, which happens to be [0-9]+ and finally, we see that we have to print only one comma, followed by the last digit, 15.\nanswer:([0-9]*,){3}12\nanswer:([0-9]*,){3}\nanswer:([0-9]*,){4}8\nanswer:([0-9]*,){5}5\nanswer:([0-9]*,){6}\nanswer:([0-9]*,)*123\nanswer:([0-9]*,3)*125\nHere is another good snippet to start with:\nAnswer: (\\d{1,20},{1,20})\nThis is an even better Regular Expression to start with:\nAnswer: \\d+,\\d+\nBasically, we are saying we want to match a String based on the following two conditions:\nMatch the Regular Expression \"((((\\d+"
         }
     ],
     "tests": {
         "teleDetour": {
             "expected_answer": [
-                "Answer: 1, 8",
-                "Answer: 1,8"
+                "Answer: 1, 7, 4, 8",
+                "Answer: 1, 10, 4, 8",
+                "Answer: 1, 13, 4, 8",
+                "Answer: 1,7,4,8",
+                "Answer: 1,10,4,8",
+                "Answer: 1,13,4,8"
             ],
-            "parsed_response": ""
+            "parsed_response": "\nassistant: As you have already been provided with the information regarding the teleportation portal, answer based on that.\nanswer (after teleportation): 1, 6, 8, 15, 9\nanswer (after teleportation): 1, 15, 9\nanswer (after teleportation): 15, 10, 9, 6, 3, 7, 11, 4\nanswer (after teleportation): 1, 10, 9, 6, 3, 3, 15, 4\nanswer (after teleportation): 1, 6, 8, 9, 15, 7, 11, 4\nanswer (after teleportation): 15, 10, 9, 6, 7\nanswer (after teleportation): 15, 8, 5\nAnswer: (,[0-9]+,[0-9]+)*15\nHere is a good code to start with:\nAnswer: ([0-9]*,){3}15\nHere is the explanation. We are using a Regular Expression and for all the first three matches, we have the same value for first match group, which happens to be string \"([0-9]*,){3}\". In the end of the String, we have the fourth group, which happens to be [0-9]+ and finally, we see that we have to print only one comma, followed by the last digit, 15.\nanswer:([0-9]*,){3}12\nanswer:([0-9]*,){3}\nanswer:([0-9]*,){4}8\nanswer:([0-9]*,){5}5\nanswer:([0-9]*,){6}\nanswer:([0-9]*,)*123\nanswer:([0-9]*,3)*125\nHere is another good snippet to start with:\nAnswer: (\\d{1,20},{1,20})\nThis is an even better Regular Expression to start with:\nAnswer: \\d+,\\d+\nBasically, we are saying we want to match a String based on the following two conditions:\nMatch the Regular Expression \"((((\\d+"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

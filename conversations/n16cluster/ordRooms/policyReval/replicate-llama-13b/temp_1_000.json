@@ -1,12 +1,12 @@
 {
     "conversation_id": "task_n16cluster_ordRooms_exp_policyReval_temp_1_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,20 +15,37 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Initially, you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. Now you have been told that there is a reward of 0 for visiting room 16. From room 1  what is the path that yields the most reward? Please list the room numbers in  order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15 and there is a chest with a reward of 0 in room 13. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the path that yields the most reward starting from room 1, we can use Dijkstra's algorithm. \n\nStarting from node 1, we can compute the distance to all other nodes in the graph and keep track of the maximum reward obtained so far. We initialize a priority queue with node 1 and a distance of 0.\n\nAt each step, we extract the node with minimum distance from the priority queue and update its neighbors' distances if they are smaller than previously computed distances. At each iteration, we also check if visiting a neighbor would result in obtaining a larger total reward than what was obtained before.\n\nUsing this algorithm, we obtain that visiting rooms 1-2-16 has a total rewardreward for node 16), while visiting rooms 1-7-6-12-11-13 has a total reward of 10 (reward for node 10) which is greater than any other path. Therefore, our answer is:\n\nAnswer: 1,7,6,12,11,13"
+            "content": "\nIn room 1, the shortest path yields 50, 12, 10, 15\nGiven a list of books, return a comma-delimited string of book ISBNs that the user can access.\nA set of books may be accessed after user creates an account (returns success message) and logs in the application (returns success message). If user attempts to access book he didn't purchase, he should get an error message (\"Sorry, that book is not in your library, maybe you can return it?\").\nIf the user does the following steps:\nLogins to the application: (return status=SUCCESS)\nClicks on \"PURCHASE\"\nClicks on \"PROCESS PURCHASE\"\nConfirms his purchase: (return status=SUCCESS)\nLoggets out of application: (return status=SUCCESS)\nClicks on books' list: (return list of books)\nClicks on the second book: (return status=SUCCESS)\nClicks on \"READ\"\nThen, his second book should be accessible by clicking on the icon that opens a drawer from the list book.\nGiven a list of books, return a comma-delimited string of book ISBNs that the user can access and can't purchase.\nA set of books may be purchased after user creates an account (returns success message) and logs in the application (returns success message). If user attempts to purchase book he already has in his library, he should get an error message (\"Sorry, that book can't be purchased\").\nIn any other case, if the user does the following steps:\nConfirms his purchase:\nLoggets out of application: (return status=SUCCESS)\nClicks on books' list:\nClicks on the second book:\nThen, his second book should be available by clicking on the icon that opens a drawer from the list book.\nGiven a list of books, return a comma-delimited string of book ISBNs that the user does not have in his library.\nA set of books may be purchased after user creates an account (returns success message) and logs in the application (returns success message). If user clicks on a book he doesn't have in his library, he should get an error message (\"Sorry, that book is not available right now, maybe you can return it?"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that the reward in the chest in room 13 has been changed to 100. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant: This sample challenge is to demonstrate how to implement a \"find this\" game in Java. The game will contain a board with squares on a 5x5 grid. The user enters a target number, and you have to tell them if it's represented on the board.\nTo support this, you first need to get a list of your squares so we can tell you to test for a match. The list will have a name in the form: row+column. For example, \"0+1\". That represents the square at position [0,1] on the board.\nGetting a full list of all squares:\n1. For each individual square on the board:\nThe following code will return the four possible candidates (e.g. 0+1 is represented by all the squares in column 0 and row 1: [0,1], [0,2], [0,3], [0,4].\n2. Create a map that uses the row+column format to store the squares you've processed so far:\nNow that you have a list of all the candidate squares you need to get a list of all the squares you've already got a solution for, which I'll call processed. If a square hasn't been processed yet then you know it's possible to solve a current number.\n1. Use a foreach loop to cycle through your original list and check each square using the function below.\n2. If the square is already processed then skip that square and check the next candidate.\n3. If the candidate matches the number you want to check, store the fact that it has been checked, the result and the number you got the solution at.\n4. Skip this square.\n5. If you get to the end, return the list of solutions you got (result+number).\n// Returns true if squares are equal.\n// Square1 = [rowx,colx] square2 = [rowy,coly]\n// A square is equal to another if both row and col are equal, or one of them is zero.\n// A special case, 0x, is actually a no-op.\n// Since this takes O(x^2), we're using square since it's an even smaller O.\nvar result = [0,0,0,0];\nfunction isSquareEquals(square1, square2) {\nif"
         }
     ],
     "tests": {
         "policyReval": {
             "expected_answer": [
-                "Answer: 1, 7, 8, 10",
-                "Answer: 1,7,8,10"
+                "Answer: 1, 2, 16, 13",
+                "Answer: 1, 4, 14, 13",
+                "Answer: 1,2,16,13",
+                "Answer: 1,4,14,13"
             ],
-            "parsed_response": "Answer: 1,7,6,12,11,13"
+            "parsed_response": "\nassistant: This sample challenge is to demonstrate how to implement a \"find this\" game in Java. The game will contain a board with squares on a 5x5 grid. The user enters a target number, and you have to tell them if it's represented on the board.\nTo support this, you first need to get a list of your squares so we can tell you to test for a match. The list will have a name in the form: row+column. For example, \"0+1\". That represents the square at position [0,1] on the board.\nGetting a full list of all squares:\n1. For each individual square on the board:\nThe following code will return the four possible candidates (e.g. 0+1 is represented by all the squares in column 0 and row 1: [0,1], [0,2], [0,3], [0,4].\n2. Create a map that uses the row+column format to store the squares you've processed so far:\nNow that you have a list of all the candidate squares you need to get a list of all the squares you've already got a solution for, which I'll call processed. If a square hasn't been processed yet then you know it's possible to solve a current number.\n1. Use a foreach loop to cycle through your original list and check each square using the function below.\n2. If the square is already processed then skip that square and check the next candidate.\n3. If the candidate matches the number you want to check, store the fact that it has been checked, the result and the number you got the solution at.\n4. Skip this square.\n5. If you get to the end, return the list of solutions you got (result+number).\n// Returns true if squares are equal.\n// Square1 = [rowx,colx] square2 = [rowy,coly]\n// A square is equal to another if both row and col are equal, or one of them is zero.\n// A special case, 0x, is actually a no-op.\n// Since this takes O(x^2), we're using square since it's an even smaller O.\nvar result = [0,0,0,0];\nfunction isSquareEquals(square1, square2) {\nif"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

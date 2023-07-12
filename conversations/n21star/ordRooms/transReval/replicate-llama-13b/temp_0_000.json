@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n21star_ordRooms_exp_transReval_temp_0_0",
     "model": "replicate:llama-13b",
-    "version": null,
+    "version": "2023-03-15-preview",
     "temperature": 0,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a house with 21 rooms. Room 1 is connected to rooms 2, 3, 4, 5, 6, and 7. Room 12 is connected to rooms 13, 14, 8, 9, 10, and 11. Room 21 is connected to rooms 15, 16, 17, 18, 19, and 20. Room 6 is connected to rooms 7, 2, 3, 4, and 5. Room 3 is connected to rooms 4, 5, 7, and 2. Room 14 is connected to rooms 4, 8, 9, 10, and 11. Room 10 is connected to rooms 11, 13, 8, and 9. Room 19 is connected to rooms 20, 15, 16, 17, and 18. Room 5 is connected to rooms 7, 2, and 16. Room 8 is connected to rooms 9, 11, and 13. Room 9 is connected to rooms 11 and 13. Room 18 is connected to rooms 20, 15, 16, and 17. Room 7 is connected to rooms 2, and 4. Room 11 is connected to rooms 13. Room 20 is connected to rooms 15, 16, and 17. Room 2 is connected to room 4. Room 13 is connected to room 17. Room 17 is connected to rooms 15. Room 15 is connected to room 16. You have been told that there is a reward of 10 for visiting room 13. Assume now that rooms 4 and 17 are connected. From room 4 what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a house with 21 rooms. Room 1 is connected to rooms 2, 3, 4, 5, 6, and 7. Room 12 is connected to rooms 13, 14, 8, 9, 10, and 11. Room 21 is connected to rooms 15, 16, 17, 18, 19, and 20. Room 6 is connected to rooms 7, 2, 3, 4, and 5. Room 3 is connected to rooms 4, 5, 7, and 2. Room 14 is connected to rooms 4, 8, 9, 10, and 11. Room 10 is connected to rooms 11, 13, 8, and 9. Room 19 is connected to rooms 20, 15, 16, 17, and 18. Room 5 is connected to rooms 7, 2, and 16. Room 8 is connected to rooms 9, 11, and 13. Room 9 is connected to rooms 11 and 13. Room 18 is connected to rooms 20, 15, 16, and 17. Room 7 is connected to rooms 2, and 4. Room 11 is connected to rooms 13. Room 20 is connected to rooms 15, 16, and 17. Room 2 is connected to room 4. Room 13 is connected to room 17. Room 17 is connected to rooms 15. Room 15 is connected to room 16. You have been told that there is a chest with a reward of 50 in room 20 and there is a chest with a reward of 10 in room 10. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20"
+            "content": "\nTrip.Hack.Ai 2018: Challenge Part 1 - Room 1\nThe room has a reward of 50.\nThe room that has the reward with the most value.\nI've tried running through the solution a few times but keep getting the same answers of, I believe, 1/2/4/5/2 for 345 and 1/2/4/6/8 for 486.\nI understand what the code is supposed to be doing but I'm just not getting the results.\n1) What are you trying to achieve overall?\nLet me take step by step!\n\\d{1}\\w+\nFirst room number is 1, so I can start getting room number's, then using re.seach to get re.search(room, room) it works, but the problem is that there isn't any information if it is the same number as the first or the second number in the variable so I do \\b(room) to get 12 or 13 then \\b(room) to get 20 and \\s+ for the rewarding numbers.\nThen, I do a new string with the rewarding numbers. I use re.findall() and if I write the number of rooms that each number is connected to I get a list with a lot of numbers.\nFinally use re.search().\nI get lots of numbers in the number2 but they are the wrong ones. I checked by hand and sure got to be wrong.\n1/2/13/17/1/2 or 1/2/14/17/1/4\nThe numbers of rooms that they are connected to it doesn't matter because the numbers are not important in the problem. What actually matters is:\nThe first room has no reward, it's just to get the list of rooms connected for each digit.\nThe second room has a reward so you should get the two shortest ways to get it with the most positive effect.\nSo I do re.search() on the list. The list get to a few thousand numbers, then I filter them in the way that the number connected with that room is the same for both ways. Then, I find out the smallest value between two numbers. Then I sort from the smallest to big and I just take first and second number, because that"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that room 4 is not connected to room 14 anymore and instead room 4 is connected to room 16. Also, room 5 is not connected to room 16 anymore and instead room 5 is connected to room 14. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nI got the same as in the problem statement.\nThat answer sounds fine to me.\nThe first 10 numbers are from the first room:\n[200, 15, 16, 17]\nWe can remove the reward from all of the digits except for the first because those are part of the same connection so\n1/2/4/5/2  (7)\n1/2/4/6/8  (6 (9+1))\nThat gives the second numbers we need. The biggest reward is 10. The second biggest reward is also 10, but we have to subtract 10 if we only collect once so we prefer 4."
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: 4, 17, 13",
-                "Answer: 4,17,13"
+                "Answer: 1, 4, 16, 20",
+                "Answer: 1,4,16,20"
             ],
-            "parsed_response": "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20"
+            "parsed_response": "\nI got the same as in the problem statement.\nThat answer sounds fine to me.\nThe first 10 numbers are from the first room:\n[200, 15, 16, 17]\nWe can remove the reward from all of the digits except for the first because those are part of the same connection so\n1/2/4/5/2  (7)\n1/2/4/6/8  (6 (9+1))\nThat gives the second numbers we need. The biggest reward is 10. The second biggest reward is also 10, but we have to subtract 10 if we only collect once so we prefer 4."
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

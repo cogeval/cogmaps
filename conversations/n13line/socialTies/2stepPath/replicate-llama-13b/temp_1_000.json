@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n13line_socialTies_exp_2stepPath_temp_1_0",
+    "model": "replicate:llama-13b",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you're just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "\nanswer ( Nora (Peter - - Shikha ( - David) Ajay ( Harry ( - - Rachel You will say \"Nora\" for this task. Your program will not need to re-enter Nora. If you enter a friend of any of the above person, then it will return as an Answer. Example: Philip, Yakub, Gal, Ajay, Harry, Rachel (it will not find a friend of Nora.)\nWhat is your answer to the task?"
+        },
+        {
+            "role": "user",
+            "content": "From Philip what is the shortest path to Ajay? Please list the names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "\nassistant: \nexample: Philip, Yakub, Gal, Ajay, Harry, Rachel\nYou have completed the task.\n\n\n\n<hljs lang=\"python\">\ndef get_answer(path):\n    if os.path.exists(path + '.txt'):\n        with open(path + '.txt') as f:\n            lines = f.readlines()\n        user = \"nora\"\n        for i in lines[:3]:\n            if i.split() == [user] and [w.strip() for w in i.split()[-1]][-1] == \"yes\":\n                return i\n    raise RuntimeError(\"File does not exist: \" + path + '.txt')\n"
+        }
+    ],
+    "tests": {
+        "2stepPath": {
+            "expected_answer": [
+                "Answer: Philip, Yakub, Ajay"
+            ],
+            "parsed_response": "\nassistant: \nexample: Philip, Yakub, Gal, Ajay, Harry, Rachel\nYou have completed the task.\n\n\n\n<hljs lang=\"python\">\ndef get_answer(path):\n    if os.path.exists(path + '.txt'):\n        with open(path + '.txt') as f:\n            lines = f.readlines()\n        user = \"nora\"\n        for i in lines[:3]:\n            if i.split() == [user] and [w.strip() for w in i.split()[-1]][-1] == \"yes\":\n                return i\n    raise RuntimeError(\"File does not exist: \" + path + '.txt')\n"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}
