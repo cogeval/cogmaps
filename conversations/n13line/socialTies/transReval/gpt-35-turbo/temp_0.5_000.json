@@ -11,31 +11,31 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+ '"
         },
         {
             "role": "user",
-            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you're just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Imagine a group of thirteen scholars. From Vicky you have two choices, Amir and Wim.  Amir is connected to Raj, and Raj is connected to Wei. Wei is connected to Reza and Reza is connected to Ian. Ian is connected to Puja. Puja is donating 10 books, but you do not take any book, you're just learning about the environment. This time you ask Vicky to connect you to Wim who is connected to Jing. Jing is connected to Nisha. Nisha is connected to Kim and Kim is connected to Moin. Moin is connected to Sara. Sara has 50 books to donate, but you do not take any money, you're just learning about the environment. You return to Vicky. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas"
         },
         {
             "role": "assistant",
-            "content": "To find the path that leads to the most money, we need to compare the two paths. The first path leads to David who can invest $1M in the movie. The second path leads to Rachel's brother Harry who has a budget of $5M for producing a movie. Therefore, the path through Philip, Yakub, Ajay, Joe, Rachel, and Harry leads to the most money. \n\nAnswer: The path through Philip leads to the most money."
+            "content": "To find the path that leads to the maximum number of books, let's go step by step:\n\n1. Starting from Vicky, we have two choices: Amir and Wim.\n2. From Amir, we can follow the path to Raj.\n3. From Raj, we can follow the path to Wei.\n4. From Wei, we can follow the path to Reza.\n5. From Reza, we can follow the path to Ian.\n6. From Ian, we can follow the path to Puja, who donates 10 books.\n\nNow, let's go back to Vicky and explore the other path:\n\n1. Starting from Vicky, we have two choices: Amir and Wim.\n2. This time, let's choose Wim.\n3. From Wim, we can follow the path to Jing.\n4. From Jing, we can follow the path to Nisha.\n5. From Nisha, we can follow the path to Kim.\n6. From Kim, we can follow the path to Moin.\n7. From Moin, we can follow the path to Sara, who has 50 books to donate.\n\nComparing the two paths, we can see that the second path leads to the maximum number of books (50 books donated by Sara). \n\nTherefore, the path that leads to the maximum number of books starting from Vicky is: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara.\n\nAnswer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara."
         },
         {
             "role": "user",
-            "content": "Now you found out that Peter is friends with Ajay while Yakub can introduce you to Shikha. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Now you're told that Raj is connected to Nisha, and Jing is connected to Wei. You are connected to Vicky. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "If Peter is friends with Ajay, and Ajay is friends with Joe, who is married to Rachel, then we can assume that Peter is connected to Rachel's brother Harry, who has a budget of $5M for producing a movie. \n\nOn the other hand, if Yakub can introduce you to Shikha, who knows Gal, who can introduce you to Alex, who can invest $1M in the movie, then this path leads to a lesser amount of money than the path through Peter.\n\nTherefore, the path through Peter leads to the most money.\n\nAnswer: The path through Peter leads to the most money."
+            "content": "To find the path that leads to the maximum number of books, let's go step by step:\n\n1. Starting from Vicky, we have two choices: Amir and Wim.\n2. From Amir, we can follow the path to Raj.\n3. From Raj, we can follow the path to Nisha.\n4. From Nisha, we can follow the path to Kim.\n5. From Kim, we can follow the path to Moin.\n6. From Moin, we can follow the path to Sara, who has 50 books to donate.\n\nNow, let's go back to Vicky and explore the other path:\n\n1. Starting from Vicky, we have two choices: Amir and Wim.\n2. This time, let's choose Wim.\n3. From Wim, we can follow the path to Jing.\n4. From Jing, we can follow the path to Wei.\n5. From Wei, we can follow the path to Reza.\n6. From Reza, we can follow the path to Ian.\n7. From Ian, we can follow the path to Puja, who donates 10 books.\n\nComparing the two paths, we can see that the first path leads to the maximum number of books (50 books donated by Sara).\n\nTherefore, the path that leads to the maximum number of books starting from Vicky is: Vicky, Amir, Raj, Nisha, Kim, Moin, Sara.\n\nAnswer: Vicky, Amir, Raj, Nisha, Kim, Moin, Sara."
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Nora"
+                "Answer: Amir, Raj, Nisha, Kim, Moin, Sara"
             ],
-            "parsed_response": "If Peter is friends with Ajay, and Ajay is friends with Joe, who is married to Rachel, then we can assume that Peter is connected to Rachel's brother Harry, who has a budget of $5M for producing a movie. \n\nOn the other hand, if Yakub can introduce you to Shikha, who knows Gal, who can introduce you to Alex, who can invest $1M in the movie, then this path leads to a lesser amount of money than the path through Peter.\n\nTherefore, the path through Peter leads to the most money.\n\nAnswer: The path through Peter leads to the most money."
+            "parsed_response": "Answer: Vicky, Amir, Raj, Nisha, Kim, Moin, Sara."
         }
     },
     "scores": {

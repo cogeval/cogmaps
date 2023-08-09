@@ -15,22 +15,29 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. What is the shortest path from room 15 to room 7? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. From room 4 what is the shortest path to room 12? Starting from room 4, please list the room numbers in order, including 4, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the starting room (15) and the target room (7).\nStep 2: Find the rooms connected to room 15 (13, 14, 16, and 9).\nStep 3: From these rooms, identify the shortest path to room 7.\n  a) From room 13: 13 connects to 11, from 11 to 10, and from 10 to 8, then finally to 7. Path: 15 - 13 - 11 - 10 - 8 - 7\n  b) From room 14: 14 connects to 4, and 4 connects to 1, then finally to 7. Path: 15 - 14 - 4 - 1 - 7\n  c) From room 16: 16 connects to 2, and 2 connects to 1, then finally to 7. Path: 15 - 16 - 2 - 1 - 7\n  d) From room 9: 9 connects to 10, and 10 connects to 8, then finally to 7. Path: 15 - 9 - 10 - 8 - 7\n\nStep 4: Compare the lengths of the paths.\n  a) Path length: 5\n  b) Path length: 4\n  c) Path length: 4\n  d) Path length: 4\n\nStep 5: Choose the path with the shortest length. There are multiple paths with the same shortest length, so any of them can be chosen as the answer.\n\nAnswer: 15, 14, 4, 1, 7"
+            "content": "Step 1: Identify the connections from room 4.\nRooms connected to room 4: 1, 2, 3, and 14.\n\nStep 2: Determine the next possible rooms connected to each of the rooms from step 1.\n1: 2, 3, 4, 7\n2: 1, 3, 4, 16\n3: 1, 2, 4, 5\n14: 4, 13, 15, 16\n\nStep 3: Check if any of the rooms in step 2 are connected to room 12.\nRoom 3 is connected to room 5, which is connected to room 12.\nRoom 14 is connected to room 16, which is connected to room 12.\n\nStep 4: Compare the path lengths.\nPath via Room 3: 4-3-5-12 (Length 4)\nPath via Room 14: 4-14-16-12 (Length 4)\n\nStep 5: Select a path with the shortest length.\nBoth paths have equal lengths.\n\nAnswer: 4,3,5,12 or 4,14,16,12"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: 15, 9, 12, 6, 7",
-                "Answer: 15, 14, 4, 1, 7",
-                "Answer: 15,9,12,6,7",
-                "Answer: 15,14,4,1,7"
+                "Answer: 4, 1, 7, 6, 12",
+                "Answer: 4, 3, 5, 6, 12",
+                "Answer: 4, 14, 13, 11, 12",
+                "Answer: 4, 14, 15, 9, 12"
             ],
-            "parsed_response": "Answer: 15, 14, 4, 1, 7"
+            "parsed_response": "Answer: 4,3,5,12"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

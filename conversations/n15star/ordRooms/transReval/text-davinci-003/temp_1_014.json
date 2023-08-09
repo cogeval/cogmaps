@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n15star_ordRooms_exp_transReval_temp_1_14",
     "model": "text-davinci-003",
-    "version": "2023-03-15-preview",
+    "version": "2022-12-01",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. Assume now that rooms 1 and 3 are connected. From room 1 what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that there is a chest with a reward of 50 for visiting room 8 and there is a chest with a reward of 10 for visiting room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: 1,7,10,13,11,14,15"
+            "content": "Answer: 1,7,10,13,8,15"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that room 1 is no longer connected to room 11 and instead, now room 1 is connected to room 12. Also, room 4 is no longer connected to room 15 and instead, now room 4 is connected to room 11. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "assistant: Answer: 1,12,11,8,15"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: 1, 3, 8",
-                "Answer: 1,3,8"
+                "Answer: 1, 12, 3, 8",
+                "Answer: 1,12,3,8"
             ],
-            "parsed_response": "Answer: 1,7,10,13,11,14,15"
+            "parsed_response": "Answer: 1,12,11,8,15"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nonteleShortcut_temp_1_25",
+    "conversation_id": "task_n16cluster_ordRooms_exp_nonteleShortcut_temp_1_25",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and  7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4  and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to  rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is  connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10.  Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11,  8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also  connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and  11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13,  14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Initially, you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. You have been told that room 16 is now connected to room 9. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the path that yields the most reward from room 1, we can use Dijkstra's algorithm. We start at room 1 and explore all possible paths, updating the rewards and keeping track of the maximum reward. Using this algorithm, we get the following path:\n\n1, 2, 16, 13, 15, 9, 10\n\nThe total reward for this path is 30, which is the maximum reward we can get starting from room 1. Note that we avoid room 5 because of the penalty.\n\nAnswer: 1, 2, 16, 13, 15, 9, 10"
+            "content": "To find the shortest path that yields the most reward, we can use Dijkstra's algorithm. Starting from Room 1, we can calculate the shortest path to each room and keep track of the maximum reward we can get along the way. \n\nThe shortest path that yields the most reward from Room 1 is: 1, 8, 10. The total reward collected will be 50. \n\nHere's how we get to this answer:\n\n- From Room 1, we can go to Room 8 (reward: 0).\n- From Room 8, we can go to Room 10 (reward: 50).\n- From Room 10, we can't go anywhere else, so this is the shortest path that yields the most reward.\n\nAnswer: 1, 8, 10"
+        },
+        {
+            "role": "user",
+            "content": "You have been told that room 1 has a new door that opens to a new room, room 17. Room 17 is connected to all room 12\u2019s neighboring rooms. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Adding the new room 17 and its connections, the graph now looks like this:\n\nRoom 1: 2, 3, 4, 7, 17\nRoom 2: 1, 3, 4, 16\nRoom 3: 1, 2, 4, 5\nRoom 4: 1, 2, 3, 14\nRoom 5: 3, 6, 7, 8\nRoom 6: 5, 7, 8, 12\nRoom 7: 1, 5, 6, 8\nRoom 8: 5, 6, 7, 10\nRoom 9: 10, 11, 12, 15\nRoom 10: 8, 9, 11, 12\nRoom 11: 9, 10, 12, 13\nRoom 12: 6, 9, 10, 11\nRoom 13: 11, 14, 15, 16\nRoom 14: 4, 13, 15, 16\nRoom 15: 9, 13, 14, 16\nRoom 16: 2, 13, 14, 15\nRoom 17: 12\n\nTo find the shortest path that yields the most reward from Room 1, we can use Dijkstra's algorithm again. \n\nThe shortest path that yields the most reward from Room 1 is: 1, 17, 12, 9. The total reward collected will be 10.\n\nHere's how we get to this answer:\n\n- From Room 1, we can go to Room 17 (reward: 0).\n- From Room 17, we can go to Room 12 (reward: 0).\n- From Room 12, we can go to Room 9 (reward: 0).\n- From Room 9, we can go to Room 15 (reward: 10), but the total reward collected will still be 10 because we can only collect from one chest.\n\nAnswer: 1, 17, 12, 9"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: 1, 2, 16, 9, 10",
-                "Answer: 1,2,16,9,10"
+                "Answer: 1, 17, 10",
+                "Answer: 1,17,10"
             ],
-            "parsed_response": "Answer: 1, 2, 16, 13, 15, 9, 10"
+            "parsed_response": "Answer: 1, 17, 12, 9"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

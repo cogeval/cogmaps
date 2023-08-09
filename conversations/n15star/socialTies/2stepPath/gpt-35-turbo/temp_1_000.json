@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,24 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Wim? Starting from Amir, including Amir, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Jing? Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Reza, Pari, Puja, Wim"
+            "content": "To find the shortest path from Amir to Jing, we can use the breadth-first search (BFS) algorithm. Here are the steps:\n\n1. Start with Amir as the initial node and mark it as visited.\n2. Create an empty queue and enqueue Amir.\n3. While the queue is not empty, do the following steps:\n   - Dequeue a scholar from the queue.\n   - If the dequeued scholar is Jing, we have found the shortest path.\n   - Otherwise, enqueue all unvisited scholars connected to the dequeued scholar.\n   - Mark the dequeued scholar as visited.\n4. Repeat step 3 until either we find Jing or the queue becomes empty.\n\nLet's go through the steps and find the shortest path from Amir to Jing:\n\n1. Start with Amir (visited).\n2. Enqueue Reza, Moin, Pari, and Puja.\n3. Dequeue Reza (visited).\n4. Enqueue Moin and Pari.\n5. Dequeue Moin (visited).\n6. Enqueue Pari.\n7. Dequeue Pari (visited).\n8. Enqueue Puja.\n9. Dequeue Puja (visited).\n10. Enqueue Wim (connected to Wei, Kim, Puja, and Pam).\n11. Enqueue Wei, Kim, and Pam.\n12. Dequeue Wei (visited).\n13. Enqueue Kim.\n14. Dequeue Kim (visited).\n15. Enqueue Pam.\n16. Dequeue Pam (visited).\n17. Enqueue Raj (connected to Nisha, Ian, Sara, and Kim).\n18. Enqueue Nisha, Ian, Sara, and Kim (visited).\n19. Enqueue Jing (connected to Reza, Moin, Pari, and Max).\n\nThe shortest path from Amir to Jing is: Amir, Reza, Moin, Pari, Jing.\n\nAnswer: Amir, Reza, Moin, Pari, Jing"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Amir, Puja, Wim"
+                "Answer: Amir, Reza, Jing",
+                "Answer: Amir, Moin, Jing",
+                "Answer: Amir, Pari, Jing"
             ],
-            "parsed_response": "Answer: Amir, Reza, Pari, Puja, Wim"
+            "parsed_response": "Answer: Amir, Reza, Moin, Pari, Jing"
         }
     },
     "scores": {
         "2stepPath": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

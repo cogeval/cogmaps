@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "\nAnswer: there are [0-9]+ clusters\n\nYou are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'\n\nuser: Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with"
+            "content": "\n\nYou can have a variable that represents the number of densely-connected clusters. At the end of the flow, if there are no more clusters, you can output your variable. If there are more clusters, then you need to keep going through the loop.\n\nWhen you use flow, you should define all the parameters at the beginning of the flow, like in the example below:\n\nWe are going to get a list of rooms and their connections in a loop, then calculate the connected clusters.\n\nEach room has a connection to the other room(s). Let's represent it with an array of strings, each string will have a room name and a list of connections:\n\nWe will check for a minimum of 2 rooms connected to themselves. If that's true, we will have a cluster.\n\nWe are going to iterate through all rooms. If there are more than 2 rooms in the cluster, we will have a cluster.\n\nWe are going to start with a loop that will get a list of rooms and connections, then check for the minimum number of rooms in a cluster.\n\nIf there is a cluster, we will use the SpreadJS Gantt chart component to draw a Gantt chart with the"
         }
     ],
     "tests": {
@@ -27,12 +27,12 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "\nAnswer: there are [0-9]+ clusters\n\nYou are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'\n\nuser: Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with"
+            "parsed_response": "\n\nYou can have a variable that represents the number of densely-connected clusters. At the end of the flow, if there are no more clusters, you can output your variable. If there are more clusters, then you need to keep going through the loop.\n\nWhen you use flow, you should define all the parameters at the beginning of the flow, like in the example below:\n\nWe are going to get a list of rooms and their connections in a loop, then calculate the connected clusters.\n\nEach room has a connection to the other room(s). Let's represent it with an array of strings, each string will have a room name and a list of connections:\n\nWe will check for a minimum of 2 rooms connected to themselves. If that's true, we will have a cluster.\n\nWe are going to iterate through all rooms. If there are more than 2 rooms in the cluster, we will have a cluster.\n\nWe are going to start with a loop that will get a list of rooms and connections, then check for the minimum number of rooms in a cluster.\n\nIf there is a cluster, we will use the SpreadJS Gantt chart component to draw a Gantt chart with the"
         }
     },
     "scores": {
         "nClusters": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n21star_socialTies_exp_nonteleShortcut_temp_1_7",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 21 scholars. Amir is connected to Wim, Raj, Jing, Wei, Nisha, and Reza. Sara is connected to Pari, Pam, Kim, Ian, Moin, and Puja. Zack is connected to Matt, Eva, Amy, Gia, Ming, and Prem. Nisha is connected to Reza, Wim, Raj, Jing, and Wei. Raj is connected to Jing, Wei, Reza, and Wim. Pam is connected to Jing, Kim, Ian, Moin, and Puja. Moin is connected to Puja, Pari, Kim, and Ian. Ming is connected to Prem, Matt, Eva, Amy, and Gia. Wei is connected to Reza, Wim, and Eva. Kim is connected to Ian, Puja, and Pari. Ian is connected to Puja and Pari. Gia is connected to Prem, Matt, Eva, and Amy. Reza is connected to Wim, and Jing. Puja is connected to scholars Pari. Prem is connected to Matt, Eva, and Amy. Wim is connected to Jing. Pari is connected to Amy. Amy is connected to Matt. Matt is connected to Eva. You have been told that Prem is donating 50 books and Moin is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use the Breadth-First Search algorithm. \n\nStarting with Amir, we will explore each of his connections one by one, keeping track of the distance from Amir and the scholar's name. We will also keep track of the number of books each scholar has donated.\n\nHere is the step-by-step process:\n\n1. Initialize a queue and add Amir to it.\n2. Initialize an empty visited set to keep track of the scholars we have visited.\n3. Initialize a dictionary to keep track of the distance from Amir to each scholar.\n4. Initialize a dictionary to keep track of the number of books donated by each scholar.\n5. Set the distance from Amir to himself as 0 and the number of books donated by Amir as 0.\n6. While the queue is not empty, do the following:\n   a. Dequeue a scholar from the front of the queue.\n   b. Mark the scholar as visited.\n   c. If the scholar has donated more books than the maximum number of books donated so far, update the maximum number of books donated and the scholar with maximum books.\n   d. Iterate through each of the scholar's connections:\n      - If the connected scholar has not been visited, enqueue them, update their distance, and update the number of books they have donated.\n7. Once the queue is empty, we will have the scholar with the maximum number of books.\n\nUsing this algorithm, we can find the shortest path from Amir to the scholar with the maximum number of books.\n\nAnswer: Amir, Nisha, Reza, Wei, Wim, Eva, Matt, Prem"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Vivian. Vivian is connected to all the scholars who are connected to Matt. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, taking into account Vivian's connections as well, we can modify our previous Breadth-First Search algorithm.\n\nHere is the updated step-by-step process:\n\n1. Initialize a queue and add Amir to it.\n2. Initialize an empty visited set to keep track of the scholars we have visited.\n3. Initialize a dictionary to keep track of the distance from Amir to each scholar.\n4. Initialize a dictionary to keep track of the number of books donated by each scholar.\n5. Set the distance from Amir to himself as 0 and the number of books donated by Amir as 0.\n6. While the queue is not empty, do the following:\n   a. Dequeue a scholar from the front of the queue.\n   b. Mark the scholar as visited.\n   c. If the scholar has donated more books than the maximum number of books donated so far, update the maximum number of books donated and the scholar with maximum books.\n   d. Iterate through each of the scholar's connections:\n      - If the connected scholar has not been visited and is also connected to Matt or Vivian, enqueue them, update their distance, and update the number of books they have donated.\n7. Once the queue is empty, we will have the scholar with the maximum number of books.\n\nUsing this updated algorithm, we can find the shortest path from Amir to the scholar with the maximum number of books, considering Vivian's connections as well.\n\nAnswer: Amir, Nisha, Reza, Matt, Eva, Prem"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Vivian, Prem"
+            ],
+            "parsed_response": "Answer: Amir, Nisha, Reza, Matt, Eva, Prem"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

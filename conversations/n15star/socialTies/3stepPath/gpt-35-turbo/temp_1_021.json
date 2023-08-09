@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_3stepPath_temp_1_21",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Puja to Raj? Starting from Puja, please list the scholar names in order, including Puja, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Puja to Raj, we can use the breadth-first search algorithm. Let's go step by step:\n\n1. Puja is connected to Pam.\n2. Pam is connected to Kim.\n3. Kim is connected to Wei.\n4. Wei is connected to Puja, Kim, and Pam. Since Puja is already visited, we skip it.\n5. Kim is connected to Puja, Kim, and Pam. Since Puja and Kim are already visited, we skip them.\n6. Pam is connected to Kim. Since Kim is already visited, we skip it.\n7. Puja is connected to Pam, Kim, and Wei. Since Pam and Kim are already visited, we skip them.\n8. Puja is connected to Pam, Kim, Wei, and Puja. Since Pam, Kim, and Wei are already visited, we skip them.\n9. Puja is connected to Pam, Kim, Wei, Puja, and Reza.\n10. Reza is connected to Moin and Pari.\n11. Moin is connected to Pari.\n12. Pari is connected to Moin and Reza. Since Moin and Reza are already visited, we skip them.\n13. Puja is connected to Pam, Kim, Wei, Puja, Reza, and Moin.\n14. Puja is connected to Pam, Kim, Wei, Puja, Reza, Moin, and Pari.\n15. Raj is connected to Nisha, Ian, Sara, and Kim. Since Nisha, Ian, Sara, and Kim are already visited, we skip them.\n16. Puja is connected to Pam, Kim, Wei, Puja, Reza, Moin, Pari, and Raj.\n\nAnswer: Puja, Reza, Moin, Pari, Raj"
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: Puja, Wim, Kim, Raj",
+                "Answer: Puja, Wei, Kim, Raj",
+                "Answer: Puja, Pam, Kim, Raj"
+            ],
+            "parsed_response": "Answer: Puja, Reza, Moin, Pari, Raj"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

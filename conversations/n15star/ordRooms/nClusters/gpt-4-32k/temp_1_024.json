@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a minimum of 2 rooms."
         },
         {
             "role": "assistant",
-            "content": "1. Identify the room connections:\n  - Rooms 1, 7, 10, 13, and 11 are connected to each other.\n  - Rooms 2, 5, 8, 11, and 14 are connected to each other.\n  - Rooms 3, 6, 9, 12, and 8 are connected to each other.\n  - Rooms 4, 7, 10, 13, and 15 are connected to each other.\n  - Rooms 5, 8, 11, and 14 are connected to each other.\n  - Rooms 6, 9, 12, and 15 are connected to each other.\n  - Rooms 7, 10, and 13 are connected to each other.\n  - Room 8 is connected to room 14.\n  - Rooms 9, 12, and 15 are connected to each other.\n  - Room 10 is connected to room 13.\n  - Room 11 is connected to room 14.\n  - Room 12 is connected to room 15.\n\n2. Analyze the connections to identify any overlapping connections and consolidate the clusters:\n  - Cluster 1: Rooms 1, 7, 10, 13, 11\n  - Cluster 2: Rooms 2, 5, 8, 11, 14\n  - Cluster 3: Rooms 3, 6, 9, 12, 8\n  - Cluster 4: Rooms 4, 7, 10, 13, 15\n  - Cluster 5: Rooms 5, 8, 11, 14\n  - Cluster 6: Rooms 6, 9, 12, 15\n  - Cluster 7: Rooms 7, 10, 13\n  - Cluster 8: Rooms 9, 12, 15\n  - Cluster 9: Rooms 10, 13\n  - Cluster 10: Rooms 11, 14\n  - Cluster 11: Rooms 12, 15\n\n3. Identify and merge the clusters that are connected by a maximum of 2 rooms:\n  - Merge Clusters 1 and 4\n  - Merge Clusters 2 and 5\n  - Merge Clusters 3 and 6\n  - Merge Clusters 7 and 9\n  - Merge Clusters 8 and 11\n  - Merge Clusters 10\n\n4. Count the total number of densely-connected clusters:\n  - 5 clusters\n\nAnswer: there are 5 clusters."
+            "content": "Step 1: List out the connections for each room\n- Room 1: 7, 10, 13, 11\n- Room 2: 5, 8, 11, 14\n- Room 3: 6, 9, 12, 8\n- Room 4: 7, 10, 13, 15\n- Room 5: 8, 11, 14\n- Room 6: 9, 12, 15\n- Room 7: 10, 13\n- Room 8: 14\n- Room 9: 12, 15\n- Room 10: 13\n- Room 11: 14\n- Room 12: 15\n- Room 13: None\n- Room 14: None\n- Room 15: None\n\nStep 2: Identify densely-connected clusters by finding groups of rooms connected to each other\n- Cluster 1: Room 1, 7, 10, 13\n- Cluster 2: Room 2, 5, 8, 11, 14\n- Cluster 3: Room 3, 6, 9, 12, 15\n- Cluster 4: Room 4, 7, 10, 13\n\nStep 3: Merge overlapping clusters\n- Merged Cluster 1: Room 1, 4, 7, 10, 13 (Combining Cluster 1 and Cluster 4)\n- Merged Cluster 2: Room 2, 5, 8, 11, 14\n- Merged Cluster 3: Room 3, 6, 9, 12, 15\n\nStep 4: Count the number of densely-connected clusters\nThere are 3 densely-connected clusters in the castle.\n\nAnswer: there are 3 clusters"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 5 clusters"
+            "parsed_response": "Answer: there are 3 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

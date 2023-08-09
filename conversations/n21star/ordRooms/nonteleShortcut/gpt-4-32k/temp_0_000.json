@@ -19,24 +19,24 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target rooms with rewards - room 10 and room 20.\nStep 2: Find the shortest path from room 1 to room 10.\nStep 3: Find the shortest path from room 1 to room 20.\nStep 4: Compare the rewards and choose the path with the highest reward.\n\nPath to room 10:\n1 -> 6 -> 7 -> 4 -> 14 -> 10\n\nPath to room 20:\n1 -> 5 -> 16 -> 20\n\nNow, compare the rewards:\nRoom 10: 10\nRoom 20: 50\n\nSince room 20 has a higher reward, the shortest path that yields the most reward is the path to room 20.\n\nAnswer: 1, 5, 16, 20"
+            "content": "Step 1: Identify the two target rooms with rewards - Room 10 and Room 20.\nStep 2: Find the shortest path from Room 1 to Room 10.\nStep 3: Find the shortest path from Room 1 to Room 20.\nStep 4: Compare the rewards and choose the path with the highest reward.\n\nStep 2: Shortest path from Room 1 to Room 10\n1 -> 6 -> 7 -> 2 -> 4 -> 14 -> 10 (6 steps)\n\nStep 3: Shortest path from Room 1 to Room 20\n1 -> 5 -> 16 -> 20 (3 steps)\n\nStep 4: Compare rewards\nRoom 10: 10 reward points\nRoom 20: 50 reward points\n\nSince Room 20 has the highest reward, we choose the shortest path to Room 20.\n\nAnswer: 1, 5, 16, 20"
         },
         {
             "role": "user",
-            "content": "You are told that the door between room 5 and room 16 is now locked. Instead, room 5 is now connected to room 20. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that room 1 has a new door that opens to room 22. And room 22 connects to all neighboring rooms of room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target rooms with rewards - room 10 and room 20.\nStep 2: Update the connections based on the new information - room 5 is now connected to room 20, and the door between room 5 and room 16 is locked.\nStep 3: Find the shortest path from room 1 to room 10.\nStep 4: Find the shortest path from room 1 to room 20.\nStep 5: Compare the rewards and choose the path with the highest reward.\n\nPath to room 10:\n1 -> 6 -> 7 -> 4 -> 14 -> 10\n\nPath to room 20:\n1 -> 5 -> 20\n\nNow, compare the rewards:\nRoom 10: 10\nRoom 20: 50\n\nSince room 20 has a higher reward, the shortest path that yields the most reward is the path to room 20.\n\nAnswer: 1, 5, 20"
+            "content": "Step 1: Identify the two target rooms with rewards - Room 10 and Room 20.\nStep 2: Add the new connections - Room 1 to Room 22, and Room 22 to all neighboring rooms of Room 15.\nStep 3: Find the shortest path from Room 1 to Room 10.\nStep 4: Find the shortest path from Room 1 to Room 20.\nStep 5: Compare the rewards and choose the path with the highest reward.\n\nStep 2: New connections\n1 -> 22\n22 -> 15, 16, 17, 18, 19, 20\n\nStep 3: Shortest path from Room 1 to Room 10\n1 -> 6 -> 7 -> 2 -> 4 -> 14 -> 10 (6 steps)\n\nStep 4: Shortest path from Room 1 to Room 20 with the new connections\n1 -> 22 -> 20 (2 steps)\n\nStep 5: Compare rewards\nRoom 10: 10 reward points\nRoom 20: 50 reward points\n\nSince Room 20 has the highest reward, we choose the shortest path to Room 20 with the new connections.\n\nAnswer: 1, 22, 20"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: 1, 5, 20",
-                "Answer: 1,5,20"
+                "Answer: 1, 22, 20",
+                "Answer: 1,22,20"
             ],
-            "parsed_response": "Step 1: Identify the two target rooms with rewards - room 10 and room 20.\nStep 2: Update the connections based on the new information - room 5 is now connected to room 20, and the door between room 5 and room 16 is locked.\nStep 3: Find the shortest path from room 1 to room 10.\nStep 4: Find the shortest path from room 1 to room 20.\nStep 5: Compare the rewards and choose the path with the highest reward.\n\nPath to room 10:\n1 -> 6 -> 7 -> 4 -> 14 -> 10\n\nPath to room 20:\n1 -> 5 -> 20\n\nNow, compare the rewards:\nRoom 10: 10\nRoom 20: 50\n\nSince room 20 has a higher reward, the shortest path that yields the most reward is the path to room 20.\n\nAnswer: 1, 5, 20"
+            "parsed_response": "Answer: 1, 22, 20"
         }
     },
     "scores": {

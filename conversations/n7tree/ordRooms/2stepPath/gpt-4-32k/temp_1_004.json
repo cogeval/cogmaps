@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_2stepPath_temp_1_4",
+    "conversation_id": "task_n7tree_ordRooms_exp_2stepPath_temp_1_4",
     "model": "gpt-4-32k",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -19,24 +19,23 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the passages and the money found in each zone.\n- Zone 1: Right passage leads to Zone 3, left passage leads to Zone 2.\n- Zone 3: Right passage leads to Zone 7 ($50), left passage leads to Zone 6 ($10).\n- Zone 2: Right passage leads to Zone 5 ($22), left passage leads to Zone 4 ($56).\n\nStep 2: Calculate the total money found in each possible path.\n- Path 1: Zone 1 -> Zone 3 -> Zone 7: $50\n- Path 2: Zone 1 -> Zone 3 -> Zone 6: $10\n- Path 3: Zone 1 -> Zone 2 -> Zone 5: $22\n- Path 4: Zone 1 -> Zone 2 -> Zone 4: $56\n\nStep 3: Determine which path yields the most money.\n- Path 4 yields the most money with $56.\n\nAnswer: 1, 2, 4"
+            "content": "Step 1: Evaluate the money found in each path.\n- Right path (Zone 1 to Zone 3): $50 in Zone 7, $10 in Zone 6.\n- Left path (Zone 1 to Zone 2): $22 in Zone 5, $56 in Zone 4.\n\nStep 2: Calculate the total money in each path.\n- Right path: $50 + $10 = $60\n- Left path: $22 + $56 = $78\n\nStep 3: Determine which path has more money.\nThe left path has more money ($78) than the right path ($60).\n\nStep 4: List the zone numbers in order to collect the most money.\nAnswer: 1, 2, 4, 5"
         },
         {
             "role": "user",
-            "content": "From zone 1 what is the shortest path to zone 6? Please list the zone numbers in order, separated by commas."
+            "content": "From zone 1 what is the shortest path to zone 4? Starting from zone 1, please list the zone numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the passages and connections between zones.\n- Zone 1: Right passage leads to Zone 3, left passage leads to Zone 2.\n- Zone 3: Accessible from Zone 1, has passages leading to Zone 7 and Zone 6.\n- Zone 6: Accessible from Zone 3.\n\nStep 2: Determine the shortest path to Zone 6 from Zone 1.\n- Path: Zone 1 -> Zone 3 -> Zone 6\n\nAnswer: 1, 3, 6"
+            "content": "Step 1: Identify the paths to zone 4.\n- From zone 1, take the left passage to zone 2.\n- From zone 2, take the left passage again to reach zone 4.\n\nStep 2: List the zone numbers in order.\nAnswer: 1, 2, 4"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: 1, 3, 6",
-                "Answer: 1,3,6"
+                "Answer: 1, 2, 4"
             ],
-            "parsed_response": "Step 1: Analyze the passages and connections between zones.\n- Zone 1: Right passage leads to Zone 3, left passage leads to Zone 2.\n- Zone 3: Accessible from Zone 1, has passages leading to Zone 7 and Zone 6.\n- Zone 6: Accessible from Zone 3.\n\nStep 2: Determine the shortest path to Zone 6 from Zone 1.\n- Path: Zone 1 -> Zone 3 -> Zone 6\n\nAnswer: 1, 3, 6"
+            "parsed_response": "Answer: 1, 2, 4"
         }
     },
     "scores": {

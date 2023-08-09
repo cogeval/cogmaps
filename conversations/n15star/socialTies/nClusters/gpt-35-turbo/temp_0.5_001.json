@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nClusters_temp_0.5_1",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the densely-connected clusters in this group, we can use the concept of connected components in graph theory. Each scholar represents a node in the graph, and the connections between scholars represent edges.\n\nWe can start by representing the connections in a graph:\n\nAmir -> Reza, Moin, Pari, Puja\nWim -> Wei, Kim, Puja, Pam\nRaj -> Nisha, Ian, Sara, Kim\nJing -> Reza, Moin, Pari, Max\nWei -> Kim, Puja, Pam\nNisha -> Ian, Sara, Max\nReza -> Moin, Pari\nKim -> Pam\nIan -> Sara, Max\nMoin -> Pari\nPuja -> Pam\nSara -> Max\n\nNext, we can use a graph traversal algorithm, such as depth-first search (DFS), to find the connected components. We start with an unvisited node and explore all its connected nodes. We repeat this process for all unvisited nodes until all nodes have been visited.\n\nStarting with Amir, we explore the following nodes: Reza, Moin, Pari, Puja, Kim, Pam, Ian, Sara, Max, Nisha, Wei. This forms one connected component.\n\nNext, we start with Wim and explore the following nodes: Wei, Kim, Puja, Pam. This forms another connected component.\n\nNext, we start with Raj and explore the following nodes: Nisha, Ian, Sara, Max, Kim. This forms another connected component.\n\nNext, we start with Jing and explore the following nodes: Reza, Moin, Pari, Max. This forms another connected component.\n\nFinally, we start with Nisha and explore the following nodes: Ian, Sara, Max. This forms another connected component.\n\nIn total, we have 5 densely-connected clusters in this group.\n\nAnswer: there are 5 clusters"
+        }
+    ],
+    "tests": {
+        "nClusters": {
+            "expected_answer": [
+                "Answer: there are 3 clusters"
+            ],
+            "parsed_response": "Answer: there are 5 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

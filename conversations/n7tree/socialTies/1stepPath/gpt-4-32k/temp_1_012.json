@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n7tree_socialTies_exp_1stepPath_temp_1_12",
     "model": "gpt-4-32k",
-    "version": "2023-03-15-preview",
+    "version": "2020-11-07",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -11,36 +11,36 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You want to collaborate with a company. You meet Suresh, the CEO. You can ask Suresh to introduce you to to technical managers: Ramesh and Reeta. Ramesh can introduce you to his two employees, Karuna and Bunty. Reeta can introduce you to her two employees, Anita and Sunny. Karuna has 4 rating for friendly collaboration while Bunty has a rating of 2. Anita has a rating of 2.5 while Sunny has a rating of 3.5. You can only have one person to start your collaboration. Starting from Suresh, which employee do you want to be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Imagine a sales company. Amir is the CEO of the company and has two senior managers under him: Wim and Raj. Wim has two salespersons reporting to him: Jing and Wei. Raj has two salespersons reporting to him: Nisha and Reza. Jing is donating 56 books and Wei is donating 22 books. Nisha is donating 10 books and Reza is donating 50 books. Assume you can pick one path to collect books.  From Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Speak to Suresh\nStep 2: Ask Suresh to introduce you to Ramesh and Reeta\nStep 3: Compare collaboration ratings: Karuna (4), Bunty (2), Anita (2.5), and Sunny (3.5)\nStep 4: Choose the person with the highest friendly collaboration rating (Karuna)\nStep 5: Ask Ramesh to introduce you to Karuna\n\nAnswer: Suresh, Ramesh, Karuna"
+            "content": "First, I will identify which of the senior managers, Wim or Raj, has salespersons under them that collectively are donating more books. \n\nJing and Wei, who report to Wim, are donating 56 and 22 books respectively, which makes a total of 78 books. \n\nNisha and Reza, who report to Raj, are donating 10 and 50 books respectively, which makes a total of 60 books. \n\nClearly, the path through Wim yields more books. \n\nNext, I list the names in order from Amir through the path that yields the maximum number of books. That path is Amir, Wim, Jing, Wei. \n\nAnswer: Amir, Wim, Jing, Wei."
         },
         {
             "role": "user",
-            "content": "From Reeta what is the shortest path to Anita? Please list the employees in order, separated by commas."
+            "content": "From Amir what is the shortest path to Wim? Starting from Amir, please list the names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Reeta, Anita"
+            "content": "The shortest path from Amir to Wim would involve going directly from Amir to Wim, as Wim is a senior manager reporting directly to Amir.\n\nAnswer: Amir, Wim."
         }
     ],
     "tests": {
         "1stepPath": {
             "expected_answer": [
-                "Answer: Reeta, Anita"
+                "Answer: Amir, Wim"
             ],
-            "parsed_response": "Answer: Reeta, Anita"
+            "parsed_response": "Answer: Amir"
         }
     },
     "scores": {
         "1stepPath": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

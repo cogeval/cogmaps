@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_0.5_21",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. Here are the steps:\n\n1. Start with Amir as the initial node.\n2. Create an empty queue and enqueue Amir.\n3. Create an empty set to keep track of visited scholars.\n4. Create an empty dictionary to store the shortest path from Amir to each scholar.\n5. Set the shortest path from Amir to Amir as an empty list.\n6. While the queue is not empty:\n   - Dequeue a scholar from the queue.\n   - If the scholar has not been visited:\n     - Mark the scholar as visited.\n     - For each connected scholar:\n       - If the connected scholar has not been visited:\n         - Enqueue the connected scholar.\n         - Update the shortest path from Amir to the connected scholar by adding the connected scholar to the shortest path from Amir to the current scholar.\n         - If the connected scholar is donating the maximum number of books, return the shortest path from Amir to the connected scholar.\n7. If no scholar is found who is donating the maximum number of books, return \"No path found.\"\n\nNow let's implement this algorithm to find the shortest path from Amir to the scholar who is donating the maximum number of books.\n\nAnswer: Amir, Reza, Moin, Pari"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering the instant connection portal through Eva, we can modify the previous algorithm. Here are the steps:\n\n1. Start with Amir as the initial node.\n2. Create an empty queue and enqueue Amir.\n3. Create an empty set to keep track of visited scholars.\n4. Create an empty dictionary to store the shortest path from Amir to each scholar.\n5. Set the shortest path from Amir to Amir as an empty list.\n6. While the queue is not empty:\n   - Dequeue a scholar from the queue.\n   - If the scholar has not been visited:\n     - Mark the scholar as visited.\n     - For each connected scholar:\n       - If the connected scholar has not been visited:\n         - Enqueue the connected scholar.\n         - Update the shortest path from Amir to the connected scholar by adding the connected scholar to the shortest path from Amir to the current scholar.\n         - If the connected scholar is donating the maximum number of books, return the shortest path from Amir to the connected scholar.\n         - If the connected scholar is Eva:\n           - For each connection of Pam:\n             - If the connection has not been visited:\n               - Enqueue the connection.\n               - Update the shortest path from Amir to the connection by adding the connection to the shortest path from Amir to Eva and then the shortest path from Eva to the connection.\n               - If the connection is donating the maximum number of books, return the shortest path from Amir to the connection.\n7. If no scholar is found who is donating the maximum number of books, return \"No path found.\"\n\nNow let's implement this modified algorithm to find the shortest path from Amir to the scholar who is donating the maximum number of books, considering the instant connection portal through Eva.\n\nAnswer: Amir, Eva, Pam"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Eva, Pam"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

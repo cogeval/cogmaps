@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a minimum of 2 rooms."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the clusters of rooms that are connected to each other.\nCluster 1: Room 1, Room 7, Room 10, Room 13, Room 11\nCluster 2: Room 2, Room 5, Room 8, Room 11, Room 14\nCluster 3: Room 3, Room 6, Room 9, Room 12, Room 8\nCluster 4: Room 4, Room 7, Room 10, Room 13, Room 15\nCluster 5: Room 5, Room 8, Room 11, Room 14\nCluster 6: Room 6, Room 9, Room 12, Room 15\nCluster 7: Room 7, Room 10, Room 13\nCluster 8: Room 8, Room 14\nCluster 9: Room 9, Room 12, Room 15\nCluster 10: Room 10, Room 13\nCluster 11: Room 11, Room 14\nCluster 12: Room 12, Room 15\n\nStep 2: Combine clusters that share common rooms, if they are not already combined.\n- Cluster 1 and Cluster 4 share rooms 7, 10, and 13, so combine them.\n- Cluster 2 and Cluster 5 share rooms 5, 8, 11, and 14, so combine them.\n- Cluster 3 and Cluster 6 share rooms 6, 9, and 12, so combine them.\n\nStep 3: Re-evaluate the clusters after combining.\nCluster 1: Room 1, Room 7, Room 10, Room 13, Room 11, Room 4, Room 15\nCluster 2: Room 2, Room 5, Room 8, Room 11, Room 14, Room 8\nCluster 3: Room 3, Room 6, Room 9, Room 12, Room 8, Room 15\nCluster 7: Room 7, Room 10, Room 13\nCluster 8: Room 8, Room 14\nCluster 9: Room 9, Room 12, Room 15\nCluster 10: Room 10, Room 13\nCluster 11: Room 11, Room 14\nCluster 12: Room 12, Room 15\n\nStep 4: Check if any more clusters can be combined.\n- No more clusters can be combined, as they don't share common rooms.\n\nStep 5: Count the number of densely-connected clusters.\nAnswer: there are 9 clusters"
+            "content": "Step 1: Identify the connections between the rooms.\nStep 2: Group the rooms into clusters based on their connections.\nStep 3: Count the number of densely-connected clusters.\n\nStep 1: Connections\n1-7, 1-10, 1-13, 1-11\n2-5, 2-8, 2-11, 2-14\n3-6, 3-9, 3-12, 3-8\n4-7, 4-10, 4-13, 4-15\n5-8, 5-11, 5-14\n6-9, 6-12, 6-15\n7-10, 7-13\n8-14\n9-12, 9-15\n10-13\n11-14\n12-15\n\nStep 2: Clusters\nCluster 1: 1-7-10-13\nCluster 2: 1-11-2-5-8-14\nCluster 3: 3-6-9-12-15\nCluster 4: 4-7-10-13-15\n\nStep 3: Counting clusters\nAnswer: there are 4 clusters"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 9 clusters"
+            "parsed_response": "Answer: there are 4 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

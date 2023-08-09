@@ -19,24 +19,24 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward starting from room 1, we can use Dijkstra's algorithm to calculate the shortest paths from room 1 to all other rooms in the house and then check which of those paths leads to a chest with a reward. \n\nHere are the steps:\n1. Assign a tentative distance of 0 to room 1 and infinity to all other rooms.\n2. Mark all rooms as unvisited.\n3. Set the current room to room 1.\n4. For the current room, calculate the tentative distance to all its neighbors (rooms that it is connected to) and update their tentative distances if they are shorter than their current tentative distances.\n5. Mark the current room as visited.\n6. From the unvisited rooms, select the one with the smallest tentative distance and set it as the new current room. If there are no unvisited rooms left, stop.\n7. Repeat steps 4 to 6 until all rooms have been visited or the chest with the reward has been found.\n\nUsing this algorithm, we find that the shortest path that yields the most reward starting from room 1 is: 1, 2, 4, 14, 10. This path has a total distance of 4 and leads to the chest with a reward of 10 in room 10. Note that this is the only path that leads to a chest with a reward, as the shortest path to room 20 has a total distance of 6 and the reward there is only 50.\n\nTherefore, the answer is: Answer: 1, 2, 4, 14, 10."
+            "content": "To find the shortest path that yields the most reward, we need to use Dijkstra's algorithm to calculate the shortest path from room 1 to both room 10 and room 20, and then compare the rewards to choose the path with the higher reward.\n\nThe shortest path from room 1 to room 10 is: 1, 7, 2, 4, 8, 9, 10, with a total reward of 10.\n\nThe shortest path from room 1 to room 20 is: 1, 7, 2, 16, 15, 20, with a total reward of 50.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1, 7, 2, 16, 15, 20.\n\nAnswer: 1, 7, 2, 16, 15, 20."
         },
         {
             "role": "user",
-            "content": "You are told that a teleportation portal appears in room 6, through which you can teleport to any room, one at a time. This means that from room 6 you can go immediately to any other room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that room 1 now opens to a new room, room 22, which has a teleportation portal, through which you can teleport to any neighboring room of room 15, one at a time. This means that from room 22 you can go immediately to any neighboring room of room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "If there is a teleportation portal in room 6 that allows us to go immediately to any other room, then the shortest path that yields the most reward starting from room 1 would be the same as the shortest path to the chest with a reward of 10 in room 10, which we found in the previous question: 1, 2, 4, 14, 10.\n\nTherefore, the answer is: Answer: 1, 2, 4, 14, 10."
+            "content": "With the addition of room 22, we need to re-calculate the shortest paths to rooms 10 and 20. We can then calculate the shortest path from room 1 to room 22, and then from room 22, we can teleport to any neighboring room of room 15 to collect the reward from either room 10 or room 20.\n\nThe shortest path from room 1 to room 10 is: 1, 7, 2, 4, 8, 9, 10, with a total reward of 10.\n\nThe shortest path from room 1 to room 20 is: 1, 7, 2, 16, 15, 20, with a total reward of 50.\n\nThe shortest path from room 1 to room 22 is: 1, 7, 2, 16, 15, 22, with a total reward of 0.\n\nFrom room 22, we can either teleport to room 15 and then to room 20 to get the reward of 50, or we can teleport to room 15 and then to room 10 to get the reward of 10. \n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1, 7, 2, 16, 15, 20.\n\nAnswer: 1, 7, 2, 16, 15, 20."
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: 1, 6, 20",
-                "Answer: 1,6,20"
+                "Answer: 1, 22, 20",
+                "Answer: 1,22,20"
             ],
-            "parsed_response": "If there is a teleportation portal in room 6 that allows us to go immediately to any other room, then the shortest path that yields the most reward starting from room 1 would be the same as the shortest path to the chest with a reward of 10 in room 10, which we found in the previous question: 1, 2, 4, 14, 10.\n\nTherefore, the answer is: Answer: 1, 2, 4, 14, 10."
+            "parsed_response": "Answer: 1, 7, 2, 16, 15, 20"
         }
     },
     "scores": {

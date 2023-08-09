@@ -19,24 +19,24 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward, we will use Dijkstra's algorithm. Starting from room 1, we will calculate the shortest distance to all other rooms and keep track of the maximum reward encountered along the way. Once we reach room 20 or 10, we will stop and return the path that leads to the chest with the maximum reward.\n\nThe shortest path that yields the most reward from room 1 is: 1, 2, 4, 14, 10. This path has a total distance of 4 and a total reward of 50. \n\nAnswer: 1, 2, 4, 14, 10"
+            "content": "To find the shortest path that yields the most reward, we need to use the Dijkstra's algorithm. Starting from Room 1, we can reach the Room 20 and Room 10.\n\nPath to Room 20: 1 -> 2 -> 4 -> 14 -> 11 -> 13 -> 17 -> 20 (total reward: 50)\nPath to Room 10: 1 -> 2 -> 8 -> 10 (total reward: 10)\n\nTherefore, the shortest path that yields the most reward starting from Room 1 is Room 2, Room 4, Room 14, Room 11, Room 13, Room 17, and Room 20. \n\nAnswer: 2, 4, 14, 11, 13, 17, 20"
         },
         {
             "role": "user",
-            "content": "You are told that the door between room 5 and room 16 is now locked. Instead, room 5 is now connected to room 20. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that room 1 has a new door that opens to room 22. And room 22 connects to all neighboring rooms of room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "With the change in the connections, we need to recalculate the shortest path that yields the most reward using Dijkstra's algorithm. \n\nThe shortest path that yields the most reward from room 1 is now: 1, 2, 4, 14, 17, 15, 20. This path has a total distance of 6 and a total reward of 50.\n\nAnswer: 1, 2, 4, 14, 17, 15, 20."
+            "content": "With the addition of the new door from Room 1 to Room 22, we can now access Room 15, which has connections to all the other rooms that we need to reach. \n\nPath to Room 20: 1 -> 22 -> 15 -> 17 -> 20 (total reward: 50)\nPath to Room 10: 1 -> 22 -> 15 -> 16 -> 19 -> 20 -> 17 -> 11 -> 9 -> 8 -> 10 (total reward: 10)\n\nTherefore, the shortest path that yields the most reward starting from Room 1 is Room 22, Room 15, Room 17, and Room 20. \n\nAnswer: 22, 15, 17, 20"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: 1, 5, 20",
-                "Answer: 1,5,20"
+                "Answer: 1, 22, 20",
+                "Answer: 1,22,20"
             ],
-            "parsed_response": "With the change in the connections, we need to recalculate the shortest path that yields the most reward using Dijkstra's algorithm. \n\nThe shortest path that yields the most reward from room 1 is now: 1, 2, 4, 14, 17, 15, 20. This path has a total distance of 6 and a total reward of 50.\n\nAnswer: 1, 2, 4, 14, 17, 15, 20."
+            "parsed_response": "Answer: 22, 15, 17, 20"
         }
     },
     "scores": {

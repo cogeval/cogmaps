@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_1stepPath_temp_0.5_22",
+    "conversation_id": "task_n16cluster_ordRooms_exp_1stepPath_temp_0.5_22",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 0.5,
@@ -15,20 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. What is the shortest path from room 8 to room 6? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. From room 16 what is the shortest path to room 14? Starting from room 16, please list the room numbers in order, including 16, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 8 to room 6, we can use the breadth-first search algorithm. Starting from room 8, we can explore all the neighboring rooms, then all the neighboring rooms of those rooms, and so on, until we reach room 6. \n\nThe shortest path from room 8 to room 6 is: 8, 6\n\nAnswer: 8, 6"
+            "content": "To find the shortest path from Room 16 to Room 14, we can use Dijkstra's algorithm. Here are the steps:\n\n1. Assign a tentative distance value to every room: set it to zero for Room 16 and to infinity for all the other rooms.\n2. Set Room 16 as the current room and create a set of visited rooms.\n3. For each of the current room's neighbors, calculate their tentative distance as the sum of the current room's distance and the distance to that neighbor. If this tentative distance is less than the neighbor's current distance, update the neighbor's distance.\n4. Mark the current room as visited and remove it from the unvisited set.\n5. If the destination room (Room 14) has been visited, stop. The shortest path is the sequence of visited rooms that led to the destination, in reverse order.\n6. Otherwise, select the unvisited room with the smallest tentative distance and set it as the new current room. Go back to step 3.\n\nUsing this algorithm, the shortest path from Room 16 to Room 14 is:\n\n16, 13, 14\n\nAnswer: 16, 13, 14"
         }
     ],
     "tests": {
         "1stepPath": {
             "expected_answer": [
-                "Answer: 8, 6",
-                "Answer: 8,6"
+                "Answer: 16, 14"
             ],
-            "parsed_response": "Answer: 8, 6"
+            "parsed_response": "Answer: 16, 13, 14"
+        }
+    },
+    "scores": {
+        "1stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Now you have been told that there is a reward of 10 for connecting with Soheil. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start with Vivian.\n2. Identify the groups Vivian is connected to: Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n3. Find the shortest path to Soheil from each of these students.\n   - Salma is connected to Noah, Shanshan, Vadim, and Anisha. Anisha is connected to Abdul, Durga, and Ajit. Ajit is connected to Durga and Anisha. Durga is connected to Pierre, Abdul, and Ajit. Abdul is connected to Pierre, Durga, and Ajit. Pierre is connected to Abdul, Durga, and Soheil. So, the path is Vivian -> Salma -> Pierre -> Soheil.\n   - Shanshan is connected to Salma, Vadim, and Noah. The shortest path from here is the same as from Salma.\n   - Vadim is connected to Vivian, Salma, Shanshan, and Noah. The shortest path from here is the same as from Salma.\n   - Gongxue is connected to Vivian, Salma, Shanshan, Vadim, Paul, Solomon, Soheil, and Alice. The path is Vivian -> Gongxue -> Soheil.\n4. Compare the paths and choose the one with the most reward: Vivian -> Salma -> Pierre -> Soheil is a 3-step path, whereas Vivian -> Gongxue -> Soheil is a 2-step path. The shorter path yields the most reward.\n\nAnswer: Vivian, Gongxue, Soheil"
+            "content": "Step 1: Identify the person who is donating the maximum number of books. The maximum number of books is being donated by Kim.\n\nStep 2: Identify Amir's connections. Amir is connected to Reza, Moin, Pari, and Puja.\n\nStep 3: Check if Kim is directly connected to Amir. Kim is not directly connected to Amir.\n\nStep 4: Check if Kim is connected to any of Amir's connections. Kim is connected to Puja.\n\nStep 5: Check if Puja is directly connected to Amir. Puja is directly connected to Amir.\n\nTherefore, the shortest path from Amir to the person who is donating the maximum number of books is Amir, Puja, Kim.\n\nAnswer: Amir, Puja, Kim"
         }
     ],
     "tests": {
         "valuePath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul, Soheil",
-                "Answer: Vivian, Gongxue, Alice, Soheil ",
-                "Answer: Vivian, Gongxue, Solomon, Soheil "
+                "Answer: Amir, Puja, Wim, Kim",
+                "Answer: Amir, Puja, Pam, Kim",
+                "Answer: Amir, Puja, Wei, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil"
+            "parsed_response": "Answer: Amir, Puja, Kim"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

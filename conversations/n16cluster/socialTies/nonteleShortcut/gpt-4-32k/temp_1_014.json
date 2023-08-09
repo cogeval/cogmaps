@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nonteleShortcut_temp_1_14",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Firstly, identify the two individuals donating books, Moin and Matt. Moin is donating 50 books and Matt is donating 10 books, so Moin is the person with the maximum number of books.\n\nNext, observe Amir's direct connections and find a path that will lead to Moin:\n\n1. Amir is directly connected to Wim, Raj, Jing, and Reza. Neither Wim, Raj, Jing, nor Reza have a direct connection to Moin.\n\n2. Check the connections of Amir's connections:\n\n   Wim is connected to Amir, Raj, Jing, Eva. None of these is Moin.\n   \n   Raj is connected to Amir, Wim, Jing, Wei. Wei is not Moin, but Wei has direct connection to Moin.\n   \n   Jing is connected to Amir, Wim, Raj, Pam. None of these is Moin.\n   \n   Reza is connected to Amir, Kim, Nisha, Wei. Kim is not Moin, but Kim has direct connection to Moin.\n\n3. Since Wei and Kim both have direct connections to Moin, we can choose either path. For simplicity, we'll choose the path through Raj and Wei.\n\nThe shortest path from Amir to the person with the maximum number of books (Moin) is thus: Amir, Raj, Wei, Moin.\n\nAnswer: Amir, Raj, Wei, Moin"
+        },
+        {
+            "role": "user",
+            "content": " You have been told that Amir just got married to Amy. Amy is connected to all the scholars who are connected with Sara. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path to the person with maximum books (Moin), we now take into account the connection between Amir and Amy, and Amy's connections which are the same as Sara's. \n\n1. Amir is now connected directly to Amy. \n\n2. Amy is connected to all the scholars who are connected with Sara. Sara is connected to Ian, Moin, Puja, and Nisha. Among these, Moin is the person with the maximum number of books.\n\nNow, the shortest path from Amir to Moin is: Amir, Amy, Moin.\n\nAnswer: Amir, Amy, Moin"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Amy, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Amy, Moin"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

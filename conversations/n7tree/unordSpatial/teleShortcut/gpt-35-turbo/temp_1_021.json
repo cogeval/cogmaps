@@ -6,43 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Mad Tea Party, Entrance, Left Passage, Fantasyland."
+            "content": "To find the path that leads to the maximum number of flowers, we need to count the flowers in each field and choose the path with the most flowers. Let's go through the fields step by step:\n\n- Entrance\n- Right field (Sunflower field)\n- Right field (Hydrangea field) - 50 hydrangea flowers\n- Back to Sunflower field\n- Left field (Orchid field) - 10 orchid flowers\n- Back to Entrance\n- Left field (Rose field)\n- Right field (Daisy field) - 22 daisy flowers\n- Back to Rose field\n- Left field (Tulip field) - 56 tulip flowers\n\nBy going through this path, you can collect a maximum number of flowers. \n\nAnswer: Entrance, Right field (Sunflower field), Right field (Hydrangea field), Left field (Orchid field), Left field (Rose field), Left field (Tulip field)"
         },
         {
             "role": "user",
-            "content": "At the entrance you're get the VVIP upgrade for free. The VVIP pass can take you to any attraction. From entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "At the entrance you're presented with a portal, and through this portal it\u2019s possible to go to any neighboring field of the rose field. You will only be able to choose one path that leads to the maximum number of flowers. Starting from the entrance, which path will lead to the maximum number of flowers? Please list all flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Since the VVIP pass can take you to any attraction with no wait time, you can choose any attraction you want. But based on the previous wait time data, you can consider going to Space Mountain which had a wait time of 10 minutes earlier. The path to Space Mountain from the Entrance is: Entrance, Right Passage, Tomorrowland, Space Mountain."
+            "content": "To find the path that leads to the maximum number of flowers, we need to calculate the total number of flowers in each possible path starting from the entrance. Let's evaluate each option:\n\nOption 1: Entrance, Right field (Sunflower field), Right field (Hydrangea field), Left field (Orchid field), Left field (Rose field)\n- Total flowers: 0 + 0 + 10 + 0 + 0 = 10\n\nOption 2: Entrance, Right field (Sunflower field), Right field (Hydrangea field), Left field (Orchid field), Right field (Daisy field)\n- Total flowers: 0 + 0 + 10 + 22 = 32\n\nOption 3: Entrance, Right field (Sunflower field), Right field (Hydrangea field), Left field (Orchid field), Right field (Tulip field)\n- Total flowers: 0 + 0 + 10 + 56 = 66\n\nOption 4: Entrance, Left field (Rose field), Right field (Daisy field)\n- Total flowers: 0 + 22 = 22\n\nOption 5: Entrance, Left field (Rose field), Left field (Tulip field)\n- Total flowers: 0 + 56 = 56\n\nBy evaluating each option, we can see that the path with the maximum number of flowers is:\n\nEntrance, Right field (Sunflower field), Right field (Hydrangea field), Left field (Orchid field), Right field (Tulip field)\n\nAnswer: Entrance, Right field (Sunflower field), Right field (Hydrangea field), Left field (Orchid field), Right field (Tulip field)"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Mad Tea Party"
+                "Answer: rose, daisy"
             ],
-            "parsed_response": "Since the VVIP pass can take you to any attraction with no wait time, you can choose any attraction you want. But based on the previous wait time data, you can consider going to Space Mountain which had a wait time of 10 minutes earlier. The path to Space Mountain from the Entrance is: Entrance, Right Passage, Tomorrowland, Space Mountain."
-        }
-    },
-    "scores": {
-        "teleShortcut": {
-            "score": 0.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Entrance, Right field (Sunflower field), Right field (Hydrangea field), Left field (Orchid field), Right field (Tulip field)"
         }
     }
 }

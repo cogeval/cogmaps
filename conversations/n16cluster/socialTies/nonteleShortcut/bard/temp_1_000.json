@@ -19,23 +19,23 @@
         },
         {
             "role": "assistant",
-            "content": "Sure, I can help you with that.\n\nHere are the steps I took to find the shortest path from Amir to the person with the maximum number of books:\n\n1. I created a graph with the scholars as nodes and the connections between them as edges.\n2. I labeled each node with the number of books that the scholar has.\n3. I found the shortest path from Amir to the node with the maximum number of books using Dijkstra's algorithm.\n\nThe shortest path from Amir to the person with the maximum number of books is:\n\n```\nAmir, Kim, Moin (50 books)\n```\n\nThis is the shortest path because it is the only path that connects Amir to Moin. The other paths are longer because they involve going through other scholars who do not have as many books.\n\nHere is the regular expression that you requested:\n\n```\nAnswer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+\n```\n\nThis regular expression matches a string that starts with the word \"Answer:\", followed by a comma-separated list of words. The last word in the list must not be followed by a comma.\n\nHere is the output of the regular expression applied to the path above:\n\n```\nAnswer: Amir, Kim, Moin\n```\n\nI hope this is helpful! Let me know if you have any other questions."
+            "content": "The shortest path to the person with the maximum number of books from Amir, starting from Amir and listing the scholar names in order, including Amir, separated by commas is:\n\n```\nAnswer: Amir, Amy, Sara, Puja, Pari (110 books)\n```\n\nThe steps are the same as the previous question, except that we now take advantage of the fact that Amy is connected to all the scholars who are connected to Sara. This means that we can take the shortest path to Sara through Amy, and then the shortest path to Pari from Sara. This gives us the shortest path Amir, Amy, Sara, Puja, Pari (110 books)."
         },
         {
             "role": "user",
-            "content": "You have been told that Amir and Reza had a disagreement and are no longer connected. Instead, Amir and is now connected to Kim. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+            "content": " You have been told that Amir just got married to Amy. Amy is connected to all the scholars who are connected with Sara. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Sure, here is the shortest path from Amir to the person with the maximum number of books:\n\n```\nAmir, Kim (40 books)\n```\n\nThis is the shortest path because it is the only path that connects Amir to Kim. The other paths are longer because they involve going through other scholars who do not have as many books.\n\nHere is the output of the regular expression applied to the path above:\n\n```\nAnswer: Amir, Kim\n```\n\nI hope this is helpful! Let me know if you have any other questions."
+            "content": "The shortest path to the person with the maximum number of books from Amir, starting from Amir and listing the scholar names in order, including Amir, separated by commas is:\n\n```\nAnswer: Amir, Amy, Pari (110 books)\n```\n\nThe steps are the same as the previous question, except that we now take advantage of the fact that Amy is connected to all the scholars who are connected to Sara, including Pari. This means that we can take the shortest path to Pari directly through Amy, without going through Sara. This gives us the shortest path Amir, Amy, Pari (110 books)."
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Amir, Kim, Moin"
+                "Answer: Amir, Amy, Moin"
             ],
-            "parsed_response": "Sure, here is the shortest path from Amir to the person with the maximum number of books:\n\n```\nAmir, Kim (40 books)\n```\n\nThis is the shortest path because it is the only path that connects Amir to Kim. The other paths are longer because they involve going through other scholars who do not have as many books.\n\nHere is the output of the regular expression applied to the path above:\n\n```\nAnswer: Amir, Kim\n```\n\nI hope this is helpful! Let me know if you have any other questions."
+            "parsed_response": "Answer: Amir, Amy, Pari "
         }
     },
     "scores": {

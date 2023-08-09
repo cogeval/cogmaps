@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_rewardReval_temp_1_10",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, we can use a breadth-first search algorithm. Let's follow these steps:\n\n1. Start with Amir and create an empty queue.\n\n2. Enqueue Amir into the queue.\n\n3. Create an empty visited set to keep track of the scholars we have already visited.\n\n4. Create an empty path dictionary to store the shortest path from Amir to each scholar.\n\n5. Set the path for Amir as an empty list.\n\n6. While the queue is not empty, do the following:\n\n   a. Dequeue a scholar from the queue and assign it to the variable \"current_scholar\".\n   \n   b. Check if the current_scholar is the person donating the maximum number of books (Max). If it is, we have found the shortest path from Amir to Max. Return the path dictionary.\n\n   c. If the current_scholar has not been visited, add it to the visited set and update its path in the path dictionary by appending the current_scholar to the path of the previous scholar.\n\n   d. Enqueue all the scholars connected to the current_scholar (excluding the ones already visited) into the queue.\n\n7. If we have not found a path to Max, return \"No path found\".\n\nNow, let's apply this algorithm to the given problem:\n\nAnswer: Amir, Reza, Max"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that  Kim is donating 12 books and Max is donating 48 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, we can use a breadth-first search algorithm. Let's follow these steps:\n\n1. Start with Amir and create an empty queue.\n\n2. Enqueue Amir into the queue.\n\n3. Create an empty visited set to keep track of the scholars we have already visited.\n\n4. Create an empty path dictionary to store the shortest path from Amir to each scholar.\n\n5. Set the path for Amir as an empty list.\n\n6. While the queue is not empty, do the following:\n\n   a. Dequeue a scholar from the queue and assign it to the variable \"current_scholar\".\n\n   b. Check if the current_scholar is the person donating the maximum number of books (Max). If it is, we have found the shortest path from Amir to Max. Return the path dictionary.\n\n   c. If the current_scholar has not been visited, add it to the visited set and update its path in the path dictionary by appending the current_scholar to the path of the previous scholar.\n\n   d. Enqueue all the scholars connected to the current_scholar (excluding the ones already visited) into the queue.\n\n7. If we have not found a path to Max, return \"No path found\".\n\nNow, let's apply this algorithm to the given problem:\n\nAnswer: Amir, Jing, Max"
+        }
+    ],
+    "tests": {
+        "rewardReval": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Max",
+                "Answer: Amir, Moin, Jing, Max ",
+                "Answer: Amir, Pari, Jing, Max "
+            ],
+            "parsed_response": "Answer: Amir, Jing, Max"
+        }
+    },
+    "scores": {
+        "rewardReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -23,11 +23,11 @@
         },
         {
             "role": "user",
-            "content": "You are told that the door from room 5 to room 16 is locked. You are also told that a teleportation portal appears in room 14, through which you can teleport to any room. This means that from room 14 you can go immediately to any other room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that the door from room 5 to room 16 is locked. You are also told that a teleportation portal appears in room 14, through which you can teleport to any neighboring room of room 15. This means that from room 14 you can go immediately to any neighboring room of room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target rooms with rewards - room 10 and room 20.\nStep 2: Find the shortest path from room 1 to room 10, considering the teleportation portal in room 14.\nStep 3: Find the shortest path from room 1 to room 20, considering the locked door between room 5 and room 16 and the teleportation portal in room 14.\nStep 4: Compare the rewards and choose the path with the highest reward.\n\nPath to room 10:\n1 -> 6 -> 7 -> 4 -> 14 (teleport to room 10)\n\nPath to room 20:\n1 -> 6 -> 7 -> 4 -> 14 (teleport to room 20)\n\nNow, compare the rewards:\nRoom 10: Reward of 10\nRoom 20: Reward of 50\n\nSince the reward in room 20 is higher, the shortest path that yields the most reward is the path to room 20.\n\nAnswer: 1, 6, 7, 4, 14, 20"
+            "content": "Step 1: Identify the two target rooms with rewards - room 10 and room 20.\nStep 2: Find the shortest path from room 1 to room 10, considering the locked door and the teleportation portal.\nStep 3: Find the shortest path from room 1 to room 20, considering the locked door and the teleportation portal.\nStep 4: Compare the rewards and choose the path with the highest reward.\n\nPath to room 10:\n1 -> 6 -> 7 -> 4 -> 14 -> 10\n\nPath to room 20 (using the teleportation portal in room 14):\n1 -> 6 -> 7 -> 4 -> 14 -> (teleport to room 16) -> 20\n\nNow, compare the rewards:\nRoom 10: Reward of 10\nRoom 20: Reward of 50\n\nSince the reward in room 20 is higher, the shortest path that yields the most reward is the path to room 20, using the teleportation portal in room 14.\n\nAnswer: 1, 6, 7, 4, 14, 16, 20"
         }
     ],
     "tests": {
@@ -36,7 +36,7 @@
                 "Answer: 1, 4, 14, 20",
                 "Answer: 1,4,14,20"
             ],
-            "parsed_response": "Step 1: Identify the two target rooms with rewards - room 10 and room 20.\nStep 2: Find the shortest path from room 1 to room 10, considering the teleportation portal in room 14.\nStep 3: Find the shortest path from room 1 to room 20, considering the locked door between room 5 and room 16 and the teleportation portal in room 14.\nStep 4: Compare the rewards and choose the path with the highest reward.\n\nPath to room 10:\n1 -> 6 -> 7 -> 4 -> 14 (teleport to room 10)\n\nPath to room 20:\n1 -> 6 -> 7 -> 4 -> 14 (teleport to room 20)\n\nNow, compare the rewards:\nRoom 10: Reward of 10\nRoom 20: Reward of 50\n\nSince the reward in room 20 is higher, the shortest path that yields the most reward is the path to room 20.\n\nAnswer: 1, 6, 7, 4, 14, 20"
+            "parsed_response": "Answer: 1, 6, 7, 4, 14, 16, 20"
         }
     },
     "scores": {

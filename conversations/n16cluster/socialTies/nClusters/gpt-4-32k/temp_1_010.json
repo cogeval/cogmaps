@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nClusters_temp_1_10",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. How many densely-connected clusters of scholars are there in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
+        },
+        {
+            "role": "assistant",
+            "content": "To solve this task, we need to group the scholars into clusters according to their connections. Each cluster should contain scholars who are connected to each other. The connection can be one-way (Amir to Wim) or two-way (Amir to Wim and Wim to Amir). \n\nLet's start by grouping scholars:\n\n1. The first cluster contains Amir, Wim, Raj, and Jing. Reza is also connected to Amir but not to Wim, Raj, or Jing, so Reza is not part of this cluster. \n\n2. The second cluster contains Wei, Nisha, Reza, and Kim. While Reza is connected to Amir, the Amir cluster does not connect to Reza's other connections (Wei, Nisha, and Kim), so Reza is not part of the first cluster.\n\n3. The third cluster contains Ian, Moin, Puja, and Sara. \n\n4. The fourth cluster contains Pari, Pam, Matt, and Eva. Even though Pam and Eva are connected to scholars from the first cluster (Jing and Wim, respectively), the rest of their connections form a separate group.\n\nAfter mapping out all the connections, we can see that there are four densely-connected clusters of scholars.\n\nAnswer: there are 4 clusters."
+        }
+    ],
+    "tests": {
+        "nClusters": {
+            "expected_answer": [
+                "Answer: there are 4 clusters"
+            ],
+            "parsed_response": "Answer: there are 4 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

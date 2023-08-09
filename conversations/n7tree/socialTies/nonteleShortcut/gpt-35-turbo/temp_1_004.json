@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n7tree_socialTies_exp_nonteleShortcut_temp_1_4",
     "model": "gpt-35-turbo",
-    "version": "2023-03-15-preview",
+    "version": "2020-11-07",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -11,36 +11,36 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You want to collaborate with a company. You meet Suresh, the CEO. You can ask Suresh to introduce you to to technical managers: Ramesh and Reeta. Ramesh can introduce you to his two employees, Karuna and Bunty. Reeta can introduce you to her two employees, Anita and Sunny. Karuna has 4 rating for friendly collaboration while Bunty has a rating of 2. Anita has a rating of 2.5 while Sunny has a rating of 3.5. You can only have one person to start your collaboration. Starting from Suresh, which employee do you want to be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Imagine a sales company. Amir is the CEO of the company and has two senior managers under him: Wim and Raj. Wim has two salespersons reporting to him: Jing and Wei. Raj has two salespersons reporting to him: Nisha and Reza. Jing is donating 56 books and Wei is donating 22 books. Nisha is donating 10 books and Reza is donating 50 books. Assume you can pick one path to collect books.  From Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas "
         },
         {
             "role": "assistant",
-            "content": "Answer: Suresh, Ramesh, Karuna."
+            "content": "To get the maximum number of books, we need to choose the path with the highest total number of books. \n\nStarting from Amir, we have two options: Wim and Raj. \n\nIf we choose Wim, we have two more options: Jing and Wei. \n\nIf we choose Raj, we have two more options: Nisha and Reza. \n\nConsidering the number of books donated by each person, we can calculate the total number of books for each path: \n\n- If we choose Wim, the total number of books will be 56 (from Jing) + 22 (from Wei) = 78 books. \n\n- If we choose Raj, the total number of books will be 10 (from Nisha) + 50 (from Reza) = 60 books. \n\nTherefore, to get the maximum number of books, we should meet with Wim to collect the books. \n\nAnswer: Amir, Wim"
         },
         {
             "role": "user",
-            "content": "After talking to Suresh, he offered to connect you directly to Karuna. Remember that you can only have one employee to start your collaboration. Starting from Suresh, which employee should you be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Now, you are told that through Amir\u2019s direct report Wim, it is possible to meet Wim and any of direct reports. Remember that you will only be able to choose one path that leads to the maximum number of books. Starting from Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Suresh, Karuna."
+            "content": "If we can meet with any of Wim's direct reports, we need to consider the maximum number of books we can collect from both Jing and Wei, as well as the maximum number of books we can collect from Raj's direct reports Nisha and Reza.\n\nFrom the previous information:\n- Jing is donating 56 books\n- Wei is donating 22 books\n- Nisha is donating 10 books\n- Reza is donating 50 books\n\nTo determine the maximum number of books, we can compare the total number of books we can collect from Jing and Wei to the total number of books we can collect from Nisha and Reza.\n\n- If we choose Jing and Wei, the total number of books will be 56 (from Jing) + 22 (from Wei) = 78 books.\n- If we choose Nisha and Reza, the total number of books will be 10 (from Nisha) + 50 (from Reza) = 60 books.\n\nSince the total number of books we can collect from Jing and Wei is higher, we should meet with Wim and then choose to meet with Jing to collect the maximum number of books.\n\nAnswer: Amir, Wim, Jing"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Suresh, Karuna"
+                "Answer: Amir, Jing"
             ],
-            "parsed_response": "Answer: Suresh, Karuna."
+            "parsed_response": "Answer: Amir"
         }
     },
     "scores": {
         "nonteleShortcut": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

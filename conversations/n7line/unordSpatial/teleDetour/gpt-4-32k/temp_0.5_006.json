@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,34 +15,27 @@
         },
         {
             "role": "user",
-            "content": "Imagine you are traveling through Asia. You start in New Delhi and have two choices, you can go to Islamabad or Kathmandu. From Islamabad, you can go to Kabul and from there to Tehran. In Tehran, your total expenses will be $1000 including hotels, shopping and sight-seeing. After learning this, you return to New Delhi. This time, you choose Kathmandu, which leads to Beijing, and from there you can go to Thimphu, where you have $400 total expenses. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Imagine a flower county with six flower fields. From the entrance you have two choices, you can go to the rose field or sunflower field. You enter the rose field, at the other end of this field there's a door that leads to the tulip field, and the tulip field leads to the orchid field. From the orchid field, you can have 10 orchid flowers for free, but you do not take any flower, you're just learning about the environment. Then you exit and start over. This time in the entrance you choose the sunflower field, which has a door to the daisy field, and the daisy field has a door that leads to the hydrangea field. You can have 50 hydrangea flowers from the hydrangea field, but you do not take any flowers, you're just learning about the environment. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two paths and their expenses.\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran (Total expenses: $1000)\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu (Total expenses: $400)\n\nStep 2: Compare the total expenses of both paths.\nPath 1: $1000\nPath 2: $400\n\nStep 3: Determine which path has the least expensive destination.\nPath 2 has the least expensive destination.\n\nStep 4: Identify the city from New Delhi that leads to the path with the least expensive destination.\nAnswer: Kathmandu"
+            "content": "Step 1: Identify the number of flowers in each path.\nStep 2: Compare the number of flowers in each path.\nStep 3: Choose the field from the entrance that leads to the path with the maximum number of flowers.\n\nPath 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers)\nPath 2: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers)\n\nComparing the two paths:\nPath 1 has 10 orchid flowers.\nPath 2 has 50 hydrangea flowers.\n\nAnswer: Sunflower field"
         },
         {
             "role": "user",
-            "content": "You start in New Delhi and this time you encounter a new route, which leads to Yangon which leads to Dhaka. From Dhaka, you can go to Bangkok from where you can fly to any city you want. When you return to New Delhi and choose the previous path that led to the least expensive destination, you discover that all the flights to the city with the least expensive destination are cancelled. You go back to New Delhi. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "You enter the entrance and this time you encounter a new field, lily field. The lily field leads to the peony field, which in turn leads to the daffodil field. The daffodil field has a portal. From this portal it\u2019s possible to go to any neighbor field of the daisy field. When you return to the entrance and choose the path that leads to the maximum number of flowers, you discover that the regular path to the field with the maximum number of flowers is blocked. You go back to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the available paths and their expenses.\nPath 1: New Delhi -> Yangon -> Dhaka -> Bangkok (Expenses unknown)\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu (Total expenses: $400, but flights to the least expensive destination are cancelled)\n\nStep 2: Determine which path is currently available.\nSince the flights to the least expensive destination in Path 2 are cancelled, Path 1 is the only available option.\n\nStep 3: Identify the city from New Delhi that leads to the available path.\nAnswer: Yangon"
+            "content": "Step 1: Identify the new path and its connections.\nStep 2: Identify the number of flowers in each path, considering the portal in the daffodil field.\nStep 3: Compare the number of flowers in each path.\nStep 4: Choose the field from the entrance that leads to the path with the maximum number of flowers, considering the blocked path.\n\nNew Path: Lily field -> Peony field -> Daffodil field (portal) -> Neighbor field of Daisy field\n\nPaths:\nPath 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers) [blocked]\nPath 2: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers)\nPath 3: Lily field -> Peony field -> Daffodil field (portal) -> Neighbor field of Daisy field\n\nConsidering the portal in the daffodil field, Path 3 can lead to the sunflower field (neighbor of daisy field), which in turn leads to the hydrangea field with 50 hydrangea flowers.\n\nComparing the available paths:\nPath 2 has 50 hydrangea flowers.\nPath 3 has 50 hydrangea flowers (using the portal).\n\nAnswer: Lily field"
         }
     ],
     "tests": {
         "teleDetour": {
             "expected_answer": [
-                "Answer: Yangon"
+                "Answer: lily"
             ],
-            "parsed_response": "Step 1: Analyze the available paths and their expenses.\nPath 1: New Delhi -> Yangon -> Dhaka -> Bangkok (Expenses unknown)\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu (Total expenses: $400, but flights to the least expensive destination are cancelled)\n\nStep 2: Determine which path is currently available.\nSince the flights to the least expensive destination in Path 2 are cancelled, Path 1 is the only available option.\n\nStep 3: Identify the city from New Delhi that leads to the available path.\nAnswer: Yangon"
-        }
-    },
-    "scores": {
-        "teleDetour": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Lily field"
         }
     }
 }

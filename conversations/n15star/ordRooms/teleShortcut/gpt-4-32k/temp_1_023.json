@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You are in room 1 and a portal appears with which you can teleport to any room only once. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that there is a chest with a reward of 50 for visiting room 8 and there is a chest with a reward of 10 for visiting room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the possible connections from room 1.\nRoom 1 is connected to rooms: 7, 10, 13, and 11.\n\nStep 2: Determine the possible paths and connections for each room connected to room 1.\nRoom 7 connects to rooms: 1, 4, 10, 13\nRoom 10 connects to rooms: 1, 7, 4, 13, and (direct connection) 13\nRoom 13 connects to rooms: 1, 7, 10, 4, and (direct connection) 10\nRoom 11 connects to rooms: 1, 2, 5, 8, and 14\n\nStep 3: Remove any backtracking and direct connections and determine the final possible paths from room 1.\nRoom 7 connects to rooms: 4\nRoom 10 connects to rooms: 4\nRoom 13 connects to rooms: 4\nRoom 11 connects to rooms: 2, 5, 8, and 14\n\nStep 4: Determine the possible paths from each room connected to room 1.\nRoom 4 connects to rooms: 7, 10, 13, and 15\nRoom 2 connects to rooms: 5, 8, 11, and 14\nRoom 5 connects to rooms: 2, 8, 11, and 14\nRoom 8 connects to rooms: 3, 5, 6, 9, 11, 12, 14, and (direct connection) 14\nRoom 14 connects to rooms: 2, 5, 8, and 11\n\nStep 5: Remove any backtracking and direct connections.\nRoom 4 connects to rooms: 15\nRoom 2 connects to rooms: 5, 8, and 14\nRoom 5 connects to rooms: 8, and 14\nRoom 8 connects to rooms: 3, 6, 9, 12, and (direct connection) 14\nRoom 14 connects to rooms: None\n\nStep 6: Determine the final possible paths.\n1 to 7 to 4 to 15\n1 to 10 to 4 to 15\n1 to 13 to 4 to 15\n1 to 11 to 2 to 5 to 8 to 3\n1 to 11 to 2 to 5 to 8 to 6\n1 to 11 to 2 to 5 to 8 to 9\n1 to 11 to 2 to 5 to 8 to 12\n1 to 11 to 2 to 5 to 8 to 14\n1 to 11 to 2 to 5 to 14\n\nStep 7: Choose the path with the most rewards.\nThe path with the most rewards is the one with the most rooms visited:\n\n1 to 11 to 2 to 5 to 8 to 3\n\nAnswer: 1, 11, 2, 5, 8, 3"
+            "content": "Step 1: Identify the reward amounts and their corresponding rooms.\n- Room 8 has a reward of 50.\n- Room 15 has a reward of 10.\n\nStep 2: Determine the paths from room 1 to each reward room.\n- Path to room 8: 1 -> 7 -> 10 -> 13 -> 8 (5 steps)\n- Path to room 15: 1 -> 7 -> 10 -> 13 -> 15 (5 steps)\n\nStep 3: Compare the reward amounts.\n- Room 8 has a higher reward (50) compared to room 15 (10).\n\nStep 4: Choose the path with the higher reward.\n- The path to room 8 has the highest reward.\n\nStep 5: List the room numbers in order.\n- 1, 7, 10, 13, 8\n\nAnswer: 1, 7, 10, 13, 8"
+        },
+        {
+            "role": "user",
+            "content": "You are told that room 1 now opens to a new room, room 16, which has a teleportation portal, through which you can teleport to any neighboring room of room 14, one at a time. This means that from room 16 you can go to any neighboring room of room 14. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the reward amounts and their corresponding rooms.\n- Room 8 has a reward of 50.\n- Room 15 has a reward of 10.\n\nStep 2: Determine the paths from room 1 to each reward room considering the new teleportation portal in room 16.\n- Path to room 8 via room 16: 1 -> 16 -> 14 -> 8 (4 steps)\n- Path to room 15 via room 16: 1 -> 16 -> 11 -> 14 -> 15 (5 steps)\n\nStep 3: Compare the reward amounts and path lengths.\n- Room 8 has a higher reward (50) and a shorter path (4 steps) compared to room 15 (10 reward and 5 steps).\n\nStep 4: Choose the path with the higher reward and shorter length.\n- The path to room 8 via room 16 has the highest reward and shortest length.\n\nStep 5: List the room numbers in order.\n- 1, 16, 14, 8\n\nAnswer: 1, 16, 14, 8"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: 1, 8",
-                "Answer: 1,8"
+                "Answer: 1, 16, 8",
+                "Answer: 1,16,8"
             ],
-            "parsed_response": "Answer: 1, 11, 2, 5, 8, 3"
+            "parsed_response": "Answer: 1, 16, 14, 8"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

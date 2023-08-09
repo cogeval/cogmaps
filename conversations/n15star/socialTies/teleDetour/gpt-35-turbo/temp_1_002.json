@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleDetour_temp_1_2",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm.\n\n1. Start with Amir.\n2. Check the connections of Amir. Amir is connected to Reza, Moin, Pari, and Puja.\n3. Check the connections of Reza. Reza is connected to Moin and Pari.\n4. Check the connections of Moin. Moin is connected to Pari.\n5. Check the connections of Pari. Pari is not connected to any new scholar.\n6. Check the connections of Puja. Puja is connected to Pam.\n7. Check the connections of Pam. Kim is connected to Pam.\n8. Check the connections of Kim. Wei is connected to Kim.\n9. Check the connections of Wei. Wei is connected to Puja and Pam.\n10. Check the connections of Puja. Puja is already visited.\n11. Check the connections of Pam. Kim is already visited.\n12. Check the connections of Sara. Ian is connected to Sara and Max.\n13. Check the connections of Max. Max is already visited.\n\nBased on the breadth-first search algorithm, the shortest path from Amir to the person who is donating the maximum number of books is:\n\nAnswer: Amir, Puja, Pam, Kim, Max"
+        },
+        {
+            "role": "user",
+            "content": "Amir and Puja had a disagreement and now no longer connected to each other, and now Jing has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Jing, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, taking into account the new condition where Jing has an instant connection portal, we can modify the breadth-first search algorithm.\n\n1. Start with Amir.\n2. Check the connections of Amir. Amir is connected to Reza, Moin, Pari.\n3. Connect with Jing through the instant connection portal.\n4. Check the connections of Jing. Jing is connected to Reza, Moin, Pari, and Max.\n5. Check the connections of Reza. Reza is connected to Moin and Pari.\n6. Connect with Pari through the instant connection portal.\n7. Check the connections of Pari. Pari is not connected to any new scholar.\n8. Connect with Max through the instant connection portal.\n\nBased on the modified breadth-first search algorithm, the shortest path from Amir to the person who is donating the maximum number of books is:\n\nAnswer: Amir, Jing, Max"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Kim",
+                "Answer: Amir, Moin, Jing, Kim ",
+                "Answer: Amir, Pari, Jing, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Jing, Max"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

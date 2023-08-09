@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. How many densely-connected clusters do we have in this class? A densely-connected cluster is a group of students that are connected to themselves with a max of 2 students."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the densely-connected clusters\n- Vivian, Salma, Shanshan, Vadim, and Gongxue form one cluster.\n- Paul, Solomon, Soheil, Gongxue, and Alice form another cluster.\n- Pierre, Abdul, Durga, Ajit, and Soheil form another cluster.\n- Noah, Salma, Shanshan, Vadim, and Anisha form another cluster.\n- Solomon, Soheil, Gongxue, and Alice form another cluster.\n- Abdul, Durga, Ajit, and Anisha form another cluster.\n- Salma, Shanshan, and Vadim form another cluster.\n- Soheil and Alice form another cluster.\n- Durga, Ajit, and Anisha form another cluster.\n- Shanshan and Vadim form another cluster.\n- Gongxue and Alice form another cluster.\n- Ajit and Anisha form another cluster.\n\nStep 2: Remove duplicate and non-densely connected clusters.\n- Remove the clusters with more than 2 students, leaving:\n  - Soheil and Alice\n  - Shanshan and Vadim\n  - Gongxue and Alice\n  - Ajit and Anisha\n\nStep 3: Count the remaining densely-connected clusters.\n- We have 4 densely-connected clusters.\n\nAnswer: there are 4 clusters"
+            "content": "Firstly, let's identify the clusters based on the connections given:\n\n1. Amir, Reza, Moin, Pari, and Puja are connected to each other forming one cluster. Jing is also connected to Reza, Moin, and Pari, therefore Jing is part of this cluster too. \n2. Wim, Wei, Kim, Puja, and Pam are connected to each other forming a second cluster. \n3. Raj, Nisha, Ian, Sara, and Kim are connected to each other forming a third cluster.\n\nHowever, upon a closer look, it appears that the clusters have overlapping members. Puja and Kim are part of both the first and second clusters, and Kim is also a member of the third cluster. Therefore, if we treat overlapping members as part of the same cluster, we actually only have one densely-connected cluster.\n\nAnswer: there is 1 cluster."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 4 clusters"
+            "parsed_response": "Firstly, let's identify the clusters based on the connections given:\n\n1. Amir, Reza, Moin, Pari, and Puja are connected to each other forming one cluster. Jing is also connected to Reza, Moin, and Pari, therefore Jing is part of this cluster too. \n2. Wim, Wei, Kim, Puja, and Pam are connected to each other forming a second cluster. \n3. Raj, Nisha, Ian, Sara, and Kim are connected to each other forming a third cluster.\n\nHowever, upon a closer look, it appears that the clusters have overlapping members. Puja and Kim are part of both the first and second clusters, and Kim is also a member of the third cluster. Therefore, if we treat overlapping members as part of the same cluster, we actually only have one densely-connected cluster.\n\nAnswer: there is 1 cluster."
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

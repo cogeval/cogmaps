@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_0.5_6",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Moin to Kim? Starting from Moin, please list the scholar names in order, including Moin, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Moin to Kim, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Moin.\n2. Check if Moin is connected to Kim. If yes, the shortest path is Moin, Kim.\n3. If not, check if Moin is connected to any other scholars.\n   - Moin is connected to Reza and Pari.\n   - Add Reza and Pari to the queue.\n4. Check the next scholar in the queue, which is Reza.\n   - Reza is connected to Moin and Pari.\n   - Since Moin is already visited, skip it.\n   - Add Pari to the queue.\n5. Check the next scholar in the queue, which is Pari.\n   - Pari is connected to Moin and Reza.\n   - Since Moin and Reza are already visited, skip them.\n   - Pari is not connected to Kim.\n6. Check if there are any more scholars in the queue. If yes, repeat steps 4-6.\n7. If the queue becomes empty and Kim is not found, there is no path from Moin to Kim.\n\nBased on the given connections, the shortest path from Moin to Kim is Moin, Pari, Kim.\n\nAnswer: Moin, Pari, Kim"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Moin, Amir, Puja, Wim, Kim",
+                "Answer: Moin, Amir, Puja, Wei, Kim",
+                "Answer: Moin, Amir, Puja, Pam, Kim"
+            ],
+            "parsed_response": "Answer: Moin, Pari, Kim"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

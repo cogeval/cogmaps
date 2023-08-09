@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Rose, peony, chrysanthemum. \n\nStarting from the rose field, we can move to the peony field, which is connected to the chrysanthemum field. Therefore, the shortest path that yields the maximum number of flowers is: Rose -> Peony -> Chrysanthemum."
+            "content": "To find the shortest path from the rose field that yields the maximum number of flowers, we can use Dijkstra's algorithm. \n\n1. Initialize the distances from the rose field to all other fields as infinity, except for the rose field itself which is 0.\n\n2. Create an empty set called visited to keep track of the fields we have visited.\n\n3. Create an empty dictionary called flower_counts to store the number of flowers we can collect from each field.\n\n4. Create a priority queue called pq and add the rose field with a distance of 0 to it.\n\n5. While pq is not empty, do the following steps:\n   a. Extract the field with the smallest distance from pq.\n   b. Add the extracted field to the visited set.\n   c. Update the flower_counts dictionary with the number of flowers we can collect from the extracted field.\n\n     - If the extracted field is the chrysanthemum field, set the number of chrysanthemum flowers to 50.\n     - If the extracted field is the lavender field, set the number of lavender flowers to 10.\n     - For all other fields, set the number of flowers to 0.\n\n   d. Iterate through the adjacent fields of the extracted field:\n      - If the adjacent field is not in the visited set and the distance from the extracted field plus 1 is smaller than the current distance to the adjacent field, update the distance and add the adjacent field to pq with the updated distance.\n\n6. After the algorithm finishes, we will have the shortest path from the rose field to all other fields and the number of flowers we can collect from each field.\n\n7. The path with the maximum number of flowers is the one with the shortest distance. We can trace back from the field with the maximum number of flowers to the rose field using the flower_counts and the distances. \n\nStarting from the rose field, the shortest path that yields the maximum number of flowers is:\nAnswer: Rose, Peony, Chrysanthemum"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Rose, peony, hydrangea, orchid, lily.\n\nStarting from the rose field, we can move to the peony field, which is connected to the hydrangea field. Then, we can move to the orchid field, which is connected to the hydrangea field. From there, we can move to the lily field, which is not directly connected to the rose field, but is the next closest field that we can reach. Therefore, the shortest path that yields the maximum number of flowers is: Rose -> Peony -> Hydrangea -> Orchid -> Lily."
+            "content": "Given the updated connections, we need to find the shortest path from the rose field to yield the maximum number of flowers. \n\nBased on the updated connections:\n\n- The rose field is connected to the sunflower field, tulip field, daisy field, and lily field.\n- The sunflower field is connected to the rose field, tulip field, daisy field, and marigold field.\n- The tulip field is connected to the rose field, sunflower field, daisy field, and orchid field.\n- The daisy field is connected to the rose field, sunflower field, tulip field, and lily field.\n- The lily field is connected to the rose field, daisy field, hydrangea field, and orchid field.\n- The hydrangea field is connected to the lily field, orchid field, and aster field.\n- The aster field is connected to the hydrangea field, sunflower field, zinnia field, and marigold field.\n- The marigold field is connected to the sunflower field, aster field, carnation field, and hydrangea field.\n\nTo find the shortest path that yields the maximum number of flowers, we can use Dijkstra's algorithm, similar to the previous approach.\n\n1. Initialize the distances from the rose field to all other fields as infinity, except for the rose field itself which is 0.\n\n2. Create an empty set called visited to keep track of the fields we have visited.\n\n3. Create an empty dictionary called flower_counts to store the number of flowers we can collect from each field.\n\n4. Create a priority queue called pq and add the rose field with a distance of 0 to it.\n\n5. While pq is not empty, do the following steps:\n   a. Extract the field with the smallest distance from pq.\n   b. Add the extracted field to the visited set.\n   c. Update the flower_counts dictionary with the number of flowers we can collect from the extracted field.\n\n     - If the extracted field is the chrysanthemum field, set the number of chrysanthemum flowers to 50.\n     - If the extracted field is the lavender field, set the number of lavender flowers to 10.\n     - For all other fields, set the number of flowers to 0.\n\n   d. Iterate through the adjacent fields of the extracted field:\n      - If the adjacent field is not in the visited set and the distance from the extracted field plus 1 is smaller than the current distance to the adjacent field, update the distance and add the adjacent field to pq with the updated distance.\n\n6. After the algorithm finishes, we will have the shortest path from the rose field to all other fields and the number of flowers we can collect from each field.\n\n7. The path with the maximum number of flowers is the one with the shortest distance. We can trace back from the field with the maximum number of flowers to the rose field using the flower_counts and the distances.\n\nStarting from the rose field, the shortest path that yields the maximum number of flowers is:\nAnswer: Rose, Sunflower, Aster"
         }
     ],
     "tests": {
@@ -35,7 +35,7 @@
             "expected_answer": [
                 "Answer: Rose, Sunflower, Marigold, Chrysanthemum"
             ],
-            "parsed_response": "Answer: Rose, peony, hydrangea, orchid, lily.\n\nStarting from the rose field, we can move to the peony field, which is connected to the hydrangea field. Then, we can move to the orchid field, which is connected to the hydrangea field. From there, we can move to the lily field, which is not directly connected to the rose field, but is the next closest field that we can reach. Therefore, the shortest path that yields the maximum number of flowers is: Rose -> Peony -> Hydrangea -> Orchid -> Lily."
+            "parsed_response": "Answer: Rose, Sunflower, Aster"
         }
     },
     "scores": {

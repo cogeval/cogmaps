@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n7tree_socialTies_exp_nonteleDetour_temp_1_26",
     "model": "gpt-4-32k",
-    "version": "2023-03-15-preview",
+    "version": "2020-11-07",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -11,36 +11,36 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You want to collaborate with a company. You meet Suresh, the CEO. You can ask Suresh to introduce you to to technical managers: Ramesh and Reeta. Ramesh can introduce you to his two employees, Karuna and Bunty. Reeta can introduce you to her two employees, Anita and Sunny. Karuna has 4 rating for friendly collaboration while Bunty has a rating of 2. Anita has a rating of 2.5 while Sunny has a rating of 3.5. You can only have one person to start your collaboration. Starting from Suresh, which employee do you want to be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Imagine a sales company. Amir is the CEO of the company and has two senior managers under him: Wim and Raj. Wim has two salespersons reporting to him: Jing and Wei. Raj has two salespersons reporting to him: Nisha and Reza. Jing is donating 56 books and Wei is donating 22 books. Nisha is donating 10 books and Reza is donating 50 books. Assume you can pick one path to collect books.  From Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Meet with Suresh, the CEO\nStep 2: Ask Suresh to introduce you to Ramesh and Reeta\nStep 3: Evaluate Ramesh's employees' collaboration ratings: Karuna (4) and Bunty (2)\nStep 4: Evaluate Reeta's employees' collaboration ratings: Anita (2.5) and Sunny (3.5)\nStep 5: Compare the ratings and choose the employee with the highest rating\n\nAnswer: Suresh, Ramesh, Karuna"
+            "content": "First, let's calculate the total number of books donated by the two salespeople under each senior manager.\n\nUnder Wim:\nJing (56 books) + Wei (22 books) = 78 books\n\nUnder Raj:\nNisha (10 books) + Reza (50 books) = 60 books\n\nSince Wim's team donates more books than Raj's team, the path to collect the maximum number of books would be from Amir, through Wim, to Jing and Wei.\n\nAnswer: Amir, Wim, Jing, Wei"
         },
         {
             "role": "user",
-            "content": " Now, Suresh texts you that he can introduce you to CFO, John. John is married to Karuna. When you meet Suresh and choose the path that led to the employee with highest friendly collaboration rating previously, you discover that the regular path to that employee is no longer working. You go back to talking to Suresh. You can only have one employee to start your collaboration. Starting from Suresh, which employee should you be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " This time you meet Amir and he tells you about his secretary Kim. Kim is dating Jing. When you meet with Amir and choose the path that led to the maximum number of books previously, you discover that the path is now blocked. You will only be able to choose one path that leads to the maximum number of books. Starting from Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas.."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Meet with Suresh, the CEO\nStep 2: Since the regular path to Karuna is not working, ask Suresh to introduce you to the other technical manager Reeta\nStep 3: Evaluate Reeta's employees' collaboration ratings: Anita (2.5) and Sunny (3.5)\nStep 4: Choose the employee with the highest rating from Reeta's team\n\nAnswer: Suresh, Reeta, Sunny"
+            "content": "The original path to maximize book donations was: Amir, Wim, Jing, Wei. But now it's mentioned that the path is blocked. The next best path for book donation available now is through Raj.\n\nSo the path would be from Amir to Raj and his team, which includes Nisha and Reza.\n\nAnswer: Amir, Raj, Nisha, Reza"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: Suresh, John, Karuna"
+                "Answer: Amir, Kim, Jing"
             ],
-            "parsed_response": "Step 1: Meet with Suresh, the CEO\nStep 2: Since the regular path to Karuna is not working, ask Suresh to introduce you to the other technical manager Reeta\nStep 3: Evaluate Reeta's employees' collaboration ratings: Anita (2.5) and Sunny (3.5)\nStep 4: Choose the employee with the highest rating from Reeta's team\n\nAnswer: Suresh, Reeta, Sunny"
+            "parsed_response": "Answer: Amir"
         }
     },
     "scores": {
         "nonteleDetour": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

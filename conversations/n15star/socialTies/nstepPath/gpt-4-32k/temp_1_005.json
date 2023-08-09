@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Reza to Raj? Starting from Reza, please list the scholar names in order, including Reza, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Start at Vivian.\n2. Check Vivian's connections: Salma, Shanshan, Vadim, and Gongxue.\n3. Check Salma's connections: Vivian, Shanshan, Vadim, Noah, and Shanshan.\n4. Check Shanshan's connections: Vivian, Salma, Vadim, Salma, Noah, and Vadim.\n5. Check Vadim's connections: Vivian, Salma, Shanshan, Noah, and Shanshan.\n6. Check Gongxue's connections: Vivian, Paul, Solomon, Soheil, and Alice.\n7. Check Noah's connections: Salma, Shanshan, Vadim, and Anisha.\n8. Check Anisha's connections: Noah, Abdul, Durga, Ajit, Durga, and Ajit.\n9. Check Ajit's connections: Pierre, Abdul, Durga, Anisha, Durga, and Anisha.\n10. Identify the shortest connection path from Vivian to Ajit: Vivian -> Gongxue -> Alice -> Soheil -> Ajit.\n\nAnswer: Vivian, Gongxue, Alice, Soheil, Ajit"
+            "content": "Step 1: Start with Reza. The scholars connected to Reza are Amir, Moin, and Pari.\nStep 2: From these, check the scholars each of them is connected to. \n\n- Amir is connected to Reza, Moin, Pari, and Puja.\n- Moin is connected to Reza, Pari, and Amir.\n- Pari is connected to Reza, Amir, and Moin.\n\nNone of them is directly connected to Raj.\n\nStep 3: The second level of connections from Reza through Amir includes Puja, who is connected to Wim and Wei, and through Moin and Pari there are no new connections.\n- Puja is connected to Amir, Wim, Wei, and Pam.\n\nNone of them is directly connected to Raj.\n\nStep 4: The third level of connections from Reza through Wim includes Wei, Kim, and Pam and through Wei includes Kim and Pam.\n- Kim is connected to Wim, Wei, Puja, and Pam.\n- Pam is connected to Wim, Wei, Puja, and Kim.\n\nAmong these, Kim is directly connected to Raj.\n\nSo, the shortest path from Reza to Raj is Reza - Amir - Puja - Kim - Raj.\n\nAnswer: Reza, Amir, Puja, Kim, Raj."
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Reza, Jing, Matt, Nisha, Raj",
+                "Answer: Reza, Jing, Matt, Ian, Raj",
+                "Answer: Reza, Jing, Matt, Sara, Raj"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Alice, Soheil, Ajit"
+            "parsed_response": "Answer: Reza, Amir, Puja, Kim, Raj"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

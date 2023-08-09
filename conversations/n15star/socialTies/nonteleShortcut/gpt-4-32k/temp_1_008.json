@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. You have been told that Gongxue is now connected to Soheil. From Vivian, what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups Vivian belongs to:\n- Vivian, Salma, Shanshan, Vadim, and Gongxue\n\nStep 2: Identify connections for each group member:\n- Salma: Shanshan, Vadim, Noah, Anisha\n- Shanshan: Salma, Vadim, Noah, Anisha\n- Vadim: Salma, Shanshan, Noah, Anisha\n- Gongxue: Salma, Shanshan, Vadim, Paul, Solomon, Soheil, Alice\n\nStep 3: Determine the most rewarding path:\n- Since Gongxue is now connected to Soheil, and Soheil is connected to Alice, it seems that the path through Gongxue would be the most rewarding.\n\nAnswer: Vivian, Gongxue, Soheil, Alice"
+            "content": "1. Start from Amir.\n2. Look at the people Amir is connected to: Reza, Moin, Pari, and Puja.\n3. Determine if any of these scholars is either Kim or Max. None of them are.\n4. Look at the people Amir's connections are connected to: Reza to Moin and Pari, Moin to Pari, Pari has no further connections, Puja to Pam.\n5. Determine if any of these scholars is either Kim or Max. None of them are.\n6. Look at the people Amir's secondary connections are connected to: Moin to Pari, Pari has no further connections, Pam has no further connections.\n7. Determine if any of these scholars is either Kim or Max. None of them are.\n8. Look at the scholars who are not yet explored: Wim, Raj, Jing, Wei, Nisha, Reza, Kim, Ian, and Sara.\n9. Find if any of these scholars are connected to the people Amir has connections with: Wim is connected to Puja, Jing is connected to Reza and Moin, Wei is connected to Puja and Pam, Reza is connected to Moin and Pari. Kim is not directly connected to Amir's connections. \n10. Repeat the steps for Wim, Raj, Jing, Wei, Nisha, Reza, Kim, Ian, and Sara.\n11. Notice that Wim is connected to Kim.\n12. Recall that Amir is connected to Puja and Puja is connected to Wim. So Amir has a path to Kim through Puja and Wim.\n\nAnswer: Amir, Puja, Wim, Kim"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva. Eva is connected to all of  Pam\u2019s connections. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. Start from Amir.\n2. Look at the people Amir is directly connected to: Eva, Reza, Moin, Pari, and Puja.\n3. Determine if any of these scholars is either Kim or Max. None of them are.\n4. Look at the people Eva (Amir's wife) is connected to, which are all of Pam's connections. Pam is connected to Kim.\n5. The shortest path from Amir to Kim, who is donating the maximum number of books, is through Eva.\n\nAnswer: Amir, Eva, Kim."
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Soheil"
+                "Answer: Amir, Eva, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Alice"
+            "parsed_response": "Answer: Amir, Eva, Kim"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

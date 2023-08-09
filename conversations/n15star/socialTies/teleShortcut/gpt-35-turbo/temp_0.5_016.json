@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_0.5_16",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. \n\nStarting from Amir, we will visit each connected scholar in breadth-first order until we reach the person who is donating the maximum number of books.\n\nHere are the steps to find the shortest path:\n\n1. Create a queue and enqueue Amir.\n2. Create an empty set to keep track of visited scholars.\n3. Create an empty dictionary to store the path from each scholar to the previous scholar.\n4. Create a variable to store the maximum number of books donated and initialize it to 0.\n5. Create a variable to store the scholar who is donating the maximum number of books and initialize it to None.\n6. While the queue is not empty:\n   - Dequeue a scholar from the queue.\n   - Mark the scholar as visited.\n   - Check if the scholar is donating more books than the current maximum:\n     - If yes, update the maximum number of books and the scholar who is donating them.\n   - Check if the scholar is the one donating the maximum number of books:\n     - If yes, break the loop.\n   - Enqueue all the connected scholars of the current scholar who have not been visited yet.\n   - Update the path dictionary to store the path from the connected scholar to the current scholar.\n7. If the scholar who is donating the maximum number of books is found:\n   - Create a list to store the shortest path from Amir to the scholar.\n   - Starting from the scholar, follow the path dictionary to trace back the path to Amir.\n   - Append each scholar to the list.\n8. Reverse the list to get the shortest path from Amir to the scholar.\n9. Concatenate the scholars' names in the list, separated by commas, and add Amir's name at the beginning.\n\nAnswer: Amir, Reza, Moin, Pari"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering Eva's connection portal to Pam's connections, we can modify our previous breadth-first search algorithm. \n\nHere are the updated steps:\n\n1. Create a queue and enqueue Amir.\n2. Create an empty set to keep track of visited scholars.\n3. Create an empty dictionary to store the path from each scholar to the previous scholar.\n4. Create a variable to store the maximum number of books donated and initialize it to 0.\n5. Create a variable to store the scholar who is donating the maximum number of books and initialize it to None.\n6. While the queue is not empty:\n   - Dequeue a scholar from the queue.\n   - Mark the scholar as visited.\n   - Check if the scholar is donating more books than the current maximum:\n     - If yes, update the maximum number of books and the scholar who is donating them.\n   - Check if the scholar is the one donating the maximum number of books:\n     - If yes, break the loop.\n   - Enqueue all the connected scholars of the current scholar who have not been visited yet, except for Pam.\n   - If the current scholar is Eva, enqueue all the connections of Pam who have not been visited yet.\n   - Update the path dictionary to store the path from the connected scholar to the current scholar.\n7. If the scholar who is donating the maximum number of books is found:\n   - Create a list to store the shortest path from Amir to the scholar.\n   - Starting from the scholar, follow the path dictionary to trace back the path to Amir.\n   - Append each scholar to the list.\n8. Reverse the list to get the shortest path from Amir to the scholar.\n9. Concatenate the scholars' names in the list, separated by commas, and add Amir's name at the beginning.\n\nAnswer: Amir, Eva, Pam"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Eva, Pam"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n13line_socialTies_exp_teleDetour_temp_1_16",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+ '"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of thirteen scholars. From Vicky you have two choices, Amir and Wim.  Amir is connected to Raj, and Raj is connected to Wei. Wei is connected to Reza and Reza is connected to Ian. Ian is connected to Puja. Puja is donating 10 books, but you do not take any book, you're just learning about the environment. This time you ask Vicky to connect you to Wim who is connected to Jing. Jing is connected to Nisha. Nisha is connected to Kim and Kim is connected to Moin. Moin is connected to Sara. Sara has 50 books to donate, but you do not take any money, you're just learning about the environment. You return to Vicky. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas"
+        },
+        {
+            "role": "assistant",
+            "content": "To find the path that leads to the maximum number of books starting from Vicky, we need to follow the connections and track the number of books donated by each scholar. Here is the path and the number of books donated by each scholar:\n\nVicky (0 books) -> Wim (0 books) -> Jing (0 books) -> Nisha (0 books) -> Kim (0 books) -> Moin (0 books) -> Sara (50 books)\n\nAnswer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara"
+        },
+        {
+            "role": "user",
+            "content": "You are told that Ian has a new connection Pam, who has an instant connection portal. From this portal it is possible to connect with any of Moin\u2019s connection. When you return to Vicky and choose the path that leads to the maximum number of books, you discover that the regular path to the scholar with the maximum number of books is blocked. You will only be able to choose one path that leads to the maximum number of books. Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Given the new information, let's reevaluate the paths starting from Vicky to find the one that leads to the maximum number of books. Since the regular path is blocked, we will consider the new connection through Pam to any of Moin's connections. Let's explore the possibilities:\n\n1. Vicky (0 books) -> Wim (0 books) -> Jing (0 books) -> Nisha (0 books) -> Kim (0 books) -> Moin (0 books) -> Sara (50 books)\n2. Vicky (0 books) -> Amir (0 books) -> Raj (0 books) -> Wei (0 books) -> Reza (0 books) -> Ian (0 books) -> Puja (10 books) -> Pam (0 books) -> Moin (0 books) -> Sara (50 books)\n\nIn both paths, Sara has the maximum number of books (50 books). However, the second path includes an additional connection through Pam. Since there are no extra books donated through this connection, it does not contribute to the total number of books.\n\nTherefore, the path that leads to the maximum number of books starting from Vicky is the regular path:\n\nAnswer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Raj, Wei, Reza, Ian, Pam, Sara"
+            ],
+            "parsed_response": "Answer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

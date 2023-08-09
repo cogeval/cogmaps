@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wim to Reza? Starting from Wim, please list the scholar names in order, including Wim, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Start at Vivian.\n2. Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n3. Check connections of each of these students.\n4. Salma is connected to Shanshan, Vadim, and Noah.\n5. Shanshan is connected to Vadim, Salma, and Noah.\n6. Vadim is connected to Salma, Shanshan, and Noah.\n7. Gongxue is connected to Paul, Solomon, Soheil, and Alice.\n8. Check connections of Noah, Paul, Solomon, Soheil, and Alice.\n9. Noah is connected to Salma, Shanshan, Vadim, and Anisha.\n10. Paul, Solomon, and Alice are not connected to Anisha.\n11. Soheil is connected to Pierre, Abdul, Durga, Ajit, and Alice.\n12. Check connections of Abdul, Durga, and Ajit.\n13. Abdul is connected to Pierre, Durga, Ajit, and Anisha.\n14. Durga is connected to Pierre, Abdul, Ajit, and Anisha.\n15. Ajit is connected to Pierre, Abdul, Durga, and Anisha.\n16. The shortest path from Vivian to Anisha is through Noah.\n\nAnswer: Vivian, Noah, Anisha"
+            "content": "First, let's identify the connections of Wim. Wim is connected to Wei, Kim, Puja, and Pam. \n\nNext, we need to find out if any of these scholars are directly connected to Reza. None of them are.\n\nThen, we need to check the connections of Wei, Kim, Puja, and Pam to see if any of them are connected to a scholar who is directly connected to Reza. \n\nWei is connected to Kim, Puja, and Pam. None of them are directly connected to Reza.\nKim is connected to Pam. Pam is not directly connected to Reza.\nPuja is connected to Pam. Pam is not directly connected to Reza.\nPam has no other connections.\n\nSo, none of Wim's direct connections lead to Reza. \n\nNow, let's check the connections of the scholars connected to Wim's direct connections. \n\nWei's connections (Kim, Puja, Pam) do not lead to Reza.\nKim's connection (Pam) does not lead to Reza.\nPuja's connection (Pam) does not lead to Reza.\n\nHowever, Puja is also connected to Amir, who is directly connected to Reza. \n\nSo, the shortest path from Wim to Reza is: Wim, Puja, Amir, Reza.\n\nAnswer: Wim, Puja, Amir, Reza."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Wim, Puja, Amir, Reza"
             ],
-            "parsed_response": "Answer: Vivian, Noah, Anisha"
+            "parsed_response": "Answer: Wim, Puja, Amir, Reza"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

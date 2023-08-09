@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Reza, Pari, Moin, Jing, Max."
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm.\n\nStarting from Amir, we will traverse the connections to find the path to each person. We will keep track of the number of books each person is donating and update it as we go. Once we reach the end of the search, we will select the person with the maximum number of donated books.\n\nLet's follow these steps:\n\n1. Create a dictionary to store the connections and number of donated books for each scholar.\n2. Initialize a queue to store the paths and a visited set to keep track of visited scholars.\n3. Enqueue a path containing only Amir into the queue.\n4. While the queue is not empty:\n   - Dequeue a path from the front of the queue.\n   - Get the last scholar from the path.\n   - If the last scholar is donating the maximum number of books, return the path.\n   - Otherwise, if the last scholar has not been visited:\n     - Mark the last scholar as visited.\n     - Update the number of books donated by the last scholar.\n     - Enqueue a new path for each connected scholar, extending the current path.\n5. If no path is found, return None.\n\nNow let's apply these steps to find the shortest path from Amir to the person donating the maximum number of books.\n\nAnswer: Amir, Reza, Pari, Moin"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Reza, Moin, Pari, Max."
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering the new condition that Amir is no longer connected to Puja and Jing has an instant connection portal, we can modify our approach.\n\nWe will again use a breadth-first search algorithm, but this time we will consider Jing's connection portal. Whenever we reach Jing in the path, we will create a copy of the current path and extend it by connecting with each available scholar. We will keep track of the number of books each person is donating and update it as we go. Once we reach the end of the search, we will select the person with the maximum number of donated books.\n\nLet's follow these steps:\n\n1. Create a dictionary to store the connections and number of donated books for each scholar.\n2. Initialize a queue to store the paths and a visited set to keep track of visited scholars.\n3. Enqueue a path containing only Amir into the queue.\n4. While the queue is not empty:\n   - Dequeue a path from the front of the queue.\n   - Get the last scholar from the path.\n   - If the last scholar is donating the maximum number of books, return the path.\n   - Otherwise, if the last scholar has not been visited:\n     - Mark the last scholar as visited.\n     - Update the number of books donated by the last scholar.\n     - If the last scholar is Jing:\n       - Create a copy of the current path for each available connected scholar.\n       - Extend each copied path with the connection to the corresponding scholar.\n       - Enqueue each copied path into the queue.\n     - Otherwise, enqueue a new path for each connected scholar, extending the current path.\n5. If no path is found, return None.\n\nNow let's apply these steps to find the shortest path from Amir to the person donating the maximum number of books.\n\nAnswer: Amir, Jing, Pari, Moin"
         }
     ],
     "tests": {
@@ -37,7 +37,7 @@
                 "Answer: Amir, Moin, Jing, Kim ",
                 "Answer: Amir, Pari, Jing, Kim"
             ],
-            "parsed_response": "Answer: Amir, Reza, Moin, Pari, Max."
+            "parsed_response": "Answer: Amir, Jing, Pari, Moin"
         }
     },
     "scores": {

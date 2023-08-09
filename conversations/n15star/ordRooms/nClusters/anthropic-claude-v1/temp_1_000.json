@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": " Okay, here are the steps I would take to solve this:\n\n1. Map out the connections between rooms in the castle. This gives us: \nRoom 1: 7, 10, 13, 11\nRoom 2: 5, 8, 11, 14 \nRoom 3: 6, 9, 12, 8\nRoom 4: 7, 10, 13, 15\nRoom 5: 8, 11, 14\nRoom 6: 9, 12, 15\nRoom 7: 10, 13\nRoom 8: 14\nRoom 9: 12, 15\nRoom 10: 13 \nRoom 11: 14\nRoom 12: 15\n\n2. Identify groups of rooms that are connected to at least 2 other rooms in the group. The groups I see are: \nGroup 1: 1, 7, 10, 13, 11 \nGroup 2: 2, 5, 8, 11, 14\nGroup 3: 3, 6, 9, 12, 8 \nGroup 4: 4, 7, 10, 13, 15\nGroup 5: 9, 12, 15\n\n3. Count the number of groups. In this case, there are 5 groups of densely-connected rooms.\n\nAnswer: There are 5 clusters"
+            "content": " Here are the steps I would take:\n\n1. Analyze the room connections to see which rooms are connected.\n2. Group connected rooms into preliminary clusters. \n3. Check if any preliminary cluster has only 1 room. If so, remove it. \n4. Check if any two preliminary clusters share at least 2 connected rooms. If so, merge them into one cluster.\n5. Repeat step 4 until no more clusters can be merged.\n6. Count the number of remaining clusters.\n\nAnswer: There are 4 clusters"
         }
     ],
     "tests": {
@@ -27,7 +27,7 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: There are 5 clusters"
+            "parsed_response": "Answer: There are 4 clusters"
         }
     },
     "scores": {

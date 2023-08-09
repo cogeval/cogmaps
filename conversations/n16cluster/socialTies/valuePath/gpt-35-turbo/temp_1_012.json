@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_valuePath_temp_1_12",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a graph search algorithm. We'll start by creating a graph representing the connections between the scholars. We'll assign a weight of 1 to each edge since the distance between any two scholars is equal.\n\nThe graph can be represented as follows:\n\nAmir -> Wim, Raj, Jing, Reza\nWim -> Amir, Raj, Jing, Eva\nRaj -> Amir, Wim, Jing, Wei\nJing -> Amir, Wim, Raj, Pam\nWei -> Nisha, Reza, Kim, Raj\nNisha -> Wei, Reza, Kim, Sara\nReza -> Amir, Kim, Nisha, Wei\nKim -> Wei, Nisha, Reza, Moin\nIan -> Moin, Puja, Sara, Matt\nMoin -> Ian, Puja, Kim, Sara\nPuja -> Pari, Ian, Sara, Moin\nSara -> Ian, Moin, Puja, Nisha\nPari -> Pam, Matt, Eva, Puja\nPam -> Jing, Pari, Matt, Eva\nMatt -> Pari, Pam, Eva, Ian\nEva -> Pari, Pam, Matt, Wim\n\nNext, we'll use a Breadth-First Search (BFS) algorithm to find the shortest path from Amir to the person with the maximum number of books. We'll keep track of the number of books each scholar has donated.\n\nStarting with Amir, we'll visit each connected scholar and keep a queue of scholars to visit next. We'll also keep track of the path from Amir to each scholar visited. Whenever we encounter a scholar who has donated books, we'll update the maximum number of books and the corresponding path.\n\nThe algorithm will proceed as follows:\n\n1. Initialize the queue with Amir and an empty path.\n2. Initialize the maximum number of books as 0 and the corresponding path as an empty list.\n3. While the queue is not empty:\n     - Dequeue a scholar from the front of the queue.\n     - If the scholar has donated books and the number of books is greater than the current maximum:\n         - Update the maximum number of books and the corresponding path.\n     - Enqueue all the scholars connected to the current scholar, except those already in the path.\n     - Update the path for each newly enqueued scholar.\n4. The final path will be the shortest path from Amir to the person with the maximum number of books.\n\nUsing this algorithm, we find that the shortest path from Amir to the person with the maximum number of books is: Amir, Wim, Raj, Wei, Nisha.\n\nAnswer: Amir, Wim, Raj, Wei, Nisha"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Kim, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Raj, Wei, Nisha"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

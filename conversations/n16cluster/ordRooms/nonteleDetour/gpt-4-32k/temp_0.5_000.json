@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target rooms with rewards, which are room 10 (reward of 50) and room 15 (reward of 10).\nStep 2: Find the shortest path to each target room from room 1.\nStep 3: Compare the path lengths and rewards, and choose the path with the highest reward.\n\nShortest path to room 10 from room 1:\n1 -> 7 -> 8 -> 10 (3 steps)\n\nShortest path to room 15 from room 1:\n1 -> 4 -> 14 -> 15 (3 steps)\n\nSince the reward in room 10 is higher (50) than the reward in room 15 (10), the shortest path that yields the most reward is the path to room 10.\n\nAnswer: 1, 7, 8, 10"
+            "content": "Step 1: Identify the two target rooms with rewards (Room 10 and Room 15).\nStep 2: Find the shortest paths from Room 1 to both target rooms.\nStep 3: Compare the total rewards of the two paths and choose the path with the highest reward.\n\nShortest path from Room 1 to Room 10:\n1 -> 7 -> 8 -> 10\n\nShortest path from Room 1 to Room 15:\n1 -> 4 -> 14 -> 15\n\nNow, let's compare the rewards:\n\nPath to Room 10: 50\nPath to Room 15: 10\n\nSince the path to Room 10 has the highest reward, we choose that path.\n\nAnswer: 1, 7, 8, 10"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target rooms with rewards, which are room 10 (reward of 50) and room 15 (reward of 10).\nStep 2: Since the door from room 1 to room 7 is locked, find alternative shortest paths to each target room from room 1.\nStep 3: Compare the path lengths and rewards, and choose the path with the highest reward.\n\nAlternative shortest path to room 10 from room 1 (avoiding room 7):\n1 -> 4 -> 14 -> 13 -> 11 -> 10 (5 steps)\n\nShortest path to room 15 from room 1:\n1 -> 4 -> 14 -> 15 (3 steps)\n\nAlthough the reward in room 10 is higher (50) than the reward in room 15 (10), the shortest path to room 10 is now longer (5 steps) compared to the shortest path to room 15 (3 steps). Considering the path length and reward, the path to room 15 is more efficient.\n\nAnswer: 1, 4, 14, 15"
+            "content": "Since the door from Room 1 to Room 7 is locked, we need to find alternative paths to reach the target rooms (Room 10 and Room 15).\n\nStep 1: Identify the two target rooms with rewards (Room 10 and Room 15).\nStep 2: Find the alternative shortest paths from Room 1 to both target rooms, avoiding the locked door to Room 7.\nStep 3: Compare the total rewards of the two paths and choose the path with the highest reward.\n\nAlternative shortest path from Room 1 to Room 10:\n1 -> 3 -> 5 -> 8 -> 10\n\nAlternative shortest path from Room 1 to Room 15 (unchanged, as it didn't involve Room 7):\n1 -> 4 -> 14 -> 15\n\nNow, let's compare the rewards:\n\nPath to Room 10: 50\nPath to Room 15: 10\n\nSince the path to Room 10 still has the highest reward, we choose that path.\n\nAnswer: 1, 3, 5, 8, 10"
         }
     ],
     "tests": {
@@ -36,12 +36,12 @@
                 "Answer: 1, 3, 5, 8, 10",
                 "Answer: 1,3,5,8,10"
             ],
-            "parsed_response": "Step 1: Identify the two target rooms with rewards, which are room 10 (reward of 50) and room 15 (reward of 10).\nStep 2: Since the door from room 1 to room 7 is locked, find alternative shortest paths to each target room from room 1.\nStep 3: Compare the path lengths and rewards, and choose the path with the highest reward.\n\nAlternative shortest path to room 10 from room 1 (avoiding room 7):\n1 -> 4 -> 14 -> 13 -> 11 -> 10 (5 steps)\n\nShortest path to room 15 from room 1:\n1 -> 4 -> 14 -> 15 (3 steps)\n\nAlthough the reward in room 10 is higher (50) than the reward in room 15 (10), the shortest path to room 10 is now longer (5 steps) compared to the shortest path to room 15 (3 steps). Considering the path length and reward, the path to room 15 is more efficient.\n\nAnswer: 1, 4, 14, 15"
+            "parsed_response": "Answer: 1, 3, 5, 8, 10"
         }
     },
     "scores": {
         "nonteleDetour": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

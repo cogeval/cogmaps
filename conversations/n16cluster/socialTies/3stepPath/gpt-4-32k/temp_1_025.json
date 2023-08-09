@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_3stepPath_temp_1_25",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Wei what is the shortest path to Pam? Starting from Wei, please list the scholar numbers in order, including Wei, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "First, I will examine the connections starting from Wei. Wei is connected to Nisha, Reza, Kim, and Raj. \n\nNext, I look at which of these scholars can bring Wei closer to Pam. Nisha is connected to Sara but not Pam, Reza is connected to Amir but not Pam, Kim is connected to Moin but not Pam, and Raj is connected to Amir and Wim but not Pam. \n\nAmir, however, is connected to Jing, and Jing is connected to Pam, which means Raj and Amir form a link from Wei to Pam.\n\nSo the shortest path from Wei to Pam is: Wei - Raj - Amir - Jing - Pam.\n\nThus, the order of the scholars would be: Wei, Raj, Amir, Jing, Pam. \n\nAnswer: Wei, Raj, Amir, Jing, Pam"
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: Wei, Raj, Jing, Pam"
+            ],
+            "parsed_response": "Answer: Wei, Raj, Amir, Jing, Pam"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

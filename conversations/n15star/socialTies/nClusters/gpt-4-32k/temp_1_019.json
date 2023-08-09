@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. How many densely-connected clusters do we have in this class? A densely-connected cluster is a group of students that are connected to themselves with a max of 2 students."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the clusters from the given connections.\nCluster 1: Vivian, Salma, Shanshan, Vadim, Gongxue\nCluster 2: Paul, Solomon, Soheil, Gongxue, Alice\nCluster 3: Pierre, Abdul, Durga, Ajit, Soheil\nCluster 4: Noah, Salma, Shanshan, Vadim, Anisha\nCluster 5: Solomon, Soheil, Gongxue, Alice\nCluster 6: Abdul, Durga, Ajit, Anisha\nCluster 7: Salma, Shanshan, Vadim\nCluster 8: Soheil, Alice\nCluster 9: Durga, Ajit, Anisha\nCluster 10: Shanshan, Vadim\nCluster 11: Gongxue, Alice\nCluster 12: Ajit, Anisha\n\nStep 2: Merge clusters with more than 2 students that have shared connections.\nMerged Cluster 1: Vivian, Salma, Shanshan, Vadim, Gongxue, Noah, Anisha (Clusters 1, 4, 7, 10)\nMerged Cluster 2: Paul, Solomon, Soheil, Gongxue, Alice, Pierre, Abdul, Durga, Ajit (Clusters 2, 3, 5, 8, 11)\nMerged Cluster 3: Abdul, Durga, Ajit, Anisha, Noah, Salma, Shanshan, Vadim (Clusters 6, 9, 12)\n\nStep 3: Identify densely-connected clusters with a max of 2 students.\nNone of the merged clusters have a maximum of 2 students, so there are no densely-connected clusters.\n\nAnswer: there are 0 clusters"
+            "content": "Step 1: Identify individual connections:\n- Amir is connected to Reza, Moin, Pari, and Puja.\n- Wim is connected to Wei, Kim, Puja, and Pam.\n- Raj is connected to Nisha, Ian, Sara, and Kim.\n- Jing is connected to Reza, Moin, Pari, and Max.\n- Wei is connected to Kim, Puja, and Pam.\n- Nisha is connected to Ian, Sara, and Max.\n- Reza is connected to Moin, and Pari.\n- Kim is connected to Pam.\n- Ian is connected to Sara, and Max.\n- Moin is connected to Pari.\n- Puja is connected to Pam.\n- Sara is connected to Max.\n\nStep 2: Identify the clusters of scholars based on their connections. \n\nCluster 1: Amir, Reza, Moin, Pari, Jing.\nCluster 2: Wim, Wei, Kim, Puja, Pam.\nCluster 3: Raj, Nisha, Ian, Sara, Kim, Max.\nCluster 4: Wei, Kim, Puja, Pam.\nCluster 5: Nisha, Ian, Sara, Max.\nCluster 6: Reza, Moin, Pari.\nCluster 7: Kim, Pam.\nCluster 8: Ian, Sara, Max.\nCluster 9: Moin, Pari.\nCluster 10: Puja, Pam.\nCluster 11: Sara, Max.\n\nStep 3: Remove the redundant clusters (clusters that are subsets of another cluster). \n\nWe are left with: \nCluster 1: Amir, Reza, Moin, Pari, Jing.\nCluster 2: Wim, Wei, Kim, Puja, Pam.\nCluster 3: Raj, Nisha, Ian, Sara, Kim, Max.\n\nAnswer: there are 3 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 0 clusters"
+            "parsed_response": "Answer: there are 3 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Raj to Moin? Starting from Raj, please list the scholar names in order, including Raj, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. First, let's list all the connections Vivian has: Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n2. Next, let's explore the connections of the students connected to Vivian and see if any of them are connected to Ajit:\n   - Salma is connected to Shanshan and Vadim, but not to Ajit.\n   - Shanshan is connected to Salma, Vadim, and Noah, but not to Ajit.\n   - Vadim is connected to Salma, Shanshan, and Noah, but not to Ajit.\n   - Gongxue is connected to Paul, Solomon, Soheil, and Alice, but not to Ajit.\n3. Now, let's explore the connections of the students who are connected to the students connected to Vivian:\n   - Salma and Vadim's connections have already been explored.\n   - Shanshan's connection Noah is connected to Salma, Shanshan, Vadim, and Anisha, but not to Ajit.\n   - Gongxue's connections include Paul, Solomon, Soheil, and Alice. Among them, Soheil is connected to Pierre, Abdul, Durga, Ajit, and Alice.\n4. So, the shortest connection path from Vivian to Ajit is through Gongxue and Soheil.\n\nAnswer: Vivian, Gongxue, Soheil, Ajit"
+            "content": "To find the shortest path from Raj to Moin, we need to look at who Raj is directly connected to and then check those scholars to see if they are directly connected to Moin, if not, we then check who they are connected to, and so on.\n\n1. Raj is directly connected to Nisha, Ian, Sara, and Kim.\n2. None of Nisha, Ian, Sara, or Kim are directly connected to Moin.\n3. Now let's check who Nisha, Ian, Sara, and Kim are connected to.\n   - Nisha is connected to Max.\n   - Ian is connected to Sara, and Max.\n   - Sara is connected to Max.\n   - Kim is connected to Pam.\n4. None of them are directly connected to Moin either. Continue to check the connections of the new names:\n   - Max has no connections listed beyond Sara and Ian, who we have already considered.\n   - Pam is connected to Puja.\n5. Check Puja's connections:\n   - Puja is connected to Amir.\n6. Amir is connected to Moin.\n\nThis gives us the shortest path from Raj to Moin. \n\nAnswer: Raj, Kim, Pam, Puja, Amir, Moin"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Raj, Nisha, Matt, Jing, Moin",
+                "Answer: Raj, Ian, Matt, Jing, Moin",
+                "Answer: Raj, Sara, Matt, Jing, Moin"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Ajit"
+            "parsed_response": "Answer: Raj, Kim, Pam, Puja, Amir, Moin"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

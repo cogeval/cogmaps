@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n21star_socialTies_exp_valuePath_temp_0.5_10",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 21 scholars. Amir is connected to Wim, Raj, Jing, Wei, Nisha, and Reza. Sara is connected to Pari, Pam, Kim, Ian, Moin, and Puja. Zack is connected to Matt, Eva, Amy, Gia, Ming, and Prem. Nisha is connected to Reza, Wim, Raj, Jing, and Wei. Raj is connected to Jing, Wei, Reza, and Wim. Pam is connected to Jing, Kim, Ian, Moin, and Puja. Moin is connected to Puja, Pari, Kim, and Ian. Ming is connected to Prem, Matt, Eva, Amy, and Gia. Wei is connected to Reza, Wim, and Eva. Kim is connected to Ian, Puja, and Pari. Ian is connected to Puja and Pari. Gia is connected to Prem, Matt, Eva, and Amy. Reza is connected to Wim, and Jing. Puja is connected to scholars Pari. Prem is connected to Matt, Eva, and Amy. Wim is connected to Jing. Pari is connected to Amy. Amy is connected to Matt. Matt is connected to Eva. You have been told that Prem is donating 50 books and Moin is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a breadth-first search algorithm. \n\n1. Start with Amir.\n2. Check if Amir is connected to any scholars who have more books than the current maximum.\n3. If yes, update the current maximum and the corresponding scholar.\n4. Repeat steps 2 and 3 for each scholar connected to Amir.\n5. If none of the connected scholars have more books than the current maximum, move to the next level of connections.\n6. Repeat steps 2-5 until the maximum number of books is found.\n\nHere is the step-by-step process:\n\n1. Amir is connected to Wim, Raj, Jing, Wei, Nisha, and Reza.\n2. None of them have more books than the current maximum (0).\n3. Move to the next level of connections: Wim, Raj, Jing, Wei, Nisha, and Reza.\n4. Wim is connected to Jing.\n5. None of them have more books than the current maximum (0).\n6. Raj is connected to Jing, Wei, Reza, and Wim.\n7. None of them have more books than the current maximum (0).\n8. Jing is connected to Wei, Reza, and Wim.\n9. None of them have more books than the current maximum (0).\n10. Wei is connected to Reza, Wim, and Eva.\n11. Eva has more books than the current maximum (0). Update the current maximum to the number of books Eva has (1) and the corresponding scholar to Eva.\n12. Nisha is connected to Reza, Wim, Raj, Jing, and Wei.\n13. None of them have more books than the current maximum (1).\n14. Reza is connected to Wim and Jing.\n15. None of them have more books than the current maximum (1).\n16. Move to the next level of connections: Eva, Wim.\n17. Eva is connected to Matt.\n18. Matt has more books than the current maximum (1). Update the current maximum to the number of books Matt has (2) and the corresponding scholar to Matt.\n19. Wim is connected to Jing.\n20. None of them have more books than the current maximum (2).\n21. Move to the next level of connections: Matt, Jing.\n22. Matt is connected to Eva.\n23. None of them have more books than the current maximum (2).\n24. Jing is connected to Wei, Reza, and Wim.\n25. None of them have more books than the current maximum (2).\n26. Move to the next level of connections: Wei, Reza, Wim.\n27. None of them have more books than the current maximum (2).\n28. Move to the next level of connections: Reza, Wim.\n29. None of them have more books than the current maximum (2).\n30. Move to the next level of connections: Wim.\n31. None of them have more books than the current maximum (2).\n\nThe shortest path from Amir to the person with the maximum number of books is: Amir, Wim, Wei, Eva, Matt.\n\nAnswer: Amir, Wim, Wei, Eva, Matt"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Wei, Eva, Prem"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Wei, Eva, Matt"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

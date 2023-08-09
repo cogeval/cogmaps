@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Raj? Starting from Amir, please list the scholar names in order, including Amir, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups of connected students.\nGroup 1: Vivian, Salma, Shanshan, Vadim, Gongxue\nGroup 2: Paul, Solomon, Soheil, Gongxue, Alice\nGroup 3: Pierre, Abdul, Durga, Ajit, Soheil\nGroup 4: Noah, Salma, Shanshan, Vadim, Anisha\nGroup 5: Solomon, Soheil, Gongxue, Alice\nGroup 6: Abdul, Durga, Ajit, Anisha\nGroup 7: Salma, Shanshan, Vadim\nGroup 8: Soheil, Alice\nGroup 9: Durga, Ajit, Anisha\nGroup 10: Shanshan, Vadim\nGroup 11: Gongxue, Alice\nGroup 12: Ajit, Anisha\n\nStep 2: Identify the starting point (Vivian) and the end point (Ajit).\nStarting Point: Vivian (Group 1)\nEnd Point: Ajit (Groups 3, 6, 9, 12)\n\nStep 3: Identify the groups containing the starting and end points, and find any overlapping students.\nVivian: Group 1\nAjit: Groups 3, 6, 9, 12\nOverlapping students: None\n\nStep 4: Find any students from the starting group that are connected to students from the groups containing the end point.\nGroup 1: Salma and Gongxue\nGroup 3: Salma (Group 4) and Soheil (Group 2, 5, 8)\n\nStep 5: Identify the shortest path from Vivian to Ajit using the connected students.\nPath 1: Vivian -> Salma -> Soheil -> Ajit (3 connections)\nPath 2: Vivian -> Gongxue -> Alice -> Soheil -> Ajit (4 connections)\n\nAnswer: Vivian, Salma, Soheil, Ajit"
+            "content": "Let's break this down:\n\n1. Start with Amir.\n2. We know Amir is connected to Reza, Moin, Pari, and Puja.\n3. Since none of these people are directly connected to Raj, we need to find out who they are connected to. \n4. Reza is connected to Moin and Pari, Moin is connected to Pari, Pari is not connected to anyone else, and Puja is connected to Pam.\n5. None of these connections lead to Raj, so we move to the next level. \n6. Wim and Kim are both connected to Puja, and Kim is also connected to Pam. Wim, Kim and Pam are not directly connected to Raj.\n7. But, Kim is indirectly connected to Raj through Pam.\n8. So, the shortest path from Amir to Raj is: Amir -> Puja -> Kim -> Raj.\n\nAnswer: Amir, Puja, Kim, Raj"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Amir, Puja, Wim, Kim, Raj",
+                "Answer: Amir, Puja, Wei, Kim, Raj",
+                "Answer: Amir, Puja, Pam, Kim, Raj"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Soheil, Ajit"
+            "parsed_response": "Answer: Amir, Puja, Kim, Raj"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

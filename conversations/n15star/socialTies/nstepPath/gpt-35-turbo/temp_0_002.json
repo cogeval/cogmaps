@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_0_2",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Sara? Starting from Amir, please list the scholar names in order, including Amir, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to Sara, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Amir.\n2. Check if Amir is connected to Sara directly. If yes, the shortest path is just Amir and Sara.\n3. If not, check Amir's connections: Reza, Moin, Pari, and Puja.\n4. Check if any of Amir's connections are connected to Sara directly. If yes, the shortest path is Amir, followed by the connection, and then Sara.\n5. If not, check the connections of Amir's connections: Reza, Moin, Pari, and Puja.\n6. Repeat steps 4 and 5 until Sara is found or all connections have been checked.\n\nFollowing these steps, the shortest path from Amir to Sara is:\n\nAmir, Reza, Moin, Pari, Sara\n\nAnswer: Amir, Reza, Moin, Pari, Sara"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Matt, Sara",
+                "Answer: Amir, Moin, Jing, Matt, Sara",
+                "Answer: Amir, Pari, Jing, Matt, Sara"
+            ],
+            "parsed_response": "Answer: Amir, Reza, Moin, Pari, Sara"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

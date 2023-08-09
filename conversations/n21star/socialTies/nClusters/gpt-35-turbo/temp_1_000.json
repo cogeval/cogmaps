@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -19,18 +19,18 @@
         },
         {
             "role": "assistant",
-            "content": "First, we can create a visual representation of the connections between scholars using a graph. Each scholar will be represented as a node, and the connections between them will be represented as edges. \n\nNext, we can identify the clusters by looking for densely-connected subgraphs. One way to do this is by using the concept of connected components. A connected component is a subgraph where all the nodes are connected to each other, and there are no edges connecting nodes in different components.\n\nUsing this approach, we can identify the following clusters:\n\n- Amir, Wim, Raj, Jing, Wei, Nisha, and Reza\n- Sara, Pari, Pam, Kim, Ian, and Moin\n- Zack, Matt, Eva, Amy, Gia, Ming, and Prem\n\nAnswer: There are 3 clusters."
+            "content": "To determine the number of densely-connected scholar clusters in the group, we can use the information provided to create a graph representation of the connections between scholars. Then, we can use a graph traversal algorithm, such as depth-first search (DFS) or breadth-first search (BFS), to identify the clusters.\n\n1. Create a graph representation:\n   - Create a list of scholars: [Amir, Wim, Raj, Jing, Wei, Nisha, Reza, Sara, Pari, Pam, Kim, Ian, Moin, Puja, Zack, Matt, Eva, Amy, Gia, Ming, Prem]\n   - Create an adjacency list to represent the connections between scholars:\n     - Amir: [Wim, Raj, Jing, Wei, Nisha, Reza]\n     - Wim: [Amir, Raj, Jing, Wei, Nisha, Reza]\n     - Raj: [Amir, Jing, Wei, Reza, Wim]\n     - Jing: [Amir, Wei, Raj, Reza, Wim]\n     - Wei: [Amir, Wim, Raj, Reza]\n     - Nisha: [Amir, Reza, Wim, Raj, Jing, Wei]\n     - Reza: [Amir, Wim, Jing, Nisha, Raj, Wei]\n     - Sara: [Pari, Pam, Kim, Ian, Moin, Puja]\n     - Pari: [Sara, Pam, Kim, Ian, Moin, Puja]\n     - Pam: [Sara, Jing, Kim, Ian, Moin, Puja]\n     - Kim: [Pam, Ian, Puja, Pari]\n     - Ian: [Pam, Kim, Puja, Pari]\n     - Moin: [Puja, Pari, Kim, Ian]\n     - Puja: [Sara, Pari, Pam, Kim, Ian, Moin]\n     - Zack: [Matt, Eva, Amy, Gia, Ming, Prem]\n     - Matt: [Zack, Eva, Amy]\n     - Eva: [Zack, Matt, Amy, Gia, Ming, Wei]\n     - Amy: [Zack, Matt, Eva, Gia, Pari]\n     - Gia: [Zack, Matt, Eva, Amy, Ming, Prem]\n     - Ming: [Gia, Prem, Matt, Eva, Amy]\n     - Prem: [Zack, Gia, Matt, Eva, Amy, Ming]\n\n2. Perform a graph traversal to identify densely-connected clusters:\n   - Initialize a counter for the number of clusters as 0.\n   - For each scholar in the list of scholars:\n     - If the scholar is not already visited:\n       - Initialize an empty set to store the scholars in the cluster.\n       - Perform a DFS or BFS from the current scholar to explore the cluster.\n       - Increment the counter by 1 since a new cluster has been found.\n\n3. Count the number of densely-connected clusters:\n   - The final outcome is the count of the number of clusters found.\n\nAnswer: there are 5 clusters"
         }
     ],
     "tests": {
         "nClusters": {
             "expected_answer": "Answer: there are 3 clusters",
-            "parsed_response": "Answer: There are 3 clusters"
+            "parsed_response": "Answer: there are 5 clusters"
         }
     },
     "scores": {
         "nClusters": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

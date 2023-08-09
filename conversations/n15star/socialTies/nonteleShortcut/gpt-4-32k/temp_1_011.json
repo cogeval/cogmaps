@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. You have been told that Gongxue is now connected to Soheil. From Vivian, what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "First, let's list all the connections for each student:\n\n1. Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n2. Salma is connected to Vivian, Shanshan, Vadim, Noah, and Anisha.\n3. Shanshan is connected to Vivian, Salma, Vadim, Noah, and Anisha.\n4. Vadim is connected to Vivian, Salma, Shanshan, and Noah.\n5. Gongxue is connected to Vivian, Paul, Solomon, Soheil, Alice, and now Soheil.\n6. Paul is connected to Solomon, Soheil, Gongxue, and Alice.\n7. Solomon is connected to Paul, Soheil, Gongxue, Alice, and Abdul.\n8. Soheil is connected to Paul, Solomon, Gongxue, Alice, Pierre, Abdul, and Durga.\n9. Alice is connected to Paul, Solomon, Soheil, Gongxue, and Durga.\n10. Pierre is connected to Abdul, Durga, Ajit, and Soheil.\n11. Abdul is connected to Pierre, Durga, Ajit, and Solomon.\n12. Durga is connected to Pierre, Abdul, Ajit, Soheil, and Alice.\n13. Ajit is connected to Pierre, Abdul, Durga, and Anisha.\n14. Anisha is connected to Noah, Salma, Shanshan, Vadim, Ajit, and Durga.\n15. Noah is connected to Salma, Shanshan, Vadim, and Anisha.\n\nSince we are asked to find the connection path from Vivian, let's start with her connections: Salma, Shanshan, Vadim, and Gongxue. Among these, Gongxue has the most direct connections to the others.\n\nSo, we can build the following path, maximizing the connections and rewards:\n\nVivian -> Gongxue -> Soheil -> Alice -> Durga -> Ajit -> Anisha -> Noah -> Salma -> Shanshan -> Vadim\n\nAnswer: Vivian, Gongxue, Soheil, Alice, Durga, Ajit, Anisha, Noah, Salma, Shanshan, Vadim"
+            "content": "Step 1: Identify the person who is donating the maximum number of books. In this case, it's Kim who is donating 50 books.\n\nStep 2: Starting from Amir, find the shortest path to Kim. From the connections given, the shortest path from Amir to Kim is through Wim and Puja. \n\nAnswer: Amir, Wim, Puja, Kim"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva. Eva is connected to all of  Pam\u2019s connections. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the person who is donating the maximum number of books. In this case, it's Kim who is donating 50 books.\n\nStep 2: Now, since Amir is married to Eva and Eva is connected to all of Pam's connections, the path from Amir to Kim changes. \n\nFrom the connections given, the shortest path from Amir to Kim now is through Eva and Pam. \n\nAnswer: Amir, Eva, Pam, Kim"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Soheil"
+                "Answer: Amir, Eva, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Alice, Durga, Ajit, Anisha, Noah, Salma, Shanshan, Vadim"
+            "parsed_response": "Answer: Amir, Eva, Pam, Kim"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

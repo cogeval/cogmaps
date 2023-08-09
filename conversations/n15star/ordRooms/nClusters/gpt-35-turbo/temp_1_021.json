@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nClusters_temp_1_21",
+    "conversation_id": "task_n15star_ordRooms_exp_nClusters_temp_1_21",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a minimum of 2 rooms."
         },
         {
             "role": "assistant",
-            "content": "To solve this problem, we can create a graph where each room is a node, and two nodes (rooms) are connected if they are connected by a maximum of two other rooms. Then, we can use a clustering algorithm to identify the clusters of densely-connected rooms. \n\nUsing this approach, we can identify the following clusters:\n- Cluster 1: Room 1, Room 7, Room 10, Room 13, and Room 11\n- Cluster 2: Room 2, Room 5, Room 8, Room 11, and Room 14\n- Cluster 3: Room 3, Room 6, Room 9, Room 12, and Room 15\n- Cluster 4: Room 4\n\nTherefore, the answer is: there are 4 clusters."
+            "content": "To identify the densely-connected clusters in this castle, we can use the depth-first search algorithm. Starting from each room, we can traverse the castle to find all the rooms connected to it. We mark each visited room to make sure we do not visit it again. If during the traversal we encounter a room that has already been marked, it means that we have found a densely-connected cluster.\n\nAfter running the depth-first search algorithm from each room, we find that there are 5 densely-connected clusters in this castle. \n\nAnswer: there are 5 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": null
+            "parsed_response": "Answer: there are 5 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

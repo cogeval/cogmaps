@@ -6,44 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the attractions and their wait times.\nStep 2: Compare the wait times of all attractions.\nStep 3: Determine the attraction with the shortest wait time.\nStep 4: List the path to the attraction with the shortest wait time in order, separated by commas.\n\nAnswer: Left, Fantasyland, Mad Tea Party"
+            "content": "Step 1: Recall the number of flowers in each field.\n- Sunflower field: 0 flowers\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Rose field: 0 flowers\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n\nStep 2: Calculate the total number of flowers for each path.\n- Path 1 (right, right): Sunflower field + Hydrangea field = 0 + 50 = 50 flowers\n- Path 2 (right, left): Sunflower field + Orchid field = 0 + 10 = 10 flowers\n- Path 3 (left, right): Rose field + Daisy field = 0 + 22 = 22 flowers\n- Path 4 (left, left): Rose field + Tulip field = 0 + 56 = 56 flowers\n\nStep 3: Determine the path with the maximum number of flowers.\n- Path 4 (left, left) has the maximum number of flowers (56).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\n- Entrance, Rose field, Tulip field\n\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
-            "content": "This time you at entrance your encounter a new passage that leads to Snow White\u2019s Castle. This Castle has a magic door that can take you to any attraction you want. When you return to entrance and choose the path that led to the shortest wait time previously, you discover that the passage from Fantasyland to Mad Tea Party is now blocked. You go back to the entrance. You will only be able to choose one attraction with the least wait time. From the entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas"
+            "content": "This time you\u2019re at the entrance and you encounter a new field that leads to the lily field. The lily field has a portal and through this portal it\u2019s possible to go to any neighboring field of the rose field. When you return to the entrance and choose the path that led to the maximum number of flowers previously, you discover that the path is now blocked. You go back to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the available attractions and their wait times.\nStep 2: Exclude the previously shortest wait time attraction (Mad Tea Party) due to the blocked passage.\nStep 3: Compare the wait times of the remaining attractions.\nStep 4: Determine the attraction with the shortest wait time among the remaining options.\nStep 5: List the path to the attraction with the shortest wait time in order, separated by commas.\n\nAnswer: Right, Tomorrowland, Space Mountain"
+            "content": "Step 1: Recall the number of flowers in each field and the new information.\n- Sunflower field: 0 flowers\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Rose field: 0 flowers\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers (previously the path with the maximum number of flowers, but now blocked)\n- Lily field: 0 flowers (new field with a portal to any neighboring field of the Rose field)\n\nStep 2: Determine the accessible fields through the Lily field portal.\n- Daisy field (neighboring the Rose field)\n- Tulip field (neighboring the Rose field)\n\nStep 3: Calculate the total number of flowers for each accessible path.\n- Path 1 (right, right): Sunflower field + Hydrangea field = 0 + 50 = 50 flowers\n- Path 2 (right, left): Sunflower field + Orchid field = 0 + 10 = 10 flowers\n- Path 3 (new field): Entrance + Lily field + Tulip field = 0 + 0 + 56 = 56 flowers\n- Path 4 (new field): Entrance + Lily field + Daisy field = 0 + 0 + 22 = 22 flowers\n\nStep 4: Determine the path with the maximum number of flowers.\n- Path 3 (new field) has the maximum number of flowers (56).\n\nStep 5: List the flower names in order, including the entrance, separated by commas.\n- Entrance, Lily field, Tulip field\n\nAnswer: Entrance, Lily field, Tulip field"
         }
     ],
     "tests": {
         "teleDetour": {
             "expected_answer": [
-                "Answer: Entrance, Snow White's Castle, Mad Tea Party",
-                "Answer: entrance, Snow White's Castle, Mad Tea Party "
+                "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Step 1: Identify the available attractions and their wait times.\nStep 2: Exclude the previously shortest wait time attraction (Mad Tea Party) due to the blocked passage.\nStep 3: Compare the wait times of the remaining attractions.\nStep 4: Determine the attraction with the shortest wait time among the remaining options.\nStep 5: List the path to the attraction with the shortest wait time in order, separated by commas.\n\nAnswer: Right, Tomorrowland, Space Mountain"
-        }
-    },
-    "scores": {
-        "teleDetour": {
-            "score": 0.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Entrance, Lily field, Tulip field"
         }
     }
 }

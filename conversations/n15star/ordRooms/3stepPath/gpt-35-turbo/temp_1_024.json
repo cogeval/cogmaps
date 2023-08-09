@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_3stepPath_temp_1_24",
+    "conversation_id": "task_n15star_ordRooms_exp_3stepPath_temp_1_24",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,24 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 15? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 2 to room 12? Starting from room 2, please list the room numbers in order, including 2, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: 1,7,10,13,15"
+            "content": "To find the shortest path from room 2 to room 12, we can use Dijkstra's algorithm. \n\n1. Start at room 2.\n2. Check all rooms connected to room 2: rooms 5, 8, 11, and 14. Calculate the distance from room 2 to each of these rooms.\n3. Move to the room with the shortest distance. In this case, it's room 8.\n4. From room 8, we can reach room 3 or room 14. Calculate the distance from room 2 to each of these rooms, including the distance via room 8.\n5. The shortest distance is to room 14. Move to room 14.\n6. From room 14, we can reach room 2, room 5, room 8, or room 11. However, we've already been to room 2 and room 8. Calculate the distance from room 14 to room 5 and room 11.\n7. The shortest distance is to room 11. Move to room 11.\n8. From room 11, we can reach room 1 or room 14. However, we've already been to room 14. Calculate the distance from room 11 to room 1.\n9. Move to room 1.\n10. From room 1, we can reach room 7 or room 10. However, we've already been to room 10. Calculate the distance from room 1 to room 13 and room 11.\n11. The shortest distance is to room 11. Move to room 11.\n12. From room 11, we can reach room 14. However, we've already been to room 14. Calculate the distance from room 11 to room 12.\n13. Move to room 12.\n\nTherefore, the shortest path from room 2 to room 12 is: 2, 8, 14, 11, 1, 12\n\nAnswer: 2, 8, 14, 11, 1, 12"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15",
-                "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 2, 8, 3, 12"
             ],
-            "parsed_response": "Answer: 1,7,10,13,15"
+            "parsed_response": "Answer: 2, 8, 14, 11, 1, 12"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

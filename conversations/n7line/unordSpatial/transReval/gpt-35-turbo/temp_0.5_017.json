@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,34 +15,27 @@
         },
         {
             "role": "user",
-            "content": "Imagine you are traveling through Asia. You start in New Delhi and have two choices, you can go to Islamabad or Kathmandu. From Islamabad, you can go to Kabul and from there to Tehran. In Tehran, your total expenses will be $1000 including hotels, shopping and sight-seeing. After learning this, you return to New Delhi. This time, you choose Kathmandu, which leads to Beijing, and from there you can go to Thimphu, where you have $400 total expenses. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Imagine a flower county with six flower fields. From the entrance you have two choices, you can go to the rose field or sunflower field. You enter the rose field, at the other end of this field there's a door that leads to the tulip field, and the tulip field leads to the orchid field. From the orchid field, you can have 10 orchid flowers for free, but you do not take any flower, you're just learning about the environment. Then you exit and start over. This time in the entrance you choose the sunflower field, which has a door to the daisy field, and the daisy field has a door that leads to the hydrangea field. You can have 50 hydrangea flowers from the hydrangea field, but you do not take any flowers, you're just learning about the environment. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "To find the least expensive destination, we need to compare the total expenses of both paths. \n\nPath 1: New Delhi - Islamabad - Kabul - Tehran\nTotal expenses: $1000\n\nPath 2: New Delhi - Kathmandu - Beijing - Thimphu\nTotal expenses: $400\n\nTherefore, the path that leads to the least expensive destination is the one that goes through Kathmandu. \n\nAnswer: Kathmandu"
+            "content": "To find the field that leads to the path with the maximum number of flowers, let's calculate the total number of flowers for each path:\n\n1. Path through the rose field: \n   - Rose field: 0 flowers\n   - Tulip field: 0 flowers\n   - Orchid field: 10 orchid flowers\n   Total: 10 flowers\n\n2. Path through the sunflower field: \n   - Sunflower field: 0 flowers\n   - Daisy field: 0 flowers\n   - Hydrangea field: 50 hydrangea flowers\n   Total: 50 flowers\n\nBased on the calculations, the path through the sunflower field leads to the maximum number of flowers with a total of 50 flowers.\n\nAnswer: Sunflower field"
         },
         {
             "role": "user",
-            "content": "Now, the route from Kabul to Tehran is blocked, and instead, the route from Kabul leads to Thimphu. The route from Beijing now leads to Tehran. You start again in New Delhi. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Now you're told that the door at the end of the tulip field suddenly leads to the hydrangea field. The door at the end of daisy field now leads to the orchid field. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "Let's compare the total expenses of both paths again with the updated routes:\n\nPath 1: New Delhi - Islamabad - Kabul - Thimphu\nTotal expenses: unknown\n\nPath 2: New Delhi - Kathmandu - Beijing - Tehran\nTotal expenses: $1000\n\nSince we don't know the total expenses of Path 1, we cannot compare it with Path 2. However, we know that Path 2 has total expenses of $1000, which is higher than the $400 total expenses of Path 2 in the previous scenario. Therefore, it's likely that Path 1 will be the least expensive destination. \n\nAnswer: Islamabad"
+            "content": "With the updated information, let's recalculate the total number of flowers for each path:\n\n1. Path through the rose field:\n   - Rose field: 0 flowers\n   - Tulip field (now leads to hydrangea field): 50 hydrangea flowers\n   - Hydrangea field: 50 hydrangea flowers\n   Total: 100 flowers\n\n2. Path through the sunflower field:\n   - Sunflower field: 0 flowers\n   - Daisy field (now leads to orchid field): 10 orchid flowers\n   - Orchid field: 10 orchid flowers\n   Total: 20 flowers\n\nBased on the updated calculations, the path through the rose field leads to the maximum number of flowers with a total of 100 flowers.\n\nAnswer: Rose field"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Islamabad"
+                "Answer: rose"
             ],
-            "parsed_response": "Let's compare the total expenses of both paths again with the updated routes:\n\nPath 1: New Delhi - Islamabad - Kabul - Thimphu\nTotal expenses: unknown\n\nPath 2: New Delhi - Kathmandu - Beijing - Tehran\nTotal expenses: $1000\n\nSince we don't know the total expenses of Path 1, we cannot compare it with Path 2. However, we know that Path 2 has total expenses of $1000, which is higher than the $400 total expenses of Path 2 in the previous scenario. Therefore, it's likely that Path 1 will be the least expensive destination. \n\nAnswer: Islamabad"
-        }
-    },
-    "scores": {
-        "transReval": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Rose field"
         }
     }
 }

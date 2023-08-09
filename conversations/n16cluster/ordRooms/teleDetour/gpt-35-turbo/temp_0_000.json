@@ -19,15 +19,15 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward, we need to calculate the shortest path from room 1 to room 10 and the shortest path from room 1 to room 15, and then compare the rewards. \n\nThe shortest path from room 1 to room 10 is: 1 -> 7 -> 8 -> 10, with a reward of 0 (no chest in these rooms).\n\nThe shortest path from room 1 to room 15 is: 1 -> 7 -> 5 -> 3 -> 15, with a reward of 10 (chest with a reward of 10 in room 15).\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1 -> 7 -> 5 -> 3 -> 15. \n\nAnswer: 1, 7, 5, 3, 15"
+            "content": "To find the shortest path that yields the most reward, we need to calculate the shortest path from room 1 to room 10 and the shortest path from room 1 to room 15, and then compare the rewards. \n\nThe shortest path from room 1 to room 10 is: 1-7-8-10, with a reward of 0.\n\nThe shortest path from room 1 to room 15 is: 1-7-5-3-9-15, with a reward of 10.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1-7-5-3-9-15, with a reward of 10.\n\nAnswer: 1,7,5,3,9,15"
         },
         {
             "role": "user",
-            "content": "You are told that the door from room 1 to room 7 is locked. You are also told that a teleportation portal appears in room 5, through which you can teleport to any room. This means that from room 5 you can go to any room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that the door from room 1 to room 7 is locked. You are also told that a teleportation portal appears in room 5, through which you can teleport to any neighboring room of room 12. This means that from room 5 you can go to any neighboring room of room 12. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Since the door from room 1 to room 7 is locked, we cannot take the path 1 -> 7 that we used in the previous question. Instead, we can use the teleportation portal in room 5 to reach any room. \n\nThe shortest path from room 1 to room 10 is: 1 -> 5 -> 8 -> 10, with a reward of 0 (no chest in these rooms).\n\nThe shortest path from room 1 to room 15 is: 1 -> 5 -> 3 -> 15, with a reward of 10 (chest with a reward of 10 in room 15).\n\nThe shortest path from room 1 to room 13 is: 1 -> 5 -> 16 -> 13, with a reward of 0 (no chest in these rooms).\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1 -> 5 -> 3 -> 15. \n\nAnswer: 1, 5, 3, 15"
+            "content": "Since the door from room 1 to room 7 is locked, we need to find an alternative path to reach room 7. The shortest path from room 1 to room 7, bypassing room 2 and room 5, is: 1-4-14-13-11-9-12-6-5-7, with a reward of 0.\n\nThe shortest path from room 1 to room 10, bypassing room 7, is: 1-4-14-13-11-9-12-10, with a reward of 0.\n\nThe shortest path from room 1 to room 15, bypassing room 7, is: 1-4-14-13-15, with a reward of 10.\n\nNow, we can use the teleportation portal in room 5 to reach any neighboring room of room 12. The neighboring rooms of room 12 are: 6, 9, 10, and 11. \n\nThe shortest path from room 1 to room 6, using the teleportation portal in room 5, is: 1-7-5-6, with a reward of 0.\n\nThe shortest path from room 1 to room 9, using the teleportation portal in room 5, is: 1-7-5-6-9, with a reward of 0.\n\nThe shortest path from room 1 to room 10, using the teleportation portal in room 5, is: 1-7-5-6-10, with a reward of 50.\n\nThe shortest path from room 1 to room 11, using the teleportation portal in room 5, is: 1-7-5-6-11, with a reward of 0.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1-7-5-6-10, with a reward of 50.\n\nAnswer: 1,7,5,6,10"
         }
     ],
     "tests": {
@@ -36,7 +36,7 @@
                 "Answer: 1, 3, 5, 10",
                 "Answer: 1,3,5,10"
             ],
-            "parsed_response": "Since the door from room 1 to room 7 is locked, we cannot take the path 1 -> 7 that we used in the previous question. Instead, we can use the teleportation portal in room 5 to reach any room. \n\nThe shortest path from room 1 to room 10 is: 1 -> 5 -> 8 -> 10, with a reward of 0 (no chest in these rooms).\n\nThe shortest path from room 1 to room 15 is: 1 -> 5 -> 3 -> 15, with a reward of 10 (chest with a reward of 10 in room 15).\n\nThe shortest path from room 1 to room 13 is: 1 -> 5 -> 16 -> 13, with a reward of 0 (no chest in these rooms).\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1 -> 5 -> 3 -> 15. \n\nAnswer: 1, 5, 3, 15"
+            "parsed_response": "Answer: 1,7,5,6,10"
         }
     },
     "scores": {

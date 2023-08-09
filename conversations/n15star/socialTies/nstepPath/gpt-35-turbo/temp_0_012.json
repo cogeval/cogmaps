@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_0_12",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Puja to Ian? Starting from Puja, please list the scholar names in order, including Puja, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Puja to Ian, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Puja as the initial node.\n2. Check Puja's connections: Puja is connected to Pam, Kim, and Wei.\n3. Add Pam, Kim, and Wei to the queue.\n4. Take the first scholar from the queue, which is Pam.\n5. Check Pam's connections: Pam is connected to Puja and Kim.\n6. Since Puja is already visited, we skip it. But Kim is not visited yet, so we add Kim to the queue.\n7. Continue this process until we find Ian or the queue becomes empty.\n8. The shortest path from Puja to Ian is: Puja, Pam, Kim, Ian.\n\nAnswer: Puja, Pam, Kim, Ian"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Puja, Wim, Kim, Raj, Ian",
+                "Answer: Puja, Wei, Kim, Raj, Ian",
+                "Answer: Puja, Pam, Kim, Raj, Ian"
+            ],
+            "parsed_response": "Answer: Puja, Pam, Kim, Ian"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

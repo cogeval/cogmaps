@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_teleShortcut_temp_1_8",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with maximum number of books (which is Moin with 50 books), we first need to see if there are any connections between them. If there are no direct connections, we'll have to find an indirect route through other scholars. \n\nStep 1: Check direct connections from Amir - Wim, Raj, Jing, Reza. Moin is not directly connected to Amir.\n\nStep 2: Check if Moin is connected to any of Amir's direct connections. From the connections, we know that Moin is connected to Kim, but Kim is not in Amir's direct connections. We also see that Moin is connected to Sara, but Sara is not in Amir's direct connections either.\n\nStep 3: Next we check connections of Moin's connections - Kim and Sara. Kim is connected to Wei, Nisha, Reza and Moin. Reza is also connected to Amir so the path from Amir to Moin can be through Reza and Kim.\n\nStep 4: According to the data, Amir is connected to Reza and Reza is connected to Kim, Kim is then connected to Moin. This is the shortest path from Amir to Moin.\n\nFinal step: List the scholars in order. Starting from Amir, the sequence would be: Amir, Reza, Kim, Moin. \n\nSo, the final answer is: Amir, Reza, Kim, Moin."
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Amy, who has an instant connection portal, through which you can connect to any of Sara\u2019s connections, one at a time. This means that once you connect with Amy, then you can immediately connect with any other scholar who is connected to Sara. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Now that Amir is married to Amy and Amy can connect to any of Sara's connections, this changes the shortest path to reach Moin.\n\nStep 1: Start from Amir and connect to Amy because she provides a gateway to any of Sara's connections. \n\nStep 2: Check Sara's connections: Ian, Moin, Puja, Nisha. Moin is the one with the maximum books.\n\nStep 3: From Amy, connect directly to Moin (through the portal to Sara's connections).\n\nFinal step: List the scholars in order. Starting from Amir, the sequence would be: Amir, Amy, Moin.\n\nSo, the final answer is: Amir, Amy, Moin."
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Amy, Moin"
+            ],
+            "parsed_response": "Now that Amir is married to Amy and Amy can connect to any of Sara's connections, this changes the shortest path to reach Moin.\n\nStep 1: Start from Amir and connect to Amy because she provides a gateway to any of Sara's connections. \n\nStep 2: Check Sara's connections: Ian, Moin, Puja, Nisha. Moin is the one with the maximum books.\n\nStep 3: From Amy, connect directly to Moin (through the portal to Sara's connections).\n\nFinal step: List the scholars in order. Starting from Amir, the sequence would be: Amir, Amy, Moin.\n\nSo, the final answer is: Amir, Amy, Moin."
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

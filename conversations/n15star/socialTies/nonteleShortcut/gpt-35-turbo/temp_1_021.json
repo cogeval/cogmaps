@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleShortcut_temp_1_21",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. We start with Amir and explore all the scholars connected to Amir. Then, we explore the scholars connected to those scholars and so on until we find the person who is donating the maximum number of books.\n\nStarting from Amir, the scholars connected to Amir are Reza, Moin, Pari, and Puja. None of these scholars are donating the maximum number of books. We continue the search by exploring the scholars connected to these scholars.\n\nFrom Reza, the scholars connected to Reza are Moin and Pari. Moin is not donating the maximum number of books, and Pari is also not donating the maximum number of books.\n\nFrom Moin, the only scholar connected to Moin is Pari. Pari is also not donating the maximum number of books.\n\nFrom Pari, there are no scholars connected to Pari.\n\nFrom Puja, the scholars connected to Puja are Pam and Kim. Kim is donating the maximum number of books. Hence, the shortest path from Amir to the person who is donating the maximum number of books is:\n\nAnswer: Amir, Puja, Kim"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva. Eva is connected to all of  Pam\u2019s connections. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Since Eva is connected to all of Pam's connections, this means Eva is connected to Puja and Kim.\n\nStarting from Amir, the scholars connected to Amir are Reza, Moin, Pari, and Puja. Eva is connected to Puja, so we can consider Eva as a connection of Amir.\n\nFrom Eva, the scholars connected to Eva are Puja, Pam, and Kim. Kim is donating the maximum number of books. Hence, the shortest path from Amir to the person who is donating the maximum number of books is:\n\nAnswer: Amir, Eva, Kim"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Eva, Kim"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

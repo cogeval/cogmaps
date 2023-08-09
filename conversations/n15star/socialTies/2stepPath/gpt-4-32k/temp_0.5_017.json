@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Paul? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wei to Amir? Starting from Wei, please list the scholar names in order, including Wei, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections that involve Vivian.\nVivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n\nStep 2: Identify the connections that involve Paul.\nPaul is connected to Solomon, Soheil, Gongxue, and Alice.\n\nStep 3: Find the shortest connection path between Vivian and Paul.\nVivian and Gongxue are connected, and Gongxue and Paul are connected. Therefore, the shortest connection path is through Gongxue.\n\nAnswer: Vivian, Gongxue, Paul"
+            "content": "Step 1: Identify the connections of Wei. Wei is connected to Kim, Puja, and Pam.\n\nStep 2: Check if any of Wei's connections are directly connected to Amir. None of Wei's connections (Kim, Puja, Pam) are directly connected to Amir.\n\nStep 3: Check the connections of Wei's connections. \n- Kim is connected to Pam. \n- Puja is connected to Pam and Wim. \n- Pam has no further connections mentioned.\n\nStep 4: Check if any of these secondary connections are directly connected to Amir. Wim is not connected to Amir.\n\nStep 5: Check the connections of Wim (Wei's secondary connection). Wim is connected to Wei (already considered), Kim (already considered), Puja (already considered), and Pam (already considered).\n\nStep 6: Since none of these paths led to Amir, we need to go a step further. Check the connections of Puja again. Puja is connected to Pam and Wim (already considered), and Amir.\n\nStep 7: We have found a connection to Amir through Puja. \n\nSo, the shortest path from Wei to Amir is: Wei, Puja, Amir. \n\nAnswer: Wei, Puja, Amir."
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul"
+                "Answer: Wei, Puja, Amir"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Paul"
+            "parsed_response": "Answer: Wei, Puja, Amir"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

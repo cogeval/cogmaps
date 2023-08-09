@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n7tree_socialTies_exp_2stepPath_temp_1_23",
     "model": "gpt-4-32k",
-    "version": "2023-03-15-preview",
+    "version": "2020-11-07",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -11,36 +11,36 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You want to collaborate with a company. You meet Suresh, the CEO. You can ask Suresh to introduce you to to technical managers: Ramesh and Reeta. Ramesh can introduce you to his two employees, Karuna and Bunty. Reeta can introduce you to her two employees, Anita and Sunny. Karuna has 4 rating for friendly collaboration while Bunty has a rating of 2. Anita has a rating of 2.5 while Sunny has a rating of 3.5. You can only have one person to start your collaboration. Starting from Suresh, which employee do you want to be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Imagine a sales company. Amir is the CEO of the company and has two senior managers under him: Wim and Raj. Wim has two salespersons reporting to him: Jing and Wei. Raj has two salespersons reporting to him: Nisha and Reza. Jing is donating 56 books and Wei is donating 22 books. Nisha is donating 10 books and Reza is donating 50 books. Assume you can pick one path to collect books.  From Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Meet Suresh, the CEO\nStep 2: Ask Suresh to introduce you to the technical managers, Ramesh and Reeta.\nStep 3: Compare the collaboration ratings of Ramesh's employees, Karuna (4) and Bunty (2).\nStep 4: Compare the collaboration ratings of Reeta's employees, Anita (2.5) and Sunny (3.5).\nStep 5: Select the employee with the highest collaboration rating.\n\nAnswer: Suresh, Ramesh, Karuna"
+            "content": "I need to find the path that yields the maximum number of books. First, I will consider both paths: \n\n1. Amir -> Wim -> Jing/Wei\n2. Amir -> Raj -> Nisha/Reza\n\nNext, I'll sum the number of books from each path.\n\nFor path 1, we have Wim's team members: Jing with 56 books and Wei with 22 books. So, the total number of books is 56+22 = 78 books.\n\nFor path 2, we have Raj's team members: Nisha with 10 books and Reza with 50 books. So, the total number of books is 10+50 = 60 books.\n\nAfter comparing both paths, path 1 has the maximum number of books. So, the order to meet people to get the maximum number of books is Amir, Wim, Jing, and Wei.\n\nAnswer: Amir, Wim, Jing, Wei"
         },
         {
             "role": "user",
-            "content": "From Suresh what is the shortest path to Anita? Please list the employees in order, separated by commas."
+            "content": "From Amir what is the shortest path to Reza? Starting from Amir, please list the names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Meet Suresh, the CEO.\nStep 2: Ask Suresh to introduce you to the technical managers, Ramesh and Reeta.\nStep 3: Get introduced to Reeta.\nStep 4: Ask Reeta to introduce you to her employee, Anita.\n\nAnswer: Suresh, Reeta, Anita"
+            "content": "To find the shortest path from Amir to Reza, I need to understand the hierarchy.\n\nBased on the information, the hierarchy is as follows:\nAmir\n|____ Wim\n|     |____ Jing\n|     |____ Wei\n|\n|____ Raj\n      |____ Nisha\n      |____ Reza\n\nThe shortest path from Amir to Reza seems to be Amir -> Raj -> Reza.\n\nAnswer: Amir, Raj, Reza"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Suresh, Reeta, Anita"
+                "Answer: Amir, Raj, Reza"
             ],
-            "parsed_response": "Step 1: Meet Suresh, the CEO.\nStep 2: Ask Suresh to introduce you to the technical managers, Ramesh and Reeta.\nStep 3: Get introduced to Reeta.\nStep 4: Ask Reeta to introduce you to her employee, Anita.\n\nAnswer: Suresh, Reeta, Anita"
+            "parsed_response": "Answer: Amir"
         }
     },
     "scores": {
         "2stepPath": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

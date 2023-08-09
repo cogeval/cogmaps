@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. How many densely-connected clusters of rooms are there in this world? A densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. How many densely-connected clusters of rooms are there in this world? A densely-connected cluster is a group of rooms that are connected to themselves with a minimum of 2 rooms."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connected rooms within 1 step.\nRooms connected within 1 step:\n1-2, 1-3, 1-4, 1-7,\n2-3, 2-4, 2-16,\n3-4, 3-5,\n4-14,\n5-6, 5-7, 5-8,\n6-7, 6-8, 6-12,\n7-8,\n8-10,\n9-10, 9-11, 9-12, 9-15,\n10-11, 10-12,\n11-12, 11-13,\n12-13,\n13-14, 13-15, 13-16,\n14-15, 14-16,\n15-16\n\nStep 2: Identify the connected rooms within 2 steps (via a common room).\nRooms connected within 2 steps:\n1-3 (via 2), 1-4 (via 2), 1-4 (via 3), 1-5 (via 3), 1-7 (via 5), 1-14 (via 4), 1-16 (via 2),\n2-3 (via 1), 2-4 (via 1), 2-4 (via 3), 2-5 (via 3), 2-14 (via 4), 2-15 (via 16), 2-16 (via 14),\n3-5 (via 1), 3-7 (via 1), 3-14 (via 1), 3-14 (via 4), 3-16 (via 4),\n4-5 (via 3), 4-15 (via 14), 4-15 (via 13), 4-16 (via 13),\n5-6 (via 7), 5-8 (via 7), 5-12 (via 6),\n6-7 (via 5), 6-8 (via 5), 6-10 (via 8), 6-10 (via 12), 6-11 (via 12), 6-13 (via 12),\n7-8 (via 5), 7-10 (via 8),\n8-10 (via 7), 8-11 (via 10), 8-12 (via 10),\n9-11 (via 10), 9-12 (via 10), 9-12 (via 11), 9-13 (via 11), 9-14 (via 15), 9-15 (via 11), 9-16 (via 15),\n10-12 (via 9), 10-12 (via 11), 10-13 (via 11), 10-15 (via 9),\n11-12 (via 10), 11-15 (via 13), 11-15 (via 14), 11-16 (via 13), 11-16 (via 14),\n12-13 (via 11), 12-15 (via 9), 12-15 (via 14), 12-16 (via 14),\n13-14 (via 11), 13-15 (via 14), 13-16 (via 14), 13-16 (via 15),\n14-15 (via 13), 14-16 (via 13), 14-16 (via 15),\n15-16 (via 13), 15-16 (via 14)\n\nStep 3: Combine rooms connected within 1 step and 2 steps to form clusters.\nCluster 1: 1, 2, 3, 4, 5, 7, 14, 16\nCluster 2: 5, 6, 7, 8, 10, 11, 12, 13\n\nAnswer: there are 2 clusters."
+            "content": "Step 1: Identify the connections between the rooms.\nStep 2: Analyze the connections to find clusters of rooms that are connected to each other.\nStep 3: Identify densely-connected clusters, which have at least 2 rooms.\n\nConnections:\n1-2-3-4-7\n2-16\n3-5\n4-14\n5-6-8\n6-12\n7-8\n8-10\n9-10-11-12-15\n10-12\n11-13\n12-6\n13-14-15-16\n14-16\n15-16\n\nClusters:\n1-2-3-4-7\n5-6-7-8\n9-10-11-12-15\n13-14-15-16\n\nDensely-connected clusters:\n1-2-3-4-7\n5-6-7-8\n9-10-11-12-15\n13-14-15-16\n\nAnswer: there are 4 clusters"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 4 clusters"
             ],
-            "parsed_response": "Answer: there are 2 clusters"
+            "parsed_response": "Answer: there are 4 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

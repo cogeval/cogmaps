@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,34 +15,27 @@
         },
         {
             "role": "user",
-            "content": "Imagine you are traveling through Asia. You start in New Delhi and have two choices, you can go to Islamabad or Kathmandu. From Islamabad, you can go to Kabul and from there to Tehran. In Tehran, your total expenses will be $1000 including hotels, shopping and sight-seeing. After learning this, you return to New Delhi. This time, you choose Kathmandu, which leads to Beijing, and from there you can go to Thimphu, where you have $400 total expenses. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Imagine a flower county with six flower fields. From the entrance you have two choices, you can go to the rose field or sunflower field. You enter the rose field, at the other end of this field there's a door that leads to the tulip field, and the tulip field leads to the orchid field. From the orchid field, you can have 10 orchid flowers for free, but you do not take any flower, you're just learning about the environment. Then you exit and start over. This time in the entrance you choose the sunflower field, which has a door to the daisy field, and the daisy field has a door that leads to the hydrangea field. You can have 50 hydrangea flowers from the hydrangea field, but you do not take any flowers, you're just learning about the environment. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two choices from New Delhi.\nStep 2: Determine the total expenses for each path.\nStep 3: Compare the expenses and select the path with the least expensive destination.\n\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran\nExpenses: $1000\n\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu\nExpenses: $400\n\nStep 4: Provide the answer.\nAnswer: Kathmandu"
+            "content": "Step 1: Identify the paths from the entrance.\nPath 1: Rose field -> Tulip field -> Orchid field\nPath 2: Sunflower field -> Daisy field -> Hydrangea field\n\nStep 2: Calculate the number of free flowers for each path.\nPath 1: Orchid field offers 10 free orchid flowers.\nPath 2: Hydrangea field offers 50 free hydrangea flowers.\n\nStep 3: Compare the number of free flowers between the two paths.\nPath 1 offers 10 free flowers while Path 2 offers 50 free flowers.\n\nStep 4: Determine the field from the entrance that leads to the path with the maximum number of free flowers.\nSince Path 2 has more free flowers (50) than Path 1 (10), the field from the entrance that leads to the path with the maximum number of free flowers is the Sunflower field.\n\nAnswer: Sunflower field"
         },
         {
             "role": "user",
-            "content": "You start in New Delhi and this time you encounter a new route, which leads to Yangon which leads to Dhaka. From Dhaka, you can go to Bangkok from where you can fly to any city you want. When you return to New Delhi and choose the previous path that led to the least expensive destination, you discover that all the flights to the city with the least expensive destination are cancelled. You go back to New Delhi. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "You enter the entrance and this time you encounter a new field, lily field. The lily field leads to the peony field, which in turn leads to the daffodil field. The daffodil field has a portal. From this portal it\u2019s possible to go to any neighbor field of the daisy field. When you return to the entrance and choose the path that leads to the maximum number of flowers, you discover that the regular path to the field with the maximum number of flowers is blocked. You go back to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the new choice from New Delhi.\nStep 2: Determine the total expenses for each path, including the new route.\nStep 3: Since flights to the previous least expensive destination are cancelled, exclude that path from consideration.\nStep 4: Compare the remaining paths and select the one with the least expensive destination.\n\nNew Path: New Delhi -> Yangon -> Dhaka -> Bangkok\nExpenses: Unknown, but considering that this is the only remaining viable path, it becomes the default choice.\n\nAnswer: Yangon"
+            "content": "Step 1: Identify the paths from the entrance, including the new path.\nPath 1: Rose field -> Tulip field -> Orchid field\nPath 2: Sunflower field -> Daisy field -> Hydrangea field\nPath 3: Lily field -> Peony field -> Daffodil field -> Any neighbor field of Daisy field\n\nStep 2: Calculate the number of free flowers for each path.\nPath 1: Orchid field offers 10 free orchid flowers.\nPath 2: Hydrangea field offers 50 free hydrangea flowers.\nPath 3: The number of free flowers depends on the neighbor field of Daisy field that is chosen.\n\nStep 3: Since the regular path to the field with the maximum number of flowers is blocked (Path 2), we need to find an alternative way to reach it.\n\nStep 4: Determine if the new path (Path 3) can lead to the field with the maximum number of flowers.\nSince the portal in the Daffodil field allows access to any neighbor field of the Daisy field, and Daisy field is a part of the Path 2, it's possible to access the Hydrangea field through the portal in the Daffodil field.\n\nStep 5: Determine the field from the entrance that leads to the path with the maximum number of free flowers, considering the new path and blocked Path 2.\nSince Path 3 can lead to the Hydrangea field with 50 free hydrangea flowers, the field from the entrance that leads to the path with the maximum number of free flowers is the Lily field.\n\nAnswer: Lily field"
         }
     ],
     "tests": {
         "teleDetour": {
             "expected_answer": [
-                "Answer: Yangon"
+                "Answer: lily"
             ],
-            "parsed_response": "Step 1: Analyze the new choice from New Delhi.\nStep 2: Determine the total expenses for each path, including the new route.\nStep 3: Since flights to the previous least expensive destination are cancelled, exclude that path from consideration.\nStep 4: Compare the remaining paths and select the one with the least expensive destination.\n\nNew Path: New Delhi -> Yangon -> Dhaka -> Bangkok\nExpenses: Unknown, but considering that this is the only remaining viable path, it becomes the default choice.\n\nAnswer: Yangon"
-        }
-    },
-    "scores": {
-        "teleDetour": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Lily field"
         }
     }
 }

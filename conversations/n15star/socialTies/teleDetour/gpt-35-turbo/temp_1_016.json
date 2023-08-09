@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleDetour_temp_1_16",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we need to traverse the connections starting from Amir and find the scholar who is connected to the most number of scholars who are donating books.\n\nFirst, let's visualize the connections:\n\nAmir - Reza, Moin, Pari, Puja\nReza - Moin, Pari\nMoin - Pari\nPari -\nPuja - Pam\nWim - Wei, Kim, Puja, Pam\nWei - Kim, Puja, Pam\nKim - Pam\nPam -\nRaj - Nisha, Ian, Sara, Kim\nNisha - Ian, Sara, Max\nIan - Sara, Max\nSara - Max\nJing - Reza, Moin, Pari, Max\nMax -\n\nNow, starting from Amir, we can follow the connections to find the scholar who is donating the maximum number of books:\n\nAmir -> Puja (Amir is connected to Puja)\nPuja -> Pam (Puja is connected to Pam)\nPam - (Pam is not connected to any scholar donating books)\n\nSince Pam is not connected to any scholar donating books, we need to backtrack and explore other paths.\n\nAmir -> Reza (Amir is connected to Reza)\nReza -> Moin (Reza is connected to Moin)\nMoin -> Pari (Moin is connected to Pari)\nPari - (Pari is not connected to any scholar donating books)\n\nAgain, we need to backtrack and explore other paths.\n\nAmir -> Reza (Amir is connected to Reza)\nReza -> Moin (Reza is connected to Moin)\nMoin - (Moin is not connected to any scholar donating books)\n\nAgain, we need to backtrack and explore other paths.\n\nAmir -> Reza (Amir is connected to Reza)\nReza - (Reza is not connected to any scholar donating books)\n\nAgain, we need to backtrack and explore other paths.\n\nAmir -> Pari (Amir is connected to Pari)\nPari - (Pari is not connected to any scholar donating books)\n\nSince we have explored all possible paths from Amir, we can conclude that there is no direct or indirect connection from Amir to any scholar donating the maximum number of books.\n\nTherefore, the shortest path from Amir to the person who is donating the maximum number of books is Answer: None."
+        },
+        {
+            "role": "user",
+            "content": "Amir and Puja had a disagreement and now no longer connected to each other, and now Jing has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Jing, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Since Amir and Puja are no longer connected, we need to find an alternate path to the person who is donating the maximum number of books.\n\nNow that Jing has an instant connection portal, we can use it to connect with any scholar. Let's use the portal to connect with Jing first.\n\nAmir -> Jing\n\nNow, from Jing, we can explore the connections to find the scholar who is donating the maximum number of books.\n\nJing -> Max (Jing is connected to Max, who is donating 10 books)\n\nSo, the shortest path from Amir to the person who is donating the maximum number of books is:\n\nAmir -> Jing -> Max\n\nAnswer: Amir, Jing, Max"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Kim",
+                "Answer: Amir, Moin, Jing, Kim ",
+                "Answer: Amir, Pari, Jing, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Jing, Max"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

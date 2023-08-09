@@ -19,29 +19,29 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward starting from room 1, we need to calculate the shortest path to both room 10 and room 15, and then choose the room with the highest reward. The shortest path to room 10 is 1-7-8-10, with a reward of 0. The shortest path to room 15 is 1-7-5-3-15, with a reward of 10. Therefore, the shortest path that yields the most reward starting from room 1 is the path to room 15, which is: Answer: 1,7,5,3,15"
+            "content": "To find the shortest path that yields the most reward, we can use Dijkstra's algorithm. Starting from room 1, we can calculate the shortest path to all other rooms and the rewards in each of those rooms. \n\nThe shortest path that yields the most reward is to first go to room 10 (reward of 50), then to room 8 (reward of 0), and finally to room 5 (reward of 0). This path has a total reward of 50, which is the maximum possible reward we can get. \n\nTherefore, the rooms we should go through, starting from room 1, are: 1, 10, 8, 5. \n\nAnswer: 1, 10, 8, 5."
         },
         {
             "role": "user",
-            "content": "You are told that a teleportation portal appears in room 4, through which you can teleport to any room, one at a time. This means that from room 4 you can go to any room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that room 1 now opens to a new room, room 17, which has a teleportation portal, through which you can teleport to any neighboring room of room 12, one at a time. This means that from room 17 you can go to any neighboring room of room 12. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "With the presence of the teleportation portal in room 4, the shortest path that yields the most reward starting from room 1 is to teleport to either room 10 or room 15. The reward in room 10 is higher, but the shortest path to room 15 is shorter. Therefore, the best strategy is to use the teleportation portal to reach room 10, collect the reward and then return to room 4, and finally use the shortest path to reach room 1. The path is as follows: 1-4-10, with a reward of 50. Then, we return to room 4, and finally take the shortest path to room 1: 4-1. Therefore, the shortest path that yields the most reward starting from room 1, with the teleportation portal, is: Answer: 1,4,10."
+            "content": "Adding room 17 to the network will not change the shortest path that yields the most reward, since room 17 does not contain any chest. Therefore, we can still follow the same path as before: go to room 10, then to room 8, and finally to room 5. \n\nHowever, now we have the option to use the teleportation portal in room 17 to get to any neighboring room of room 12. To maximize the reward, we should only use the portal if it allows us to reach a chest that we haven't collected yet. \n\nStarting from room 1, the shortest path that takes advantage of the portal to collect the rewards in rooms 15 and 10 would be: 1, 17, 12, 9, 15. This path has a total reward of 60, which is higher than the previous maximum of 50. \n\nTherefore, if we are allowed to use the teleportation portal to reach any neighboring room of room 12, the rooms we should go through, starting from room 1, are: 1, 17, 12, 9, 15.\n\nAnswer: 1, 17, 12, 9, 15."
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: 1, 4, 10",
-                "Answer: 1,4,10"
+                "Answer: 1, 17, 10",
+                "Answer: 1,17,10"
             ],
-            "parsed_response": "With the presence of the teleportation portal in room 4, the shortest path that yields the most reward starting from room 1 is to teleport to either room 10 or room 15. The reward in room 10 is higher, but the shortest path to room 15 is shorter. Therefore, the best strategy is to use the teleportation portal to reach room 10, collect the reward and then return to room 4, and finally use the shortest path to reach room 1. The path is as follows: 1-4-10, with a reward of 50. Then, we return to room 4, and finally take the shortest path to room 1: 4-1. Therefore, the shortest path that yields the most reward starting from room 1, with the teleportation portal, is: Answer: 1,4,10."
+            "parsed_response": "Answer: 1, 17, 12, 9, 15"
         }
     },
     "scores": {
         "teleShortcut": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

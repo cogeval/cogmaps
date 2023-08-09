@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_0.5_18",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. \n\nStarting with Amir, we will explore each connected scholar one by one, keeping track of the shortest path to each person. We will also keep track of the number of books each person is donating.\n\nHere is the step-by-step process:\n\n1. Initialize a queue and visited set.\n2. Add Amir to the queue and mark him as visited.\n3. Initialize a variable to keep track of the maximum number of books donated and set it to 0.\n4. Initialize a variable to keep track of the person donating the maximum number of books and set it to None.\n5. While the queue is not empty:\n   - Dequeue a scholar from the front of the queue.\n   - Check if the current scholar is donating more books than the current maximum.\n     - If yes, update the maximum number of books and the person donating the maximum.\n   - Check if the current scholar is connected to the person donating the maximum number of books.\n     - If yes, we have found the shortest path. Stop the algorithm.\n   - Otherwise, enqueue all the connected scholars of the current scholar who have not been visited yet.\n   - Mark the current scholar as visited.\n6. If a path to the person donating the maximum number of books is found, backtrack from that person to Amir to get the shortest path.\n7. Return the shortest path as a comma-separated list of scholar names.\n\nNow let's apply this algorithm to find the shortest path from Amir to the person donating the maximum number of books.\n\nAnswer: Amir, Reza, Max"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering the connection portal through Eva to Pam's connections, we can modify the previous algorithm. \n\nHere is the updated step-by-step process:\n\n1. Initialize a queue and visited set.\n2. Add Amir to the queue and mark him as visited.\n3. Initialize a variable to keep track of the maximum number of books donated and set it to 0.\n4. Initialize a variable to keep track of the person donating the maximum number of books and set it to None.\n5. While the queue is not empty:\n   - Dequeue a scholar from the front of the queue.\n   - Check if the current scholar is donating more books than the current maximum.\n     - If yes, update the maximum number of books and the person donating the maximum.\n   - Check if the current scholar is connected to the person donating the maximum number of books.\n     - If yes, we have found the shortest path. Stop the algorithm.\n   - Otherwise, enqueue all the connected scholars of the current scholar who have not been visited yet, except for Pam.\n   - If the current scholar is Eva, enqueue all the connections of Pam who have not been visited yet.\n   - Mark the current scholar as visited.\n6. If a path to the person donating the maximum number of books is found, backtrack from that person to Amir to get the shortest path.\n7. Return the shortest path as a comma-separated list of scholar names.\n\nNow let's apply this updated algorithm to find the shortest path from Amir to the person donating the maximum number of books, considering the connection portal through Eva to Pam's connections.\n\nAnswer: Amir, Puja, Pam"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Puja, Pam"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -19,16 +19,16 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Tulip, Rose, Sunflower, Aster, Lavender"
+            "content": "To find the shortest path from the tulip field to the lavender field, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start at the tulip field.\n2. Check if the tulip field is connected to the lavender field directly. If yes, then the shortest path is just \"tulip, lavender\".\n3. If not, create a queue and add the tulip field to it.\n4. Create an empty set to keep track of visited flower fields.\n5. Create an empty dictionary to keep track of the parent field for each field.\n6. While the queue is not empty:\n   1. Dequeue a flower field from the queue.\n   2. If the dequeued field is the lavender field, stop the search.\n   3. Otherwise, for each adjacent field that has not been visited:\n      1. Add the adjacent field to the visited set.\n      2. Add the adjacent field to the queue.\n      3. Set the parent field of the adjacent field to the dequeued field.\n7. If the search reaches this point, it means there is no path from the tulip field to the lavender field.\n8. If the search finds a path to the lavender field, backtrack from the lavender field to the tulip field using the parent field dictionary to find the shortest path.\n9. Return the shortest path as a comma-separated list of flower names.\n\nAnswer: tulip, rose, sunflower, aster, lavender"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Tulip, Sunflower, Aster, Lavender",
-                "Answer: Tulip, Daisy, Zinnia, Lavender"
+                "Answer: rose, sunflower, aster, poppy",
+                "Answer: rose, daisy, zinnia, poppy"
             ],
-            "parsed_response": "Answer: Tulip, Rose, Sunflower, Aster, Lavender"
+            "parsed_response": "Answer: tulip, rose, sunflower, aster, lavender"
         }
     },
     "scores": {

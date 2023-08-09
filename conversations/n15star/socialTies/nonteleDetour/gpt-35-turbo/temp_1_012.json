@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleDetour_temp_1_12",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we will use the Breadth-First Search (BFS) algorithm. \n\n1. Start with Amir and add him to the queue. Initialize an empty visited set.\n2. While the queue is not empty, do the following:\n    a. Dequeue a scholar from the front of the queue.\n    b. Check if the scholar is the person donating the maximum number of books. If yes, stop the algorithm and output the path from Amir to this scholar.\n    c. If the scholar has not been visited, add him to the visited set and enqueue all his connected scholars.\n3. If the algorithm reaches this step, it means there is no path from Amir to the person donating the maximum number of books.\n\nApplying this algorithm to the given group:\n\nStep 1: Start with Amir and add him to the queue. [Queue: Amir], [Visited: Amir]\nStep 2: Dequeue Amir from the queue. [Queue: empty], [Visited: Amir]\nStep 3: Amir is not the person donating the maximum number of books. Enqueue his connected scholars: Reza, Moin, Pari, Puja. [Queue: Reza, Moin, Pari, Puja], [Visited: Amir]\nStep 4: Dequeue Reza from the queue. [Queue: Moin, Pari, Puja], [Visited: Amir, Reza]\nStep 5: Reza is not the person donating the maximum number of books. Enqueue his connected scholars: Moin, Pari. [Queue: Moin, Pari, Puja], [Visited: Amir, Reza]\nStep 6: Dequeue Moin from the queue. [Queue: Pari, Puja], [Visited: Amir, Reza, Moin]\nStep 7: Moin is not the person donating the maximum number of books. Enqueue his connected scholars: Pari. [Queue: Pari, Puja], [Visited: Amir, Reza, Moin]\nStep 8: Dequeue Pari from the queue. [Queue: Puja], [Visited: Amir, Reza, Moin, Pari]\nStep 9: Pari is not the person donating the maximum number of books. Enqueue her connected scholars: Puja. [Queue: Puja], [Visited: Amir, Reza, Moin, Pari]\nStep 10: Dequeue Puja from the queue. [Queue: empty], [Visited: Amir, Reza, Moin, Pari, Puja]\nStep 11: Puja is donating the maximum number of books. Stop the algorithm.\n\nAnswer: Amir, Puja"
+        },
+        {
+            "role": "user",
+            "content": " Amir and Puja had a disagreement and now no longer connected to each other. Also, Pari is now connected to Puja. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Given the updated connections where Amir and Puja are no longer connected, and Pari is connected to Puja, we need to find the shortest path from Amir to the person who is donating the maximum number of books.\n\nTo solve this, we will again use the Breadth-First Search (BFS) algorithm:\n\nStep 1: Start with Amir and add him to the queue. [Queue: Amir], [Visited: Amir]\nStep 2: Dequeue Amir from the queue. [Queue: empty], [Visited: Amir]\nStep 3: Amir is not the person donating the maximum number of books. Enqueue his connected scholars: Reza, Moin, Pari. [Queue: Reza, Moin, Pari], [Visited: Amir]\nStep 4: Dequeue Reza from the queue. [Queue: Moin, Pari], [Visited: Amir, Reza]\nStep 5: Reza is not the person donating the maximum number of books. Enqueue his connected scholar: Moin. [Queue: Moin, Pari], [Visited: Amir, Reza]\nStep 6: Dequeue Moin from the queue. [Queue: Pari], [Visited: Amir, Reza, Moin]\nStep 7: Moin is not the person donating the maximum number of books. Enqueue his connected scholar: Pari. [Queue: Pari], [Visited: Amir, Reza, Moin]\nStep 8: Dequeue Pari from the queue. [Queue: empty], [Visited: Amir, Reza, Moin, Pari]\nStep 9: Pari is connected to Puja, who is donating the maximum number of books. Stop the algorithm.\n\nAnswer: Amir, Pari"
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Pari, Puja, Wim, Kim",
+                "Answer: Amir, Pari, Puja, Pam, Kim",
+                "Answer: Amir, Pari, Puja, Wei, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Pari"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

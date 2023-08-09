@@ -15,24 +15,39 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You are in room 1 and you have been told that there is no connection between room 1 and 11, but room 1 and 15 are now connected. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that there is a chest with a reward of 50 for visiting room 8 and there is a chest with a reward of 10 for visiting room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the given connections for each room.\nStep 2: Update the connections based on the information that room 1 and 11 are not connected, and room 1 and 15 are now connected.\nStep 3: Determine the optimal path that yields the most rewards.\nStep 4: List the room numbers in the path in order, separated by commas.\n\nGiven the connections between rooms, and the changes made to rooms 1, 11, and 15, the path that yields the most rewards is as follows:\n\nAnswer: 1, 15"
+            "content": "Step 1: Determine the shortest path to both rooms 8 and 15 from room 1.\n- Room 1 to Room 8: 1 -> 2 -> 5 -> 8\n- Room 1 to Room 15: 1 -> 4 -> 7 -> 10 -> 13 -> 12 -> 15\n\nStep 2: Compare rewards from each chest.\n- Room 8 has a reward of 50\n- Room 15 has a reward of 10\n\nStep 3: Choose the path with the highest reward.\n\nAnswer: 1, 2, 5, 8"
+        },
+        {
+            "role": "user",
+            "content": "The door from room 1 to room 11 is locked and now room 13 is connected to room 11. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Update the connections considering the locked door and new connection.\n- Room 1 is connected to room 7, room 10, and room 13.\n- Room 13 is connected to room 11.\n\nStep 2: Determine the shortest path to both rooms 8 and 15 from room 1.\n- Room 1 to Room 8: 1 -> 13 -> 11 -> 2 -> 5 -> 8\n- Room 1 to Room 15: 1 -> 4 -> 7 -> 10 -> 13 -> 12 -> 15\n\nStep 3: Compare rewards from each chest.\n- Room 8 has a reward of 50\n- Room 15 has a reward of 10\n\nStep 4: Choose the path with the highest reward.\n\nAnswer: 1, 13, 11, 2, 5, 8"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: 1, 15, 12, 3, 8",
-                "Answer: 1, 15, 9, 3, 8",
-                "Answer: 1, 15, 6, 3, 8",
-                "Answer: 1,15,12,3,8",
-                "Answer: 1,15,9,3,8",
-                "Answer: 1,15,6,3,8"
+                "Answer: 1, 13, 11, 2, 8",
+                "Answer: 1, 13, 11, 14, 8",
+                "Answer: 1, 13, 11, 5, 8",
+                "Answer: 1,13,11,2,8",
+                "Answer: 1,13,11,14,8",
+                "Answer: 1,13,11,5,8"
             ],
-            "parsed_response": "Answer: 1, 15"
+            "parsed_response": "Answer: 1, 13, 11, 2, 5, 8"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

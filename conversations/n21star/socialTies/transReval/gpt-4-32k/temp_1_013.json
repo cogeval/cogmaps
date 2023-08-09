@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n21star_socialTies_exp_transReval_temp_1_13",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 21 scholars. Amir is connected to Wim, Raj, Jing, Wei, Nisha, and Reza. Sara is connected to Pari, Pam, Kim, Ian, Moin, and Puja. Zack is connected to Matt, Eva, Amy, Gia, Ming, and Prem. Nisha is connected to Reza, Wim, Raj, Jing, and Wei. Raj is connected to Jing, Wei, Reza, and Wim. Pam is connected to Jing, Kim, Ian, Moin, and Puja. Moin is connected to Puja, Pari, Kim, and Ian. Ming is connected to Prem, Matt, Eva, Amy, and Gia. Wei is connected to Reza, Wim, and Eva. Kim is connected to Ian, Puja, and Pari. Ian is connected to Puja and Pari. Gia is connected to Prem, Matt, Eva, and Amy. Reza is connected to Wim, and Jing. Puja is connected to scholars Pari. Prem is connected to Matt, Eva, and Amy. Wim is connected to Jing. Pari is connected to Amy. Amy is connected to Matt. Matt is connected to Eva. You have been told that Prem is donating 50 books and Moin is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Let's look for the connections:\n\n1. Amir is directly connected to Wim, Raj, Jing, Wei, Nisha, and Reza.\n2. Looking at the connections of each of these scholars, it appears that Prem (who has the maximum number of books) is directly connected to Ming.\n3. Ming isn't directly connected to any of Amir's contacts.\n4. Raj is directly connected to Wei.\n5. Wei is directly connected to Eva.\n6. Eva is directly connected to Prem.\n\nSo the shortest path from Amir to Prem would be: Amir, Raj, Wei, Eva, Prem. \n\nHowever, Eva also connects to Matt, and Matt connects to Prem, which is also a path with similar length. But we'll stick with the first path since it was found first.\n\nAnswer: Amir, Raj, Wei, Eva, Prem."
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Jing and Pam had a disagreement and are not connected anymore and instead Jing is connected to Eva. Also, Wei is not connected to Eva anymore and instead Wei is connected to Pam. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Let's follow the changes made:\n\n1. Jing and Pam had a disagreement and are not connected anymore, but instead, Jing is connected to Eva.\n2. Wei is not connected to Eva anymore and instead, Wei is connected to Pam.\n\nWe're still trying to get from Amir to Prem. Let's work through the connections:\n\n1. Amir is directly connected to Jing.\n2. Jing is now directly connected to Eva.\n3. Eva is directly connected to Prem.\n\nSo the shortest path from Amir to Prem would be: Amir, Jing, Eva, Prem.\n\nAnswer: Amir, Jing, Eva, Prem."
+        }
+    ],
+    "tests": {
+        "transReval": {
+            "expected_answer": [
+                "Answer: Amir, Jing, Eva, Prem"
+            ],
+            "parsed_response": "Answer: Amir, Jing, Eva, Prem"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

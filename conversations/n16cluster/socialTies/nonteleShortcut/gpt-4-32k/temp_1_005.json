@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nonteleShortcut_temp_1_5",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the connection network of all scholars, starting from Amir.\nAmir is connected to Wim, Raj, Jing, and Reza.\n\nStep 2: Identify the scholar with the maximum number of books.\nFrom the information given, Moin is donating 50 books and Matt is donating 10 books, meaning Moin has the maximum number of books.\n\nStep 3: Find the shortest path from Amir to Moin.\nFrom the connection network, Amir is not directly connected to Moin. However, Amir is connected to Raj, and Raj is connected to Wei, who is connected to Kim, who is connected to Moin. This appears to be the shortest path from Amir to Moin.\n\nFinal Outcome: \n\nAnswer: Amir, Raj, Wei, Kim, Moin"
+        },
+        {
+            "role": "user",
+            "content": " You have been told that Amir just got married to Amy. Amy is connected to all the scholars who are connected with Sara. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the new connection network.\nAmir is now connected to Amy, and Amy is connected to all the scholars who are connected with Sara. \n\nStep 2: Find out who Sara is connected to.\nSara is connected to Ian, Moin, Puja, and Nisha.\n\nStep 3: Figure out the new shortest path from Amir to the scholar with the most books (Moin).\nAmir can now reach Moin through Amy and Sara, which is a shorter path than the previous one.\n\nFinal Outcome:\n\nAnswer: Amir, Amy, Sara, Moin"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Amy, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Amy, Sara, Moin"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

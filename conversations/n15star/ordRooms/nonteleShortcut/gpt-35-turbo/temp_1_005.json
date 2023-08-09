@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nonteleShortcut_temp_1_5",
+    "conversation_id": "task_n15star_ordRooms_exp_nonteleShortcut_temp_1_5",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that room 11 is now connected to room 8. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that there is a chest with a reward of 50 for visiting room 8 and there is a chest with a reward of 10 for visiting room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the path that yields the most reward from room 1, we need to determine the paths that are accessible from room 1 and their respective rewards. Since we are not given any reward values, we will assume that all paths have equal rewards. \n\nThe rooms that are directly connected to room 1 are rooms 7, 10, and 13. From room 7, we can access rooms 1, 4, 10, 11, 13, and 15. From room 10, we can access rooms 1, 4, 7, 11, 13, and 15. From room 13, we can access rooms 1, 4, 7, 10, and 15. \n\nSince room 11 is now connected to room 8, we can also access room 11 from room 8, and from there we can access rooms 2, 5, 8, and 14. \n\nTherefore, the possible paths from room 1 are:\n- 1, 7, 4, 10, 13, 15\n- 1, 7, 11, 8, 2, 5, 14\n- 1, 7, 11, 8, 14\n- 1, 7, 11, 14\n- 1, 10, 4, 7, 11, 8, 2, 5, 14\n- 1, 10, 4, 7, 11, 8, 14\n- 1, 10, 7, 11, 8, 2, 5, 14\n- 1, 10, 7, 11, 8, 14\n- 1, 13, 4, 7, 11, 8, 2, 5, 14\n- 1, 13, 4, 7, 11, 8, 14\n- 1, 13, 7, 11, 8, 2, 5, 14\n- 1, 13, 7, 11, 8, 14\n\nOut of these possible paths, the longest one with the most number of rooms is:\n\nAnswer: 1, 10, 4, 7, 11, 8, 2, 5, 14"
+            "content": "To find the shortest path that yields the most reward, we need to use Dijkstra's algorithm, which is a graph search algorithm. We will start at room 1 and calculate the shortest path to each room that has a chest with a reward. Then we will choose the path with the highest reward.\n\nThe shortest path from room 1 to room 8 is: 1 -> 7 -> 8 with a reward of 50\nThe shortest path from room 1 to room 15 is: 1 -> 4 -> 13 -> 10 -> 7 -> 4 -> 15 with a reward of 10\n\nTherefore, the path that yields the most reward starting from room 1 is 1 -> 7 -> 8. \n\nAnswer: 1, 7, 8"
+        },
+        {
+            "role": "user",
+            "content": "You have been told that room 1 has a new door that opens to a new room, room 16. Room 16 is connected to all room 14\u2019s neighboring rooms. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Adding room 16 to the castle's layout affects the shortest path that yields the most reward. Now we have a new shortest path from room 1 to room 14: 1 -> 2 -> 5 -> 8 -> 14 with a reward of 50. \n\nThe shortest path from room 1 to room 8 is still: 1 -> 7 -> 8 with a reward of 50.\n\nThe shortest path from room 1 to room 15 is still: 1 -> 4 -> 13 -> 10 -> 7 -> 4 -> 15 with a reward of 10.\n\nTherefore, the path that yields the most reward starting from room 1 is 1 -> 2 -> 5 -> 8 -> 14. \n\nAnswer: 1, 2, 5, 8, 14"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: 1, 11, 8",
-                "Answer: 1,11,8"
+                "Answer: 1, 16, 8",
+                "Answer: 1,16,8"
             ],
-            "parsed_response": "Answer: 1, 10, 4, 7, 11, 8, 2, 5, 14"
+            "parsed_response": "Answer: 1, 2, 5, 8, 14"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

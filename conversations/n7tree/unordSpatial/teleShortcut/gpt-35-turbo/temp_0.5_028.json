@@ -6,43 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Mad Tea Party, Entrance, Left Passage, Fantasyland."
+            "content": "To determine the path that allows you to collect the maximum number of flowers, let's analyze the options:\n\n1. From the entrance, if you go to the right, you can collect 0 flowers in the sunflower field.\n2. From the sunflower field, if you go to the right, you can collect 50 hydrangea flowers in the hydrangea field.\n3. From the hydrangea field, if you go back to the sunflower field and then go to the left, you can collect 10 orchid flowers in the orchid field.\n4. From the orchid field, if you go back to the entrance and then go to the left, you can collect 0 flowers in the rose field.\n5. From the rose field, if you go to the right, you can collect 22 daisy flowers in the daisy field.\n6. From the daisy field, if you go back to the rose field and then go to the left, you can collect 56 tulip flowers in the tulip field.\n\nBased on this analysis, the path that allows you to collect the maximum number of flowers is:\n\nEntrance, Sunflower Field (Right), Hydrangea Field (Right), Orchid Field (Left), Rose Field (Right), Daisy Field (Left), Tulip Field.\n\nTherefore, the flower names in order, including the entrance, separated by commas, are:\n\nAnswer: Entrance, Sunflower Field, Hydrangea Field, Orchid Field, Rose Field, Daisy Field, Tulip Field"
         },
         {
             "role": "user",
-            "content": "At the entrance you're get the VVIP upgrade for free. The VVIP pass can take you to any attraction. From entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "At the entrance you're presented with a portal, and through this portal it\u2019s possible to go to any neighboring field of the rose field. You will only be able to choose one path that leads to the maximum number of flowers. Starting from the entrance, which path will lead to the maximum number of flowers? Please list all flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "If you have a VVIP pass, you can go to any attraction without waiting in line. Therefore, you can choose any attraction you like regardless of the wait time."
+            "content": "To determine the path that leads to the maximum number of flowers starting from the entrance, let's analyze the options:\n\n1. From the entrance, if you go to the right, you can collect 0 flowers in the sunflower field.\n2. From the entrance, if you go to the left, you can collect 0 flowers in the rose field.\n\nSince neither of these options allows you to collect any flowers, we need to consider the portal that allows us to go to any neighboring field of the rose field.\n\n1. If we go through the portal to the sunflower field, we can collect 0 flowers.\n2. If we go through the portal to the hydrangea field, we can collect 50 hydrangea flowers.\n3. If we go through the portal to the orchid field, we can collect 10 orchid flowers.\n4. If we go through the portal to the daisy field, we can collect 22 daisy flowers.\n5. If we go through the portal to the tulip field, we can collect 56 tulip flowers.\n\nBased on this analysis, the path that leads to the maximum number of flowers starting from the entrance is:\n\nEntrance, Portal to Tulip Field.\n\nTherefore, the flower names in order, including the entrance, separated by commas, are:\n\nAnswer: Entrance, Portal to Tulip Field."
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Mad Tea Party"
+                "Answer: rose, daisy"
             ],
-            "parsed_response": "If you have a VVIP pass, you can go to any attraction without waiting in line. Therefore, you can choose any attraction you like regardless of the wait time."
-        }
-    },
-    "scores": {
-        "teleShortcut": {
-            "score": 0.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Entrance, Portal to Tulip Field."
         }
     }
 }

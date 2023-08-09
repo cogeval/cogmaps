@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. How many densely-connected clusters do we have in this class? A densely-connected cluster is a group of students that are connected to themselves with a max of 2 students."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups of students who are connected to each other.\n- Group 1: Vivian, Salma, Shanshan, Vadim, and Gongxue\n- Group 2: Paul, Solomon, Soheil, Gongxue, and Alice\n- Group 3: Pierre, Abdul, Durga, Ajit, and Soheil\n- Group 4: Noah, Salma, Shanshan, Vadim, and Anisha\n- Group 5: Solomon, Soheil, Gongxue, and Alice\n- Group 6: Abdul, Durga, Ajit, and Anisha\n- Group 7: Salma, Shanshan, and Vadim\n- Group 8: Soheil and Alice\n- Group 9: Durga, Ajit and Anisha\n- Group 10: Shanshan and Vadim\n- Group 11: Gongxue and Alice\n- Group 12: Ajit and Anisha\n\nStep 2: Remove duplicates or larger groups that contain smaller groups already listed.\n- Group 1: Vivian, Salma, Shanshan, Vadim, and Gongxue\n- Group 2: Paul, Solomon, Soheil, Gongxue, and Alice\n- Group 3: Pierre, Abdul, Durga, Ajit, and Soheil\n- Group 4: Noah, Salma, Shanshan, Vadim, and Anisha\n- Group 6: Abdul, Durga, Ajit, and Anisha\n\nStep 3: Check if each group is densely-connected, i.e., each student is connected to a max of 2 other students in the group.\n- Group 1: Not densely-connected (more than 2 connections per student)\n- Group 2: Not densely-connected (more than 2 connections per student)\n- Group 3: Not densely-connected (more than 2 connections per student)\n- Group 4: Not densely-connected (more than 2 connections per student)\n- Group 6: Densely-connected (each student connected to 2 others)\n\nAnswer: there are 1 clusters."
+            "content": "To answer this question, let's identify all densely-connected clusters from the given connections. \n\n1. The first cluster is 'Amir, Reza, Moin, Pari, Puja, Jing'. Amir, Reza, Moin, and Pari are all connected to each other. Jing is connected to Reza, Moin, and Pari. Puja is connected to Amir and Wim. \n\n2. The second cluster is 'Wim, Wei, Kim, Puja, and Pam'. Wim, Wei, Kim, and Puja are all connected to each other. Pam is connected to Wim, Wei, Puja and Kim.\n\n3. The third cluster is 'Raj, Nisha, Ian, Sara, and Kim'. Raj, Nisha, Ian, and Sara are all connected to each other. Kim is connected to Raj and Wim.\n\n4. The fourth cluster is 'Jing, Reza, Moin, Pari, and Max'. Jing, Reza, Moin, and Pari are all connected to each other. Max is connected to Jing, Nisha, Ian, and Sara.\n\n5. The fifth cluster is 'Nisha, Ian, Sara, and Max'. Nisha, Ian, Sara, and Max are all connected to each other. \n\nAfter further analysis, we see that cluster 1 and cluster 4 are the same and cluster 3 and cluster 5 are the same, so we only have 3 unique clusters in total.\n\nAnswer: there are 3 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 1 clusters"
+            "parsed_response": "Answer: there are 3 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

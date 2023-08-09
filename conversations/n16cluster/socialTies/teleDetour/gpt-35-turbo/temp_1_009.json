@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_teleDetour_temp_1_9",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use breadth-first search (BFS) algorithm. Starting from Amir, we will explore the connections of each person, keeping track of the shortest path to each person and their respective number of books. \n\nHere is the step-by-step process:\n\n1. Initialize a queue and a visited set. Add Amir to the queue and mark him as visited.\n   - Queue: [Amir]\n   - Visited: {Amir}\n\n2. Create an empty dictionary to store the shortest path and the total number of books for each person. Initialize the values for Amir.\n   - ShortestPath: {'Amir': 'Amir'}\n   - BookCount: {'Amir': 0}\n\n3. While the queue is not empty, repeat steps 4-8.\n\n4. Dequeue the first person from the queue.\n\n5. Check if the person has more books than the current maximum book count. If so, update the maximum book count and the person with the maximum books.\n\n6. Iterate through all the connections of the current person.\n\n7. For each connected person, if they have not been visited:\n   - Add them to the queue.\n   - Mark them as visited.\n   - Update their shortest path with the current person.\n   - Update their total number of books by adding the books from the current person.\n     - If the person does not have any books, use the current person's total number of books.\n   - Repeat step 5 to check if the connected person has more books than the current maximum book count.\n\n8. Repeat steps 4-7 until the queue is empty.\n\n9. The final shortest path from Amir to the person with the maximum number of books will be stored in the ShortestPath dictionary. Return the shortest path.\n\nApplying these steps to the given connections, the shortest path from Amir to the person with the maximum number of books is:\n\nAnswer: Amir, Wim, Wei, Nisha, Sara"
+        },
+        {
+            "role": "user",
+            "content": "You are told that Amir and Reza had a disagreement and are no longer connected. You are also told that Wei has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Wei, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, considering the updated information that Amir and Reza are no longer connected and Wei has an instant connection portal, we can modify our approach as follows:\n\n1. Initialize a queue and a visited set. Add Amir to the queue and mark him as visited.\n   - Queue: [Amir]\n   - Visited: {Amir}\n\n2. Create an empty dictionary to store the shortest path and the total number of books for each person. Initialize the values for Amir.\n   - ShortestPath: {'Amir': 'Amir'}\n   - BookCount: {'Amir': 0}\n\n3. While the queue is not empty, repeat steps 4-8.\n\n4. Dequeue the first person from the queue.\n\n5. Check if the person has more books than the current maximum book count. If so, update the maximum book count and the person with the maximum books.\n\n6. Iterate through all the connections of the current person.\n\n7. For each connected person, if they have not been visited:\n   - If the connected person is Wei, connect with Wei and update the shortest path and book count accordingly:\n     - Add the connected person to the queue.\n     - Mark them as visited.\n     - Update their shortest path with the current person.\n     - Update their total number of books by adding the books from the current person (if applicable).\n   - If the connected person is not Wei:\n     - Add them to the queue.\n     - Mark them as visited.\n     - Update their shortest path with the current person.\n     - Update their total number of books by adding the books from the current person (if applicable).\n     - Repeat step 5 to check if the connected person has more books than the current maximum book count.\n\n8. Repeat steps 4-7 until the queue is empty.\n\n9. The final shortest path from Amir to the person with the maximum number of books will be stored in the ShortestPath dictionary. Return the shortest path.\n\nApplying these steps to the given connections and information, the shortest path from Amir to the person with the maximum number of books is:\n\nAnswer: Amir, Wim, Wei, Nisha, Sara"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Raj, Wei, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Wei, Nisha, Sara"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

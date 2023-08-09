@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_0.5_27",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Raj to Amir? Starting from Raj, please list the scholar names in order, including Raj, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Raj to Amir, we can use a breadth-first search algorithm. Starting from Raj, we will explore all possible connections until we reach Amir.\n\n1. Start with Raj.\n2. Raj is connected to Nisha, Ian, Sara, and Kim. Let's explore these connections.\n3. Nisha is not connected to Amir.\n4. Ian is not connected to Amir.\n5. Sara is connected to Max. Let's explore Max's connections.\n6. Max is connected to Nisha. Let's explore Nisha's connections.\n7. Nisha is connected to Ian. Let's explore Ian's connections.\n8. Ian is not connected to Amir.\n9. Max is connected to Wei, Kim, Puja, and Pam. Let's explore these connections.\n10. Wei is connected to Kim, Puja, and Pam. Let's explore Kim's connections.\n11. Kim is connected to Pam. Let's explore Pam's connections.\n12. Pam is connected to Puja. Let's explore Puja's connections.\n13. Puja is connected to Amir. We have reached Amir.\n\nThe shortest path from Raj to Amir is: Raj, Sara, Max, Puja, Amir.\n\nAnswer: Raj, Sara, Max, Puja, Amir"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Raj, Kim, Wim, Puja, Amir",
+                "Answer: Raj, Kim, Wei, Puja, Amir",
+                "Answer: Raj, Kim, Pam, Puja, Amir"
+            ],
+            "parsed_response": "Answer: Raj, Sara, Max, Puja, Amir"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

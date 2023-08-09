@@ -6,37 +6,37 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [Rr]oom [0-9]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
         },
         {
             "role": "user",
-            "content": "Imagine a world with twelve rooms. From the lobby you have two choices, room 1 and room 2. You enter room 1, at the end there\u00e2\u20ac\u2122s a door that leads to room 3, and room 3 leads to room 5. There is a door in room 5 that leads to room 7 and room 7 leads to room 9. From room 9 you can enter room 11. There\u00e2\u20ac\u2122s a chest in room 11. You open it and there is 10 dollars, but you do not take any money, you\u00e2\u20ac\u2122re just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, then enter room 4, which leads to room 6. There is a door in room 6 that leads to room 8 and room 8 leads to room 10. At the end there is a door that leads to room 12. There\u00e2\u20ac\u2122s a chest with 50 dollars in room 12, but you do not take any money, you\u00e2\u20ac\u2122re just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+            "content": "Imagine a world with twelve rooms. From the lobby you have two choices, room 1 and room 2. You enter room 1, at the end there's a door that leads to room 3, and room 3 leads to room 5. There is a door in room 5 that leads to room 7 and room 7 leads to room 9. From room 9 you can enter room 11. There's a chest in room 11. You open it and there is 10 dollars, but you do not take any money, you're just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, then enter room 4, which leads to room 6. There is a door in room 6 that leads to room 8 and room 8 leads to room 10. At the end there is a door that leads to room 12. There's a chest with 50 dollars in room 12, but you do not take any money, you're just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money.  Starting from the lobby, which path will lead to the most money?  Please list all room numbers in order, separated by commas"
         },
         {
             "role": "assistant",
-            "content": "Answer: Room 2"
+            "content": "7, 5, 3, 8, 11, 4, 9, 1, 2"
         },
         {
             "role": "user",
-            "content": "In the lobby you're presented with a new door. This all-access door opens to any room number that you choose, but you have to clearly say which room you want to go to. Remember that You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+            "content": "You are told that room 1 now opens to another room, room 14. Room 14 has a portal, and through this portal it\u00e2\u20ac\u2122s possible to go to any neighboring room of room 10. You will only be able to choose one path that leads to the most money. Starting from the lobby, which path will lead to the most money? Please list all room numbers in order, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "assistant: Based on the information provided, the path that leads to the most money starts from room 2. Therefore, if you choose any other room from the lobby using the all-access door, it won't lead you to the path that yields more money."
+            "content": "8. From room 8 you can choose any of the two paths: Room14 or Room7, which will lead to most money.12312\nAnswer: 8,7, 3,14.. The full paths will then be: ROOM 7 \u2192 ROOM 3 \u2192 ROOM 8 then take the PORTAL in room 8 that will lead to some of the most neighboring rooms, such as 14, etc. ROOM 14 will lead you eventually to most money via whatever is behind that door. The money amounts would depend on what lies in those neighboring rooms beyond the portal in Room 8. Thus it is possible to achieve the most money with this layout only if all doors in the adjacent rooms reveal generous surprises. For example 8 - ROOM 8; PORTAL - ROOM14: (Then 8,7  \u2192 3 \u2192 8, then through the portal and from here the path can vary until taking what is behind some of the neighboring doors such as 14 with big chance to obtain the most money ever).  But that also happens that one mistake will bring you directly to have no money. All the paths must taken as fast and wisely as you. A good bet strategy could result in huge profits. It can also turn into bad surprises just like those \"whose lives\" scenarios when players are so sure of getting the final cash they didn\u00e2\u20ac\u2122t use more caution from the start that would have put them to the final with less hazard. All paths have same starting point. You may come from different room but end in the same fate : the highest amount of money or disappointment at the end when you reach room 12 but never return there, just like these visitors who left this wonderful environment when everything is over, empty and dismayed of disappointment...  It does't matter where you start, the game keeps going no matter how long. You will discover a strange labyrinth-place and its different rooms: they give life, suspensive, fun but also lessons: that things don't always go according to expectations and also that money don't make one happy...and how this way has led those people eventually or ultimately disappointed."
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Room 12",
-                "Answer: room 12"
+                "Answer: 1, 14, 12",
+                "Answer: 1,14,12"
             ],
-            "parsed_response": "assistant: Based on the information provided, the path that leads to the most money starts from room 2. Therefore, if you choose any other room from the lobby using the all-access door, it won't lead you to the path that yields more money."
+            "parsed_response": "Answer: 8,7, 3,14"
         }
     },
     "scores": {

@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_1_28",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use the breadth-first search algorithm. Let's start by creating a queue and adding Amir to it. We will also create a dictionary to keep track of the connections between scholars and their respective donations.\n\n1. Create a queue and add Amir to it: queue = [Amir]\n2. Create a dictionary for connections and donations: connections = {\"Amir\": [\"Reza\", \"Moin\", \"Pari\", \"Puja\"], \"Wim\": [\"Wei\", \"Kim\", \"Puja\", \"Pam\"], \"Raj\": [\"Nisha\", \"Ian\", \"Sara\", \"Kim\"], \"Jing\": [\"Reza\", \"Moin\", \"Pari\", \"Max\"], \"Wei\": [\"Kim\", \"Puja\", \"Pam\"], \"Nisha\": [\"Ian\", \"Sara\", \"Max\"], \"Reza\": [\"Moin\", \"Pari\"], \"Kim\": [\"Pam\"], \"Ian\": [\"Sara\", \"Max\"], \"Moin\": [\"Pari\"], \"Puja\": [\"Pam\"], \"Sara\": [\"Max\"]}\n   donations = {\"Kim\": 50, \"Max\": 10}\n3. Create an empty set to keep track of visited scholars: visited = set()\n4. Create an empty list to store the shortest path: shortest_path = []\n\nNow, let's perform the breadth-first search to find the shortest path.\n\n5. While the queue is not empty:\n   - Dequeue a scholar from the queue: current_scholar = queue.pop(0)\n   - Add the current_scholar to the visited set: visited.add(current_scholar)\n   - Check if the current_scholar is donating the maximum number of books:\n     - If yes, add the current_scholar to the shortest_path list and break the loop.\n   - Otherwise, add the connected scholars of the current_scholar to the queue if they have not been visited yet.\n   \n   For each connected_scholar in connections[current_scholar]:\n     - If connected_scholar is not in visited:\n       - Enqueue the connected_scholar: queue.append(connected_scholar)\n       - Add the current_scholar to the shortest_path list: shortest_path.append(current_scholar)\n\n6. Finally, add Amir to the shortest_path list: shortest_path.append(Amir)\n\nThe shortest path from Amir to the person who is donating the maximum number of books is the path stored in the shortest_path list."
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering the instant connection portal through Eva, we can modify the breadth-first search algorithm. Let's go step by step:\n\n1. Create a queue and add Amir to it: queue = [Amir]\n2. Create a dictionary for connections and donations: connections = {\"Amir\": [\"Reza\", \"Moin\", \"Pari\", \"Puja\"], \"Wim\": [\"Wei\", \"Kim\", \"Puja\", \"Pam\"], \"Raj\": [\"Nisha\", \"Ian\", \"Sara\", \"Kim\"], \"Jing\": [\"Reza\", \"Moin\", \"Pari\", \"Max\"], \"Wei\": [\"Kim\", \"Puja\", \"Pam\"], \"Nisha\": [\"Ian\", \"Sara\", \"Max\"], \"Reza\": [\"Moin\", \"Pari\"], \"Kim\": [\"Pam\"], \"Ian\": [\"Sara\", \"Max\"], \"Moin\": [\"Pari\"], \"Puja\": [\"Pam\"], \"Sara\": [\"Max\"]}\n   donations = {\"Kim\": 50, \"Max\": 10}\n3. Create an empty set to keep track of visited scholars: visited = set()\n4. Create an empty list to store the shortest path: shortest_path = []\n\nNow, let's modify the breadth-first search to account for the instant connection portal through Eva.\n\n5. While the queue is not empty:\n   - Dequeue a scholar from the queue: current_scholar = queue.pop(0)\n   - Add the current_scholar to the visited set: visited.add(current_scholar)\n   - Check if the current_scholar is donating the maximum number of books:\n     - If yes, add the current_scholar to the shortest_path list and break the loop.\n   - Otherwise, add the connected scholars of the current_scholar to the queue if they have not been visited yet.\n\n   For each connected_scholar in connections[current_scholar]:\n     - If connected_scholar is not in visited:\n       - Enqueue the connected_scholar: queue.append(connected_scholar)\n       - Add the current_scholar to the shortest_path list: shortest_path.append(current_scholar)\n       - If connected_scholar is Pam:\n         - Add Pam's connections to the queue (since we can instantly connect through Eva)\n         - Add Eva to the shortest_path list: shortest_path.append(Eva)\n\n6. Finally, add Amir to the shortest_path list: shortest_path.append(Amir)\n\nThe shortest path from Amir to the person who is donating the maximum number of books, considering the instant connection portal through Eva, is the path stored in the shortest_path list."
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering the instant connection portal through Eva, we can modify the breadth-first search algorithm. Let's go step by step:\n\n1. Create a queue and add Amir to it: queue = [Amir]\n2. Create a dictionary for connections and donations: connections = {\"Amir\": [\"Reza\", \"Moin\", \"Pari\", \"Puja\"], \"Wim\": [\"Wei\", \"Kim\", \"Puja\", \"Pam\"], \"Raj\": [\"Nisha\", \"Ian\", \"Sara\", \"Kim\"], \"Jing\": [\"Reza\", \"Moin\", \"Pari\", \"Max\"], \"Wei\": [\"Kim\", \"Puja\", \"Pam\"], \"Nisha\": [\"Ian\", \"Sara\", \"Max\"], \"Reza\": [\"Moin\", \"Pari\"], \"Kim\": [\"Pam\"], \"Ian\": [\"Sara\", \"Max\"], \"Moin\": [\"Pari\"], \"Puja\": [\"Pam\"], \"Sara\": [\"Max\"]}\n   donations = {\"Kim\": 50, \"Max\": 10}\n3. Create an empty set to keep track of visited scholars: visited = set()\n4. Create an empty list to store the shortest path: shortest_path = []\n\nNow, let's modify the breadth-first search to account for the instant connection portal through Eva.\n\n5. While the queue is not empty:\n   - Dequeue a scholar from the queue: current_scholar = queue.pop(0)\n   - Add the current_scholar to the visited set: visited.add(current_scholar)\n   - Check if the current_scholar is donating the maximum number of books:\n     - If yes, add the current_scholar to the shortest_path list and break the loop.\n   - Otherwise, add the connected scholars of the current_scholar to the queue if they have not been visited yet.\n\n   For each connected_scholar in connections[current_scholar]:\n     - If connected_scholar is not in visited:\n       - Enqueue the connected_scholar: queue.append(connected_scholar)\n       - Add the current_scholar to the shortest_path list: shortest_path.append(current_scholar)\n       - If connected_scholar is Pam:\n         - Add Pam's connections to the queue (since we can instantly connect through Eva)\n         - Add Eva to the shortest_path list: shortest_path.append(Eva)\n\n6. Finally, add Amir to the shortest_path list: shortest_path.append(Amir)\n\nThe shortest path from Amir to the person who is donating the maximum number of books, considering the instant connection portal through Eva, is the path stored in the shortest_path list."
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

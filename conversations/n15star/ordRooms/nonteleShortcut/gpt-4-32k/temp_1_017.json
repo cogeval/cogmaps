@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that room 11 is now connected to room 8. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that there is a chest with a reward of 50 for visiting room 8 and there is a chest with a reward of 10 for visiting room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections between the rooms.\nStep 2: Identify the rewards for each path.\nStep 3: Determine the path that yields the most rewards.\n\nBased on the connections provided:\n\nPath 1: Room 1 \u2192 Room 7 \u2192 Room 10 \u2192 Room 13 \u2192 Room 11 \u2192 Room 8 \u2192 Room 14\nPath 2: Room 1 \u2192 Room 7 \u2192 Room 4 \u2192 Room 10 \u2192 Room 13 \u2192 Room 11 \u2192 Room 8 \u2192 Room 14\nPath 3: Room 1 \u2192 Room 7 \u2192 Room 10 \u2192 Room 13 \u2192 Room 11 \u2192 Room 5 \u2192 Room 8 \u2192 Room 14\nPath 4: Room 1 \u2192 Room 7 \u2192 Room 4 \u2192 Room 10 \u2192 Room 13 \u2192 Room 11 \u2192 Room 5 \u2192 Room 8 \u2192 Room 14\n\nAssuming all rooms have the same reward value, Path 1 and Path 3 have fewer rooms, so they will yield the most rewards. Therefore, the paths that yield the most rewards are:\n\nAnswer: 1, 7, 10, 13, 11, 8, 14"
+            "content": "Step 1: Analyze the connections and identify the shortest paths to rooms 8 and 15.\nStep 2: Calculate the number of rooms visited in each path.\nStep 3: Determine the rewards for each path.\nStep 4: Compare the rewards and choose the path with the highest reward.\n\nShortest paths:\n1. Path to room 8: 1 -> 2 -> 5 -> 8 (4 rooms visited)\n2. Path to room 15: 1 -> 7 -> 10 -> 13 -> 4 -> 15 (6 rooms visited)\n\nRewards:\n1. Path to room 8: 50 reward points\n2. Path to room 15: 10 reward points\n\nAnswer: 1, 2, 5, 8"
+        },
+        {
+            "role": "user",
+            "content": "You have been told that room 1 has a new door that opens to a new room, room 16. Room 16 is connected to all room 14\u2019s neighboring rooms. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Update the connections to include room 16 and its connections to room 14's neighboring rooms.\nStep 2: Analyze the updated connections and identify the new shortest paths to rooms 8 and 15.\nStep 3: Calculate the number of rooms visited in each new path.\nStep 4: Determine the rewards for each new path.\nStep 5: Compare the rewards and choose the path with the highest reward.\n\nUpdated connections:\nRoom 16 is connected to room 14's neighboring rooms: 2, 5, 11.\n\nShortest paths:\n1. Path to room 8: 1 -> 16 -> 2 -> 5 -> 8 (5 rooms visited)\n2. Path to room 15: 1 -> 7 -> 10 -> 13 -> 4 -> 15 (6 rooms visited)\n\nRewards:\n1. Path to room 8: 50 reward points\n2. Path to room 15: 10 reward points\n\nAnswer: 1, 16, 2, 5, 8"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: 1, 11, 8",
-                "Answer: 1,11,8"
+                "Answer: 1, 16, 8",
+                "Answer: 1,16,8"
             ],
-            "parsed_response": "Answer: 1, 7, 10, 13, 11, 8, 14"
+            "parsed_response": "Answer: 1, 16, 2, 5, 8"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

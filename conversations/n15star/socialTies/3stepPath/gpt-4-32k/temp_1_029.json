@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wei to Ian? Starting from Wei, please list the scholar names in order, including Wei, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. First, I will create a list of connections between each student.\n2. Then, I will use a graph algorithm, like Dijkstra's shortest path algorithm, to find the shortest path from Vivian to Anisha.\n3. Finally, I will provide the list of student names in the shortest path.\n\nConnections list:\nVivian -> Salma, Shanshan, Vadim, Gongxue\nSalma -> Shanshan, Vadim, Noah, Shanshan, Shanshan\nShanshan -> Vadim, Noah, Salma, Vadim\nVadim -> Vivian, Salma, Shanshan, Noah\nGongxue -> Vivian, Paul, Solomon, Soheil, Alice\nPaul -> Solomon, Soheil, Gongxue, Alice\nSolomon -> Paul, Soheil, Gongxue, Alice\nSoheil -> Paul, Solomon, Gongxue, Alice, Pierre, Abdul, Durga, Ajit, Alice\nAlice -> Paul, Solomon, Soheil, Gongxue\nPierre -> Abdul, Durga, Ajit, Soheil\nAbdul -> Pierre, Durga, Ajit, Soheil, Durga, Ajit, Anisha\nDurga -> Pierre, Abdul, Ajit, Soheil, Abdul, Ajit, Anisha\nAjit -> Pierre, Abdul, Durga, Soheil, Abdul, Durga, Anisha, Anisha\nAnisha -> Noah, Salma, Shanshan, Vadim, Abdul, Durga, Ajit, Ajit\nNoah -> Salma, Shanshan, Vadim, Anisha\n\nUsing Dijkstra's shortest path algorithm:\n\nShortest path from Vivian to Anisha: Vivian -> Gongxue -> Soheil -> Ajit -> Anisha\n\nAnswer: Vivian, Gongxue, Soheil, Ajit, Anisha"
+            "content": "Step 1: Identify the direct connections of Wei - Kim, Puja, and Pam. \n\nStep 2: Identify the connection paths of these scholars. Kim is connected to Pam, so doesn't lead towards Ian. Puja is connected to Pam, which doesn't lead to Ian. Pam doesn't have any other connections mentioned, so we cannot go further in this path.\n\nStep 3: Since no direct connections lead to Ian, we need to check connections of the second level. Kim is connected to Wim and Wei. Neither Wim or Wei is connected to Ian. \n\nStep 4: Puja is connected to Amir, and Wim, and Pam. Wim is already checked. Check connections of Amir. Amir is connected to Reza, Moin, Pari, and Puja. But none of them are connected to Ian. \n\nStep 5: We conclude that we can't find a path from Wei to Ian.\n\nAnswer: No path found."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Wei, Kim, Raj, Ian"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Ajit, Anisha"
+            "parsed_response": "Answer: No path found"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

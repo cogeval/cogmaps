@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You are in room 1 and a portal appears with which you can teleport to any room only once. From room 1, what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. You have been told that there is a chest with a reward of 50 for visiting room 8 and there is a chest with a reward of 10 for visiting room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups of connected rooms.\nGroup 1: Room 1, 7, 10, 13, 11\nGroup 2: Room 2, 5, 8, 11, 14\nGroup 3: Room 3, 6, 9, 12, 8\nGroup 4: Room 4, 7, 10, 13, 15\nGroup 5: Room 5, 8, 11, 14\nGroup 6: Room 6, 9, 12, 15\nGroup 7: Room 7, 10, 13\nGroup 8: Room 8, 14\nGroup 9: Room 9, 12, 15\nGroup 10: Room 10, 13\nGroup 11: Room 11, 14\nGroup 12: Room 12, 15\n\nStep 2: Determine the starting point.\nStarting point: Room 1\n\nStep 3: Identify the groups connected to the starting point.\nConnected groups: Group 1\n\nStep 4: Determine the maximum reward path from the starting point.\nSince we can only teleport once, we should choose the group with the most rooms connected to the starting point. In this case, it's Group 1.\n\nStep 5: List the room numbers in order, separated by commas.\nAnswer: 1, 7, 10, 13, 11"
+            "content": "Step 1: Identify the shortest paths to room 8 and room 15 from room 1.\nStep 2: Calculate the rewards for each path.\nStep 3: Choose the path with the highest reward.\n\nShortest path to room 8 from room 1: 1 -> 2 -> 5 -> 8 (4 rooms)\nReward: 50\n\nShortest path to room 15 from room 1: 1 -> 4 -> 13 -> 10 -> 7 -> 4 -> 15 (7 rooms)\nReward: 10\n\nAnswer: 1, 2, 5, 8"
+        },
+        {
+            "role": "user",
+            "content": "You are told that room 1 now opens to a new room, room 16, which has a teleportation portal, through which you can teleport to any neighboring room of room 14, one at a time. This means that from room 16 you can go to any neighboring room of room 14. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the shortest paths to room 8 and room 15 from room 1, considering the new room 16 and its teleportation portal.\nStep 2: Calculate the rewards for each path.\nStep 3: Choose the path with the highest reward.\n\nShortest path to room 8 from room 1 using room 16: 1 -> 16 -> 11 -> 5 -> 8 (5 rooms)\nReward: 50\n\nShortest path to room 15 from room 1 using room 16: 1 -> 16 -> 14 -> 15 (4 rooms)\nReward: 10\n\nAnswer: 1, 2, 5, 8"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: 1, 8",
-                "Answer: 1,8"
+                "Answer: 1, 16, 8",
+                "Answer: 1,16,8"
             ],
-            "parsed_response": "Answer: 1, 7, 10, 13, 11"
+            "parsed_response": "Answer: 1, 2, 5, 8"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

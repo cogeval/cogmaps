@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nstepPath_temp_0.5_28",
+    "conversation_id": "task_n15star_ordRooms_exp_nstepPath_temp_0.5_28",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 0.5,
@@ -15,24 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 12? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 6 to room 11? Starting from room 6, please list the room numbers in order, including 6, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 1 to room 12, we can use Dijkstra's algorithm. Starting from room 1, we can calculate the distance to each of its neighboring rooms (rooms 7, 10, 11, 13, and 11). Then, we can visit the room with the shortest distance and repeat the process until we reach room 12.\n\nThe shortest path from room 1 to room 12 is: 1, 7, 10, 13, 12.\n\nAnswer: 1, 7, 10, 13, 12"
+            "content": "To find the shortest path from room 6 to room 11, we can use Dijkstra's algorithm. Here are the steps:\n\n1. Create a table with all the rooms and their distances from the starting room (room 6). Set the distance of room 6 to 0 and all other rooms to infinity.\n\n| Room | Distance |\n|------|----------|\n| 1    | \u221e        |\n| 2    | \u221e        |\n| 3    | \u221e        |\n| 4    | \u221e        |\n| 5    | \u221e        |\n| 6    | 0        |\n| 7    | \u221e        |\n| 8    | \u221e        |\n| 9    | \u221e        |\n| 10   | \u221e        |\n| 11   | \u221e        |\n| 12   | \u221e        |\n| 13   | \u221e        |\n| 14   | \u221e        |\n| 15   | \u221e        |\n\n2. Mark room 6 as visited.\n\n3. For each room adjacent to room 6 (rooms 9, 12, and 15), update its distance in the table to the distance from room 6 plus the distance to that room. For example, the distance to room 9 is 1, so its distance in the table becomes 1.\n\n| Room | Distance |\n|------|----------|\n| 1    | \u221e        |\n| 2    | \u221e        |\n| 3    | \u221e        |\n| 4    | \u221e        |\n| 5    | \u221e        |\n| 6    | 0        |\n| 7    | \u221e        |\n| 8    | \u221e        |\n| 9    | 1        |\n| 10   | \u221e        |\n| 11   | \u221e        |\n| 12   | 1        |\n| 13   | \u221e        |\n| 14   | \u221e        |\n| 15   | 1        |\n\n4. Choose the room with the smallest distance that has not been visited yet (room 9 in this case) and mark it as visited.\n\n5. For each room adjacent to the newly visited room (room 12 and room 15), update its distance in the table if it is smaller than the current distance. For example, the distance to room 12 through room 9 is 2, which is smaller than the current distance of  \u221e, so its distance in the table becomes 2.\n\n| Room | Distance |\n|------|----------|\n| 1    | \u221e        |\n| 2    | \u221e        |\n| 3    | \u221e        |\n| 4    | \u221e        |\n| 5    | \u221e        |\n| 6    | 0        |\n| 7    | \u221e        |\n| 8    | \u221e        |\n| 9    | 1        |\n| 10   | \u221e        |\n| 11   | \u221e        |\n| 12   | 2        |\n| 13   | \u221e        |\n| 14   | \u221e        |\n| 15   | 1        |\n\n6. Repeat steps 4 and 5 until all rooms have been visited or the destination room (room 11) has been reached.\n\n7. The shortest path from room 6 to room 11 is the sequence of rooms with the smallest distance from room 6 to room 11. In this case, the shortest path is:\n\n6, 9, 12, 11\n\nSo the answer is: Answer: 6, 9, 12, 11"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15, 12",
-                "Answer: 1, 10, 4, 15, 12",
-                "Answer: 1, 13, 4, 15, 12",
-                "Answer: 1,7,4,15,12",
-                "Answer: 1,10,4,15,12",
-                "Answer: 1,13,4,15,12"
+                "Answer: 6, 3, 8, 2, 11",
+                "Answer: 6, 3, 8, 5, 11",
+                "Answer: 6, 3, 8, 14, 11"
             ],
-            "parsed_response": "Answer: 1, 7, 10, 13, 12"
+            "parsed_response": "Answer: 6, 9, 12, 11"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

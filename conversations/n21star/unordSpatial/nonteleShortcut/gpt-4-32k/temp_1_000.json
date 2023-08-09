@@ -19,28 +19,28 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path to the fields offering free flowers, I will first list all the paths from the rose field to both snapdragon and chrysanthemum fields.\n\n1. Path to snapdragon field:\nRose -> Orchid -> Aster -> Snapdragon (4 fields)\n\n2. Path to chrysanthemum field:\nRose -> Sunflower -> Daisy -> Zinnia -> Chrysanthemum (5 fields)\n\nNow, I will compare the number of flowers I can get for each path.\n\n1. Snapdragon field: 50 flowers\n2. Chrysanthemum field: 10 flowers\n\nAs the Snapdragon field yields more flowers and the path is shorter, the best option is to visit the Snapdragon field.\n\nAnswer: Rose, Orchid, Aster, Snapdragon"
+            "content": "1. Start at the rose field\n2. Analyze the connections from the rose field to reach the snapdragon and chrysanthemum fields\n3. Find the shortest path to the snapdragon field, which yields the maximum number of flowers (50):\n   - Rose -> Orchid -> Aster -> Snapdragon\n4. The shortest path is 4 steps long: Rose, Orchid, Aster, Snapdragon\n\nAnswer: Rose, Orchid, Aster, Snapdragon"
         },
         {
             "role": "user",
-            "content": "You are told that the path between orchid field and aster field is now blocked. Instead, the orchid field is now connected to the snapdragon field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+            "content": " You are told that the rose field has a new door that opens to the magnolia field which connects to all neighboring fields of the lavender field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "With the change in the path, I will first list the updated paths from the rose field to both snapdragon and chrysanthemum fields.\n\n1. Path to snapdragon field:\nRose -> Orchid -> Snapdragon (3 fields)\n\n2. Path to chrysanthemum field:\nRose -> Sunflower -> Daisy -> Zinnia -> Chrysanthemum (5 fields)\n\nNow, I will compare the number of flowers I can get for each path.\n\n1. Snapdragon field: 50 flowers\n2. Chrysanthemum field: 10 flowers\n\nAs the Snapdragon field yields more flowers and the updated path is shorter, the best option is to visit the Snapdragon field.\n\nAnswer: Rose, Orchid, Snapdragon"
+            "content": "1. Start at the rose field\n2. Analyze the connections from the rose field to reach the snapdragon and chrysanthemum fields, including the new door to the magnolia field\n3. The magnolia field connects to all neighboring fields of the lavender field, which are: Aster, Dahlia, Hyacinth, and Iris\n4. Check if any new path is shorter than the previous shortest path (Rose, Orchid, Aster, Snapdragon) to the snapdragon or chrysanthemum fields\n   - From the magnolia field, to reach snapdragon: Magnolia -> Aster -> Snapdragon (2 steps from Magnolia)\n   - From the rose field, to reach magnolia: Rose -> Magnolia (1 step)\n   - Total steps to reach the snapdragon field through the magnolia field: 1 + 2 = 3 steps\n5. The new shortest path is 3 steps long: Rose, Magnolia, Aster, Snapdragon\n\nAnswer: Rose, Magnolia, Aster, Snapdragon"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Rose, Orchid, Snapdragon"
+                "Answer: Rose, Magnolia, Snapdragon"
             ],
-            "parsed_response": "With the change in the path, I will first list the updated paths from the rose field to both snapdragon and chrysanthemum fields.\n\n1. Path to snapdragon field:\nRose -> Orchid -> Snapdragon (3 fields)\n\n2. Path to chrysanthemum field:\nRose -> Sunflower -> Daisy -> Zinnia -> Chrysanthemum (5 fields)\n\nNow, I will compare the number of flowers I can get for each path.\n\n1. Snapdragon field: 50 flowers\n2. Chrysanthemum field: 10 flowers\n\nAs the Snapdragon field yields more flowers and the updated path is shorter, the best option is to visit the Snapdragon field.\n\nAnswer: Rose, Orchid, Snapdragon"
+            "parsed_response": "Answer: Rose, Magnolia, Aster, Snapdragon"
         }
     },
     "scores": {
         "nonteleShortcut": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

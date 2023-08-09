@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Raj? Starting from Amir, please list the scholar names in order, including Amir, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections for Vivian and Ajit.\nVivian is connected to Salma, Shanshan, Vadim, and Gongxue.\nAjit is connected to Pierre, Abdul, Durga, and Anisha.\n\nStep 2: Find the common connections between Vivian's connections and Ajit's connections.\nSalma is connected to Noah, Shanshan, and Vadim.\nShanshan is connected to Salma, Vadim, and Noah.\nVadim is connected to Vivian, Salma, Shanshan, and Noah.\nGongxue is connected to Vivian, Salma, Shanshan, Vadim, Paul, Solomon, Soheil, and Alice.\n\nStep 3: Check for any direct connections between Vivian's connections and Ajit's connections.\nSalma has no direct connection to Ajit's connections.\nShanshan has no direct connection to Ajit's connections.\nVadim has no direct connection to Ajit's connections.\nGongxue is directly connected to Alice.\n\nStep 4: Identify the connections for Alice.\nAlice is connected to Paul, Solomon, Soheil, Gongxue, and Pierre.\n\nStep 5: Check for any direct connections between Alice's connections and Ajit's connections.\nAlice is directly connected to Pierre.\n\nStep 6: Identify the connections for Pierre.\nPierre is connected to Abdul, Durga, Ajit, and Soheil.\n\nStep 7: Check for any direct connections between Pierre's connections and Ajit.\nPierre is directly connected to Ajit.\n\nStep 8: List the student names in order, separated by commas.\nAnswer: Vivian, Gongxue, Alice, Pierre, Ajit"
+            "content": "First, let's map out the connections:\n\n1. Amir is directly connected to Reza, Moin, Pari, and Puja.\n2. Raj is directly connected to Nisha, Ian, Sara, and Kim.\n3. We need to find a scholar who is connected to both Amir and Raj. \n\nLooking at the connections, we can see that Kim is a common connection between Amir and Raj, through Wim and Wei. \n\nSo, the shortest path from Amir to Raj would be: Amir -> Wim -> Wei -> Kim -> Raj\n\nAnswer: Amir, Wim, Wei, Kim, Raj"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Amir, Puja, Wim, Kim, Raj",
+                "Answer: Amir, Puja, Wei, Kim, Raj",
+                "Answer: Amir, Puja, Pam, Kim, Raj"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Alice, Pierre, Ajit"
+            "parsed_response": "Answer: Amir, Wim, Wei, Kim, Raj"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Kim to Moin? Starting from Kim, please list the scholar names in order, including Kim, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections involving Vivian.\nVivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n\nStep 2: Identify the connections involving the students connected to Vivian.\nSalma is connected to Shanshan, Vadim, Noah, and Anisha.\nShanshan is connected to Vadim, Salma, and Noah.\nVadim is connected to Shanshan, Salma, and Noah.\nGongxue is connected to Solomon, Soheil, Alice, and Paul.\n\nStep 3: Identify the connections involving the students connected to the students connected to Vivian.\nNoah is connected to Salma, Shanshan, Vadim, and Anisha.\nAnisha is connected to Noah, Abdul, Durga, Ajit, and Salma.\nSolomon is connected to Soheil, Gongxue, Alice, and Paul.\nSoheil is connected to Solomon, Gongxue, Alice, Pierre, Abdul, Durga, and Ajit.\nAlice is connected to Solomon, Soheil, Gongxue, and Paul.\nPaul is connected to Solomon, Soheil, Gongxue, and Alice.\nAbdul is connected to Pierre, Durga, Ajit, and Anisha.\nDurga is connected to Pierre, Abdul, Ajit, and Anisha.\nAjit is connected to Pierre, Abdul, Durga, and Anisha.\n\nStep 4: Find the shortest connection path from Vivian to Ajit.\nVivian -> Salma -> Anisha -> Ajit\n\nAnswer: Vivian, Salma, Anisha, Ajit"
+            "content": "First, let's map out the connections:\n\n1. Kim is directly connected to Pam and Wei.\n2. Pam is directly connected to Wim and Puja.\n3. Wei is directly connected to Wim and Kim.\n4. Puja is directly connected to Amir, Wim, and Pam.\n5. Wim is directly connected to Wei, Kim, Puja, and Pam.\n6. Amir is directly connected to Reza, Moin, Pari, and Puja.\n7. Reza is directly connected to Amir, Jing, and Moin.\n8. Moin is directly connected to Amir, Reza, and Pari.\n\nFrom this, we can see that the shortest path from Kim to Moin is:\n\nKim -> Wei -> Wim -> Puja -> Amir -> Moin\n\nThis path involves 5 connections. \n\nAnswer: Kim, Wei, Wim, Puja, Amir, Moin"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Kim, Wim, Puja, Amir, Moin",
+                "Answer: Kim, Wei, Puja, Amir, Moin",
+                "Answer: Kim, Pam, Puja, Amir, Moin"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha, Ajit"
+            "parsed_response": "Answer: Kim, Wei, Wim, Puja, Amir, Moin"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

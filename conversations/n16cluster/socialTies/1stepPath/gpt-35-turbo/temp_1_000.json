@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,19 +15,19 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Kim what is the shortest path to Nisha? Starting from Kim, please list the scholar numbers in order, including Kim, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Amir what is the shortest path to Wim? Starting from Amir, please list the scholar numbers in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Kim, Wei, Nisha"
+            "content": "To find the shortest path from Amir to Wim, we can use the breadth-first search algorithm. Starting from Amir, we will explore the connections of each scholar and keep track of the visited scholars. Here is the step-by-step process:\n\n1. Start at Amir.\n2. Explore Amir's connections: Wim, Raj, Jing, and Reza.\n3. Check if Wim is one of the connections. If yes, then the shortest path from Amir to Wim is [Amir, Wim]. If not, proceed to the next step.\n4. Mark Amir as visited and add him to the visited scholars list.\n5. Add Wim to the queue (the next scholar to be explored).\n6. Set Wim's parent as Amir.\n7. Explore Wim's connections: Amir, Raj, Jing, and Eva.\n8. Check if Amir is one of the connections. Since Amir has already been visited, we can skip it. Proceed to the next connection.\n9. Check if Raj is one of the connections. If yes, then the shortest path from Amir to Wim is [Amir, Raj, Wim]. If not, proceed to the next connection.\n10. Check if Jing is one of the connections. If yes, then the shortest path from Amir to Wim is [Amir, Jing, Wim]. If not, proceed to the next connection.\n11. Check if Eva is one of the connections. If yes, then the shortest path from Amir to Wim is [Amir, Eva, Wim]. If not, proceed to the next step.\n12. Mark Wim as visited and add him to the visited scholars list.\n13. Add Raj, Jing, and Eva to the queue (the next scholars to be explored).\n14. Set their parents as Wim.\n15. Repeat steps 7-14 until Wim is found or the queue becomes empty.\n\nBased on this process, the shortest path from Amir to Wim is: Answer: Amir, Raj, Wim"
         }
     ],
     "tests": {
         "1stepPath": {
             "expected_answer": [
-                "Answer: Kim, Nisha"
+                "Answer: Amir, Wim"
             ],
-            "parsed_response": "Answer: Kim, Wei, Nisha"
+            "parsed_response": "Answer: Amir, Raj, Wim"
         }
     },
     "scores": {

@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleShortcut_temp_1_15",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. Here are the steps:\n\n1. Create a queue to store the scholars in the order they are visited.\n2. Create a visited set to keep track of the scholars we have already visited.\n3. Create a dictionary to store the number of books donated by each scholar.\n4. Initialize the queue with Amir and add Amir to the visited set.\n5. Initialize the maximum number of books donated as 0.\n6. Initialize the scholar with the maximum number of books donated as None.\n7. While the queue is not empty:\n   7.1 Dequeue the next scholar from the queue.\n   7.2 If the number of books donated by this scholar is greater than the maximum number of books donated so far, update the maximum number of books donated and the scholar with the maximum number of books donated.\n   7.3 If the current scholar is the one donating the maximum number of books, stop the search.\n   7.4 Otherwise, for each scholar connected to the current scholar (based on the given connections), if the connected scholar has not been visited:\n      7.4.1 Add the connected scholar to the queue.\n      7.4.2 Add the connected scholar to the visited set.\n8. Starting from Amir, list the scholar names in the order they were visited, separated by commas.\n\nUsing the given connections, let's find the shortest path from Amir to the person who is donating the maximum number of books.\n\nAnswer: Amir, Reza, Moin, Pari, Max"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva. Eva is connected to all of  Pam\u2019s connections. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books after Amir's marriage to Eva, we need to update the connections based on Eva's connections to all of Pam's connections. Here are the steps:\n\n1. Update the connections by adding Eva to the connections of Pam.\n2. Apply the same breadth-first search algorithm as before to find the shortest path from Amir to the person who is donating the maximum number of books.\n\nUsing the updated connections, let's find the shortest path from Amir to the person who is donating the maximum number of books.\n\nAnswer: Amir, Eva, Pam"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Eva, Pam"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

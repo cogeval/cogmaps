@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Initially, you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. Assume now that rooms 2 and 16 are not connected. Also, rooms 6 and 12 are not connected anymore. You have been told that rooms 1 and 7 are not connected. Also, rooms 13 and 11 are not connected anymore. From room 1 what is the path that yields the most reward? Please list the room numbers in order, separated by  commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections after the changes.\n\nRoom 1: 2, 3, 4\nRoom 2: 1, 3, 4\nRoom 3: 1, 2, 4, 5\nRoom 4: 1, 2, 3, 14\nRoom 5: 6, 7, 8, 3\nRoom 6: 5, 7, 8\nRoom 7: 8, 6, 5\nRoom 8: 5, 6, 7, 10\nRoom 9: 10, 11, 12, 15\nRoom 10: 9, 11, 8, 12\nRoom 11: 13, 9, 12, 10\nRoom 12: 9, 10, 11\nRoom 13: 14, 15, 16\nRoom 14: 4, 13, 15, 16\nRoom 15: 13, 14, 16, 9\nRoom 16: 13, 14, 15\n\nStep 2: Find the path from Room 1 to get the maximum reward.\n\nStart at Room 1, the possible paths are:\n1 -> 2 -> 4 -> 14 -> 13 -> 16 (Reward: 5)\n1 -> 4 -> 14 -> 13 -> 16 (Reward: 5)\n1 -> 3 -> 4 -> 14 -> 13 -> 16 (Reward: 5)\n1 -> 3 -> 5 -> 8 -> 10 (Reward: 10-15=-5)\n1 -> 2 -> 3 -> 5 -> 8 -> 10 (Reward: 10-15=-5)\n\nThe path with the maximum reward is: \n1 -> 2 -> 4 -> 14 -> 13 -> 16\n\nAnswer: 1, 2, 4, 14, 13, 16"
+            "content": "Step 1: Identify the two chests with rewards in rooms 10 and 15.\nStep 2: Find the shortest path from room 1 to room 10 and room 15.\nStep 3: Compare the reward values and the length of the paths.\nStep 4: Choose the path with the highest reward and shortest distance.\n\nFor room 10:\nPath 1: 1 -> 3 -> 5 -> 8 -> 10 (5 rooms)\n\nFor room 15:\nPath 1: 1 -> 4 -> 14 -> 15 (4 rooms)\n\nComparing the rewards and paths, the path to room 10 has a higher reward (50) but a longer path (5 rooms), while the path to room 15 has a lower reward (10) but a shorter path (4 rooms).\n\nSince the task is to find the shortest path that yields the most reward, we will choose the path to room 10.\n\nAnswer: 1, 3, 5, 8, 10"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that room 2 is no longer connected to room 16 and, instead, room 2 is now connected to room 12. Also, room 6 is no longer connected to room 12 and, instead, room 6 is now connected to room 16. Also, room 4 is no longer connected to room 14 and, instead, room 4 is now connected to room 7. The door from room 1 to room 7 is locked. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Update the connections based on the new information.\n- Room 2 is now connected to rooms 1, 3, 4, and 12.\n- Room 6 is now connected to rooms 5, 7, 8, and 16.\n- Room 4 is now connected to rooms 1, 2, 3, and 7.\n- Room 1's door to room 7 is locked.\n\nStep 2: Find the shortest path from room 1 to room 10 and room 15, considering the updated connections.\n\nFor room 10:\nPath 1: 1 -> 3 -> 5 -> 8 -> 10 (5 rooms)\n\nFor room 15:\nPath 1: 1 -> 4 -> 2 -> 12 -> 9 -> 15 (6 rooms)\n\nComparing the rewards and paths, the path to room 10 has a higher reward (50) and a shorter path (5 rooms), while the path to room 15 has a lower reward (10) and a longer path (6 rooms).\n\nSince the task is to find the shortest path that yields the most reward, we will choose the path to room 10.\n\nAnswer: 1, 3, 5, 8, 10"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: 1, 4, 14, 16, 15, 9, 10",
-                "Answer: 1,4,14,16,15,9,10"
+                "Answer: 1, 2, 12, 10",
+                "Answer: 1,2,12,10"
             ],
-            "parsed_response": "Answer: 1, 2, 4, 14, 13, 16"
+            "parsed_response": "Answer: 1, 3, 5, 8, 10"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

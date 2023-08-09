@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Now you have been told that there is a reward of 5 for connecting with Alice. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups in which Alice is connected.\nGroup 1: Paul, Solomon, Soheil, Gongxue, and Alice\nGroup 2: Solomon, Soheil, Gongxue, and Alice\n\nStep 2: Identify any connections between Vivian's group and Alice's groups.\nVivian's Group: Vivian, Salma, Shanshan, Vadim, and Gongxue\n\nFrom Vivian's group, Gongxue is connected to Alice in Group 1 and Group 2.\n\nStep 3: Determine the path with the most rewards.\nIn this case, there is only one path to connect Vivian to Alice with the given connections:\n\nVivian -> Gongxue -> Alice\n\nAnswer: Vivian, Gongxue, Alice"
+            "content": "Step 1: Identify the person who is donating the maximum number of books. Between Kim and Max, Kim is donating the maximum number of books (50 books).\n\nStep 2: List down all the persons to whom Amir is connected to. They are Reza, Moin, Pari, and Puja.\n\nStep 3: Since Amir is not directly connected to Kim, check whether any of the persons Amir is connected to is directly or indirectly connected to Kim. Puja is directly connected to Kim. \n\nStep 4: So, the shortest path from Amir to Kim, who is donating the maximum number of books, goes through Puja.\n\nAnswer: Amir, Puja, Kim"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Moin is donating 100 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the person who is donating the maximum number of books. Among Kim, Max, and Moin, Moin is donating the maximum number of books (100 books).\n\nStep 2: List down all the persons to whom Amir is connected to. They are Reza, Moin, Pari, and Puja.\n\nStep 3: Amir is directly connected to Moin. \n\nStep 4: So, the shortest path from Amir to Moin, who is donating the maximum number of books, is direct.\n\nAnswer: Amir, Moin"
         }
     ],
     "tests": {
         "policyReval": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Alice, Soheil"
+                "Answer: Amir, Moin"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Alice"
+            "parsed_response": "Answer: Amir, Moin"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

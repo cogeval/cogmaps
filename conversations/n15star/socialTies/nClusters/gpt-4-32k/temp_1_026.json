@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. How many densely-connected clusters do we have in this class? A densely-connected cluster is a group of students that are connected to themselves with a max of 2 students."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections in the given information.\nStep 2: Look for groups of students where each student is connected to every other student in the group.\nStep 3: If a group has a max of 2 students, it is not considered a densely-connected cluster.\n\nConnections: \n1. Vivian, Salma, Shanshan, Vadim, Gongxue\n2. Paul, Solomon, Soheil, Gongxue, Alice\n3. Pierre, Abdul, Durga, Ajit, Soheil\n4. Noah, Salma, Shanshan, Vadim, Anisha\n5. Solomon, Soheil, Gongxue, Alice\n6. Abdul, Durga, Ajit, Anisha\n7. Salma, Shanshan, Vadim\n8. Soheil, Alice\n9. Durga, Ajit, Anisha\n10. Shanshan, Vadim\n11. Gongxue, Alice\n12. Ajit, Anisha\n\nStep 4: Identify the densely-connected clusters\n\nCluster 1: Vivian, Salma, Shanshan, Vadim, Gongxue\nCluster 2: Paul, Solomon, Soheil, Gongxue, Alice\nCluster 3: Pierre, Abdul, Durga, Ajit, Soheil\nCluster 4: Noah, Salma, Shanshan, Vadim, Anisha\nCluster 5: Solomon, Soheil, Gongxue, Alice\nCluster 6: Abdul, Durga, Ajit, Anisha\nCluster 7: Salma, Shanshan, Vadim\nCluster 8: Durga, Ajit, Anisha\n\nStep 5: Remove groups with max 2 students.\n\nFinal clusters:\n1. Vivian, Salma, Shanshan, Vadim, Gongxue\n2. Paul, Solomon, Soheil, Gongxue, Alice\n3. Pierre, Abdul, Durga, Ajit, Soheil\n4. Noah, Salma, Shanshan, Vadim, Anisha\n5. Solomon, Soheil, Gongxue, Alice\n6. Abdul, Durga, Ajit, Anisha\n7. Salma, Shanshan, Vadim\n8. Durga, Ajit, Anisha\n\nAnswer: there are 8 clusters"
+            "content": "Step 1: Identify the scholars and their connections:\n\n- Amir - Reza, Moin, Pari, Puja\n- Wim - Wei, Kim, Puja, Pam\n- Raj - Nisha, Ian, Sara, Kim\n- Jing - Reza, Moin, Pari, Max\n- Wei - Kim, Puja, Pam\n- Nisha - Ian, Sara, Max\n- Reza - Moin, Pari\n- Kim - Pam\n- Ian - Sara, Max\n- Moin - Pari\n- Puja - Pam\n- Sara - Max\n\nStep 2: Create a map of densely-connected clusters:\n\n- Cluster 1: {Amir, Reza, Moin, Pari, Jing} \n- Cluster 2: {Wim, Wei, Kim, Puja, Pam}\n- Cluster 3: {Raj, Nisha, Ian, Sara, Max, Jing}\n\nHere, cluster 1 is a group of scholars {Amir, Reza, Moin, Pari, Jing} where each scholar is connected to at least two other scholars in the group. Similarly, cluster 2 and cluster 3 are densely connected. However, scholar Jing appears in two clusters: cluster 1 and 3. Therefore, we should merge these two clusters.\n\nSo, \n\n- Cluster 1: {Amir, Reza, Moin, Pari, Jing, Raj, Nisha, Ian, Sara, Max} \n- Cluster 2: {Wim, Wei, Kim, Puja, Pam}\n\nStep 3: Check for overlapping clusters and merge if necessary:\n\nAll connections have been considered and there are no overlapping clusters. So, the final clusters are as above. \n\nAnswer: there are 2 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 8 clusters"
+            "parsed_response": "Answer: there are 2 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

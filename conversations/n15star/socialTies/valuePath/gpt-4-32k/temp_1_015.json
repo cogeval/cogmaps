@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Now you have been told that there is a reward of 10 for connecting with Soheil. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the path from Vivian that yields the most reward, we need to follow connections to Soheil. Let's map out the possible paths.\n\n1. Vivian is connected to Vivian, Salma, Shanshan, Vadim, and Gongxue. \n2. Gongxue is connected to Paul, Solomon, Soheil, Gongxue, and Alice. \n3. Soheil is our target, so the path from Vivian to Soheil through Gongxue is: Vivian, Gongxue, Soheil.\n\nAnswer: Vivian, Gongxue, Soheil"
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, which is Kim, I will follow these steps:\n\nStep 1: Identify the scholars directly connected to Amir. These are: Reza, Moin, Pari, and Puja.\n\nStep 2: Check if Kim is among these scholars. If not, identify the scholars connected to each of Amir's direct connections.\n\nStep 3: The scholars connected to Reza are Moin and Pari. The scholars connected to Moin are Reza and Pari. The scholars connected to Pari are Amir, Reza, Moin, and Jing. The scholars connected to Puja are Amir, Wim, Wei, and Pam.\n\nStep 4: Check if Kim is among these scholars. If not, identify the scholars connected to each of these connections.\n\nStep 5: The scholars connected to Jing are Reza, Moin, Pari, and Max. The scholars connected to Wim are Wei, Kim, Puja, and Pam. The scholars connected to Wei are Wim, Kim, Puja, and Pam.\n\nStep 6: Kim is directly connected to Wim and Wei. Therefore, the shortest path from Amir to Kim would go through either Puja to Wim to Kim or Puja to Wei to Kim. Since both paths have the same length, we could choose any of them.\n\nFinal outcome:\nAnswer: Amir, Puja, Wim, Kim"
         }
     ],
     "tests": {
         "valuePath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul, Soheil",
-                "Answer: Vivian, Gongxue, Alice, Soheil ",
-                "Answer: Vivian, Gongxue, Solomon, Soheil "
+                "Answer: Amir, Puja, Wim, Kim",
+                "Answer: Amir, Puja, Pam, Kim",
+                "Answer: Amir, Puja, Wei, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil"
+            "parsed_response": "Answer: Amir, Puja, Wim, Kim"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

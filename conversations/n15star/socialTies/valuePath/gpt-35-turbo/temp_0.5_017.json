@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_valuePath_temp_0.5_17",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. Here are the steps:\n\n1. Start with Amir and mark him as visited.\n2. Create an empty queue and enqueue Amir.\n3. Create an empty list to store the path.\n4. While the queue is not empty:\n   - Dequeue a scholar from the queue.\n   - Check if the scholar is donating books.\n   - If yes, add the scholar to the path list and stop the search.\n   - If no, enqueue all the connected scholars who have not been visited yet.\n   - Mark the dequeued scholar as visited.\n5. Return the path list.\n\nLet's go through the steps:\n\n1. Start with Amir. (Amir)\n2. Enqueue Amir. Queue: [Amir]\n3. Dequeue Amir. Amir is not donating books. Enqueue Reza, Moin, Pari, and Puja. Queue: [Reza, Moin, Pari, Puja]\n4. Dequeue Reza. Reza is not donating books. Enqueue Moin and Pari. Queue: [Moin, Pari, Puja]\n5. Dequeue Moin. Moin is not donating books. Enqueue Pari. Queue: [Pari, Puja]\n6. Dequeue Pari. Pari is not donating books. Enqueue Puja. Queue: [Puja]\n7. Dequeue Puja. Puja is donating books. Stop the search. Path: [Amir, Puja]\n\nAnswer: Amir, Puja"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Puja, Wim, Kim",
+                "Answer: Amir, Puja, Pam, Kim",
+                "Answer: Amir, Puja, Wei, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Puja"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

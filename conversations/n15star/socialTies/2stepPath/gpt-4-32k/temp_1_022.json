@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Paul? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Pam to Raj? Starting from Pam, please list the scholar names in order, including Pam, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify common connections between Vivian's group and Paul's group.\nVivian's group: Vivian, Salma, Shanshan, Vadim, Gongxue\nPaul's group: Paul, Solomon, Soheil, Gongxue, Alice\n\nStep 2: Notice that Gongxue is in both groups.\n\nStep 3: Find the shortest connection path from Vivian to Gongxue:\nVivian -> Gongxue\n\nStep 4: Find the shortest connection path from Gongxue to Paul:\nGongxue -> Paul\n\nStep 5: Combine the paths to find the shortest connection path from Vivian to Paul:\nVivian -> Gongxue -> Paul\n\nAnswer: Vivian, Gongxue, Paul"
+            "content": "1. Start with Pam\n2. Identify the people connected to Pam: Wim, Wei, Puja\n3. Among those people, find who is directly connected to Raj. None of them are directly connected to Raj.\n4. Then identify the second level of people connected to Pam through Wim, Wei, Puja: Wei, Kim, Puja, Kim, Puja, Pam\n5. Among these people, again find who is directly connected to Raj. Kim is directly connected to Raj. \n6. So, the shortest path is through Kim.\n7. Therefore, the shortest path from Pam to Raj is Pam - Kim - Raj\n\nAnswer: Pam, Kim, Raj"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul"
+                "Answer: Pam, Kim, Raj"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Paul"
+            "parsed_response": "Answer: Pam, Kim, Raj"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

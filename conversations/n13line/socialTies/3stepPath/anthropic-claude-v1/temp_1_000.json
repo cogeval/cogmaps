@@ -6,41 +6,41 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+ '"
         },
         {
             "role": "user",
-            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you\u00e2\u20ac\u2122re just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you\u00e2\u20ac\u2122re just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Imagine a group of thirteen scholars. From Vicky you have two choices, Amir and Wim.  Amir is connected to Raj, and Raj is connected to Wei. Wei is connected to Reza and Reza is connected to Ian. Ian is connected to Puja. Puja is donating 10 books, but you do not take any book, you're just learning about the environment. This time you ask Vicky to connect you to Wim who is connected to Jing. Jing is connected to Nisha. Nisha is connected to Kim and Kim is connected to Moin. Moin is connected to Sara. Sara has 50 books to donate, but you do not take any money, you're just learning about the environment. You return to Vicky. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas"
         },
         {
             "role": "assistant",
-            "content": " Okay, here is the step-by-step thinking process:\n\n1. I have two friends - Nora and Philip who can introduce me to potential investors. \n2. If I go through Nora, the path is: Nora -> Peter -> Shikha -> Gal -> Alex -> David. David can invest $1M.\n3. If I go through Philip, the path is: Philip -> Yakub -> Ajay -> Joe -> Rachel -> Harry. Harry has $5M budget.\n4. Comparing the two paths, going through Philip has the potential to get $5M which is more than $1M through Nora.\n\nAnswer: Philip"
+            "content": " Here is my step-by-step thinking process:\n\n1. There are two paths beginning from Vicky: \nPath 1 (Vicky -> Amir -> Raj -> Wei -> Reza -> Ian -> Puja) which leads to 10 books\nPath 2 (Vicky -> Wim -> Jing -> Nisha -> Kim -> Moin -> Sara) which leads to 50 books\n\n2. Comparing the two paths, Path 2 leads to more books (50 books vs 10 books)\n\n3. Therefore, the path that leads to the maximum number of books is:\nVicky, Wim, Jing, Nisha, Kim, Moin, Sara\n\nAnswer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara"
         },
         {
             "role": "user",
-            "content": "From Peter what is the shortest path to Alex? Please list the names in order, separated by commas."
+            "content": "From Amir what is the shortest path to Reza? Starting from Amir, please list the names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": " Nora, Peter, Shikha, Gal, Alex"
+            "content": " Here is the shortest path from Amir to Reza:\n\nAmir, Raj, Wei, Reza  \n\nAnswer: Amir, Raj, Wei, Reza"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Peter, Shikha, Gal, Alex"
+                "Answer: Amir, Raj, Wei, Reza"
             ],
-            "parsed_response": " Nora, Peter, Shikha, Gal, Alex"
+            "parsed_response": " Here is the shortest path from Amir to Reza:\n\nAmir, Raj, Wei, Reza  \n\nAnswer: Amir, Raj, Wei, Reza"
         }
     },
     "scores": {
         "3stepPath": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

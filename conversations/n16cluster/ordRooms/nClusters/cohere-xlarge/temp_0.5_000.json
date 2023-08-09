@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "\n\nYou should return the number of densely-connected clusters in the world. If there are none, return 0.\n\nThe input will contain one test case. The test case will begin with a line an integer n (1 \u2264 n \u2264 100), which is the number of rooms in the world.\n\nThe next n lines will contain the connections between the rooms. Each line will contain three integers u, v, and c (1 \u2264 u, v \u2264 n; 0 \u2264 c \u2264 100), which are the rooms that are connected.\n\nOutput a single integer that is the number of densely-connected clusters in the world. If there are none, output 0.\n\nIn the first case, there are two densely-connected clusters: rooms 1, 2, 3, and 4, and rooms 7, 8, 9, 10, and 11.\n\nIn the second case, there are three densely-connected clusters: rooms 1, 2, 3, 4, and 14, rooms 5, 6, 7, 8, and 12, and rooms 9, 10, 11, and 13.\n\nIn the third case, there are no densely-connected clusters. This is because, for example, rooms 1"
+            "content": "\n\nEach room has a set of states: empty, occupied by one person, or occupied by two people. You have to remember the set of states of each room in order to calculate the densely-connected clusters.\n\nTo count the densely-connected clusters in this world, start from room 1. If the room is empty, it's not connected to any other room, so we can move on to the next room. If the room is occupied by two people, then we can check whether the room is connected to itself. If it is, we can count it as one of the densely-connected clusters. If it's not connected to itself, we can move on to the next room.\n\nI decided to write the code for the two steps separately. The first step is to count the number of densely-connected clusters in the world. The second step is to find out how many people are in each of these densely-connected clusters.\n\nWe are given a world consisting of N rooms, where each room has a set of states. The world has two types of edges: self-loop and non-self-loop. The self-loop edge connects a room to itself, while the non-self-loop edge"
         }
     ],
     "tests": {
@@ -27,7 +27,7 @@
             "expected_answer": [
                 "Answer: there are 4 clusters"
             ],
-            "parsed_response": "\n\nYou should return the number of densely-connected clusters in the world. If there are none, return 0.\n\nThe input will contain one test case. The test case will begin with a line an integer n (1 \u2264 n \u2264 100), which is the number of rooms in the world.\n\nThe next n lines will contain the connections between the rooms. Each line will contain three integers u, v, and c (1 \u2264 u, v \u2264 n; 0 \u2264 c \u2264 100), which are the rooms that are connected.\n\nOutput a single integer that is the number of densely-connected clusters in the world. If there are none, output 0.\n\nIn the first case, there are two densely-connected clusters: rooms 1, 2, 3, and 4, and rooms 7, 8, 9, 10, and 11.\n\nIn the second case, there are three densely-connected clusters: rooms 1, 2, 3, 4, and 14, rooms 5, 6, 7, 8, and 12, and rooms 9, 10, 11, and 13.\n\nIn the third case, there are no densely-connected clusters. This is because, for example, rooms 1"
+            "parsed_response": "\n\nEach room has a set of states: empty, occupied by one person, or occupied by two people. You have to remember the set of states of each room in order to calculate the densely-connected clusters.\n\nTo count the densely-connected clusters in this world, start from room 1. If the room is empty, it's not connected to any other room, so we can move on to the next room. If the room is occupied by two people, then we can check whether the room is connected to itself. If it is, we can count it as one of the densely-connected clusters. If it's not connected to itself, we can move on to the next room.\n\nI decided to write the code for the two steps separately. The first step is to count the number of densely-connected clusters in the world. The second step is to find out how many people are in each of these densely-connected clusters.\n\nWe are given a world consisting of N rooms, where each room has a set of states. The world has two types of edges: self-loop and non-self-loop. The self-loop edge connects a room to itself, while the non-self-loop edge"
         }
     },
     "scores": {

@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Paul? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Kim to Sara? Starting from Kim, please list the scholar names in order, including Kim, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. First, we'll consider Vivian's immediate connections: Salma, Shanshan, and Vadim.\n2. Next, we'll check each of their immediate connections:\n   a. Salma is connected to: Shanshan, Vadim, and Noah.\n   b. Shanshan is connected to: Vadim, Salma, and Noah.\n   c. Vadim is connected to: Salma, Shanshan, and Noah.\n3. Now, we'll check their connections' connections:\n   a. Noah is connected to: Salma, Shanshan, Vadim, and Anisha.\n4. Finally, we will check Anisha's connections:\n   a. Anisha is connected to: Noah, Abdul, Durga, and Ajit.\n5. Since Anisha is connected to Abdul and Abdul is connected to Soheil (who is connected to Paul), the shortest path from Vivian to Paul is found by going through these students in order:\n\nAnswer: Vivian, Salma, Noah, Anisha, Abdul, Soheil, Paul"
+            "content": "To find the shortest path from Kim to Sara, let's start with who Kim is connected to. \n\n1. Kim is connected to Pam.\n\nFrom Pam, let's look at who we can go to.\n\n2. Pam is connected to Wim and Wei. \n   \nWim does not have any connections that get us closer to Sara, but Wei does:\n\n3. Wei is connected to Wim, Kim, Puja, and Pam.\n\nLet's check Puja.\n\n4. Puja is connected to Amir, Wim, and Pam. \n\nWim and Pam do not bring us closer to Sara but Amir does.\n\n5. Amir is connected to Reza, Moin, Pari, and Puja.\n\nReza, Moin, Pari do not connect us to Sara but checking Puja again, we find that Puja is connected to Amir, Wim, and Pam. We are stuck in a loop. So going through Puja does not seem to lead us to Sara. Let's go back and check another path.\n\nAgain, Kim is connected to:\n\n1. Kim is connected to Pam.\n\nWe've already tried the path through Wei and Puja, let's check if we can get to Sara through Pam.\n\n2. Pam is connected to Wim and Wei.\n\nLet's check Wim's connections.\n\n3. Wim is connected to Wei, Kim, Puja, and Pam.\n\nWe've already tried the path through Puja and Pam does not lead us anywhere, so let's try through Wei.\n\n4. Wei is connected to Wim, Kim, Puja, and Pam.\n\nAgain, we've tried through Puja and Pam, Wim does not lead us anywhere. We are back in a loop. Let's go back and check another path.\n\nSo the path starting from Kim doesn't seem to lead directly to Sara. We might need to take an indirect route.\n\nGoing back to Raj, he is connected to:\n\n1. Raj is connected to Nisha, Ian, Sara, and Kim.\n\nFrom here, we see that Raj is directly connected to Sara. But, we need to find a connection from Kim to Raj. Let's look back at Kim's connections.\n\n2. Kim is connected to Pam.\n\nLooking at Pam's connections:\n\n3. Pam is connected to Wim and Wei. \n\nFrom Wei, we get:\n\n4. Wei is connected to Wim, Kim, Puja, and Pam.\n\nNone of these lead to Raj. So let's check Wim's connections.\n\n5. Wim is connected to Wei, Kim, Puja, and Pam.\n\nAgain, none of these lead to Raj. \n\nTherefore, the path from Kim to Sara goes through Raj. The shortest path from Kim to Sara would be Kim to Raj to Sara. \n\nAccording to the information given, there is no direct connection from Kim to Raj, which means there may be some data missing or it could be a mistake in the provided relationships. But based on the current information, the most direct path can't be established. However, the path should start with Kim, go through Raj, and end with Sara. \n\nThe only solution would be if there is a missing data point connecting Kim, Raj and Sara. Assuming that there is a direct connection between Kim and Raj, the shortest path would be:\n\nAnswer: Kim, Raj, Sara."
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul"
+                "Answer: Kim, Raj, Sara"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Noah, Anisha, Abdul, Soheil, Paul"
+            "parsed_response": "Answer: Kim, Raj, Sara"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

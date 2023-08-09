@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Reza, Wei, Nisha, Sara, Ian, Moin"
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a breadth-first search algorithm. We will start by initializing a queue with Amir as the starting node and a visited set to keep track of the visited nodes. We will also create a dictionary to store the number of books each scholar has donated.\n\n1. Initialize the queue with Amir: queue = [Amir]\n2. Initialize the visited set: visited = set()\n3. Initialize the dictionary to store the number of books: books = {Amir: 0}\n4. Initialize the maximum number of books and the scholar with the maximum number of books: max_books = 0, max_scholar = None\n5. While the queue is not empty:\n   - Dequeue the first scholar from the queue: current_scholar = queue.pop(0)\n   - Add the current scholar to the visited set: visited.add(current_scholar)\n   - Check if the current scholar has donated more books than the current maximum:\n     - If yes, update the maximum number of books and the scholar with the maximum number of books: max_books = books[current_scholar], max_scholar = current_scholar\n   - Iterate through the scholars connected to the current scholar:\n     - If a connected scholar is not visited:\n       - Add the connected scholar to the queue: queue.append(connected_scholar)\n       - Update the number of books the connected scholar has donated: books[connected_scholar] = books[current_scholar] + donated_books[connected_scholar]\n6. Print the shortest path from Amir to the scholar with the maximum number of books: Answer: Amir, Wim, Raj, Wei, Nisha, Reza, Kim, Moin\n\nNote: The donated_books dictionary should contain the number of books each scholar has donated. In this case, Moin has donated 50 books and Matt has donated 10 books."
         }
     ],
     "tests": {
@@ -27,12 +27,12 @@
             "expected_answer": [
                 "Answer: Amir, Reza, Kim, Moin"
             ],
-            "parsed_response": "Answer: Amir, Reza, Wei, Nisha, Sara, Ian, Moin"
+            "parsed_response": "Answer: Amir, Wim, Raj, Wei, Nisha, Reza, Kim, Moin"
         }
     },
     "scores": {
         "valuePath": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

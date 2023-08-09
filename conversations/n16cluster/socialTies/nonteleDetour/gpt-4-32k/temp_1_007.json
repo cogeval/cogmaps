@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nonteleDetour_temp_1_7",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Determine the scholars connected to Amir: Wim, Raj, Jing, and Reza.\n\nStep 2: Determine the scholars that these scholars are connected to, in order to trace a path from Amir: Wim is connected to Eva, Raj is connected to Wei, Jing is connected to Pam, and Reza is connected to Kim.\n\nStep 3: Compare these connections with the scholars who have books: Moin and Matt. Notice that none of the scholars connected to Amir directly or indirectly have books.\n\nStep 4: Identify the scholar who has the maximum number of books: Moin has 50 books, which is more than Matt's 10.\n\nStep 5: Determine the shortest path from Amir to Moin: Amir is connected to Reza, Reza is connected to Kim, and Kim is connected to Moin.\n\nFinal Step: Assemble the names of the scholars in order: Amir, Reza, Kim, Moin. \n\nAnswer: Amir, Reza, Kim, Moin"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir and Reza had a disagreement and are no longer connected. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Reevaluate the scholars connected to Amir, keeping in mind that he is no longer connected to Reza. The remaining scholars are Wim, Raj, and Jing.\n\nStep 2: Determine who these scholars are connected to: Wim is connected to Eva, Raj is connected to Wei, and Jing is connected to Pam.\n\nStep 3: Compare these connections with the scholars who have books: Moin and Matt. Notice that none of the scholars connected to Amir directly or indirectly have books.\n\nStep 4: The scholar who has the maximum number of books remains the same: Moin has 50 books, which is more than Matt's 10.\n\nStep 5: Determine the new shortest path from Amir to Moin since the previous path through Reza is no longer valid. The path is: Amir is connected to Wim, Wim is connected to Eva, and Eva is connected to Matt who is connected to Ian, and Ian is connected to Moin. \n\nFinal Step: Assemble the names of the scholars in order: Amir, Wim, Eva, Matt, Ian, Moin. \n\nAnswer: Amir, Wim, Eva, Matt, Ian, Moin"
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Raj, Wei, Kim, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Eva, Matt, Ian, Moin"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

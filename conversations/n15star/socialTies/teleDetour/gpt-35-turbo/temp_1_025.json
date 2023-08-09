@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleDetour_temp_1_25",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we need to determine the connections between the scholars and the number of books each person is donating. \n\nLet's analyze the connections and the number of books donated by each person:\n\n- Amir is connected to Reza, Moin, Pari, and Puja.\n- Wim is not connected to Amir.\n- Raj is not connected to Amir.\n- Jing is not connected to Amir.\n- Wei is not connected to Amir.\n- Nisha is not connected to Amir.\n- Reza is connected to Moin and Pari.\n- Kim is not connected to Amir.\n- Ian is not connected to Amir.\n- Moin is not connected to Amir.\n- Puja is connected to Pam.\n- Sara is not connected to Amir.\n- Pam is not connected to Amir.\n\nNow, we need to determine the number of books donated by each person:\n\n- Kim is donating 50 books.\n- Max is donating 10 books.\n\nTo find the shortest path from Amir to the person who is donating the maximum number of books (Kim), we need to identify the path that passes through the fewest number of scholars.\n\nBased on the given connections, the shortest path from Amir to Kim is:\n\nAmir, Reza, Pari, Moin\n\nAnswer: Amir, Reza, Pari, Moin"
+        },
+        {
+            "role": "user",
+            "content": "Amir and Puja had a disagreement and now no longer connected to each other, and now Jing has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Jing, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Considering the updated information, we need to find the shortest path from Amir to the person who is donating the maximum number of books (Kim), taking into account the new conditions:\n\n- Amir is not connected to Puja anymore.\n- Jing has an instant connection portal.\n\nTo find the shortest path, we can utilize Jing's connection portal to directly connect with the scholars who are connected to Kim.\n\nBased on the given connections, the shortest path from Amir to Kim is:\n\nAmir, Jing, Reza, Moin, Pari, Kim\n\nAnswer: Amir, Jing, Reza, Moin, Pari, Kim"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Kim",
+                "Answer: Amir, Moin, Jing, Kim ",
+                "Answer: Amir, Pari, Jing, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Jing, Reza, Moin, Pari, Kim"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

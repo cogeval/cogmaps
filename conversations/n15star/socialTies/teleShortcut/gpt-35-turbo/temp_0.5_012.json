@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_0.5_12",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. \n\n1. Start with Amir as the starting point.\n2. Initialize an empty queue and add Amir to the queue.\n3. Create an empty visited set to keep track of the scholars we have already visited.\n4. Create an empty path dictionary to store the path from each scholar to their previous scholar.\n5. While the queue is not empty, do the following steps:\n   - Dequeue the first scholar from the queue and mark it as visited.\n   - Check if the current scholar is donating the maximum number of books. If yes, we have found the shortest path. Proceed to step 6.\n   - Otherwise, iterate through all the scholars connected to the current scholar that have not been visited. Add them to the queue and mark them as visited. Update the path dictionary to store the path from the current scholar to these scholars.\n6. Reconstruct the shortest path from Amir to the scholar who is donating the maximum number of books using the path dictionary.\n7. Return the list of scholar names in order, including Amir, separated by commas.\n\nLet's apply this algorithm to find the shortest path from Amir to the person donating the maximum number of books.\n\nAnswer: Amir, Reza, Moin, Pari, Max"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering the connection portal through Eva, we can modify our previous algorithm as follows:\n\n1. Start with Amir as the starting point.\n2. Initialize an empty queue and add Amir to the queue.\n3. Create an empty visited set to keep track of the scholars we have already visited.\n4. Create an empty path dictionary to store the path from each scholar to their previous scholar.\n5. While the queue is not empty, do the following steps:\n   - Dequeue the first scholar from the queue and mark it as visited.\n   - Check if the current scholar is donating the maximum number of books. If yes, we have found the shortest path. Proceed to step 6.\n   - Otherwise, iterate through all the scholars connected to the current scholar that have not been visited. If the scholar is Pam, use Eva's connection portal to visit anyone connected to Pam and add them to the queue and mark them as visited. Update the path dictionary to store the path from the current scholar to these scholars.\n6. Reconstruct the shortest path from Amir to the scholar who is donating the maximum number of books using the path dictionary.\n7. Return the list of scholar names in order, including Amir, separated by commas.\n\nLet's apply this modified algorithm to find the shortest path from Amir to the person donating the maximum number of books, considering Eva's connection portal.\n\nAnswer: Amir, Puja, Pam"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Puja, Pam"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

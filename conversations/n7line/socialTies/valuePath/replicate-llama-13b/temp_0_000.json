@@ -6,33 +6,33 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z]+\\s*'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "Imagine a group of friends: Fatima, Ana, Robert, Sophie, Nick, Kiran, and Julia. Fatima introduces you to two of her friends, Ana and Robert. Ana introduces you to Sophie, who introduces you to Kiran. Kiran has a Toyota Camry to give away. You do not take the car, you\u00e2\u20ac\u2122re just learning about the environment. Then you start over with Fatima introducing you to Robert, who introduces you to Nick, and Nick introduces you to Julia. Julia has a Ferrari to give away. You do not take the car, you\u00e2\u20ac\u2122re just learning about the environment. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?"
+            "content": "Imagine a group of seven scholars: Vicky, Amir, Wim, Raj, Jing, Wei and Nisha. You are friends with Vicky, who can either introduce you to Amir or Wim.  Amir is connected with Raj, and Raj is connected with Wei. Wei is donating 10 books, but you do not take any books, you're just learning about the environment. Then you exit and start over. This time you ask Vicky to introduce you to Wim, who is connected with Jing, and Jing is connected with Nisha. Nisha is donating 50 books, but you do not take any books, you're just learning about the environment. You will only be able to choose one path from Vicky that leads to the maximum number of books. Which scholar can Vicky connect you with, who will lead to the path with maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": ""
+            "content": "Step 1: Vicky can introduce you to either Amir or Wim.\n\nStep 2: If Vicky introduces you to Amir, you will be connected to Raj, and then to Wei.\n\nStep 3: If Vicky introduces you to Wim, you will be connected to Jing, and then to Nisha.\n\nStep 4: Nisha is donating 50 books, but you do not take any books, you're just learning about the environment.\n\nStep 5: Since you are only interested in learning about the environment, you will choose the path that leads to the maximum number of books.\n\nAnswer: Vicky should introduce you to Wim, as this path will lead to the maximum number of books (50 books from Nisha)."
         }
     ],
     "tests": {
         "valuePath": {
             "expected_answer": [
-                "Answer: Robert"
+                "Answer: Wim"
             ],
-            "parsed_response": ""
+            "parsed_response": "Answer: Vicky should introduce you to Wim"
         }
     },
     "scores": {
         "valuePath": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

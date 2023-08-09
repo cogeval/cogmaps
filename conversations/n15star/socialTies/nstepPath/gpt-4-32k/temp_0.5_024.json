@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Raj to Reza? Starting from Raj, please list the scholar names in order, including Raj, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections Vivian has.\nVivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n\nStep 2: Identify the connections of the students connected to Vivian.\nSalma is connected to Shanshan, Vadim, Noah, and Anisha.\nShanshan is connected to Vadim, Salma, and Noah.\nVadim is connected to Salma, Shanshan, and Noah.\nGongxue is connected to Alice, Paul, Solomon, and Soheil.\n\nStep 3: Identify the connections of the students connected to the students connected to Vivian.\nSalma's connections: Shanshan, Vadim, Noah, and Anisha.\nShanshan's connections: Vadim, Salma, and Noah.\nVadim's connections: Salma, Shanshan, and Noah.\nGongxue's connections: Alice, Paul, Solomon, and Soheil.\nAnisha is connected to Abdul, Durga, Ajit, and Noah.\nAlice is connected to Paul, Solomon, Soheil, and Gongxue.\n\nStep 4: Identify the connections of the students connected to the students connected to the students connected to Vivian.\nAnisha's connections: Abdul, Durga, Ajit, and Noah.\nAlice's connections: Paul, Solomon, Soheil, and Gongxue.\nAbdul is connected to Durga, Ajit, Pierre, and Soheil.\nDurga is connected to Abdul, Ajit, Pierre, and Soheil.\nAjit is connected to Abdul, Durga, Anisha, and Pierre.\n\nStep 5: Find the shortest path from Vivian to Ajit.\nVivian -> Salma -> Anisha -> Ajit\n\nAnswer: Vivian, Salma, Anisha, Ajit"
+            "content": "Step 1: Start from Raj, who is connected to Nisha, Ian, Sara, and Kim.\nStep 2: Check each connection to see if any of them are directly connected to Reza. None of them are.\nStep 3: Check the connections of Raj's connections. Nisha is connected to Ian, Sara, and Max. Ian is connected to Sara, and Max. Sara is connected to Max. Kim is connected to Pam.\nStep 4: None of these connections lead to Reza, so continue with the connections of Raj's connections' connections. Ian, Sara, and Max do not have any new connections. Pam does not lead to Reza.\nStep 5: Continue with Nisha's connections. Ian, Sara, and Max do not have any new connections.\nStep 6: Continue with Kim's connections. Pam does not lead to Reza.\nStep 7: Go back to Raj's connections and check the connections of Kim. Kim is connected to Pam.\nStep 8: Pam is not connected to Reza. Therefore, continue with the connections of Pam. Pam is connected to Wim, Wei, and Puja.\nStep 9: Check each connection to see if any of them are directly connected to Reza. None of them are.\nStep 10: Check the connections of Wim, Wei, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Wei is connected to Kim, Puja, and Pam. Puja is connected to Pam.\nStep 11: None of these connections lead to Reza, so continue with the connections of Wim, Wei, and Puja's connections. Wei, Kim, Puja, and Pam do not have any new connections.\nStep 12: Go back to Raj's connections and check the connections of Ian. Ian is connected to Sara, and Max.\nStep 13: Sara and Max are not connected to Reza. Therefore, continue with the connections of Sara and Max. Sara is connected to Max. Max does not have any new connections.\nStep 14: Go back to Raj's connections and check the connections of Nisha. Nisha is connected to Ian, Sara, and Max.\nStep 15: Ian, Sara, and Max are not connected to Reza. Therefore, continue with the connections of Ian, Sara, and Max. Ian is connected to Sara, and Max. Sara is connected to Max. Max does not have any new connections.\nStep 16: Go back to Raj's connections and check the connections of Sara. Sara is connected to Max.\nStep 17: Max is not connected to Reza. Therefore, continue with the connections of Max. Max does not have any new connections.\nStep 18: Go back to Raj's connections and check the connections of Moin. Moin is connected to Pari.\nStep 19: Pari is not connected to Reza. Therefore, continue with the connections of Pari. Pari is connected to Amir and Jing.\nStep 20: Check each connection to see if any of them are directly connected to Reza. Amir is connected to Reza. Therefore, the shortest path from Raj to Reza is Raj -> Kim -> Wim -> Puja -> Amir -> Reza.\n\nAnswer: Raj, Kim, Wim, Puja, Amir, Reza"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Raj, Nisha, Matt, Jing, Reza",
+                "Answer: Raj, Ian, Matt, Jing, Reza",
+                "Answer: Raj, Sara, Matt, Jing, Reza"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha, Ajit"
+            "parsed_response": "Answer: Raj, Kim, Wim, Puja, Amir, Reza"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

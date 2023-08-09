@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Paul? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wim to Raj? Starting from Wim, please list the scholar names in order, including Wim, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start with Vivian.\n2. Check Vivian's connections: Salma, Shanshan, Vadim, and Gongxue.\n3. Check each of their connections:\n   - Salma: Vivian, Shanshan, Vadim, Noah, and Anisha.\n   - Shanshan: Vivian, Salma, Vadim, Noah, and Anisha.\n   - Vadim: Vivian, Salma, Shanshan, Noah, and Anisha.\n   - Gongxue: Vivian, Paul, Solomon, Soheil, Alice, and Solomon, Soheil, and Alice.\n4. Gongxue is connected to Paul, so the shortest path is through Gongxue.\n5. List the student names in order: Vivian, Gongxue, Paul.\n\nAnswer: Vivian, Gongxue, Paul"
+            "content": "First, let's examine the connections:\n\n1. Wim is connected to Wei, Kim, Puja, and Pam.\n2. Wei is connected to Kim, Puja, and Pam.\n3. Kim is connected to Pam.\n4. Puja is connected to Pam.\n5. Pam has no further connections.\n\nFrom these connections, we can see that Wim cannot reach Raj directly. So, we need to look for indirect connections.\n\n1. Wim is connected to Kim.\n2. Kim is connected to Raj through Raj's connection with Kim.\n\nSo, the shortest path from Wim to Raj is: Wim, Kim, Raj.\n\nAnswer: Wim, Kim, Raj."
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul"
+                "Answer: Wim, Kim, Raj"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Paul"
+            "parsed_response": "Answer: Wim, Kim, Raj"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

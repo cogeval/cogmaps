@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. How many densely-connected clusters do we have in this class? A densely-connected cluster is a group of students that are connected to themselves with a max of 2 students."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups of students connected to each other.\nGroup 1: Vivian, Salma, Shanshan, Vadim, and Gongxue\nGroup 2: Paul, Solomon, Soheil, Gongxue, and Alice\nGroup 3: Pierre, Abdul, Durga, Ajit, and Soheil\nGroup 4: Noah, Salma, Shanshan, Vadim, and Anisha\nGroup 5: Solomon, Soheil, Gongxue, and Alice\nGroup 6: Abdul, Durga, Ajit, and Anisha\nGroup 7: Salma, Shanshan, and Vadim\nGroup 8: Soheil and Alice\nGroup 9: Durga, Ajit, and Anisha\nGroup 10: Shanshan and Vadim\nGroup 11: Gongxue and Alice\nGroup 12: Ajit and Anisha\n\nStep 2: Check each group for the number of students connected to themselves with a max of 2 students.\nGroup 1: 0 clusters (5 students)\nGroup 2: 0 clusters (5 students)\nGroup 3: 0 clusters (5 students)\nGroup 4: 0 clusters (5 students)\nGroup 5: 0 clusters (4 students)\nGroup 6: 0 clusters (4 students)\nGroup 7: 1 cluster (3 students: Salma, Shanshan, Vadim)\nGroup 8: 1 cluster (2 students: Soheil and Alice)\nGroup 9: 1 cluster (3 students: Durga, Ajit, Anisha)\nGroup 10: 1 cluster (2 students: Shanshan and Vadim)\nGroup 11: 1 cluster (2 students: Gongxue and Alice)\nGroup 12: 1 cluster (2 students: Ajit and Anisha)\n\nStep 3: Add up the total number of densely-connected clusters from each group.\n1 + 1 + 1 + 1 + 1 + 1 = 6\n\nAnswer: there are 6 clusters."
+            "content": "Firstly, let's look at the connections for each scholar to find potential clusters:\n\n1. Amir's cluster could be: Amir, Reza, Moin, Pari, Puja.\n2. Wim's cluster could be: Wim, Wei, Kim, Puja, Pam.\n3. Raj's cluster could be: Raj, Nisha, Ian, Sara, Kim.\n4. Jing's cluster could be: Jing, Reza, Moin, Pari, Max.\n5. Wei's cluster could be: Wei, Kim, Puja, Pam.\n6. Nisha's cluster could be: Nisha, Ian, Sara, Max.\n7. Reza's cluster could be: Reza, Moin, Pari.\n8. Kim's cluster could be: Kim, Pam.\n9. Ian's cluster could be: Ian, Sara, Max.\n10. Moin's cluster could be: Moin, Pari.\n11. Puja's cluster could be: Puja, Pam.\n12. Sara's cluster could be: Sara, Max.\n\nAfter identifying the potential clusters, let's see which ones overlap and can therefore be combined:\n\n1. Amir's, Jing's, and Reza's clusters overlap significantly, as well as Moin's, forming one cluster: Amir, Reza, Moin, Pari, Puja, Jing, Max.\n2. Wim's and Wei's clusters overlap and form a second cluster: Wim, Wei, Kim, Puja, Pam.\n3. Raj's and Nisha's clusters overlap, as do Ian's and Sara's, forming a third cluster: Raj, Nisha, Ian, Sara, Kim, Max.\n4. Kim's and Puja's clusters can be included in the second cluster.\n\nAfter removing duplicates and clusters that have been included in other clusters, there are 3 separate clusters: Amir's cluster, Wim's cluster, and Raj's cluster.\n\nAnswer: there are 3 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 6 clusters"
+            "parsed_response": "Answer: there are 3 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

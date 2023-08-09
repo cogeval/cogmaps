@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Nisha to Amir? Starting from Nisha, please list the scholar names in order, including Nisha, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Analyze the connections between students.\n2. Identify the shortest path from Vivian to Ajit.\n3. List the student names in the correct order.\n\nVivian's connections: Salma, Shanshan, Vadim, Gongxue\nSalma's connections: Shanshan, Vadim, Noah\nShanshan's connections: Vadim\nVadim's connections: Noah\nGongxue's connections: Paul, Solomon, Soheil, Alice\nPaul's connections: Solomon, Soheil, Alice\nSolomon's connections: Soheil, Alice\nSoheil's connections: Pierre, Abdul, Durga, Ajit, Alice\nPierre's connections: Abdul, Durga, Ajit\nAbdul's connections: Durga, Ajit\nDurga's connections: Ajit, Anisha\nAjit's connections: Anisha\nNoah's connections: Salma, Shanshan, Vadim, Anisha\nAnisha's connections: Solomon, Soheil, Gongxue, Abdul, Durga, Ajit\n\nShortest path from Vivian to Ajit:\nVivian -> Gongxue -> Soheil -> Ajit\n\nAnswer: Vivian, Gongxue, Soheil, Ajit"
+            "content": "Let's analyze the information we have and look for the shortest path from Nisha to Amir:\n\n1. Nisha is connected to Ian, Sara, and Max. None of these are directly connected to Amir. We'll have to explore further connections. \n\n2. Sara and Max don't have any connection with Amir or his connections (Reza, Moin, Pari, Puja). But Ian has a connection with Sara and Max. \n\n3. We know that Sara is connected to Max, but Max has no other connections. Therefore, our only option here is to follow the connection from Ian to Sara, then Sara to Max.\n\n4. Max, on the other hand, is also connected to Jing. And Jing is directly connected to Amir. So, the shortest path from Nisha to Amir would be Nisha - Ian - Sara - Max - Jing - Amir. \n\nThis path involves 5 steps, which seems to be the most efficient way based on the given information. \n\nWe've carefully evaluated all connections, and it's clear that there is no shorter path from Nisha to Amir.\n\nAnswer: Nisha, Ian, Sara, Max, Jing, Amir"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Nisha, Matt, Jing, Reza, Amir",
+                "Answer: Nisha, Matt, Jing, Moin, Amir",
+                "Answer: Nisha, Matt, Jing, Pari, Amir"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Ajit"
+            "parsed_response": "Answer: Nisha, Ian, Sara, Max, Jing, Amir"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

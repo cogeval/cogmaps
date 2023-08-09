@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nonteleShortcut_temp_1_15",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a breadth-first search algorithm. We will start from Amir and visit each connected scholar one by one, keeping track of the distance from Amir to each scholar.\n\nHere is the step-by-step process:\n\n1. Initialize a queue to store the scholars to visit and a visited set to keep track of the scholars we have already visited.\n2. Add Amir to the queue and mark him as visited.\n3. Initialize variables max_books and max_books_scholar to keep track of the maximum number of books and the scholar with the maximum number of books, respectively.\n4. Start a loop to visit each scholar in the queue until the queue is empty.\n5. Inside the loop, remove the first scholar from the queue and check if they have more books than the current maximum (if applicable).\n6. If they do, update max_books and max_books_scholar accordingly.\n7. Otherwise, add all the unvisited scholars connected to the current scholar to the queue and mark them as visited.\n8. Repeat steps 4-7 until the queue is empty.\n9. The scholar with the maximum number of books will be the value of max_books_scholar.\n10. To obtain the shortest path, we can use a separate function that backtracks from max_books_scholar to Amir, following the visited set. This function will return the shortest path as a list of scholar names.\n11. Finally, we can concatenate the scholar names with commas to match the required format.\n\nUsing this algorithm, the shortest path from Amir to the person with the maximum number of books is:\n\nAnswer: Amir, Wim, Wei, Nisha, Sara, Matt"
+        },
+        {
+            "role": "user",
+            "content": " You have been told that Amir just got married to Amy. Amy is connected to all the scholars who are connected with Sara. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, considering that Amy is connected to all the scholars connected with Sara, we can modify the previous breadth-first search algorithm. We will start from Amir and visit each connected scholar one by one, keeping track of the distance from Amir to each scholar.\n\nHere is the updated step-by-step process:\n\n1. Initialize a queue to store the scholars to visit and a visited set to keep track of the scholars we have already visited.\n2. Add Amir to the queue and mark him as visited.\n3. Initialize variables max_books and max_books_scholar to keep track of the maximum number of books and the scholar with the maximum number of books, respectively.\n4. Start a loop to visit each scholar in the queue until the queue is empty.\n5. Inside the loop, remove the first scholar from the queue and check if they have more books than the current maximum (if applicable).\n6. If they do, update max_books and max_books_scholar accordingly.\n7. Otherwise, add all the unvisited scholars connected to the current scholar, excluding Amy, to the queue and mark them as visited.\n8. Repeat steps 4-7 until the queue is empty.\n9. The scholar with the maximum number of books will be the value of max_books_scholar.\n10. To obtain the shortest path, we can use a separate function that backtracks from max_books_scholar to Amir, following the visited set. This function will return the shortest path as a list of scholar names.\n11. Finally, we can concatenate the scholar names with commas to match the required format.\n\nUsing this modified algorithm, the shortest path from Amir to the person with the maximum number of books, considering that Amy is connected to all the scholars connected with Sara, is:\n\nAnswer: Amir, Sara, Nisha, Wei, Reza, Kim, Moin"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Amy, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Sara, Nisha, Wei, Reza, Kim, Moin"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

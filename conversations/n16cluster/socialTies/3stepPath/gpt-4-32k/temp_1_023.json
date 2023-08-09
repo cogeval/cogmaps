@@ -1,0 +1,41 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_3stepPath_temp_1_23",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Eva what is the shortest path to Sara? Starting from Eva, please list the scholar numbers in order, including Eva, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "First, I will map out the direct connections from Eva: Wim, Pari, Pam, and Matt. None of these scholars is Sara, so I must examine the next degree of connections.\n\nFrom Wim, we can reach Amir, Raj, Jing, and Eva (already considered).\n\nFrom Pari, we can reach Puja, Pam, Matt, and Eva (already considered).\n\nFrom Pam, we can reach Jing, Pari (already considered), Matt (already considered), and Eva (already considered).\n\nFrom Matt, we can reach Pari (already considered), Pam (already considered), Eva (already considered), and Ian.\n\nFrom the second degree of connections, only Puja and Ian lead to new connections. \n\nPuja connects to Pari (already considered), Ian (already considered), Sara, and Moin. \n\nIan connects to Moin, Puja (already considered), Sara (already considered), and Matt (already considered).\n\nFrom here, we can see that the shortest path from Eva to Sara is through Pari and Puja. Eva connects to Pari, who connects to Puja, who connects to Sara.\n\nTherefore, the shortest path of scholars from Eva to Sara is: Eva, Pari, Puja, Sara.\n\nAnswer: Eva, Pari, Puja, Sara"
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: Eva, Pari, Puja, Sara",
+                "Answer: Eva, Matt, Ian, Sara"
+            ],
+            "parsed_response": "Answer: Eva, Pari, Puja, Sara"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

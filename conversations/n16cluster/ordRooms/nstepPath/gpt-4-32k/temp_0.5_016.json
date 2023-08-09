@@ -15,22 +15,29 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. What is the shortest path from room 15 to room 7? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. From room 6 what is the shortest path to room 16? Starting from room 6, please list the room numbers in order, including 6, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Start at room 15.\nStep 2: Identify the connected rooms: 13, 14, 16, and 9.\nStep 3: Check for room 7 in connected rooms; if not present, move to the next room with the least number of steps.\nStep 4: Move to room 9 (shortest path so far: 15-9).\nStep 5: Identify the connected rooms from room 9: 10, 11, 12, and 15.\nStep 6: Check for room 7 in connected rooms; if not present, move to the next room with the least number of steps.\nStep 7: Move to room 10 (shortest path so far: 15-9-10).\nStep 8: Identify the connected rooms from room 10: 9, 11, 8, and 12.\nStep 9: Check for room 7 in connected rooms; if not present, move to the next room with the least number of steps.\nStep 10: Move to room 8 (shortest path so far: 15-9-10-8).\nStep 11: Identify the connected rooms from room 8: 5, 6, 7, and 10.\nStep 12: Room 7 is found in connected rooms.\nStep 13: Move to room 7 (shortest path: 15-9-10-8-7).\n\nAnswer: 15, 9, 10, 8, 7"
+            "content": "Step 1: Identify the starting room (Room 6) and the destination room (Room 16).\nStep 2: Analyze the connections of Room 6 (Rooms 5, 7, 8, and 12).\nStep 3: Check the connections of each connected room to find a path to Room 16.\nStep 4: Room 12 is connected to Room 6 and Room 16.\nStep 5: The shortest path from Room 6 to Room 16 is through Room 12.\n\nAnswer: 6, 12, 16"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: 15, 9, 12, 6, 7",
-                "Answer: 15, 14, 4, 1, 7",
-                "Answer: 15,9,12,6,7",
-                "Answer: 15,14,4,1,7"
+                "Answer: 6, 5, 3, 2, 16",
+                "Answer: 6, 7, 1, 2, 16",
+                "Answer: 6, 12, 9, 15, 16",
+                "Answer: 6, 12, 11, 13, 16"
             ],
-            "parsed_response": "Answer: 15, 9, 10, 8, 7"
+            "parsed_response": "Answer: 6, 12, 16"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

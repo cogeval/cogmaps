@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start at Vivian.\n2. Determine the connection groups that Vivian is part of, which is the group with Salma, Shanshan, Vadim, and Gongxue.\n3. Evaluate the connections of each student in this group to other groups.\n   a. Salma is also connected to Noah, Shanshan, Vadim, and Anisha.\n   b. Shanshan is also connected to Salma, Vadim, Noah, and Anisha.\n   c. Vadim is also connected to Salma, Shanshan, Noah, and Anisha.\n   d. Gongxue is also connected to Paul, Solomon, Soheil, and Alice.\n4. Choose the next student with the most connections to other groups.\n   - Gongxue has the most connections to a different group (Paul, Solomon, Soheil, and Alice).\n5. Move to Gongxue and evaluate connections to other groups.\n   a. Paul is connected to Solomon, Soheil, and Alice.\n   b. Solomon is connected to Soheil, Alice, and Pierre.\n   c. Soheil is connected to Solomon, Alice, Pierre, Abdul, Durga, and Ajit.\n   d. Alice is connected to Solomon, Soheil, and Gongxue.\n6. Choose the next student with the most connections to other groups.\n   - Soheil has the most connections to a different group (Solomon, Alice, Pierre, Abdul, Durga, and Ajit).\n7. Move to Soheil and evaluate connections to other groups.\n   a. Solomon is connected to Pierre.\n   b. Alice is connected to Solomon and Gongxue.\n   c. Pierre is connected to Abdul, Durga, and Ajit.\n   d. Abdul is connected to Durga, Ajit, and Anisha.\n   e. Durga is connected to Abdul, Ajit, and Anisha.\n   f. Ajit is connected to Abdul, Durga, and Anisha.\n8. Choose the next student with the most connections to other groups.\n   - Pierre has the most connections to a different group (Abdul, Durga, and Ajit).\n9. Move to Pierre, and since Vivian is now connected to Pierre, the most rewarding connection path is complete.\n\nAnswer: Vivian, Gongxue, Soheil, Pierre"
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books (in this case, Kim, who is donating 50 books), we need to chart the connections between scholars. \n\nStarting from Amir, we see that Amir is connected to Reza, Moin, Pari, and Puja. \n\nWe know that Puja is connected to Kim. \n\nSo, the shortest path to the person who is donating the maximum books is: Amir -> Puja -> Kim.\n\nAnswer: Amir, Puja, Kim."
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Amir and Puja had an argument and are no longer connected and instead, Amir is now connected to Sara. Also, Jing is no longer connected to Max and instead, Jing is now connected to Puja. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "After the changes to the network, Amir is now connected to Reza, Moin, Pari, and Sara (not Puja). Jing is connected to Reza, Moin, Pari, and Puja (not Max). The person donating the maximum number of books is still Kim. \n\nStarting from Amir, we know that Amir is connected to Sara. Sara is connected to Max. However, there is no path from Max to Kim. \n\nIf we look at another path from Amir, we can go to Moin. Moin is connected to Pari. Pari is connected to Reza and Reza is connected to Moin. But this doesn't lead to Kim either. \n\nAmir can't connect directly to Kim anymore, so we must find an intermediary. Looking at the connections, Wim is connected to Wei, Kim, Puja, and Pam. And, Raj is also connected to Kim. But Amir doesn't have a direct connection to Wim or Raj.\n\nHowever, if we go through Sara from Amir, we then have a connection to Ian and Ian is connected to Sara who is connected to Max. But that still doesn't lead to Kim.\n\nWe need to find a path to Wei, who is connected to Kim. Looking at the connections, Wim connects to Wei, but none of Amir's connections are to Wim. \n\nSince none of the paths through Amir's connections lead to Kim, it seems there is no possible route to Kim from Amir after the argument with Puja and the subsequent reconnections.\n\nAnswer: No possible path."
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Vivian, Pierre, Soheil"
+                "Answer: Amir, Sara, Raj, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Pierre"
+            "parsed_response": "Answer: No possible path"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

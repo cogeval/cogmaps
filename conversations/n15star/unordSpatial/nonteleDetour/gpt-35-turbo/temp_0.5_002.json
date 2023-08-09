@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_unordSpatial_exp_nonteleDetour_temp_0.5_2",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. You have been told that you can get a bunch of 50 peony flowers for free if you visit peony field and you can get a bunch of 10 lavender flowers for free if you choose to visit lavender field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from the rose field that yields the maximum number of flowers, we will use Dijkstra's algorithm. \n\n1. Create a graph with the flower fields as nodes and the connections between them as edges. Assign a weight of 0 to the edge connecting the rose field and a weight of 1 to all other edges.\n\n2. Initialize the distance of all nodes except the rose field as infinity and the distance of the rose field as 0. \n\n3. Create a priority queue to store the nodes and their distances. Insert the rose field into the priority queue with a distance of 0.\n\n4. While the priority queue is not empty, do the following steps:\n   a. Remove the node with the minimum distance from the priority queue.\n   b. For each neighbor of the current node, calculate the distance to reach that neighbor from the current node. If this distance is smaller than the previously recorded distance, update the distance and add the neighbor to the priority queue.\n\n5. After the algorithm finishes, we will have the shortest distance from the rose field to each node. To find the shortest path that yields the maximum number of flowers, we will start from the peony field and follow the path with the maximum number of flowers.\n\nThe shortest path from the rose field that yields the maximum number of flowers is: Answer: Rose, Lily, Peony"
+        },
+        {
+            "role": "user",
+            "content": "The door from the rose field to the carnation field is locked and now the poppy field is connected to the carnation field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from the rose field that yields the maximum number of flowers, we will update the graph based on the new connections and use Dijkstra's algorithm again.\n\n1. Update the graph to reflect the new connections. Now, the rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field (via the poppy field).\n\n2. Initialize the distance of all nodes except the rose field as infinity and the distance of the rose field as 0.\n\n3. Create a priority queue to store the nodes and their distances. Insert the rose field into the priority queue with a distance of 0.\n\n4. While the priority queue is not empty, do the following steps:\n   a. Remove the node with the minimum distance from the priority queue.\n   b. For each neighbor of the current node, calculate the distance to reach that neighbor from the current node. If this distance is smaller than the previously recorded distance, update the distance and add the neighbor to the priority queue.\n\n5. After the algorithm finishes, we will have the shortest distance from the rose field to each node. To find the shortest path that yields the maximum number of flowers, we will start from the peony field and follow the path with the maximum number of flowers.\n\nThe shortest path from the rose field that yields the maximum number of flowers is: Answer: Rose, Poppy, Carnation"
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: Rose, Poppy, Carnation, Sunflower, Peony",
+                "Answer: Rose, Poppy, Carnation, Zinnia, Peony",
+                "Answer: Rose, Poppy, Carnation, Orchid, Peony"
+            ],
+            "parsed_response": "Answer: Rose, Poppy, Carnation"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

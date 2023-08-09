@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start with Vivian.\n2. Connect to Salma, Shanshan, or Vadim (all connected to Vivian).\n3. From Salma, Shanshan, or Vadim, connect to Noah (connected to Salma, Shanshan, and Vadim).\n4. From Noah, connect to Anisha (connected to Noah).\n5. From Anisha, connect to Abdul, Durga, or Ajit (all connected to Anisha).\n6. From Abdul, Durga, or Ajit, connect to Pierre (connected to Abdul, Durga, and Ajit).\n7. End with Pierre.\n\nAnswer: Vivian, Salma, Noah, Anisha, Abdul, Pierre"
+            "content": "First, I will identify the person who is donating the maximum number of books. In this case, it is Kim who is donating 50 books. \n\nNext, I will find the shortest path from Amir to Kim. \n\nLooking at the connections, Amir is directly connected to Reza, Moin, Pari, and Puja. \n\nAmong these, Puja is directly connected to Kim. \n\nSo, the shortest path from Amir to Kim is through Puja. \n\nTherefore, the order of scholars is Amir, Puja, Kim. \n\nAnswer: Amir, Puja, Kim"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Amir and Puja had an argument and are no longer connected and instead, Amir is now connected to Sara. Also, Jing is no longer connected to Max and instead, Jing is now connected to Puja. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "First, I will identify the person who is donating the maximum number of books. In this case, it is still Kim who is donating 50 books.\n\nNext, I will find the shortest path from Amir to Kim.\n\nLooking at the new connections, Amir is now directly connected to Reza, Moin, Pari, and Sara.\n\nAmong these, Sara is directly connected to Max, but Max is not connected to Kim. \n\nReza and Moin are connected to each other, but neither is connected to Kim. \n\nSo, we need to find a new path. \n\nSara is also connected to Ian, and Ian is connected to Kim. \n\nSo, the shortest path from Amir to Kim is now through Sara and Ian.\n\nTherefore, the order of scholars is Amir, Sara, Ian, Kim.\n\nAnswer: Amir, Sara, Ian, Kim"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Vivian, Pierre, Soheil"
+                "Answer: Amir, Sara, Raj, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Noah, Anisha, Abdul, Pierre"
+            "parsed_response": "Answer: Amir, Sara, Ian, Kim"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

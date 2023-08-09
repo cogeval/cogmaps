@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify all the connected fields.\n- Rose: Lily, Chrysanthemum, Poppy, Carnation\n- Sunflower: Orchid, Peony, Carnation, Zinnia\n- Tulip: Hydrangea, Daffodil, Marigold, Peony\n- Daisy: Lily, Chrysanthemum, Poppy, Lavender\n- Orchid: Peony, Carnation, Zinnia\n- Hydrangea: Daffodil, Marigold, Lavender\n- Lily: Chrysanthemum, Poppy\n- Peony: Zinnia\n- Daffodil: Marigold, Lavender\n- Chrysanthemum: Poppy\n- Carnation: Zinnia\n- Marigold: Lavender\n\nStep 2: Group connected fields into clusters\n1. Rose, Lily, Chrysanthemum, Poppy, Carnation, Daisy, Lavender\n2. Sunflower, Orchid, Peony, Zinnia, Carnation\n3. Tulip, Hydrangea, Daffodil, Marigold, Peony, Lavender\n\nStep 3: Check for overlapping clusters and merge if needed\n- Cluster 1 and 3 have some common fields: Lavender\n- Merge Cluster 1 and 3:\n  New Cluster: Rose, Lily, Chrysanthemum, Poppy, Carnation, Daisy, Lavender, Tulip, Hydrangea, Daffodil, Marigold, Peony\n- Cluster 2 has common fields with the new cluster: Peony, Carnation, and Zinnia\n- Merge the new cluster with Cluster 2:\n  Final Cluster: Rose, Lily, Chrysanthemum, Poppy, Carnation, Daisy, Lavender, Tulip, Hydrangea, Daffodil, Marigold, Peony, Sunflower, Orchid, Zinnia\n\nAnswer: there are 1 clusters"
+            "content": "Step 1: List down all the connections between the flower fields.\n- Rose: Lily, Chrysanthemum, Poppy, Carnation\n- Sunflower: Orchid, Peony, Carnation, Zinnia\n- Tulip: Hydrangea, Daffodil, Marigold, Peony\n- Daisy: Lily, Chrysanthemum, Poppy, Lavender\n- Orchid: Peony, Carnation, Zinnia\n- Hydrangea: Daffodil, Marigold, Lavender\n- Lily: Chrysanthemum, Poppy\n- Peony: Zinnia\n- Daffodil: Marigold, Lavender\n- Chrysanthemum: Poppy\n- Carnation: Zinnia\n- Marigold: Lavender\n\nStep 2: Identify the densely-connected clusters.\n\nCluster 1: Rose, Lily, Chrysanthemum, Poppy\n- Rose is connected to Lily, Chrysanthemum, Poppy\n- Lily is connected to Chrysanthemum, Poppy\n- Chrysanthemum is connected to Poppy\n\nCluster 2: Sunflower, Orchid, Peony, Carnation, Zinnia\n- Sunflower is connected to Orchid, Peony, Carnation, Zinnia\n- Orchid is connected to Peony, Carnation, Zinnia\n- Peony is connected to Zinnia\n- Carnation is connected to Zinnia\n\nCluster 3: Tulip, Hydrangea, Daffodil, Marigold, Lavender\n- Tulip is connected to Hydrangea, Daffodil, Marigold\n- Hydrangea is connected to Daffodil, Marigold, Lavender\n- Daffodil is connected to Marigold, Lavender\n- Marigold is connected to Lavender\n\nStep 3: Count the number of clusters\nAnswer: there are 3 clusters"
         }
     ],
     "tests": {
@@ -27,12 +27,12 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 1 clusters"
+            "parsed_response": "Answer: there are 3 clusters"
         }
     },
     "scores": {
         "nClusters": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_3stepPath_temp_1_14",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Jing what is the shortest path to Puja? Starting from Jing, please list the scholar numbers in order, including Jing, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "First, we need to create a graph of the connections between the scholars:\n\nJing -> Amir, Wim, Raj, Pam\nAmir -> Wim, Raj, Jing, Reza\nWim -> Amir, Raj, Jing, Eva\nRaj -> Amir, Wim, Jing, Wei\nPam -> Jing, Pari, Matt, Eva\nEva -> Wim, Pam, Matt, Pari\nReza -> Amir, Kim, Nisha, Wei\nWei -> Nisha, Reza, Kim, Raj\nNisha -> Wei, Reza, Kim, Sara\nKim -> Wei, Nisha, Reza, Moin\nSara -> Nisha, Moin, Puja, Ian\nMoin -> Ian, Puja, Kim, Sara\nPuja -> Pari, Ian, Sara, Moin\nIan -> Moin, Puja, Sara, Matt\nPari -> Pam, Matt, Eva, Puja\nMatt -> Pari, Pam, Eva, Ian\n\nTo find the shortest path from Jing to Puja, we can use the breadth-first search algorithm:\n\n1. Start with Jing as the current node and a queue containing only Jing.\n2. Initialize an empty list called \"path\" to keep track of the path.\n3. While the queue is not empty:\n    4. Dequeue the current node from the queue.\n    5. Add the current node to the \"path\" list.\n    6. If the current node is Puja, we have found the shortest path. Stop the algorithm.\n    7. Otherwise, enqueue all the neighbors of the current node that have not been visited yet.\n8. If the queue becomes empty and we haven't found Puja, there is no path from Jing to Puja.\n\nUsing this algorithm, we can find the shortest path from Jing to Puja:"
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: Jing, Pam, Pari, Puja"
+            ],
+            "parsed_response": "First, we need to create a graph of the connections between the scholars:\n\nJing -> Amir, Wim, Raj, Pam\nAmir -> Wim, Raj, Jing, Reza\nWim -> Amir, Raj, Jing, Eva\nRaj -> Amir, Wim, Jing, Wei\nPam -> Jing, Pari, Matt, Eva\nEva -> Wim, Pam, Matt, Pari\nReza -> Amir, Kim, Nisha, Wei\nWei -> Nisha, Reza, Kim, Raj\nNisha -> Wei, Reza, Kim, Sara\nKim -> Wei, Nisha, Reza, Moin\nSara -> Nisha, Moin, Puja, Ian\nMoin -> Ian, Puja, Kim, Sara\nPuja -> Pari, Ian, Sara, Moin\nIan -> Moin, Puja, Sara, Matt\nPari -> Pam, Matt, Eva, Puja\nMatt -> Pari, Pam, Eva, Ian\n\nTo find the shortest path from Jing to Puja, we can use the breadth-first search algorithm:\n\n1. Start with Jing as the current node and a queue containing only Jing.\n2. Initialize an empty list called \"path\" to keep track of the path.\n3. While the queue is not empty:\n    4. Dequeue the current node from the queue.\n    5. Add the current node to the \"path\" list.\n    6. If the current node is Puja, we have found the shortest path. Stop the algorithm.\n    7. Otherwise, enqueue all the neighbors of the current node that have not been visited yet.\n8. If the queue becomes empty and we haven't found Puja, there is no path from Jing to Puja.\n\nUsing this algorithm, we can find the shortest path from Jing to Puja:"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

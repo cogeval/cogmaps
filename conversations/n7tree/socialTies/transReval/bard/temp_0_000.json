@@ -11,31 +11,31 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You want to collaborate with a company. You meet Suresh, the CEO. You can ask Suresh to introduce you to to technical managers: Ramesh and Reeta. Ramesh can introduce you to his two employees, Karuna and Bunty. Reeta can introduce you to her two employees, Anita and Sunny. Karuna has 4 rating for friendly collaboration while Bunty has a rating of 2. Anita has a rating of 2.5 while Sunny has a rating of 3.5. You can only have one person to start your collaboration. Starting from Suresh, which employee do you want to be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Imagine a sales company. Amir is the CEO of the company and has two senior managers under him: Wim and Raj. Wim has two salespersons reporting to him: Jing and Wei. Raj has two salespersons reporting to him: Nisha and Reza. Jing is donating 56 books and Wei is donating 22 books. Nisha is donating 10 books and Reza is donating 50 books. Assume you can pick one path to collect books.  From Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas "
         },
         {
             "role": "assistant",
-            "content": "Sure. Here are the steps to find the employee with the highest friendly collaboration rating:\n\n1. Ask Suresh to introduce you to Ramesh.\n2. Ask Ramesh to introduce you to Karuna.\n\nThe path to Karuna is Suresh, Ramesh, Karuna.\n\nKaruna has a rating of 4 for friendly collaboration, which is the highest rating.\n\nTherefore, the answer is:\n\n```\nAnswer: Suresh, Ramesh, Karuna\n```"
+            "content": "The best path to collect the maximum number of books is to meet with **Amir, Wim, Jing, and Nisha**.\n\nAmir has two senior managers under him: Wim and Raj.\n\n* Wim has two salespeople reporting to him: Jing and Wei.\n* Raj has two salespeople reporting to him: Nisha and Reza.\n* Jing is donating 56 books and Wei is donating 22 books.\n* Nisha is donating 10 books and Reza is donating 50 books.\n\nIf we start from Amir, we can either meet with Wim or Raj. If we meet with Wim, we can then meet with Jing and Nisha. If we meet with Raj, we can then meet with Nisha and Reza.\n\nJing and Nisha donate a total of 56 + 10 = 66 books. Nisha and Reza donate a total of 10 + 50 = 60 books. Therefore, the path that donates the most books is to meet with Amir, Wim, Jing, and Nisha.\n\n**Answer: Amir, Wim, Jing, Nisha**\n\nIs there anything else I can help you with?"
         },
         {
             "role": "user",
-            "content": "Now assume that you have been told that Karuna is leaving the company. Assume you can only have one employee to start your collaboration, which one should you be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Now assume that you have been told that Jing, the salesperson under Wim, is not donating any books. Assume you can pick one path to collect books, from Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "I do not have enough information about that person to help with your request. I am a large language model, and I am able to communicate and generate human-like text in response to a wide range of prompts and questions, but my knowledge about this person is limited. Is there anything else I can do to help you with this request?"
+            "content": "Sure, I can help you with that.\n\nIf Jing is not donating any books, then the best path to collect the maximum number of books is to meet with **Amir and Reza**.\n\nAmir has two senior managers under him: Wim and Raj.\n\n* Wim has two salespeople reporting to him: Jing and Wei.\n* Raj has two salespeople reporting to him: Nisha and Reza.\n* Jing is donating 56 books and Wei is donating 22 books.\n* Nisha is donating 10 books and Reza is donating 50 books.\n\nIf we start from Amir, we can either meet with Wim or Raj. If we meet with Wim, we can then meet with Jing and Nisha. However, since Jing is not donating any books, this path is no longer the best. If we meet with Raj, we can then meet with Nisha and Reza. Since Nisha and Reza donate a total of 10 + 50 = 60 books, this is the best path.\n\n**Answer: Amir, Reza**\n\nIs there anything else I can help you with?"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Suresh, Reeta, Sunny"
+                "Answer: Amir, Raj, Reza"
             ],
-            "parsed_response": "I do not have enough information about that person to help with your request. I am a large language model, and I am able to communicate and generate human-like text in response to a wide range of prompts and questions, but my knowledge about this person is limited. Is there anything else I can do to help you with this request?"
+            "parsed_response": "Answer: Amir"
         }
     },
     "scores": {

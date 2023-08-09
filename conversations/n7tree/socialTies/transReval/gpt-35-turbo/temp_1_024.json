@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n7tree_socialTies_exp_transReval_temp_1_24",
     "model": "gpt-35-turbo",
-    "version": "2023-03-15-preview",
+    "version": "2020-11-07",
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -11,38 +11,31 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You want to collaborate with a company. You meet Suresh, the CEO. You can ask Suresh to introduce you to to technical managers: Ramesh and Reeta. Ramesh can introduce you to his two employees, Karuna and Bunty. Reeta can introduce you to her two employees, Anita and Sunny. Karuna has 4 rating for friendly collaboration while Bunty has a rating of 2. Anita has a rating of 2.5 while Sunny has a rating of 3.5. You can only have one person to start your collaboration. Starting from Suresh, which employee do you want to be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Imagine a sales company. Amir is the CEO of the company and has two senior managers under him: Wim and Raj. Wim has two salespersons reporting to him: Jing and Wei. Raj has two salespersons reporting to him: Nisha and Reza. Jing is donating 56 books and Wei is donating 22 books. Nisha is donating 10 books and Reza is donating 50 books. Assume you can pick one path to collect books.  From Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas "
         },
         {
             "role": "assistant",
-            "content": "Answer: Suresh, Ramesh, Karuna."
+            "content": "To get the maximum number of books, we need to choose the path with the highest number of books at each level. \n\nFirst, we start with Amir, who is the CEO of the company.\n\nSince Wim has two salespersons reporting to him, and Jing is donating 56 books and Wei is donating 22 books, we should choose Wim.\n\nNext, since Raj also has two salespersons reporting to him, and Nisha is donating 10 books and Reza is donating 50 books, we should choose Reza.\n\nTherefore, to get the maximum number of books, we should meet with Amir, Wim, and Reza.\n\nAnswer: Amir, Wim, Reza"
         },
         {
             "role": "user",
-            "content": "Now assume that you have been told that Karuna is leaving the company. Assume you can only have one employee to start your collaboration, which one should you be introduced to for the highest friendly collaboration rating? Please list the path to the employee in order, separated by commas."
+            "content": " Now assume that you have been told that Jing, the salesperson under Wim, is not donating any books. Assume you can pick one path to collect books, from Amir, who should you meet with to get the maximum number of books? Please list the names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Suresh, Reeta, Sunny."
+            "content": "If Jing is not donating any books, we need to reconsider our path to collect the maximum number of books.\n\nStarting with Amir, the CEO of the company.\n\nSince Wim has two salespersons reporting to him, but Jing is not donating any books, we should choose Wei, who is donating 22 books.\n\nNext, since Raj also has two salespersons reporting to him, and Nisha is donating 10 books and Reza is donating 50 books, we should choose Reza.\n\nTherefore, to get the maximum number of books, we should meet with Amir, Wim, and Reza.\n\nAnswer: Amir, Wim, Reza"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Suresh, Reeta, Sunny"
+                "Answer: Amir, Raj, Reza"
             ],
-            "parsed_response": "Answer: Suresh, Reeta, Sunny."
-        }
-    },
-    "scores": {
-        "transReval": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Amir"
         }
     }
 }

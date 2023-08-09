@@ -1,0 +1,49 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_policyReval_temp_1_6",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the scholars who are directly connected to Amir. These are Wim, Raj, Jing, and Reza.\n\nStep 2: Since Moin has the maximum books (50 books), we need to find the shortest path to Moin. First, check if Moin is directly connected to any of the scholars identified in Step 1. He is not. \n\nStep 3: Now, look at the scholars who are connected to Wim, Raj, Jing, and Reza. None of these scholars are directly connected to Moin.\n\nStep 4: Continue this process by looking at the scholars connected to those identified in step 3. We find that Moin is connected to Kim and Kim is connected to Reza, who is directly connected to Amir.\n\nStep 5: Having identified the shortest path, list the scholars in order: Amir, Reza, Kim, and Moin.\n\nAnswer: Amir, Reza, Kim, Moin"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Pari is donating 100 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Pari now has the most books (100 books). We need to find the shortest path from Amir to Pari.\n\nStep 2: Identify the scholars who are directly connected to Amir. These are Wim, Raj, Jing, and Reza.\n\nStep 3: Check if Pari is directly connected to any of the scholars identified in Step 2. Pari is not directly connected to any of them.\n\nStep 4: Now, look at the scholars who are connected to Wim, Raj, Jing, and Reza. We find that Pari is directly connected to Puja, and Puja is connected to Moin.\n\nStep 5: Moin is not directly connected to any of the scholars who are directly connected to Amir. So, let's look for another path.\n\nStep 6: Pari is also connected to Pam. Pam is directly connected to Jing. And, Jing is directly connected to Amir.\n\nStep 7: Having identified the shortest path, list the scholars in order: Amir, Jing, Pam, and Pari.\n\nAnswer: Amir, Jing, Pam, Pari"
+        }
+    ],
+    "tests": {
+        "policyReval": {
+            "expected_answer": [
+                "Answer: Amir, Wim, Eva, Pari",
+                "Answer: Amir, Jing, Pam, Pari"
+            ],
+            "parsed_response": "Answer: Amir, Jing, Pam, Pari"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

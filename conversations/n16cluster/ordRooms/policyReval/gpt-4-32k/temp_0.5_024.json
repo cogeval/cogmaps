@@ -15,20 +15,37 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Initially, you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. Now you have been told that there is a reward of 0 for visiting room 16. From room 1  what is the path that yields the most reward? Please list the room numbers in  order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the rooms with rewards and penalties.\n- Room 10 has a reward of 10.\n- Room 5 has a penalty of 15.\n- Room 16 initially had a reward of 5, but now has a reward of 0.\n\nStep 2: Determine the possible paths from Room 1 to Room 10 and Room 16, avoiding Room 5 due to the penalty.\n\nPath 1: Room 1 -> Room 2 -> Room 16 (Reward: 0)\nPath 2: Room 1 -> Room 2 -> Room 4 -> Room 14 -> Room 13 -> Room 11 -> Room 10 (Reward: 10)\nPath 3: Room 1 -> Room 3 -> Room 4 -> Room 14 -> Room 13 -> Room 11 -> Room 10 (Reward: 10)\nPath 4: Room 1 -> Room 4 -> Room 14 -> Room 13 -> Room 11 -> Room 10 (Reward: 10)\n\nStep 3: Choose the path with the highest reward.\n\nSince paths 2, 3, and 4 all have a reward of 10, we can choose any of them. We will choose the shortest path for simplicity:\n\nAnswer: 1, 4, 14, 13, 11, 10"
+            "content": "Step 1: Identify the two target rooms - room 10 and room 15.\nStep 2: Determine the shortest path to room 10 from room 1.\nStep 3: Determine the shortest path to room 15 from room 1.\nStep 4: Compare the path lengths to determine which is shorter.\nStep 5: List the room numbers in order for the shortest path that yields the most reward.\n\nPath to room 10 from room 1: 1 -> 3 -> 5 -> 8 -> 10 (5 rooms)\nPath to room 15 from room 1: 1 -> 4 -> 14 -> 15 (4 rooms)\n\nAnswer: 1, 4, 14, 15"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that there is a chest with a reward of 100 in room 13. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the three target rooms - room 10, room 15, and room 13.\nStep 2: Determine the shortest path to room 10 from room 1.\nStep 3: Determine the shortest path to room 15 from room 1.\nStep 4: Determine the shortest path to room 13 from room 1.\nStep 5: Compare the path lengths and rewards to determine which path yields the most reward.\nStep 6: List the room numbers in order for the shortest path that yields the most reward.\n\nPath to room 10 from room 1: 1 -> 3 -> 5 -> 8 -> 10 (5 rooms, 50 reward)\nPath to room 15 from room 1: 1 -> 4 -> 14 -> 15 (4 rooms, 10 reward)\nPath to room 13 from room 1: 1 -> 4 -> 14 -> 13 (4 rooms, 100 reward)\n\nAnswer: 1, 4, 14, 13"
         }
     ],
     "tests": {
         "policyReval": {
             "expected_answer": [
-                "Answer: 1, 7, 8, 10",
-                "Answer: 1,7,8,10"
+                "Answer: 1, 2, 16, 13",
+                "Answer: 1, 4, 14, 13",
+                "Answer: 1,2,16,13",
+                "Answer: 1,4,14,13"
             ],
-            "parsed_response": "Answer: 1, 4, 14, 13, 11, 10"
+            "parsed_response": "Answer: 1, 4, 14, 13"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

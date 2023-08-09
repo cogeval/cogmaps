@@ -11,31 +11,31 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+ '"
         },
         {
             "role": "user",
-            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you're just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Imagine a group of thirteen scholars. From Vicky you have two choices, Amir and Wim.  Amir is connected to Raj, and Raj is connected to Wei. Wei is connected to Reza and Reza is connected to Ian. Ian is connected to Puja. Puja is donating 10 books, but you do not take any book, you're just learning about the environment. This time you ask Vicky to connect you to Wim who is connected to Jing. Jing is connected to Nisha. Nisha is connected to Kim and Kim is connected to Moin. Moin is connected to Sara. Sara has 50 books to donate, but you do not take any money, you're just learning about the environment. You return to Vicky. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two paths.\nPath 1: Nora -> Peter -> Shikha -> Gal -> Alex -> David -> $1M investment\nPath 2: Philip -> Yakub -> Ajay -> Joe -> Rachel -> Harry -> $5M budget for producing a movie\n\nStep 2: Compare the investment amounts in both paths.\nPath 1: $1M investment\nPath 2: $5M budget for producing a movie\n\nStep 3: Determine which path leads to the most money.\nPath 2 leads to more money ($5M) than Path 1 ($1M).\n\nStep 4: Identify the friend that leads to the path with the most money.\nPhilip leads to Path 2, which has the most money.\n\nAnswer: Philip"
+            "content": "To find the path that leads to the maximum number of books, I need to compare the two paths from Vicky and see which one ends with more books. \n\nPath 1: Vicky, Amir, Raj, Wei, Reza, Ian, Puja. This path ends with Puja who has 10 books.\n\nPath 2: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara. This path ends with Sara who has 50 books.\n\nComparing the two paths, the second one leads to more books.\n\nAnswer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara"
         },
         {
             "role": "user",
-            "content": "You talk to Alex who introduces you to David. Now, David has $10M to invest in film production. But you do not take it, you're just learning about the environment. Then you get introduced to Rachel who in turn introduces you to Harry and he has the same budget as before, but you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Now you're told that from Ian, if you get connected to Puja, she is donating 60 books. You are also told that from Moin, if you get connected to Sara, she is donating  same number of books as before. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two paths.\nPath 1: Alex -> David -> $10M investment\nPath 2: Rachel -> Harry -> $5M budget for producing a movie\n\nStep 2: Compare the investment amounts in both paths.\nPath 1: $10M investment\nPath 2: $5M budget for producing a movie\n\nStep 3: Determine which path leads to the most money.\nPath 1 leads to more money ($10M) than Path 2 ($5M).\n\nStep 4: Identify the friend that leads to the path with the most money.\nAlex leads to Path 1, which has the most money.\n\nAnswer: Alex"
+            "content": "Given the new information, let's compare the two paths again.\n\nPath 1: Vicky, Amir, Raj, Wei, Reza, Ian, Puja. Now, this path ends with Puja who has 60 books.\n\nPath 2: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara. This path still ends with Sara who has 50 books.\n\nComparing the two paths again, the first one now leads to more books.\n\nAnswer: Vicky, Amir, Raj, Wei, Reza, Ian, Puja"
         }
     ],
     "tests": {
         "rewardReval": {
             "expected_answer": [
-                "Answer: Philip"
+                "Answer: Amir, Raj, Wei, Reza, Ian, Puja"
             ],
-            "parsed_response": "Step 1: Analyze the two paths.\nPath 1: Alex -> David -> $10M investment\nPath 2: Rachel -> Harry -> $5M budget for producing a movie\n\nStep 2: Compare the investment amounts in both paths.\nPath 1: $10M investment\nPath 2: $5M budget for producing a movie\n\nStep 3: Determine which path leads to the most money.\nPath 1 leads to more money ($10M) than Path 2 ($5M).\n\nStep 4: Identify the friend that leads to the path with the most money.\nAlex leads to Path 1, which has the most money.\n\nAnswer: Alex"
+            "parsed_response": "Answer: Vicky, Amir, Raj, Wei, Reza, Ian, Puja"
         }
     },
     "scores": {

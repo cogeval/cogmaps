@@ -1,0 +1,49 @@
+{
+    "conversation_id": "task_n16cluster_ordRooms_exp_nonteleShortcut_temp_1_1",
+    "model": "replicate:alpaca-7b",
+    "version": null,
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1, 2, 3, 4, 14."
+        },
+        {
+            "role": "user",
+            "content": "You have been told that room 1 has a new door that opens to a new room, room 17. Room 17 is connected to all room 12\u00e2\u20ac\u2122s neighboring rooms. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1, 2, 14, 9, 17. 80 (5 x 50 +5 10) can be gained in the new room.  Since there is no need to make unnecessary movements and risking losing the 50 reward if exiting another neighboring room via the newly opened door instead of 17 which has connects to all the neighboring rooms of 11 and 9. Thus, starting from room 1: 1, 2, 14, 17 (no 9). 60 total (40+10+6). It provides an addition 10 reward (the one in room 17) apart from the initial 50 from room 10, with a high likelihood of successfully grasping the intended reward while exploring only one unique door thus satisfying the given requirements and making sure that you do not lose the chance of the highest reward as dictated. #6."
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: 1, 17, 10",
+                "Answer: 1,17,10"
+            ],
+            "parsed_response": "1, 2, 14, 9, 17. 80 (5 x 50 +5 10) can be gained in the new room.  Since there is no need to make unnecessary movements and risking losing the 50 reward if exiting another neighboring room via the newly opened door instead of 17 which has connects to all the neighboring rooms of 11 and 9. Thus, starting from room 1: 1, 2, 14, 17 (no 9). 60 total (40+10+6). It provides an addition 10 reward (the one in room 17) apart from the initial 50 from room 10, with a high likelihood of successfully grasping the intended reward while exploring only one unique door thus satisfying the given requirements and making sure that you do not lose the chance of the highest reward as dictated. #6."
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

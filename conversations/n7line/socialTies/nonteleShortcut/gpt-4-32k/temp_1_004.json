@@ -11,31 +11,31 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z]+\\s*'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "Imagine a group of friends: Fatima, Ana, Robert, Sophie, Nick, Kiran, and Julia. Fatima introduces you to two of her friends, Ana and Robert. Ana introduces you to Sophie, who introduces you to Kiran. Kiran has a Toyota Camry to give away. You do not take the car, you\u2019re just learning about the environment. Then you start over with Fatima introducing you to Robert, who introduces you to Nick, and Nick introduces you to Julia. Julia has a Ferrari to give away. You do not take the car, you\u2019re just learning about the environment. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?"
+            "content": "Imagine a group of seven scholars: Vicky, Amir, Wim, Raj, Jing, Wei and Nisha. You are friends with Vicky, who can either introduce you to Amir or Wim.  Amir is connected with Raj, and Raj is connected with Wei. Wei is donating 10 books, but you do not take any books, you're just learning about the environment. Then you exit and start over. This time you ask Vicky to introduce you to Wim, who is connected with Jing, and Jing is connected with Nisha. Nisha is donating 50 books, but you do not take any books, you're just learning about the environment. You will only be able to choose one path from Vicky that leads to the maximum number of books. Which scholar can Vicky connect you with, who will lead to the path with maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall Fatima's introductions to Ana and Robert.\nStep 2: Remember the first path: Fatima -> Ana -> Sophie -> Kiran (Toyota Camry).\nStep 3: Remember the second path: Fatima -> Robert -> Nick -> Julia (Ferrari).\nStep 4: Compare the cars: Toyota Camry vs. Ferrari.\nStep 5: Identify the most valuable car (Ferrari).\nStep 6: Determine which friend from Fatima's introductions led to the most valuable car.\n\nAnswer: Robert"
+            "content": "Step 1: Identify the two paths and their connection to scholars.\nPath 1: Vicky -> Amir -> Raj -> Wei\nPath 2: Vicky -> Wim -> Jing -> Nisha\n\nStep 2: Determine the number of books associated with each path.\nPath 1: Wei has 10 books.\nPath 2: Nisha has 50 books.\n\nStep 3: Compare the number of books and identify the path with the maximum number of books.\nPath 2 has more books (50) than Path 1 (10).\n\nStep 4: Determine the initial scholar connection from Vicky in the path with the maximum number of books.\nIn Path 2, Vicky connects you with Wim.\n\nAnswer: Wim"
         },
         {
             "role": "user",
-            "content": "In Fatima's introductions, you now meet a new friend, Mohammad, who directly introduces you to Julia. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?"
+            "content": "Now Vicky has a new connection, Reza. Reza is directly connected to Nisha. Remember that you will only be able to choose one path that leads to the maximum number of books. Which scholar can Vicky connect you with, will lead to the path with the maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall Fatima's introductions to Ana, Robert, and now Mohammad.\nStep 2: Remember the first path: Fatima -> Ana -> Sophie -> Kiran (Toyota Camry).\nStep 3: Remember the second path: Fatima -> Robert -> Nick -> Julia (Ferrari).\nStep 4: Consider the new path: Fatima -> Mohammad -> Julia (Ferrari).\nStep 5: Compare the cars: Toyota Camry vs. Ferrari.\nStep 6: Identify the most valuable car (Ferrari).\nStep 7: Determine which friend from Fatima's introductions led to the most valuable car in the shortest path.\n\nAnswer: Mohammad"
+            "content": "Step 1: Identify the three paths and their connection to scholars.\nPath 1: Vicky -> Amir -> Raj -> Wei\nPath 2: Vicky -> Wim -> Jing -> Nisha\nPath 3: Vicky -> Reza -> Nisha\n\nStep 2: Determine the number of books associated with each path.\nPath 1: Wei has 10 books.\nPath 2: Nisha has 50 books.\nPath 3: Nisha has 50 books.\n\nStep 3: Compare the number of books and identify the path with the maximum number of books.\nPath 2 and Path 3 both have the same maximum number of books (50).\n\nStep 4: Determine the initial scholar connection from Vicky in the path(s) with the maximum number of books.\nIn Path 2, Vicky connects you with Wim.\nIn Path 3, Vicky connects you with Reza.\n\nSince both Wim and Reza are connected to paths with the maximum number of books, Vicky can connect you with either Wim or Reza.\n\nAnswer: Wim or Reza"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Mike"
+                "Answer: Reza"
             ],
-            "parsed_response": "Step 1: Recall Fatima's introductions to Ana, Robert, and now Mohammad.\nStep 2: Remember the first path: Fatima -> Ana -> Sophie -> Kiran (Toyota Camry).\nStep 3: Remember the second path: Fatima -> Robert -> Nick -> Julia (Ferrari).\nStep 4: Consider the new path: Fatima -> Mohammad -> Julia (Ferrari).\nStep 5: Compare the cars: Toyota Camry vs. Ferrari.\nStep 6: Identify the most valuable car (Ferrari).\nStep 7: Determine which friend from Fatima's introductions led to the most valuable car in the shortest path.\n\nAnswer: Mohammad"
+            "parsed_response": "Answer: Wim or Reza"
         }
     },
     "scores": {

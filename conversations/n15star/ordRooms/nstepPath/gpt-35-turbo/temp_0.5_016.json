@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nstepPath_temp_0.5_16",
+    "conversation_id": "task_n15star_ordRooms_exp_nstepPath_temp_0.5_16",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 0.5,
@@ -15,24 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 12? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 5 to room 15? Starting from room 5, please list the room numbers in order, including 5, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 1 to room 12, we can use the Dijkstra's algorithm. \n\nStarting from room 1, we can reach room 7, which is connected to room 10, which is connected to room 13, which is connected to room 12. This is the shortest path from room 1 to room 12, and the room numbers in order are: 1, 7, 10, 13, 12.\n\nAnswer: 1, 7, 10, 13, 12"
+            "content": "To find the shortest path from room 5 to room 15, we can use Dijkstra's algorithm. Here are the steps:\n\n1. Create a table with the distance from room 5 to each room and mark them as unvisited. The distance to room 5 is 0, and the distance to all other rooms is infinity.\n```\nRoom | Distance | Visited\n-------------------------\n  1  |   inf    |   No\n  2  |   inf    |   No\n  3  |   inf    |   No\n  4  |   inf    |   No\n  5  |    0     |   No\n  6  |   inf    |   No\n  7  |   inf    |   No\n  8  |   inf    |   No\n  9  |   inf    |   No\n 10  |   inf    |   No\n 11  |   inf    |   No\n 12  |   inf    |   No\n 13  |   inf    |   No\n 14  |   inf    |   No\n 15  |   inf    |   No\n```\n\n2. Choose the unvisited room with the smallest distance from the table. In this case, it is room 5 with a distance of 0. Mark it as visited.\n```\nRoom | Distance | Visited\n-------------------------\n  1  |   inf    |   No\n  2  |   inf    |   No\n  3  |   inf    |   No\n  4  |   inf    |   No\n  5  |    0     |  Yes\n  6  |   inf    |   No\n  7  |   inf    |   No\n  8  |   inf    |   No\n  9  |   inf    |   No\n 10  |   inf    |   No\n 11  |   inf    |   No\n 12  |   inf    |   No\n 13  |   inf    |   No\n 14  |   inf    |   No\n 15  |   inf    |   No\n```\n\n3. Update the distances of the neighboring rooms that are not yet visited. The distances are the sum of the distance to the current room and the distance between the current room and the neighboring room. For example, the distance to room 8 is 0 + 1 = 1, because room 5 is connected to room 8. If the new distance is smaller than the previous distance, update the table. Repeat this step until all rooms are visited.\n```\nRoom | Distance | Visited\n-------------------------\n  1  |     3    |   No\n  2  |     2    |   No\n  3  |     3    |   No\n  4  |     4    |   No\n  5  |     0    |  Yes\n  6  |     4    |   No\n  7  |     3    |   No\n  8  |     1    |  Yes\n  9  |     5    |   No\n 10  |     4    |   No\n 11  |     1    |   No\n 12  |     5    |   No\n 13  |     3    |   No\n 14  |     2    |   No\n 15  |     6    |   No\n```\n\n4. The shortest path from room 5 to room 15 is the sequence of rooms with the smallest distance. In this case, it is room 5, room 8, room 11, and room 15. Therefore, the answer is:\n```\nAnswer: 5, 8, 11, 15\n```"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15, 12",
-                "Answer: 1, 10, 4, 15, 12",
-                "Answer: 1, 13, 4, 15, 12",
-                "Answer: 1,7,4,15,12",
-                "Answer: 1,10,4,15,12",
-                "Answer: 1,13,4,15,12"
+                "Answer: 5, 8, 3, 6, 15",
+                "Answer: 5, 8, 3, 9, 15",
+                "Answer: 5, 8, 3, 12, 15"
             ],
-            "parsed_response": "Answer: 1, 7, 10, 13, 12"
+            "parsed_response": "Answer: 5, 8, 11, 15"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

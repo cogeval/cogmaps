@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Reza to Kim? Starting from Reza, please list the scholar names in order, including Reza, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups Vivian and Ajit are in.\nVivian is in the group with Salma, Shanshan, Vadim, and Gongxue.\nAjit is in the group with Abdul, Durga, and Anisha.\n\nStep 2: Find the common student(s) between these two groups.\nThe common student between these two groups is Shanshan.\n\nStep 3: Identify the shortest path from Vivian to Ajit through the common student(s).\nThe shortest path from Vivian to Ajit through Shanshan is:\nVivian -> Shanshan -> Ajit\n\nAnswer: Vivian, Shanshan, Ajit"
+            "content": "First, I would identify who Reza is directly connected with: Moin and Pari. \n\nThen, I would find who Moin and Pari are directly connected with. Moin is connected with Pari. Pari is connected with Amir, Jing. But none of them is directly connected to Kim.\n\nTherefore, I need to go another level deeper. Amir is connected with Reza, Moin, Pari, and Puja. Jing is connected with Reza, Moin, Pari, and Max. Puja is connected with Pam, Wim, Amir, and Wei.\n\nPam is directly connected to Kim, Wei is directly connected to Kim. So the shortest paths from Reza to Kim go through either Amir, Puja, Pam, and Kim or Jing, Puja, Pam, and Kim.\n\nTo summarise, the shortest path from Reza to Kim would be either Reza, Amir, Puja, Pam, Kim or Reza, Jing, Puja, Pam, Kim.\n \nAnswer: Reza, Amir, Puja, Pam, Kim or Reza, Jing, Puja, Pam, Kim"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Reza, Amir, Puja, Wim, Kim",
+                "Answer: Reza, Amir, Puja, Wei, Kim",
+                "Answer: Reza, Amir, Puja, Pam, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Shanshan, Ajit"
+            "parsed_response": "Answer: Reza, Amir, Puja, Pam, Kim or Reza, Jing, Puja, Pam, Kim"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

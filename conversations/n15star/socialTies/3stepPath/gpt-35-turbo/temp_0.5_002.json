@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_3stepPath_temp_0.5_2",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Reza to Wim? Starting from Reza, please list the scholar names in order, including Reza, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Reza to Wim, we can use a breadth-first search algorithm. Here are the steps:\n\n1. Start with Reza.\n2. Check if Reza is connected to Wim directly. If yes, the shortest path is Reza, Wim. Answer: Reza, Wim.\n3. If Reza is not connected to Wim directly, check Reza's connections: Moin and Pari.\n4. Check if Moin or Pari is connected to Wim directly. If yes, the shortest path is Reza, Moin (or Pari), Wim. Answer: Reza, Moin (or Pari), Wim.\n5. If Moin and Pari are not connected to Wim directly, check their connections: Reza, Pari (or Moin), Pari (or Moin), Pari (or Moin).\n6. Continue this process until Wim is found or all connections have been checked.\n\nBased on the given connections, the shortest path from Reza to Wim is Reza, Pari, Puja, Wei, Wim. Answer: Reza, Pari, Puja, Wei, Wim."
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: Reza, Amir, Puja, Wim"
+            ],
+            "parsed_response": "Answer: Reza, Wim"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

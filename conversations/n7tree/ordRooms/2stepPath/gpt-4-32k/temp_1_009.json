@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_2stepPath_temp_1_9",
+    "conversation_id": "task_n7tree_ordRooms_exp_2stepPath_temp_1_9",
     "model": "gpt-4-32k",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -19,24 +19,23 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the zones and money found in each path.\n- Right passage from Zone 1: Zone 3 (Right: Zone 7 with $50, Left: Zone 6 with $10)\n- Left passage from Zone 1: Zone 2 (Right: Zone 5 with $22, Left: Zone 4 with $56)\n\nStep 2: Calculate the total money for each path.\n- Path 1 (Right from Zone 1): Zone 1 -> Zone 3 -> Zone 7 = $50\n- Path 2 (Right from Zone 1, then left from Zone 3): Zone 1 -> Zone 3 -> Zone 6 = $10\n- Path 3 (Left from Zone 1): Zone 1 -> Zone 2 -> Zone 5 = $22\n- Path 4 (Left from Zone 1, then left from Zone 2): Zone 1 -> Zone 2 -> Zone 4 = $56\n\nStep 3: Determine which path provides the most money.\n- Path 4 has the highest amount of money ($56).\n\nStep 4: Provide the final outcome with the zone numbers in order.\nAnswer: 1, 2, 4"
+            "content": "Step 1: Evaluate the potential earnings in each zone.\n- Zone 1 (right): Zone 3 ($0)\n- Zone 3 (right): Zone 7 ($50)\n- Zone 3 (left): Zone 6 ($10)\n- Zone 1 (left): Zone 2 ($0)\n- Zone 2 (right): Zone 5 ($22)\n- Zone 2 (left): Zone 4 ($56)\n\nStep 2: Determine the maximum earnings from each initial passage in zone 1.\n- Zone 1 (right) maximum earnings: Zone 7 ($50)\n- Zone 1 (left) maximum earnings: Zone 4 ($56)\n\nStep 3: Choose the path with the highest earnings.\n- Zone 4 ($56) is greater than Zone 7 ($50)\n\nAnswer: 1, 2, 4"
         },
         {
             "role": "user",
-            "content": "From zone 1 what is the shortest path to zone 6? Please list the zone numbers in order, separated by commas."
+            "content": "From zone 1 what is the shortest path to zone 5? Starting from zone 1, please list the zone numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the available paths and zones.\n- Right passage from Zone 1: Zone 3 (Right: Zone 7, Left: Zone 6)\n- Left passage from Zone 1: Zone 2 (Right: Zone 5, Left: Zone 4)\n\nStep 2: Determine the path to reach Zone 6.\n- From Zone 1, take the right passage to Zone 3\n- From Zone 3, take the left passage to Zone 6\n\nStep 3: Provide the final outcome with the zone numbers in order.\nAnswer: 1, 3, 6"
+            "content": "Step 1: Identify the possible paths from zone 1 to zone 5.\n- Path 1: Zone 1 (right) -> Zone 3 (left) -> Zone 6 -> Zone 3 (right) -> Zone 7 -> Zone 3 (right) -> Zone 5\n- Path 2: Zone 1 (left) -> Zone 2 (right) -> Zone 5\n\nStep 2: Determine the shortest path based on the number of zones visited.\n- Path 1: 1, 3, 6, 3, 7, 3, 5 (7 zones visited)\n- Path 2: 1, 2, 5 (3 zones visited)\n\nStep 3: Choose the shortest path.\n- Path 2 is shorter than Path 1\n\nAnswer: 1, 2, 5"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: 1, 3, 6",
-                "Answer: 1,3,6"
+                "Answer: 1, 2, 5"
             ],
-            "parsed_response": "Step 1: Recall the available paths and zones.\n- Right passage from Zone 1: Zone 3 (Right: Zone 7, Left: Zone 6)\n- Left passage from Zone 1: Zone 2 (Right: Zone 5, Left: Zone 4)\n\nStep 2: Determine the path to reach Zone 6.\n- From Zone 1, take the right passage to Zone 3\n- From Zone 3, take the left passage to Zone 6\n\nStep 3: Provide the final outcome with the zone numbers in order.\nAnswer: 1, 3, 6"
+            "parsed_response": "Answer: 1, 2, 5"
         }
     },
     "scores": {

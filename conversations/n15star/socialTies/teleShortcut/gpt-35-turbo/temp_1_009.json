@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_1_9",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we will use a Breadth-First Search algorithm. \n\nStarting from Amir, we will explore each connected scholar and keep track of the path taken. We will also keep track of the number of books each scholar is donating. \n\nHere is the step-by-step process:\n\n1. Initialize a queue and a visited set. Enqueue Amir to the queue and mark Amir as visited.\n   Queue: [Amir]\n   Visited: {Amir}\n\n2. Start a loop until the queue is empty.\n   a. Dequeue a scholar from the front of the queue.\n   b. Check if the scholar is donating books. If yes, remember the maximum number of books and the path taken to reach this scholar.\n   c. Enqueue all the connected scholars of the dequeued scholar who have not been visited yet.\n   d. Mark the dequeued scholar as visited.\n\n3. After the loop ends, the path with the maximum number of books will be available. Return this path.\n\nUsing the provided information, let's calculate the shortest path from Amir to the person who is donating the maximum number of books:\n\nAmir is connected to Reza, Moin, Pari, and Puja. None of them is donating the maximum number of books.\n\nReza is connected to Moin and Pari. None of them is donating the maximum number of books.\n\nMoin is connected to Pari. None of them is donating the maximum number of books.\n\nPari is not connected to any other scholars.\n\nPuja is connected to Pam. None of them is donating the maximum number of books.\n\nPam is donating 10 books, which is the maximum number of books. The path to Pam is: Amir, Puja, Pam.\n\nAnswer: Amir, Puja, Pam."
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering Eva's instant connection portal, we will update our Breadth-First Search algorithm.\n\nHere is the updated step-by-step process:\n\n1. Initialize a queue and a visited set. Enqueue Amir to the queue and mark Amir as visited.\n   Queue: [Amir]\n   Visited: {Amir}\n\n2. Start a loop until the queue is empty.\n   a. Dequeue a scholar from the front of the queue.\n   b. Check if the scholar is donating books. If yes, remember the maximum number of books and the path taken to reach this scholar.\n   c. If the scholar is Pam, end the loop.\n   d. Enqueue all the connected scholars of the dequeued scholar who have not been visited yet, except for Eva.\n   e. Mark the dequeued scholar as visited.\n\n3. After the loop ends, the path with the maximum number of books will be available. Return this path.\n\nUsing the provided information, let's calculate the shortest path from Amir to the person who is donating the maximum number of books, considering Eva's instant connection portal:\n\nAmir is connected to Reza, Moin, Pari, and Puja. None of them is donating the maximum number of books.\n\nReza is connected to Moin and Pari. None of them is donating the maximum number of books.\n\nMoin is connected to Pari. None of them is donating the maximum number of books.\n\nPari is not connected to any other scholars.\n\nPuja is connected to Pam. None of them is donating the maximum number of books.\n\nPam is donating 10 books, which is the maximum number of books. The path to Pam is: Amir, Puja, Pam.\n\nSince Eva has an instant connection portal to anyone connected with Pam, we can directly go from Amir to Pam through Eva's portal. Therefore, the shortest path from Amir to the person donating the maximum number of books remains the same: Amir, Puja, Pam.\n\nAnswer: Amir, Puja, Pam."
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Puja, Pam"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

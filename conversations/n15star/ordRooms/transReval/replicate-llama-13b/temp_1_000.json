@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n15star_ordRooms_exp_transReval_temp_1_0",
     "model": "replicate:llama-13b",
-    "version": "2023-03-15-preview",
+    "version": null,
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Make sure to end your outcome with 'Answer: [1-12]\\s*[1-12]', where [1-12] denote the room numbers and [1-12] represent space.\nWhat is the shortest route that satisfies the requirement?\nThe answer should follow the format Answer: Room_numbers \\s* Room_numbers\nThe question has a string starting with user: then room number: (15 rooms), then the regular expression \"Answer: ([0-9]+,\\s*)*[0-9]+\", then the question with a list of room numbers comma delimited with spaces where no comma is in the list.\nThe answer is expected to match the format \"Answer: Room_numbers \\s* Room_numbers\"\nThe regex string \"Answer: ([0-9]+,\\s*)*[0-9]+\" is used to extract the correct answer.\nThe input string contains the word \"answer:\" (the key word). There is also the word \"users:\" as initial character. So I assumed the question is for user. The rest is normal text.\nI took the user_id string and removed the users: before it, so i have \"answer:\", followed by a text and the same string at the end. So i need to extract the part in between and put spaces around it.\nA regex to do this is \"answer ([0-9]+(\\s?,[0-9]*)*[0-9]+\", the last optional part is not really necessary.\nYou can test this regex with Regexr, using the form below as an example.\nAfter the regex extraction, I have an answer string containing digits, which is the user's answer in string format. Next, I put whitespace around the answer string.\nThe result should be of the format \"Answer: Room number1 Room number2\", where the room numbers are the space separated digits extracted by the regex. The final string should be in the format \"Answer: Room_number1 Room_number2\"\nUsing that, i replaced each digit with a char and then use replaceAll again to put the spaces (I also removed the extra space between \"Answer: \")and \"1234\", and finally, i removed the \"Answer: 1234\" to get what I want.\nThe regex is \"answer:([0-9]+) ( [0-9]+) *(["
+            "content": "Understood! Here`s the stepwise guidance for finding the shortest path with the most reward from starting at room 1 in this labyrinthine castle: ` Answer:`\n\nPlease have Assistant think out loud as you work toward the final solution, explaining each step after applying the appropriate reasoning to arrive an at the correct answer.`  Think`(you may start by stating your first steps`."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "\nassistant: Make sure to end your outcome with \"answer: [1-8]\\s* [1-8]\"\nAnswer: Room_numbers \\s* Room_numbers"
+            "content": "No problem! Let`s navigate through to find answer` Here`s my initial steps to work through problem starting step `Step 1. room connectively check:` Upon examining the updates that say that Roam is now a11 is connected to a, Room i9 are No I Long connected `a14 instead of Roon is connected lo room room room Room Now we Have rooms  to explore lo ensure a profit Irom all avalai  able areas: room rooms or the possible connected ROI IL ll rOIl'i:om ll rooms Or the POSSIL) Ilit Connell RiOns; Now, as always my i;s1i!iiii`n lusti.it the RiOn: ill't he Ri: I`ll check ll wll. chess RoOillY In Roni ll and re wortl In RiRion t'o the LS'.it ROIII15 `ll t,e ri,d I ill Ri t'ii  c II c1 i;e (Roiuu', oru, Room ll oir RiIIll II lll IIIllt II:i i illi lI l,).\nAssistant, based lo explore the Connel RiOn starting rom rommom Rooom rooms that offer the MOrIl potential profit fium our single visll Ro illium II i I rIlIium In tnlt to he w1l that il ll reword  i i ll 1. i'l'u i i1 i'l'iu. I, l;ustilO i l;usili\nNow the first llit is Ii rooms i i t t  h c he c is i RoO l Rooms ` 8 15, so ` I ill c f IlluIl Il I I lilillill llIl ill i III iI u I  the possible woo: ROOIl' 8: room"
         }
     ],
     "tests": {
@@ -36,7 +36,7 @@
                 "Answer: 1, 12, 3, 8",
                 "Answer: 1,12,3,8"
             ],
-            "parsed_response": "\nassistant: Make sure to end your outcome with \"answer: [1-8]\\s* [1-8]\"\nAnswer: Room_numbers \\s* Room_numbers"
+            "parsed_response": "No problem! Let`s navigate through to find answer` Here`s my initial steps to work through problem starting step `Step 1. room connectively check:` Upon examining the updates that say that Roam is now a11 is connected to a, Room i9 are No I Long connected `a14 instead of Roon is connected lo room room room Room Now we Have rooms  to explore lo ensure a profit Irom all avalai  able areas: room rooms or the possible connected ROI IL ll rOIl'i:om ll rooms Or the POSSIL) Ilit Connell RiOns; Now, as always my i;s1i!iiii`n lusti.it the RiOn: ill't he Ri: I`ll check ll wll. chess RoOillY In Roni ll and re wortl In RiRion t'o the LS'.it ROIII15 `ll t,e ri,d I ill Ri t'ii  c II c1 i;e (Roiuu', oru, Room ll oir RiIIll II lll IIIllt II:i i illi lI l,).\nAssistant, based lo explore the Connel RiOn starting rom rommom Rooom rooms that offer the MOrIl potential profit fium our single visll Ro illium II i I rIlIium In tnlt to he w1l that il ll reword  i i ll 1. i'l'u i i1 i'l'iu. I, l;ustilO i l;usili\nNow the first llit is Ii rooms i i t t  h c he c is i RoO l Rooms ` 8 15, so ` I ill c f IlluIl Il I I lilillill llIl ill i III iI u I  the possible woo: ROOIl' 8: room"
         }
     },
     "scores": {

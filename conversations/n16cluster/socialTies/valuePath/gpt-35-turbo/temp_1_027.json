@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_valuePath_temp_1_27",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a breadth-first search algorithm. We start from Amir and traverse the graph by considering each connected scholar until we reach the person with the most books.\n\n1. Start with Amir.\n2. Check the number of books each connected scholar has.\n3. If any connected scholar has more books than the current maximum, update the maximum.\n4. Continue this process for each connected scholar.\n5. Repeat the process for each new scholar found until no more connected scholars are left.\n6. Finally, return the path of scholars from Amir to the person with the maximum number of books.\n\nLet's perform the search:\n\nAmir (0 books) is connected to Wim, Raj, Jing, and Reza.\nWim (0 books) is connected to Amir, Raj, Jing, and Eva.\nRaj (0 books) is connected to Amir, Wim, Jing, and Wei.\nJing (0 books) is connected to Amir, Wim, Raj, and Pam.\nReza (0 books) is connected to Amir, Kim, Nisha, and Wei.\nKim (0 books) is connected to Wei, Nisha, Reza, and Moin.\nWei (0 books) is connected to Nisha, Reza, Kim, and Raj.\nNisha (0 books) is connected to Wei, Reza, Kim, and Sara.\nMoin (50 books) is connected to Ian, Puja, Kim, and Sara.\nIan (0 books) is connected to Moin, Puja, Sara, and Matt.\nPuja (0 books) is connected to Pari, Ian, Sara, and Moin.\nSara (0 books) is connected to Ian, Moin, Puja, and Nisha.\nPari (0 books) is connected to Pam, Matt, Eva, and Puja.\nPam (0 books) is connected to Jing, Pari, Matt, and Eva.\nMatt (10 books) is connected to Pari, Pam, Eva, and Ian.\nEva (0 books) is connected to Pari, Pam, Matt, and Wim.\n\nFrom the above traversal, we can see that Moin has the maximum number of books (50). The shortest path from Amir to Moin is as follows:\n\nAmir, Wim, Eva, Matt, Moin\n\nAnswer: Amir, Wim, Eva, Matt, Moin"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Kim, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Eva, Matt, Moin"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -15,24 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 15? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 7 to room 9? Starting from room 7, please list the room numbers in order, including 7, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections between rooms.\nStep 2: Start from room 1 and identify which rooms are connected to it.\nStep 3: Check if room 15 is directly connected to room 1. If not, identify the next room to move to.\nStep 4: Repeat steps 2 and 3 until room 15 is reached.\n\nFollowing these steps:\n\n1. Room 1 is connected to room 7, room 10, room 13, and room 11.\n2. Room 15 is not directly connected to room 1. The closest room to room 15 that is connected to room 1 is room 13.\n3. Move from room 1 to room 13.\n4. Room 13 is connected to room 4, room 7, and room 10.\n5. Room 15 is not directly connected to room 13. The closest room to room 15 that is connected to room 13 is room 4.\n6. Move from room 13 to room 4.\n7. Room 4 is connected to room 7, room 10, and room 15.\n8. Room 15 is directly connected to room 4.\n\nThe shortest path from room 1 to room 15 is: 1, 13, 4, 15.\n\nAnswer: 1, 13, 4, 15"
+            "content": "To find the shortest path from room 7 to room 9, we will go step by step through the connections:\n\n1. Start at room 7\n2. Move to room 1 (connected to room 7)\n3. Move to room 13 (connected to room 1)\n4. Move to room 4 (connected to room 13)\n5. Move to room 15 (connected to room 4)\n6. Move to room 6 (connected to room 15)\n7. Move to room 9 (connected to room 6)\n\nAnswer: 7, 1, 13, 4, 15, 6, 9"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15",
-                "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 7, 4, 15, 9"
             ],
-            "parsed_response": "Answer: 1, 13, 4, 15"
+            "parsed_response": "Answer: 7, 1, 13, 4, 15, 6, 9"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

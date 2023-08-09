@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_teleDetour_temp_0.5_13",
+    "conversation_id": "task_n7tree_ordRooms_exp_teleDetour_temp_0.5_13",
     "model": "gpt-4-32k",
     "version": "2023-03-15-preview",
     "temperature": 0.5,
@@ -19,15 +19,15 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the paths and the money found in each zone.\nStep 2: Calculate the total money found in each path.\nStep 3: Compare the total money found in each path.\nStep 4: Determine the path with the most money.\nStep 5: List the zone numbers in order, separated by commas.\n\nPath 1: Zone 1 (right) -> Zone 3 (right) -> Zone 7 ($50)\nPath 2: Zone 1 (right) -> Zone 3 (left) -> Zone 6 ($10)\nPath 3: Zone 1 (left) -> Zone 2 (right) -> Zone 5 ($22)\nPath 4: Zone 1 (left) -> Zone 2 (left) -> Zone 4 ($56)\n\nComparing the total money found in each path:\nPath 1: $50\nPath 2: $10\nPath 3: $22\nPath 4: $56\n\nPath 4 has the most money.\n\nAnswer: 1, 2, 4"
+            "content": "Step 1: Recall the amount of money found in each zone.\nZone 3 (right passage): $50\nZone 6 (left passage from Zone 3): $10\nZone 2 (left passage): Unknown\nZone 5 (right passage from Zone 2): $22\nZone 4 (left passage from Zone 2): $56\n\nStep 2: Compare the total amount of money from each path.\nPath 1: Zone 1 -> Zone 3 -> Zone 7: $50\nPath 2: Zone 1 -> Zone 3 -> Zone 6: $10\nPath 3: Zone 1 -> Zone 2 -> Zone 5: $22\nPath 4: Zone 1 -> Zone 2 -> Zone 4: $56\n\nStep 3: Choose the path with the most money.\nPath 4 has the most money ($56).\n\nAnswer: 1, 2, 4"
         },
         {
             "role": "user",
-            "content": "This time you in zone 1 your encounter a new passage that leads to zone 8. Zone 8 has an all-access portal that can take you to any zone you want. When you return to zone 1 and choose the path that led to the most reward previously, you discover that the passage from zone 2 to zone 4 is now blocked. You go back to zone 1. You will only be able to choose one path that leads to the most money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
+            "content": "This time you\u2019re in zone 1 and you encounter a new passage that leads to zone 8. Zone 8 has a portal and through this portal it\u2019s possible to go to any neighboring zone of zone 2. When you return to zone 1 and choose the path that led to the most reward previously, you discover that the path is now blocked. You go back to zone 1. You will only be able to choose one path that leads to the most money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the new information and the available paths.\nStep 2: Calculate the total money found in each available path.\nStep 3: Compare the total money found in each available path.\nStep 4: Determine the path with the most money.\nStep 5: List the zone numbers in order, separated by commas.\n\nThe new information is that there is now a passage to Zone 8, which has an all-access portal, and the passage from Zone 2 to Zone 4 is blocked. The available paths are:\n\nPath 1: Zone 1 (right) -> Zone 3 (right) -> Zone 7 ($50)\nPath 2: Zone 1 (right) -> Zone 3 (left) -> Zone 6 ($10)\nPath 3: Zone 1 (left) -> Zone 2 (right) -> Zone 5 ($22)\nPath 4: Zone 1 -> Zone 8 (portal) -> Zone 7 ($50)\nPath 5: Zone 1 -> Zone 8 (portal) -> Zone 6 ($10)\nPath 6: Zone 1 -> Zone 8 (portal) -> Zone 5 ($22)\n\nComparing the total money found in each available path:\nPath 1: $50\nPath 2: $10\nPath 3: $22\nPath 4: $50\nPath 5: $10\nPath 6: $22\n\nPaths 1 and 4 have the most money.\n\nAnswer: 1, 3, 7"
+            "content": "Step 1: Recall the amount of money found in each zone and the new information.\nZone 3 (right passage): $50 (now blocked)\nZone 6 (left passage from Zone 3): $10\nZone 2 (left passage): Unknown\nZone 5 (right passage from Zone 2): $22\nZone 4 (left passage from Zone 2): $56\nZone 8 (new passage): Portal to neighboring zones of Zone 2 (Zone 4 and Zone 5)\n\nStep 2: Evaluate the possible paths with the new information.\nPath 1: Zone 1 -> Zone 3 -> Zone 7: Blocked\nPath 2: Zone 1 -> Zone 3 -> Zone 6: Blocked\nPath 3: Zone 1 -> Zone 2 -> Zone 5: $22\nPath 4: Zone 1 -> Zone 2 -> Zone 4: $56\nPath 5: Zone 1 -> Zone 8 -> Zone 4: $56\nPath 6: Zone 1 -> Zone 8 -> Zone 5: $22\n\nStep 3: Choose the path with the most money.\nPath 4 and Path 5 both have the most money ($56).\n\nAnswer: 1, 8, 4"
         }
     ],
     "tests": {
@@ -36,12 +36,12 @@
                 "Answer: 1, 8, 4",
                 "Answer: 1,8,4"
             ],
-            "parsed_response": "Step 1: Analyze the new information and the available paths.\nStep 2: Calculate the total money found in each available path.\nStep 3: Compare the total money found in each available path.\nStep 4: Determine the path with the most money.\nStep 5: List the zone numbers in order, separated by commas.\n\nThe new information is that there is now a passage to Zone 8, which has an all-access portal, and the passage from Zone 2 to Zone 4 is blocked. The available paths are:\n\nPath 1: Zone 1 (right) -> Zone 3 (right) -> Zone 7 ($50)\nPath 2: Zone 1 (right) -> Zone 3 (left) -> Zone 6 ($10)\nPath 3: Zone 1 (left) -> Zone 2 (right) -> Zone 5 ($22)\nPath 4: Zone 1 -> Zone 8 (portal) -> Zone 7 ($50)\nPath 5: Zone 1 -> Zone 8 (portal) -> Zone 6 ($10)\nPath 6: Zone 1 -> Zone 8 (portal) -> Zone 5 ($22)\n\nComparing the total money found in each available path:\nPath 1: $50\nPath 2: $10\nPath 3: $22\nPath 4: $50\nPath 5: $10\nPath 6: $22\n\nPaths 1 and 4 have the most money.\n\nAnswer: 1, 3, 7"
+            "parsed_response": "Answer: 1, 8, 4"
         }
     },
     "scores": {
         "teleDetour": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

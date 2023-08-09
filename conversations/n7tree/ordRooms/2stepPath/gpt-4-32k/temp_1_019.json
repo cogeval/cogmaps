@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_2stepPath_temp_1_19",
+    "conversation_id": "task_n7tree_ordRooms_exp_2stepPath_temp_1_19",
     "model": "gpt-4-32k",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -19,24 +19,23 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the potential paths and the money found in each path.\n- Path 1: Zone 1 \u2192 Zone 3 \u2192 Zone 7 ($50)\n- Path 2: Zone 1 \u2192 Zone 3 \u2192 Zone 6 ($10)\n- Path 3: Zone 1 \u2192 Zone 2 \u2192 Zone 5 ($22)\n- Path 4: Zone 1 \u2192 Zone 2 \u2192 Zone 4 ($56)\n\nStep 2: Compare the money found in each path to determine the most profitable path.\n\nStep 3: Identify the most profitable path.\n- Path 4: Zone 1 \u2192 Zone 2 \u2192 Zone 4 ($56)\n\nAnswer: 1, 2, 4"
+            "content": "Step 1: Recall the amount of money found in each zone.\nZone 3 (right passage from zone 1) leads to:\n- Zone 7 (right passage from zone 3) with $50\n- Zone 6 (left passage from zone 3) with $10\n\nZone 2 (left passage from zone 1) leads to:\n- Zone 5 (right passage from zone 2) with $22\n- Zone 4 (left passage from zone 2) with $56\n\nStep 2: Compare the total amounts of money found in each path.\n\nPath 1 (Zone 1 -> Zone 3 -> Zone 7) leads to $50\nPath 2 (Zone 1 -> Zone 3 -> Zone 6) leads to $10\nPath 3 (Zone 1 -> Zone 2 -> Zone 5) leads to $22\nPath 4 (Zone 1 -> Zone 2 -> Zone 4) leads to $56\n\nStep 3: Determine the path with the most money.\n\nPath 4 has the most money with $56.\n\nAnswer: 1, 2, 4"
         },
         {
             "role": "user",
-            "content": "From zone 1 what is the shortest path to zone 6? Please list the zone numbers in order, separated by commas."
+            "content": "From zone 1 what is the shortest path to zone 7? Starting from zone 1, please list the zone numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the potential paths from Zone 1 to Zone 6.\n\n- Path 1: Zone 1 \u2192 Zone 3 \u2192 Zone 6\n\nStep 2: Determine the number of steps in each path.\n\n- Path 1: 2 steps (1 \u2192 3, 3 \u2192 6)\n\nStep 3: Identify the shortest path.\n\n- Path 1: Zone 1 \u2192 Zone 3 \u2192 Zone 6\n\nAnswer: 1, 3, 6"
+            "content": "To find the shortest path to zone 7, recall the path taken during the exploration:\n\nFrom Zone 1, the passage on the right leads to Zone 3.\nFrom Zone 3, the passage on the right leads to Zone 7.\n\nAnswer: 1, 3, 7"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: 1, 3, 6",
-                "Answer: 1,3,6"
+                "Answer: 1, 3, 7"
             ],
-            "parsed_response": "Step 1: Identify the potential paths from Zone 1 to Zone 6.\n\n- Path 1: Zone 1 \u2192 Zone 3 \u2192 Zone 6\n\nStep 2: Determine the number of steps in each path.\n\n- Path 1: 2 steps (1 \u2192 3, 3 \u2192 6)\n\nStep 3: Identify the shortest path.\n\n- Path 1: Zone 1 \u2192 Zone 3 \u2192 Zone 6\n\nAnswer: 1, 3, 6"
+            "parsed_response": "Answer: 1, 3, 7"
         }
     },
     "scores": {

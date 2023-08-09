@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wim to Pari? Starting from Wim, please list the scholar names in order, including Wim, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "First, let's analyze the connections between the students and create a graph:\n\n1. Vivian, Salma, Shanshan, Vadim, and Gongxue are connected.\n2. Paul, Solomon, Soheil, Gongxue, and Alice are connected.\n3. Pierre, Abdul, Durga, Ajit, and Soheil are connected.\n4. Noah, Salma, Shanshan, Vadim, and Anisha are connected.\n5. Solomon, Soheil, Gongxue, and Alice are connected.\n6. Abdul, Durga, Ajit, and Anisha are connected.\n7. Salma, Shanshan, and Vadim are connected.\n8. Soheil is connected to Alice.\n9. Durga, Ajit, and Anisha are connected.\n10. Shanshan is connected to Vadim.\n11. Gongxue is connected to Alice.\n12. Ajit is connected to Anisha.\n\nNow, let's find the shortest path from Vivian to Anisha:\n\n1. Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n2. From Vivian's connections, Salma and Shanshan are connected to Anisha (through connection 4).\n3. The shortest path from Vivian to Anisha is through either Salma or Shanshan.\n\nAnswer: Vivian, Salma, Anisha"
+            "content": "To find the shortest path from Wim to Pari, we need to trace the connections between scholars. \n\n1. Start with Wim. \n2. Wim is directly connected to Wei, Kim, Puja, and Pam.\n3. None of these scholars are directly connected to Pari, so we need to look at who they are connected to.\n4. Wei is connected to Kim, Puja, and Pam. Still no direct connection to Pari.\n5. Kim is connected to Pam. Still no direct connection to Pari.\n6. Puja is connected to Pam. Still no direct connection to Pari.\n7. Pam has no further connections.\n8. Therefore, we need to trace further. Looking at the connections of Wei, Kim, and Puja again, we see that Wei is connected to Kim, Puja, and Pam, Kim is connected to Pam, and Puja is connected to Pam. None of these connections lead to Pari.\n9. We then look at the connections of the scholars that Wim is connected to. Amir is connected to Reza, Moin, Pari, and Puja. \n10. From Amir's connections, we see that Pari is directly connected. \n\nThe shortest path from Wim to Pari is therefore: Wim, Puja, Amir, Pari.\n\nAnswer: Wim, Puja, Amir, Pari"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Wim, Puja, Amir, Pari"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha"
+            "parsed_response": "Answer: Wim, Puja, Amir, Pari"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

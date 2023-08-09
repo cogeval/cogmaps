@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Moin to Kim? Starting from Moin, please list the scholar names in order, including Moin, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections Vivian has.\nVivian is connected to: Salma, Shanshan, Vadim, Gongxue\n\nStep 2: Identify the connections of Vivian's connections.\nSalma is connected to: Vivian, Shanshan, Vadim, Gongxue, Noah, Shanshan, Vadim\nShanshan is connected to: Vivian, Salma, Vadim, Gongxue, Noah, Salma, Vadim\nVadim is connected to: Vivian, Salma, Shanshan, Gongxue, Noah, Salma, Shanshan\nGongxue is connected to: Vivian, Salma, Shanshan, Vadim, Paul, Solomon, Soheil, Alice, Solomon, Soheil, Alice\n\nStep 3: Identify the connections of Gongxue's connections.\nPaul is connected to: Solomon, Soheil, Gongxue, Alice\nSolomon is connected to: Paul, Soheil, Gongxue, Alice, Soheil, Gongxue, Alice\nSoheil is connected to: Paul, Solomon, Gongxue, Alice, Pierre, Abdul, Durga, Ajit, Solomon, Gongxue, Alice, Alice\nAlice is connected to: Paul, Solomon, Soheil, Gongxue, Solomon, Soheil, Gongxue, Gongxue, Soheil\n\nStep 4: Identify the connections of Soheil's connections.\nPierre is connected to: Abdul, Durga, Ajit, Soheil\nAbdul is connected to: Pierre, Durga, Ajit, Soheil, Durga, Ajit, Anisha\nDurga is connected to: Pierre, Abdul, Ajit, Soheil, Abdul, Ajit, Anisha, Ajit, Anisha\nAjit is connected to: Pierre, Abdul, Durga, Soheil, Abdul, Durga, Anisha, Durga, Anisha, Anisha\n\nThe shortest connection path from Vivian to Ajit is: Vivian, Gongxue, Soheil, Ajit.\n\nAnswer: Vivian, Gongxue, Soheil, Ajit"
+            "content": "To find the shortest path from Moin to Kim, we need to look at the connections of each scholar. \n\n1. Starting from Moin, the scholars connected to Moin are Reza and Pari. \n\n2. Neither Reza nor Pari is directly connected to Kim, so we need to look at their connections. Reza is connected to Moin and Pari, which does not help in this case. Pari is connected to Amir, Jing, and Reza.\n\n3. Amir is connected to Reza, Moin, Pari, and Puja. Puja is connected to Pam, Wim, Wei, and Amir. \n\n4. Wim is connected to Wei, Kim, Puja, and Pam. \n\n5. Kim is finally found connected to Wim.\n\nSo, the shortest path from Moin to Kim is: Moin, Pari, Amir, Puja, Wim, Kim.\n\nAnswer: Moin, Pari, Amir, Puja, Wim, Kim."
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Moin, Amir, Puja, Wim, Kim",
+                "Answer: Moin, Amir, Puja, Wei, Kim",
+                "Answer: Moin, Amir, Puja, Pam, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Ajit"
+            "parsed_response": "Answer: Moin, Pari, Amir, Puja, Wim, Kim"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

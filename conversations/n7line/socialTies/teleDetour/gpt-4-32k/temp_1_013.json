@@ -11,36 +11,36 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z]+\\s*'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "Imagine a group of friends: Fatima, Ana, Robert, Sophie, Nick, Kiran, and Julia. Fatima introduces you to two of her friends, Ana and Robert. Ana introduces you to Sophie, who introduces you to Kiran. Kiran has a Toyota Camry to give away. You do not take the car, you\u2019re just learning about the environment. Then you start over with Fatima introducing you to Robert, who introduces you to Nick, and Nick introduces you to Julia. Julia has a Ferrari to give away. You do not take the car, you\u2019re just learning about the environment. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?"
+            "content": "Imagine a group of seven scholars: Vicky, Amir, Wim, Raj, Jing, Wei and Nisha. You are friends with Vicky, who can either introduce you to Amir or Wim.  Amir is connected with Raj, and Raj is connected with Wei. Wei is donating 10 books, but you do not take any books, you're just learning about the environment. Then you exit and start over. This time you ask Vicky to introduce you to Wim, who is connected with Jing, and Jing is connected with Nisha. Nisha is donating 50 books, but you do not take any books, you're just learning about the environment. You will only be able to choose one path from Vicky that leads to the maximum number of books. Which scholar can Vicky connect you with, who will lead to the path with maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall Fatima's introductions. She introduces you to Ana and Robert.\nStep 2: Identify the paths from each introduction.\n  - Ana -> Sophie -> Kiran -> Toyota Camry\n  - Robert -> Nick -> Julia -> Ferrari\nStep 3: Compare the car values on each path.\n  - Toyota Camry: Less valuable\n  - Ferrari: More valuable\nStep 4: Determine which friend's introduction leads to the most valuable car.\n  - Robert's introduction leads to the Ferrari, which is the most valuable car.\n\nAnswer: Robert"
+            "content": "Step 1: Analyze the two paths available through Vicky.\nStep 2: Calculate the number of books in each path.\nStep 3: Compare the number of books in each path.\nStep 4: Determine which path has the maximum number of books.\nStep 5: Identify the scholar that Vicky can connect you with that leads to the path with the maximum number of books.\n\nAnswer: Wim"
         },
         {
             "role": "user",
-            "content": "Now imagine you meet a new friend, Mohammad, who introduces you to Alex, and then Alex introduces you to Krishna. Krishna can introduce you to any of Fatima's friends. When you talk to Fatima and choose the introduction path that leads to the most valuable car, you discover that the friendship leading to the most valuable car is over. You go back to Fatima. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?"
+            "content": "Now Vicky has a new connection, Reza. Reza is connected to Kim, and Kim is connected to Ian. Ian has a portal. From this portal it is possible to know any scholar connected to Jing. When you meet Vicky and choose the path that leads to the maximum number of books, you discover that the regular path to the scholar with the maximum number of books is blocked.  You will only be able to choose one path that leads to the maximum number of books. Which scholar can Vicky connect you with, will lead to the path with the maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall Fatima's introductions. She introduces you to Ana and Robert.\nStep 2: Recall the paths from each introduction.\n  - Ana -> Sophie -> Kiran -> Toyota Camry\n  - Robert -> Nick -> Julia -> Ferrari (This path is no longer available due to the friendship being over)\n\nStep 3: Talk to Mohammad -> Alex -> Krishna, who can introduce you to any of Fatima's friends.\nStep 4: Since Robert's path is no longer available, choose the only available path.\n  - Krishna -> Fatima -> Ana -> Sophie -> Kiran -> Toyota Camry\n\nAnswer: Ana"
+            "content": "Step 1: Analyze the three paths available through Vicky.\nStep 2: Determine the new path through Reza and its connections.\nStep 3: Evaluate the possibility of reaching the maximum number of books through the portal in the new path.\nStep 4: Compare the number of books in each path and their accessibility.\nStep 5: Identify the scholar that Vicky can connect you with that leads to the path with the maximum number of books and is not blocked.\n\nAnswer: Reza"
         }
     ],
     "tests": {
         "teleDetour": {
             "expected_answer": [
-                "Answer: Mike"
+                "Answer: Reza"
             ],
-            "parsed_response": "Step 1: Recall Fatima's introductions. She introduces you to Ana and Robert.\nStep 2: Recall the paths from each introduction.\n  - Ana -> Sophie -> Kiran -> Toyota Camry\n  - Robert -> Nick -> Julia -> Ferrari (This path is no longer available due to the friendship being over)\n\nStep 3: Talk to Mohammad -> Alex -> Krishna, who can introduce you to any of Fatima's friends.\nStep 4: Since Robert's path is no longer available, choose the only available path.\n  - Krishna -> Fatima -> Ana -> Sophie -> Kiran -> Toyota Camry\n\nAnswer: Ana"
+            "parsed_response": "Answer: Reza"
         }
     },
     "scores": {
         "teleDetour": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

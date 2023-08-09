@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_teleDetour_temp_0.5_3",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a breadth-first search algorithm. We will start from Amir and explore the connections of each scholar, keeping track of the number of books each scholar has donated. We will continue this process until we reach the scholar with the maximum number of books.\n\nHere are the steps to find the shortest path from Amir to the person with the maximum number of books:\n\n1. Initialize a queue to store the scholars to be explored and a visited set to keep track of the visited scholars.\n2. Add Amir to the queue and mark him as visited.\n3. Initialize a variable max_books to 0 to keep track of the maximum number of books.\n4. Initialize a variable max_books_scholar to an empty string to keep track of the scholar with the maximum number of books.\n5. Start a loop until the queue is empty:\n   a. Dequeue a scholar from the queue.\n   b. Check if the scholar has donated more books than the current maximum number of books. If yes, update max_books and max_books_scholar.\n   c. Check the connections of the current scholar:\n      - If a connected scholar has not been visited, enqueue the scholar and mark them as visited.\n6. Once the loop ends, the shortest path from Amir to the person with the maximum number of books is stored in max_books_scholar.\n\nFollowing these steps, the shortest path from Amir to the person with the maximum number of books is:\n\nAnswer: Amir, Wim, Raj, Wei, Nisha"
+        },
+        {
+            "role": "user",
+            "content": "You are told that Amir and Reza had a disagreement and are no longer connected. You are also told that Wei has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Wei, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Considering the new information, we need to modify our approach to find the shortest path from Amir to the person with the maximum number of books. We can use Dijkstra's algorithm to find the shortest path in a weighted graph.\n\nHere are the steps to find the shortest path from Amir to the person with the maximum number of books:\n\n1. Initialize a priority queue to store the scholars to be explored based on their distances from Amir. The priority queue will be sorted in ascending order of distances.\n2. Initialize a distance dictionary to keep track of the shortest distances from Amir to each scholar. Set the distance of Amir to 0 and the distance of all other scholars to infinity.\n3. Initialize a previous dictionary to keep track of the previous scholar in the shortest path from Amir to each scholar.\n4. Initialize a visited set to keep track of the visited scholars.\n5. Add Amir to the priority queue.\n6. Start a loop until the priority queue is empty:\n   a. Dequeue the scholar with the smallest distance from the priority queue.\n   b. If the scholar is the person with the maximum number of books, break the loop.\n   c. If the scholar has already been visited, continue to the next iteration of the loop.\n   d. Mark the scholar as visited.\n   e. Check the connections of the current scholar:\n      - If a connected scholar has not been visited, calculate the distance from Amir to the connected scholar through the current scholar.\n      - If the calculated distance is smaller than the current distance of the connected scholar, update the distance and previous scholar in the dictionaries.\n      - Enqueue the connected scholar with the updated distance.\n7. Once the loop ends, backtrack from the person with the maximum number of books to Amir using the previous dictionary to find the shortest path.\n\nFollowing these steps, the shortest path from Amir to the person with the maximum number of books is:\n\nAnswer: Amir, Wim, Wei, Nisha"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Raj, Wei, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Wei, Nisha"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

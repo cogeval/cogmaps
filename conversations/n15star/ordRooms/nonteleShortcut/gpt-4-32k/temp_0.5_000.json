@@ -19,24 +19,24 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Determine the shortest paths to both rooms with rewards (room 8 and room 15) from room 1.\nStep 2: Compare the rewards and choose the path with the highest reward.\n\nShortest path to room 8 from room 1:\n1 -> 7 -> 10 -> 13 -> 4 -> 15 -> 6 -> 9 -> 12 -> 3 -> 8\n\nShortest path to room 15 from room 1:\n1 -> 7 -> 10 -> 13 -> 4 -> 15\n\nSince the reward for visiting room 8 is 50 and the reward for visiting room 15 is 10, the path with the highest reward is the path to room 8.\n\nAnswer: 1, 7, 10, 13, 4, 15, 6, 9, 12, 3, 8"
+            "content": "Step 1: Identify the paths to both room 8 and room 15 from room 1.\nStep 2: Calculate the shortest path to room 8 and the shortest path to room 15.\nStep 3: Compare the rewards and choose the path with the highest reward.\n\nShortest path to room 8:\n1 -> 7 -> 10 -> 13 -> 4 -> 7 -> 10 -> 4 -> 15 -> 6 -> 9 -> 3 -> 6 -> 9 -> 12 -> 3 -> 6 -> 9 -> 3 -> 8 (20 steps)\n\nShortest path to room 15:\n1 -> 7 -> 10 -> 13 -> 4 -> 15 (6 steps)\n\nStep 4: Calculate the total reward for each path.\n\nRoom 8 path reward: 50\nRoom 15 path reward: 10\n\nStep 5: Choose the path with the highest reward.\n\nThe path to room 8 has the highest reward.\n\nAnswer: 1, 7, 10, 13, 4, 7, 10, 4, 15, 6, 9, 3, 6, 9, 12, 3, 6, 9, 3, 8"
         },
         {
             "role": "user",
-            "content": "You have been told that room 1 is now connected to room 14. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You have been told that room 1 has a new door that opens to a new room, room 16. Room 16 is connected to all room 14\u2019s neighboring rooms. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Re-evaluate the shortest paths to both rooms with rewards (room 8 and room 15) from room 1, considering the new connection to room 14.\nStep 2: Compare the rewards and choose the path with the highest reward.\n\nShortest path to room 8 from room 1 with the new connection:\n1 -> 14 -> 2 -> 5 -> 8\n\nShortest path to room 15 from room 1 with the new connection:\n1 -> 14 -> 11 -> 5 -> 2 -> 8 -> 3 -> 6 -> 9 -> 12 -> 15\n\nSince the reward for visiting room 8 is 50 and the reward for visiting room 15 is 10, the path with the highest reward is the new shortest path to room 8.\n\nAnswer: 1, 14, 2, 5, 8"
+            "content": "Step 1: Identify the paths to both room 8 and room 15 from room 1, considering the new room 16.\nStep 2: Calculate the shortest path to room 8 and the shortest path to room 15.\nStep 3: Compare the rewards and choose the path with the highest reward.\n\nShortest path to room 8:\n1 -> 16 -> 14 -> 8 (4 steps)\n\nShortest path to room 15:\n1 -> 7 -> 10 -> 13 -> 4 -> 15 (6 steps)\n\nStep 4: Calculate the total reward for each path.\n\nRoom 8 path reward: 50\nRoom 15 path reward: 10\n\nStep 5: Choose the path with the highest reward.\n\nThe path to room 8 has the highest reward.\n\nAnswer: 1, 16, 14, 8"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: 1, 14, 8",
-                "Answer: 1,14,8"
+                "Answer: 1, 16, 8",
+                "Answer: 1,16,8"
             ],
-            "parsed_response": "Step 1: Re-evaluate the shortest paths to both rooms with rewards (room 8 and room 15) from room 1, considering the new connection to room 14.\nStep 2: Compare the rewards and choose the path with the highest reward.\n\nShortest path to room 8 from room 1 with the new connection:\n1 -> 14 -> 2 -> 5 -> 8\n\nShortest path to room 15 from room 1 with the new connection:\n1 -> 14 -> 11 -> 5 -> 2 -> 8 -> 3 -> 6 -> 9 -> 12 -> 15\n\nSince the reward for visiting room 8 is 50 and the reward for visiting room 15 is 10, the path with the highest reward is the new shortest path to room 8.\n\nAnswer: 1, 14, 2, 5, 8"
+            "parsed_response": "Answer: 1, 16, 14, 8"
         }
     },
     "scores": {

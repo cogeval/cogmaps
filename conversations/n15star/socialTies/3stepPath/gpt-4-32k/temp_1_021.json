@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Puja to Raj? Starting from Puja, please list the scholar names in order, including Puja, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections between students.\nStep 2: Determine the different paths Vivian can take to reach Anisha.\nStep 3: Compare the paths and determine the shortest one.\nStep 4: List the student names in the order of the shortest path.\n\nAfter analyzing the connections, the shortest path from Vivian to Anisha is:\nVivian, Salma, Shanshan, Vadim, Noah, Anisha.\n\nAnswer: Vivian, Salma, Shanshan, Vadim, Noah, Anisha"
+            "content": "Step 1: Start at Puja.\nStep 2: Look for direct connections from Puja to Raj, there are none.\nStep 3: Look for connections from Puja that lead to Raj. The scholars Puja is connected to are: Pam, Wim, and Wei.\nStep 4: The connections from Pam don't lead to Raj. Move on to Wim.\nStep 5: From Wim, check the connections to Wei, Kim, and Pam. None of them directly lead to Raj.\nStep 6: Move to the next scholar, Wei.\nStep 7: From Wei, check the connections to Kim, Puja, and Pam. Kim is the only scholar in this list not yet considered in the earlier steps.\nStep 8: From Kim, check her connections. She is connected to Pam and Wim. None of them directly lead to Raj.\nStep 9: Return to the initial list of scholars Puja is connected to. All potential paths have been checked without finding a connection to Raj.\nStep 10: Now consider a path of length 3. From Puja to Wim to Wei to Kim.\nStep 11: Check the connections from Kim again. She is connected to Pam and Wim. None of them directly lead to Raj.\nStep 12: The path of length 3 was not successful. Consider a path of length 4. From Puja to Wim to Wei to Kim to Pam.\nStep 13: Pam doesn't lead to Raj. So, this path is not successful. \nStep 14: The search for a path continues. Consider a new path from Puja to Amir to Reza to Moin.\nStep 15: Moin doesn't lead to Raj. So, this path is not successful.\nStep 16: The search for a path continues. Consider a new path from Puja to Amir to Reza to Jing.\nStep 17: Jing doesn't lead to Raj. So, this path is not successful.\nStep 18: Continue the search. A path from Puja to Wim to Kim to Raj is found. \n\nAnswer: Puja, Wim, Kim, Raj."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Puja, Wim, Kim, Raj",
+                "Answer: Puja, Wei, Kim, Raj",
+                "Answer: Puja, Pam, Kim, Raj"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Shanshan, Vadim, Noah, Anisha"
+            "parsed_response": "Answer: Puja, Wim, Kim, Raj"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

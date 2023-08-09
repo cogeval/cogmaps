@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Reza to Ian? Starting from Reza, please list the scholar names in order, including Reza, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Start at Vivian.\n2. Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n3. Check connections for each of these students:\n   a. Salma is connected to Shanshan, Vadim, and Noah.\n   b. Shanshan is connected to Vadim, Salma, and Noah.\n   c. Vadim is connected to Shanshan, Salma, and Noah.\n   d. Gongxue is connected to Paul, Solomon, Soheil, and Alice.\n4. Check connections for each of these students:\n   a. Noah is connected to Salma, Shanshan, Vadim, and Anisha.\n5. Anisha is the target, so the shortest path is Vivian -> Noah -> Anisha.\n\nAnswer: Vivian, Noah, Anisha"
+            "content": "First, let's map out the connections:\n\n1. Reza is connected to Moin and Pari.\n2. Moin is connected to Pari and Reza.\n3. Pari is connected to Reza, Moin, and Jing.\n4. Jing is connected to Reza, Moin, Pari, and Max.\n5. Max is connected to Jing, Nisha, Ian, and Sara.\n6. Nisha is connected to Ian, Sara, and Max.\n7. Ian is connected to Sara, Max, and Nisha.\n\nNow, let's find the shortest path from Reza to Ian:\n\n1. Start at Reza.\n2. From Reza, go to Pari.\n3. From Pari, go to Jing.\n4. From Jing, go to Max.\n5. From Max, go to Ian.\n\nAnswer: Reza, Pari, Jing, Max, Ian."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Reza, Jing, Matt, Ian"
             ],
-            "parsed_response": "Answer: Vivian, Noah, Anisha"
+            "parsed_response": "Answer: Reza, Pari, Jing, Max, Ian"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

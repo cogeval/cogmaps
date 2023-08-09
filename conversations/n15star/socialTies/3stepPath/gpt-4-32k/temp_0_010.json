@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Moin to Pam? Starting from Moin, please list the scholar names in order, including Moin, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Start at Vivian.\n2. Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n3. Check connections of each of these students.\n4. Salma is connected to Shanshan, Vadim, and Noah.\n5. Shanshan is connected to Vadim, Salma, and Noah.\n6. Vadim is connected to Salma, Shanshan, and Noah.\n7. Gongxue is connected to Paul, Solomon, Soheil, and Alice.\n8. Check connections of students connected to Gongxue.\n9. Paul, Solomon, and Alice are not connected to Anisha.\n10. Soheil is connected to Pierre, Abdul, Durga, Ajit, Solomon, Gongxue, and Alice.\n11. Check connections of students connected to Soheil.\n12. Pierre, Abdul, Solomon, Gongxue, and Alice are not connected to Anisha.\n13. Durga and Ajit are connected to Anisha.\n14. The shortest path from Vivian to Anisha is through Gongxue, Soheil, and either Durga or Ajit.\n\nAnswer: Vivian, Gongxue, Soheil, Durga, Anisha"
+            "content": "First, let's map out the connections:\n\n1. Moin is connected to Pari and Reza.\n2. Pari is connected to Moin, Amir, and Jing.\n3. Reza is connected to Moin, Amir, and Jing.\n4. Amir is connected to Reza, Moin, Pari, and Puja.\n5. Jing is connected to Reza, Moin, Pari, and Max.\n6. Puja is connected to Amir, Wim, Wei, and Pam.\n7. Wim is connected to Wei, Kim, Puja, and Pam.\n8. Wei is connected to Wim, Kim, Puja, and Pam.\n9. Kim is connected to Wim, Wei, Pam, and Raj.\n10. Pam is connected to Wim, Wei, Puja, and Kim.\n11. Max is connected to Jing, Nisha, Ian, and Sara.\n12. Nisha is connected to Ian, Sara, and Max.\n13. Ian is connected to Nisha, Sara, Max, and Raj.\n14. Sara is connected to Nisha, Ian, Max, and Raj.\n15. Raj is connected to Nisha, Ian, Sara, and Kim.\n\nNow, let's find the shortest path from Moin to Pam:\n\n1. Start at Moin.\n2. Go to Amir (Moin is connected to Amir).\n3. Go to Puja (Amir is connected to Puja).\n4. Go to Pam (Puja is connected to Pam).\n\nSo, the shortest path from Moin to Pam is Moin, Amir, Puja, Pam. \n\nAnswer: Moin, Amir, Puja, Pam."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Moin, Amir, Puja, Pam"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Durga, Anisha"
+            "parsed_response": "Answer: Moin, Amir, Puja, Pam"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

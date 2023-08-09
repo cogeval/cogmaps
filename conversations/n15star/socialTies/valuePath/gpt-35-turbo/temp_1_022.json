@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_valuePath_temp_1_22",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. Starting from Amir, we will explore the connections of each scholar in layers until we reach the person donating the maximum number of books.\n\n1. Start with Amir.\n2. Amir is connected to Reza, Moin, Pari, and Puja.\n3. Reza is connected to Moin and Pari.\n4. Moin is connected to Pari.\n5. Pari is connected to Puja.\n6. Puja is connected to Kim.\n7. Kim is connected to Pam.\n8. Pam is the person donating the maximum number of books, but we need to check if any other path is shorter.\n9. Amir is also connected to Reza, Moin, and Pari, but they are not donating the maximum number of books.\n10. Amir is not directly connected to Jing, Wim, Raj, or Nisha.\n\nBased on the connections, the shortest path from Amir to the person who is donating the maximum number of books (Pam) is: Amir, Puja, Kim, Pam.\n\nAnswer: Amir, Puja, Kim, Pam"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Puja, Wim, Kim",
+                "Answer: Amir, Puja, Pam, Kim",
+                "Answer: Amir, Puja, Wei, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Puja, Kim, Pam"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

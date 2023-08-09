@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n21star_socialTies_exp_policyReval_temp_1_10",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 21 scholars. Amir is connected to Wim, Raj, Jing, Wei, Nisha, and Reza. Sara is connected to Pari, Pam, Kim, Ian, Moin, and Puja. Zack is connected to Matt, Eva, Amy, Gia, Ming, and Prem. Nisha is connected to Reza, Wim, Raj, Jing, and Wei. Raj is connected to Jing, Wei, Reza, and Wim. Pam is connected to Jing, Kim, Ian, Moin, and Puja. Moin is connected to Puja, Pari, Kim, and Ian. Ming is connected to Prem, Matt, Eva, Amy, and Gia. Wei is connected to Reza, Wim, and Eva. Kim is connected to Ian, Puja, and Pari. Ian is connected to Puja and Pari. Gia is connected to Prem, Matt, Eva, and Amy. Reza is connected to Wim, and Jing. Puja is connected to scholars Pari. Prem is connected to Matt, Eva, and Amy. Wim is connected to Jing. Pari is connected to Amy. Amy is connected to Matt. Matt is connected to Eva. You have been told that Prem is donating 50 books and Moin is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "First, the task is to find the shortest path from Amir to the person with the maximum number of books. We know that Prem is donating 50 books and Moin is donating 10 books. So, we need to find the shortest path from Amir to Prem.\n\nAmir is directly connected to Wim, Raj, Jing, Wei, Nisha, and Reza.\n\nNow we need to look at those who are directly connected to Amir, and see if they are directly connected to Prem. None of Amir's connections are directly connected to Prem.\n\nNow, we need to look at those who are directly connected to those who are directly connected to Amir and see if they are connected to Prem.\n\nThe scholars directly connected to Amir's connections are:\n\nWim -> Jing\nRaj -> Jing, Wei, Reza, Wim\nJing -> Wei, Reza, Wim, Raj, Pam\nWei -> Reza, Wim, Eva\nNisha -> Reza, Wim, Raj, Jing, Wei\nReza -> Wim, Jing\n\nNow, from this list, we can see that Wei is connected to Eva and Eva is connected to Prem. So, we have our shortest path from Amir to Prem:\n\nAmir -> Wei -> Eva -> Prem\n\nSo, starting from Amir, the shortest path to the person with the maximum number of books is through Wei, Eva, and then Prem.\n\nAnswer: Amir, Wei, Eva, Prem"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told Sara is donating 100 books. Now, from Amir what is the shortest path to the person with the maximum number of books?  Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Now that Sara has the highest number of books (100), we need to find the shortest path from Amir to Sara.\n\nFirst, let's look at who is directly connected to Amir: Wim, Raj, Jing, Wei, Nisha, and Reza. None of these scholars is directly connected to Sara.\n\nNext, let's examine the second degree connections, meaning those who are directly connected to those who are directly connected to Amir:\n\n- Wim is connected to Jing.\n- Raj is connected to Jing, Wei, Reza, and Wim.\n- Jing is connected to Wei, Reza, Wim, Raj, and Pam.\n- Wei is connected to Reza, Wim, and Eva.\n- Nisha is connected to Reza, Wim, Raj, Jing, and Wei.\n- Reza is connected to Wim and Jing.\n\nNone of these scholars is directly connected to Sara. Therefore, we need to go one step further and look at third degree connections:\n\n- Jing, who is connected to Pam.\n- Pam, who is connected to Sara.\n\nSo, our shortest path from Amir to the scholar with the most books (Sara) is Amir, Jing, Pam, Sara.\n\nAnswer: Amir, Jing, Pam, Sara"
+        }
+    ],
+    "tests": {
+        "policyReval": {
+            "expected_answer": [
+                "Answer: Amir, Jing, Pam, Sara"
+            ],
+            "parsed_response": "Answer: Amir, Jing, Pam, Sara"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

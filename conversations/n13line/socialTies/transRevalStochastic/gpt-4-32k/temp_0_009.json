@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n13line_socialTies_exp_transRevalStochastic_temp_0_9",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+ '"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of thirteen scholars. From Vicky you have two choices, Amir and Wim.  Amir is connected to Raj, and Raj is connected to Wei. Wei is connected to Reza and Reza is connected to Ian. Ian is connected to Puja. Puja is donating 10 books, but you do not take any book, you're just learning about the environment. This time you ask Vicky to connect you to Wim who is connected to Jing. Jing is connected to Nisha. Nisha is connected to Kim and Kim is connected to Moin. Moin is connected to Sara. Sara has 50 books to donate, but you do not take any money, you're just learning about the environment. You return to Vicky. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas"
+        },
+        {
+            "role": "assistant",
+            "content": "The task is to find the path that leads to the maximum number of books. There are two paths from Vicky:\n\n1. Vicky -> Amir -> Raj -> Wei -> Reza -> Ian -> Puja (10 books)\n2. Vicky -> Wim -> Jing -> Nisha -> Kim -> Moin -> Sara (50 books)\n\nComparing the two paths, the second path leads to the maximum number of books.\n\nAnswer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara"
+        },
+        {
+            "role": "user",
+            "content": "Now you are told that Raj is connected to Wei with probability of 0.9 and to Nisha with probability of 0.1. Also, Jing is connected to Nisha with probability of 0.9 and to Wei with probability of 0.1. You return to Vicky. You will only be able to choose one path that has the highest probability of getting maximum number of books. Which scholar from Vicky will lead to the path where one can achieve the highest probability of getting maximum number of books?"
+        },
+        {
+            "role": "assistant",
+            "content": "The task is to find the path that leads to the maximum number of books with the highest probability. There are two paths from Vicky:\n\n1. Vicky -> Amir -> Raj (0.1 probability to Nisha) -> Nisha -> Kim -> Moin -> Sara (50 books)\n2. Vicky -> Wim -> Jing (0.9 probability to Nisha) -> Nisha -> Kim -> Moin -> Sara (50 books)\n\nComparing the two paths, the second path leads to the maximum number of books with the highest probability.\n\nAnswer: Wim"
+        }
+    ],
+    "tests": {
+        "transRevalStochastic": {
+            "expected_answer": [
+                "Answer: Wim"
+            ],
+            "parsed_response": "Answer: Wim"
+        }
+    },
+    "scores": {
+        "transRevalStochastic": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

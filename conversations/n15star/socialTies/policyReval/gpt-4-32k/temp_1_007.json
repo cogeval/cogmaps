@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Now you have been told that there is a reward of 5 for connecting with Alice. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections involving Alice.\n- Alice is connected to Paul, Solomon, Soheil, Gongxue, and Alice.\n\nStep 2: Identify the connections from Vivian's group to Alice's group.\n- Vivian is in the group with Salma, Shanshan, Vadim, and Gongxue.\n- Gongxue is connected to Alice.\n\nStep 3: Identify the most rewarding path for Vivian to connect to Alice's group.\n- The most rewarding path would involve connecting to Alice, as she provides a reward of 5.\n\nStep 4: Construct the connection path for Vivian.\n- Vivian connects to Gongxue in her group.\n- Gongxue connects to Alice in Alice's group.\n\nFinal connection path:\nAnswer: Vivian, Gongxue, Alice"
+            "content": "1. First, we start with Amir.\n2. We look at who Amir is connected to: Reza, Moin, Pari, and Puja.\n3. We check who of these scholars is connected to Kim, who is donating the most books.\n4. Puja is directly connected to Kim.\n5. The shortest path from Amir to the person who is donating the maximum number of books is therefore: Amir, Puja, Kim.\n\nAnswer: Amir, Puja, Kim."
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Moin is donating 100 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "1. First, we start with Amir.\n2. We look at who Amir is connected to: Reza, Moin, Pari, and Puja.\n3. Since Moin is donating the maximum number of books and Amir is directly connected to Moin, the shortest path is directly from Amir to Moin.\n\nAnswer: Amir, Moin."
         }
     ],
     "tests": {
         "policyReval": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Alice, Soheil"
+                "Answer: Amir, Moin"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Alice"
+            "parsed_response": "Answer: Amir, Moin"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

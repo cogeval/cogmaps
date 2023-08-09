@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Reza to Raj? Starting from Reza, please list the scholar names in order, including Reza, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections of Vivian.\nVivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n\nStep 2: Identify the connections of Salma, Shanshan, Vadim, and Gongxue.\nSalma is connected to Vivian, Shanshan, Vadim, Noah, and Anisha.\nShanshan is connected to Vivian, Salma, Vadim, Noah, and Anisha.\nVadim is connected to Vivian, Salma, Shanshan, and Noah.\nGongxue is connected to Vivian, Paul, Solomon, Soheil, Alice, and Pierre.\n\nStep 3: Identify the connections of Noah, Anisha, Paul, Solomon, Soheil, Alice, and Pierre.\nNoah is connected to Salma, Shanshan, Vadim, and Anisha.\nAnisha is connected to Noah, Abdul, Durga, Ajit, and Salma.\nPaul is connected to Gongxue, Solomon, Soheil, and Alice.\nSolomon is connected to Paul, Soheil, Gongxue, and Alice.\nSoheil is connected to Paul, Solomon, Gongxue, Alice, Pierre, Abdul, and Durga.\nAlice is connected to Paul, Solomon, Soheil, Gongxue, and Pierre.\nPierre is connected to Gongxue, Soheil, Abdul, and Durga.\n\nStep 4: Identify the connections of Abdul, Durga, and Ajit.\nAbdul is connected to Pierre, Soheil, Durga, and Ajit.\nDurga is connected to Pierre, Soheil, Abdul, and Ajit.\nAjit is connected to Abdul, Durga, Anisha, and Pierre.\n\nStep 5: Find the shortest connection path from Vivian to Ajit.\nVivian -> Salma -> Anisha -> Ajit\n\nAnswer: Vivian, Salma, Anisha, Ajit"
+            "content": "To find the shortest path from Reza to Raj, we need to trace the connections between the scholars. \n\nStep 1: Start from Reza. The scholars connected to Reza are Moin and Pari.\nStep 2: Check the scholars connected to Moin and Pari. Moin is connected to Pari, and Pari doesn't have any further connections.\nStep 3: Since neither Moin nor Pari are connected to Raj or any scholar who can lead to Raj, we need to consider the scholars who are connected to Reza indirectly. Amir and Jing are connected to Reza.\nStep 4: Check the scholars connected to Amir and Jing. Amir is connected to Puja, and Jing is connected to Max.\nStep 5: Check the scholars connected to Puja and Max. Puja is connected to Pam and Wim, and Max is connected to Sara and Nisha.\nStep 6: Check the scholars connected to Wim, Sara, and Nisha. Wim is connected to Wei and Kim, Sara is connected to Ian and Max, and Nisha is connected to Ian, Sara, and Max.\nStep 7: Check the scholars connected to Wei, Kim, Ian, and Max. Wei is connected to Kim, Puja, and Pam, Kim is connected to Pam, Ian is connected to Sara and Max, and Max is connected to Sara and Nisha.\nStep 8: Among these, Raj is connected to Kim. Therefore, the shortest path from Reza to Raj is through Amir, Puja, Wim, and Kim.\n\nAnswer: Reza, Amir, Puja, Wim, Kim, Raj"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Reza, Jing, Matt, Nisha, Raj",
+                "Answer: Reza, Jing, Matt, Ian, Raj",
+                "Answer: Reza, Jing, Matt, Sara, Raj"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha, Ajit"
+            "parsed_response": "Answer: Reza, Amir, Puja, Wim, Kim, Raj"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

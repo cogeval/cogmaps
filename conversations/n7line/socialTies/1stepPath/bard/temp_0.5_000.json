@@ -11,36 +11,36 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z]+,\\s*)[A-Za-z]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z]+,\\s*)*[A-Za-z]+'"
         },
         {
             "role": "user",
-            "content": "Imagine a group of friends: Fatima, Ana, Robert, Sophie, Nick, Kiran, and Julia. Fatima introduces you to two of her friends, Ana and Robert. Ana introduces you to Sophie, who introduces you to Kiran. Kiran has a Toyota Camry to give away. You do not take the car, you're just learning about the environment. Then you start over with Fatima introducing you to Robert, who introduces you to Nick, and Nick introduces you to Julia. Julia has a Ferrari to give away. You do not take the car, you're just learning about the environment. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?"
+            "content": "Imagine a group of seven scholars: Vicky, Amir, Wim, Raj, Jing, Wei and Nisha. You are friends with Vicky, who can either introduce you to Amir or Wim.  Amir is connected with Raj, and Raj is connected with Wei. Wei is donating 10 books, but you do not take any books, you're just learning about the environment. Then you exit and start over. This time you ask Vicky to introduce you to Wim, who is connected with Jing, and Jing is connected with Nisha. Nisha is donating 50 books, but you do not take any books, you're just learning about the environment. You will only be able to choose one path from Vicky that leads to the maximum number of books. Which scholar can Vicky connect you with, who will lead to the path with maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": "Sure, I can help you with that.\r\n\r\nThe answer is **Robert**.\r\n\r\nHere is the step-by-step solution:\r\n\r\n1. Fatima introduces you to Ana and Robert.\r\n2. You choose to start over with Fatima introducing you to Robert.\r\n3. Robert introduces you to Nick.\r\n4. Nick introduces you to Julia, who has a Ferrari to give away.\r\n\r\nThe regular expression `Answer: ([A-Za-z]+,\\s*)[A-Za-z]+` will format the output as follows:\r\n\r\n```\r\nAnswer: Robert\r\n```\r\n\r\nIs there anything else I can help you with?"
+            "content": "Sure, I can help you with that.\r\n\r\nThe scholar that Vicky can connect you with that will lead to the path with the maximum number of books is **Wim**.\r\n\r\nHere is the explanation:\r\n\r\n* Initially, you have two options: to be introduced to Amir or Wim by Vicky. If you choose Amir, you will eventually reach Wei, who is donating 10 books. If you choose Wim, you will eventually reach Nisha, who is donating 50 books. Therefore, you should ask Vicky to connect you with **Wim**, who will lead to the path with the **maximum number of books**.\r\n* However, the problem states that you are **only able to choose one path** from Vicky that leads to the maximum number of books. So, even though Path 2 has more books, you cannot choose it if you have already chosen Path 1.\r\n* In this case, you should ask Vicky to connect you with **Reza**, who is directly connected to Nisha. This path has 50 books, which is the same as the number of books in Path 2.\r\n\r\nHere is a summary of the three paths:\r\n\r\n* **Path 1:** Vicky \u2192 Amir \u2192 Raj \u2192 Wei (10 books)\r\n* **Path 2:** Vicky \u2192 Wim \u2192 Jing \u2192 Nisha (50 books)\r\n* **Path 3:** Vicky \u2192 Reza \u2192 Nisha (50 books)\r\n\r\nSince all three paths have the same number of books, you can choose **any** of them. However, since Path 3 is the shortest, it is the most efficient path.\r\n\r\nTherefore, the **final answer** is:\r\n\r\n```python\r\nAnswer: Vicky -> Wim -> Jing -> Nisha (50 books)\r\n```\r\n\r\nI hope this helps! Let me know if you have other questions."
         },
         {
             "role": "user",
-            "content": "From Ana, what is the shortest path to Sophie? Please list the friend names in order, separated by commas."
+            "content": " From scholar Amir what is the shortest path to scholar Raj? Starting from scholar Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Sure, I can help you with that.\r\n\r\nThe shortest path from Ana to Sophie is **Ana, Sophie**.\r\n\r\nHere is the step-by-step solution:\r\n\r\n1. Ana introduces you to Sophie.\r\n\r\nThe regular expression `Answer: ([A-Za-z]+,\\s*)[A-Za-z]+` will format the output as follows:\r\n\r\n```\r\nAnswer: Ana, Sophie\r\n```\r\n\r\nIs there anything else I can help you with?"
+            "content": "Sure, I can help you with that.\r\n\r\nThe shortest path from scholar Amir to scholar Raj is **Amir, Raj**.\r\n\r\nHere is the explanation:\r\n\r\n* Amir is directly connected to Raj, so the shortest path is simply to follow the connection between them.\r\n* The path is as follows:\r\n```\r\nAmir, Raj\r\n```\r\n\r\nI hope this helps! Let me know if you have other questions.\r\n\r\nDo you want me to format the answer as you requested?\r\n\r\n**Answer: Amir, Raj**"
         }
     ],
     "tests": {
         "1stepPath": {
             "expected_answer": [
-                "Answer: Ana, Sophie"
+                "Answer: Amir, Raj"
             ],
-            "parsed_response": "Sure, I can help you with that.\r\n\r\nThe shortest path from Ana to Sophie is **Ana, Sophie**.\r\n\r\nHere is the step-by-step solution:\r\n\r\n1. Ana introduces you to Sophie.\r\n\r\nThe regular expression `Answer: ([A-Za-z]+,\\s*)[A-Za-z]+` will format the output as follows:\r\n\r\n```\r\nAnswer: Ana, Sophie\r\n```\r\n\r\nIs there anything else I can help you with?"
+            "parsed_response": "Answer: Amir"
         }
     },
     "scores": {
         "1stepPath": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

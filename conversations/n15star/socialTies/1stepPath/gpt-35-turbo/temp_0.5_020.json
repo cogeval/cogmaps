@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_1stepPath_temp_0.5_20",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wim to Wei? Starting from Wim, please list the scholar names in order, including Wim, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Wim to Wei, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Wim.\n2. Check if Wim is connected to Wei. If yes, the shortest path is Wim, Wei. If not, continue to the next step.\n3. Check if Wim is connected to any scholars. If yes, add them to a queue.\n4. Remove Wim from the queue and check if the removed scholar is connected to Wei. If yes, the shortest path is Wim, the removed scholar, Wei. If not, continue to the next step.\n5. Check if the removed scholar is connected to any scholars not already in the queue. If yes, add them to the queue.\n6. Repeat steps 4 and 5 until either the shortest path is found or the queue is empty.\n\nNow let's follow these steps to find the shortest path from Wim to Wei:\n\n1. Start with Wim.\n2. Wim is not directly connected to Wei, so continue to the next step.\n3. Wim is connected to Wei, Kim, Puja, and Pam. Add them to the queue: Kim, Puja, Pam.\n4. Remove Kim from the queue. Kim is not directly connected to Wei, so continue to the next step.\n5. Kim is connected to Pam. Add Pam to the queue: Puja, Pam.\n6. Remove Puja from the queue. Puja is connected to Wei. The shortest path from Wim to Wei is: Wim, Puja, Wei.\n\nAnswer: Wim, Puja, Wei"
+        }
+    ],
+    "tests": {
+        "1stepPath": {
+            "expected_answer": [
+                "Answer: Wim, Wei"
+            ],
+            "parsed_response": "Answer: Wim, Puja, Wei"
+        }
+    },
+    "scores": {
+        "1stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,34 +15,27 @@
         },
         {
             "role": "user",
-            "content": "Imagine you are traveling through Asia. You start in New Delhi and have two choices, you can go to Islamabad or Kathmandu. From Islamabad, you can go to Kabul and from there to Tehran. In Tehran, your total expenses will be $1000 including hotels, shopping and sight-seeing. After learning this, you return to New Delhi. This time, you choose Kathmandu, which leads to Beijing, and from there you can go to Thimphu, where you have $400 total expenses. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Imagine a flower county with six flower fields. From the entrance you have two choices, you can go to the rose field or sunflower field. You enter the rose field, at the other end of this field there's a door that leads to the tulip field, and the tulip field leads to the orchid field. From the orchid field, you can have 10 orchid flowers for free, but you do not take any flower, you're just learning about the environment. Then you exit and start over. This time in the entrance you choose the sunflower field, which has a door to the daisy field, and the daisy field has a door that leads to the hydrangea field. You can have 50 hydrangea flowers from the hydrangea field, but you do not take any flowers, you're just learning about the environment. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "To determine which path from New Delhi leads to the least expensive destination, we need to compare the expenses of both paths. \n\nIf we take the path of Islamabad-Kabul-Tehran, the total expenses will be $1000. \n\nIf we take the path of Kathmandu-Beijing-Thimphu, the total expenses will be $400. \n\nTherefore, the path that leads to the least expensive destination is Kathmandu-Beijing-Thimphu. \n\nAnswer: Kathmandu"
+            "content": "To determine which field from the entrance will lead to the path with the maximum number of flowers, let's analyze the options and calculate the total number of flowers in each path.\n\n1. Path through the Rose Field:\n- Rose Field --> Tulip Field (0 flowers) --> Orchid Field (10 orchid flowers)\nTotal flowers: 10 orchid flowers\n\n2. Path through the Sunflower Field:\n- Sunflower Field --> Daisy Field --> Hydrangea Field (50 hydrangea flowers)\nTotal flowers: 50 hydrangea flowers\n\nComparing the two paths, the path through the Sunflower Field leads to a higher number of flowers. Therefore, the field from the entrance that leads to the path with the maximum number of flowers is the Sunflower Field.\n\nAnswer: Sunflower Field"
         },
         {
             "role": "user",
-            "content": "Now, the route from Kabul to Tehran is blocked, and instead, the route from Kabul leads to Thimphu. The route from Beijing now leads to Tehran. You start again in New Delhi. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Now you're told that the door at the end of the tulip field suddenly leads to the hydrangea field. The door at the end of daisy field now leads to the orchid field. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "To determine the path that leads to the least expensive destination, we need to calculate the expenses for both paths.\n\nIf we take the path of Islamabad-Kabul-Thimphu, we don't know the expenses, but we know that the expenses in Thimphu are $400, which means that the expenses of this path will be more than $1000.\n\nIf we take the path of Kathmandu-Beijing-Tehran, the total expenses will be $1000.\n\nTherefore, the path that leads to the least expensive destination is Kathmandu-Beijing-Tehran.\n\nAnswer: Tehran"
+            "content": "Considering the new information, let's analyze the updated paths and calculate the total number of flowers in each path:\n\n1. Path through the Rose Field:\n- Rose Field --> Tulip Field (now leads to Hydrangea Field) --> Hydrangea Field (50 hydrangea flowers)\nTotal flowers: 50 hydrangea flowers\n\n2. Path through the Sunflower Field:\n- Sunflower Field --> Daisy Field (now leads to Orchid Field) --> Orchid Field (10 orchid flowers)\nTotal flowers: 10 orchid flowers\n\nComparing the two paths, the path through the Rose Field (leading to the Hydrangea Field) now leads to a higher number of flowers. Therefore, the field from the entrance that leads to the path with the maximum number of flowers is still the Rose Field.\n\nAnswer: Rose Field"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Islamabad"
+                "Answer: rose"
             ],
-            "parsed_response": "To determine the path that leads to the least expensive destination, we need to calculate the expenses for both paths.\n\nIf we take the path of Islamabad-Kabul-Thimphu, we don't know the expenses, but we know that the expenses in Thimphu are $400, which means that the expenses of this path will be more than $1000.\n\nIf we take the path of Kathmandu-Beijing-Tehran, the total expenses will be $1000.\n\nTherefore, the path that leads to the least expensive destination is Kathmandu-Beijing-Tehran.\n\nAnswer: Tehran"
-        }
-    },
-    "scores": {
-        "transReval": {
-            "score": 0.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Rose Field"
         }
     }
 }

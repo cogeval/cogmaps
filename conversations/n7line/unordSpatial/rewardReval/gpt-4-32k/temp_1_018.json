@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,34 +15,27 @@
         },
         {
             "role": "user",
-            "content": "Imagine you are traveling through Asia. You start in New Delhi and have two choices, you can go to Islamabad or Kathmandu. From Islamabad, you can go to Kabul and from there to Tehran. In Tehran, your total expenses will be $1000 including hotels, shopping and sight-seeing. After learning this, you return to New Delhi. This time, you choose Kathmandu, which leads to Beijing, and from there you can go to Thimphu, where you have $400 total expenses. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Imagine a flower county with six flower fields. From the entrance you have two choices, you can go to the rose field or sunflower field. You enter the rose field, at the other end of this field there's a door that leads to the tulip field, and the tulip field leads to the orchid field. From the orchid field, you can have 10 orchid flowers for free, but you do not take any flower, you're just learning about the environment. Then you exit and start over. This time in the entrance you choose the sunflower field, which has a door to the daisy field, and the daisy field has a door that leads to the hydrangea field. You can have 50 hydrangea flowers from the hydrangea field, but you do not take any flowers, you're just learning about the environment. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two possible paths from New Delhi.\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu\n\nStep 2: Identify the total expenses for each path.\nPath 1: $1000 in Tehran\nPath 2: $400 in Thimphu\n\nStep 3: Compare the total expenses of both paths to determine which path leads to the least expensive destination.\nPath 1: $1000 in Tehran\nPath 2: $400 in Thimphu\n\nStep 4: Determine the starting city for the least expensive path.\nAnswer: Kathmandu"
+            "content": "Step 1: Identify the two initial choices from the entrance - rose field and sunflower field.\nStep 2: Determine the number of flowers available in the path starting with the rose field.\n- Rose field leads to tulip field, which leads to orchid field.\n- Orchid field offers 10 orchid flowers.\n\nStep 3: Determine the number of flowers available in the path starting with the sunflower field.\n- Sunflower field leads to daisy field, which leads to hydrangea field.\n- Hydrangea field offers 50 hydrangea flowers.\n\nStep 4: Compare the number of flowers in both paths.\n- Orchid field (10 flowers) vs. Hydrangea field (50 flowers)\n\nStep 5: Choose the field from the entrance that leads to the path with the maximum number of flowers.\n- In this case, the sunflower field leads to the path with the maximum number of flowers (50 hydrangea flowers).\n\nAnswer: Sunflower field"
         },
         {
             "role": "user",
-            "content": "Now, you find a coupon for hotels in Tehran and you bear $380 total expenses instead of $1000. You start again in New Delhi. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "You are told that now from the tulip field, if you enter the orchid field, you can have 100 orchid flowers. You are also told that from the daisy field, if you enter the hydrangea field the number of flowers is same as before. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two possible paths from New Delhi.\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu\n\nStep 2: Update the total expenses for each path with the new information.\nPath 1: $380 in Tehran (with the coupon)\nPath 2: $400 in Thimphu\n\nStep 3: Compare the updated total expenses of both paths to determine which path leads to the least expensive destination.\nPath 1: $380 in Tehran\nPath 2: $400 in Thimphu\n\nStep 4: Determine the starting city for the least expensive path.\nAnswer: Islamabad"
+            "content": "Step 1: Identify the two initial choices from the entrance - rose field and sunflower field.\nStep 2: Determine the updated number of flowers available in the path starting with the rose field.\n- Rose field leads to tulip field, which leads to orchid field.\n- Orchid field now offers 100 orchid flowers.\n\nStep 3: Determine the number of flowers available in the path starting with the sunflower field (unchanged from before).\n- Sunflower field leads to daisy field, which leads to hydrangea field.\n- Hydrangea field offers 50 hydrangea flowers.\n\nStep 4: Compare the updated number of flowers in both paths.\n- Orchid field (100 flowers) vs. Hydrangea field (50 flowers)\n\nStep 5: Choose the field from the entrance that leads to the path with the updated maximum number of flowers.\n- In this case, the rose field leads to the path with the maximum number of flowers (100 orchid flowers).\n\nAnswer: Rose field"
         }
     ],
     "tests": {
         "rewardReval": {
             "expected_answer": [
-                "Answer: Islamabad"
+                "Answer: rose"
             ],
-            "parsed_response": "Step 1: Identify the two possible paths from New Delhi.\nPath 1: New Delhi -> Islamabad -> Kabul -> Tehran\nPath 2: New Delhi -> Kathmandu -> Beijing -> Thimphu\n\nStep 2: Update the total expenses for each path with the new information.\nPath 1: $380 in Tehran (with the coupon)\nPath 2: $400 in Thimphu\n\nStep 3: Compare the updated total expenses of both paths to determine which path leads to the least expensive destination.\nPath 1: $380 in Tehran\nPath 2: $400 in Thimphu\n\nStep 4: Determine the starting city for the least expensive path.\nAnswer: Islamabad"
-        }
-    },
-    "scores": {
-        "rewardReval": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Rose field"
         }
     }
 }

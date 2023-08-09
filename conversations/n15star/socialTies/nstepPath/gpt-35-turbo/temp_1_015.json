@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_1_15",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wim to Jing? Starting from Wim, please list the scholar names in order, including Wim, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Wim to Jing, we can use a breadth-first search algorithm.\n\nStarting from Wim, the scholars connected to Wim are Wei, Kim, Puja, and Pam. None of them are Jing, so we add them to the queue for further exploration.\n\nNext, we check the scholars connected to Wei, Kim, Puja, and Pam. Wei is not Jing, but Kim is connected to Jing. Therefore, the shortest path from Wim to Jing is Wim, Kim, Jing.\n\nAnswer: Wim, Kim, Jing"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Wim, Puja, Amir, Reza, Jing",
+                "Answer: Wim, Puja, Amir, Moin, Jing",
+                "Answer: Wim, Puja, Amir, Pari, Jing"
+            ],
+            "parsed_response": "Answer: Wim, Kim, Jing"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nstepPath_temp_1_16",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Nisha what is the shortest path to Eva? Starting from Nisha, please list the scholar numbers in order, including Nisha, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Nisha to Eva, we can use a breadth-first search algorithm. Let's start with Nisha and explore the connections to other scholars:\n\n1. Nisha is connected to Wei, Reza, Kim, and Sara.\n2. Wei is connected to Nisha, Reza, Kim, and Raj. Since Raj is already connected to Nisha, we skip this connection.\n3. Reza is connected to Nisha, Kim, Nisha, and Wei. Since Nisha and Wei are already connected, we skip these connections.\n4. Kim is connected to Wei, Nisha, Reza, and Moin. Since Nisha and Reza are already connected, we skip these connections.\n5. Sara is connected to Ian, Moin, Puja, and Nisha. Since Nisha is already connected, we skip this connection.\n6. Moin is connected to Ian, Puja, Kim, and Sara. Since Kim and Sara are already connected, we skip these connections.\n7. Puja is connected to Pari, Ian, Sara, and Moin. Since Sara and Moin are already connected, we skip these connections.\n8. Pari is connected to Pam, Matt, Eva, and Puja. Since Eva is already connected, we have found the shortest path.\n\nSo, the shortest path from Nisha to Eva is: Nisha, Puja, Pari, Eva.\n\nAnswer: Nisha, Puja, Pari, Eva."
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Nisha, Wei, Raj, Wim, Eva",
+                "Answer: Nisha, Reza, Amir, Wim, Eva",
+                "Answer: Nisha, Sara, Ian, Matt, Eva",
+                "Answer: Nisha, Sara, Puja, Pari, Eva"
+            ],
+            "parsed_response": "Answer: Nisha, Puja, Pari, Eva"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": " Okay, here are the steps I would take:\n1. Identify all the connections between scholars. This results in a graph with 16 nodes and multiple edges.\n2. Find all subgroups of scholars that are connected to at least 2 other members of the subgroup. These are the densely-connected clusters. \n3. Count the number of densely-connected clusters found in step 2.\n\nAnswer: there are 5 clusters"
+            "content": " Okay, here are the steps:\n1. List all the scholars and their connections:\nAmir: Wim, Raj, Jing, Reza \nWim: Amir, Raj, Jing, Eva\nRaj: Amir, Wim, Jing, Wei \nJing: Amir, Wim, Raj, Pam\nWei: Nisha, Reza, Kim, Raj\nNisha: Wei, Reza, Kim, Sara\nReza: Amir, Kim, Nisha, Wei\nKim: Wei, Nisha, Reza, Moin\nIan: Moin, Puja, Sara, Matt\nMoin: Ian, Puja, Kim, Sara \nPuja: Pari, Ian, Sara, Moin\nSara: Ian, Moin, Puja, Nisha\nPari: Pam, Matt, Eva, Puja\nPam: Jing, Pari, Matt, Eva\nMatt: Pari, Pam, Eva, Ian\nEva: Pari, Pam, Matt, Wim\n\n2. Identify clusters where each node has at least 2 connections \nCluster 1: Amir, Wim, Raj, Jing \nCluster 2: Wei, Nisha, Reza, Kim\nCluster 3: Ian, Moin, Puja, Sara\nCluster 4: Pari, Pam, Matt, Eva\n\nAnswer: There are 4 clusters"
         }
     ],
     "tests": {
@@ -27,12 +27,12 @@
             "expected_answer": [
                 "Answer: there are 4 clusters"
             ],
-            "parsed_response": "Answer: there are 5 clusters"
+            "parsed_response": "Answer: There are 4 clusters"
         }
     },
     "scores": {
         "nClusters": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

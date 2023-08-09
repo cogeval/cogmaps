@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,24 +15,24 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Pam what is the shortest path to Ian? Starting from Pam, please list the scholar names in order, including Pam, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Amir what is the shortest path to Eva? Starting from Amir, please list the scholar numbers in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Pam, Jing, Raj, Wei, Nisha, Sara, Ian"
+            "content": "To find the shortest path from Amir to Eva, we can use a breadth-first search algorithm. Here are the steps:\n\n1. Create a queue and enqueue Amir.\n2. Create a visited set and add Amir to it.\n3. Create a dictionary to store the path from each scholar to its previous scholar.\n4. While the queue is not empty, do the following:\n   - Dequeue the first scholar from the queue and call it current_scholar.\n   - If current_scholar is Eva, stop the search.\n   - Otherwise, for each scholar connected to current_scholar that is not in the visited set, do the following:\n     - Enqueue the connected scholar.\n     - Add the connected scholar to the visited set.\n     - Set the connected scholar's previous scholar in the path dictionary to be the current_scholar.\n5. If the search reaches this point, it means there is no path from Amir to Eva.\n\nNow let's follow these steps to find the shortest path from Amir to Eva:\n\n1. Enqueue Amir and add him to the visited set: Queue = [Amir], Visited = {Amir}.\n2. Dequeue Amir and set him as the current_scholar.\n3. Amir is connected to Wim, Raj, Jing, and Reza. Enqueue them and add them to the visited set: Queue = [Wim, Raj, Jing, Reza], Visited = {Amir, Wim, Raj, Jing, Reza}.\n4. Dequeue Wim and set him as the current_scholar.\n5. Wim is connected to Amir, Raj, Jing, and Eva. Since Eva is the target scholar, stop the search.\n\nTherefore, the shortest path from Amir to Eva is: Amir, Wim, Eva.\n\nAnswer: Amir, Wim, Eva"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Pam, Matt, Ian"
+                "Answer: Amir, Wim, Eva"
             ],
-            "parsed_response": "Answer: Pam, Jing, Raj, Wei, Nisha, Sara, Ian"
+            "parsed_response": "Answer: Amir, Wim, Eva"
         }
     },
     "scores": {
         "2stepPath": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

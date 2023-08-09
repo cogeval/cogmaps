@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and  7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4  and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to  rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is  connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10.  Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11,  8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also  connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and  11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13,  14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Initially, you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. You are in room 1 and you have been told that there is no connection between room 13  and 11 and also there is no connection between room 15 and room 9. From room 1,  what is the path that yields the most reward? Please list the room numbers in  order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the given connections between rooms and adjust for the changes mentioned.\nStep 2: List the possible paths from room 1 to room 10 and room 16, avoiding room 5.\nStep 3: Calculate the total reward for each path, considering the penalty for visiting room 5.\nStep 4: Identify the path with the most reward.\n\nPaths to room 10:\n1-3-4-14-13-11-10 (Reward: 10)\n1-2-16-13-11-10 (Reward: 10+5)\n\nPaths to room 16:\n1-2-16 (Reward: 5)\n1-7-6-12-10-11-13-16 (Reward: 10+5)\n\nPath with the most reward: 1-2-16-13-11-10 (Reward: 15)\n\nAnswer: 1, 2, 16, 13, 11, 10"
+            "content": "To find the shortest path from room 1 that yields the most reward, we need to compare the shortest paths to room 10 and room 15.\n\nPath to room 10:\n1 -> 7 -> 8 -> 10\nThis path has 4 rooms.\n\nPath to room 15:\n1 -> 4 -> 14 -> 15\nThis path also has 4 rooms.\n\nSince both paths have the same number of rooms, we choose the path with the most reward, which is the path to room 10.\n\nAnswer: 1, 7, 8, 10"
+        },
+        {
+            "role": "user",
+            "content": "The door from room 1 to room 7 is locked. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Since the door from room 1 to room 7 is locked, we need to find alternative paths to rooms 10 and 15. \n\nAlternative path to room 10:\n1 -> 4 -> 14 -> 13 -> 11 -> 10\nThis path has 6 rooms.\n\nPath to room 15 remains the same as before:\n1 -> 4 -> 14 -> 15\nThis path has 4 rooms.\n\nAlthough the reward in room 10 is higher, the shortest path to get it now has 6 rooms. However, we can get to room 15 in just 4 rooms. Thus, we choose the shorter path with less reward.\n\nAnswer: 1, 4, 14, 15"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: 1, 2, 16, 2, 1, 7, 6, 12, 10",
-                "Answer: 1,2,16,2,1,7,6,12,10"
+                "Answer: 1, 3, 5, 8, 10",
+                "Answer: 1,3,5,8,10"
             ],
-            "parsed_response": "Answer: 1, 2, 16, 13, 11, 10"
+            "parsed_response": "Answer: 1, 4, 14, 15"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

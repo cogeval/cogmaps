@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Pari to Sara? Starting from Pari, please list the scholar names in order, including Pari, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Start at Vivian.\n2. Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n3. Check connections of each of these students:\n   - Salma is connected to Vivian, Shanshan, Vadim, and Noah.\n   - Shanshan is connected to Vivian, Salma, Vadim, and Noah.\n   - Vadim is connected to Vivian, Salma, Shanshan, and Noah.\n   - Gongxue is connected to Vivian, Salma, Shanshan, Vadim, Paul, Solomon, Soheil, and Alice.\n4. Check connections of Gongxue's connected students:\n   - Paul is connected to Solomon, Soheil, Gongxue, and Alice.\n   - Solomon is connected to Paul, Soheil, Gongxue, and Alice.\n   - Soheil is connected to Paul, Solomon, Gongxue, Alice, Pierre, Abdul, Durga, and Ajit.\n   - Alice is connected to Paul, Solomon, Soheil, Gongxue, and Soheil.\n5. Check connections of Soheil's connected students:\n   - Pierre is connected to Abdul, Durga, Ajit, and Soheil.\n   - Abdul is connected to Pierre, Durga, Ajit, Soheil, and Anisha.\n   - Durga is connected to Pierre, Abdul, Ajit, Soheil, and Anisha.\n   - Ajit is connected to Pierre, Abdul, Durga, Soheil, and Anisha.\n6. Abdul, Durga, and Ajit are all connected to Anisha.\n\nThe shortest path from Vivian to Anisha is: Vivian, Gongxue, Soheil, Abdul, Anisha.\n\nAnswer: Vivian, Gongxue, Soheil, Abdul, Anisha"
+            "content": "First, let's map out the connections:\n\n1. Pari is directly connected to Amir, Jing, and Moin.\n2. Amir is directly connected to Reza, Moin, Pari, and Puja.\n3. Jing is directly connected to Reza, Moin, Pari, and Max.\n4. Moin is directly connected to Amir, Jing, Pari, and Reza.\n5. Reza is directly connected to Amir, Jing, and Moin.\n6. Puja is directly connected to Amir, Wim, Wei, and Pam.\n7. Wim is directly connected to Wei, Kim, Puja, and Pam.\n8. Wei is directly connected to Wim, Kim, Puja, and Pam.\n9. Kim is directly connected to Wim, Wei, Pam, and Raj.\n10. Pam is directly connected to Wim, Wei, Puja, and Kim.\n11. Raj is directly connected to Nisha, Ian, Sara, and Kim.\n12. Nisha is directly connected to Ian, Sara, Max, and Raj.\n13. Ian is directly connected to Sara, Max, Nisha, and Raj.\n14. Sara is directly connected to Max, Nisha, Ian, and Raj.\n15. Max is directly connected to Jing, Nisha, Ian, and Sara.\n\nNow, let's find the shortest path from Pari to Sara:\n\n1. Start at Pari.\n2. From Pari, go to Jing (Pari is directly connected to Jing).\n3. From Jing, go to Max (Jing is directly connected to Max).\n4. From Max, go to Sara (Max is directly connected to Sara).\n\nSo, the shortest path from Pari to Sara is: Pari, Jing, Max, Sara. \n\nAnswer: Pari, Jing, Max, Sara."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Pari, Jing, Matt, Sara"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Abdul, Anisha"
+            "parsed_response": "Answer: Pari, Jing, Max, Sara"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -19,23 +19,23 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Wim, Wei, Eva, Matt, Prem"
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a breadth-first search algorithm. We will start from Amir and explore the connections of each scholar, keeping track of the number of books each scholar has donated. \n\nHere is the step-by-step process:\n\n1. Start with Amir and initialize an empty queue.\n2. Enqueue Amir and set the number of books donated to 0.\n3. Dequeue the first scholar from the queue.\n4. Check if the dequeued scholar has donated more books than the current maximum number of books. If yes, update the maximum number of books and store the name of the scholar.\n5. Enqueue all the connected scholars of the dequeued scholar (excluding the ones already visited) and update the number of books donated by them.\n6. Repeat steps 3-5 until the queue is empty.\n7. Return the shortest path from Amir to the scholar with the maximum number of books.\n\nNow let's apply this algorithm to find the shortest path from Amir to the scholar with the maximum number of books:\n\n1. Amir (0 books)\n2. Wim (0 books)\n3. Reza (0 books)\n4. Jing (0 books)\n5. Wei (0 books)\n6. Raj (0 books)\n7. Nisha (0 books)\n8. Pari (0 books)\n9. Pam (0 books)\n10. Kim (0 books)\n11. Ian (0 books)\n12. Moin (10 books)\n13. Puja (10 books)\n14. Ming (0 books)\n15. Matt (0 books)\n16. Eva (0 books)\n17. Amy (0 books)\n18. Gia (0 books)\n19. Prem (50 books)\n\nAnswer: Amir, Moin, Prem"
         },
         {
             "role": "user",
-            "content": "You are told that Nisha has an instant connection portal, through which she can connect you to any scholar, but one at a time. This means that once you connect with Nisha, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+            "content": " You are told that Amir just got married to Vivian, who has an instant connection portal, through which you can connect with any of Matt\u2019s connections, one at a time. This means that from Vivian, you can connect with any scholar who is connected to Matt. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Starting from Amir, the shortest path to the person with the maximum number of books using Nisha's instant connection portal is: Amir, Nisha, Reza, Wim, Eva, Matt, Prem. \n\nAnswer: Amir, Nisha, Reza, Wim, Eva, Matt, Prem."
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, considering the connection portal through Vivian to Matt's connections, we can modify the previous breadth-first search algorithm. Instead of exploring all connections of each scholar, we will only explore the connections of Matt. \n\nHere is the updated step-by-step process:\n\n1. Start with Amir and initialize an empty queue.\n2. Enqueue Amir and set the number of books donated to 0.\n3. Dequeue the first scholar from the queue.\n4. Check if the dequeued scholar has donated more books than the current maximum number of books. If yes, update the maximum number of books and store the name of the scholar.\n5. If the dequeued scholar is Matt, stop the search as we have reached the connections of Matt.\n6. If the dequeued scholar is not Matt, enqueue all the connections of Matt that have not been visited yet and update the number of books donated by them.\n7. Repeat steps 3-6 until the queue is empty.\n8. Return the shortest path from Amir to the scholar with the maximum number of books.\n\nNow let's apply this algorithm to find the shortest path from Amir to the scholar with the maximum number of books considering the connection portal through Vivian:\n\n1. Amir (0 books)\n2. Matt (0 books)\n3. Eva (0 books)\n4. Amy (0 books)\n5. Gia (0 books)\n6. Prem (50 books)\n\nAnswer: Amir, Matt, Prem"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Amir, Nisha, Prem"
+                "Answer: Amir, Vivian, Prem"
             ],
-            "parsed_response": "Starting from Amir, the shortest path to the person with the maximum number of books using Nisha's instant connection portal is: Amir, Nisha, Reza, Wim, Eva, Matt, Prem. \n\nAnswer: Amir, Nisha, Reza, Wim, Eva, Matt, Prem."
+            "parsed_response": "Answer: Amir, Matt, Prem"
         }
     },
     "scores": {

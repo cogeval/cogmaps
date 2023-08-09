@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleDetour_temp_1_20",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, we can use the Breadth-First Search (BFS) algorithm. Here are the steps I will take:\n\n1. Start with Amir.\n2. Check if Amir is connected to anyone who is donating books.\n3. If yes, add that person to the queue.\n4. Repeat steps 2 and 3 for each person in the queue until the queue is empty or we find someone donating the maximum number of books.\n5. If the queue becomes empty without finding someone donating the maximum number of books, stop and return \"No path found\".\n6. If we find someone donating the maximum number of books, stop and return the list of scholars in the order they were encountered during the BFS traversal.\n\nLet's follow these steps to find the shortest path from Amir to the person donating the maximum number of books.\n\nAnswer: Amir, Reza, Pari"
+        },
+        {
+            "role": "user",
+            "content": "Amir and Puja had a disagreement and now no longer connected to each other, and now Jing has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Jing, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Since Amir and Puja are no longer connected, we need to find an alternative path to the person who is donating the maximum number of books. In this case, we can utilize Jing's instant connection portal to connect with different scholars one at a time.\n\nHere are the steps I will take:\n\n1. Start with Amir.\n2. Check if Amir is connected to anyone who is donating books.\n3. If yes, add that person to the queue.\n4. If not, connect with Jing through the instant connection portal.\n5. Check if Jing is connected to anyone who is donating books.\n6. If yes, add that person to the queue.\n7. Repeat steps 2-6 until the queue is empty or we find someone donating the maximum number of books.\n8. If the queue becomes empty without finding someone donating the maximum number of books, stop and return \"No path found\".\n9. If we find someone donating the maximum number of books, stop and return the list of scholars in the order they were encountered during the BFS traversal.\n\nLet's follow these steps to find the shortest path from Amir to the person who is donating the maximum number of books.\n\nAnswer: Amir, Jing, Max"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Kim",
+                "Answer: Amir, Moin, Jing, Kim ",
+                "Answer: Amir, Pari, Jing, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Jing, Max"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

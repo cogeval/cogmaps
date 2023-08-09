@@ -6,44 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Determine the wait times for each attraction.\nStep 2: Compare the wait times.\nStep 3: Identify the attraction with the shortest wait time.\nStep 4: List the path to the attraction with the shortest wait time.\n\nAnswer: Left, Fantasyland, Mad Tea Party"
+            "content": "Step 1: Analyze the two main paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nPath 1 (Right):\n- Sunflower field (0 flowers)\n- Hydrangea field (50 flowers)\n- Orchid field (10 flowers)\nTotal flowers in Path 1: 60\n\nPath 2 (Left):\n- Rose field (0 flowers)\n- Daisy field (22 flowers)\n- Tulip field (56 flowers)\nTotal flowers in Path 2: 78\n\nStep 5: Provide the answer with the path that has the maximum number of flowers.\n\nAnswer: Entrance, Rose field, Daisy field, Tulip field"
         },
         {
             "role": "user",
-            "content": "Now imagine before you can act on that decision, you check the app for Tomorrowland and it says the wait time for Autopia is now 5 minutes while for Space Mountain, it is 20 minutes. You now check the app for Fantasyland and you find that the wait time for Mad Tea Party is 14 minutes while for Peter Pan\u2019s Flight it is 10 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "Now imagine before you can act on that decision, someone comes back from the rose field and says the tulip field on the left has now 30 tulip flowers given for free and the daisy field on the right has now 40 daisy flowers for free. Another person comes back from the sunflower field and says the orchid field on the left leads to 60 orchid flowers for free and the hydrangea field on the right leads to 20 hydrangea flowers. Given you didn't take any flower yet, assume you can pick one path to collect flowers. Starting from the entrance, which path will lead to the maximum number of flowers? Please list all flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Update the wait times for each attraction based on the app information.\nStep 2: Compare the updated wait times.\nStep 3: Identify the attraction with the shortest updated wait time.\nStep 4: List the path to the attraction with the shortest updated wait time.\n\nAnswer: Right, Tomorrowland, Autopia"
+            "content": "Step 1: Update the flower counts based on the new information.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nPath 1 (Right):\n- Sunflower field (0 flowers)\n- Hydrangea field (20 flowers)\n- Orchid field (60 flowers)\nTotal flowers in Path 1: 80\n\nPath 2 (Left):\n- Rose field (0 flowers)\n- Daisy field (40 flowers)\n- Tulip field (30 flowers)\nTotal flowers in Path 2: 70\n\nStep 5: Provide the answer with the path that has the maximum number of flowers.\n\nAnswer: Entrance, Sunflower field, Hydrangea field, Orchid field"
         }
     ],
     "tests": {
         "rewardReval": {
             "expected_answer": [
-                "Answer: Entrance, Tomorrowland, Autopia",
-                "Answer: entrance, Tomorrowland, Autopia "
+                "Answer: rose, tulip, hydrangea"
             ],
-            "parsed_response": "Step 1: Update the wait times for each attraction based on the app information.\nStep 2: Compare the updated wait times.\nStep 3: Identify the attraction with the shortest updated wait time.\nStep 4: List the path to the attraction with the shortest updated wait time.\n\nAnswer: Right, Tomorrowland, Autopia"
-        }
-    },
-    "scores": {
-        "rewardReval": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Entrance, Sunflower field, Hydrangea field, Orchid field"
         }
     }
 }

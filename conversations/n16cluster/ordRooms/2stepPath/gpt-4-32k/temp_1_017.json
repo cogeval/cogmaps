@@ -15,20 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. What is the shortest path from room 14 to room 9? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. From room 4 what is the shortest path to room 5? Starting from room 4, please list the room numbers in order, including 4, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the starting room (14) and the target room (9).\nStep 2: Determine the rooms connected to room 14 (4, 13, 15, 16).\nStep 3: Analyze the shortest paths through each connected room:\n  - Room 4 connects to rooms 1, 2, 3, and 14. No direct path to room 9.\n  - Room 13 connects to rooms 14, 15, 16, and 11.\n    - Room 11 connects to rooms 13, 9, 12, and 10. (Found a path)\n  - Room 15 connects to rooms 13, 14, 16, and 9. (Found a path)\n  - Room 16 connects to rooms 13, 14, 15, and 2. No direct path to room 9.\n\nStep 4: Compare the shortest paths found:\n  - Path 14 -> 13 -> 11 -> 9 (4 rooms)\n  - Path 14 -> 15 -> 9 (3 rooms)\n\nStep 5: Choose the shortest path.\nAnswer: 14, 15, 9"
+            "content": "Step 1: Identify the starting room, which is room 4.\nStep 2: Check the rooms connected to room 4, which are rooms 1, 2, 3, and 14.\nStep 3: Determine which of the connected rooms is closest to room 5. Room 3 is directly connected to room 5.\nStep 4: List the room numbers in order, starting from room 4 to room 5.\n\nAnswer: 4, 3, 5"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: 14, 15, 9",
-                "Answer: 14,15,9"
+                "Answer: 4, 3, 5"
             ],
-            "parsed_response": "Answer: 14, 15, 9"
+            "parsed_response": "Answer: 4, 3, 5"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

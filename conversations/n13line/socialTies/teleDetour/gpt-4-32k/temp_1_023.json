@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n13line_socialTies_exp_teleDetour_temp_1_23",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+ '"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of thirteen scholars. From Vicky you have two choices, Amir and Wim.  Amir is connected to Raj, and Raj is connected to Wei. Wei is connected to Reza and Reza is connected to Ian. Ian is connected to Puja. Puja is donating 10 books, but you do not take any book, you're just learning about the environment. This time you ask Vicky to connect you to Wim who is connected to Jing. Jing is connected to Nisha. Nisha is connected to Kim and Kim is connected to Moin. Moin is connected to Sara. Sara has 50 books to donate, but you do not take any money, you're just learning about the environment. You return to Vicky. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas"
+        },
+        {
+            "role": "assistant",
+            "content": "To figure out the path that will lead to the maximum number of books, I will list out the two possible paths from Vicky and calculate the total number of books for each path. \n\nPath 1: Vicky - Amir - Raj - Wei - Reza - Ian - Puja. Number of books is 10.\n\nPath 2: Vicky - Wim - Jing - Nisha - Kim - Moin - Sara. Number of books is 50.\n\nAfter comparing both paths, the path with the maximum number of books is Path 2.\n\nAnswer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara"
+        },
+        {
+            "role": "user",
+            "content": "You are told that Ian has a new connection Pam, who has an instant connection portal. From this portal it is possible to connect with any of Moin\u2019s connection. When you return to Vicky and choose the path that leads to the maximum number of books, you discover that the regular path to the scholar with the maximum number of books is blocked. You will only be able to choose one path that leads to the maximum number of books. Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Given that the regular path to Sara is blocked, we can no longer use the previous path to reach her. However, we now have the information that Ian has a new connection to Pam, who has an instant portal to any of Moin's connections. \n\nAs such, we can update our path accordingly. We should stick to the first path until we reach Ian, connect to Pam, and use her portal to reach Moin, and finally reach Sara. So the path will be: \n\nPath: Vicky - Amir - Raj - Wei - Reza - Ian - Pam - Moin - Sara. \n\nThis path allows us to reach Sara, who has the maximum number of books.\n\nAnswer: Vicky, Amir, Raj, Wei, Reza, Ian, Pam, Moin, Sara"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Raj, Wei, Reza, Ian, Pam, Sara"
+            ],
+            "parsed_response": "Answer: Vicky, Amir, Raj, Wei, Reza, Ian, Pam, Moin, Sara"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

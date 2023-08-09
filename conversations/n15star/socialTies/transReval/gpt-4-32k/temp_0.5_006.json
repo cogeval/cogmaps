@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections for each student.\nStep 2: Determine the reward for each connection.\nStep 3: Find the path with the highest reward.\n\nConnections:\n1. Vivian - Salma - Shanshan - Vadim - Gongxue\n2. Pierre - Abdul - Durga - Ajit - Soheil - Alice\n3. Vivian - Pierre (new connection)\n\nRewards:\n1. Vivian (1) - Salma (2) - Shanshan (3) - Vadim (4) - Gongxue (5) = 15\n2. Pierre (1) - Abdul (2) - Durga (3) - Ajit (4) - Soheil (5) - Alice (6) = 21\n3. Vivian (1) - Pierre (2) = 3\n\nThe path with the highest reward is the second path.\n\nAnswer: Pierre, Abdul, Durga, Ajit, Soheil, Alice"
+            "content": "Step 1: Identify the person who is donating the maximum number of books. In this case, it's Kim who is donating 50 books.\n\nStep 2: Trace the shortest path from Amir to Kim. Looking at the connections, the shortest path is: Amir - Puja - Kim.\n\nAnswer: Amir, Puja, Kim"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Amir and Puja had an argument and are no longer connected and instead, Amir is now connected to Sara. Also, Jing is no longer connected to Max and instead, Jing is now connected to Puja. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the person who is donating the maximum number of books. In this case, it's still Kim who is donating 50 books.\n\nStep 2: Trace the shortest path from Amir to Kim, considering the new connections. Amir is now connected to Sara, who is connected to Max. Max is not directly connected to Kim, but Kim is connected to Pam, and Pam is connected to Puja, who is now connected to Jing. So, the shortest path is: Amir - Sara - Max - Jing - Puja - Kim.\n\nAnswer: Amir, Sara, Max, Jing, Puja, Kim"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Vivian, Pierre, Soheil"
+                "Answer: Amir, Sara, Raj, Kim"
             ],
-            "parsed_response": "Answer: Pierre, Abdul, Durga, Ajit, Soheil, Alice"
+            "parsed_response": "Answer: Amir, Sara, Max, Jing, Puja, Kim"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

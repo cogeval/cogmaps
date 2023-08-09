@@ -6,43 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the wait times for each attraction.\n- Autopia: 20 minutes\n- Space Mountain: 10 minutes\n- Mad Tea Party: 5 minutes\n- Peter Pan's Flight: 15 minutes\n\nStep 2: Determine the shortest wait time.\n- Mad Tea Party has the shortest wait time at 5 minutes.\n\nStep 3: List the path to the attraction with the shortest wait time.\n- Entrance, left passage, Fantasyland, Mad Tea Party\n\nAnswer: Entrance, left passage, Fantasyland, Mad Tea Party"
+            "content": "Step 1: Recall the path and flowers in each field.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nAnswer: entrance, rose field, tulip field"
         },
         {
             "role": "user",
-            "content": "At the entrance you're get the VVIP upgrade for free. The VVIP pass can take you to any attraction. From entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "At the entrance you're presented with a portal, and through this portal it\u2019s possible to go to any neighboring field of the rose field. You will only be able to choose one path that leads to the maximum number of flowers. Starting from the entrance, which path will lead to the maximum number of flowers? Please list all flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the wait times for each attraction with the VVIP pass.\n- Since you have a VVIP pass, the wait time for all attractions will be 0 minutes.\n\nStep 2: Choose any attraction, as the wait time will be the same for all.\n- For example, you can choose Space Mountain.\n\nStep 3: List the path to the chosen attraction.\n- Entrance, right passage, Tomorrowland, Space Mountain\n\nAnswer: Entrance, right passage, Tomorrowland, Space Mountain"
+            "content": "Step 1: Recall the path and flowers in each field from the entrance.\nStep 2: Calculate the total number of flowers in each path from the entrance through the portal.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nAnswer: entrance, portal, daisy field"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Mad Tea Party"
+                "Answer: rose, daisy"
             ],
-            "parsed_response": "Step 1: Identify the wait times for each attraction with the VVIP pass.\n- Since you have a VVIP pass, the wait time for all attractions will be 0 minutes.\n\nStep 2: Choose any attraction, as the wait time will be the same for all.\n- For example, you can choose Space Mountain.\n\nStep 3: List the path to the chosen attraction.\n- Entrance, right passage, Tomorrowland, Space Mountain\n\nAnswer: Entrance, right passage, Tomorrowland, Space Mountain"
-        }
-    },
-    "scores": {
-        "teleShortcut": {
-            "score": 0.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: entrance, portal, daisy field"
         }
     }
 }

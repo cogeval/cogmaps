@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -19,16 +19,18 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Lavender, poppy, zinnia, aster, sunflower, rose, tulip, daisy, lily"
+            "content": "To find the shortest path from the lavender field to the lily field, we can use a graph traversal algorithm such as Dijkstra's algorithm. Let's list down the connections between each flower field based on the given information:\n\nlavender field -> poppy field, zinnia field, aster field, daffodil field\npoppy field -> zinnia field, lavender field, aster field, carnation field\nzinnia field -> daisy field, poppy field, lavender field, aster field\naster field -> poppy field, zinnia field, lavender field, sunflower field\ndaffodil field -> chrysanthemum field, carnation field, marigold field, hydrangea field\nchrysanthemum field -> daffodil field, carnation field, peony field, marigold field\ncarnation field -> poppy field, daffodil field, marigold field, chrysanthemum field\nmarigold field -> daffodil field, chrysanthemum field, carnation field, hydrangea field\nhydrangea field -> orchid field, lily field, peony field, marigold field\norchid field -> hydrangea field, lily field, daffodil field, tulip field\nlily field -> rose field, peony field, hydrangea field, orchid field\npeony field -> orchid field, hydrangea field, lily field, chrysanthemum field\nsunflower field -> rose field, tulip field, daisy field, aster field\nrose field -> sunflower field, tulip field, daisy field, lily field\ntulip field -> rose field, sunflower field, daisy field, orchid field\ndaisy field -> rose field, sunflower field, tulip field, zinnia field\n\nUsing this information, we can construct a graph. To find the shortest path from the lavender field to the lily field, we'll use Dijkstra's algorithm to calculate the shortest path. Starting from the lavender field, we'll explore its connected fields and assign weights based on the given connections. We'll repeat this process until we reach the lily field. \n\nAnswer: lavender, poppy, zinnia, daisy, rose, lily"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Lavender, Daffodil, Marigold, Hydrangea, Lily",
-                "Answer: Lavender, Zinnia, Daisy, Rose, Lily"
+                "Answer: rose, sunflower, aster, poppy, carnation",
+                "Answer: rose, daisy, zinnia, poppy, carnation",
+                "Answer: rose, lily, hydrangea, marigold, carnation",
+                "Answer: rose, lily, peony, chrysanthemum, carnation"
             ],
-            "parsed_response": "Answer: Lavender, poppy, zinnia, aster, sunflower, rose, tulip, daisy, lily"
+            "parsed_response": "Answer: lavender, poppy, zinnia, daisy, rose, lily"
         }
     },
     "scores": {

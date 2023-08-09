@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_1_6",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Moin to Kim? Starting from Moin, please list the scholar names in order, including Moin, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Moin to Kim, we can use a breadth-first search algorithm. Here are the steps to determine the shortest path:\n\n1. Start at Moin.\n2. Check the connections of Moin: Moin is connected to Pari.\n3. Check the connections of Pari: Pari is connected to Reza and Moin (already visited).\n4. Check the connections of Reza: Reza is connected to Moin (already visited) and Pari (already visited).\n5. Backtrack to Pari and check its connections: Pari is connected to Reza (already visited).\n6. Backtrack to Moin and check its connections: Moin is connected to Pari (already visited).\n7. No new connections found, backtrack to Moin.\n8. Check the connections of Moin again: Moin is connected to Pari (already visited) and Reza (already visited).\n9. Check the connections of Pari again: Pari is connected to Reza (already visited).\n10. Check the connections of Reza again: Reza is connected to Moin (already visited) and Pari (already visited).\n11. Backtrack to Pari and check its connections again: Pari is connected to Reza (already visited).\n12. Backtrack to Moin and check its connections again: Moin is connected to Pari (already visited) and Reza (already visited).\n13. No new connections found, backtrack to Moin.\n14. Check the connections of Moin one more time: Moin is connected to Pari (already visited) and Reza (already visited).\n15. Check the connections of Pari one more time: Pari is connected to Reza (already visited).\n16. Check the connections of Reza one more time: Reza is connected to Moin (already visited) and Pari (already visited).\n17. Backtrack to Pari and check its connections one more time: Pari is connected to Reza (already visited).\n18. Backtrack to Moin and check its connections one more time: Moin is connected to Pari (already visited) and Reza (already visited).\n19. No new connections found, backtrack to Moin.\n\nSince we have already visited all the connections of Moin and haven't reached Kim, it means that there is no path from Moin to Kim.\n\nAnswer: There is no path from Moin to Kim."
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Moin, Amir, Puja, Wim, Kim",
+                "Answer: Moin, Amir, Puja, Wei, Kim",
+                "Answer: Moin, Amir, Puja, Pam, Kim"
+            ],
+            "parsed_response": "Answer: There is no path from Moin to Kim"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

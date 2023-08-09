@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Kim to Pari? Starting from Kim, please list the scholar names in order, including Kim, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Identify the groups of connected students:\n   Group 1: Vivian, Salma, Shanshan, Vadim, Gongxue\n   Group 2: Paul, Solomon, Soheil, Gongxue, Alice\n   Group 3: Pierre, Abdul, Durga, Ajit, Soheil\n   Group 4: Noah, Salma, Shanshan, Vadim, Anisha\n   Group 5: Solomon, Soheil, Gongxue, Alice\n   Group 6: Abdul, Durga, Ajit, Anisha\n   Group 7: Salma, Shanshan, Vadim\n   Group 8: Soheil, Alice\n   Group 9: Durga, Ajit, Anisha\n   Group 10: Shanshan, Vadim\n   Group 11: Gongxue, Alice\n   Group 12: Ajit, Anisha\n\n2. Find connections between groups:\n   Group 1 connects to Group 4 via Salma, Shanshan, and Vadim\n   Group 1 connects to Group 2 via Gongxue\n   Group 2 connects to Group 3 via Soheil\n   Group 2 connects to Group 5 via Solomon, Soheil, Gongxue, and Alice\n   Group 3 connects to Group 6 via Abdul, Durga, and Ajit\n   Group 4 connects to Group 6 via Anisha\n\n3. Identify the shortest path from Vivian to Ajit:\n   Vivian (Group 1) -> Salma (Group 4) -> Anisha (Group 6) -> Ajit (Group 6)\n\nAnswer: Vivian, Salma, Anisha, Ajit"
+            "content": "First, let's map out the connections:\n\n1. Kim is directly connected to Pam and Wei.\n2. Pam is directly connected to Wim and Puja.\n3. Wei is directly connected to Wim.\n4. Wim is directly connected to Puja.\n5. Puja is directly connected to Amir.\n6. Amir is directly connected to Pari.\n\nSo, the shortest path from Kim to Pari is: Kim, Pam, Puja, Amir, Pari.\n\nAnswer: Kim, Pam, Puja, Amir, Pari."
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Kim, Wim, Puja, Amir, Pari",
+                "Answer: Kim, Wei, Puja, Amir, Pari",
+                "Answer: Kim, Pam, Puja, Amir, Pari"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha, Ajit"
+            "parsed_response": "Answer: Kim, Pam, Puja, Amir, Pari"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Moin to Wim? Starting from Moin, please list the scholar names in order, including Moin, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Analyze the connections between students.\n2. Identify the groups of students who are connected to each other.\n3. Determine the connections between these groups.\n4. Find the shortest path from Vivian to Anisha by traversing through the connected groups.\n\nAfter analyzing the connections, we can identify the following groups:\n\nGroup 1: Vivian, Salma, Shanshan, Vadim, Gongxue\nGroup 2: Paul, Solomon, Soheil, Gongxue, Alice\nGroup 3: Pierre, Abdul, Durga, Ajit, Soheil\nGroup 4: Noah, Salma, Shanshan, Vadim, Anisha\nGroup 5: Solomon, Soheil, Gongxue, Alice\nGroup 6: Abdul, Durga, Ajit, Anisha\nGroup 7: Salma, Shanshan, Vadim\nGroup 8: Soheil, Alice\nGroup 9: Durga, Ajit, Anisha\nGroup 10: Shanshan, Vadim\nGroup 11: Gongxue, Alice\nGroup 12: Ajit, Anisha\n\nNow, let's find the connections between these groups:\n\nGroup 1 is connected to Group 4 through Salma, Shanshan, and Vadim.\nGroup 2 is connected to Group 5 through Solomon, Soheil, Gongxue, and Alice.\nGroup 3 is connected to Group 6 through Abdul, Durga, and Ajit.\nGroup 4 is connected to Group 6 through Anisha.\nGroup 5 is connected to Group 8 through Soheil and Alice.\nGroup 9 is connected to Group 12 through Ajit and Anisha.\n\nThe shortest path from Vivian to Anisha can be found by traversing through the connected groups:\n\nVivian (Group 1) -> Salma/Shanshan/Vadim (Group 4) -> Anisha (Group 6)\n\nAnswer: Vivian, Salma, Anisha"
+            "content": "First, let's map out the connections. \n\nMoin is connected to Pari and Reza.\n\nPari is connected to Moin, Amir, and Jing.\n\nReza is connected to Moin, Amir, and Jing.\n\nAmir is connected to Reza, Moin, Pari, and Puja.\n\nJing is connected to Reza, Moin, Pari, and Max.\n\nPuja is connected to Amir, Wim, Wei, and Pam.\n\nWim is connected to Wei, Kim, Puja, and Pam.\n\nWei is connected to Wim, Kim, Puja, and Pam.\n\nKim is connected to Wim, Wei, Pam, and Raj.\n\nPam is connected to Wim, Wei, Puja, and Kim.\n\nRaj is connected to Kim, Nisha, Ian, and Sara.\n\nNisha is connected to Raj, Ian, Sara, and Max.\n\nIan is connected to Raj, Nisha, Sara, and Max.\n\nSara is connected to Raj, Nisha, Ian, and Max.\n\nMax is connected to Jing, Nisha, Ian, and Sara.\n\nFrom Moin, the shortest path to Wim would be Moin -> Pari -> Amir -> Puja -> Wim.\n\nAnswer: Moin, Pari, Amir, Puja, Wim"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Moin, Amir, Puja, Wim"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha"
+            "parsed_response": "Answer: Moin, Pari, Amir, Puja, Wim"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

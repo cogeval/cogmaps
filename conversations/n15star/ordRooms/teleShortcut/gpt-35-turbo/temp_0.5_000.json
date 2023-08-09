@@ -19,24 +19,24 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward, we need to calculate the rewards for each path and choose the path with the highest reward. \n\nStarting from room 1, we can follow the following path to reach room 8: 1 -> 7 -> 10 -> 13 -> 11 -> 14 -> 8. The total reward for this path is 50.\n\nStarting from room 1, we can follow the following path to reach room 15: 1 -> 7 -> 10 -> 13 -> 15. The total reward for this path is 10.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1 -> 7 -> 10 -> 13 -> 11 -> 14 -> 8. \n\nAnswer: 1, 7, 10, 13, 11, 14, 8."
+            "content": "To find the shortest path that yields the most reward, we need to use Dijkstra's algorithm. Starting from room 1, we can visit room 8 first to get the reward of 50. From there, we can go to room 2 to continue exploring. After that, we can go to room 5, then room 11, and finally room 14 to maximize the reward. The path would be:\n\n1, 8, 2, 5, 11, 14\n\nAnswer: 1, 8, 2, 5, 11, 14"
         },
         {
             "role": "user",
-            "content": "You are told that a teleportation portal appears in room 13, through which you can teleport to any room one at a time. This means that from room 13 you can go to any room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that room 1 now opens to a new room, room 16, which has a teleportation portal, through which you can teleport to any neighboring room of room 14, one at a time. This means that from room 16 you can go to any neighboring room of room 14. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "With the teleportation portal in room 13, we can reach any room from room 1. \n\nStarting from room 1, we can follow the following path to reach room 8: 1 -> 7 -> 10 -> 13 -> 11 -> 14 -> 8. The total reward for this path is 50.\n\nStarting from room 1, we can follow the following path to reach room 15: 1 -> 7 -> 10 -> 13 -> 15. The total reward for this path is 10.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1 -> 7 -> 10 -> 13 -> 11 -> 14 -> 8. \n\nAnswer: 1, 7, 10, 13, 11, 14, 8."
+            "content": "With the addition of room 16 and the teleportation portal, we can modify our previous path to include room 16 and the neighboring rooms of room 14. Starting from room 1, we can visit room 8 first to get the reward of 50. From there, we can go to room 2 to continue exploring. After that, we can go to room 5, then room 11, and finally room 14. Once we reach room 14, we can use the teleportation portal to go to room 11, which is connected to room 15 where we can get the reward of 10. The path would be:\n\n1, 8, 2, 5, 11, 14, 11, 15\n\nAnswer: 1, 8, 2, 5, 11, 14, 11, 15"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: 1, 13, 8",
-                "Answer: 1,13,8"
+                "Answer: 1, 16, 8",
+                "Answer: 1,16,8"
             ],
-            "parsed_response": "With the teleportation portal in room 13, we can reach any room from room 1. \n\nStarting from room 1, we can follow the following path to reach room 8: 1 -> 7 -> 10 -> 13 -> 11 -> 14 -> 8. The total reward for this path is 50.\n\nStarting from room 1, we can follow the following path to reach room 15: 1 -> 7 -> 10 -> 13 -> 15. The total reward for this path is 10.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1 -> 7 -> 10 -> 13 -> 11 -> 14 -> 8. \n\nAnswer: 1, 7, 10, 13, 11, 14, 8."
+            "parsed_response": "Answer: 1, 8, 2, 5, 11, 14, 11, 15"
         }
     },
     "scores": {

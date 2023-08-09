@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleShortcut_temp_1_23",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, we will use a breadth-first search algorithm. \n\n1. Start with Amir and add him to the queue.\n2. Check Amir's connections (Reza, Moin, Pari, and Puja).\n3. Add each connected scholar to the queue, keeping track of the path taken from Amir to each scholar.\n4. Continue this process until we reach the scholar donating the maximum number of books (Max).\n5. Return the path from Amir to Max.\n\nBased on the given connections, we have the following steps:\n\n1. Queue: [Amir]\n2. Amir's connections: Reza, Moin, Pari, Puja\n3. Queue: [Reza, Moin, Pari, Puja]\n4. Reza's connections: Moin, Pari\n5. Moin's connections: Pari\n6. Pari's connections: None\n7. Puja's connections: Pam\n8. Queue: [Moin, Pari, Puja, Moin, Pari, Pam]\n9. Moin's connections: Pari\n10. Pari's connections: None\n11. Puja's connections: Pam\n12. Pam's connections: None\n13. Queue: [Pari, Puja, Moin, Pari, Pam]\n14. Pari's connections: None\n15. Puja's connections: Pam\n16. Pam's connections: None\n17. Queue: [Puja, Moin, Pari, Pam]\n18. Puja's connections: Pam\n19. Pam's connections: None\n\nAt this point, we have reached the scholars who donated the maximum number of books (Max). The shortest path from Amir to Max is: Amir, Puja, Pam, Max.\n\nAnswer: Amir, Puja, Pam, Max"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva. Eva is connected to all of  Pam\u2019s connections. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, considering the new information that Amir got married to Eva and Eva is connected to all of Pam's connections, we will update the breadth-first search algorithm:\n\n1. Start with Amir and add him to the queue.\n2. Check Amir's connections (Reza, Moin, Pari, and Puja).\n3. Add each connected scholar to the queue, keeping track of the path taken from Amir to each scholar.\n4. If Eva is connected to any of the scholars in the queue, add Eva to the queue as well, with the same path as the connected scholar.\n5. Continue this process until we reach the scholar donating the maximum number of books (Max).\n6. Return the path from Amir to Max.\n\nBased on the given connections and the new information, we have the following steps:\n\n1. Queue: [Amir]\n2. Amir's connections: Reza, Moin, Pari, Puja\n3. Queue: [Reza, Moin, Pari, Puja]\n4. Reza's connections: Moin, Pari\n5. Moin's connections: Pari\n6. Pari's connections: None\n7. Puja's connections: Pam\n8. Queue: [Reza, Moin, Pari, Puja, Moin, Pari, Pam]\n9. Reza's connections: Moin, Pari\n10. Moin's connections: Pari\n11. Pari's connections: None\n12. Puja's connections: Pam\n13. Pam's connections: Eva\n14. Queue: [Reza, Moin, Pari, Puja, Moin, Pari, Pam, Pam]\n15. Reza's connections: Moin, Pari\n16. Moin's connections: Pari\n17. Pari's connections: None\n18. Puja's connections: Pam\n19. Pam's connections: Eva\n20. Queue: [Reza, Moin, Pari, Puja, Moin, Pari, Pam, Pam, Eva]\n21. Eva's connections: Max\n22. Queue: [Reza, Moin, Pari, Puja, Moin, Pari, Pam, Pam, Eva, Max]\n\nAt this point, we have reached the scholar who donated the maximum number of books (Max). The shortest path from Amir to Max is: Amir, Puja, Pam, Eva, Max.\n\nAnswer: Amir, Puja, Pam, Eva, Max"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Puja, Pam, Eva, Max"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

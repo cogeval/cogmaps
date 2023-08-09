@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,24 +15,24 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Kim what is the shortest path to Nisha? Starting from Kim, please list the scholar numbers in order, including Kim, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Amir what is the shortest path to Wim? Starting from Amir, please list the scholar numbers in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Kim, Wei, Nisha"
+            "content": "To find the shortest path from Amir to Wim, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Amir.\n2. Check if Amir is connected to Wim. If yes, the shortest path is just Amir and Wim.\n3. If not, check Amir's connections (Wim, Raj, Jing, and Reza).\n4. Add these connections to a queue.\n5. Remove Amir from the queue.\n6. Take the next scholar from the queue (in this case, Wim).\n7. Check if Wim is connected to Wim. If yes, the shortest path is Amir, Wim.\n8. If not, add Wim's connections (Amir, Raj, Jing, and Eva) to the queue.\n9. Remove Wim from the queue.\n10. Take the next scholar from the queue (in this case, Raj).\n11. Repeat steps 7-10 until Wim is found or the queue is empty.\n\nUsing this algorithm, the shortest path from Amir to Wim is:\n\nAnswer: Amir, Wim"
         }
     ],
     "tests": {
         "1stepPath": {
             "expected_answer": [
-                "Answer: Kim, Nisha"
+                "Answer: Amir, Wim"
             ],
-            "parsed_response": "Answer: Kim, Wei, Nisha"
+            "parsed_response": "Answer: Amir, Wim"
         }
     },
     "scores": {
         "1stepPath": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

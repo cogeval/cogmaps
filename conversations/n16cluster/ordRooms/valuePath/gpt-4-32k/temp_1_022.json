@@ -15,22 +15,27 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Now you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. From room 1 what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the available paths from room 1 to room 16 and room 10 while trying to avoid room 5.\nStep 2: Calculate the rewards for each path.\nStep 3: Determine the path with the highest reward.\n\nPaths from room 1:\nPath 1: 1 -> 2 -> 16 (Reward: 5)\nPath 2: 1 -> 2 -> 4 -> 14 -> 16 (Reward: 5)\nPath 3: 1 -> 3 -> 2 -> 16 (Reward: 5)\nPath 4: 1 -> 4 -> 2 -> 16 (Reward: 5)\nPath 5: 1 -> 7 -> 6 -> 12 -> 10 (Reward: 10 - 15 = -5)\nPath 6: 1 -> 3 -> 4 -> 14 -> 13 -> 11 -> 10 (Reward: 10)\n\nBased on the rewards calculated:\nPath with the highest reward: Path 6\n\nAnswer: 1, 3, 4, 14, 13, 11, 10"
+            "content": "Step 1: Determine the shortest paths from Room 1 to both Room 10 and Room 15.\nStep 2: Calculate the reward associated with each path.\nStep 3: Choose the path that yields the most reward.\n\n1. Shortest paths:\n   - Room 1 to Room 10: 1 -> 7 -> 8 -> 10 (3 moves)\n   - Room 1 to Room 15: 1 -> 4 -> 14 -> 15 (3 moves)\n\n2. Rewards calculation:\n   - Room 10 reward: 50\n   - Room 15 reward: 10\n\n3. Choose the path with the highest reward:\n   - Room 10 has the highest reward of 50.\n\nAnswer: 1, 7, 8, 10"
         }
     ],
     "tests": {
         "valuePath": {
             "expected_answer": [
-                "Answer: 1, 2, 16, 15, 9, 10",
-                "Answer: 1, 2, 16, 13, 11, 10",
-                "Answer: 1,2,16,15,9,10",
-                "Answer: 1,2,16,13,11,10"
+                "Answer: 1, 7, 8, 10",
+                "Answer: 1,7,8,10"
             ],
-            "parsed_response": "Answer: 1, 3, 4, 14, 13, 11, 10"
+            "parsed_response": "Answer: 1, 7, 8, 10"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

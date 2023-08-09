@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nClusters_temp_1_13",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the densely-connected clusters in this group, we can use the concept of connected components in graph theory. \n\nFirst, let's create an adjacency list representation of the connections between the scholars:\n\nAmir: Reza, Moin, Pari, Puja\nWim: Wei, Kim, Puja, Pam\nRaj: Nisha, Ian, Sara, Kim\nJing: Reza, Moin, Pari, Max\nWei: Kim, Puja, Pam\nNisha: Ian, Sara, Max\nReza: Moin, Pari\nKim: Pam\nIan: Sara, Max\nMoin: Pari\nPuja: Pam\nSara: Max\n\nNow, we can start traversing the graph to find the connected components. We can use depth-first search (DFS) algorithm to do that.\n\nStarting with the first scholar Amir, we can perform a DFS to find all the scholars connected to him. Once we complete the DFS, we mark all the visited scholars as part of the first cluster.\n\nNext, we continue the process with the next unvisited scholar, which is Wim in this case, and perform DFS to find all the scholars connected to him. Again, we mark all the visited scholars as part of the second cluster.\n\nWe repeat this process for all the remaining unvisited scholars until we have visited all the scholars in the group.\n\nBy the end, we will have identified all the densely-connected clusters in the group.\n\nNow, let's apply the DFS algorithm to find the densely-connected clusters in this group and count them.\n\nAnswer: there are 3 clusters."
+        }
+    ],
+    "tests": {
+        "nClusters": {
+            "expected_answer": [
+                "Answer: there are 3 clusters"
+            ],
+            "parsed_response": "Answer: there are 3 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

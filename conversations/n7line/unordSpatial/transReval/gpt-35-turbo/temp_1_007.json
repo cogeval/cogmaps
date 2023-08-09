@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,34 +15,27 @@
         },
         {
             "role": "user",
-            "content": "Imagine you are traveling through Asia. You start in New Delhi and have two choices, you can go to Islamabad or Kathmandu. From Islamabad, you can go to Kabul and from there to Tehran. In Tehran, your total expenses will be $1000 including hotels, shopping and sight-seeing. After learning this, you return to New Delhi. This time, you choose Kathmandu, which leads to Beijing, and from there you can go to Thimphu, where you have $400 total expenses. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Imagine a flower county with six flower fields. From the entrance you have two choices, you can go to the rose field or sunflower field. You enter the rose field, at the other end of this field there's a door that leads to the tulip field, and the tulip field leads to the orchid field. From the orchid field, you can have 10 orchid flowers for free, but you do not take any flower, you're just learning about the environment. Then you exit and start over. This time in the entrance you choose the sunflower field, which has a door to the daisy field, and the daisy field has a door that leads to the hydrangea field. You can have 50 hydrangea flowers from the hydrangea field, but you do not take any flowers, you're just learning about the environment. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "To find the least expensive destination, we need to compare the total expenses of both paths. \n\nPath 1: New Delhi - Islamabad - Kabul - Tehran\nTotal expenses = $1000\n\nPath 2: New Delhi - Kathmandu - Beijing - Thimphu\nTotal expenses = $400\n\nFrom the above comparison, we can see that Path 2 that leads to Thimphu is the least expensive destination. \n\nAnswer: Thimphu"
+            "content": "To find the field that leads to the path with the maximum number of flowers, let's analyze the options:\n\n1. If we choose the rose field, we can proceed to the tulip field, orchid field, and get 10 orchid flowers for free. So the total number of flowers would be 10.\n\n2. If we choose the sunflower field, we can proceed to the daisy field, hydrangea field, and get 50 hydrangea flowers for free. So the total number of flowers would be 50.\n\nComparing the two options, the sunflower field leads to the path with the maximum number of flowers.\n\nAnswer: Sunflower field."
         },
         {
             "role": "user",
-            "content": "Now, the route from Kabul to Tehran is blocked, and instead, the route from Kabul leads to Thimphu. The route from Beijing now leads to Tehran. You start again in New Delhi. You will only be able to choose one path that leads to the least expensive destination. Which city from New Delhi will lead to the path where one can find the least expensive destination?"
+            "content": "Now you're told that the door at the end of the tulip field suddenly leads to the hydrangea field. The door at the end of daisy field now leads to the orchid field. You return to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. Which field from the entrance will lead to the path with the maximum number of flowers?"
         },
         {
             "role": "assistant",
-            "content": "The new paths are:\n\nPath 1: New Delhi - Islamabad - Kabul - Thimphu\nTotal expenses = $400\n\nPath 2: New Delhi - Kathmandu - Beijing - Tehran\nTotal expenses = $1000\n\nFrom the above comparison, we can see that Path 1 that leads to Thimphu is the least expensive destination.\n\nAnswer: Thimphu"
+            "content": "Taking into account the updated information, let's reassess the options:\n\n1. If we choose the rose field, the door at the end now leads to the hydrangea field, where we can get 50 hydrangea flowers for free.\n\n2. If we choose the sunflower field, the door at the end now leads to the orchid field, where we can get 10 orchid flowers for free.\n\nComparing the two options, the rose field now leads to the path with the maximum number of flowers.\n\nAnswer: Rose field."
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Islamabad"
+                "Answer: rose"
             ],
-            "parsed_response": "The new paths are:\n\nPath 1: New Delhi - Islamabad - Kabul - Thimphu\nTotal expenses = $400\n\nPath 2: New Delhi - Kathmandu - Beijing - Tehran\nTotal expenses = $1000\n\nFrom the above comparison, we can see that Path 1 that leads to Thimphu is the least expensive destination.\n\nAnswer: Thimphu"
-        }
-    },
-    "scores": {
-        "transReval": {
-            "score": 0.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Rose field."
         }
     }
 }

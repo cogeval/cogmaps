@@ -19,28 +19,28 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the fields connected to the rose field: lily, chrysanthemum, poppy, and carnation.\nStep 2: Determine the shortest paths to the peony and lavender fields from each of these fields.\n  - Lily: no direct path to peony or lavender\n  - Chrysanthemum: no direct path to peony or lavender\n  - Poppy: no direct path to peony or lavender\n  - Carnation: connected to zinnia, which is connected to peony (2 steps)\nStep 3: Compare the paths to the peony and lavender fields.\n  - Peony field: Rose, Carnation, Zinnia, Peony (50 flowers)\n  - Lavender field: no direct or indirect path from the connected fields\nStep 4: Choose the path that yields the maximum number of flowers.\n\nAnswer: Rose, Carnation, Zinnia, Peony"
+            "content": "Step 1: Identify the fields connected to the rose field: lily, chrysanthemum, poppy, and carnation.\nStep 2: Find the shortest path to the peony field and the lavender field from each of the four fields connected to the rose field.\nStep 3: Compare the paths and choose the one that yields the maximum number of flowers.\n\nPath to peony field:\n1. Rose -> carnation -> zinnia -> peony (4 fields, 50 flowers)\n2. Rose -> lily -> chrysanthemum -> poppy -> daisy -> lavender -> hydrangea -> daffodil -> marigold -> tulip -> peony (11 fields, 50 flowers)\n\nPath to lavender field:\n1. Rose -> lily -> chrysanthemum -> poppy -> daisy -> lavender (6 fields, 10 flowers)\n2. Rose -> carnation -> zinnia -> orchid -> peony -> tulip -> hydrangea -> daffodil -> marigold -> lavender (10 fields, 10 flowers)\n\nThe shortest path that yields the maximum number of flowers is the first path to the peony field.\n\nAnswer: Rose, carnation, zinnia, peony"
         },
         {
             "role": "user",
-            "content": "You are told that a teleportation portal appears in the poppy field, through which you can teleport to any field one at a time. This means that from the poppy field you can go to any field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+            "content": " You are told that the rose field now opens to a new field of asters, which has a teleportation portal, through which you can teleport to any neighboring field of the zinnia field, one at a time. This means that from the aster field, you can go to any neighboring field of the zinnia field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the fields connected to the rose field: lily, chrysanthemum, poppy, and carnation.\nStep 2: Determine the shortest paths to the peony and lavender fields from each of these fields, considering the teleportation portal in the poppy field.\n  - Lily: no direct path to peony or lavender\n  - Chrysanthemum: no direct path to peony or lavender\n  - Poppy: teleport directly to peony or lavender (1 step)\n  - Carnation: connected to zinnia, which is connected to peony (2 steps)\nStep 3: Compare the paths to the peony and lavender fields.\n  - Peony field: Rose, Poppy (teleport), Peony (50 flowers)\n  - Lavender field: Rose, Poppy (teleport), Lavender (10 flowers)\nStep 4: Choose the path that yields the maximum number of flowers.\n\nAnswer: Rose, Poppy, Peony"
+            "content": "Step 1: Identify the fields connected to the rose field: lily, chrysanthemum, poppy, carnation, and asters.\nStep 2: Find the shortest path to the peony field and the lavender field from each of the five fields connected to the rose field, including the new path through the aster field.\nStep 3: Compare the paths and choose the one that yields the maximum number of flowers.\n\nPath to peony field:\n1. Rose -> carnation -> zinnia -> peony (4 fields, 50 flowers)\n2. Rose -> lily -> chrysanthemum -> poppy -> daisy -> lavender -> hydrangea -> daffodil -> marigold -> tulip -> peony (11 fields, 50 flowers)\n3. Rose -> asters -> zinnia -> peony (4 fields, 50 flowers)\n\nPath to lavender field:\n1. Rose -> lily -> chrysanthemum -> poppy -> daisy -> lavender (6 fields, 10 flowers)\n2. Rose -> carnation -> zinnia -> orchid -> peony -> tulip -> hydrangea -> daffodil -> marigold -> lavender (10 fields, 10 flowers)\n3. Rose -> asters -> zinnia -> orchid -> peony -> tulip -> hydrangea -> daffodil -> marigold -> lavender (10 fields, 10 flowers)\n\nThe shortest path that yields the maximum number of flowers is still the first path to the peony field, as the new path through the aster field does not change the number of fields to reach the peony field.\n\nAnswer: Rose, carnation, zinnia, peony"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Rose, Poppy, Peony"
+                "Answer: Rose, Aster, Peony"
             ],
-            "parsed_response": "Step 1: Identify the fields connected to the rose field: lily, chrysanthemum, poppy, and carnation.\nStep 2: Determine the shortest paths to the peony and lavender fields from each of these fields, considering the teleportation portal in the poppy field.\n  - Lily: no direct path to peony or lavender\n  - Chrysanthemum: no direct path to peony or lavender\n  - Poppy: teleport directly to peony or lavender (1 step)\n  - Carnation: connected to zinnia, which is connected to peony (2 steps)\nStep 3: Compare the paths to the peony and lavender fields.\n  - Peony field: Rose, Poppy (teleport), Peony (50 flowers)\n  - Lavender field: Rose, Poppy (teleport), Lavender (10 flowers)\nStep 4: Choose the path that yields the maximum number of flowers.\n\nAnswer: Rose, Poppy, Peony"
+            "parsed_response": "Answer: Rose, carnation, zinnia, peony"
         }
     },
     "scores": {
         "teleShortcut": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

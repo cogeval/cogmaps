@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Wim, Eva, Pari, Matt"
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we need to determine the connections and the number of books each scholar has. Let's list down the connections and the number of books donated by each scholar:\n\nAmir is connected to Wim, Raj, Jing, and Reza.\nWim is connected to Amir, Raj, Jing, and Eva.\nRaj is connected to Amir, Wim, Jing, and Wei.\nJing is connected to Amir, Wim, Raj, and Pam.\nWei is connected to Nisha, Reza, Kim, and Raj.\nNisha is connected to Wei, Reza, Kim, and Sara.\nReza is connected to Amir, Kim, Nisha, and Wei.\nKim is connected to Wei, Nisha, Reza, and Moin.\nIan is connected to Moin, Puja, Sara, and Matt.\nMoin is connected to Ian, Puja, Kim, and Sara.\nPuja is connected to Pari, Ian, Sara, and Moin.\nSara is connected to Ian, Moin, Puja, and Nisha.\nPari is connected to Pam, Matt, Eva, and Puja.\nPam is connected to Jing, Pari, Matt, and Eva.\nMatt is connected to Pari, Pam, Eva, and Ian.\nEva is connected to Pari, Pam, Matt, and Wim.\n\nMoin is donating 50 books.\nMatt is donating 10 books.\n\nStarting from Amir, we can follow the connections to find the person with the maximum number of books. Let's trace the shortest path:\n\nAmir -> Reza -> Moin\n\nTherefore, the shortest path from Amir to the person with the maximum number of books is: Amir, Reza, Moin.\n\nAnswer: Amir, Reza, Moin"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Wim, Eva, Pari, Matt\n\nWith the removal of Reza, the shortest path from Amir to the person with the maximum number of books remains the same. Therefore, the order of scholars starting from Amir remains unchanged."
+            "content": "With the updated information that Amir and Reza are no longer connected and Wei has an instant connection portal, we need to find the shortest path from Amir to the person with the maximum number of books. Here's the new plan:\n\n1. Amir is directly connected to Wim, Raj, and Jing.\n2. Wim is connected to Eva.\n3. Raj is connected to Wei.\n4. Wei has an instant connection portal to any scholar.\n5. The scholar with the maximum number of books is Moin.\n6. We will connect with Wei first and then immediately connect with Moin.\n\nTherefore, the shortest path from Amir to Moin, the person with the maximum number of books, would be:\n\nAmir -> Raj -> Wei -> Moin\n\nAnswer: Amir, Raj, Wei, Moin"
         }
     ],
     "tests": {
@@ -35,12 +35,12 @@
             "expected_answer": [
                 "Answer: Amir, Raj, Wei, Moin"
             ],
-            "parsed_response": "Answer: Amir, Wim, Eva, Pari, Matt\n\nWith the removal of Reza, the shortest path from Amir to the person with the maximum number of books remains the same. Therefore, the order of scholars starting from Amir remains unchanged."
+            "parsed_response": "Answer: Amir, Raj, Wei, Moin"
         }
     },
     "scores": {
         "teleDetour": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

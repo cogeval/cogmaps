@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Assume now that Vivian and Pierre are connected. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the connection path that yields the most reward, we need to find a path that connects the largest number of unique students. Let's analyze the connections step by step:\n\n1. Start with Vivian, who is connected to Salma, Shanshan, Vadim, and Gongxue.\n2. From Salma, we can reach Shanshan, Vadim, and Noah.\n3. From Shanshan, we can reach Salma, Vadim, and Noah.\n4. From Vadim, we can reach Salma, Shanshan, and Noah.\n5. From Gongxue, we can reach Paul, Solomon, Soheil, and Alice.\n\nNow let's analyze the connections from the students reached in step 2:\n\n6. From Noah, we can reach Salma, Shanshan, Vadim, and Anisha.\n7. From Paul, we can reach Solomon, Soheil, Gongxue, and Alice.\n8. From Solomon, we can reach Paul, Soheil, Gongxue, and Alice.\n9. From Soheil, we can reach Paul, Solomon, Gongxue, Alice, Pierre, Abdul, Durga, and Ajit.\n10. From Alice, we can reach Paul, Solomon, Soheil, and Gongxue.\n\nFinally, let's analyze the connections from the students reached in step 3:\n\n11. From Pierre, we can reach Abdul, Durga, and Ajit.\n12. From Abdul, we can reach Pierre, Durga, Ajit, and Anisha.\n13. From Durga, we can reach Pierre, Abdul, Ajit, and Anisha.\n14. From Ajit, we can reach Pierre, Abdul, Durga, and Anisha.\n15. From Anisha, we can reach Noah, Abdul, Durga, and Ajit.\n\nConsidering all the connections, we can find the path that connects the largest number of unique students:\n\nVivian -> Gongxue -> Soheil -> Pierre -> Abdul -> Anisha -> Noah -> Salma\n\nThis path connects 8 unique students. So the connection path that yields the most reward is:\n\nAnswer: Vivian, Gongxue, Soheil, Pierre, Abdul, Anisha, Noah, Salma"
+            "content": "Step 1: Identify the person donating the maximum number of books. In this case, it's Kim who is donating 50 books.\n\nStep 2: Find the shortest path from Amir to Kim. \n\nStep 3: According to the connections, Amir is directly connected to Puja.\n\nStep 4: From Puja, we can directly reach Kim.\n\nSo, the shortest path from Amir to the person donating the maximum number of books is Amir, Puja, Kim.\n\nAnswer: Amir, Puja, Kim"
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Amir and Puja had an argument and are no longer connected and instead, Amir is now connected to Sara. Also, Jing is no longer connected to Max and instead, Jing is now connected to Puja. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the person donating the maximum number of books. In this case, it's Kim who is donating 50 books.\n\nStep 2: Find the shortest path from Amir to Kim. \n\nStep 3: According to the new connections, Amir is directly connected to Sara.\n\nStep 4: From Sara, we can directly reach Max.\n\nStep 5: Max is not connected to Kim, so we need to find another path.\n\nStep 6: From Amir, we can also reach Reza.\n\nStep 7: From Reza, we can reach Moin.\n\nStep 8: Moin is connected to Pari.\n\nStep 9: Pari is connected to Puja.\n\nStep 10: From Puja, we can directly reach Kim.\n\nSo, the shortest path from Amir to the person donating the maximum number of books is Amir, Sara, Reza, Moin, Pari, Puja, Kim.\n\nAnswer: Amir, Sara, Reza, Moin, Pari, Puja, Kim"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Vivian, Pierre, Soheil"
+                "Answer: Amir, Sara, Raj, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Soheil, Pierre, Abdul, Anisha, Noah, Salma"
+            "parsed_response": "Answer: Amir, Sara, Reza, Moin, Pari, Puja, Kim"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

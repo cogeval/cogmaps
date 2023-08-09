@@ -15,24 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 12? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 5 to room 15? Starting from room 5, please list the room numbers in order, including 5, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the starting point (Room 1) and the destination (Room 12).\nStep 2: Determine the possible connections from Room 1.\nStep 3: Check the possible connections for the shortest path.\nStep 4: Repeat steps 2-3 until the destination is reached.\n\nStarting from Room 1, we have the following connections:\n- Room 7\n- Room 10\n- Room 13\n- Room 11\n\nFrom Room 7, we have connections to:\n- Room 1\n- Room 10\n- Room 13\n- Room 4\n\nFrom Room 10, we have connections to:\n- Room 1\n- Room 7\n- Room 13\n- Room 4\n\nFrom Room 13, we have connections to:\n- Room 1\n- Room 7\n- Room 10\n- Room 4\n\nFrom Room 11, we have connections to:\n- Room 1\n- Room 2\n- Room 5\n- Room 8\n- Room 14\n\nFrom Room 2, we have connections to:\n- Room 5\n- Room 8\n- Room 11\n- Room 14\n\nFrom Room 5, we have connections to:\n- Room 2\n- Room 8\n- Room 11\n- Room 14\n\nFrom Room 8, we have connections to:\n- Room 2\n- Room 5\n- Room 11\n- Room 14\n- Room 3\n- Room 6\n- Room 9\n- Room 12\n\nFrom Room 8, we can directly reach Room 12, which is our destination. Thus, the shortest path is:\nRoom 1 -> Room 11 -> Room 8 -> Room 12\n\nAnswer: 1, 11, 8, 12"
+            "content": "Step 1: Analyze the connections from room 5:\n- Room 5 is connected to rooms 2, 8, 11, and 14.\n\nStep 2: Analyze the connections from rooms 2, 8, 11, and 14:\n- Room 2 is connected to rooms 5, 11, 14, and 8 (but 5 is already visited).\n- Room 8 is connected to rooms 2, 3, 5, and 14 (but 5 is already visited).\n- Room 11 is connected to rooms 1, 2, 5, and 14 (but 5 is already visited).\n- Room 14 is connected to rooms 2, 5, 8, and 11 (but 5 is already visited).\n\nStep 3: Analyze the connections from rooms 2, 8, and 11 for room 15:\n- Room 2 is connected to room 14.\n- Room 8 is connected to room 3.\n- Room 11 is connected to room 14.\n\nStep 4: Analyze the connections from rooms 14 and 3 for room 15:\n- Room 14 is not connected to room 15.\n- Room 3 is connected to room 6.\n\nStep 5: Analyze the connections from room 6 for room 15:\n- Room 6 is connected to room 15.\n\nShortest path from room 5 to room 15: 5, 8, 3, 6, 15.\n\nAnswer: 5, 8, 3, 6, 15"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15, 12",
-                "Answer: 1, 10, 4, 15, 12",
-                "Answer: 1, 13, 4, 15, 12",
-                "Answer: 1,7,4,15,12",
-                "Answer: 1,10,4,15,12",
-                "Answer: 1,13,4,15,12"
+                "Answer: 5, 8, 3, 6, 15",
+                "Answer: 5, 8, 3, 9, 15",
+                "Answer: 5, 8, 3, 12, 15"
             ],
-            "parsed_response": "Answer: 1, 11, 8, 12"
+            "parsed_response": "Answer: 5, 8, 3, 6, 15"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

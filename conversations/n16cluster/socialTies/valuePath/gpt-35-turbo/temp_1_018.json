@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_valuePath_temp_1_18",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use the breadth-first search (BFS) algorithm. \n\nStarting from Amir, we will traverse the graph while keeping track of the distance from Amir to each scholar. We will also keep track of the scholar with the maximum number of books encountered so far.\n\nLet's start:\n\n1. Initialize a queue and add Amir to it.\n2. Create an empty set to keep track of visited scholars and add Amir to it.\n3. Create a dictionary to store the distance from Amir to each scholar, initially setting the distance to 0 for Amir and infinity for all other scholars.\n4. Create a variable to store the maximum number of books encountered so far, initially set to 0.\n5. Create a variable to store the name of the scholar with the maximum number of books encountered so far, initially set to an empty string.\n6. While the queue is not empty:\n   a. Dequeue a scholar from the queue and call them \"current_scholar\".\n   b. Check if the current_scholar has more books than the maximum number of books encountered so far. If so, update the maximum number of books and the name of the scholar.\n   c. For each neighbor of the current_scholar (using the given connections):\n      i. If the neighbor has not been visited:\n         - Add the neighbor to the visited set.\n         - Enqueue the neighbor.\n         - Update the distance of the neighbor from Amir as the distance of the current_scholar plus 1.\n7. Finally, return the shortest path from Amir to the scholar with the maximum number of books, using the distance information we collected.\n\nBased on the given connections and the initial donations, the shortest path from Amir to the person with the maximum number of books is:\n\nAmir, Wim, Wei, Moin\n\nAnswer: Amir, Wim, Wei, Moin"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Kim, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Wei, Moin"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

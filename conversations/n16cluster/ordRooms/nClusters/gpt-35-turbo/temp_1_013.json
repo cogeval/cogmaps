@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nClusters_temp_1_13",
+    "conversation_id": "task_n16cluster_ordRooms_exp_nClusters_temp_1_13",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. How many densely-connected clusters of rooms are there in this world? A densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. How many densely-connected clusters of rooms are there in this world? A densely-connected cluster is a group of rooms that are connected to themselves with a minimum of 2 rooms."
         },
         {
             "role": "assistant",
-            "content": "To find the densely-connected clusters in this world, we need to identify all groups of rooms that are connected to each other with a maximum of 2 rooms. We can use the Depth-First Search (DFS) algorithm to explore the world and find all clusters. Starting from any room, we can explore its neighboring rooms, then explore the neighboring rooms of those rooms, and so on until we have explored all rooms connected to the starting room. We can then mark these rooms as part of a cluster and move to the next unexplored room to find another cluster. \n\nUsing this approach, we can find that there are 7 densely-connected clusters of rooms in this world. \n\nAnswer: there are 7 clusters"
+            "content": "To find the number of densely-connected clusters of rooms, we need to identify the groups of rooms that are connected to each other. One way to do this is to use a graph where each room is represented by a node, and edges connect nodes that represent adjacent rooms. Then, we can apply a graph clustering algorithm, such as the Louvain method, to identify densely-connected groups of nodes.\n\nUsing the given information, we can construct the following graph:\n\n```\n 1 -- 2 -- 16\n |    |     \n 3 -- 4 -- 14\n |    |     \n 5 -- 6 -- 12\n |    |     \n 7 -- 8 -- 10\n |\n 9 -- 11 -- 13 -- 15\n```\n\nApplying the Louvain method to this graph results in 3 clusters:\n\n```\nCluster 1: {1, 2, 3, 4, 5, 6, 7, 8, 10, 12}\nCluster 2: {9, 11, 13, 14, 15, 16}\nCluster 3: {}\n```\n\nCluster 1 and Cluster 2 are both densely-connected clusters of rooms, while Cluster 3 contains no rooms. Therefore, the answer is:\n\nAnswer: there are 2 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 4 clusters"
             ],
-            "parsed_response": "Answer: there are 7 clusters"
+            "parsed_response": "Answer: there are 2 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nstepPath_temp_1_1",
+    "conversation_id": "task_n15star_ordRooms_exp_nstepPath_temp_1_1",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,24 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 12? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 9? Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 1 to room 12, we can use Dijkstra's algorithm. Starting from room 1, we can calculate the shortest distance to all other rooms in the castle. The shortest path from room 1 to room 12 is: 1, 7, 10, 13, 15, 12. \n\nAnswer: 1, 7, 10, 13, 15, 12."
+            "content": "To find the shortest path from room 1 to room 9, we can use Dijkstra's algorithm, which is a commonly used algorithm for finding the shortest path between nodes in a graph. Using the given connections between rooms, we can create a graph where the rooms are nodes and the connections are edges with weights. Then, we can run Dijkstra's algorithm with room 1 as the starting node and room 9 as the destination node. \n\nUsing Dijkstra's algorithm, we get the following shortest path from room 1 to room 9: \n\n1, 8, 3, 9\n\nTherefore, the answer is: Answer: 1, 8, 3, 9."
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15, 12",
-                "Answer: 1, 10, 4, 15, 12",
-                "Answer: 1, 13, 4, 15, 12",
-                "Answer: 1,7,4,15,12",
-                "Answer: 1,10,4,15,12",
-                "Answer: 1,13,4,15,12"
+                "Answer: 1, 7, 4, 15, 9",
+                "Answer: 1, 10, 4, 15, 9",
+                "Answer: 1, 13, 4, 15, 9"
             ],
-            "parsed_response": "Answer: 1, 7, 10, 13, 15, 12"
+            "parsed_response": "Answer: 1, 8, 3, 9"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_3stepPath_temp_1_10",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Moin to Pam? Starting from Moin, please list the scholar names in order, including Moin, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Moin to Pam, we can use a breadth-first search algorithm. \n\n1. Start at Moin.\n2. Look for Moin's connections: Pari and Reza.\n3. Check if Pari or Reza is connected to Pam. If yes, the shortest path is Moin, followed by Pari or Reza, and then Pam. If not, add Pari and Reza to the queue.\n4. Move to the next person in the queue, which is Pari.\n5. Check Pari's connections: Moin and Reza.\n6. Since Moin and Reza have already been visited, skip them.\n7. Check if any of Pari's remaining connections (none in this case) are connected to Pam. If yes, the shortest path is Moin, followed by Pari, and then Pam.\n8. If not, move to the next person in the queue, which is Reza.\n9. Check Reza's connections: Moin, Pari, and Moin.\n10. Since Moin and Pari have already been visited, skip them.\n11. Check if Moin is connected to Pam. If yes, the shortest path is Moin, followed by Reza, and then Pam. If not, add Moin to the queue.\n12. Move to the next person in the queue, which is Moin.\n13. Check Moin's connections: Pari.\n14. Since Pari has already been visited, skip it.\n15. Check if Pari is connected to Pam. If yes, the shortest path is Moin, followed by Pari, and then Pam.\n16. If not, continue the breadth-first search until Pam is found.\n\nThe shortest path from Moin to Pam is Moin, Pari, Pam.\n\nAnswer: Moin, Pari, Pam"
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: Moin, Amir, Puja, Pam"
+            ],
+            "parsed_response": "Answer: Moin, Pari, Pam"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

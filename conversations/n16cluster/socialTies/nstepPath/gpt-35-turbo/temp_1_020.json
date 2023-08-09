@@ -1,0 +1,43 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nstepPath_temp_1_20",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Sara what is the shortest path to Wim? Starting from Sara, please list the scholar numbers in order, including Sara, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Sara to Wim, we can use a breadth-first search algorithm. We will create a queue to keep track of the scholars we need to visit next and a visited set to keep track of the scholars we have already visited. We will start with Sara and add her to the queue and visited set.\n\n1. Initialize the queue and visited set.\n   - Queue: [Sara]\n   - Visited: {Sara}\n\n2. While the queue is not empty, repeat steps 3-5.\n\n3. Dequeue the first scholar from the queue.\n\n4. Check if the dequeued scholar is Wim. If yes, we have found the shortest path. Return the list of scholars visited in order.\n\n5. If the dequeued scholar is not Wim, check their connections. Add any unvisited connected scholars to the queue and visited set.\n\n6. Repeat steps 2-5 until Wim is found or the queue is empty.\n\nUsing this algorithm, we can find the shortest path from Sara to Wim.\n\nAnswer: Sara, Ian, Wim"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Sara, Nisha, Wei, Raj, Wim",
+                "Answer: Sara, Nisha, Reza, Amir, Wim",
+                "Answer: Sara, Ian, Matt, Eva, Wim",
+                "Answer: Sara, Puja, Pari, Eva, Wim"
+            ],
+            "parsed_response": "Answer: Sara, Ian, Wim"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

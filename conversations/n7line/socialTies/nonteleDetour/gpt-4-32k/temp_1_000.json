@@ -11,31 +11,31 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z]+\\s*'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "Imagine a group of friends: Fatima, Ana, Robert, Sophie, Nick, Kiran, and Julia. Fatima introduces you to two of her friends, Ana and Robert. Ana introduces you to Sophie, who introduces you to Kiran. Kiran has a Toyota Camry to give away. You do not take the car, you're just learning about the environment. Then you start over with Fatima introducing you to Robert, who introduces you to Nick, and Nick introduces you to Julia. Julia has a Ferrari to give away. You do not take the car, you're just learning about the environment. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?"
+            "content": "Imagine a group of seven scholars: Vicky, Amir, Wim, Raj, Jing, Wei and Nisha. You are friends with Vicky, who can either introduce you to Amir or Wim.  Amir is connected with Raj, and Raj is connected with Wei. Wei is donating 10 books, but you do not take any books, you're just learning about the environment. Then you exit and start over. This time you ask Vicky to introduce you to Wim, who is connected with Jing, and Jing is connected with Nisha. Nisha is donating 50 books, but you do not take any books, you're just learning about the environment. You will only be able to choose one path from Vicky that leads to the maximum number of books. Which scholar can Vicky connect you with, who will lead to the path with maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two paths and their final outcomes.\nPath 1: Fatima \u2192 Ana \u2192 Sophie \u2192 Kiran (Toyota Camry)\nPath 2: Fatima \u2192 Robert \u2192 Nick \u2192 Julia (Ferrari)\n\nStep 2: Compare the final outcomes of the two paths.\nToyota Camry vs Ferrari\n\nStep 3: Determine which outcome is the most valuable.\nFerrari is more valuable than Toyota Camry.\n\nStep 4: Identify the friend from Fatima's introduction that leads to the path with the most valuable car.\nThe friend from Fatima's introductions that leads to the Ferrari is Robert.\n\nAnswer: Robert"
+            "content": "Step 1: Determine the two possible paths from Vicky.\nPath 1: Vicky -> Amir -> Raj -> Wei (10 books)\nPath 2: Vicky -> Wim -> Jing -> Nisha (50 books)\n\nStep 2: Compare the number of books on each path.\nPath 1: 10 books\nPath 2: 50 books\n\nStep 3: Identify the path with the maximum number of books.\nPath 2 has more books (50 books).\n\nStep 4: Determine which scholar Vicky can connect you with that leads to the path with the maximum number of books.\nAnswer: Wim"
         },
         {
             "role": "user",
-            "content": "Now imagine you meet a new friend, Mike, who introduces you to Alex, and then Alex introduces you to Julia. You call Fatima and choose the previous path that led to the most valuable car, Fatima tells you that the friend with the most valuable car is not talking to anyone. You will only be able to choose one path that leads to the most valuable car. Which friend from Fatima's introductions will lead to the path where one can get the most valuable car?"
+            "content": "Now Vicky has a new connection, Reza. Reza is connected to Kim, and Kim is connected to Nisha. When you meet Vicky and choose the path that leads to the maximum number of books, you discover that the regular path to the scholar with the maximum number of books is blocked. You will only be able to choose one path that leads to the maximum number of books. Which scholar can Vicky connect you with, will lead to the path where one can make the maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Reevaluate the two original paths and the new path.\nOriginal Path 1: Fatima \u2192 Ana \u2192 Sophie \u2192 Kiran (Toyota Camry)\nOriginal Path 2: Fatima \u2192 Robert \u2192 Nick \u2192 Julia (Ferrari)\nNew Path: Mike \u2192 Alex \u2192 Julia\n\nStep 2: Update the paths based on Fatima's information that the friend with the most valuable car is not talking to anyone.\nSince Julia (Ferrari) is not talking to anyone, we can eliminate Original Path 2 and the New Path.\n\nUpdated Path 1: Fatima \u2192 Ana \u2192 Sophie \u2192 Kiran (Toyota Camry)\n\nStep 3: Identify the friend from Fatima's introductions that leads to the path with the most valuable car.\nThe friend from Fatima's introductions that leads to the Toyota Camry is Ana.\n\nAnswer: Ana"
+            "content": "Step 1: Determine the three possible paths from Vicky.\nPath 1: Vicky -> Amir -> Raj -> Wei (10 books)\nPath 2: Vicky -> Wim -> Jing -> Nisha (50 books)\nPath 3: Vicky -> Reza -> Kim -> Nisha (unknown number of books)\n\nStep 2: Determine the regular path to the scholar with the maximum number of books.\nPath 2: Vicky -> Wim -> Jing -> Nisha (50 books) - This path is now blocked.\n\nStep 3: Compare the remaining paths to find the one that leads to the maximum number of books.\nPath 1: 10 books\nPath 3: Unknown number of books\n\nStep 4: Since the path to Wim is blocked and we don't know the number of books in the Reza-Kim-Nisha connection, we choose the path we have information on.\nAnswer: Amir"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: Mike"
+                "Answer: Reza"
             ],
-            "parsed_response": "Step 1: Reevaluate the two original paths and the new path.\nOriginal Path 1: Fatima \u2192 Ana \u2192 Sophie \u2192 Kiran (Toyota Camry)\nOriginal Path 2: Fatima \u2192 Robert \u2192 Nick \u2192 Julia (Ferrari)\nNew Path: Mike \u2192 Alex \u2192 Julia\n\nStep 2: Update the paths based on Fatima's information that the friend with the most valuable car is not talking to anyone.\nSince Julia (Ferrari) is not talking to anyone, we can eliminate Original Path 2 and the New Path.\n\nUpdated Path 1: Fatima \u2192 Ana \u2192 Sophie \u2192 Kiran (Toyota Camry)\n\nStep 3: Identify the friend from Fatima's introductions that leads to the path with the most valuable car.\nThe friend from Fatima's introductions that leads to the Toyota Camry is Ana.\n\nAnswer: Ana"
+            "parsed_response": "Answer: Amir"
         }
     },
     "scores": {

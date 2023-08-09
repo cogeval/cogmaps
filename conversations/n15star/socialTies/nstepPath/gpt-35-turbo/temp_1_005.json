@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_1_5",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Reza to Raj? Starting from Reza, please list the scholar names in order, including Reza, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Reza to Raj, we can use a breadth-first search algorithm. Here are the steps:\n\n1. Start with Reza.\n2. Check if Reza is connected to Raj directly. If yes, the shortest path is Reza, Raj.\n3. If Reza is not directly connected to Raj, check Reza's connections.\n4. Reza is connected to Moin and Pari. Add them to the queue.\n5. Remove Reza from the queue.\n6. Moin is connected to Pari. Add Pari to the queue.\n7. Reza is connected to Moin, Pari. Add Moin to the queue.\n8. Pari is connected to Moin. Add Moin to the queue.\n9. Reza is connected to Moin, Pari. Add Reza to the queue.\n10. Remove Moin from the queue.\n11. Moin is connected to Pari. Add Pari to the queue.\n12. Reza is connected to Moin, Pari. Add Pari to the queue.\n13. Pari is connected to Moin. Add Moin to the queue.\n14. Reza is connected to Moin, Pari. Add Reza to the queue.\n15. Remove Pari from the queue.\n16. Pari is connected to Moin. Add Moin to the queue.\n17. Reza is connected to Moin, Pari. Add Moin to the queue.\n18. Remove Moin from the queue.\n19. Moin is not connected to Raj. Add its connections (Pari) to the queue.\n20. Remove Reza from the queue.\n21. Reza is connected to Moin. Add Moin to the queue.\n22. Remove Moin from the queue.\n23. Moin is not connected to Raj. Add its connections (Pari) to the queue.\n24. Remove Pari from the queue.\n25. Pari is connected to Moin. Add Moin to the queue.\n26. Remove Moin from the queue.\n27. Moin is not connected to Raj. The shortest path from Reza to Raj is Reza, Moin, Pari, Raj.\n\nAnswer: Reza, Moin, Pari, Raj"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Reza, Jing, Matt, Nisha, Raj",
+                "Answer: Reza, Jing, Matt, Ian, Raj",
+                "Answer: Reza, Jing, Matt, Sara, Raj"
+            ],
+            "parsed_response": "Answer: Reza, Moin, Pari, Raj"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

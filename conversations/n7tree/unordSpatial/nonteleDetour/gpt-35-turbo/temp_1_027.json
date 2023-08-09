@@ -6,44 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Mad Tea Party, Fantasyland Entrance, Left Passage, Entrance."
+            "content": "To determine the path that allows for the maximum number of flowers, we need to calculate the number of flowers in each path. \n\nPath 1: Entrance -> Right (Sunflower) -> Right (Hydrangea) -> Sunflower -> Left (Orchid) -> Entrance -> Left (Rose) -> Right (Daisy) -> Rose -> Left (Tulip)\n\n- Sunflower Field: 0 flowers\n- Hydrangea Field: 50 flowers\n- Orchid Field: 10 flowers\n- Rose Field: 0 flowers\n- Daisy Field: 22 flowers\n- Tulip Field: 56 flowers\n\nTotal number of flowers in Path 1 = 0 + 50 + 10 + 0 + 22 + 56 = 138 flowers\n\nPath 2: Entrance -> Right (Sunflower) -> Left (Orchid) -> Sunflower -> Right (Hydrangea) -> Entrance -> Left (Rose) -> Right (Daisy) -> Rose -> Left (Tulip)\n\n- Sunflower Field: 0 flowers\n- Orchid Field: 10 flowers\n- Hydrangea Field: 50 flowers\n- Rose Field: 0 flowers\n- Daisy Field: 22 flowers\n- Tulip Field: 56 flowers\n\nTotal number of flowers in Path 2 = 0 + 10 + 50 + 0 + 22 + 56 = 138 flowers\n\nBoth Path 1 and Path 2 have the same number of flowers, which is 138. Therefore, the flower names in order, including the entrance, for the path that allows for the maximum number of flowers are: Entrance, Right (Sunflower), Right (Hydrangea), Sunflower, Left (Orchid), Entrance, Left (Rose), Right (Daisy), Rose, Left (Tulip).\n\nAnswer: Entrance, Right (Sunflower), Right (Hydrangea), Sunflower, Left (Orchid), Entrance, Left (Rose), Right (Daisy), Rose, Left (Tulip)"
         },
         {
             "role": "user",
-            "content": "In entrance you discover a new passage which leads to a new attraction, Neverland. From Neverland there is a passage to Mad Tea Party. When you return to the entrance and choose the path that led to the attraction with shortest wait time previously, you discover that the regular path to that attraction is blocked. You go back to the entrance. You will only be able to choose one attraction with the shortest wait time. From the entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "At the entrance, you discover a new field, the lily field. From the lily field, you can go to the tulip field. When you return to entrance and choose the path that led to the maximum number of flowers previously, you discover that the regular field to the field with the maximum number of flowers is blocked. You go back to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Mad Tea Party, Fantasyland Entrance, Left Passage, Entrance."
+            "content": "To determine the new path that leads to the maximum number of flowers, we need to recalculate the number of flowers in each possible path.\n\nPath 1: Entrance -> Right (Sunflower) -> Right (Hydrangea) -> Sunflower -> Left (Orchid) -> Entrance -> Left (Rose) -> Right (Daisy) -> Rose -> Left (Tulip)\n\nTotal number of flowers in Path 1 = 138 flowers\n\nPath 2: Entrance -> Right (Sunflower) -> Left (Orchid) -> Sunflower -> Right (Hydrangea) -> Entrance -> Left (Rose) -> Right (Daisy) -> Rose -> Left (Tulip)\n\nTotal number of flowers in Path 2 = 138 flowers\n\nSince the regular field to the field with the maximum number of flowers is now blocked, we need to consider the lily field as a potential path.\n\nPath 3: Entrance -> Right (Sunflower) -> Left (Lily) -> Tulip\n\n- Sunflower Field: 0 flowers\n- Lily Field: 0 flowers\n- Tulip Field: 56 flowers\n\nTotal number of flowers in Path 3 = 0 + 0 + 56 = 56 flowers\n\nComparing the total number of flowers in each path, we can see that Path 1 and Path 2 still have the same maximum number of flowers, which is 138. However, Path 3 has a lower number of flowers, with only 56.\n\nTherefore, the flower names in order, including the entrance, for the path that allows for the maximum number of flowers, considering the blocked regular field, are: Entrance, Right (Sunflower), Right (Hydrangea), Sunflower, Left (Orchid), Entrance, Left (Rose), Right (Daisy), Rose, Left (Tulip).\n\nAnswer: Entrance, Right (Sunflower), Right (Hydrangea), Sunflower, Left (Orchid), Entrance, Left (Rose), Right (Daisy), Rose, Left (Tulip)"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: Entrance, Snow White's Castle, Mad Tea Party",
-                "Answer: entrance, Snow White's Castle, Mad Tea Party"
+                "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Mad Tea Party, Fantasyland Entrance, Left Passage, Entrance."
-        }
-    },
-    "scores": {
-        "nonteleDetour": {
-            "score": 0.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Entrance, Right (Sunflower), Right (Hydrangea), Sunflower, Left (Orchid), Entrance, Left (Rose), Right (Daisy), Rose, Left (Tulip)"
         }
     }
 }

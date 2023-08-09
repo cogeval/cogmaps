@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Now you have been told that there is a reward of 5 for connecting with Alice. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups that Alice is a part of.\n- Group 1: Paul, Solomon, Soheil, Gongxue, and Alice\n- Group 2: Solomon, Soheil, Gongxue, and Alice\n\nStep 2: Identify the groups that Vivian is a part of.\n- Group 3: Vivian, Salma, Shanshan, Vadim, and Gongxue\n- Group 4: Noah, Salma, Shanshan, Vadim, and Anisha\n- Group 5: Salma, Shanshan, and Vadim\n\nStep 3: Find the shortest connection path between Vivian and Alice.\n- Vivian is connected to Gongxue in Group 3.\n- Gongxue is connected to Alice in Group 1 and Group 2.\n\nStep 4: Determine the connection path that yields the most reward.\n- The shortest path with the reward of 5 for connecting with Alice is: Vivian, Gongxue, Alice.\n\nAnswer: Vivian, Gongxue, Alice"
+            "content": "Step 1: Identify the person who is donating the maximum number of books. In this case, it is Kim who is donating 50 books, which is greater than Max's 10 books. \n\nStep 2: Identify the connections starting from Amir. Amir is directly connected to Reza, Moin, Pari, and Puja.\n\nStep 3: Check the connections of the people Amir is directly connected to and see if any of them are connected to Kim. From the given information, none of them are directly connected to Kim.\n\nStep 4: Look at the second degree of separation. Reza is connected to Moin and Pari, Moin is connected to Pari, Pari has no other connections, and Puja is connected to Pam.\n\nStep 5: Check the connections of the people in the second degree of separation and see if any of them are connected to Kim. From the given information, Pam is directly connected to Kim.\n\nStep 6: Construct the shortest path from Amir to Kim. The shortest path is Amir - Puja - Pam - Kim.\n\nFinal Outcome: Answer: Amir, Puja, Pam, Kim."
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that Moin is donating 100 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Identify the person who is donating the maximum number of books. In this case, it is Moin who is donating 100 books, which is greater than Kim's 50 books and Max's 10 books.\n\nStep 2: Identify the connections starting from Amir. Amir is directly connected to Reza, Moin, Pari, and Puja.\n\nStep 3: Check the connections of the people Amir is directly connected to and see if any of them are connected to Moin. From the given information, Amir is directly connected to Moin.\n\nFinal Outcome: Answer: Amir, Moin."
         }
     ],
     "tests": {
         "policyReval": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Alice, Soheil"
+                "Answer: Amir, Moin"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Alice"
+            "parsed_response": "Answer: Amir, Moin"
+        }
+    },
+    "scores": {
+        "policyReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

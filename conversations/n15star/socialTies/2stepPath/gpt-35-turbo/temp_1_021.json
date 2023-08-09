@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_2stepPath_temp_1_21",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Kim to Sara? Starting from Kim, please list the scholar names in order, including Kim, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Kim to Sara, we can use the concept of breadth-first search. \n\n1. Starting from Kim, we check its connections. Kim is connected to Pam.\n2. Next, we check Pam's connections. Pam is connected to Wei and Puja.\n3. We continue checking the connections of Wei and Puja. Wei is connected to Kim, Puja, and Pam. Puja is connected to Kim, Pam, and Wim.\n4. We mark Kim, Pam, Wei, and Puja as visited.\n5. We then check the connections of Sara. Sara is connected to Max, Ian, and Nisha.\n6. We continue checking the connections of Max, Ian, and Nisha. Max is connected to Jing, Reza, Moin, and Sara. Ian is connected to Nisha, Sara, and Max. Nisha is connected to Ian, Sara, and Raj.\n7. We mark Max, Ian, Nisha, Jing, Reza, Moin, and Raj as visited.\n8. Finally, we check the connections of Max, Ian, Nisha, Jing, Reza, Moin, and Raj. Max is already visited, Ian is already visited, Nisha is already visited, Jing is already visited, Reza is already visited, Moin is already visited, and Raj is already visited.\n9. The search ends here as we have found Sara in the visited nodes.\n\nTherefore, the shortest path from Kim to Sara is: Answer: Kim, Puja, Pam, Sara."
+        }
+    ],
+    "tests": {
+        "2stepPath": {
+            "expected_answer": [
+                "Answer: Kim, Raj, Sara"
+            ],
+            "parsed_response": "Answer: Kim, Puja, Pam, Sara"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

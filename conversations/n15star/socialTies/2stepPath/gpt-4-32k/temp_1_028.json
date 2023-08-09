@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Paul? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Nisha to Kim? Starting from Nisha, please list the scholar names in order, including Nisha, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Find the connections between the two groups that Vivian and Paul are in:\nVivian is connected to Salma, Shanshan, Vadim, and Gongxue.\nPaul is connected to Solomon, Soheil, Gongxue, and Alice.\n\n2. Find if there is any direct connection between these two groups:\nGongxue is connected to both Vivian and Paul.\n\n3. Create the shortest connection path:\nVivian -> Gongxue -> Paul\n\nAnswer: Vivian, Gongxue, Paul"
+            "content": "First, let's look at the connections of each person:\n- Amir is connected to Reza, Moin, Pari, and Puja.\n- Wim is connected to Wei, Kim, Puja, and Pam.\n- Raj is connected to Nisha, Ian, Sara, and Kim.\n- Jing is connected to Reza, Moin, Pari, and Max.\n- Wei is connected to Kim, Puja, and Pam.\n- Nisha is connected to Ian, Sara, and Max.\n- Reza is connected to Moin, and Pari.\n- Kim is connected to Pam.\n- Ian is connected to Sara, and Max.\n- Moin is connected to Pari.\n- Puja is connected to Pam.\n- Sara is connected to Max.\n\nThe task is to find the shortest path from Nisha to Kim. We start from Nisha:\n\n1. Nisha is connected to Ian, Sara, and Max. But none of them are directly connected to Kim. Let's go through Ian.\n\n2. Ian is connected to Sara and Max. We know from before that Sara isn't connected to Kim, so let's try Max.\n\n3. Max is not directly connected to any other scholar from the list, so going via Ian was a dead-end.\n\nNow let's start again from Nisha:\n\n1. This time, let's try Sara.\n\n2. Sara is connected to Max and we know from before this is also a dead-end. So the last remaining option from Nisha is Max. However, we already know Max is a dead-end.\n\nSo, there is no direct or indirect connection from Nisha to Kim within the network.\n\nAnswer: There is no path from Nisha to Kim."
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul"
+                "Answer: Nisha, Raj, Kim"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Paul"
+            "parsed_response": "Answer: There is no path from Nisha to Kim"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

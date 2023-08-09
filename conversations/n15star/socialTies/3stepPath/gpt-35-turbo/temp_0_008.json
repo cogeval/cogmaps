@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_3stepPath_temp_0_8",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Moin to Wim? Starting from Moin, please list the scholar names in order, including Moin, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Moin to Wim, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Moin.\n2. Check if Moin is connected to Wim. If yes, the shortest path is just Moin and Wim.\n3. If not, check Moin's connections: Reza and Pari.\n4. Check if Reza or Pari is connected to Wim. If yes, the shortest path is Moin, Reza (or Pari), and Wim.\n5. If not, check Reza's connections: Moin and Pari.\n6. Check if Moin or Pari is connected to Wim. If yes, the shortest path is Moin, Reza, Moin (or Pari), and Wim.\n7. If not, check Pari's connections: Moin and Reza.\n8. Check if Moin or Reza is connected to Wim. If yes, the shortest path is Moin, Pari, Moin (or Reza), and Wim.\n9. If not, check Wim's connections: Wei, Kim, Puja, and Pam.\n10. Check if any of Wei, Kim, Puja, or Pam is connected to Moin, Reza, or Pari. If yes, the shortest path is Moin, Pari, Moin (or Reza), Wim.\n11. If not, check Wei's connections: Kim, Puja, and Pam.\n12. Check if any of Kim, Puja, or Pam is connected to Moin, Reza, Pari, or Wim. If yes, the shortest path is Moin, Pari, Moin (or Reza), Wei, Kim (or Puja or Pam), and Wim.\n13. If not, check Kim's connections: Pam.\n14. Check if Pam is connected to Moin, Reza, Pari, Wim, or Wei. If yes, the shortest path is Moin, Pari, Moin (or Reza), Wei, Kim, Pam, and Wim.\n15. If not, the shortest path from Moin to Wim is not possible.\n\nAnswer: Moin, Pari, Moin, Wei, Kim, Wim"
+        }
+    ],
+    "tests": {
+        "3stepPath": {
+            "expected_answer": [
+                "Answer: Moin, Amir, Puja, Wim"
+            ],
+            "parsed_response": "Answer: Moin, Pari, Moin, Wei, Kim, Wim"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

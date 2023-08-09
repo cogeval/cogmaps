@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n15star_ordRooms_exp_3stepPath_temp_1_0",
     "model": "replicate:llama-13b",
-    "version": "2023-03-15-preview",
+    "version": null,
     "temperature": 1,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "A: room 1, room 2, room 3, room 4, room 5, room 6, room 7, room 8, room 9, room 10, room 11 and room 15\nThe regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+' should look for numbers separated by a space or comma, for example 12, 15, 14, 10\n\"Starting from room 1, please list the room numbers in order, including 1, separated by commas\" sounds like two pieces of information.\nI thought it was easier because there was not any information about room number.\n\"room 1 is connected to room 7.\"\nSo my logic is that room 7 will have room number of 1, 2 and 3. So I will get 1, 2, 3 and then I will look for room 7 again. 1, 2, 3, 4, 5, 6, 7. That will be the path.\nIt's because the number of the room 7 will keep increasing. And there must be a room that's not connected with the other rooms. So i think I can get one room that is directly connected with room 15, which is 14. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14. I don't think it's right. Could you help me check if it works?\nIf I look for the room number that is directly connected with room 15 using regex, I think it would work. I'll try it.\n\"The regular expression 'Answer: ([0-9]+,\\s*)+[0-9]+'.\"\nIf only numbers are included, then I would get 1,2,3,4,5,6,7,8,9,10,11,12,13,14 and 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 using regex.\nThe regex should be like this:\nAnswer: ([1-"
+            "content": "Sure, I'd be happy too!\"\nAnswer: ()* (rooms from start room connect too, comma spced)[0-9)] (Please provide list)"
         }
     ],
     "tests": {
@@ -27,12 +27,9 @@
             "expected_answer": [
                 "Answer: 1, 7, 4, 15",
                 "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 1, 13, 4, 15"
             ],
-            "parsed_response": "A: room 1, room 2, room 3, room 4, room 5, room 6, room 7, room 8, room 9, room 10, room 11 and room 15\nThe regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+' should look for numbers separated by a space or comma, for example 12, 15, 14, 10\n\"Starting from room 1, please list the room numbers in order, including 1, separated by commas\" sounds like two pieces of information.\nI thought it was easier because there was not any information about room number.\n\"room 1 is connected to room 7.\"\nSo my logic is that room 7 will have room number of 1, 2 and 3. So I will get 1, 2, 3 and then I will look for room 7 again. 1, 2, 3, 4, 5, 6, 7. That will be the path.\nIt's because the number of the room 7 will keep increasing. And there must be a room that's not connected with the other rooms. So i think I can get one room that is directly connected with room 15, which is 14. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14. I don't think it's right. Could you help me check if it works?\nIf I look for the room number that is directly connected with room 15 using regex, I think it would work. I'll try it.\n\"The regular expression 'Answer: ([0-9]+,\\s*)+[0-9]+'.\"\nIf only numbers are included, then I would get 1,2,3,4,5,6,7,8,9,10,11,12,13,14 and 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 using regex.\nThe regex should be like this:\nAnswer: ([1-"
+            "parsed_response": "Sure, I'd be happy too!\"\nAnswer: ()* (rooms from start room connect too, comma spced)[0-9)] (Please provide list)"
         }
     },
     "scores": {

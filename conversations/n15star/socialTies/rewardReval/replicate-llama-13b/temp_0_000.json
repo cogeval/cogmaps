@@ -1,7 +1,7 @@
 {
     "conversation_id": "task_n15star_socialTies_exp_rewardReval_temp_0_0",
     "model": "replicate:llama-13b",
-    "version": "2023-03-15-preview",
+    "version": null,
     "temperature": 0,
     "top_p": 0.95,
     "frequency_penalty": 0,
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "The response should be as 'Amir,Puja,Wei,Wim,Moin,Ian,Sara,Kim,Pam,Max,Reza,Jing,Nisha,Kim,Ian,Pam'\nAnswer: Amir, Puja, Wei, Wim, Moin, Ian, Sara, Kim, Pam, Max, Reza, Jing, Nisha, Kim, Ian, Pam\nThe question can be in different form but should have the structure as mentioned in the answer above.\nCan have spaces between words and comma/other non digit character at the end of sentences. It is optional.\nFor people who use English as their native language, I would like to mention that you can use lowercase. In this problem, it's quite possible that you will get an answer like 'Amir,Puja,Wei,Wim,Moin,Ian,Sara,Kim,Pam,Max' and then have some problem as this is a bit different from 'Amir,Puja,Wei,Wim,Moin,Ian,Sara,Kim,Pam,Max'. This is because punctuations like comma will be interpreted as a part of string too.\n\"Amir, Puja, Wei, Wim, Moin, Ian, Sara, Kim,,Pam\" would also count as an answer.\n\"Amir,Puja,Wei,Wim,Moin,Ian,Sara,Kim,Pam,Max,Reza,Jing,Nisha,KI\"m,Ian,Pam\" would also count as an answer.\nFor people who use English as their native language, I'd like to tell that space is an optional character but should be present in the problem. The best place to see an answer like this would be on a web page.\n\"Amir, Pui, Wei, Wim, Moin, Ian, Sara, Kim,,Pam\" would also count as an answer.\n\"Amir,Puji,wei,Wim,Moin,Ian,Sara,Kim,,Pam\" would also count as an answer.\nIf there are any ambiguity in my description, I can provide my own sample responses and the original problem in question.\nYou've already mentioned"
+            "content": "Answer: (Amir, Reza, Moin, Pari, Puja, Wim, Wei, Kim, Nisha, Ian, Sara, Max)"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "\nNote: There are 71 possible answers, as mentioned below.\nI did not think the solution and just implemented directly from the specs, so please check my solution for missing some possibilities.\nI'm sorry I will not be able to give out my solution due to confidentiality issues.\nAnswer: Amir, Puja, Wei, Wim, Moin, Ian, Sara, Kim, Pam, Max, Reza, Jing, Nisha, Kim, Ian, Pam, Reza, Pari, Max, Moin, Kim, Pari, Pam, Wei, Kim, Ian, Nisha, Amir, Pam, Max, Wei, Nisha, Pam, Reza, Moin, Amir, Nisha, Puja, Reza, Max, Moin, Jing, Pam, Ian, Sara, Wim, Pari, Moin, Max, Wei, Jing, Pari, Pam, Wei, Sara, Ian, Moin, Puja, Reza, Pam, Max, Jing, Reza, Ian, Nisha, Kim, Amir, Max\nIf you are concerned whether this solution could be possible for someone with lower IQ, I'll reply that my solution includes all possible permutations. It's just that it's very unlikely that people could think of all of them. So, please check my solution if you're concerned about this.\nThis is my submission, which can work for some similar problems.\n#include <algorithm> :: string s = string(user);\nstd::transform(s.begin(), s.end(), std::back_inserter(p), ::tolower);\nstd::string pb = s; // Pretty-print the s\ns.insert(s.begin(), \" \") // Make sure there's a space\nstd::sort(s.begin(), s.end());\nstring::iterator i = std::remove_if(std::begin(p), std::end(p), ::isdigit);\nif (i == std::end(p)) std::sort(std::begin(p), std::end(p));\nfor (boost::optional<int> i(::string_to_int(*pb.cbegin() + size_t(i)));\nstatic string const max = \"Amir, Puja, Wei, W"
+            "content": "Answer: (Amir, Reza, Moin, Pari, Puja, Wim, Wei, Nisha, Ian, Sara, Max)"
         }
     ],
     "tests": {
@@ -37,7 +37,7 @@
                 "Answer: Amir, Moin, Jing, Max ",
                 "Answer: Amir, Pari, Jing, Max "
             ],
-            "parsed_response": "\nNote: There are 71 possible answers, as mentioned below.\nI did not think the solution and just implemented directly from the specs, so please check my solution for missing some possibilities.\nI'm sorry I will not be able to give out my solution due to confidentiality issues.\nAnswer: Amir, Puja, Wei, Wim, Moin, Ian, Sara, Kim, Pam, Max, Reza, Jing, Nisha, Kim, Ian, Pam, Reza, Pari, Max, Moin, Kim, Pari, Pam, Wei, Kim, Ian, Nisha, Amir, Pam, Max, Wei, Nisha, Pam, Reza, Moin, Amir, Nisha, Puja, Reza, Max, Moin, Jing, Pam, Ian, Sara, Wim, Pari, Moin, Max, Wei, Jing, Pari, Pam, Wei, Sara, Ian, Moin, Puja, Reza, Pam, Max, Jing, Reza, Ian, Nisha, Kim, Amir, Max\nIf you are concerned whether this solution could be possible for someone with lower IQ, I'll reply that my solution includes all possible permutations. It's just that it's very unlikely that people could think of all of them. So, please check my solution if you're concerned about this.\nThis is my submission, which can work for some similar problems.\n#include <algorithm> :: string s = string(user);\nstd::transform(s.begin(), s.end(), std::back_inserter(p), ::tolower);\nstd::string pb = s; // Pretty-print the s\ns.insert(s.begin(), \" \") // Make sure there's a space\nstd::sort(s.begin(), s.end());\nstring::iterator i = std::remove_if(std::begin(p), std::end(p), ::isdigit);\nif (i == std::end(p)) std::sort(std::begin(p), std::end(p));\nfor (boost::optional<int> i(::string_to_int(*pb.cbegin() + size_t(i)));\nstatic string const max = \"Amir, Puja, Wei, W"
+            "parsed_response": "Answer: (Amir, Reza, Moin, Pari, Puja, Wim, Wei, Nisha, Ian, Sara, Max)"
         }
     },
     "scores": {

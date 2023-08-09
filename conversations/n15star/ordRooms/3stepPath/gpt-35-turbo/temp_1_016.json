@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_3stepPath_temp_1_16",
+    "conversation_id": "task_n15star_ordRooms_exp_3stepPath_temp_1_16",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,24 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 15? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 13 to room 14? Starting from room 13, please list the room numbers in order, including 13, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 1 to room 15, we can use Dijkstra's algorithm. Starting from room 1, we can calculate the shortest distance to each of the other rooms, and keep track of the path that leads to the shortest distance. \n\nThe shortest path from room 1 to room 15 is: 1, 7, 10, 13, 15\n\nAnswer: 1, 7, 10, 13, 15"
+            "content": "To find the shortest path from room 13 to room 14, we can use Dijkstra's algorithm. \n\nStarting from room 13, we can reach room 7 or room 10 with a distance of 1. From room 7, we can reach room 4 with a distance of 1, which is adjacent to room 15 with a distance of 1, and then to room 14 with a distance of 1. So the total distance from room 13 to room 14 through this path is 3.\n\nStarting from room 10, we can reach room 7 with a distance of 1, and then follow the same path as above to reach room 14. So the total distance from room 13 to room 14 through this path is also 3.\n\nTherefore, there are two shortest paths from room 13 to room 14:\n1. 13, 7, 4, 15, 14\n2. 13, 10, 7, 4, 15, 14\n\nAnswer: 13, 7, 4, 15, 14 OR 13, 10, 7, 4, 15, 14"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15",
-                "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 13, 1, 11, 14"
             ],
-            "parsed_response": "Answer: 1, 7, 10, 13, 15"
+            "parsed_response": "Answer: 13, 7, 4, 15, 14"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

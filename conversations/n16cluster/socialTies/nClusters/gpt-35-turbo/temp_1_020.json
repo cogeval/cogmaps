@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nClusters_temp_1_20",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. How many densely-connected clusters of scholars are there in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
+        },
+        {
+            "role": "assistant",
+            "content": "To determine the number of densely-connected clusters of scholars in this group, we can use the concept of graph theory. Each scholar represents a vertex, and the connections between scholars represent edges. \n\nStep 1: Create an adjacency matrix\nWe can create a 16x16 adjacency matrix to represent the connections between scholars. Each entry in the matrix will be 1 if there is a connection between the corresponding scholars, and 0 otherwise. \n\nStep 2: Find the clusters\nTo find the densely-connected clusters, we can use depth-first search (DFS) algorithm. Starting from each scholar, we perform a DFS to explore all connected scholars. We mark each scholar as visited to avoid revisiting already explored scholars. \n\nStep 3: Count the clusters\nAfter performing DFS on all scholars, we count the number of clusters that have at least 2 scholars. \n\nLet's apply these steps to the given group:\n\nAmir (1) is connected to Wim (2), Raj (3), Jing (4), and Reza (5).\nWim (2) is connected to Amir (1), Raj (3), Jing (4), and Eva (6).\nRaj (3) is connected to Amir (1), Wim (2), Jing (4), and Wei (7).\nJing (4) is connected to Amir (1), Wim (2), Raj (3), and Pam (8).\nWei (7) is connected to Nisha (9), Reza (5), Kim (10), and Raj (3).\nNisha (9) is connected to Wei (7), Reza (5), Kim (10), and Sara (12).\nReza (5) is connected to Amir (1), Kim (10), Nisha (9), and Wei (7).\nKim (10) is connected to Wei (7), Nisha (9), Reza (5), and Moin (13).\nIan (11) is connected to Moin (13), Puja (14), Sara (12), and Matt (15).\nMoin (13) is connected to Ian (11), Puja (14), Kim (10), and Sara (12).\nPuja (14) is connected to Pari (16), Ian (11), Sara (12), and Moin (13).\nSara (12) is connected to Ian (11), Moin (13), Puja (14), and Nisha (9).\nPari (16) is connected to Pam (8), Matt (15), Eva (6), and Puja (14).\nPam (8) is connected to Jing (4), Pari (16), Matt (15), and Eva (6).\nMatt (15) is connected to Pari (16), Pam (8), Eva (6), and Ian (11).\nEva (6) is connected to Pari (16), Pam (8), Matt (15), and Wim (2).\n\nThe adjacency matrix will be:\n\n0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0\n1 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0\n1 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0\n1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0\n1 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0\n0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0\n0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0\n0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0\n0 0 0 0 0 1 0 0 0 1 0 1 0 0 0 0\n0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0\n0 0 0 0 0 0 0 0 0 0 0 1 1 0 0"
+        }
+    ],
+    "tests": {
+        "nClusters": {
+            "expected_answer": [
+                "Answer: there are 4 clusters"
+            ],
+            "parsed_response": "To determine the number of densely-connected clusters of scholars in this group, we can use the concept of graph theory. Each scholar represents a vertex, and the connections between scholars represent edges. \n\nStep 1: Create an adjacency matrix\nWe can create a 16x16 adjacency matrix to represent the connections between scholars. Each entry in the matrix will be 1 if there is a connection between the corresponding scholars, and 0 otherwise. \n\nStep 2: Find the clusters\nTo find the densely-connected clusters, we can use depth-first search (DFS) algorithm. Starting from each scholar, we perform a DFS to explore all connected scholars. We mark each scholar as visited to avoid revisiting already explored scholars. \n\nStep 3: Count the clusters\nAfter performing DFS on all scholars, we count the number of clusters that have at least 2 scholars. \n\nLet's apply these steps to the given group:\n\nAmir (1) is connected to Wim (2), Raj (3), Jing (4), and Reza (5).\nWim (2) is connected to Amir (1), Raj (3), Jing (4), and Eva (6).\nRaj (3) is connected to Amir (1), Wim (2), Jing (4), and Wei (7).\nJing (4) is connected to Amir (1), Wim (2), Raj (3), and Pam (8).\nWei (7) is connected to Nisha (9), Reza (5), Kim (10), and Raj (3).\nNisha (9) is connected to Wei (7), Reza (5), Kim (10), and Sara (12).\nReza (5) is connected to Amir (1), Kim (10), Nisha (9), and Wei (7).\nKim (10) is connected to Wei (7), Nisha (9), Reza (5), and Moin (13).\nIan (11) is connected to Moin (13), Puja (14), Sara (12), and Matt (15).\nMoin (13) is connected to Ian (11), Puja (14), Kim (10), and Sara (12).\nPuja (14) is connected to Pari (16), Ian (11), Sara (12), and Moin (13).\nSara (12) is connected to Ian (11), Moin (13), Puja (14), and Nisha (9).\nPari (16) is connected to Pam (8), Matt (15), Eva (6), and Puja (14).\nPam (8) is connected to Jing (4), Pari (16), Matt (15), and Eva (6).\nMatt (15) is connected to Pari (16), Pam (8), Eva (6), and Ian (11).\nEva (6) is connected to Pari (16), Pam (8), Matt (15), and Wim (2).\n\nThe adjacency matrix will be:\n\n0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0\n1 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0\n1 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0\n1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0\n1 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0\n0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0\n0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0\n0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0\n0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0\n0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0\n0 0 0 0 0 1 0 0 0 1 0 1 0 0 0 0\n0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0\n0 0 0 0 0 0 0 0 0 0 0 1 1 0 0"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

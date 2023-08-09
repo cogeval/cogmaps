@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_valuePath_temp_0.5_6",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Amir and initialize an empty queue.\n2. Add Amir to the queue.\n3. While the queue is not empty, do the following:\n   - Dequeue a scholar from the front of the queue.\n   - Check if the scholar is donating books.\n   - If yes, store the scholar's name and the number of books donated.\n   - If not, enqueue all the scholars connected to the current scholar.\n4. Once the queue is empty, we will have the shortest path from Amir to the person donating the maximum number of books.\n\nLet's go through the steps:\n\n1. Start with Amir and initialize an empty queue.\n   - Queue: [Amir]\n   - Path: [Amir]\n\n2. Dequeue Amir from the queue.\n   - Queue: []\n   - Path: [Amir]\n\n3. Check if Amir is donating books. No.\n\n4. Enqueue scholars connected to Amir: Reza, Moin, Pari, and Puja.\n   - Queue: [Reza, Moin, Pari, Puja]\n   - Path: [Amir]\n\n5. Dequeue Reza from the queue.\n   - Queue: [Moin, Pari, Puja]\n   - Path: [Amir, Reza]\n\n6. Check if Reza is donating books. No.\n\n7. Enqueue scholars connected to Reza: Moin and Pari.\n   - Queue: [Moin, Pari, Puja, Moin, Pari]\n   - Path: [Amir, Reza]\n\n8. Continue dequeuing and enqueueing until we find a scholar who is donating books.\n   - Queue: [Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n   - Path: [Amir, Reza, Moin, Pari]\n\n9. Dequeue Pari from the queue.\n   - Queue: [Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n   - Path: [Amir, Reza, Moin, Pari]\n\n10. Check if Pari is donating books. No.\n\n11. Enqueue scholars connected to Pari: None.\n\n12. Continue dequeuing and enqueueing until we find a scholar who is donating books.\n    - Queue: [Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari]\n\n13. Dequeue Puja from the queue.\n    - Queue: [Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja]\n\n14. Check if Puja is donating books. No.\n\n15. Enqueue scholars connected to Puja: None.\n\n16. Continue dequeuing and enqueueing until we find a scholar who is donating books.\n    - Queue: [Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja]\n\n17. Dequeue Moin from the queue.\n    - Queue: [Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja, Moin]\n\n18. Check if Moin is donating books. No.\n\n19. Enqueue scholars connected to Moin: None.\n\n20. Continue dequeuing and enqueueing until we find a scholar who is donating books.\n    - Queue: [Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja, Moin]\n\n21. Dequeue Pari from the queue.\n    - Queue: [Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja, M"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Puja, Wim, Kim",
+                "Answer: Amir, Puja, Pam, Kim",
+                "Answer: Amir, Puja, Wei, Kim"
+            ],
+            "parsed_response": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Amir and initialize an empty queue.\n2. Add Amir to the queue.\n3. While the queue is not empty, do the following:\n   - Dequeue a scholar from the front of the queue.\n   - Check if the scholar is donating books.\n   - If yes, store the scholar's name and the number of books donated.\n   - If not, enqueue all the scholars connected to the current scholar.\n4. Once the queue is empty, we will have the shortest path from Amir to the person donating the maximum number of books.\n\nLet's go through the steps:\n\n1. Start with Amir and initialize an empty queue.\n   - Queue: [Amir]\n   - Path: [Amir]\n\n2. Dequeue Amir from the queue.\n   - Queue: []\n   - Path: [Amir]\n\n3. Check if Amir is donating books. No.\n\n4. Enqueue scholars connected to Amir: Reza, Moin, Pari, and Puja.\n   - Queue: [Reza, Moin, Pari, Puja]\n   - Path: [Amir]\n\n5. Dequeue Reza from the queue.\n   - Queue: [Moin, Pari, Puja]\n   - Path: [Amir, Reza]\n\n6. Check if Reza is donating books. No.\n\n7. Enqueue scholars connected to Reza: Moin and Pari.\n   - Queue: [Moin, Pari, Puja, Moin, Pari]\n   - Path: [Amir, Reza]\n\n8. Continue dequeuing and enqueueing until we find a scholar who is donating books.\n   - Queue: [Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n   - Path: [Amir, Reza, Moin, Pari]\n\n9. Dequeue Pari from the queue.\n   - Queue: [Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n   - Path: [Amir, Reza, Moin, Pari]\n\n10. Check if Pari is donating books. No.\n\n11. Enqueue scholars connected to Pari: None.\n\n12. Continue dequeuing and enqueueing until we find a scholar who is donating books.\n    - Queue: [Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari]\n\n13. Dequeue Puja from the queue.\n    - Queue: [Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja]\n\n14. Check if Puja is donating books. No.\n\n15. Enqueue scholars connected to Puja: None.\n\n16. Continue dequeuing and enqueueing until we find a scholar who is donating books.\n    - Queue: [Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja]\n\n17. Dequeue Moin from the queue.\n    - Queue: [Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja, Moin]\n\n18. Check if Moin is donating books. No.\n\n19. Enqueue scholars connected to Moin: None.\n\n20. Continue dequeuing and enqueueing until we find a scholar who is donating books.\n    - Queue: [Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja, Moin]\n\n21. Dequeue Pari from the queue.\n    - Queue: [Puja, Moin, Pari, Puja, Moin, Pari, Puja, Moin, Pari, Puja]\n    - Path: [Amir, Reza, Moin, Pari, Puja, M"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

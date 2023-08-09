@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. How many densely-connected room clusters do we have in this castle? A densely-connected cluster is a group of rooms that are connected to themselves with a minimum of 2 rooms."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the clusters of rooms mentioned in the description.\nCluster 1: Room 1, 7, 10, 13, 11\nCluster 2: Room 2, 5, 8, 11, 14\nCluster 3: Room 3, 6, 9, 12, 8\nCluster 4: Room 4, 7, 10, 13, 15\nCluster 5: Room 5, 8, 11, 14\nCluster 6: Room 6, 9, 12, 15\nCluster 7: Room 7, 10, 13\nCluster 8: Room 8, 14\nCluster 9: Room 9, 12, 15\nCluster 10: Room 10, 13\nCluster 11: Room 11, 14\nCluster 12: Room 12, 15\n\nStep 2: Merge the clusters that share rooms.\nMerge Cluster 1 and Cluster 4: Room 1, 7, 10, 13, 11, 4, 15\nMerge Cluster 2 and Cluster 5: Room 2, 5, 8, 11, 14\nMerge Cluster 3 and Cluster 6: Room 3, 6, 9, 12, 8\nMerge Cluster 7 and Cluster 10: Room 7, 10, 13\nMerge Cluster 8 and Cluster 11: Room 8, 14\nMerge Cluster 9 and Cluster 12: Room 9, 12, 15\n\nStep 3: Check if any more merges can be done.\nClusters 7 and 10 have been merged in Step 2.\n\nStep 4: Verify if any of the remaining clusters are densely-connected clusters.\nA densely-connected cluster is a group of rooms that are connected to themselves with a max of 2 rooms.\nCluster 1: Densely-connected.\nCluster 2: Densely-connected.\nCluster 3: Densely-connected.\n\nStep 5: Count the number of densely-connected clusters.\nAnswer: there are 3 clusters"
+            "content": "Step 1: Identify the connections between rooms.\nRoom 1: 7, 10, 13, 11\nRoom 2: 5, 8, 11, 14\nRoom 3: 6, 9, 12, 8\nRoom 4: 7, 10, 13, 15\nRoom 5: 8, 11, 14\nRoom 6: 9, 12, 15\nRoom 7: 10, 13\nRoom 8: 14\nRoom 9: 12, 15\nRoom 10: 13\nRoom 11: 14\nRoom 12: 15\n\nStep 2: Identify densely-connected room clusters\nCluster 1: Room 1, Room 7, Room 10, Room 13\nCluster 2: Room 2, Room 5, Room 8, Room 11, Room 14\nCluster 3: Room 3, Room 6, Room 9, Room 12, Room 15\nCluster 4: Room 4, Room 7, Room 10, Room 13, Room 15\n\nStep 3: Determine the number of distinct clusters.\nThere are 4 distinct densely-connected room clusters.\n\nAnswer: there are 4 clusters"
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 3 clusters"
+            "parsed_response": "Answer: there are 4 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

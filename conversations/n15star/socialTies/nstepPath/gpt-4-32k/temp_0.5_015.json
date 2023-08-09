@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wim to Jing? Starting from Wim, please list the scholar names in order, including Wim, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. First, let's list all the connections between the students:\n   - Vivian, Salma, Shanshan, Vadim, Gongxue\n   - Paul, Solomon, Soheil, Gongxue, Alice\n   - Pierre, Abdul, Durga, Ajit, Soheil\n   - Noah, Salma, Shanshan, Vadim, Anisha\n   - Solomon, Soheil, Gongxue, Alice\n   - Abdul, Durga, Ajit, Anisha\n   - Salma, Shanshan, Vadim\n   - Soheil, Alice\n   - Durga, Ajit, Anisha\n   - Shanshan, Vadim\n   - Gongxue, Alice\n   - Ajit, Anisha\n\n2. Identify the groups that Vivian and Ajit are part of:\n   - Vivian: Vivian, Salma, Shanshan, Vadim, Gongxue\n   - Ajit: Pierre, Abdul, Durga, Ajit, Soheil; Abdul, Durga, Ajit, Anisha; Durga, Ajit, Anisha; Ajit, Anisha\n\n3. Find the common students between Vivian's group and Ajit's groups:\n   - No common students found.\n\n4. Find connections between Vivian's group and Ajit's groups:\n   - Gongxue is connected to Alice (Vivian's group)\n   - Soheil is connected to Alice (Ajit's group)\n   - Salma, Shanshan, Vadim are connected to Anisha (Vivian's group)\n   - Abdul, Durga, Ajit are connected to Anisha (Ajit's group)\n\n5. Determine the shortest path:\n   - Vivian -> Gongxue -> Alice -> Soheil -> Ajit (4 connections)\n   - Vivian -> Salma -> Anisha -> Ajit (3 connections)\n   - Vivian -> Shanshan -> Anisha -> Ajit (3 connections)\n   - Vivian -> Vadim -> Anisha -> Ajit (3 connections)\n\n6. Choose the shortest path with the fewest connections: Vivian -> Salma -> Anisha -> Ajit\n\nAnswer: Vivian, Salma, Anisha, Ajit"
+            "content": "First, I'll identify the connections between the scholars:\n\n1. Wim is directly connected to Wei, Kim, Puja, and Pam.\n2. Wei, Kim, Puja, and Pam are not directly connected to Jing.\n3. However, Puja is directly connected to Pam, and Pam is directly connected to Kim.\n4. Kim is not connected to Jing, but is directly connected to Wei.\n5. Wei is not connected to Jing, but is directly connected to Wim.\n6. Wim is directly connected to Puja, and Puja is directly connected to Pam.\n7. Pam is not connected to Jing, but is directly connected to Kim.\n8. Kim is not connected to Jing, but is directly connected to Wei.\n9. Wei is not connected to Jing, but is directly connected to Wim.\n10. Wim is directly connected to Puja, and Puja is directly connected to Amir.\n11. Amir is directly connected to Reza, Moin, and Pari.\n12. Reza, Moin, and Pari are directly connected to Jing.\n\nFrom these connections, I can determine the shortest path from Wim to Jing:\n\nWim -> Puja -> Amir -> Reza -> Jing\n\nTherefore, the shortest path from Wim to Jing is through Puja, Amir, and Reza.\n\nAnswer: Wim, Puja, Amir, Reza, Jing"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Wim, Puja, Amir, Reza, Jing",
+                "Answer: Wim, Puja, Amir, Moin, Jing",
+                "Answer: Wim, Puja, Amir, Pari, Jing"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha, Ajit"
+            "parsed_response": "Answer: Wim, Puja, Amir, Reza, Jing"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

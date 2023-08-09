@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wim to Pari? Starting from Wim, please list the scholar names in order, including Wim, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections between Vivian and the other students.\n- Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n\nStep 2: Identify the connections between these students and the other students, looking for connections to Anisha or connections that lead to Anisha.\n- Salma is connected to Shanshan, Vadim, and Noah.\n- Shanshan is connected to Salma, Vadim, and Noah.\n- Vadim is connected to Salma, Shanshan, and Noah.\n- Gongxue is connected to Salma, Shanshan, Vadim, Solomon, Soheil, and Alice.\n \nStep 3: Identify the connections between these students and Anisha.\n- Noah is connected to Anisha.\n\nStep 4: Determine the shortest path from Vivian to Anisha using the connections found in the previous steps.\n- Vivian -> Salma (or Shanshan, or Vadim) -> Noah -> Anisha\n\nAnswer: Vivian, Salma, Noah, Anisha"
+            "content": "First, let's identify all the connections again:\n\n1. Amir - Reza, Moin, Pari, Puja.\n2. Wim - Wei, Kim, Puja, Pam.\n3. Raj - Nisha, Ian, Sara, Kim.\n4. Jing - Reza, Moin, Pari, Max.\n5. Wei - Kim, Puja, Pam.\n6. Nisha - Ian, Sara, Max.\n7. Reza - Moin, Pari.\n8. Kim - Pam.\n9. Ian - Sara, Max.\n10. Moin - Pari.\n11. Puja - Pam.\n12. Sara - Max.\n\nThe task is to find the shortest path from Wim to Pari. \n\nWim is directly connected to Puja.\nPuja is not directly connected to Pari, but Puja is connected to Amir.\nAmir is directly connected to Pari.\n\nSo, the shortest path from Wim to Pari is: Wim -> Puja -> Amir -> Pari."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Wim, Puja, Amir, Pari"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Noah, Anisha"
+            "parsed_response": "First, let's identify all the connections again:\n\n1. Amir - Reza, Moin, Pari, Puja.\n2. Wim - Wei, Kim, Puja, Pam.\n3. Raj - Nisha, Ian, Sara, Kim.\n4. Jing - Reza, Moin, Pari, Max.\n5. Wei - Kim, Puja, Pam.\n6. Nisha - Ian, Sara, Max.\n7. Reza - Moin, Pari.\n8. Kim - Pam.\n9. Ian - Sara, Max.\n10. Moin - Pari.\n11. Puja - Pam.\n12. Sara - Max.\n\nThe task is to find the shortest path from Wim to Pari. \n\nWim is directly connected to Puja.\nPuja is not directly connected to Pari, but Puja is connected to Amir.\nAmir is directly connected to Pari.\n\nSo, the shortest path from Wim to Pari is: Wim -> Puja -> Amir -> Pari."
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

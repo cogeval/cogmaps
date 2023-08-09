@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_teleShortcut_temp_1_17",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use the Breadth First Search (BFS) algorithm. Here are the steps:\n\n1. Start with Amir as the initial node.\n2. Initialize an empty queue and add Amir to the queue.\n3. Initialize an empty set to keep track of visited scholars.\n4. Initialize an empty dictionary to store the shortest path from Amir to each scholar.\n5. Initialize an empty dictionary to store the number of books donated by each scholar.\n6. Set the number of books donated by Amir to 0.\n7. While the queue is not empty, repeat steps 8-14.\n8. Dequeue the first scholar from the queue and mark them as visited.\n9. If the number of books donated by the current scholar is greater than the maximum number of books seen so far, update the maximum number of books and the scholar with the maximum books.\n10. Check each scholar connected to the current scholar that has not been visited. If a connected scholar is found, add them to the queue and mark them as visited.\n11. Calculate the number of books donated by the connected scholar by adding the number of books donated by the current scholar.\n12. If the connected scholar is not in the shortest path dictionary, add them with the shortest path from Amir through the current scholar.\n13. If the connected scholar is already in the shortest path dictionary, compare the length of the current shortest path with the shortest path through the current scholar. If the current path is shorter, update the shortest path dictionary.\n14. Repeat steps 8-13 until all scholars connected to Amir have been visited.\n\nNow, let's apply these steps to find the shortest path from Amir to the scholar with the maximum number of books.\n\nAnswer: Amir, Wim, Wei, Nisha, Sara"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Amy, who has an instant connection portal, through which you can connect to any of Sara\u2019s connections, one at a time. This means that once you connect with Amy, then you can immediately connect with any other scholar who is connected to Sara. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, considering the connection portal provided by Amy, we can modify the Breadth First Search (BFS) algorithm. Here are the updated steps:\n\n1. Start with Amir as the initial node.\n2. Initialize an empty queue and add Amir to the queue.\n3. Initialize an empty set to keep track of visited scholars.\n4. Initialize an empty dictionary to store the shortest path from Amir to each scholar.\n5. Initialize an empty dictionary to store the number of books donated by each scholar.\n6. Set the number of books donated by Amir to 0.\n7. While the queue is not empty, repeat steps 8-15.\n8. Dequeue the first scholar from the queue and mark them as visited.\n9. If the number of books donated by the current scholar is greater than the maximum number of books seen so far, update the maximum number of books and the scholar with the maximum books.\n10. Check each scholar connected to the current scholar (including those connected through Amy) that has not been visited. If a connected scholar is found, add them to the queue and mark them as visited.\n11. Calculate the number of books donated by the connected scholar by adding the number of books donated by the current scholar.\n12. If the connected scholar is not in the shortest path dictionary, add them with the shortest path from Amir through the current scholar.\n13. If the connected scholar is already in the shortest path dictionary, compare the length of the current shortest path with the shortest path through the current scholar. If the current path is shorter, update the shortest path dictionary.\n14. If the connected scholar is Amy, continue the BFS from each of Sara's connections.\n15. Repeat steps 8-14 until all scholars connected to Amir have been visited.\n\nNow, let's apply these steps to find the shortest path from Amir to the scholar with the maximum number of books, considering the connection portal provided by Amy.\n\nAnswer: Amir, Sara, Ian, Moin"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Amy, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Sara, Ian, Moin"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Pari to Wei? Starting from Pari, please list the scholar names in order, including Pari, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups of connected students.\nGroup 1: Vivian, Salma, Shanshan, Vadim, Gongxue\nGroup 2: Paul, Solomon, Soheil, Gongxue, Alice\nGroup 3: Pierre, Abdul, Durga, Ajit, Soheil\nGroup 4: Noah, Salma, Shanshan, Vadim, Anisha\nGroup 5: Solomon, Soheil, Gongxue, Alice\nGroup 6: Abdul, Durga, Ajit, Anisha\nGroup 7: Salma, Shanshan, Vadim\nGroup 8: Soheil, Alice\nGroup 9: Durga, Ajit, Anisha\nGroup 10: Shanshan, Vadim\nGroup 11: Gongxue, Alice\nGroup 12: Ajit, Anisha\n\nStep 2: Identify the groups that contain Vivian and Anisha.\nVivian: Group 1\nAnisha: Group 4, Group 6, Group 9, Group 12\n\nStep 3: Find the common students between the groups.\nGroup 1 and Group 4: Salma, Shanshan, Vadim\n\nStep 4: Determine the shortest path from Vivian to Anisha.\nVivian -> Salma -> Anisha\nVivian -> Shanshan -> Anisha\nVivian -> Vadim -> Anisha\n\nAnswer: Vivian, Salma, Anisha"
+            "content": "First, I will map out the connections between the scholars. \nPari is connected to Amir, Reza, and Moin. \nAmir is connected to Reza, Moin, Pari, and Puja. \nReza is connected to Amir, Jing, and Moin. \nMoin is connected to Amir, Reza, and Jing. \nJing is connected to Reza, Moin, Pari, and Max. \nMax is connected to Jing, Nisha, Ian, and Sara. \nNisha is connected to Raj, Max, Ian, and Sara. \nIan is connected to Raj, Nisha, Sara, and Max. \nSara is connected to Raj, Ian, Nisha, and Max. \nRaj is connected to Nisha, Ian, Sara, and Kim. \nKim is connected to Raj, Wei, Wim, and Pam. \nWei is connected to Kim, Wim, Puja, and Pam. \nWim is connected to Wei, Kim, Puja, and Pam. \nPuja is connected to Amir, Wim, Wei, and Pam. \nPam is connected to Wim, Wei, Kim, and Puja. \n\nNext, I will identify the shortest path from Pari to Wei. \nFrom the given connections, the shortest path from Pari to Wei is: Pari -> Amir -> Puja -> Wei. \n\nAnswer: Pari, Amir, Puja, Wei."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Pari, Amir, Puja, Wei"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha"
+            "parsed_response": "Answer: Pari, Amir, Puja, Wei"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

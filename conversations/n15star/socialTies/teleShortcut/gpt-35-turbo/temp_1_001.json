@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_1_1",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, we can use a breadth-first search (BFS) algorithm. \n\n1. Start with Amir and add him to the queue.\n2. While the queue is not empty, dequeue the first person and check if they are donating books.\n3. If the person is donating books, update the maximum book count and the corresponding person.\n4. Otherwise, enqueue all the people connected to the current person.\n5. Repeat steps 2-4 until the queue is empty.\n\nLet's execute the BFS algorithm:\n\n1. Start with Amir.\n2. Check if Amir is donating books. No.\n3. Enqueue Reza, Moin, Pari, and Puja.\n4. Dequeue Reza.\n5. Check if Reza is donating books. No.\n6. Enqueue Moin and Pari.\n7. Enqueue Pari.\n8. Enqueue Puja.\n9. Dequeue Moin.\n10. Check if Moin is donating books. No.\n11. Enqueue Pari.\n12. Enqueue Puja.\n13. Dequeue Pari.\n14. Check if Pari is donating books. No.\n15. Enqueue Puja.\n16. Dequeue Puja.\n17. Check if Puja is donating books. No.\n18. Enqueue Pam.\n19. Dequeue Pam.\n20. Check if Pam is donating books. Yes. Update maximum book count to 50 and the corresponding person to Pam.\n21. Stop the algorithm.\n\nThe shortest path from Amir to the person donating the maximum number of books is: Amir, Puja, Pam.\n\nAnswer: Amir, Puja, Pam"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, considering the connection portal through Eva, we can modify the breadth-first search (BFS) algorithm.\n\n1. Start with Amir and add him to the queue.\n2. While the queue is not empty, dequeue the first person and check if they are donating books.\n3. If the person is donating books, update the maximum book count and the corresponding person.\n4. Otherwise, enqueue all the people connected to the current person, considering the connection portal through Eva.\n5. Repeat steps 2-4 until the queue is empty.\n\nLet's execute the modified BFS algorithm:\n\n1. Start with Amir.\n2. Check if Amir is donating books. No.\n3. Enqueue Reza, Moin, Pari, and Puja.\n4. Dequeue Reza.\n5. Check if Reza is donating books. No.\n6. Enqueue Moin and Pari.\n7. Enqueue Pari.\n8. Enqueue Puja.\n9. Dequeue Moin.\n10. Check if Moin is donating books. No.\n11. Enqueue Pari.\n12. Enqueue Puja.\n13. Dequeue Pari.\n14. Check if Pari is donating books. No.\n15. Enqueue Puja.\n16. Dequeue Puja.\n17. Check if Puja is donating books. No.\n18. Enqueue Pam.\n19. Dequeue Pam.\n20. Check if Pam is donating books. Yes. Update the maximum book count to 50 and the corresponding person to Pam.\n21. Stop the algorithm.\n\nSince Eva has an instant connection portal to any of Pam's connections, we can directly consider the connections of Pam.\n\n22. Enqueue Wei, Kim, and Puja (through Eva's connection portal).\n23. Dequeue Wei.\n24. Check if Wei is donating books. No.\n25. Enqueue Kim and Puja (through Eva's connection portal).\n26. Enqueue Puja (through Eva's connection portal).\n27. Dequeue Kim.\n28. Check if Kim is donating books. No.\n29. Enqueue Puja (through Eva's connection portal).\n30. Dequeue Puja (through Eva's connection portal).\n31. Check if Puja is donating books. No.\n32. Stop the algorithm.\n\nThe shortest path from Amir, considering the connection portal through Eva, to the person donating the maximum number of books is: Amir, Pam.\n\nAnswer: Amir, Pam"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Pam"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

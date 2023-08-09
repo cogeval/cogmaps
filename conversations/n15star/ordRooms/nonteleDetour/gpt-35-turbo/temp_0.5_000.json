@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward from room 1, we can use Dijkstra's algorithm. Starting from room 1, we can calculate the shortest distance to each room and keep track of the maximum reward we can get from each room. Then, we choose the room with the highest reward and backtrack to room 1 to find the shortest path.\n\nUsing Dijkstra's algorithm, we get the following:\n\n- Room 1: reward 0, distance 0\n- Room 7: reward 0, distance 1 (via room 1)\n- Room 10: reward 0, distance 1 (via room 1)\n- Room 11: reward 0, distance 1 (via room 1)\n- Room 13: reward 0, distance 1 (via room 1)\n- Room 8: reward 50, distance 2 (via room 11)\n- Room 14: reward 0, distance 2 (via room 11)\n- Room 5: reward 0, distance 2 (via room 11)\n- Room 12: reward 10, distance 3 (via room 9)\n- Room 9: reward 0, distance 3 (via room 6)\n- Room 6: reward 0, distance 4 (via room 3)\n- Room 15: reward 10, distance 4 (via room 4)\n- Room 4: reward 0, distance 5 (via room 7)\n- Room 2: reward 0, distance 6 (via room 5)\n- Room 3: reward 0, distance 7 (via room 6)\n\nThe highest reward we can get is 50 from room 8, and the shortest path from room 1 to room 8 is: 1, 11, 8.\n\nTherefore, the answer is: Answer: 1, 11, 8."
+            "content": "To find the shortest path that yields the most reward, we need to use Dijkstra's algorithm. Starting from room 1, we can reach rooms 7, 10, 11, and 13. From those rooms, we can reach rooms 8 and 15. \n\nThe reward for visiting room 8 is higher, so we need to prioritize reaching room 8. \n\nThe shortest path that yields the most reward is: 1, 7, 10, 13, 4, 15. \n\nThis path has a total reward of 10 (from room 15) and is the shortest path that allows us to reach both room 8 and room 15. \n\nAnswer: 1, 7, 10, 13, 4, 15."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "With the new connection between room 13 and room 11, we need to recalculate the shortest path that yields the most reward from room 1. Using Dijkstra's algorithm, we get the following:\n\n- Room 1: reward 0, distance 0\n- Room 7: reward 0, distance 1 (via room 1)\n- Room 10: reward 0, distance 1 (via room 1)\n- Room 13: reward 0, distance 1 (via room 1)\n- Room 4: reward 0, distance 2 (via room 7)\n- Room 15: reward 10, distance 2 (via room 4)\n- Room 11: reward 0, distance 3 (via room 13)\n- Room 8: reward 50, distance 4 (via room 11)\n- Room 14: reward 0, distance 4 (via room 11)\n- Room 5: reward 0, distance 4 (via room 11)\n- Room 2: reward 0, distance 5 (via room 5)\n- Room 3: reward 0, distance 6 (via room 6)\n- Room 6: reward 0, distance 7 (via room 9)\n- Room 9: reward 0, distance 8 (via room 12)\n- Room 12: reward 0, distance 9 (via room 15)\n\nThe highest reward we can get is still 50 from room 8, and the shortest path from room 1 to room 8 is: 1, 13, 11, 8.\n\nTherefore, the answer is: Answer: 1, 13, 11, 8."
+            "content": "With the change in the connections, we need to recalculate the shortest path that yields the most reward. \n\nStarting from room 1, we can reach rooms 7, 10, 13, and 4. From those rooms, we can reach rooms 8 and 15. \n\nThe reward for visiting room 8 is higher, so we need to prioritize reaching room 8. \n\nThe shortest path that yields the most reward is: 1, 7, 10, 13, 4, 15. \n\nThis path has a total reward of 10 (from room 15) and is the shortest path that allows us to reach both room 8 and room 15, even with the change in connections. \n\nAnswer: 1, 7, 10, 13, 4, 15."
         }
     ],
     "tests": {
@@ -40,7 +40,7 @@
                 "Answer: 1,13,11,14,8",
                 "Answer: 1,13,11,5,8"
             ],
-            "parsed_response": "With the new connection between room 13 and room 11, we need to recalculate the shortest path that yields the most reward from room 1. Using Dijkstra's algorithm, we get the following:\n\n- Room 1: reward 0, distance 0\n- Room 7: reward 0, distance 1 (via room 1)\n- Room 10: reward 0, distance 1 (via room 1)\n- Room 13: reward 0, distance 1 (via room 1)\n- Room 4: reward 0, distance 2 (via room 7)\n- Room 15: reward 10, distance 2 (via room 4)\n- Room 11: reward 0, distance 3 (via room 13)\n- Room 8: reward 50, distance 4 (via room 11)\n- Room 14: reward 0, distance 4 (via room 11)\n- Room 5: reward 0, distance 4 (via room 11)\n- Room 2: reward 0, distance 5 (via room 5)\n- Room 3: reward 0, distance 6 (via room 6)\n- Room 6: reward 0, distance 7 (via room 9)\n- Room 9: reward 0, distance 8 (via room 12)\n- Room 12: reward 0, distance 9 (via room 15)\n\nThe highest reward we can get is still 50 from room 8, and the shortest path from room 1 to room 8 is: 1, 13, 11, 8.\n\nTherefore, the answer is: Answer: 1, 13, 11, 8."
+            "parsed_response": "Answer: 1, 7, 10, 13, 4, 15"
         }
     },
     "scores": {

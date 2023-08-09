@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_3stepPath_temp_0.5_21",
+    "conversation_id": "task_n15star_ordRooms_exp_3stepPath_temp_0.5_21",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 0.5,
@@ -15,24 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 15? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 11 to room 3? Starting from room 11, please list the room numbers in order, including 11, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 1 to room 15, we can use Dijkstra's algorithm. Here are the steps:\n\n1. Assign a tentative distance of 0 to room 1 and infinity to all other rooms.\n2. Mark room 1 as visited and set it as the current room.\n3. For each of the rooms connected to the current room, calculate the distance from the current room to that room. If the calculated distance is less than the tentative distance assigned to that room, update the tentative distance.\n4. Mark the current room as visited.\n5. Select the unvisited room with the smallest tentative distance as the next current room and repeat steps 3 to 5 until the destination room (room 15) is visited.\n6. Backtrack from room 15 to room 1 using the tentative distances to determine the shortest path.\n\nUsing this algorithm, the shortest path from room 1 to room 15 is:\n\n1, 7, 10, 13, 15\n\nAnswer: 1, 7, 10, 13, 15"
+            "content": "To find the shortest path from room 11 to room 3, we can use Dijkstra's algorithm. Starting from room 11, we can calculate the shortest distance to each of the connected rooms and keep track of the previous room that leads to the shortest path. We repeat this process until we reach room 3.\n\nThe shortest path from room 11 to room 3 is: 11, 2, 8, 3\n\nTherefore, the answer is: 11, 2, 8, 3"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15",
-                "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 11, 2, 8, 3",
+                "Answer: 11, 5, 8, 3",
+                "Answer: 11, 14, 8, 3"
             ],
-            "parsed_response": "Answer: 1, 7, 10, 13, 15"
+            "parsed_response": "To find the shortest path from room 11 to room 3, we can use Dijkstra's algorithm. Starting from room 11, we can calculate the shortest distance to each of the connected rooms and keep track of the previous room that leads to the shortest path. We repeat this process until we reach room 3.\n\nThe shortest path from room 11 to room 3 is: 11, 2, 8, 3\n\nTherefore, the answer is: 11, 2, 8, 3"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

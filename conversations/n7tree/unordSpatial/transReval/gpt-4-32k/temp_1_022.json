@@ -6,44 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Evaluate wait times for all attractions:\n   - Autopia: 20 minutes\n   - Space Mountain: 10 minutes\n   - Mad Tea Party: 5 minutes\n   - Peter Pan's Flight: 15 minutes\n\n2. Identify the attraction with the shortest wait time:\n   - Mad Tea Party: 5 minutes\n\n3. Determine the path to the attraction with the shortest wait time:\n   - Entrance, left passage, Fantasyland, Mad Tea Party\n\nAnswer: Entrance, left passage, Fantasyland, Mad Tea Party"
+            "content": "Step 1: Identify the different paths and the number of free flowers in each path.\nPath 1: Entrance, Right (Sunflower Field), Right (Hydrangea Field) - 50 hydrangeas\nPath 2: Entrance, Right (Sunflower Field), Left (Orchid Field) - 10 orchids\nPath 3: Entrance, Left (Rose Field), Right (Daisy Field) - 22 daisies\nPath 4: Entrance, Left (Rose Field), Left (Tulip Field) - 56 tulips\n\nStep 2: Determine the maximum number of flowers.\nComparing the number of flowers in each path, Path 4 has the most flowers (56 tulips).\n\nStep 3: List the flower names in order.\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
-            "content": "Now assume that you have been told that the Mad Tea Party is now closed. Assume you can pick one attraction, from entrance, which one should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "Now assume that you have been told that the path to the tulip field is now blocked. Assume you can pick one path from the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Re-evaluate wait times for the remaining open attractions:\n   - Autopia: 20 minutes\n   - Space Mountain: 10 minutes\n   - Peter Pan's Flight: 15 minutes\n\n2. Identify the attraction with the shortest wait time after excluding the closed Mad Tea Party:\n   - Space Mountain: 10 minutes\n\n3. Determine the path to the attraction with the shortest wait time:\n   - Entrance, right passage, Tomorrowland, Space Mountain\n\nAnswer: Entrance, right passage, Tomorrowland, Space Mountain"
+            "content": "Step 1: Remove the blocked path from the options.\nPath 1: Entrance, Right (Sunflower Field), Right (Hydrangea Field) - 50 hydrangeas\nPath 2: Entrance, Right (Sunflower Field), Left (Orchid Field) - 10 orchids\nPath 3: Entrance, Left (Rose Field), Right (Daisy Field) - 22 daisies\nPath 4: Entrance, Left (Rose Field), Left (Tulip Field) - BLOCKED\n\nStep 2: Determine the maximum number of flowers among the available paths.\nComparing the number of flowers in the remaining paths, Path 1 has the most flowers (50 hydrangeas).\n\nStep 3: List the flower names in order.\nAnswer: Entrance, Sunflower, Hydrangea"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Entrance, Tomorrowland, Space Mountain",
-                "Answer: entrance, Tomorrowland, Space Mountain"
+                "Answer: rose, tulip, lily"
             ],
-            "parsed_response": "1. Re-evaluate wait times for the remaining open attractions:\n   - Autopia: 20 minutes\n   - Space Mountain: 10 minutes\n   - Peter Pan's Flight: 15 minutes\n\n2. Identify the attraction with the shortest wait time after excluding the closed Mad Tea Party:\n   - Space Mountain: 10 minutes\n\n3. Determine the path to the attraction with the shortest wait time:\n   - Entrance, right passage, Tomorrowland, Space Mountain\n\nAnswer: Entrance, right passage, Tomorrowland, Space Mountain"
-        }
-    },
-    "scores": {
-        "transReval": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Entrance, Sunflower, Hydrangea"
         }
     }
 }

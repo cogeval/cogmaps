@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_1_12",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use the breadth-first search algorithm. Starting from Amir, we will traverse the network and keep track of the number of books each person is donating. We will also store the shortest path to each person.\n\n1. Initialize a queue and a visited set.\n2. Add Amir to the queue and mark him as visited.\n3. Create an empty dictionary to store the number of books donated by each person.\n4. Create an empty dictionary to store the shortest path to each person.\n5. Initialize the number of books donated by Amir as 0.\n6. Initialize the shortest path to Amir as an empty list.\n7. While the queue is not empty, do the following steps:\n    - Dequeue a person from the queue.\n    - If the person is donating more books than the current maximum, update the maximum.\n    - If the person is donating the maximum number of books, return the shortest path to this person.\n    - For each connected person of the dequeued person:\n        - If the connected person is not visited, mark them as visited.\n        - Add the connected person to the queue.\n        - Update the number of books donated by the connected person.\n        - Update the shortest path to the connected person by appending the current person to their shortest path.\n8. If no person is found who is donating the maximum number of books, return an empty list.\n\nNow, let's execute these steps:\n\nAnswer: Amir, Reza, Max"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, taking into account Eva's connection portal to Pam's connections, we can modify the breadth-first search algorithm as follows:\n\n1. Initialize a queue and a visited set.\n2. Add Amir to the queue and mark him as visited.\n3. Create an empty dictionary to store the number of books donated by each person.\n4. Create an empty dictionary to store the shortest path to each person.\n5. Initialize the number of books donated by Amir as 0.\n6. Initialize the shortest path to Amir as an empty list.\n7. While the queue is not empty, do the following steps:\n    - Dequeue a person from the queue.\n    - If the person is donating more books than the current maximum, update the maximum.\n    - If the person is donating the maximum number of books, return the shortest path to this person.\n    - For each connected person of the dequeued person:\n        - If the connected person is not visited, mark them as visited.\n        - Add the connected person to the queue.\n        - Update the number of books donated by the connected person.\n        - Update the shortest path to the connected person by appending the current person to their shortest path.\n        - If the connected person is Pam and Eva is married to Amir, go through Eva's connection portal to each of Pam's connections:\n            - For each connected person of Pam:\n                - If the connected person is not visited, mark them as visited.\n                - Add the connected person to the queue.\n                - Update the number of books donated by the connected person.\n                - Update the shortest path to the connected person by appending the current person to their shortest path.\n8. If no person is found who is donating the maximum number of books, return an empty list.\n\nNow, let's execute these steps:\n\nAnswer: Amir, Eva, Pam"
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Eva, Pam"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

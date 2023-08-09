@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections of room 1 (7, 10, 13, 11).\nStep 2: Identify the connections of each room from step 1 to room 15.\n- Room 7: connected to 10, 13 (no direct connection to 15)\n- Room 10: connected to 13 (no direct connection to 15)\n- Room 13: connected to 4 (direct connection to 15)\n- Room 11: connected to 14 (no direct connection to 15)\nStep 3: Identify the shortest path from the connections in step 2.\n- Room 13 has a direct connection to room 15 through room 4.\n\nAnswer: 1, 13, 4, 15"
+            "content": "Step 1: Identify the connections from room 1.\n- Room 1 is connected to rooms 7, 10, 13, and 11.\n\nStep 2: Identify the connections from the rooms connected to room 1.\n- Room 7 is connected to rooms 1, 4, 10, and 13.\n- Room 10 is connected to rooms 1, 4, 7, and 13.\n- Room 13 is connected to rooms 1, 4, 7, and 10.\n- Room 11 is connected to rooms 1, 2, 5, and 14.\n\nStep 3: Identify the connections from the rooms connected to the rooms in step 2.\n- Room 4 is connected to rooms 7, 10, 13, and 15.\n- Room 2 is connected to rooms 5, 8, 11, and 14.\n- Room 5 is connected to rooms 2, 8, 11, and 14.\n- Room 14 is connected to rooms 2, 5, 8, and 11.\n\nStep 4: Identify the shortest path to room 15.\n- From room 1, go to room 4 (1 -> 4).\n- From room 4, go to room 15 (4 -> 15).\n\nAnswer: 1, 4, 15"
         }
     ],
     "tests": {
@@ -27,17 +27,14 @@
             "expected_answer": [
                 "Answer: 1, 7, 4, 15",
                 "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 1, 13, 4, 15"
             ],
-            "parsed_response": "Step 1: Identify the connections of room 1 (7, 10, 13, 11).\nStep 2: Identify the connections of each room from step 1 to room 15.\n- Room 7: connected to 10, 13 (no direct connection to 15)\n- Room 10: connected to 13 (no direct connection to 15)\n- Room 13: connected to 4 (direct connection to 15)\n- Room 11: connected to 14 (no direct connection to 15)\nStep 3: Identify the shortest path from the connections in step 2.\n- Room 13 has a direct connection to room 15 through room 4.\n\nAnswer: 1, 13, 4, 15"
+            "parsed_response": "Answer: 1, 4, 15"
         }
     },
     "scores": {
         "3stepPath": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

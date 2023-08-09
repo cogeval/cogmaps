@@ -1,0 +1,43 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nstepPath_temp_1_13",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Wei what is the shortest path to Matt? Starting from Wei, please list the scholar numbers in order, including Wei, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: Start from Wei. Wei's direct connections are Nisha, Reza, Kim, and Raj. \n\nStep 2: Look for Matt in Wei's direct connections. Matt is not found.\n\nStep 3: Explore the next degree of connections from Wei, which are the connections of Nisha, Reza, Kim, and Raj. \n\nStep 4: Nisha's connections are Wei, Reza, Kim, and Sara. \n\nStep 5: Reza's connections are Amir, Kim, Nisha, and Wei. \n\nStep 6: Kim's connections are Wei, Nisha, Reza, and Moin. \n\nStep 7: Raj's connections are Amir, Wim, Jing, and Wei.\n\nStep 8: Search for Matt in these new connections. Matt is not found.\n\nStep 9: Continue to explore another degree of connections by looking at the connections of Sara, Amir, Moin, Wim, and Jing.\n\nStep 10: Sara's connections are Ian, Moin, Puja, and Nisha. \n\nStep 11: Amir's connections are Wim, Raj, Jing, and Reza. \n\nStep 12: Moin's connections are Ian, Puja, Kim, and Sara. \n\nStep 13: Wim's connections are Amir, Raj, Jing, and Eva. \n\nStep 14: Jing's connections are Amir, Wim, Raj, and Pam. \n\nStep 15: Search for Matt in these new connections. Matt is found in Ian's connections.\n\nStep 16: Trace back the path: Ian is connected with Sara, Sara is connected with Nisha, Nisha is connected with Wei. \n\nAnswer: Wei, Nisha, Sara, Ian, Matt"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Wei, Raj, Wim, Eva, Matt",
+                "Answer: Wei, Raj, Jing, Pam, Matt",
+                "Answer: Wei, Nisha, Sara, Ian, Matt",
+                "Answer: Wei, Kim, Moin, Ian, Matt"
+            ],
+            "parsed_response": "Answer: Wei, Nisha, Sara, Ian, Matt"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

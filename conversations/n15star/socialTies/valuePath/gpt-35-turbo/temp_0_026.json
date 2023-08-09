@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_valuePath_temp_0_26",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. Here are the steps:\n\n1. Start with Amir.\n2. Check if Amir is connected to any scholars who are donating books. If yes, add them to a queue.\n3. Repeat the following steps until the queue is empty:\n   a. Dequeue the first scholar from the queue.\n   b. Check if the dequeued scholar is donating the maximum number of books. If yes, stop the search and return the path.\n   c. If not, check if the dequeued scholar is connected to any other scholars who are donating books. If yes, add them to the queue.\n4. If the queue becomes empty and no scholar donating the maximum number of books is found, return \"No path found.\"\n\nNow let's apply these steps:\n\n1. Start with Amir.\n2. Amir is connected to Reza, Moin, Pari, and Puja. None of them are donating the maximum number of books.\n3. Add Reza, Moin, Pari, and Puja to the queue.\n4. Dequeue Reza.\n5. Reza is connected to Moin and Pari. None of them are donating the maximum number of books.\n6. Add Moin and Pari to the queue.\n7. Dequeue Moin.\n8. Moin is connected to Pari. None of them are donating the maximum number of books.\n9. Add Pari to the queue.\n10. Dequeue Pari.\n11. Pari is connected to Puja. Puja is donating the maximum number of books.\n12. Stop the search and return the path: Amir, Pari.\n\nAnswer: Amir, Pari"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Puja, Wim, Kim",
+                "Answer: Amir, Puja, Pam, Kim",
+                "Answer: Amir, Puja, Wei, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Pari"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

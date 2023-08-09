@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Reza to Ian? Starting from Reza, please list the scholar names in order, including Reza, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify Vivian's connections: Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\nStep 2: Identify the connections of Vivian's connections:\n- Salma is connected to Shanshan, Vadim, and Noah.\n- Shanshan is connected to Salma, Vadim, and Noah.\n- Vadim is connected to Salma, Shanshan, and Noah.\n- Gongxue is connected to Vivian, Salma, Shanshan, Vadim, Paul, Solomon, Soheil, and Alice.\n\nStep 3: Check if any of Vivian's connections are connected to Anisha:\n- Salma, Shanshan, Vadim, and Gongxue are not directly connected to Anisha.\n\nStep 4: Identify the connections of the connections of Vivian's connections (second-degree connections):\n- Noah is connected to Salma, Shanshan, Vadim, and Anisha.\n- Paul, Solomon, Soheil, and Alice are connected to Gongxue.\n\nStep 5: Check if any of the second-degree connections are connected to Anisha:\n- Noah is connected to Anisha.\n\nStep 6: Determine the shortest path from Vivian to Anisha:\n- Vivian \u2192 Salma (or Shanshan, or Vadim) \u2192 Noah \u2192 Anisha\n\nAnswer: Vivian, Salma, Noah, Anisha"
+            "content": "To solve this, we will follow a step by step approach. We have to identify the shortest path from Reza to Ian considering the given connections. \n\nStep 1: Starting from Reza, we can see that Reza is connected to Amir, Moin, and Pari.\n\nStep 2: Looking at the connections of these scholars, we can see that none of them are directly connected to Ian. But Amir is connected to Puja.\n\nStep 3: Checking Puja's connections, we see that Puja is connected to Wim.\n\nStep 4: Checking Wim's connections, we see that Wim is connected to Raj.\n\nStep 5: Checking Raj's connections, we see that Raj is connected to Ian.\n\nSo, the shortest path from Reza to Ian is: Reza, Amir, Puja, Wim, Raj, Ian.\n\nAnswer: Reza, Amir, Puja, Wim, Raj, Ian"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Reza, Jing, Matt, Ian"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Noah, Anisha"
+            "parsed_response": "Answer: Reza, Amir, Puja, Wim, Raj, Ian"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -19,28 +19,28 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target fields, which are the peony field and the lavender field.\nStep 2: Find the shortest paths from the rose field to the peony field and the lavender field.\nStep 3: Compare the number of flowers obtained from each path and choose the one that yields the maximum number of flowers.\n\nPaths to peony field:\n- Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender -> Hydrangea -> Tulip -> Peony (9 fields)\n- Rose -> Carnation -> Sunflower -> Orchid -> Peony (5 fields)\n\nPaths to lavender field:\n- Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender (6 fields)\n- Rose -> Carnation -> Zinnia -> Orchid -> Peony -> Tulip -> Hydrangea -> Daffodil -> Marigold -> Lavender (10 fields)\n\nComparing the number of flowers:\n- Shortest path to peony field yields 50 flowers\n- Shortest path to lavender field yields 10 flowers\n\nAnswer: Rose, Carnation, Sunflower, Orchid, Peony"
+            "content": "Step 1: Identify the two target fields: Peony and Lavender.\nStep 2: Identify the connections for each target field: Peony - (Sunflower, Orchid), (Tulip, Hydrangea); Lavender - (Daisy, Chrysanthemum), (Hydrangea, Marigold).\nStep 3: Identify the paths from the Rose field to each target field:\nPeony: Rose -> Lily -> Chrysanthemum -> Daisy -> Lavender -> Hydrangea -> Tulip (7 fields), Rose -> Carnation -> Sunflower -> Orchid (4 fields)\nLavender: Rose -> Lily -> Chrysanthemum -> Daisy (4 fields), Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy (5 fields), Rose -> Carnation -> Zinnia -> Orchid -> Peony -> Hydrangea (6 fields)\nStep 4: Compare the paths and choose the shortest path to the field with the maximum number of flowers.\nSince Peony gives 50 flowers and the shortest path is 4 fields, while Lavender gives 10 flowers and the shortest path is also 4 fields, we choose the path to the Peony field, as it yields the maximum number of flowers.\n\nAnswer: Rose, Carnation, Sunflower, Orchid, Peony"
         },
         {
             "role": "user",
-            "content": "You are told that a teleportation portal appears in the poppy field, through which you can teleport to any field one at a time. This means that from the poppy field you can go to any field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+            "content": " You are told that the rose field now opens to a new field of asters, which has a teleportation portal, through which you can teleport to any neighboring field of the zinnia field, one at a time. This means that from the aster field, you can go to any neighboring field of the zinnia field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target fields, which are the peony field and the lavender field.\nStep 2: Find the shortest paths from the rose field to the peony field and the lavender field, considering the teleportation portal in the poppy field.\nStep 3: Compare the number of flowers obtained from each path and choose the one that yields the maximum number of flowers.\n\nPaths to peony field:\n- Rose -> Poppy (teleport to Peony) (2 fields)\n- Rose -> Lily -> Chrysanthemum -> Poppy (teleport to Peony) (4 fields)\n- Rose -> Carnation -> Zinnia -> Orchid -> Peony (5 fields)\n\nPaths to lavender field:\n- Rose -> Poppy (teleport to Lavender) (2 fields)\n- Rose -> Lily -> Chrysanthemum -> Poppy (teleport to Lavender) (4 fields)\n- Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender (6 fields)\n\nComparing the number of flowers:\n- Shortest path to peony field yields 50 flowers\n- Shortest path to lavender field yields 10 flowers\n\nAnswer: Rose, Poppy, Peony"
+            "content": "Step 1: Identify the connections for the new Aster field: Asters - (Any neighboring field of the Zinnia field)\nStep 2: Identify the neighboring fields of the Zinnia field: Sunflower, Orchid, Peony, and Carnation\nStep 3: Identify the shortest path from the Rose field to each target field (Peony and Lavender) using the teleportation from the Asters field:\nPeony: Rose -> Asters -> Zinnia -> Peony (4 fields)\nLavender: Rose -> Asters -> Zinnia -> Carnation -> Sunflower -> Orchid -> Peony -> Hydrangea -> Lavender (9 fields), Rose -> Asters -> Zinnia -> Orchid -> Peony -> Hydrangea -> Lavender (7 fields)\nStep 4: Compare the paths and choose the shortest path to the field with the maximum number of flowers.\nSince Peony gives 50 flowers and the shortest path is 4 fields, while Lavender gives 10 flowers and the shortest path is 7 fields, we choose the path to the Peony field, as it yields the maximum number of flowers.\n\nAnswer: Rose, Asters, Zinnia, Peony"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: Rose, Poppy, Peony"
+                "Answer: Rose, Aster, Peony"
             ],
-            "parsed_response": "Step 1: Identify the two target fields, which are the peony field and the lavender field.\nStep 2: Find the shortest paths from the rose field to the peony field and the lavender field, considering the teleportation portal in the poppy field.\nStep 3: Compare the number of flowers obtained from each path and choose the one that yields the maximum number of flowers.\n\nPaths to peony field:\n- Rose -> Poppy (teleport to Peony) (2 fields)\n- Rose -> Lily -> Chrysanthemum -> Poppy (teleport to Peony) (4 fields)\n- Rose -> Carnation -> Zinnia -> Orchid -> Peony (5 fields)\n\nPaths to lavender field:\n- Rose -> Poppy (teleport to Lavender) (2 fields)\n- Rose -> Lily -> Chrysanthemum -> Poppy (teleport to Lavender) (4 fields)\n- Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender (6 fields)\n\nComparing the number of flowers:\n- Shortest path to peony field yields 50 flowers\n- Shortest path to lavender field yields 10 flowers\n\nAnswer: Rose, Poppy, Peony"
+            "parsed_response": "Answer: Rose, Asters, Zinnia, Peony"
         }
     },
     "scores": {
         "teleShortcut": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

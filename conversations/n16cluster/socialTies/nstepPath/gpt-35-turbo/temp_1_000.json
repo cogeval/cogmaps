@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,20 +15,22 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Matt what is the shortest path to Reza? Starting from Matt, please list the scholar names in order, including Matt, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Amir what is the shortest path to Puja? Starting from Amir, please list the scholar numbers in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Matt, Pari, Pam, Jing, Reza"
+            "content": "To find the shortest path from Amir to Puja, we can use a graph representation of the connections between the scholars.\n\nFirst, let's assign each scholar a unique number from 1 to 16 for simplicity.\n\nBased on the given information, the connections can be represented as follows:\n\n1 (Amir) -> 2 (Wim), 3 (Raj), 4 (Jing), 5 (Reza)\n2 (Wim) -> 1 (Amir), 3 (Raj), 4 (Jing), 6 (Eva)\n3 (Raj) -> 1 (Amir), 2 (Wim), 4 (Jing), 7 (Wei)\n4 (Jing) -> 1 (Amir), 2 (Wim), 3 (Raj), 8 (Pam)\n5 (Reza) -> 1 (Amir), 9 (Nisha), 10 (Kim), 3 (Raj)\n6 (Eva) -> 2 (Wim), 8 (Pam), 11 (Ian), 12 (Matt)\n7 (Wei) -> 9 (Nisha), 5 (Reza), 10 (Kim), 3 (Raj)\n8 (Pam) -> 4 (Jing), 6 (Eva), 12 (Matt), 11 (Ian)\n9 (Nisha) -> 7 (Wei), 5 (Reza), 10 (Kim), 13 (Sara)\n10 (Kim) -> 7 (Wei), 9 (Nisha), 5 (Reza), 14 (Moin)\n11 (Ian) -> 14 (Moin), 15 (Puja), 13 (Sara), 12 (Matt)\n12 (Matt) -> 14 (Moin), 8 (Pam), 11 (Ian), 6 (Eva)\n13 (Sara) -> 15 (Puja), 14 (Moin), 11 (Ian), 9 (Nisha)\n14 (Moin) -> 11 (Ian), 15 (Puja), 10 (Kim), 13 (Sara)\n15 (Puja) -> 14 (Moin), 11 (Ian), 13 (Sara), 16 (Pari)\n16 (Pari) -> 4 (Jing), 12 (Matt), 6 (Eva), 15 (Puja)\n\nNow, we can use a breadth-first search (BFS) algorithm to find the shortest path from Amir (scholar 1) to Puja (scholar 15).\n\nStarting from Amir, we can traverse the graph level by level, keeping track of the distance from Amir at each scholar. We stop when we reach Puja.\n\nThe path from Amir to Puja is: 1 (Amir) -> 3 (Raj) -> 7 (Wei) -> 10 (Kim) -> 14 (Moin) -> 15 (Puja)\n\nAnswer: Amir, Raj, Wei, Kim, Moin, Puja"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Matt, Ian, Sara, Nisha, Reza",
-                "Answer: Matt, Pam, Jing, Amir, Reza"
+                "Answer: Amir, Wim, Eva, Pari, Puja",
+                "Answer: Amir, Jing, Pam, Pari, Puja",
+                "Answer: Amir, Reza, Nisha, Sara, Puja",
+                "Answer: Amir, Reza, Kim, Moin, Puja"
             ],
-            "parsed_response": "Answer: Matt, Pari, Pam, Jing, Reza"
+            "parsed_response": "Answer: Amir, Raj, Wei, Kim, Moin, Puja"
         }
     },
     "scores": {

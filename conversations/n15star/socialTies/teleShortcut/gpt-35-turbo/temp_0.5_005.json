@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleShortcut_temp_0.5_5",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. Starting from Amir, we will explore each connected scholar, keeping track of the path and the number of books donated by each scholar. \n\n1. Start with Amir and initialize an empty queue.\n2. Enqueue Amir and set the number of books donated as 0.\n3. While the queue is not empty, repeat steps 4-8.\n4. Dequeue the first scholar from the queue.\n5. If the current scholar has donated more books than the maximum number of books seen so far, update the maximum number of books and the path.\n6. Enqueue all the scholars connected to the current scholar, along with the updated path and the number of books donated.\n7. Repeat steps 4-6 until all connected scholars have been visited.\n8. Return the path to the scholar who has donated the maximum number of books.\n\nNow let's go through the steps:\n\n1. Start with Amir and initialize an empty queue: Queue = [Amir]\n2. Enqueue Amir and set the number of books donated as 0: Queue = [Amir (0 books)]\n3. While the queue is not empty, repeat steps 4-8.\n4. Dequeue the first scholar from the queue: Queue = []\n5. If the current scholar has donated more books than the maximum number of books seen so far, update the maximum number of books and the path: Max books = 0, Path = [Amir]\n6. Enqueue all the scholars connected to the current scholar, along with the updated path and the number of books donated: Queue = [Reza (0 books), Moin (0 books), Pari (0 books), Puja (0 books)]\n7. Repeat steps 4-6 until all connected scholars have been visited.\n   - For Reza: Queue = [Moin (0 books), Pari (0 books), Puja (0 books)]\n   - For Moin: Queue = [Pari (0 books), Puja (0 books)]\n   - For Pari: Queue = [Puja (0 books)]\n   - For Puja: Queue = []\n8. Return the path to the scholar who has donated the maximum number of books: Answer: Amir, Reza, Moin, Pari, Puja\n\nTherefore, the shortest path from Amir to the person who is donating the maximum number of books is: Amir, Reza, Moin, Pari, Puja."
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva who has an instant connection portal, through which you can connect to any of Pam\u2019s connections, one at a time. This means that from Eva you can go to anyone connected with Pam. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, considering Eva's connection portal, we can modify the breadth-first search algorithm. Starting from Amir, we will explore each connected scholar, keeping track of the path and the number of books donated by each scholar. When we reach Eva, we will use her connection portal to explore Pam's connections. \n\nHere are the steps:\n\n1. Start with Amir and initialize an empty queue.\n2. Enqueue Amir and set the number of books donated as 0.\n3. While the queue is not empty, repeat steps 4-9.\n4. Dequeue the first scholar from the queue.\n5. If the current scholar has donated more books than the maximum number of books seen so far, update the maximum number of books and the path.\n6. If the current scholar is Eva, use her connection portal to enqueue all the scholars connected to Pam, along with the updated path and the number of books donated.\n7. If the current scholar is not Eva, enqueue all the scholars connected to the current scholar, along with the updated path and the number of books donated.\n8. Repeat steps 4-7 until all connected scholars have been visited.\n9. Return the path to the scholar who has donated the maximum number of books.\n\nNow let's go through the steps:\n\n1. Start with Amir and initialize an empty queue: Queue = [Amir]\n2. Enqueue Amir and set the number of books donated as 0: Queue = [Amir (0 books)]\n3. While the queue is not empty, repeat steps 4-9.\n4. Dequeue the first scholar from the queue: Queue = []\n5. If the current scholar has donated more books than the maximum number of books seen so far, update the maximum number of books and the path: Max books = 0, Path = [Amir]\n6. If the current scholar is Eva, use her connection portal to enqueue all the scholars connected to Pam, along with the updated path and the number of books donated: Queue = [Kim (0 books), Pam (0 books)]\n7. If the current scholar is not Eva, enqueue all the scholars connected to the current scholar, along with the updated path and the number of books donated: Queue = [Reza (0 books), Moin (0 books), Pari (0 books), Puja (0 books)]\n8. Repeat steps 4-7 until all connected scholars have been visited.\n   - For Reza: Queue = [Moin (0 books), Pari (0 books), Puja (0 books)]\n   - For Moin: Queue = [Pari (0 books), Puja (0 books)]\n   - For Pari: Queue = [Puja (0 books)]\n   - For Puja: Queue = []\n   - For Kim: Queue = [Pam (0 books)]\n   - For Pam: Queue = []\n9. Return the path to the scholar who has donated the maximum number of books: Answer: Amir, Eva, Pam\n\nTherefore, the shortest path from Amir to the person who is donating the maximum number of books, considering Eva's connection portal, is: Amir, Eva, Pam."
+        }
+    ],
+    "tests": {
+        "teleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Eva, Pam"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_3stepPath_temp_1_5",
+    "conversation_id": "task_n15star_ordRooms_exp_3stepPath_temp_1_5",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,24 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a castle with 15 rooms. Room 1, room 7, room 10, room 13, and room 11 are all connected to each other. Room 2, room 5, room 8, room 11, and room 14 are connected to each other. Room 3, room 6, room 9, room 12, and room 8 are all connected to each other. Room 4, room 7, room 10, room 13, and room 15 are connected to each other. Room 5, room 8, room 11, and room 14 are connected to each other. Room 6, room 9, room 12, and room 15 are connected to each other. Room 7, room 10, and room 13 are connected to each other. Room 8 is connected to room 14. Room 9, room 12 and room 15 are connected to each other. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 1 to room 15? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a castle with 15 rooms. Room 1 is connected to room 7, room 10, room 13, and room 11. Room 2 is connected to room 5, room 8, room 11, and room 14. Room 3 is connected to room 6, room 9, room 12, and room 8. Room 4 is connected to room 7, room 10, room 13, and room 15. Room 5 is connected to room 8, room 11, and room 14. Room 6 is connected to room 9, room 12, and room 15. Room 7 is connected to room 10, and room 13. Room 8 is connected to room 14. Room 9 is connected to room 12 and room 15. Room 10 is connected to room 13. Room 11 is connected to room 14. Room 12 is connected to room 15. What is the shortest path from room 7 to room 6? Starting from room 7, please list the room numbers in order, including 7, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 1 to room 15, we can use Dijkstra's algorithm. \n\n1. Start at room 1 and mark its distance as 0. \n2. Look at all rooms connected to room 1 (room 7, 10, 11, 13). Calculate the distance from room 1 to each connected room and mark it. \n    - Distance to room 7 = 1 \n    - Distance to room 10 = 1 \n    - Distance to room 11 = 1 \n    - Distance to room 13 = 1 \n3. Among the connected rooms, pick the one with the shortest distance (in this case, they all have the same distance). Move to that room (room 7). \n4. Look at all rooms connected to the current room (room 7) that have not been visited (room 1 is visited). Calculate the distance to each connected room and mark it. \n    - Distance to room 4 = 2 \n    - Distance to room 10 = 2 \n    - Distance to room 13 = 2 \n5. Among the connected rooms, pick the one with the shortest distance (in this case, it's room 13). Move to that room. \n6. Look at all rooms connected to the current room (room 13) that have not been visited. Calculate the distance to each connected room and mark it.\n    - Distance to room 4 = 3 \n    - Distance to room 10 = 3 \n    - Distance to room 15 = 3 \n7. Among the connected rooms, pick the one with the shortest distance (in this case, it's room 15). Move to that room. \n8. We have reached our destination (room 15). The shortest path from room 1 to room 15 is: \n    Answer: 1, 13, 15"
+            "content": "To find the shortest path from room 7 to room 6, we can use the breadth-first search algorithm. Starting from room 7, we can visit all the rooms that are directly connected to it, which are room 10 and room 13. Then, we can visit all the rooms that are directly connected to these rooms, which are room 4 and room 11. Continuing in this way, we can visit all the rooms in the castle and find the shortest path from room 7 to room 6, which is:\n\n7, 10, 6\n\nTherefore, the answer is: `Answer: 7, 10, 6`."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: 1, 7, 4, 15",
-                "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 7, 4, 15, 6"
             ],
-            "parsed_response": "Answer: 1, 13, 15"
+            "parsed_response": "Answer: 7, 10, 6"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_2stepPath_temp_0_14",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Wim to Raj? Starting from Wim, please list the scholar names in order, including Wim, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Wim to Raj, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Wim.\n2. Check if Wim is connected to Raj. If yes, the shortest path is just Wim and Raj.\n3. If not, check Wim's connections: Wei, Kim, Puja, and Pam.\n4. Check if any of Wim's connections are directly connected to Raj. If yes, the shortest path is Wim, the connecting scholar, and Raj.\n5. If not, continue to the next level of connections.\n6. From Wei, check his connections: Kim, Puja, and Pam. None of them are directly connected to Raj.\n7. From Kim, check his connections: Pam. Pam is directly connected to Raj, so the shortest path is Wim, Kim, Pam, and Raj.\n\nAnswer: Wim, Kim, Pam, Raj"
+        }
+    ],
+    "tests": {
+        "2stepPath": {
+            "expected_answer": [
+                "Answer: Wim, Kim, Raj"
+            ],
+            "parsed_response": "Answer: Wim, Kim, Pam, Raj"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

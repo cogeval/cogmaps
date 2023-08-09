@@ -19,24 +19,24 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward, we need to use Dijkstra's algorithm. Starting from room 1, we can visit room 8 first to collect the reward of 50, or we can visit room 15 first to collect the reward of 10. \n\nIf we visit room 8 first, the shortest path that yields the most reward is: 1, 7, 10, 13, 11, 8. The total reward collected is 50.\n\nIf we visit room 15 first, the shortest path that yields the most reward is: 1, 7, 10, 13, 15. The total reward collected is 10.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1, 7, 10, 13, 11, 8. \n\nAnswer: 1, 7, 10, 13, 11, 8"
+            "content": "To find the shortest path that yields the most reward, we need to use Dijkstra's algorithm. Starting from room 1, we can visit room 8 first to collect the reward of 50. Then, we can visit room 11 to collect the reward of 0. Finally, we can visit room 15 to collect the reward of 10. The shortest path that yields the most reward is: 1, 8, 11, 15.\n\nAnswer: 1, 8, 11, 15"
         },
         {
             "role": "user",
-            "content": "You are told that a teleportation portal appears in room 13, through which you can teleport to any room one at a time. This means that from room 13 you can go to any room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that room 1 now opens to a new room, room 16, which has a teleportation portal, through which you can teleport to any neighboring room of room 14, one at a time. This means that from room 16 you can go to any neighboring room of room 14. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "With the teleportation portal in room 13, we can visit any room from there. Therefore, we can use Dijkstra's algorithm to find the shortest path that yields the most reward starting from room 1, assuming we can teleport to any room from room 13.\n\nIf we visit room 8 first, the shortest path that yields the most reward is: 1, 7, 10, 13, 11, 8. The total reward collected is 50.\n\nIf we visit room 15 first, the shortest path that yields the most reward is: 1, 7, 10, 13, 15. The total reward collected is 10.\n\nTherefore, the shortest path that yields the most reward starting from room 1, assuming we can teleport to any room from room 13, is: 1, 7, 10, 13, 11, 8.\n\nAnswer: 1, 7, 10, 13, 11, 8"
+            "content": "With the addition of room 16 and the teleportation portal, we need to modify our approach. We can start by visiting room 8 to collect the reward of 50. Then, we can teleport from room 16 to room 14 and visit room 11 to collect the reward of 0. Finally, we can visit room 15 to collect the reward of 10. The shortest path that yields the most reward is: 1, 8, 16, 14, 11, 15.\n\nAnswer: 1, 8, 16, 14, 11, 15"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: 1, 13, 8",
-                "Answer: 1,13,8"
+                "Answer: 1, 16, 8",
+                "Answer: 1,16,8"
             ],
-            "parsed_response": "With the teleportation portal in room 13, we can visit any room from there. Therefore, we can use Dijkstra's algorithm to find the shortest path that yields the most reward starting from room 1, assuming we can teleport to any room from room 13.\n\nIf we visit room 8 first, the shortest path that yields the most reward is: 1, 7, 10, 13, 11, 8. The total reward collected is 50.\n\nIf we visit room 15 first, the shortest path that yields the most reward is: 1, 7, 10, 13, 15. The total reward collected is 10.\n\nTherefore, the shortest path that yields the most reward starting from room 1, assuming we can teleport to any room from room 13, is: 1, 7, 10, 13, 11, 8.\n\nAnswer: 1, 7, 10, 13, 11, 8"
+            "parsed_response": "Answer: 1, 8, 16, 14, 11, 15"
         }
     },
     "scores": {

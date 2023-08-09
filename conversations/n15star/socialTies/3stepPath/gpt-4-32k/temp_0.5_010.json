@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Moin to Pam? Starting from Moin, please list the scholar names in order, including Moin, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Identify the connections between students.\n2. Create a graph with students as nodes and their connections as edges.\n3. Use a shortest path algorithm, such as Dijkstra's or Breadth-First Search, to find the shortest path from Vivian to Anisha.\n4. List the student names in order along the shortest path, separated by commas.\n\nAnswer: Vivian, Salma, Shanshan, Vadim, Noah, Anisha"
+            "content": "First, let's identify the connections:\n1. Moin is directly connected to Pari and Reza.\n2. Pari is directly connected to Moin, Amir, and Jing.\n3. Reza is directly connected to Moin, Amir, and Jing.\n4. Amir is directly connected to Reza, Moin, Pari, and Puja.\n5. Jing is directly connected to Reza, Moin, Pari, and Max.\n6. Puja is directly connected to Amir, Wim, Wei, and Pam.\n7. Wim is directly connected to Wei, Kim, Puja, and Pam.\n8. Wei is directly connected to Kim, Puja, Wim, and Pam.\n9. Kim is directly connected to Wim, Wei, Raj, and Pam.\n10. Pam is directly connected to Wim, Wei, Puja, and Kim.\n\nFrom this, we can outline the shortest path from Moin to Pam:\n1. Moin to Amir\n2. Amir to Puja\n3. Puja to Pam\n\nSo, the shortest path from Moin to Pam is Moin, Amir, Puja, Pam. \n\nAnswer: Moin, Amir, Puja, Pam"
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Moin, Amir, Puja, Pam"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Shanshan, Vadim, Noah, Anisha"
+            "parsed_response": "Answer: Moin, Amir, Puja, Pam"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

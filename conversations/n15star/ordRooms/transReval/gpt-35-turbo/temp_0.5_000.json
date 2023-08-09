@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward, we need to use Dijkstra's algorithm. \n\nStarting from room 1, we can visit rooms 7, 10, 11, and 13. Of these, room 11 has the highest reward of 50. From room 11, we can visit room 14, which has another chest with a reward of 50. However, we cannot collect the reward twice, so we need to backtrack to room 11 and explore other paths.\n\nFrom room 11, we can visit room 2, which has a chest with a reward of 0. We can then visit room 5, which has another chest with a reward of 0. From room 5, we can visit room 8, which has the chest with a reward of 50 that we are looking for. \n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1, 11, 2, 5, 8.\n\nAnswer: 1, 11, 2, 5, 8."
+            "content": "To find the shortest path that yields the most reward, we need to use Dijkstra's algorithm. Starting from room 1, we can calculate the shortest path to all other rooms and keep track of the maximum reward on each path. The path with the highest reward is the one we are looking for. \n\nUsing Dijkstra's algorithm, we get the following path:\n\n1 -> 10 -> 13 -> 7 -> 4 -> 15\n\nThis path has a total reward of 50 (from room 8) and is the shortest path that yields the most reward starting from room 1. \n\nTherefore, the answer is: 1, 10, 13, 7, 4, 15."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "With the new connections, we can no longer reach room 11 from room 1. Instead, we can reach room 12, which is connected to rooms 3, 6, 8, and 15. From room 12, we can visit room 6, which is connected to room 9 and room 15. Room 15 has a chest with a reward of 10, but room 8 has a chest with a higher reward of 50.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1, 12, 6, 15, 8.\n\nAnswer: 1, 12, 6, 15, 8."
+            "content": "With the new connections, we need to recalculate the shortest path that yields the most reward starting from room 1. Using Dijkstra's algorithm, we get the following path:\n\n1 -> 12 -> 8 -> 14 -> 11\n\nThis path has a total reward of 50 (from room 8) and is the shortest path that yields the most reward starting from room 1. \n\nTherefore, the answer is: 1, 12, 8, 14, 11."
         }
     ],
     "tests": {
@@ -36,7 +36,7 @@
                 "Answer: 1, 12, 3, 8",
                 "Answer: 1,12,3,8"
             ],
-            "parsed_response": "With the new connections, we can no longer reach room 11 from room 1. Instead, we can reach room 12, which is connected to rooms 3, 6, 8, and 15. From room 12, we can visit room 6, which is connected to room 9 and room 15. Room 15 has a chest with a reward of 10, but room 8 has a chest with a higher reward of 50.\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1, 12, 6, 15, 8.\n\nAnswer: 1, 12, 6, 15, 8."
+            "parsed_response": "With the new connections, we need to recalculate the shortest path that yields the most reward starting from room 1. Using Dijkstra's algorithm, we get the following path:\n\n1 -> 12 -> 8 -> 14 -> 11\n\nThis path has a total reward of 50 (from room 8) and is the shortest path that yields the most reward starting from room 1. \n\nTherefore, the answer is: 1, 12, 8, 14, 11."
         }
     },
     "scores": {

@@ -19,24 +19,24 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward, we need to calculate the shortest path to both chests and then compare the rewards. The shortest path to room 10 is 1-7-8-10, with a reward of 0. The shortest path to room 15 is 1-7-5-3-9-15, with a reward of 10. Therefore, the shortest path that yields the most reward starting from room 1 is 1-7-5-3-9-15. \n\nAnswer: 1, 7, 5, 3, 9, 15."
+            "content": "To find the shortest path that yields the most reward, we need to calculate the distance and rewards of each possible path from room 1 to room 10 and room 15 respectively. \n\nThe paths from room 1 to room 10 are:\n\n1-7-8-10 (reward = 0)\n1-4-2-16-10 (reward = 0)\n1-3-5-8-10 (reward = 0)\n1-2-4-14-13-11-10 (reward = 0)\n1-2-4-14-13-9-10 (reward = 0)\n\nThe paths from room 1 to room 15 are:\n\n1-7-5-3-15 (reward = 0)\n1-7-8-5-6-12-9-15 (reward = 0)\n1-2-16-13-15 (reward = 0)\n1-2-4-14-15 (reward = 0)\n\nTherefore, we can see that none of the paths from room 1 to either room 10 or 15 yield any reward. Therefore, we cannot determine a path from room 1 that yields the most reward.\n\nAnswer: No path from room 1 yields any reward."
         },
         {
             "role": "user",
-            "content": "You have been told that the door between room 1 and room 7 is locked. Instead, room 1 is now connected to room 8. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You have been told that room 1 has a new door that opens to a new room, room 17. Room 17 is connected to all room 12\u2019s neighboring rooms. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "With the change in connectivity, we need to recalculate the shortest paths to both chests. The shortest path to room 10 is now 1-8-10, with a reward of 0. The shortest path to room 15 is still 1-7-5-3-9-15, with a reward of 10. Therefore, the shortest path that yields the most reward starting from room 1 is 1-7-5-3-9-15.\n\nAnswer: 1, 7, 5, 3, 9, 15."
+            "content": "Since room 17 is only connected to room 12 and not to any other rooms, adding room 17 to the network doesn't change the paths from room 1 to any other rooms. Therefore, the paths from room 1 to room 10 and room 15 remain the same as before, and no path yields any reward.\n\nAnswer: No path from room 1 yields any reward."
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: 1, 8, 10",
-                "Answer: 1,8,10"
+                "Answer: 1, 17, 10",
+                "Answer: 1,17,10"
             ],
-            "parsed_response": "With the change in connectivity, we need to recalculate the shortest paths to both chests. The shortest path to room 10 is now 1-8-10, with a reward of 0. The shortest path to room 15 is still 1-7-5-3-9-15, with a reward of 10. Therefore, the shortest path that yields the most reward starting from room 1 is 1-7-5-3-9-15.\n\nAnswer: 1, 7, 5, 3, 9, 15."
+            "parsed_response": "Since room 17 is only connected to room 12 and not to any other rooms, adding room 17 to the network doesn't change the paths from room 1 to any other rooms. Therefore, the paths from room 1 to room 10 and room 15 remain the same as before, and no path yields any reward.\n\nAnswer: No path from room 1 yields any reward."
         }
     },
     "scores": {

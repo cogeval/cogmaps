@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_1_2",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Sara? Starting from Amir, please list the scholar names in order, including Amir, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to Sara, we can use a breadth-first search algorithm. Starting from Amir, we will explore each scholar connected to Amir, then explore each scholar connected to those scholars, and so on, until we reach Sara.\n\n1. Start at Amir\n2. Amir is connected to Reza, Moin, Pari, and Puja.\n3. Explore Reza: Amir, Reza\n4. Explore Moin: Amir, Moin\n5. Explore Pari: Amir, Pari\n6. Explore Puja: Amir, Puja\n7. Reza is connected to Moin and Pari.\n8. Explore Moin: Amir, Reza, Moin\n9. Explore Pari: Amir, Reza, Pari\n10. Moin is connected to Pari.\n11. Explore Pari: Amir, Reza, Moin, Pari\n12. Pari is not connected to any other scholars.\n13. Puja is connected to Pam.\n14. Explore Pam: Amir, Puja, Pam\n15. Pam is connected to Kim.\n16. Explore Kim: Amir, Puja, Pam, Kim\n17. Kim is connected to Sara.\n18. The path from Amir to Sara is: Amir, Puja, Pam, Kim, Sara\n\nAnswer: Amir, Puja, Pam, Kim, Sara"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Matt, Sara",
+                "Answer: Amir, Moin, Jing, Matt, Sara",
+                "Answer: Amir, Pari, Jing, Matt, Sara"
+            ],
+            "parsed_response": "Answer: Amir, Puja, Pam, Kim, Sara"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

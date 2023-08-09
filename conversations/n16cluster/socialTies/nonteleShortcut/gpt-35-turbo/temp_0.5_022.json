@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_nonteleShortcut_temp_0.5_22",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a breadth-first search algorithm. We will start with Amir and explore each of his connections one by one until we reach the person with the maximum number of books.\n\n1. Start with Amir.\n2. Check his connections: Wim, Raj, Jing, and Reza.\n3. Check the connections of each of Amir's connections:\n   - For Wim: Amir, Raj, Jing, Eva.\n   - For Raj: Amir, Wim, Jing, Wei.\n   - For Jing: Amir, Wim, Raj, Pam.\n   - For Reza: Amir, Kim, Nisha, Wei.\n4. Check the connections of each of the above connections:\n   - For Eva: Amir, Wim, Raj, Jing, Pam.\n   - For Wei: Amir, Wim, Raj, Jing, Nisha.\n   - For Pam: Amir, Wim, Raj, Jing, Pari.\n   - For Kim: Amir, Reza, Nisha, Wei, Moin.\n   - For Nisha: Amir, Reza, Kim, Wei, Sara.\n5. Check the connections of each of the above connections:\n   - For Pari: Amir, Wim, Raj, Jing, Pam, Matt.\n   - For Moin: Amir, Reza, Kim, Nisha, Ian.\n   - For Sara: Amir, Reza, Kim, Nisha, Puja.\n   - For Ian: Amir, Moin, Puja, Sara, Matt.\n\nBased on the given information, Matt is donating the maximum number of books (10). The shortest path from Amir to Matt is:\nAmir, Wim, Raj, Jing, Pam, Matt.\n\nAnswer: Amir, Wim, Raj, Jing, Pam, Matt"
+        },
+        {
+            "role": "user",
+            "content": " You have been told that Amir just got married to Amy. Amy is connected to all the scholars who are connected with Sara. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, considering the new information that Amy is connected to all the scholars connected with Sara, we need to update our search algorithm.\n\n1. Start with Amir.\n2. Check his connections: Wim, Raj, Jing, and Reza.\n3. Check the connections of each of Amir's connections:\n   - For Wim: Amir, Raj, Jing, Eva.\n   - For Raj: Amir, Wim, Jing, Wei.\n   - For Jing: Amir, Wim, Raj, Pam.\n   - For Reza: Amir, Kim, Nisha, Wei.\n4. Check the connections of each of the above connections:\n   - For Eva: Amir, Wim, Raj, Jing, Pam.\n   - For Wei: Amir, Wim, Raj, Jing, Nisha, Kim, Reza.\n   - For Pam: Amir, Wim, Raj, Jing, Pari, Eva.\n   - For Kim: Amir, Reza, Nisha, Wei, Moin.\n   - For Nisha: Amir, Reza, Kim, Wei, Sara, Amy.\n5. Check the connections of each of the above connections:\n   - For Pari: Amir, Wim, Raj, Jing, Pam, Matt.\n   - For Moin: Amir, Reza, Kim, Nisha, Ian.\n   - For Sara: Amir, Reza, Kim, Nisha, Puja, Ian, Moin.\n   - For Amy: Amir, Reza, Kim, Nisha, Sara, Puja, Ian, Moin.\n\nBased on the given information, Matt is donating the maximum number of books (10). The shortest path from Amir to Matt is:\nAmir, Wim, Raj, Jing, Pam, Matt.\n\nAnswer: Amir, Wim, Raj, Jing, Pam, Matt"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Amy, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Raj, Jing, Pam, Matt"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

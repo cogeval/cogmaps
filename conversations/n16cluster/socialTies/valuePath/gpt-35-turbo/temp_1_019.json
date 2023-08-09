@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_valuePath_temp_1_19",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use a breadth-first search algorithm. We will start with Amir and explore each connected scholar one by one, keeping track of the distance from Amir and the number of books each scholar has.\n\nStep 1: Initialize the variables and data structures:\n- Create a queue to store the scholars to be explored.\n- Create a dictionary to store the distance from Amir to each scholar.\n- Create a dictionary to store the number of books each scholar has.\n- Create a dictionary to store the scholar who has the maximum number of books.\n- Set the distance of Amir as 0 and the number of books as 0.\n- Enqueue Amir to the queue.\n\nStep 2: Perform the breadth-first search:\n- While the queue is not empty:\n  - Dequeue a scholar from the queue and assign it to the current_scholar variable.\n  - If the current_scholar has more books than the current maximum books:\n    - Update the maximum books to the number of books of the current_scholar.\n    - Update the scholar with the maximum books to the current_scholar.\n  - Iterate over each connected scholar of the current_scholar:\n    - If the connected scholar is not already visited:\n      - Enqueue the connected scholar to the queue.\n      - Update the distance of the connected scholar to the distance of the current_scholar plus 1.\n      - Update the number of books of the connected scholar to the sum of the number of books of the current_scholar and the number of books the connected scholar has.\n- Repeat this process until the queue is empty.\n\nStep 3: Determine the shortest path from Amir to the scholar with the maximum books:\n- Initialize an empty list called shortest_path.\n- Set the current_scholar to the scholar with the maximum books.\n- Append the current_scholar to the shortest_path list.\n- While the current_scholar is not Amir:\n  - Iterate over each connected scholar of the current_scholar:\n    - If the distance of the connected scholar is one less than the distance of the current_scholar and the number of books of the connected scholar is equal to the number of books of the current_scholar minus the books donated:\n      - Update the current_scholar to the connected scholar.\n      - Append the current_scholar to the shortest_path list.\n      - Break out of the loop.\n- Reverse the shortest_path list to get the path from Amir to the scholar with the maximum books.\n\nFinally, the answer will be the list of scholars in the shortest path, starting from Amir and separated by commas.\n\nAnswer: Amir, Wim, Raj, Wei, Nisha"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Kim, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Raj, Wei, Nisha"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

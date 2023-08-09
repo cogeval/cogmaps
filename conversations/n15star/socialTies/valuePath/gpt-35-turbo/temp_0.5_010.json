@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_valuePath_temp_0.5_10",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. \n\nStarting from Amir, we will explore each scholar connected to him one by one, keeping track of the path taken. We will continue this process until we reach the person donating the maximum number of books.\n\nHere is the step-by-step process:\n\n1. Start with Amir.\n2. Check the scholars connected to Amir (Reza, Moin, Pari, and Puja).\n3. Check if any of these scholars are donating the maximum number of books.\n4. If none of them are donating the maximum number of books, add their connected scholars to the queue for further exploration.\n5. Continue this process until we find the person donating the maximum number of books.\n\nNow let's apply this process:\n\nStep 1: Start with Amir.\nStep 2: Amir is connected to Reza, Moin, Pari, and Puja.\nStep 3: None of them are donating the maximum number of books.\nStep 4: Add Reza, Moin, Pari, and Puja to the queue.\n\nStep 5: Explore Reza.\nStep 6: Reza is connected to Moin and Pari.\nStep 7: None of them are donating the maximum number of books.\nStep 8: Add Moin and Pari to the queue.\n\nStep 9: Explore Moin.\nStep 10: Moin is connected to Pari.\nStep 11: None of them are donating the maximum number of books.\n\nStep 12: Explore Pari.\nStep 13: Pari is not connected to any other scholars.\n\nStep 14: Explore Puja.\nStep 15: Puja is connected to Pam.\nStep 16: Pam is donating the maximum number of books.\n\nAnswer: Amir, Puja, Pam"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Puja, Wim, Kim",
+                "Answer: Amir, Puja, Pam, Kim",
+                "Answer: Amir, Puja, Wei, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Puja, Pam"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

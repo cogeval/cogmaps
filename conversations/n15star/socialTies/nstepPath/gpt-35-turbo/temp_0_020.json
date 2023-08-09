@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nstepPath_temp_0_20",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Kim to Pari? Starting from Kim, please list the scholar names in order, including Kim, separated by commas. "
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Kim to Pari, we can use the breadth-first search algorithm. Here are the steps:\n\n1. Start with Kim.\n2. Check if Kim is connected to Pari directly. If yes, the shortest path is just Kim and Pari.\n3. If not, check if Kim is connected to any other scholars. If yes, add them to the queue.\n4. Repeat steps 2 and 3 for each scholar in the queue until Pari is found or the queue is empty.\n\nLet's go through the steps:\n\n1. Start with Kim.\n2. Kim is not directly connected to Pari.\n3. Kim is connected to Puja and Pam. Add them to the queue.\n4. Puja is connected to Pari. The shortest path from Kim to Pari is Kim, Puja, Pari.\n\nAnswer: Kim, Puja, Pari"
+        }
+    ],
+    "tests": {
+        "nstepPath": {
+            "expected_answer": [
+                "Answer: Kim, Wim, Puja, Amir, Pari",
+                "Answer: Kim, Wei, Puja, Amir, Pari",
+                "Answer: Kim, Pam, Puja, Amir, Pari"
+            ],
+            "parsed_response": "Answer: Kim, Puja, Pari"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -15,22 +15,27 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Now you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. From room 1 what is the path that yields the most reward? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start in Room 1.\n2. Move to Room 2 (avoiding the penalty in Room 5).\n3. Move to Room 16 (collecting a reward of 5).\n4. Move back to Room 2.\n5. Move to Room 4.\n6. Move to Room 14.\n7. Move to Room 13.\n8. Move to Room 11.\n9. Move to Room 10 (collecting a reward of 10).\n\nAnswer: 1, 2, 16, 2, 4, 14, 13, 11, 10"
+            "content": "Step 1: Identify the goal - find the shortest path from room 1 to room 10 (50 reward) and room 15 (10 reward).\n\nStep 2: List down the possible paths to reach room 10 and room 15 from room 1.\n\nFor Room 10:\n- Path A: 1 -> 7 -> 5 -> 3 -> 4 -> 14 -> 13 -> 11 -> 10 (9 steps)\n- Path B: 1 -> 4 -> 14 -> 13 -> 11 -> 10 (6 steps)\n- Path C: 1 -> 7 -> 8 -> 10 (4 steps)\n- Path D: 1 -> 3 -> 5 -> 8 -> 10 (5 steps)\n\nFor Room 15:\n- Path E: 1 -> 7 -> 5 -> 3 -> 4 -> 14 -> 15 (7 steps)\n- Path F: 1 -> 4 -> 14 -> 15 (4 steps)\n- Path G: 1 -> 4 -> 14 -> 13 -> 15 (5 steps)\n- Path H: 1 -> 2 -> 16 -> 15 (4 steps)\n\nStep 3: Compare the lengths of the paths to determine the shortest path.\n\nFor Room 10, Path C is the shortest with 4 steps.\nFor Room 15, Path F and Path H are the shortest with 4 steps each.\n\nStep 4: Choose the path that yields the most reward.\n\nSince the chest in room 10 has a reward of 50 and the chest in room 15 has a reward of 10, we choose the path leading to room 10.\n\nAnswer: 1, 7, 8, 10"
         }
     ],
     "tests": {
         "valuePath": {
             "expected_answer": [
-                "Answer: 1, 2, 16, 15, 9, 10",
-                "Answer: 1, 2, 16, 13, 11, 10",
-                "Answer: 1,2,16,15,9,10",
-                "Answer: 1,2,16,13,11,10"
+                "Answer: 1, 7, 8, 10",
+                "Answer: 1,7,8,10"
             ],
-            "parsed_response": "Answer: 1, 2, 16, 2, 4, 14, 13, 11, 10"
+            "parsed_response": "Answer: 1, 7, 8, 10"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

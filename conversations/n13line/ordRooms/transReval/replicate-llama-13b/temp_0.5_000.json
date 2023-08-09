@@ -6,42 +6,42 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [Rr]oom [0-9]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
         },
         {
             "role": "user",
-            "content": "Imagine a world with twelve rooms. From the lobby you have two choices, room 1 and room 2. You enter room 1, at the end there\u00e2\u20ac\u2122s a door that leads to room 3, and room 3 leads to room 5. There is a door in room 5 that leads to room 7 and room 7 leads to room 9. From room 9 you can enter room 11. There\u00e2\u20ac\u2122s a chest in room 11. You open it and there is 10 dollars, but you do not take any money, you\u00e2\u20ac\u2122re just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, then enter room 4, which leads to room 6. There is a door in room 6 that leads to room 8 and room 8 leads to room 10. At the end there is a door that leads to room 12. There\u00e2\u20ac\u2122s a chest with 50 dollars in room 12, but you do not take any money, you\u00e2\u20ac\u2122re just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+            "content": "Imagine a world with twelve rooms. From the lobby you have two choices, room 1 and room 2. You enter room 1, at the end there's a door that leads to room 3, and room 3 leads to room 5. There is a door in room 5 that leads to room 7 and room 7 leads to room 9. From room 9 you can enter room 11. There's a chest in room 11. You open it and there is 10 dollars, but you do not take any money, you're just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, then enter room 4, which leads to room 6. There is a door in room 6 that leads to room 8 and room 8 leads to room 10. At the end there is a door that leads to room 12. There's a chest with 50 dollars in room 12, but you do not take any money, you're just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money.  Starting from the lobby, which path will lead to the most money?  Please list all room numbers in order, separated by commas"
         },
         {
             "role": "assistant",
-            "content": "I will use the following algorithm to find the most money:\n1. Enter room 1, then enter room 3, then enter room 5, then enter room 7, then enter room 9, then enter room 11, then enter room 12.\n2. In room 12, there is a chest with 50 dollars.\n3. Return to the lobby."
+            "content": "Let me pause to process this... Okay, the possible choices are lobby ->Room 1, lobby ->Room 2, Room 4 exit.  The number of money in lobbies : $None $ and $ none$ are rooms and have $$0$ and room numbers ending from $room# $ means going straight to that $ROOm Number$.   We have to keep following each corridor and taking $$ intoaccount for both $$path$$, as we don' t$$take``` money until each journey iscomplete $ path$$$. Lobby to-> ROOM -> NextDOor/rooms#$ -> till$$WE finish room n ->room 1 money in room money taken $ $$return$$\nLBBy2:ROo  MM\nAnswer: 44\n\nNote. : Please, help us better and follow rules by adding room names.\nAssistant thinking steps -\n1] L Ob y -choo-se R o, -> RO O MS$$E $$1 $$  path$$ ->room# $$Roo EE n $$ 2 ->Roorn number2 ->nextroom$$1\nRoom## # :1# Room1 - M M E\n  Path#\n,0  Next, RO On2 R O M M. Room   to\nRO ON $$M MeeE Ee\n Path:\n   $ ROn # ROne $  -2 $ NextDoa Moo N# RO RNe O On 2.R Om R ne Ee O\n RO m Ne\n3# 0$ ROeE.$ Room Room  #e \n Pa  th$$\n,9 Next Ro E Ne ROm n $ n $ P M O D $ RO m P O D.R O o Ne\n P\nPath 82 O O Ne#8 OOm Oe$RO OrOeO RO e o 6 RO ROooom Ne N e # N N#Ne E  s s t\n t\n6RNeOOmN4 N#E31Ro  neNe E, ROne 53#0ROooo,2 3 #$RoRo E On RO O eo ROOrnO RoR RNe Nne $RO  s O M \n P Path: $ R0 nE#ROn, $RO E ON e # 8  - O o O On  Ne ON oM. s, $ Path P  - $ o O OmO\nOo On O\nn$ RoRoOMoo NeOn o ON\n Path  oOoo $ oOn\n ON e On n $ ON ON On $$Ne. o. o $o OOmON o Om RO $$ On OOm O On nn n\n E R  onNe o ne, Onne On r0 RO r0 Ne  On NONOn e E\nPath# RO $ N On o  s$$ R One R O eo$$ O $ M M Om  $  On$ On ON$$ R onNN OnOOn# Ro r o nO m O,8\ns - s--s---N,8 On e"
         },
         {
             "role": "user",
-            "content": "Now you\u00e2\u20ac\u2122re dropped in room 3 and the door at its end suddenly leads to room 6, and then you\u00e2\u20ac\u2122re dropped in room 4 and the door at its end suddenly leads to room 5. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+            "content": "Now you're told that room 3\u00e2\u20ac\u2122s door only leads to room 6, and room 4\u00e2\u20ac\u2122s door only leads to room 5. You return to the lobby. You will only be able to choose one path that leads to the most money.  Starting from the lobby, which path will lead to the most money?  Please list all room numbers in order, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "I will use the following algorithm to find the most money:\n1. Enter room 1, then enter room 3, then enter room 5, then enter room 7, then enter room 9, then enter room 11, then enter room 12. In room 12, there is a chest with 50 dollars.\n2. Return to the lobby."
+            "content": "Of"
         }
     ],
     "tests": {
         "transReval": {
             "expected_answer": [
-                "Answer: Room 1",
-                "Answer: room 1"
+                "Answer: 1, 3, 6, 8, 10, 12",
+                "Answer: 1,3,6,8,10,12"
             ],
-            "parsed_response": "I will use the following algorithm to find the most money:\n1. Enter room 1, then enter room 3, then enter room 5, then enter room 7, then enter room 9, then enter room 11, then enter room 12. In room 12, there is a chest with 50 dollars.\n2. Return to the lobby."
+            "parsed_response": "Of"
         }
     },
     "scores": {
         "transReval": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

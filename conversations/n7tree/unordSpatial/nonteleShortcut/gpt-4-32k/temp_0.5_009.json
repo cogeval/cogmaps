@@ -6,44 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Think about the wait times for each attraction.\n2. Determine the attraction with the shortest wait time.\n3. Identify the path to the attraction with the shortest wait time.\n4. List the path in order, separated by commas.\n\nAnswer: Entrance, Fantasyland, Mad Tea Party"
+            "content": "Step 1: Recall the flowers and their quantities in each field.\n- Sunflower field: 0 sunflowers\n- Hydrangea field: 50 hydrangeas\n- Orchid field: 10 orchids\n- Rose field: 0 roses\n- Daisy field: 22 daisies\n- Tulip field: 56 tulips\n\nStep 2: Determine the two possible paths from the entrance.\nPath 1: Entrance, Sunflower field, Hydrangea field (50 hydrangeas) or Orchid field (10 orchids)\nPath 2: Entrance, Rose field, Daisy field (22 daisies) or Tulip field (56 tulips)\n\nStep 3: Find the maximum number of flowers in each path.\nPath 1: 50 hydrangeas\nPath 2: 56 tulips\n\nStep 4: Compare the maximum number of flowers in each path and choose the path with the most flowers.\nPath 2 has more flowers (56 tulips) than Path 1 (50 hydrangeas).\n\nStep 5: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
-            "content": "At entrance you discover a new passage which leads to Mad Tea Party. Remember that You will only be able to choose one attraction with the least wait time. From the  entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "Now, you are told that through the entrance's left field of rose, it's possible to go to the rose field or any neighboring zone of the rose field. Remember that you will only be able to choose one path that leads to the maximum number of flowers. Starting from and including the entrance, which path will lead to the maximum number of flowers?  Please list all flower names in order, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Recall the wait times for each attraction.\n2. Consider the new passage leading directly to Mad Tea Party.\n3. Determine the attraction with the shortest wait time, including the new passage.\n4. Identify the path to the attraction with the shortest wait time.\n5. List the path in order, separated by commas.\n\nAnswer: Entrance, Mad Tea Party"
+            "content": "Step 1: Recall the flowers and their quantities in each field.\n- Sunflower field: 0 sunflowers\n- Hydrangea field: 50 hydrangeas\n- Orchid field: 10 orchids\n- Rose field: 0 roses\n- Daisy field: 22 daisies\n- Tulip field: 56 tulips\n\nStep 2: Determine the possible paths from the entrance.\nPath 1: Entrance, Sunflower field, Hydrangea field (50 hydrangeas) or Orchid field (10 orchids)\nPath 2: Entrance, Rose field (0 roses), Daisy field (22 daisies), or Tulip field (56 tulips), or neighboring zone of the Rose field\n\nStep 3: Since there is no information about the neighboring zones of the Rose field, we cannot determine if any of those zones have more flowers than the Tulip field. Therefore, we will consider the known maximum number of flowers in each path.\nPath 1: 50 hydrangeas\nPath 2: 56 tulips\n\nStep 4: Compare the maximum number of flowers in each path and choose the path with the most flowers.\nPath 2 has more flowers (56 tulips) than Path 1 (50 hydrangeas).\n\nStep 5: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Entrance, Mad Tea Party",
-                "Answer: entrance, Mad Tea Party"
+                "Answer: rose, daisy"
             ],
-            "parsed_response": "1. Recall the wait times for each attraction.\n2. Consider the new passage leading directly to Mad Tea Party.\n3. Determine the attraction with the shortest wait time, including the new passage.\n4. Identify the path to the attraction with the shortest wait time.\n5. List the path in order, separated by commas.\n\nAnswer: Entrance, Mad Tea Party"
-        }
-    },
-    "scores": {
-        "nonteleShortcut": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Entrance, Rose field, Tulip field"
         }
     }
 }

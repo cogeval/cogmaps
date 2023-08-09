@@ -19,15 +19,15 @@
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path that yields the most reward, we need to calculate the shortest path from room 1 to room 10 and the shortest path from room 1 to room 15, and then compare the rewards. \n\nShortest path from room 1 to room 10: 1-7-8-10, reward = 0 (no chest in these rooms)\n\nShortest path from room 1 to room 15: 1-7-5-3-9-15, reward = 10\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1-7-5-3-9-15. \n\nAnswer: 1,7,5,3,9,15"
+            "content": "To find the shortest path that yields the most reward starting from room 1, we can use Dijkstra's algorithm. \n\nStarting from room 1, the shortest path to room 10 is: 1 -> 7 -> 8 -> 10, with a reward of 0. \n\nThe shortest path to room 15 is: 1 -> 3 -> 5 -> 15, with a reward of 10. \n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1 -> 3 -> 5 -> 15, with a total reward of 10.\n\nAnswer: 1,3,5,15"
         },
         {
             "role": "user",
-            "content": "You are told that the door from room 1 to room 7 is locked. You are also told that a teleportation portal appears in room 5, through which you can teleport to any room. This means that from room 5 you can go to any room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that the door from room 1 to room 7 is locked. You are also told that a teleportation portal appears in room 5, through which you can teleport to any neighboring room of room 12. This means that from room 5 you can go to any neighboring room of room 12. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Since the door from room 1 to room 7 is locked, we need to find another path to reach the chest in room 10. \n\nShortest path from room 1 to room 10, bypassing room 7: 1-4-2-16-13-11-10, reward = 0 (no chest in these rooms)\n\nShortest path from room 1 to room 15, bypassing room 7: 1-4-14-13-15, reward = 10\n\nSince we can teleport from room 5 to any room, we can use this to our advantage to reach the chest in room 10. \n\nShortest path from room 5 to room 10: 5-3-9-10, reward = 50\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1-5-3-9-10. \n\nAnswer: 1,5,3,9,10"
+            "content": "With the locked door from room 1 to room 7, we cannot follow the previous path of 1 -> 7 -> 8 -> 10 to collect the reward of 50. \n\nStarting from room 1, the shortest path to room 5 is: 1 -> 3 -> 5, with a reward of 0.\n\nFrom room 5, we can teleport to any neighboring room of room 12. The neighboring rooms of room 12 are: 6, 9, 10, and 11. \n\nThe shortest path from room 5 to each of these rooms, along with their reward, are:\n\n- Room 6: 5 -> 6, reward of 0\n- Room 9: 5 -> 6 -> 9, reward of 0\n- Room 10: 5 -> 6 -> 10, reward of 50\n- Room 11: 5 -> 6 -> 11, reward of 0\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1 -> 3 -> 5 -> 6 -> 10, with a total reward of 50.\n\nAnswer: 1,3,5,6,10"
         }
     ],
     "tests": {
@@ -36,7 +36,7 @@
                 "Answer: 1, 3, 5, 10",
                 "Answer: 1,3,5,10"
             ],
-            "parsed_response": "Since the door from room 1 to room 7 is locked, we need to find another path to reach the chest in room 10. \n\nShortest path from room 1 to room 10, bypassing room 7: 1-4-2-16-13-11-10, reward = 0 (no chest in these rooms)\n\nShortest path from room 1 to room 15, bypassing room 7: 1-4-14-13-15, reward = 10\n\nSince we can teleport from room 5 to any room, we can use this to our advantage to reach the chest in room 10. \n\nShortest path from room 5 to room 10: 5-3-9-10, reward = 50\n\nTherefore, the shortest path that yields the most reward starting from room 1 is: 1-5-3-9-10. \n\nAnswer: 1,5,3,9,10"
+            "parsed_response": "Answer: 1,3,5,6,10"
         }
     },
     "scores": {

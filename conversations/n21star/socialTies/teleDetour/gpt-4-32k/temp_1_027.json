@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n21star_socialTies_exp_teleDetour_temp_1_27",
+    "model": "gpt-4-32k",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 21 scholars. Amir is connected to Wim, Raj, Jing, Wei, Nisha, and Reza. Sara is connected to Pari, Pam, Kim, Ian, Moin, and Puja. Zack is connected to Matt, Eva, Amy, Gia, Ming, and Prem. Nisha is connected to Reza, Wim, Raj, Jing, and Wei. Raj is connected to Jing, Wei, Reza, and Wim. Pam is connected to Jing, Kim, Ian, Moin, and Puja. Moin is connected to Puja, Pari, Kim, and Ian. Ming is connected to Prem, Matt, Eva, Amy, and Gia. Wei is connected to Reza, Wim, and Eva. Kim is connected to Ian, Puja, and Pari. Ian is connected to Puja and Pari. Gia is connected to Prem, Matt, Eva, and Amy. Reza is connected to Wim, and Jing. Puja is connected to scholars Pari. Prem is connected to Matt, Eva, and Amy. Wim is connected to Jing. Pari is connected to Amy. Amy is connected to Matt. Matt is connected to Eva. You have been told that Prem is donating 50 books and Moin is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: From the given text, we know that Amir is directly connected to Wim, Raj, Jing, Wei, Nisha, and Reza.\n\nStep 2: Identify who between Prem and Moin is directly connected to Amir. Neither of these two are directly connected to Amir.\n\nStep 3: Identify the individuals that are connected to both Amir and either Prem or Moin. Wei is a common connection between Amir and Prem.\n\nStep 4: Determine the shortest path from Amir to the person who has the maximum books. Since Prem is donating more books (50) than Moin (10), the goal is to reach Prem. So, the shortest path is: Amir -> Wei -> Prem.\n\nAnswer: Amir, Wei, Prem"
+        },
+        {
+            "role": "user",
+            "content": "You are told Wei and Eva had a disagreement and now no longer connected. You are also told that Pam has an instant connection portal, through which she can connect you to any scholar, but one at a time. This means that once you connect with Pam, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Step 1: From the given text, we know that Amir is directly connected to Wim, Raj, Jing, Nisha, and Reza.\n\nStep 2: Identify who between Prem and Moin is directly connected to Amir. Neither of these two are directly connected to Amir.\n\nStep 3: Now that Wei and Eva have a disagreement and are no longer connected, we can't use Wei as a connecting link to Prem. However, given that Pam has an instant connection portal, she becomes a direct route to all scholars once connected.\n\nStep 4: Determine the shortest path from Amir to the person who has the maximum books. As before, since Prem is donating more books (50) than Moin (10), the goal is to reach Prem. So, the shortest path now is: Amir -> Sara -> Pam -> Prem.\n\nAnswer: Amir, Sara, Pam, Prem"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Jing, Pam, Prem"
+            ],
+            "parsed_response": "Answer: Amir, Sara, Pam, Prem"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

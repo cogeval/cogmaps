@@ -1,0 +1,41 @@
+{
+    "conversation_id": "task_n7line_ordRooms_exp_valuePath_temp_0.5_1",
+    "model": "replicate:llama-13b",
+    "version": null,
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 512,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [Rr]oom [0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a building with six rooms. From the lobby you have two choices, you can go to room 1 or room 2. You enter room 1, at the other end of room 1 there's a door that leads to room 3, and room 3 leads to room 5. There's a chest in room 5. You open it and there's 10 dollars, but you do not take any money, you're just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, which has a door to room 4, and room 4 has a door that leads to room 6. You find a chest with 50 dollars in room 6, but you do not take any money, you're just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+        },
+        {
+            "role": "assistant",
+            "content": "Answer: Room 2\n\nThis assessments uses a DFS (Depth First Search) algorithm to find which chest is worth the most based upon constraints and hints from given environment. I numbered each door from beginning to give it's unique reference as,\nDoor#1 starts from main Lobby to  Room#1 ends with a room reference \"X2.\"\nDoor#2 starts to door#1 which takes to room #3 and finally \"END\" for starting the cycle in Main Lobby for another go and Door #3 leads you room to chest\nMain Lobby:\n|X1 |X2 |X3 |EXIT|\nDoor locations\n--- Room #1 Chest\n  #L #M #Wall        |--- Room X8        #C Chest  \n #L    /          ,,'   \n,'\\X(#I)' |           |           |\n           |       X  *                X9 (Wall to next Room #3)\n           +       C X1 (end room with a chest)\n\n  Room #2 |           chesteval here        X5 X1 chests end\n           X6 8' ch(X4#6#7(     - door 1/ END X3 (chesteval next)(wall X9 X6     )\n         |Door# Door                 #6 8 #     ,#,),-     # (#7     ,- ( wall                 X8))#, Door#           7( (#, - Door #                  X1))-#3: X1|  \n         C'      C     C\"      CX      \"end #C\" ' C |     +       +       +      --#+-----------------\n      A room reference 1 to the starting number room in the top row  to find    the last room   starting     main lobby room(8) as it contains  #$ C'( C, X1)      is greater than     any the C $    than any other  C'.\n   Note: C refers to Door#, Room#. So that we are not mistaken which letter represent   which thing to follow this format. Also the numbers in paren' refer to  the reference for the #rooms from lobby(Room#) & chest(C').                      If there's is need more for\nSo, the answer to above challenge is Door # 2(room #2). By walking this path first we can get C = $50! Hope this solution works! Thank you\nDoes this help?"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Room 2",
+                "Answer: room 2"
+            ],
+            "parsed_response": "Answer: Room 2"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Nisha to Puja? Starting from Nisha, please list the scholar names in order, including Nisha, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups Vivian and Ajit are connected to.\nVivian is connected to: Vivian, Salma, Shanshan, Vadim, and Gongxue.\nAjit is connected to: Pierre, Abdul, Durga, Ajit, and Soheil; and Abdul, Durga, Ajit, and Anisha; and Durga, Ajit, and Anisha.\n\nStep 2: Find the students who are connected to both Vivian and Ajit's groups.\nSoheil and Gongxue are connected to both groups.\n\nStep 3: Determine the shortest path through the common students.\nPath through Soheil: Vivian -> Salma -> Shanshan -> Vadim -> Gongxue -> Soheil -> Alice -> Ajit (7 connections)\nPath through Gongxue: Vivian -> Salma -> Shanshan -> Vadim -> Gongxue -> Alice -> Ajit (6 connections)\n\nStep 4: Choose the shortest path.\nThe shortest path is through Gongxue.\n\nAnswer: Vivian, Salma, Shanshan, Vadim, Gongxue, Alice, Ajit"
+            "content": "Step 1: Identify the starting point, which is Nisha. \n\nStep 2: Look at the connections of Nisha. Nisha is connected to Ian, Sara, and Max.\n\nStep 3: Check the connections of Ian, Sara, and Max to find a connection to Puja. Neither of them is directly connected to Puja. \n\nStep 4: Check the second degree connections. Ian is connected to Sara and Max. Sara is connected to Max. Max has no further connections listed.\n\nStep 5: Since there's no direct or second degree connection to Puja, check the third degree connections. Sara is connected to Max. Max is not connected to anyone else. However, Ian is also connected to Sara, who is connected to Max.\n\nStep 6: Check the connections of the people connected to Max. Max is only connected to Jing. \n\nStep 7: Check the connections of Jing. Jing is connected to Reza, Moin, Pari, and Max.\n\nStep 8: None of Jing's connections lead to Puja. However, Jing is connected to Reza.\n\nStep 9: Check Reza's connections. Reza is connected to Amir, Moin, and Pari.\n\nStep 10: Check Amir's connections. Amir is connected to Reza, Moin, Pari, and Puja.\n\nStep 11: Puja is found in Amir's connections.\n\nStep 12: Trace back the connections from Puja to Nisha. The shortest path from Nisha to Puja is Nisha, Ian, Sara, Max, Jing, Reza, Amir, Puja.\n\nAnswer: Nisha, Ian, Sara, Max, Jing, Reza, Amir, Puja."
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Nisha, Raj, Kim, Wim, Puja",
+                "Answer: Nisha, Raj, Kim, Wei, Puja",
+                "Answer: Nisha, Raj, Kim, Pam, Puja"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Shanshan, Vadim, Gongxue, Alice, Ajit"
+            "parsed_response": "Answer: Nisha, Ian, Sara, Max, Jing, Reza, Amir, Puja"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

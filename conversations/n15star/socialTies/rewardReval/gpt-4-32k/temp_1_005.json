@@ -15,19 +15,36 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. Now you have been told that there is a reward of 5 for connecting with Alice. From Vivian what is the connection path that yields the most reward? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start with Vivian.\n2. Connect to a student in her group: Salma, Shanshan, or Vadim.\n3. From the chosen student, connect to their group: Noah, Salma, Shanshan, Vadim, or Anisha.\n4. Connect to a student in the new group: Solomon, Soheil, Gongxue, or Alice.\n5. Connect to Alice.\n\nThe highest reward connection path for Vivian is: Vivian, Salma (or Shanshan, or Vadim), Solomon (or Soheil, or Gongxue), Alice.\n\nAnswer: Vivian, Salma, Solomon, Alice"
+            "content": "To find the shortest path from Amir to the person donating the maximum number of books, I will first identify who is donating the maximum number of books. It is clear from the information provided that Kim is donating the most books (50 books).\n\nNow, I need to find the shortest path from Amir to Kim. I will do this by looking at who Amir is connected to and see if Kim is directly reachable from Amir. If not, I will look at the connections of those directly connected to Amir and continue in this manner until I reach Kim.\n\nFirst, I check Amir's direct connections: Reza, Moin, Pari, and Puja. Kim is not directly connected to Amir, so I will move to the next step. \n\nNext, I will check the connections of Reza, Moin, Pari, and Puja. Looking at Reza's and Moin's connections, neither of them are directly connected to Kim. \n\nChecking Pari's connections, there is no direct connection to Kim. \n\nFinally, when checking Puja's connections, Puja is connected to Kim. So, Amir can reach Kim through Puja. The shortest path from Amir to Kim is Amir, Puja, Kim. \n\nAnswer: Amir, Puja, Kim."
+        },
+        {
+            "role": "user",
+            "content": "Now you have been told that  Kim is donating 12 books and Max is donating 48 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "The maximum number of books is now being donated by Max (48 books). So I will find the shortest path from Amir to Max. \n\nStarting with Amir's direct connections: Reza, Moin, Pari, and Puja, I find Max isn't directly connected to Amir. \n\nNext, I will check the connections of Reza, Moin, Pari, and Puja. Reza and Moin's connections don't lead to Max. \n\nWhen examining Pari's connections, I see there's no direct connection to Max as well. \n\nWhen I examine Puja's connections, I again find there's no direct link to Max. \n\nSo, we need to move to the second level of connections. The second level connections of Reza and Moin still don't lead to Max. \n\nPari doesn't have second level connections, but when I examine the connections of Puja, Puja is connected to Pam and Kim. Neither of them directly connect to Max. \n\nSo, we need to move to third level connections. Kim's third level connections also don't lead to Max but when I examine the third level connections of Pam, I find that Pam is connected to Kim. Yet, Kim still doesn't lead to Max. \n\nHence we need to go to the fourth level of connections. In the fourth level of connections of Kim, there's still no direct connection to Max.\n\nThus, I need to trace back to Amir's other direct connections. Next, I check Raj's direct connections as Raj is also connected to Amir. Raj is connected to Nisha, Ian, Sara, and Kim. \n\nAmong these connections, I find that Ian and Sara are connected to Max. So, the shortest path from Amir to Max is through Raj and then through either Ian or Sara. \n\nAnswer: Amir, Raj, Ian, Max or Amir, Raj, Sara, Max."
         }
     ],
     "tests": {
         "rewardReval": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Alice, Soheil"
+                "Answer: Amir, Reza, Jing, Max",
+                "Answer: Amir, Moin, Jing, Max ",
+                "Answer: Amir, Pari, Jing, Max "
             ],
-            "parsed_response": "Answer: Vivian, Salma, Solomon, Alice"
+            "parsed_response": "Answer: Amir, Raj, Ian, Max or Amir, Raj, Sara, Max"
+        }
+    },
+    "scores": {
+        "rewardReval": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

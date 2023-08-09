@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Ajit? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Puja to Ian? Starting from Puja, please list the scholar names in order, including Puja, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Identify the connections between the students.\n2. Determine all possible paths from Vivian to Ajit.\n3. Evaluate the lengths of each path.\n4. Choose the shortest path.\n5. List the student names in order.\n\nAnswer: Vivian, Salma, Shanshan, Vadim, Noah, Anisha, Ajit"
+            "content": "First, let's determine the connections involving Puja:\n\n1. Puja is connected to Pam.\n2. Through Pam, she's also connected to Wei or Kim. \n3. Through Kim, she's connected to Wei, Wim, or Raj. \n4. Raj is the closest connection to Ian, with no intermediaries.\n\nTherefore, the shortest path from Puja to Ian is: Puja -> Pam -> Kim -> Raj -> Ian.\n\nAnswer: Puja, Pam, Kim, Raj, Ian."
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha, Ajit ",
-                "Answer Vivian, Shanshan, Noah, Anisha, Ajit",
-                "Answer: Vivian, Vadim, Noah, Anisha, Ajit"
+                "Answer: Puja, Wim, Kim, Raj, Ian",
+                "Answer: Puja, Wei, Kim, Raj, Ian",
+                "Answer: Puja, Pam, Kim, Raj, Ian"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Shanshan, Vadim, Noah, Anisha, Ajit"
+            "parsed_response": "Answer: Puja, Pam, Kim, Raj, Ian"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

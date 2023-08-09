@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleDetour_temp_1_26",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we need to examine the connections and the number of books donated by each scholar.\n\nFrom the given information, we know that Amir is connected to Reza, Moin, Pari, and Puja. Reza is connected to Moin and Pari, but none of them are donating books. Puja is connected to Pam, who is not donating the maximum number of books. Pari is only connected to Moin, who is also not donating the maximum number of books.\n\nNext, we check the connections of Reza, Moin, and Pari. Reza and Moin are connected to Pari, but again, none of them are donating the maximum number of books.\n\nNow, let's move to Puja. Puja is connected to Pam, but Pam is not donating the maximum number of books.\n\nTherefore, the shortest path from Amir to the person who is donating the maximum number of books is:\nAnswer: Amir"
+        },
+        {
+            "role": "user",
+            "content": " Amir and Puja had a disagreement and now no longer connected to each other. Also, Pari is now connected to Puja. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Given the new information that Amir is no longer connected to Puja and Pari is now connected to Puja, we need to reassess the shortest path from Amir to the person who is donating the maximum number of books.\n\nFrom the updated connections, Amir is connected to Reza, Moin, and Pari. Reza is not donating the maximum number of books. Moin is also not donating the maximum number of books. Pari is now connected to Puja.\n\nTo determine if Puja is donating the maximum number of books, we need to check the connections of Puja. Puja is now connected to Pam, who is donating 50 books, the maximum number of books.\n\nTherefore, the shortest path from Amir to the person who is donating the maximum number of books is:\nAnswer: Amir, Pari, Puja, Pam"
+        }
+    ],
+    "tests": {
+        "nonteleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Pari, Puja, Wim, Kim",
+                "Answer: Amir, Pari, Puja, Pam, Kim",
+                "Answer: Amir, Pari, Puja, Wei, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Pari, Puja, Pam"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

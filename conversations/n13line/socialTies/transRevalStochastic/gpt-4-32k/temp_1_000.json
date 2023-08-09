@@ -11,31 +11,31 @@
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+ '"
         },
         {
             "role": "user",
-            "content": "Imagine you are a film director looking for producers to invest. You can talk to either of your two friends, Nora and Philip. Nora is married to Peter who is friends with Shikha. Shikha knows Gal who can introduce to Alex. Alex can introduce you to David, who can invest $1M in your movie. But you do not take it, you're just learning about the environment. Then you exit and start over. Philip is friends with Yakub who can introduce you to Ajay. Ajay is friends with Joe who is married to Rachel. Rachel's brother Harry has $5M budget for producing a movie. But you do not take anything, you're just learning about the environment. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Imagine a group of thirteen scholars. From Vicky you have two choices, Amir and Wim.  Amir is connected to Raj, and Raj is connected to Wei. Wei is connected to Reza and Reza is connected to Ian. Ian is connected to Puja. Puja is donating 10 books, but you do not take any book, you're just learning about the environment. This time you ask Vicky to connect you to Wim who is connected to Jing. Jing is connected to Nisha. Nisha is connected to Kim and Kim is connected to Moin. Moin is connected to Sara. Sara has 50 books to donate, but you do not take any money, you're just learning about the environment. You return to Vicky. You will only be able to choose one path that leads to the maximum number of books.  Starting from Vicky, which path will lead to the maximum number of books?  Please list all scholar names in order, separated by commas"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two paths.\n- Path 1: Nora > Peter > Shikha > Gal > Alex > David ($1M investment)\n- Path 2: Philip > Yakub > Ajay > Joe > Rachel > Harry ($5M budget)\n\nStep 2: Compare the outcomes of each path.\n- Path 1 offers a $1M investment.\n- Path 2 offers a $5M budget for producing a movie.\n\nStep 3: Determine the path with the most money.\n- Path 2 offers a higher budget of $5M compared to Path 1's $1M investment.\n\nAnswer: Philip"
+            "content": "In order to determine which path leads to the maximum number of books, I need to examine the two paths available and compare the number of books being donated on each path. \n\nFirst, let's look at the path through Amir:\nVicky --> Amir --> Raj --> Wei --> Reza --> Ian --> Puja \nPuja is donating 10 books on this path.\n\nSecond, let's look at the path through Wim:\nVicky --> Wim --> Jing --> Nisha --> Kim --> Moin --> Sara \nSara is donating 50 books on this path.\n\nBy comparing the number of books on each path, I can determine which path leads to the maximum number of books.\n\nAnswer: Vicky, Wim, Jing, Nisha, Kim, Moin, Sara"
         },
         {
             "role": "user",
-            "content": "Now you are told that Peter can introduce you to Shikha with probability of 0.1 and to Ajay with probability of 0.9. Also, Yakub can introduce you to Ajay with probability of 0.1 and to Shikha with probability of 0.9. You will only be able to choose one path that leads to the most money. Which friend of yours will lead to the path where one can find the most money?"
+            "content": "Now you are told that Raj is connected to Wei with probability of 0.9 and to Nisha with probability of 0.1. Also, Jing is connected to Nisha with probability of 0.9 and to Wei with probability of 0.1. You return to Vicky. You will only be able to choose one path that has the highest probability of getting maximum number of books. Which scholar from Vicky will lead to the path where one can achieve the highest probability of getting maximum number of books?"
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the probabilities and potential outcomes for each path.\n- Path 1: Nora > Peter > Shikha (0.1 probability) > Gal > Alex > David ($1M investment)\n- Path 1 Alternate: Nora > Peter > Ajay (0.9 probability) > Joe > Rachel > Harry ($5M budget)\n- Path 2: Philip > Yakub > Ajay (0.1 probability) > Joe > Rachel > Harry ($5M budget)\n- Path 2 Alternate: Philip > Yakub > Shikha (0.9 probability) > Gal > Alex > David ($1M investment)\n\nStep 2: Calculate the expected value of each path.\n- Path 1: 0.1 * $1M (Shikha path) + 0.9 * $5M (Ajay path) = $0.1M + $4.5M = $4.6M\n- Path 2: 0.1 * $5M (Ajay path) + 0.9 * $1M (Shikha path) = $0.5M + $0.9M = $1.4M\n\nStep 3: Determine the path with the highest expected value.\n- Path 1 has an expected value of $4.6M.\n- Path 2 has an expected value of $1.4M.\n\nAnswer: Nora"
+            "content": "In order to identify which path has the highest probability of getting the maximum number of books, I'll examine the two paths starting from Vicky. \n\nFirst, let's look at the path through Amir:\nVicky --> Amir --> Raj (0.9 probability to Wei) \nEven though Raj has 0.1 probability to Nisha, Nisha's path does not lead to any books, so I'll only consider the path to Wei which eventually leads to 10 books. So the total probability of getting 10 books through Amir is 0.9.\n\nSecond, let's consider the path through Wim:\nVicky --> Wim --> Jing (0.9 probability to Nisha)\nJing also has a 0.1 probability to Wei but that does not lead to any books through this particular path. Nisha's path eventually leads to Sara who is donating 50 books. So the total probability of getting 50 books through Wim is 0.9.\n\nWhen comparing the two probabilities, it's clear that the path through Wim has the highest probability of getting the maximum number of books.\n\nAnswer: Wim"
         }
     ],
     "tests": {
         "transRevalStochastic": {
             "expected_answer": [
-                "Answer: Nora"
+                "Answer: Wim"
             ],
-            "parsed_response": "Step 1: Analyze the probabilities and potential outcomes for each path.\n- Path 1: Nora > Peter > Shikha (0.1 probability) > Gal > Alex > David ($1M investment)\n- Path 1 Alternate: Nora > Peter > Ajay (0.9 probability) > Joe > Rachel > Harry ($5M budget)\n- Path 2: Philip > Yakub > Ajay (0.1 probability) > Joe > Rachel > Harry ($5M budget)\n- Path 2 Alternate: Philip > Yakub > Shikha (0.9 probability) > Gal > Alex > David ($1M investment)\n\nStep 2: Calculate the expected value of each path.\n- Path 1: 0.1 * $1M (Shikha path) + 0.9 * $5M (Ajay path) = $0.1M + $4.5M = $4.6M\n- Path 2: 0.1 * $5M (Ajay path) + 0.9 * $1M (Shikha path) = $0.5M + $0.9M = $1.4M\n\nStep 3: Determine the path with the highest expected value.\n- Path 1 has an expected value of $4.6M.\n- Path 2 has an expected value of $1.4M.\n\nAnswer: Nora"
+            "parsed_response": "Answer: Wim"
         }
     },
     "scores": {

@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n16cluster_socialTies_exp_valuePath_temp_1_23",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. You have been told that Moin is donating 50 books and Matt is donating 10 books. Now, from Amir what is the shortest path to the person with the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person with the maximum number of books, we can use Dijkstra's algorithm to calculate the shortest distances between each pair of scholars. We will assign an initial distance of infinity to each scholar except for Amir, who will have a distance of 0.\n\n1. Set the initial distances as follows:\n   - Amir: 0\n   - All other scholars: infinity\n\n2. Create an empty set called \"visited\" to keep track of the scholars we have already visited.\n\n3. Create a priority queue called \"pq\" to store scholars and their distances. Initialize it with Amir and its distance.\n\n4. Create an empty dictionary called \"previous\" to store the previous scholar for each scholar. Initialize it with Amir and None.\n\n5. While the priority queue is not empty:\n   - Dequeue the scholar with the minimum distance from the priority queue. Let's call this scholar \"current\".\n   - If the current scholar is not in the visited set:\n     - Add the current scholar to the visited set.\n     - For each scholar \"neighbor\" connected to the current scholar:\n       - Calculate the distance from Amir to the neighbor through the current scholar.\n       - If this distance is shorter than the previously calculated distance:\n         - Update the distance of the neighbor.\n         - Update the previous scholar of the neighbor to be the current scholar.\n         - Enqueue the neighbor and its distance to the priority queue.\n\n6. After the algorithm finishes, we can trace back the shortest path from Amir to the scholar with the maximum number of books using the \"previous\" dictionary.\n\nAnswer: Amir, Wim, Raj, Wei, Nisha, Reza, Kim, Moin"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Kim, Moin"
+            ],
+            "parsed_response": "Answer: Amir, Wim, Raj, Wei, Nisha, Reza, Kim, Moin"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

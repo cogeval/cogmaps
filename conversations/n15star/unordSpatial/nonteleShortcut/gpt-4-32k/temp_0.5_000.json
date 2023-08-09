@@ -19,28 +19,28 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target fields - peony field and lavender field.\nStep 2: Find the shortest path from the rose field to each target field.\nStep 3: Compare the number of flowers obtained from each path and choose the one with the maximum number of flowers.\n\nShortest path to peony field:\nRose field -> Lily field -> Chrysanthemum field -> Poppy field -> Daisy field -> Lavender field -> Hydrangea field -> Daffodil field -> Marigold field -> Tulip field -> Peony field (11 fields, 50 peony flowers)\n\nShortest path to lavender field:\nRose field -> Lily field -> Chrysanthemum field -> Poppy field -> Daisy field -> Lavender field (6 fields, 10 lavender flowers)\n\nAnswer: Rose, Lily, Chrysanthemum, Poppy, Daisy, Lavender, Hydrangea, Daffodil, Marigold, Tulip, Peony"
+            "content": "Step 1: Identify the fields connected to the rose field.\nStep 2: From each of those fields, identify the paths to the peony field and the lavender field.\nStep 3: Compare the paths and choose the shortest path that yields the maximum number of flowers.\n\nPaths from the rose field:\n1. Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender (10 flowers)\n2. Rose -> Carnation -> Zinnia -> Peony (50 flowers)\n3. Rose -> Chrysanthemum -> Poppy -> Daisy -> Lavender (10 flowers)\n4. Rose -> Poppy -> Daisy -> Lavender (10 flowers)\n\nThe shortest path that yields the maximum number of flowers is: Rose -> Carnation -> Zinnia -> Peony\n\nAnswer: Rose, Carnation, Zinnia, Peony"
         },
         {
             "role": "user",
-            "content": "You have been told that the rose field is now connected to the zinnia field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+            "content": " You have been told that the rose field has a new door that opens to a new field of asters. The aster field is connected to all the zinnia field\u00e2\u20ac\u2122s neighboring fields.  Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target fields - peony field and lavender field.\nStep 2: Find the shortest path from the rose field to each target field, considering the new connection to the zinnia field.\nStep 3: Compare the number of flowers obtained from each path and choose the one with the maximum number of flowers.\n\nShortest path to peony field:\nRose field -> Zinnia field -> Peony field (3 fields, 50 peony flowers)\n\nShortest path to lavender field:\nRose field -> Lily field -> Chrysanthemum field -> Poppy field -> Daisy field -> Lavender field (6 fields, 10 lavender flowers)\n\nAnswer: Rose, Zinnia, Peony"
+            "content": "Step 1: Identify the fields connected to the rose field, including the new aster field.\nStep 2: From each of those fields, identify the paths to the peony field, lavender field, and other fields connected to the zinnia field.\nStep 3: Compare the paths and choose the shortest path that yields the maximum number of flowers.\n\nPaths from the rose field:\n1. Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender (10 flowers)\n2. Rose -> Carnation -> Zinnia -> Peony (50 flowers)\n3. Rose -> Chrysanthemum -> Poppy -> Daisy -> Lavender (10 flowers)\n4. Rose -> Poppy -> Daisy -> Lavender (10 flowers)\n5. Rose -> Aster -> Zinnia -> Peony (50 flowers)\n6. Rose -> Aster -> Orchid -> Peony (50 flowers)\n7. Rose -> Aster -> Carnation -> Peony (50 flowers)\n\nThe shortest path that yields the maximum number of flowers is: Rose -> Aster -> Zinnia -> Peony\n\nAnswer: Rose, Aster, Zinnia, Peony"
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Rose, Zinnia, Peony"
+                "Answer: Rose, Aster, Peony"
             ],
-            "parsed_response": "Step 1: Identify the two target fields - peony field and lavender field.\nStep 2: Find the shortest path from the rose field to each target field, considering the new connection to the zinnia field.\nStep 3: Compare the number of flowers obtained from each path and choose the one with the maximum number of flowers.\n\nShortest path to peony field:\nRose field -> Zinnia field -> Peony field (3 fields, 50 peony flowers)\n\nShortest path to lavender field:\nRose field -> Lily field -> Chrysanthemum field -> Poppy field -> Daisy field -> Lavender field (6 fields, 10 lavender flowers)\n\nAnswer: Rose, Zinnia, Peony"
+            "parsed_response": "Answer: Rose, Aster, Zinnia, Peony"
         }
     },
     "scores": {
         "nonteleShortcut": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

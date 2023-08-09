@@ -19,24 +19,24 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target rooms - room 10 (reward 50) and room 15 (reward 10).\nStep 2: Determine the shortest path to each target room from room 1.\nStep 3: Compare the path lengths and rewards, and select the path with the most reward.\n\nShortest path to room 10:\n1 -> 7 -> 8 -> 10\n\nShortest path to room 15:\n1 -> 4 -> 14 -> 15\n\nStep 4: Provide the shortest path with the most reward.\n\nAnswer: 1, 7, 8, 10"
+            "content": "Step 1: Identify the two target rooms, room 10 and room 15.\nStep 2: Find the shortest path from room 1 to room 10.\nStep 3: Find the shortest path from room 1 to room 15.\nStep 4: Compare the rewards of the two paths and choose the one with the highest reward.\n\nStep 2: Shortest path from room 1 to room 10:\n1 -> 7 -> 8 -> 10 (3 steps)\n\nStep 3: Shortest path from room 1 to room 15:\n1 -> 4 -> 14 -> 15 (3 steps)\n\nStep 4: Compare rewards:\nPath to room 10: 50\nPath to room 15: 10\n\nThe path with the highest reward is the one leading to room 10.\n\nAnswer: 1, 7, 8, 10"
         },
         {
             "role": "user",
-            "content": "You are told that a teleportation portal appears in room 4, through which you can teleport to any room, one at a time. This means that from room 4 you can go to any room. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+            "content": "You are told that room 1 now opens to a new room, room 17, which has a teleportation portal, through which you can teleport to any neighboring room of room 12, one at a time. This means that from room 17 you can go to any neighboring room of room 12. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two target rooms - room 10 (reward 50) and room 15 (reward 10).\nStep 2: Determine the shortest path to each target room from room 1 considering the teleportation portal in room 4.\nStep 3: Compare the path lengths and rewards, and select the path with the most reward.\n\nShortest path to room 10 using teleportation portal:\n1 -> 4 (teleport) -> 10\n\nShortest path to room 15 using teleportation portal:\n1 -> 4 (teleport) -> 15\n\nStep 4: Provide the shortest path with the most reward.\n\nAnswer: 1, 4, 10"
+            "content": "Step 1: Identify the new room, room 17, and its connections to the neighboring rooms of room 12.\nStep 2: Find the shortest path from room 1 to room 10, considering room 17.\nStep 3: Find the shortest path from room 1 to room 15, considering room 17.\nStep 4: Compare the rewards of the two paths and choose the one with the highest reward.\n\nStep 2: Shortest path from room 1 to room 10, considering room 17:\n1 -> 17 -> 10 (2 steps)\n\nStep 3: Shortest path from room 1 to room 15, considering room 17:\n1 -> 17 -> 9 -> 15 (3 steps)\n\nStep 4: Compare rewards:\nPath to room 10: 50\nPath to room 15: 10\n\nThe path with the highest reward is the one leading to room 10, now using room 17.\n\nAnswer: 1, 17, 10"
         }
     ],
     "tests": {
         "teleShortcut": {
             "expected_answer": [
-                "Answer: 1, 4, 10",
-                "Answer: 1,4,10"
+                "Answer: 1, 17, 10",
+                "Answer: 1,17,10"
             ],
-            "parsed_response": "Step 1: Identify the two target rooms - room 10 (reward 50) and room 15 (reward 10).\nStep 2: Determine the shortest path to each target room from room 1 considering the teleportation portal in room 4.\nStep 3: Compare the path lengths and rewards, and select the path with the most reward.\n\nShortest path to room 10 using teleportation portal:\n1 -> 4 (teleport) -> 10\n\nShortest path to room 15 using teleportation portal:\n1 -> 4 (teleport) -> 15\n\nStep 4: Provide the shortest path with the most reward.\n\nAnswer: 1, 4, 10"
+            "parsed_response": "Answer: 1, 17, 10"
         }
     },
     "scores": {

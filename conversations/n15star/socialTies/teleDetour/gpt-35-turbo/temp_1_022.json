@@ -1,0 +1,50 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_teleDetour_temp_1_22",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. \n\n1. Start with Amir and mark him as visited.\n2. Check the connections of Amir: Reza, Moin, Pari, and Puja.\n3. Continue to the next level of connections and mark them as visited: Wim (connected to Wei, Kim, Puja, and Pam).\n4. Proceed to the next level: Raj (connected to Nisha, Ian, Sara, and Kim).\n5. Proceed to the next level: Jing (connected to Reza, Moin, Pari, and Max).\n6. From Jing, the path splits into two possibilities: Reza and Max.\n7. Since we are looking for the person donating the maximum number of books, we need to prioritize the path towards Max.\n8. Continue the search from Jing's connections: Max (connected to Nisha, Ian, Sara).\n9. Max is donating the maximum number of books, so we can stop the search here.\n\nAnswer: Amir, Jing, Max"
+        },
+        {
+            "role": "user",
+            "content": "Amir and Puja had a disagreement and now no longer connected to each other, and now Jing has an instant connection portal, through which he can connect you to any scholar, but one at a time. This means that once you connect with Jing, then you can immediately connect with any other scholar. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, taking into account the new information about the connection portal, we can modify our approach as follows:\n\n1. Start with Amir and mark him as visited.\n2. Check the connections of Amir: Reza, Moin, Pari.\n3. Amir is no longer connected to Puja, so we cannot directly reach the person donating the maximum number of books through Amir's connections.\n4. We will need to use Jing's connection portal to reach the person donating the maximum number of books. So, let's use the connection portal to connect with Jing.\n5. From Jing, we know that he is connected to Reza, Moin, Pari, and Max.\n6. Since Max is donating the maximum number of books, we will prioritize reaching Max.\n7. Now, we can directly connect with Max through the connection portal from Jing.\n8. Max is donating the maximum number of books, so we can stop the search here.\n\nAnswer: Amir, Jing, Max"
+        }
+    ],
+    "tests": {
+        "teleDetour": {
+            "expected_answer": [
+                "Answer: Amir, Reza, Jing, Kim",
+                "Answer: Amir, Moin, Jing, Kim ",
+                "Answer: Amir, Pari, Jing, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Jing, Max"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

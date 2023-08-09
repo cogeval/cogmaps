@@ -1,0 +1,48 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nonteleShortcut_temp_1_12",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. \n\nFirst, let's list the connections of each scholar:\n\nAmir: Reza, Moin, Pari, Puja\nReza: Moin, Pari\nMoin: Pari\nPari: \nPuja: \nWim: Wei, Kim, Puja, Pam\nWei: Kim, Puja, Pam\nKim: Pam\nPam: \nRaj: Nisha, Ian, Sara, Kim\nNisha: Ian, Sara, Max\nIan: Sara, Max\nSara: Max\nJing: Reza, Moin, Pari, Max\nMax: \n\nNow, let's perform a breadth-first search starting from Amir:\n\nLevel 0: Amir\nLevel 1: Reza, Moin, Pari, Puja\nLevel 2: Wim, Jing\nLevel 3: Wei, Kim, Pam, Max\nLevel 4: Nisha, Ian, Sara\n\nSince Max is donating the maximum number of books, we can stop the search when we reach Max.\n\nTherefore, the shortest path from Amir to Max, including Amir, is: \n\nAmir, Pari, Max\n\nAnswer: Amir, Pari, Max"
+        },
+        {
+            "role": "user",
+            "content": " You are told that Amir just got married to Eva. Eva is connected to all of  Pam\u2019s connections. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Considering the new information that Amir just got married to Eva, and Eva is connected to all of Pam's connections, we need to update the connections as follows:\n\nAmir: Reza, Moin, Pari, Puja\nReza: Moin, Pari\nMoin: Pari\nPari: \nPuja: \nWim: Wei, Kim, Puja, Pam\nWei: Kim, Puja, Pam\nKim: Pam\nPam: \nRaj: Nisha, Ian, Sara, Kim\nNisha: Ian, Sara, Max\nIan: Sara, Max\nSara: Max\nJing: Reza, Moin, Pari, Max\nMax: \nEva: Wei, Kim, Puja, Pam\n\nNow, let's perform a breadth-first search starting from Amir:\n\nLevel 0: Amir\nLevel 1: Reza, Moin, Pari, Puja\nLevel 2: Wim, Jing, Wei, Kim, Pam\nLevel 3: Raj, Nisha, Ian, Sara, Max\n\nSince Max is donating the maximum number of books, we can stop the search when we reach Max.\n\nTherefore, the shortest path from Amir to Max, including Amir, is:\n\nAmir, Pari, Max\n\nAnswer: Amir, Pari, Max"
+        }
+    ],
+    "tests": {
+        "nonteleShortcut": {
+            "expected_answer": [
+                "Answer: Amir, Eva, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Pari, Max"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

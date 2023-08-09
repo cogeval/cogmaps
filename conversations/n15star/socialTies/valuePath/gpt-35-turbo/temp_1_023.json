@@ -1,0 +1,42 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_valuePath_temp_1_23",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 1,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use the breadth-first search (BFS) algorithm. Here's how we can approach this task:\n\n1. Start with Amir as the initial node and create a queue to hold the nodes to be visited.\n2. Initialize an empty set to keep track of visited nodes.\n3. Initialize a variable to store the maximum number of books donated and another variable to store the name of the person who donated the maximum books.\n4. Begin the BFS algorithm:\n   - Enqueue Amir into the queue.\n   - Add Amir to the set of visited nodes.\n   - While the queue is not empty:\n     - Dequeue a node from the front of the queue and assign it to the current node.\n     - If the current node is the person donating the maximum number of books (Kim in this case), return the path from Amir to the current node.\n     - Otherwise, check the neighbors of the current node:\n       - If a neighbor has not been visited yet, enqueue it into the queue, mark it as visited, and update the path to include the neighbor.\n5. If no path to the person donating the maximum number of books is found, return \"No path found\".\n\nApplying this algorithm, we start with Amir and explore his connections. The shortest path from Amir to the person donating the maximum number of books (Kim) is:\nAmir, Reza, Moin, Pari, Kim\n\nAnswer: Amir, Reza, Moin, Pari, Kim"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Amir, Puja, Wim, Kim",
+                "Answer: Amir, Puja, Pam, Kim",
+                "Answer: Amir, Puja, Wei, Kim"
+            ],
+            "parsed_response": "Answer: Amir, Reza, Moin, Pari, Kim"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

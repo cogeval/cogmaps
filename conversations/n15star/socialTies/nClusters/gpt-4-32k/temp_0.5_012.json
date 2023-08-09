@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. How many densely-connected clusters do we have in this class? A densely-connected cluster is a group of students that are connected to themselves with a max of 2 students."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the clusters mentioned.\n- Cluster 1: Vivian, Salma, Shanshan, Vadim, Gongxue\n- Cluster 2: Paul, Solomon, Soheil, Gongxue, Alice\n- Cluster 3: Pierre, Abdul, Durga, Ajit, Soheil\n- Cluster 4: Noah, Salma, Shanshan, Vadim, Anisha\n- Cluster 5: Solomon, Soheil, Gongxue, Alice\n- Cluster 6: Abdul, Durga, Ajit, Anisha\n- Cluster 7: Salma, Shanshan, Vadim\n- Additional connections: Soheil-Alice, Durga-Ajit-Anisha, Shanshan-Vadim, Gongxue-Alice, Ajit-Anisha\n\nStep 2: Analyze the clusters and additional connections to find densely-connected clusters with a max of 2 students.\n\n- Cluster 1: Not a densely-connected cluster (more than 2 students).\n- Cluster 2: Not a densely-connected cluster (more than 2 students).\n- Cluster 3: Not a densely-connected cluster (more than 2 students).\n- Cluster 4: Not a densely-connected cluster (more than 2 students).\n- Cluster 5: Not a densely-connected cluster (more than 2 students).\n- Cluster 6: Not a densely-connected cluster (more than 2 students).\n- Cluster 7: Not a densely-connected cluster (more than 2 students).\n\n- Additional connections:\n  - Soheil-Alice: Densely-connected cluster (2 students)\n  - Durga-Ajit-Anisha: Not a densely-connected cluster (more than 2 students)\n  - Shanshan-Vadim: Densely-connected cluster (2 students)\n  - Gongxue-Alice: Densely-connected cluster (2 students)\n  - Ajit-Anisha: Densely-connected cluster (2 students)\n\nStep 3: Count the densely-connected clusters.\n\nThere are 4 densely-connected clusters.\n\nAnswer: there are 4 clusters."
+            "content": "Step 1: Start by identifying the connections between each scholar to find clusters.\n\nStep 2: From the given information, Amir, Reza, Moin, and Pari form a cluster. Puja is connected to both Amir and Wim, but Wim is not connected to Amir, Reza, Moin, or Pari, so Puja is not part of the first cluster. \n\nStep 3: Wim, Wei, Kim, Puja, and Pam form a second cluster.\n\nStep 4: Raj, Nisha, Ian, Sara, and Kim form a third cluster. However, Kim is also part of the second cluster. In densely-connected clusters, members should only belong to one group, so Kim's connections need to be evaluated. Kim is connected to Wei, Puja, and Pam (from the second cluster) and to Raj, Nisha, and Sara (from the third cluster). Therefore, Kim belongs to both the second and third clusters, which merge into one large cluster.\n\nStep 5: Jing, Reza, Moin, Pari, and Max form another cluster. However, Reza, Moin, and Pari are also part of the first cluster. Therefore, the first and fourth clusters merge into one large cluster.\n\nStep 6: After merging, we have two densely-connected clusters: {Amir, Reza, Moin, Pari, Jing, Max} and {Wim, Wei, Kim, Puja, Pam, Raj, Nisha, Ian, Sara}.\n\nAnswer: there are 2 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 4 clusters"
+            "parsed_response": "Answer: there are 2 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

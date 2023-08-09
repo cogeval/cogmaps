@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nonteleDetour_temp_1_25",
+    "conversation_id": "task_n16cluster_ordRooms_exp_nonteleDetour_temp_1_25",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,20 +15,35 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and  7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4  and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to  rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is  connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10.  Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11,  8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also  connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and  11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13,  14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. Initially, you have been told that there is a reward of 5 for visiting room 16, and a reward of 10 for visiting room 10. Also, there is a penalty of 15 for visiting room 5. You are in room 1 and you have been told that there is no connection between room 13  and 11 and also there is no connection between room 15 and room 9. From room 1,  what is the path that yields the most reward? Please list the room numbers in  order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. You have been told that there is a chest with a reward of 50 in room 10 and there is a chest with a reward of 10 in room 15. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the path that yields the most reward, we can use Dijkstra's algorithm to find the shortest path from Room 1 to Room 16 and from Room 1 to Room 10. Then, we can compare the total rewards and penalties along each path and select the path with the highest net reward. \n\nShortest path from Room 1 to Room 16: 1, 2, 16 \n\nTotal reward: 5\n\nShortest path from Room 1 to Room 10: 1, 7, 8, 10\n\nTotal reward: 5 + 10 = 15\n\nSince the path from Room 1 to Room 10 has the higher net reward, the path that yields the most reward is:\n\nAnswer: 1, 7, 8, 10"
+            "content": "To find the shortest path that yields the most reward starting from room 1, we can use Dijkstra's algorithm. Here are the steps:\n\n1. Assign a tentative distance of 0 to room 1 and infinity to all other rooms.\n2. Set the initial current room as room 1.\n3. For the current room, consider all of its neighbors and calculate their tentative distances as the sum of the current room's distance plus the reward of the neighbor room's chest.\n4. Compare each neighbor's tentative distance to its current distance. If it is smaller, update the neighbor's distance and set its previous room to the current room.\n5. When we have finished considering all of the current room's neighbors, mark the current room as visited.\n6. From the unvisited rooms, choose the one with the smallest tentative distance, and make it the current room. If there is no such room, we are done.\n7. Repeat steps 3-6 until we have visited the room with the highest reward or there are no more unvisited rooms.\n\nFollowing this algorithm, the shortest path that yields the most reward starting from room 1 is:\n\n1 -> 7 -> 8 -> 10 \n\nThis path has a total reward of 50, which is the maximum possible reward starting from room 1 and passing through both chests. \n\nTherefore, the answer is:\n\nAnswer: 1, 7, 8, 10"
+        },
+        {
+            "role": "user",
+            "content": "The door from room 1 to room 7 is locked. Now, from room 1 what is the shortest path that yields the most reward? Remember that you can collect the reward only once and only from one chest. Starting from room 1, please list the room numbers in order, including 1, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "If the door from room 1 to room 7 is locked, we need to find a new path that goes from room 1 to the room with the highest reward. Using Dijkstra's algorithm, we have:\n\n1 -> 4 -> 14 -> 15\n\nThis path has a total reward of 10, which is the maximum possible reward starting from room 1 and passing through one of the chests.\n\nTherefore, the answer is:\n\nAnswer: 1, 4, 14, 15"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: 1, 2, 16, 2, 1, 7, 6, 12, 10",
-                "Answer: 1,2,16,2,1,7,6,12,10"
+                "Answer: 1, 3, 5, 8, 10",
+                "Answer: 1,3,5,8,10"
             ],
-            "parsed_response": "Answer: 1, 7, 8, 10"
+            "parsed_response": "Answer: 1, 4, 14, 15"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

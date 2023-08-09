@@ -6,44 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Mad Tea Party, Fantasyland Entrance, Left Passage, Entrance."
+            "content": "To get the maximum number of flowers, we will choose the path that leads us through the fields with the most flowers. Let's go through the options:\n\n1. Right field from the entrance: Sunflower field (0 flowers)\n2. Left field from the sunflower field: Orchid field (10 orchid flowers)\n3. Left field from the entrance: Rose field\n   - Right field from the rose field: Daisy field (22 daisy flowers)\n   - Left field from the rose field: Tulip field (56 tulip flowers)\n\nTherefore, the path that allows us to collect the maximum number of flowers is: Entrance, Sunflower field, Orchid field, Rose field, Tulip field.\n\nAnswer: Entrance, Sunflower field, Orchid field, Rose field, Tulip field."
         },
         {
             "role": "user",
-            "content": "At entrance you discover a new passage which leads to Mad Tea Party. Remember that You will only be able to choose one attraction with the least wait time. From the  entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "Now, you are told that through the entrance's left field of rose, it's possible to go to the rose field or any neighboring zone of the rose field. Remember that you will only be able to choose one path that leads to the maximum number of flowers. Starting from and including the entrance, which path will lead to the maximum number of flowers?  Please list all flower names in order, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Mad Tea Party, New Passage, Entrance."
+            "content": "To find the path that leads to the maximum number of flowers, let's explore the options:\n\n1. Right field from the entrance: Sunflower field (0 flowers)\n2. Left field from the entrance: Rose field\n   - Right field from the rose field: Daisy field (22 daisy flowers)\n   - Left field from the rose field: Tulip field (56 tulip flowers)\n\nSince we are now allowed to go to any neighboring zone of the rose field from the left field of the entrance, we have two additional options:\n   - Left field from the rose field: Orchid field (10 orchid flowers)\n   - Right field from the rose field: Daisy field (22 daisy flowers)\n\nComparing these options, we can see that going to the left field from the entrance, then to the Tulip field, will give us the maximum number of flowers. So the path that leads to the maximum number of flowers is: Entrance, Left field (Rose field), Right field (Tulip field).\n\nAnswer: Entrance, Left field (Rose field), Right field (Tulip field)."
         }
     ],
     "tests": {
         "nonteleShortcut": {
             "expected_answer": [
-                "Answer: Entrance, Mad Tea Party",
-                "Answer: entrance, Mad Tea Party"
+                "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Mad Tea Party, New Passage, Entrance."
-        }
-    },
-    "scores": {
-        "nonteleShortcut": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Entrance, Left field (Rose field), Right field (Tulip field)."
         }
     }
 }

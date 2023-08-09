@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. How many densely-connected clusters do we have in this class? A densely-connected cluster is a group of students that are connected to themselves with a max of 2 students."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups of students connected to each other.\nGroup 1: Vivian, Salma, Shanshan, Vadim, and Gongxue\nGroup 2: Paul, Solomon, Soheil, Gongxue, and Alice\nGroup 3: Pierre, Abdul, Durga, Ajit, and Soheil\nGroup 4: Noah, Salma, Shanshan, Vadim, and Anisha\nGroup 5: Solomon, Soheil, Gongxue, and Alice\nGroup 6: Abdul, Durga, Ajit, and Anisha\nGroup 7: Salma, Shanshan, and Vadim\nGroup 8: Soheil and Alice\nGroup 9: Durga, Ajit, and Anisha\nGroup 10: Shanshan and Vadim\nGroup 11: Gongxue and Alice\nGroup 12: Ajit and Anisha\n\nStep 2: Combine groups that have more than two students connected to each other.\nGroup 1+4+7: Vivian, Salma, Shanshan, Vadim, Gongxue, Noah, and Anisha\nGroup 2+5+8: Paul, Solomon, Soheil, Gongxue, Alice\nGroup 3+6+9: Pierre, Abdul, Durga, Ajit, Soheil, Anisha\n\nStep 3: Exclude groups with a max of 2 students (since they don't form a densely-connected cluster).\nValid groups:\n- Group 1+4+7\n- Group 2+5+8\n- Group 3+6+9\n\nStep 4: Count the densely-connected clusters.\nAnswer: there are 3 clusters."
+            "content": "To find out the number of densely-connected clusters in this group, we need to identify groups of scholars who are all interconnected. We start with the first scholar and identify their connections, and then move on to the next scholar and do the same. Let's get started:\n\n1. Amir's cluster: Amir, Reza, Moin, Pari, and Puja. They are all connected with each other.\n\n2. Wim's cluster: Wim, Wei, Kim, Puja, and Pam. However, Puja is already included in Amir's cluster, and Wei, Kim, and Pam are not directly connected to each other. So, we will not consider Wim's cluster as a densely-connected cluster.\n\n3. Raj's cluster: Raj, Nisha, Ian, Sara, and Kim. Ian, Sara and Kim are connected to each other, but Raj and Nisha are not connected with this group. \n\n4. Jing's cluster: Jing, Reza, Moin, Pari, and Max. However, all these members except Max are already included in Amir's cluster. Max is only connected with Nisha, Sara, and Jing, who are not connected with each other. So, we will not consider Jing's cluster as a densely-connected cluster.\n\n5. Nisha's cluster: Nisha, Ian, Sara, and Max. They are all connected with each other.\n\n6. Wei, Reza, Kim, Moin, Puja, Sara and Pam each have connections, but those do not form any new densely-connected cluster.\n\nIn conclusion, we have two densely-connected clusters: Amir's cluster and Nisha's cluster.\n\nAnswer: there are 2 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 3 clusters"
+            "parsed_response": "Answer: there are 2 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

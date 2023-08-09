@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Paul? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Kim to Sara? Starting from Kim, please list the scholar names in order, including Kim, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the groups of students that are connected.\nGroup 1: Vivian, Salma, Shanshan, Vadim, Gongxue\nGroup 2: Paul, Solomon, Soheil, Gongxue, Alice\nGroup 3: Pierre, Abdul, Durga, Ajit, Soheil\nGroup 4: Noah, Salma, Shanshan, Vadim, Anisha\nGroup 5: Solomon, Soheil, Gongxue, Alice\nGroup 6: Abdul, Durga, Ajit, Anisha\nGroup 7: Salma, Shanshan, Vadim\nGroup 8: Soheil, Alice\nGroup 9: Durga, Ajit, Anisha\nGroup 10: Shanshan, Vadim\nGroup 11: Gongxue, Alice\nGroup 12: Ajit, Anisha\n\nStep 2: Identify the groups that include Vivian and Paul.\nVivian is in Group 1.\nPaul is in Group 2.\n\nStep 3: Find the common students between these two groups.\nGroup 1 and Group 2 have Gongxue in common.\n\nStep 4: Construct the shortest connection path using the common student.\nThe shortest connection path from Vivian to Paul is Vivian -> Gongxue -> Paul.\n\nAnswer: Vivian, Gongxue, Paul"
+            "content": "First, I'll start with Kim. From Kim, I can go to Pam or Wei. Since Wei is not directly connected to Sara, I'll choose Pam. Pam is directly connected to Puja. From Puja, I can go to Amir or Wim, but neither of them are directly connected to Sara. Puja is also connected to Wei, but Wei is not connected to Sara either. So, I'll choose to go to Wim from Puja. Wim is connected to Wei, Kim, and Pam, but none of them are connected to Sara. Therefore, I'll need to go back to Puja. From Puja, I can go to Amir. Amir is connected to Reza, Moin, Pari, and Puja. None of them are connected to Sara. So, I'll go back to Puja. From Puja, I can go to Wim. Wim is connected to Wei, Kim, Puja, and Pam. None of them are connected to Sara. Therefore, I'll need to go back to Puja. From Puja, I'll go to Wei. Wei is connected to Kim, Puja, and Pam. None of them are connected to Sara. So, I'll go back to Puja. From Puja, I'll go to Pam. Pam is connected to Wim, Wei, Puja, and Kim. None of them are connected to Sara. So, I'll go back to Puja. From Puja, I'll go to Amir. Amir is connected to Reza, Moin, Pari, and Puja. Reza is connected to Moin and Pari. Moin is connected to Pari and Reza. Pari is connected to Amir, Jing, Reza, and Moin. Jing is connected to Reza, Moin, Pari, and Max. Max is connected to Jing, Ian, Sara, and Nisha. Ian is connected to Max, Sara, and Nisha. Sara is connected to Ian, Raj, Nisha, and Max. \n\nSo, the shortest path from Kim to Sara is: Kim, Pam, Puja, Amir, Reza, Moin, Pari, Jing, Max, Ian, Sara.\n\nAnswer: Kim, Pam, Puja, Amir, Reza, Moin, Pari, Jing, Max, Ian, Sara."
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul"
+                "Answer: Kim, Raj, Sara"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Paul"
+            "parsed_response": "Answer: Kim, Pam, Puja, Amir, Reza, Moin, Pari, Jing, Max, Ian, Sara"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

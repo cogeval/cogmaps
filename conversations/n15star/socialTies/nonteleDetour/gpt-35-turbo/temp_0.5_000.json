@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. You have been told that Kim is donating 50 books and Max is donating 10 books. Now, from Amir what is the shortest path to the person who is donating the maximum number of books? Remember that you can take books only from one person. Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Reza, Pari, Moin, Jing, Max"
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. Here are the steps:\n\n1. Start with Amir.\n2. Check if Amir is connected to anyone who is donating books. If yes, add them to a queue.\n3. Repeat the following steps until the queue is empty:\n   - Dequeue the next person from the queue.\n   - Check if the dequeued person is donating books. If yes, this is the person we are looking for. Stop the search and return the path.\n   - If not, add all the connections of the dequeued person to the queue.\n4. If the queue becomes empty and we haven't found the person who is donating the maximum number of books, it means there is no path from Amir to that person.\n\nNow, let's apply these steps to the given scenario:\n\nStarting from Amir, the connections are: Reza, Moin, Pari, and Puja. None of them are donating books, so we add their connections to the queue: Reza, Moin, Pari, and Puja.\n\nNext, we dequeue Reza from the queue. Reza is not donating books, so we add his connections (Moin and Pari) to the queue.\n\nThen, we dequeue Moin from the queue. Moin is not donating books, so we add his connection (Pari) to the queue.\n\nNext, we dequeue Pari from the queue. Pari is not donating books, so we add her connection (Puja) to the queue.\n\nFinally, we dequeue Puja from the queue. Puja is donating books, but she is not the person donating the maximum number of books. Since the queue is empty, we cannot reach the person donating the maximum number of books starting from Amir.\n\nAnswer: There is no path from Amir to the person who is donating the maximum number of books."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Answer: Amir, Reza, Moin, Pari, Puja, Pam, Kim, Max"
+            "content": "To find the shortest path from Amir to the person who is donating the maximum number of books, we can use a breadth-first search algorithm. Here are the updated steps:\n\n1. Start with Amir.\n2. Check if Amir is connected to anyone who is donating books. If yes, add them to a queue.\n3. Repeat the following steps until the queue is empty:\n   - Dequeue the next person from the queue.\n   - Check if the dequeued person is donating books. If yes, this is the person we are looking for. Stop the search and return the path.\n   - If not, add all the connections of the dequeued person to the queue.\n4. If the queue becomes empty and we haven't found the person who is donating the maximum number of books, it means there is no path from Amir to that person.\n\nNow, let's apply these steps to the updated scenario:\n\nStarting from Amir, the connections are: Reza, Moin, Pari. None of them are donating books, so we add their connections to the queue: Reza, Moin, Pari.\n\nNext, we dequeue Reza from the queue. Reza is not donating books, so we add his connection (Moin) to the queue.\n\nThen, we dequeue Moin from the queue. Moin is not donating books, so we add his connection (Pari) to the queue.\n\nFinally, we dequeue Pari from the queue. Pari is now connected to Puja, who is donating books. This is the person who is donating the maximum number of books.\n\nAnswer: Amir, Pari"
         }
     ],
     "tests": {
@@ -37,12 +37,12 @@
                 "Answer: Amir, Pari, Puja, Pam, Kim",
                 "Answer: Amir, Pari, Puja, Wei, Kim"
             ],
-            "parsed_response": "Answer: Amir, Reza, Moin, Pari, Puja, Pam, Kim, Max"
+            "parsed_response": "Answer: Amir, Pari"
         }
     },
     "scores": {
         "nonteleDetour": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

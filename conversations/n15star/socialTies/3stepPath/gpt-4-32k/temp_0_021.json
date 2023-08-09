@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Puja to Raj? Starting from Puja, please list the scholar names in order, including Puja, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Start at Vivian.\n2. Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n3. Check connections of each of these students:\n   - Salma is connected to Shanshan, Vadim, and Noah.\n   - Shanshan is connected to Vadim, Salma, and Noah.\n   - Vadim is connected to Salma, Shanshan, and Noah.\n   - Gongxue is connected to Paul, Solomon, Soheil, and Alice.\n4. Check connections of each of these students:\n   - Noah is connected to Salma, Shanshan, Vadim, and Anisha.\n   - Paul, Solomon, and Alice are not connected to Anisha.\n   - Soheil is connected to Alice, Solomon, Gongxue, Pierre, Abdul, Durga, and Ajit.\n5. Check connections of each of these students:\n   - Anisha is connected to Noah, Abdul, Durga, Ajit.\n   - Pierre, Abdul, Durga, and Ajit are not connected to Anisha.\n6. The shortest path from Vivian to Anisha is through Noah.\n\nAnswer: Vivian, Noah, Anisha"
+            "content": "First, let's identify the connections:\n\n1. Puja is directly connected to Amir, Wim, Wei, and Pam.\n2. Amir is directly connected to Reza, Moin, Pari, and Puja.\n3. Wim is directly connected to Wei, Kim, Puja, and Pam.\n4. Wei is directly connected to Kim, Puja, and Pam.\n5. Pam is directly connected to Wim, Wei, and Puja.\n6. Kim is directly connected to Wim, Wei, and Pam.\n7. Raj is directly connected to Nisha, Ian, Sara, and Kim.\n\nFrom these connections, we can see that Puja can reach Raj through Kim, as Kim is directly connected to both Puja and Raj. \n\nSo, the shortest path from Puja to Raj is: Puja, Kim, Raj. \n\nAnswer: Puja, Kim, Raj."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Puja, Wim, Kim, Raj",
+                "Answer: Puja, Wei, Kim, Raj",
+                "Answer: Puja, Pam, Kim, Raj"
             ],
-            "parsed_response": "Answer: Vivian, Noah, Anisha"
+            "parsed_response": "Answer: Puja, Kim, Raj"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

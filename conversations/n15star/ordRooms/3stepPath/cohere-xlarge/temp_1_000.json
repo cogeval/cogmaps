@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "\n\nAnswer: 1,2,5,6,7,8,9,10,11,12,13,14,15\nAnswer: 2,4,5,6,7,8,9,10,11,12,13,14,15\nAnswer: 3,4,5,6,7,8,9,10,11,12,13,14,15Notes:\n1. We will only consider rooms with numbers greater than zero.\n2. There is no limit on the number of times you can travel to a room.\n3. You need to think step by step, each time you need to find the shortest path to room 15.\n4. This is a typical Turing machine.\n5. In the above example, the final answer is 15.\n\nInput:\nuser: The number of test cases (0 < n <= 20)\ntask: A list of test cases\nuser: How many steps you need to calculate the answer\ntask: The answer is n\n\nIn the first line, there is a single integer T (0 < T <= 20), the number of test cases.\nThen the T test cases follow.\nThe first line of"
+            "content": " Do not print the same number twice. The shortest path will look like 1, 2, 5, 8, 11, 14.\n\nif(path.indexOf(last) != -1) return last; // in case last is not in the list, add it to the beginning of the answer\n\nreturn path.join(\"\");\n}\n\nvar correctAnswer = \"\";\nvar ans = \"\";\n\nfor(var i = 1; i <= 15; i++) {\n\nif(roomArray[i] !== \"\") {\n\nif(path.indexOf(roomArray[i]) != -1) {\n\nif(path.indexOf(roomArray[i]) == -1) {\n\ncorrectAnswer = correctAnswer + roomArray[i];\n\n}\n\n}\n\nans = ans + \" \" + roomArray[i];\n\n}\n\n}\n\nreturn correctAnswer;\n}\n\nfunction generateInput() {\n\nvar number = Math.floor(Math.random() * 2) + 1;\n\nvar numberOfRooms = 5;\n\nvar rooms = [];\n\nfor(var i = 0; i < number"
         }
     ],
     "tests": {
@@ -27,12 +27,9 @@
             "expected_answer": [
                 "Answer: 1, 7, 4, 15",
                 "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 1, 13, 4, 15"
             ],
-            "parsed_response": "\n\nAnswer: 1,2,5,6,7,8,9,10,11,12,13,14,15\nAnswer: 2,4,5,6,7,8,9,10,11,12,13,14,15\nAnswer: 3,4,5,6,7,8,9,10,11,12,13,14,15Notes:\n1. We will only consider rooms with numbers greater than zero.\n2. There is no limit on the number of times you can travel to a room.\n3. You need to think step by step, each time you need to find the shortest path to room 15.\n4. This is a typical Turing machine.\n5. In the above example, the final answer is 15.\n\nInput:\nuser: The number of test cases (0 < n <= 20)\ntask: A list of test cases\nuser: How many steps you need to calculate the answer\ntask: The answer is n\n\nIn the first line, there is a single integer T (0 < T <= 20), the number of test cases.\nThen the T test cases follow.\nThe first line of"
+            "parsed_response": " Do not print the same number twice. The shortest path will look like 1, 2, 5, 8, 11, 14.\n\nif(path.indexOf(last) != -1) return last; // in case last is not in the list, add it to the beginning of the answer\n\nreturn path.join(\"\");\n}\n\nvar correctAnswer = \"\";\nvar ans = \"\";\n\nfor(var i = 1; i <= 15; i++) {\n\nif(roomArray[i] !== \"\") {\n\nif(path.indexOf(roomArray[i]) != -1) {\n\nif(path.indexOf(roomArray[i]) == -1) {\n\ncorrectAnswer = correctAnswer + roomArray[i];\n\n}\n\n}\n\nans = ans + \" \" + roomArray[i];\n\n}\n\n}\n\nreturn correctAnswer;\n}\n\nfunction generateInput() {\n\nvar number = Math.floor(Math.random() * 2) + 1;\n\nvar numberOfRooms = 5;\n\nvar rooms = [];\n\nfor(var i = 0; i < number"
         }
     },
     "scores": {

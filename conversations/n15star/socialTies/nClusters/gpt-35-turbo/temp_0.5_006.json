@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n15star_socialTies_exp_nClusters_temp_0.5_6",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: there are [0-9]+ clusters'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. How many densely-connected clusters do we have in this group? A densely-connected cluster is a group of scholars that are connected to themselves with a minimum of 2 scholars."
+        },
+        {
+            "role": "assistant",
+            "content": "To determine the number of densely-connected clusters in this group, we can use the concept of connected components. We will iterate through each scholar and perform a depth-first search (DFS) to identify all the scholars connected to them. If the number of connected scholars is greater than or equal to 2, we count it as a densely-connected cluster. Let's go through the steps:\n\n1. Initialize a set to keep track of visited scholars.\n2. Initialize a variable `cluster_count` to keep track of the number of densely-connected clusters. Set it to 0.\n3. Iterate through each scholar in the group.\n4. If the scholar has not been visited, perform a DFS to find all the connected scholars.\n   - Start with the current scholar and add them to the visited set.\n   - Initialize a stack and push the current scholar onto it.\n   - While the stack is not empty:\n     - Pop a scholar from the stack.\n     - For each connected scholar of the popped scholar that has not been visited:\n       - Add the connected scholar to the visited set.\n       - Push the connected scholar onto the stack.\n5. If the number of visited scholars is greater than or equal to 2, increment `cluster_count` by 1.\n6. Repeat steps 4-5 for all scholars in the group.\n7. The final value of `cluster_count` is the number of densely-connected clusters.\n\nLet's go through these steps and find the answer."
+        }
+    ],
+    "tests": {
+        "nClusters": {
+            "expected_answer": [
+                "Answer: there are 3 clusters"
+            ],
+            "parsed_response": "To determine the number of densely-connected clusters in this group, we can use the concept of connected components. We will iterate through each scholar and perform a depth-first search (DFS) to identify all the scholars connected to them. If the number of connected scholars is greater than or equal to 2, we count it as a densely-connected cluster. Let's go through the steps:\n\n1. Initialize a set to keep track of visited scholars.\n2. Initialize a variable `cluster_count` to keep track of the number of densely-connected clusters. Set it to 0.\n3. Iterate through each scholar in the group.\n4. If the scholar has not been visited, perform a DFS to find all the connected scholars.\n   - Start with the current scholar and add them to the visited set.\n   - Initialize a stack and push the current scholar onto it.\n   - While the stack is not empty:\n     - Pop a scholar from the stack.\n     - For each connected scholar of the popped scholar that has not been visited:\n       - Add the connected scholar to the visited set.\n       - Push the connected scholar onto the stack.\n5. If the number of visited scholars is greater than or equal to 2, increment `cluster_count` by 1.\n6. Repeat steps 4-5 for all scholars in the group.\n7. The final value of `cluster_count` is the number of densely-connected clusters.\n\nLet's go through these steps and find the answer."
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

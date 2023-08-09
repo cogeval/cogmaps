@@ -6,42 +6,41 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Review the wait times for each attraction.\nStep 2: Identify the attraction with the shortest wait time.\nStep 3: Trace the path from the Entrance to the attraction with the shortest wait time.\nStep 4: List the path in order, separated by commas.\n\nAnswer: Left, Fantasyland, Mad Tea Party"
+            "content": "Let's analyze the options step by step:\n\n1. From the entrance, there are two choices - left or right.\n\n2. If you choose the right field, you enter the sunflower field. From here, you can either go to the hydrangea field (50 flowers) or the orchid field (10 flowers).\n\n3. If you choose the left field, you enter the rose field. From here, you can either go to the daisy field (22 flowers) or the tulip field (56 flowers).\n\nComparing the number of flowers in each path, the maximum number of flowers can be found in the tulip field (56 flowers). Therefore, the path with the maximum number of flowers is: entrance, rose, tulip.\n\nAnswer: entrance, rose, tulip"
         },
         {
             "role": "user",
-            "content": "This time you at entrance your encounter a new passage that leads to Snow White\u2019s Castle. This Castle has a magic door that can take you to any attraction you want. When you return to entrance and choose the path that led to the shortest wait time previously, you discover that the passage from Fantasyland to Mad Tea Party is now blocked. You go back to the entrance. You will only be able to choose one attraction with the least wait time. From the entrance, where should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas"
+            "content": "This time you\u2019re at the entrance and you encounter a new field that leads to the lily field. The lily field has a portal and through this portal it\u2019s possible to go to any neighboring field of the rose field. When you return to the entrance and choose the path that led to the maximum number of flowers previously, you discover that the path is now blocked. You go back to the entrance. You will only be able to choose one path that leads to the maximum number of flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Review the available paths and wait times for each attraction.\nStep 2: Identify the path that leads to the attraction with the shortest wait time, considering the blocked passage.\nStep 3: Trace the path from the Entrance to the attraction with the shortest wait time.\nStep 4: List the path in order, separated by commas.\n\nAnswer: Snow White's Castle, Magic Door, Mad Tea Party"
+            "content": "Since the previous path to the maximum number of flowers is now blocked, we need to find a new path.\n\n1. From the entrance, there are now three choices - left, right, or the new lily field.\n\n2. If you choose the right field, you enter the sunflower field. From here, you can either go to the hydrangea field (50 flowers) or the orchid field (10 flowers).\n\n3. If you choose the left field (rose field), it is blocked, and you cannot proceed.\n\n4. If you choose the new field, you enter the lily field. From here, you can use the portal to go to any neighboring field of the rose field. This means you can go to either the daisy field (22 flowers) or the tulip field (56 flowers).\n\nComparing the number of flowers in each accessible path, the maximum number of flowers can be found in the tulip field (56 flowers). Therefore, the new path with the maximum number of flowers is: entrance, lily, tulip.\n\nAnswer: entrance, lily, tulip"
         }
     ],
     "tests": {
         "teleDetour": {
             "expected_answer": [
-                "Answer: Entrance, Snow White's Castle, Mad Tea Party",
-                "Answer: entrance, Snow White's Castle, Mad Tea Party "
+                "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Step 1: Review the available paths and wait times for each attraction.\nStep 2: Identify the path that leads to the attraction with the shortest wait time, considering the blocked passage.\nStep 3: Trace the path from the Entrance to the attraction with the shortest wait time.\nStep 4: List the path in order, separated by commas.\n\nAnswer: Snow White's Castle, Magic Door, Mad Tea Party"
+            "parsed_response": "Answer: entrance, lily, tulip"
         }
     },
     "scores": {
         "teleDetour": {
-            "score": 1.0,
+            "score": 0.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }

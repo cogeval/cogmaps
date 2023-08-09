@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections of room 1 (7, 10, 13, 11)\nStep 2: Identify the connections of room 15 (4, 6, 12)\nStep 3: Find the common connections between steps 1 and 2 (none)\nStep 4: Identify the second level connections for room 1 (2, 5, 8, 11, 14)\nStep 5: Find the common connections between steps 2 and 4 (none)\nStep 6: Identify the third level connections for room 1 (3, 6, 9, 12, 15)\nStep 7: Find the common connections between steps 2 and 6 (15)\nStep 8: Trace back the path from room 15 to room 1 (15 -> 6 -> 3 -> 1)\n\nAnswer: 1, 3, 6, 15"
+            "content": "Step 1: Identify the connections for room 1\n- Room 1 is connected to rooms 7, 10, 13, and 11\n\nStep 2: Find the connections from the rooms connected to room 1 to room 15\n- Room 7 is connected to rooms 10 and 13\n- Room 10 is connected to room 13\n- Room 13 has no direct connection to room 15\n- Room 11 is connected to room 14\n- Room 14 has no direct connection to room 15\n\nStep 3: Find the shortest path from the connections found in step 2\n- Room 7 to room 13, then room 13 to room 4, and finally room 4 to room 15 (1-7-13-4-15)\n- Room 10 to room 13, then room 13 to room 4, and finally room 4 to room 15 (1-10-13-4-15)\n- Room 11 to room 14, then room 14 to room 2, and finally room 2 to room 15 (1-11-14-2-15)\n\nAnswer: 1, 11, 14, 2, 15"
         }
     ],
     "tests": {
@@ -27,12 +27,9 @@
             "expected_answer": [
                 "Answer: 1, 7, 4, 15",
                 "Answer: 1, 10, 4, 15",
-                "Answer: 1, 13, 4, 15",
-                "Answer: 1,7,4,15",
-                "Answer: 1,10,4,15",
-                "Answer: 1,13,4,15"
+                "Answer: 1, 13, 4, 15"
             ],
-            "parsed_response": "Step 1: Identify the connections of room 1 (7, 10, 13, 11)\nStep 2: Identify the connections of room 15 (4, 6, 12)\nStep 3: Find the common connections between steps 1 and 2 (none)\nStep 4: Identify the second level connections for room 1 (2, 5, 8, 11, 14)\nStep 5: Find the common connections between steps 2 and 4 (none)\nStep 6: Identify the third level connections for room 1 (3, 6, 9, 12, 15)\nStep 7: Find the common connections between steps 2 and 6 (15)\nStep 8: Trace back the path from room 15 to room 1 (15 -> 6 -> 3 -> 1)\n\nAnswer: 1, 3, 6, 15"
+            "parsed_response": "Answer: 1, 11, 14, 2, 15"
         }
     },
     "scores": {

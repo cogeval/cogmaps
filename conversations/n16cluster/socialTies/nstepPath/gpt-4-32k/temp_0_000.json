@@ -15,20 +15,22 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Matt what is the shortest path to Reza? Starting from Matt, please list the scholar names in order, including Matt, separated by commas."
+            "content": "Imagine a group of 16 scholars. Amir is connected to Wim, Raj, Jing, and Reza. Wim is connected to Amir, Raj, Jing, and Eva. Raj is connected to Amir, Wim, Jing, and Wei. Jing is also connected to Amir, Wim, Raj, and Pam. Wei is connected to Nisha, Reza, Kim, and Raj. Nisha is connected to Wei, Reza, Kim, and Sara. Reza is connected to Amir, Kim, Nisha, and Wei. Kim is also connected to Wei, Nisha, Reza, and Moin. Ian is connected to Moin, Puja, Sara, and Matt. Moin is connected to Ian, Puja, Kim, and Sara. Puja is connected to Pari, Ian, Sara, and Moin. Sara is also connected to Ian, Moin, Puja, and Nisha. Pari is connected to Pam, Matt, Eva, and Puja. Pam is connected to Jing, Pari, Matt, and Eva. Matt is connected to Pari, Pam, Eva, and Ian. Eva is also connected to Pari, Pam, Matt, and Wim. From Amir what is the shortest path to Puja? Starting from Amir, please list the scholar numbers in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start at Matt.\n2. Consider Matt's connections: Pari, Pam, Eva, and Ian.\n3. Check if any of them are directly connected to Reza: None.\n4. Consider the connections of Matt's connections:\n   - Pari: Pam, Matt, Eva, and Puja.\n   - Pam: Jing, Pari, Matt, and Eva.\n   - Eva: Pari, Pam, Matt, and Wim.\n   - Ian: Moin, Puja, Sara, and Matt.\n5. Check if any of them are directly connected to Reza: None.\n6. Consider the connections of the second-degree connections:\n   - Jing: Amir, Wim, Raj, and Pam.\n   - Wim: Amir, Raj, Jing, and Eva.\n   - Moin: Ian, Puja, Kim, and Sara.\n   - Puja: Pari, Ian, Sara, and Moin.\n   - Sara: Ian, Moin, Puja, and Nisha.\n   - Nisha: Wei, Reza, Kim, and Sara.\n7. Check if any of them are directly connected to Reza: Nisha is connected to Reza.\n8. Trace the path back to Matt: Reza -> Nisha -> Sara -> Ian -> Matt.\n\nAnswer: Matt, Ian, Sara, Nisha, Reza"
+            "content": "First, let's map out the connections:\n\n1. Amir is connected to Wim, Raj, Jing, and Reza.\n2. Wim is connected to Amir, Raj, Jing, and Eva.\n3. Raj is connected to Amir, Wim, Jing, and Wei.\n4. Jing is connected to Amir, Wim, Raj, and Pam.\n5. Wei is connected to Nisha, Reza, Kim, and Raj.\n6. Nisha is connected to Wei, Reza, Kim, and Sara.\n7. Reza is connected to Amir, Kim, Nisha, and Wei.\n8. Kim is connected to Wei, Nisha, Reza, and Moin.\n9. Ian is connected to Moin, Puja, Sara, and Matt.\n10. Moin is connected to Ian, Puja, Kim, and Sara.\n11. Puja is connected to Pari, Ian, Sara, and Moin.\n12. Sara is connected to Ian, Moin, Puja, and Nisha.\n13. Pari is connected to Pam, Matt, Eva, and Puja.\n14. Pam is connected to Jing, Pari, Matt, and Eva.\n15. Matt is connected to Pari, Pam, Eva, and Ian.\n16. Eva is connected to Pari, Pam, Matt, and Wim.\n\nThe shortest path from Amir to Puja is:\n\nAmir -> Wim -> Eva -> Pari -> Puja\n\nAnswer: Amir, Wim, Eva, Pari, Puja"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Matt, Ian, Sara, Nisha, Reza",
-                "Answer: Matt, Pam, Jing, Amir, Reza"
+                "Answer: Amir, Wim, Eva, Pari, Puja",
+                "Answer: Amir, Jing, Pam, Pari, Puja",
+                "Answer: Amir, Reza, Nisha, Sara, Puja",
+                "Answer: Amir, Reza, Kim, Moin, Puja"
             ],
-            "parsed_response": "1. Start at Matt.\n2. Consider Matt's connections: Pari, Pam, Eva, and Ian.\n3. Check if any of them are directly connected to Reza: None.\n4. Consider the connections of Matt's connections:\n   - Pari: Pam, Matt, Eva, and Puja.\n   - Pam: Jing, Pari, Matt, and Eva.\n   - Eva: Pari, Pam, Matt, and Wim.\n   - Ian: Moin, Puja, Sara, and Matt.\n5. Check if any of them are directly connected to Reza: None.\n6. Consider the connections of the second-degree connections:\n   - Jing: Amir, Wim, Raj, and Pam.\n   - Wim: Amir, Raj, Jing, and Eva.\n   - Moin: Ian, Puja, Kim, and Sara.\n   - Puja: Pari, Ian, Sara, and Moin.\n   - Sara: Ian, Moin, Puja, and Nisha.\n   - Nisha: Wei, Reza, Kim, and Sara.\n7. Check if any of them are directly connected to Reza: Nisha is connected to Reza.\n8. Trace the path back to Matt: Reza -> Nisha -> Sara -> Ian -> Matt.\n\nAnswer: Matt, Ian, Sara, Nisha, Reza"
+            "parsed_response": "Answer: Amir, Wim, Eva, Pari, Puja"
         }
     },
     "scores": {

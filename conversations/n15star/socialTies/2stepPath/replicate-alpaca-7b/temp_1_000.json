@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,19 +15,28 @@
         },
         {
             "role": "user",
-            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Wim? Starting from Amir, including Amir, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Amir to Jing? Starting from Amir, please list the scholar names in order, including Amir, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Amir,,Pari,puja."
+            "content": "A starting nodal point or a sender in the path will determine the sequence along which all nodes are sent: Amir, Reza, Moin, Pari, Puja. Sending the sequence Puja, then Moin, leads to the destination of Jing. The Shortest Path starting from Amir which includes Moin, Reza, Pari followed by Puja. JING. This answer can either be formatted as one cohesive string with a matching start-end pattern in between, or as a nested list with the actual sender/receivers string for output along with patterns between the senders and recipients, leading up to puja\u2019s connection to max/Max:   puja (ian, saraw|saw), Amir (par|pri), Puja (kimberly, max)|pu(ka|ko) \u2013 J-I-N-G Shortest path: Amir > Puja > Mo(ri|an)|Moins then Rea > Puja(kariyama)|kpaj> puju."
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Amir, Puja, Wim"
+                "Answer: Amir, Reza, Jing",
+                "Answer: Amir, Moin, Jing",
+                "Answer: Amir, Pari, Jing"
             ],
-            "parsed_response": "Amir,,Pari,puja."
+            "parsed_response": "A starting nodal point or a sender in the path will determine the sequence along which all nodes are sent: Amir, Reza, Moin, Pari, Puja. Sending the sequence Puja, then Moin, leads to the destination of Jing. The Shortest Path starting from Amir which includes Moin, Reza, Pari followed by Puja. JING. This answer can either be formatted as one cohesive string with a matching start-end pattern in between, or as a nested list with the actual sender/receivers string for output along with patterns between the senders and recipients, leading up to puja\u2019s connection to max/Max:   puja (ian, saraw|saw), Amir (par|pri), Puja (kimberly, max)|pu(ka|ko) \u2013 J-I-N-G Shortest path: Amir > Puja > Mo(ri|an)|Moins then Rea > Puja(kariyama)|kpaj> puju."
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest connection path from Vivian to Paul? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to  Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Pari to Matt? Starting from Pari, please list the scholar names in order, including Pari, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify Vivian's connections.\n- Vivian is connected to Salma, Shanshan, Vadim, and Gongxue.\n\nStep 2: Identify Paul's connections.\n- Paul is connected to Solomon, Soheil, Gongxue, and Alice.\n\nStep 3: Find any shared connections between Vivian's connections and Paul's connections.\n- Gongxue is connected to both Vivian and Paul.\n\nStep 4: Construct the shortest connection path.\n- Vivian -> Gongxue -> Paul\n\nAnswer: Vivian, Gongxue, Paul"
+            "content": "The first step would be to identify all the scholars that Pari is directly connected to. From the provided list, it is clear that Pari is directly connected to Amir, Jing, and Moin.\n\nNext, identify which of these scholars have connections that can bring you closer to Matt. None of these scholars are connected to Matt, so let's go through their connections:\n\n- Amir is connected to Reza, Moin, and Puja.\n- Jing is connected to Reza, Moin, and Max.\n- Moin is connected to Reza and Pari.\n\nReza, Moin, Puja and Max are not Matt, so we need to go another step further. \n\n- Reza is connected to Moin, and Pari.\n- Moin is connected to Pari.\n- Puja is connected to Pam.\n- Max is connected to Sara and Ian.\n\nWe don't have Matt among these connections. So we need to go further, to the next level.\n\n- Sara is connected to Ian and Max\n- Ian is connected to Sara and Max\n- Pam is not connected to anyone else\n\nMatt does not appear in these connections, either. Considering that all the connections were explored and Matt didn't appear, it can be inferred that Matt is not connected to any of the scholars mentioned.\n\nAnswer: No Path."
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Gongxue, Paul"
+                "Answer: Pari, Jing, Matt"
             ],
-            "parsed_response": "Answer: Vivian, Gongxue, Paul"
+            "parsed_response": "Answer: No Path"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 512,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with twelve rooms. From the lobby you have two choices, room 1 and room 2. You enter room 1, at the end there\u00e2\u20ac\u2122s a door that leads to room 3, and room 3 leads to room 5. There is a door in room 5 that leads to room 7 and room 7 leads to room 9. From room 9 you can enter room 11. There\u00e2\u20ac\u2122s a chest in room 11. You open it and there is 10 dollars, but you do not take any money, you\u00e2\u20ac\u2122re just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, then enter room 4, which leads to room 6. There is a door in room 6 that leads to room 8 and room 8 leads to room 10. At the end there is a door that leads to room 12. There\u00e2\u20ac\u2122s a chest with 50 dollars in room 12, but you do not take any money, you\u00e2\u20ac\u2122re just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money. Which room from the lobby will lead to the path where one can make the most money?"
+            "content": "Imagine a world with twelve rooms. From the lobby you have two choices, room 1 and room 2. You enter room 1, at the end there's a door that leads to room 3, and room 3 leads to room 5. There is a door in room 5 that leads to room 7 and room 7 leads to room 9. From room 9 you can enter room 11. There's a chest in room 11. You open it and there is 10 dollars, but you do not take any money, you're just learning about the environment. Then you exit and start over. This time in the lobby you choose room 2, then enter room 4, which leads to room 6. There is a door in room 6 that leads to room 8 and room 8 leads to room 10. At the end there is a door that leads to room 12. There's a chest with 50 dollars in room 12, but you do not take any money, you're just learning about the environment. You return to the lobby. You will only be able to choose one path that leads to the most money.  Starting from the lobby, which path will lead to the most money?  Please list all room numbers in order, separated by commas"
         },
         {
             "role": "assistant",
-            "content": "Answer: Room 2 leads to the path where one can make the most money, which is room 4 -> room 6 -> room 8 -> room 10 -> room 12 with a chest containing $50."
+            "content": " Answer: Room 12"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "assistant: Answer: Room 1 leads to the path with the highest probability of making most money, which is room 3 (0.9) -> room 5 (1.0) -> room 7 (1.0) -> room 9 (1.0) -> room 11 ($10). The probability of this path leading to $10 is 0.9 * 1.0 * 1.0 * 1.0 = 0.9.\nOn the other hand, if we choose Room2, then there are two paths:\n- Room2->Room4(Probability=1)->Room6(Probability=0.9)->Room8(Probability=1)->Room10(Probability=1)->Room12($50)\nThe probability of this path leading to $50 is: Probability(Room2)* Probability(Room4->6)* Probability(Room6->8)* Probability(Room8->10)* Probability(Room10->$50)= \n                                =   P(R_2) x P(R_4|R_2)xP(R_6|R_4)xP(R_8|R_6)xP(R_{12}|R_{8}) =\n                                =   (Prob[room3]+ Prob[room4])x Prob(room6|room4)xProb(room8|room6)xProb(room12|room8)\n                                 =(prob[3]*prob[5]*prob[7]*prob[9]*$50)+(prob[3]*(not prob [5])* prob [7] *(not prob [9])*$10)+((not prob [3])* prob [6] *prob [8] *$50)+((not(prob [3]))*( not(prob([6]))* not(prob([5])))"
+            "content": " Answer: Room 1"
         }
     ],
     "tests": {
@@ -36,7 +36,7 @@
                 "Answer: Room 2",
                 "Answer: room 2"
             ],
-            "parsed_response": "assistant: Answer: Room 1 leads to the path with the highest probability of making most money, which is room 3 (0.9) -> room 5 (1.0) -> room 7 (1.0) -> room 9 (1.0) -> room 11 ($10). The probability of this path leading to $10 is 0.9 * 1.0 * 1.0 * 1.0 = 0.9.\nOn the other hand, if we choose Room2, then there are two paths:\n- Room2->Room4(Probability=1)->Room6(Probability=0.9)->Room8(Probability=1)->Room10(Probability=1)->Room12($50)\nThe probability of this path leading to $50 is: Probability(Room2)* Probability(Room4->6)* Probability(Room6->8)* Probability(Room8->10)* Probability(Room10->$50)= \n                                =   P(R_2) x P(R_4|R_2)xP(R_6|R_4)xP(R_8|R_6)xP(R_{12}|R_{8}) =\n                                =   (Prob[room3]+ Prob[room4])x Prob(room6|room4)xProb(room8|room6)xProb(room12|room8)\n                                 =(prob[3]*prob[5]*prob[7]*prob[9]*$50)+(prob[3]*(not prob [5])* prob [7] *(not prob [9])*$10)+((not prob [3])* prob [6] *prob [8] *$50)+((not(prob [3]))*( not(prob([6]))* not(prob([5])))"
+            "parsed_response": "Answer: Room 1"
         }
     },
     "scores": {

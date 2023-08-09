@@ -6,43 +6,36 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
             "role": "system",
-            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: [A-Za-z ]+'"
         },
         {
             "role": "user",
-            "content": "You are visiting Disneyland. You hit the entrance and you see two passages, one on the right and one on the left. You choose the passage on the right and enter Tomorrowland. You see two attractions in Tomorrowland, Autopia and Space Mountain. Autopia has a wait time of 20 minutes, and Space Mountain has a wait time of 10 minutes. You go back to the Entrance. This time you choose the passage on the left and you go to Fantasyland. Again, you see two attractions, Mad Tea Party and Peter Pan's Flight. Mad Tea Party has a wait time of 5 minutes, and Peter Pan's Flight has a wait time of 15 minutes. Given your limited time in Disneyland, assume you can pick one attraction only. From the Entrance, which attraction should you go to for the shortest wait time? Please list the path to attraction in order, separated by commas."
+            "content": "You are exloring a flower county with six flower fields. You enter through the entrance and you see two fields one on the right and one on the left. You choose the field on the right and enter the sunflower field. You see two fields through the sunflower field. You can choose the field on the left or the field on the right. You choose the field on the right, and you enter the hydrangea field where you find 50 hydrangea flowers given away for free but remember you're only exploring so you don't take any flowers. Then you go back to the sunflower field, and this time you go to the field on the left to the orchid field. There you find 10 orchid flowers for free (but you don't take any flower). You go back to the entrance. This time you choose the field on the left and you go to the rose field. Again, you see two fields, one on the left and one on the right. You enter the field on the right, and you find yourself in the daisy field. In the daisy field, you find 22 daisy flowers given for free. Then you go back to the rose field, and this time you go to the field on the left. You enter the tulip field where you find 56 tulip flowers for free (you still don't take any flower). You go back to the entrance. Given you didn't take any flower during exploration, assume you can pick one path to collect flowers. From the entrance, where do you go to get the maximum number of flowers? Please list the flower names in order, including the entrance, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Mad Tea Party, Entrance, Left Passage, Fantasyland."
+            "content": "To determine the path that allows you to collect the maximum number of flowers, let's go through the options step by step:\n\n1. From the entrance, you have two options: the field on the right and the field on the left.\n2. If you choose the field on the right, you enter the sunflower field, but there are no flowers to collect.\n3. If you choose the field on the left, you enter the orchid field, where you find 10 orchid flowers.\n4. From the orchid field, you go back to the entrance.\n5. This time, you choose the field on the left, which leads you to the rose field.\n6. In the rose field, you have two options: the field on the left and the field on the right.\n7. If you choose the field on the left, you enter the tulip field, where you find 56 tulip flowers.\n8. From the tulip field, you go back to the entrance.\n\nBased on this exploration, the path that allows you to collect the maximum number of flowers is: Entrance, Orchid Field, Rose Field, Tulip Field.\n\nAnswer: Entrance, Orchid Field, Rose Field, Tulip Field"
         },
         {
             "role": "user",
-            "content": "From Tomorrowland what is the shortest path to Autopia? Please list the attractions in order, separated by commas."
+            "content": "From the rose field what is the shortest path to the daisy field? Starting from the rose field, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Answer: Autopia."
+            "content": "To find the shortest path from the rose field to the daisy field, let's go through the options step by step:\n\n1. From the rose field, you have two options: the field on the left and the field on the right.\n2. If you choose the field on the left, you enter the daisy field, where you find 22 daisy flowers.\n3. If you choose the field on the right, you enter the hydrangea field, but there are no flowers to collect.\n\nBased on this exploration, the shortest path from the rose field to the daisy field is: Rose Field, Daisy Field.\n\nAnswer: Rose Field, Daisy Field"
         }
     ],
     "tests": {
         "1stepPath": {
             "expected_answer": [
-                "Answer: Tomorrowland, Autopia"
+                "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Autopia."
-        }
-    },
-    "scores": {
-        "1stepPath": {
-            "score": 1.0,
-            "max_score": 1.0,
-            "rubric": "gpt_rubric"
+            "parsed_response": "Answer: Rose Field, Daisy Field"
         }
     }
 }

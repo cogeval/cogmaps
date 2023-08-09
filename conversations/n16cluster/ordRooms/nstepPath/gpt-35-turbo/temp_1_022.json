@@ -1,5 +1,5 @@
 {
-    "conversation_id": "task_ordRooms_exp_nstepPath_temp_1_22",
+    "conversation_id": "task_n16cluster_ordRooms_exp_nstepPath_temp_1_22",
     "model": "gpt-35-turbo",
     "version": "2023-03-15-preview",
     "temperature": 1,
@@ -15,22 +15,29 @@
         },
         {
             "role": "user",
-            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. What is the shortest path from room 15 to room 7? Please list the room numbers in order, separated by commas."
+            "content": "Imagine a world with 16 rooms. Room 1 is connected to rooms 2, 3, 4, and 7. Room 2 is connected to rooms 1, 3, 4, and 16. Room 3 is connected to rooms 1, 2, 4 and 5. Room 4 is also connected to rooms 1, 2, 3, and 14. Room 5 is connected to rooms 6, 7, 8, and 3. Room 6 is connected to rooms 5, 7, 8, and 12. Room 7 is connected to rooms 1, 8, 6, and 5. Room 8 is also connected to rooms 5, 6, 7, and 10. Room 9 is connected to rooms 10, 11,12, and 15. Room 10 is connected to rooms 9, 11, 8, and 12. Room 11 is connected to rooms 13, 9, 12, and 10. Room 12 is also connected to rooms 9, 10, 11, and 6. Room 13 is connected to rooms 14, 15, 16, and 11. Room 14 is connected to rooms 4, 13, 15, 16. Room 15 is connected to rooms 13, 14, 16, and 9. Room 16 is also connected to rooms 13, 14, 15, and 2. From room 10 what is the shortest path to room 2? Starting from room 10, please list the room numbers in order, including 10, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "To find the shortest path from room 15 to room 7, we can use Dijkstra's algorithm. Starting from room 15, the algorithm would visit rooms 13, 11, 12, 6, and 7. Therefore, the shortest path from room 15 to room 7 is: \n\nAnswer: 15,13,11,12,6,7"
+            "content": "To find the shortest path from Room 10 to Room 2, we can use Dijkstra's algorithm. \n\nStarting from Room 10, we can reach Room 8 with a weight of 1 (since they are directly connected). From Room 8, we can reach Room 5 with a weight of 1. From Room 5, we can reach Room 3 with a weight of 1. Finally, from Room 3, we can reach Room 2 with a weight of 1.\n\nTherefore, the shortest path from Room 10 to Room 2 is: \n\nAnswer: 10, 8, 5, 3, 2"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: 15, 9, 12, 6, 7",
-                "Answer: 15, 14, 4, 1, 7",
-                "Answer: 15,9,12,6,7",
-                "Answer: 15,14,4,1,7"
+                "Answer: 10, 8, 5, 3, 2",
+                "Answer: 10, 8, 7, 1, 2",
+                "Answer: 10, 9, 15, 16, 2",
+                "Answer: 10, 11, 13, 16, 2"
             ],
-            "parsed_response": "Answer: 15,13,11,12,6,7"
+            "parsed_response": "Answer: 10, 8, 5, 3, 2"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

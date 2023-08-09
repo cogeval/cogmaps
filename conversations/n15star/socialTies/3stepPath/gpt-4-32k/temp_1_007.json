@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine a class of 15 students. Vivian, Salma, Shanshan, Vadim, and Gongxue are all connected to each other. Paul, Solomon, Soheil, Gongxue, and Alice are connected to each other. Pierre, Abdul, Durga, Ajit, and Soheil are all connected to each other. Noah, Salma, Shanshan, Vadim, and Anisha are connected to each other. Solomon, Soheil, Gongxue, and Alice are connected to each other. Abdul, Durga, Ajit, and Anisha are connected to each other. Salma, Shanshan, and Vadim are connected to each other. Soheil is connected to Alice. Durga, Ajit and Anisha are connected to each other. Shanshan is connected to Vadim. Gongxue is connected to Alice. Ajit is connected to Anisha. What is the shortest path from Vivian to Anisha? Please list the student names in order, separated by commas."
+            "content": "Imagine a group with 15 scholars. Amir is connected to Reza, Moin, Pari, and Puja. Wim is connected to Wei, Kim, Puja, and Pam. Raj is connected to Nisha, Ian, Sara, and Kim. Jing is connected to Reza, Moin, Pari, and Max. Wei is connected to Kim, Puja, and Pam. Nisha is connected to Ian, Sara, and Max. Reza is connected to Moin, and Pari. Kim is connected to Pam. Ian is connected to Sara, and Max. Moin is connected to Pari. Puja is connected to Pam. Sara is connected to Max. What is the shortest path from Reza to Sara? Starting from Reza, please list the scholar names in order, including Reza, separated by commas. "
         },
         {
             "role": "assistant",
-            "content": "1. Start from Vivian.\n2. Consider the connections of Vivian: Salma, Shanshan, Vadim, and Gongxue.\n3. Check the connections of these four students:\n   a. Salma: Vivian, Shanshan, Vadim, Noah, Anisha\n   b. Shanshan: Vivian, Salma, Vadim, Noah, Anisha\n   c. Vadim: Vivian, Salma, Shanshan, Noah, Anisha\n   d. Gongxue: Vivian, Salma, Shanshan, Vadim, Paul, Solomon, Soheil, Alice\n4. Find the shortest path from these students to Anisha:\n   a. Salma to Anisha: Salma - Anisha (1 step)\n   b. Shanshan to Anisha: Shanshan - Salma - Anisha (2 steps)\n   c. Vadim to Anisha: Vadim - Salma - Anisha (2 steps)\n   d. Gongxue to Anisha: Gongxue - Alice - Soheil - Abdul - Ajit - Anisha (5 steps)\n5. Choose the shortest path: Vivian - Salma - Anisha\n\nAnswer: Vivian, Salma, Anisha"
+            "content": "First, let's map out the relationships. \n\n- Reza is directly connected to Amir, Jing, Moin, and Pari.\n- Amir is directly connected to Reza, Moin, Pari, and Puja.\n- Jing is directly connected to Reza, Moin, Pari, and Max.\n- Moin is directly connected to Reza, Amir, Jing, and Pari.\n- Pari is directly connected to Reza, Amir, Jing, and Moin.\n- Puja is directly connected to Amir, Wim, Wei, and Pam.\n- Wim is directly connected to Wei, Kim, Puja, and Pam.\n- Wei is directly connected to Wim, Kim, Puja, and Pam.\n- Kim is directly connected to Wim, Wei, Pam, and Raj.\n- Pam is directly connected to Wim, Wei, Puja, and Kim.\n- Raj is directly connected to Nisha, Ian, Sara, and Kim.\n- Nisha is directly connected to Ian, Sara, Max, and Raj.\n- Ian is directly connected to Sara, Max, Nisha, and Raj.\n- Max is directly connected to Jing, Nisha, Ian, and Sara.\n- Sara is directly connected to Max, Nisha, Ian, and Raj.\n\nConsidering the shortest path, it seems the quickest way to go from Reza to Sara would be: \n\nReza - Amir - Puja - Wim - Kim - Raj - Sara.\n\nThis path only takes six steps. Thus, this seems to be the shortest path from Reza to Sara. \n\nAnswer: Reza, Amir, Puja, Wim, Kim, Raj, Sara."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Vivian, Salma, Noah, Anisha",
-                "Answer: Vivian, Shanshan, Noah, Anisha ",
-                "Answer: Vivian, Vadim, Noah, Anisha"
+                "Answer: Reza, Jing, Matt, Sara"
             ],
-            "parsed_response": "Answer: Vivian, Salma, Anisha"
+            "parsed_response": "Answer: Reza, Amir, Puja, Wim, Kim, Raj, Sara"
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }
