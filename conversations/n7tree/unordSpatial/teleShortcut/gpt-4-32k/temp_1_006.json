@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and number of flowers in each field:\n- Entrance -> Right -> Sunflower -> Right -> Hydrangea (50 flowers)\n- Entrance -> Right -> Sunflower -> Left -> Orchid (10 flowers)\n- Entrance -> Left -> Rose -> Right -> Daisy (22 flowers)\n- Entrance -> Left -> Rose -> Left -> Tulip (56 flowers)\n\nStep 2: Identify the path with the maximum number of flowers:\n- The path with the maximum number of flowers is Entrance -> Left -> Rose -> Left -> Tulip (56 flowers)\n\nStep 3: List the flower names in order, including the entrance, separated by commas:\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Identify the possible paths and the number of flowers in each path.\n- Path 1: Entrance, Sunflower Field, Hydrangea Field (50 hydrangea flowers)\n- Path 2: Entrance, Sunflower Field, Orchid Field (10 orchid flowers)\n- Path 3: Entrance, Rose Field, Daisy Field (22 daisy flowers)\n- Path 4: Entrance, Rose Field, Tulip Field (56 tulip flowers)\n\nStep 2: Compare the number of flowers in each path.\n\nStep 3: Identify the path with the maximum number of flowers (Path 4 with 56 tulip flowers).\n\nAnswer: Entrance, Rose Field, Tulip Field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and number of flowers in each neighboring field of the rose field:\n- Entrance -> Portal -> Rose -> Right -> Daisy (22 flowers)\n- Entrance -> Portal -> Rose -> Left -> Tulip (56 flowers)\n\nStep 2: Identify the path with the maximum number of flowers:\n- The path with the maximum number of flowers is Entrance -> Portal -> Rose -> Left -> Tulip (56 flowers)\n\nStep 3: List the flower names in order, including the entrance, separated by commas:\nAnswer: Entrance, Portal, Rose, Tulip"
+            "content": "Step 1: Identify the new paths available through the portal from the entrance to any neighboring field of the Rose Field.\n- Path 1: Entrance, Portal (Rose Field's neighbor), Daisy Field (22 daisy flowers)\n- Path 2: Entrance, Portal (Rose Field's neighbor), Tulip Field (56 tulip flowers)\n\nStep 2: Compare the number of flowers in the new paths with the previously identified paths.\n\nPrevious Paths:\n- Path A: Entrance, Sunflower Field, Hydrangea Field (50 hydrangea flowers)\n- Path B: Entrance, Sunflower Field, Orchid Field (10 orchid flowers)\n- Path C: Entrance, Rose Field, Daisy Field (22 daisy flowers)\n- Path D: Entrance, Rose Field, Tulip Field (56 tulip flowers)\n\nStep 3: Identify the path with the maximum number of flowers (Path D and Path 2 both with 56 tulip flowers, but Path 2 is shorter).\n\nAnswer: Entrance, Portal, Tulip Field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Portal, Rose, Tulip"
+            "parsed_response": "Answer: Entrance, Portal, Tulip Field"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

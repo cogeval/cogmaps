@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the field that leads to the path with the maximum number of flowers, let's calculate the number of flowers in each path:\n\n1. If we choose the rose field, we can reach the orchid field, where we can have 10 orchid flowers for free.\n2. If we choose the sunflower field, we can reach the hydrangea field, where we can have 50 hydrangea flowers for free.\n\nSince the hydrangea field offers more flowers (50) compared to the orchid field (10), choosing the sunflower field from the entrance will lead to the path with the maximum number of flowers.\n\nAnswer: Sunflower field"
+            "content": "To maximize the number of flowers, we need to calculate the total number of flowers we can get from each path. \n\nPath 1: Entrance -> Rose -> Tulip -> Orchid (10 orchid flowers) = 10 flowers\nPath 2: Entrance -> Sunflower -> Daisy -> Hydrangea (50 hydrangea flowers) = 50 flowers\n\nTherefore, the path that leads to the maximum number of flowers is the second path, which is Entrance -> Sunflower -> Daisy -> Hydrangea. \n\nAnswer: Hydrangea Field."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the field that leads to the path with the maximum number of flowers, let's consider the options:\n\n1. The rose field leads to the orchid field, where we can have 10 orchid flowers for free.\n2. The sunflower field leads to the hydrangea field, where we can have 50 hydrangea flowers for free.\n3. The lily field leads to the peony field, which leads to the daffodil field. From the daffodil field, we can access any neighbor field of the daisy field.\n\nSince the regular path to the field with the maximum number of flowers is blocked, we need to consider the remaining options. \n\nComparing the number of flowers available, the hydrangea field still offers the most flowers (50) compared to the orchid field (10). Therefore, choosing the sunflower field from the entrance will lead to the path with the maximum number of flowers.\n\nAnswer: Sunflower field"
+            "content": "Since the regular path to the field with the maximum number of flowers is blocked, we need to find an alternative path. \n\nWe can take the path Entrance -> Sunflower -> Daisy -> Daffodil -> Portal -> Peony -> Lily. From the Lily field, we can go back to the entrance and start over. \n\nCalculating the total number of flowers we can get from each path: \n\nPath 1: Entrance -> Sunflower -> Daisy -> Hydrangea (50 hydrangea flowers) = 50 flowers\nPath 2: Entrance -> Lily -> Peony -> Daffodil -> Portal -> Any neighbor field of Daisy = unknown number of flowers\n\nSince we don't know the number of flowers we can get from the alternative path, we cannot determine which field from the entrance will lead to the path with the maximum number of flowers. \n\nAnswer: Unknown."
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: lily"
             ],
-            "parsed_response": "Answer: Sunflower field"
+            "parsed_response": "Answer: Unknown."
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

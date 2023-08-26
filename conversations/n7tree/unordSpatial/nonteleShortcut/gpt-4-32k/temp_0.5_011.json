@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the paths and the number of flowers in each field.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers for each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, separated by commas.\n\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 daisy flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) - 56 tulip flowers\n\nComparing the total number of flowers for each path:\nPath 1: 50 flowers\nPath 2: 10 flowers\nPath 3: 22 flowers\nPath 4: 56 flowers\n\nThe path with the maximum number of flowers is Path 4.\n\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Analyze the two main paths from the entrance.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers for each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nPath 1: Entrance, Sunflower field, Hydrangea field (50 flowers), Orchid field (10 flowers)\nTotal flowers for Path 1: 50 + 10 = 60 flowers\n\nPath 2: Entrance, Rose field, Daisy field (22 flowers), Tulip field (56 flowers)\nTotal flowers for Path 2: 22 + 56 = 78 flowers\n\nPath 2 has more flowers than Path 1.\n\nAnswer: Entrance, Rose field, Daisy field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the paths and the number of flowers in each field.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers for each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, separated by commas.\n\nWe already know the total number of flowers for each path from the previous information:\n\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 daisy flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) - 56 tulip flowers\n\nNow, we need to consider the neighboring zones of the rose field:\n\nPath 5: Entrance, Left (Rose), Neighboring Zone 1 - Unknown number of flowers\nPath 6: Entrance, Left (Rose), Neighboring Zone 2 - Unknown number of flowers\nPath 7: Entrance, Left (Rose), Neighboring Zone 3 - Unknown number of flowers\n...\nPath N: Entrance, Left (Rose), Neighboring Zone N - Unknown number of flowers\n\nSince we don't have information about the number of flowers in the neighboring zones, we cannot determine if any of these paths will lead to a higher number of flowers than Path 4.\n\nWith the available information, the path with the maximum number of flowers is still Path 4.\n\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Analyze the two main paths from the entrance.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Check the neighboring zones of the rose field for additional flowers.\nStep 4: Compare the total number of flowers for each path, including the neighboring zones.\nStep 5: Choose the path with the maximum number of flowers.\nStep 6: List the flower names in order, including the entrance, separated by commas.\n\nPath 1: Entrance, Sunflower field, Hydrangea field (50 flowers), Orchid field (10 flowers)\nTotal flowers for Path 1: 50 + 10 = 60 flowers\n\nPath 2: Entrance, Rose field, Daisy field (22 flowers), Tulip field (56 flowers)\nTotal flowers for Path 2: 22 + 56 = 78 flowers\n\nNeighboring zones of the Rose field:\n- Hydrangea field (50 flowers)\n- Orchid field (10 flowers)\n\nNew Path 2: Entrance, Rose field, Hydrangea field (50 flowers), Tulip field (56 flowers)\nTotal flowers for New Path 2: 50 + 56 = 106 flowers\n\nNew Path 2 has more flowers than Path 1 and the original Path 2.\n\nAnswer: Entrance, Rose field, Hydrangea field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose, Tulip"
+            "parsed_response": "Answer: Entrance, Rose field, Hydrangea field, Tulip field"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

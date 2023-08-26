@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path and choose the one with the maximum number of flowers.\nStep 4: List the flower names in order, including the entrance, separated by commas.\n\nPath 1 (Right side): Entrance, Sunflower field, Hydrangea field, and Orchid field.\nTotal flowers in Path 1: 50 Hydrangea flowers + 10 Orchid flowers = 60 flowers.\n\nPath 2 (Left side): Entrance, Rose field, Daisy field, and Tulip field.\nTotal flowers in Path 2: 22 Daisy flowers + 56 Tulip flowers = 78 flowers.\n\nSince Path 2 has more flowers, choose Path 2.\nAnswer: Entrance, Rose, Daisy, Tulip"
+            "content": "Step 1: Analyze the paths and the number of free flowers in each field.\nStep 2: Compare the total number of flowers in each path.\nStep 3: Choose the path with the maximum number of flowers.\n\nPath 1 (Right, Right): Sunflower Field (0 flowers) -> Hydrangea Field (50 flowers)\nPath 2 (Right, Left): Sunflower Field (0 flowers) -> Orchid Field (10 flowers)\nPath 3 (Left, Right): Rose Field (0 flowers) -> Daisy Field (22 flowers)\nPath 4 (Left, Left): Rose Field (0 flowers) -> Tulip Field (56 flowers)\n\nComparing the total number of flowers in each path:\nPath 1: 50 flowers\nPath 2: 10 flowers\nPath 3: 22 flowers\nPath 4: 56 flowers\n\nThe path with the maximum number of flowers is Path 4.\n\nAnswer: Entrance, Rose Field, Tulip Field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the new path from the entrance.\nStep 2: Calculate the total number of flowers in the new path.\nStep 3: Compare the total number of flowers in the new path with the previous path and choose the one with the maximum number of flowers.\nStep 4: List the flower names in order, including the entrance, separated by commas.\n\nNew Path (Entrance to Lily field): Entrance, Lily field.\nTotal flowers in New Path: Unknown number of flowers.\n\nSince the path with the maximum number of flowers from the previous exploration (Entrance, Rose, Daisy, Tulip) is now blocked, and the lily field has a portal that leads to any neighboring field of the rose field, let's identify the neighboring fields and their flower counts:\n\n- Daisy field: 22 Daisy flowers.\n- Tulip field: 56 Tulip flowers.\n\nTotal flowers in the new path with the portal: Unknown number of Lilies + 22 Daisy flowers + 56 Tulip flowers.\n\nThe new path including the portal provides access to the maximum number of flowers now.\nAnswer: Entrance, Lily, Daisy, Tulip"
+            "content": "Step 1: Analyze the new path and the number of free flowers in the lily field.\nStep 2: Compare the total number of flowers in each available path.\nStep 3: Choose the path with the maximum number of flowers.\n\nNew Path: Entrance -> Lily Field -> Portal -> Neighboring fields of Rose Field\n\nSince the previous maximum path (Path 4: Entrance, Rose Field, Tulip Field) is now blocked, let's compare the remaining paths and the new path.\n\nPath 1 (Right, Right): Sunflower Field (0 flowers) -> Hydrangea Field (50 flowers)\nPath 2 (Right, Left): Sunflower Field (0 flowers) -> Orchid Field (10 flowers)\nPath 3 (Left, Right): Rose Field (0 flowers) -> Daisy Field (22 flowers)\nNew Path: Entrance -> Lily Field (unknown flowers) -> Portal -> Neighboring fields of Rose Field (Daisy Field or Tulip Field)\n\nWe need to determine the number of flowers in the Lily Field.\n\nSince we don't know the number of flowers in the Lily Field, we have to compare the number of flowers in the paths after using the portal.\n\nPortal Path 1: Lily Field (unknown flowers) -> Daisy Field (22 flowers)\nPortal Path 2: Lily Field (unknown flowers) -> Tulip Field (56 flowers)\n\nComparing the total number of flowers in each available path:\nPath 1: 50 flowers\nPath 2: 10 flowers\nPath 3: 22 flowers\nNew Path: unknown flowers (Lily Field) + maximum flowers from Portal Path (Tulip Field)\n\nSince the Tulip Field has the highest number of flowers (56) among the fields accessible through the portal, the maximum number of flowers can be obtained by choosing the new path and using the portal to reach the Tulip Field.\n\nAnswer: Entrance, Lily Field, Tulip Field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily, Daisy, Tulip"
+            "parsed_response": "Answer: Entrance, Lily Field, Tulip Field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the fields visited in the right path and the number of flowers in each.\nStep 2: Recall the fields visited in the left path and the number of flowers in each.\nStep 3: Calculate the total number of flowers for the right and left paths.\nStep 4: Compare the totals for both paths.\nStep 5: Determine which path has the maximum number of flowers.\nStep 6: List the flower names in order for the path with the maximum number of flowers.\n\nAnswer: entrance, right, sunflower, right, hydrangea"
+            "content": "Step 1: List the paths and the flowers found on each path\n- Path 1: Entrance, Sunflower field, Hydrangea field (50 hydrangea flowers)\n- Path 2: Entrance, Sunflower field, Orchid field (10 orchid flowers)\n- Path 3: Entrance, Rose field, Daisy field (22 daisy flowers)\n- Path 4: Entrance, Rose field, Tulip field (56 tulip flowers)\n\nStep 2: Compare the number of flowers found on each path\n- Path 1: 50 flowers\n- Path 2: 10 flowers\n- Path 3: 22 flowers\n- Path 4: 56 flowers\n\nStep 3: Choose the path with the maximum number of flowers\n- Path 4 has the maximum number of flowers (56 tulip flowers)\n\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the previously known paths with their respective number of flowers.\nStep 2: Take note of the newly discovered path (entrance to lily field to tulip field) and the number of flowers in each.\nStep 3: Consider the blocked path leading to the previously maximum number of flowers.\nStep 4: Calculate the total number of flowers for the alternative paths.\nStep 5: Compare the totals for all paths, excluding the blocked one.\nStep 6: Determine which path now has the maximum number of flowers.\nStep 7: List the flower names in order for the path with the maximum number of flowers.\n\nAnswer: entrance, lily, tulip"
+            "content": "Step 1: Update the list of paths with the new field, including the blocked path\n- Path 1: Entrance, Sunflower field, Hydrangea field (50 hydrangea flowers)\n- Path 2: Entrance, Sunflower field, Orchid field (10 orchid flowers)\n- Path 3: Entrance, Rose field, Daisy field (22 daisy flowers)\n- Path 4: Entrance, Rose field, Tulip field (blocked)\n- Path 5: Entrance, Lily field, Tulip field (56 tulip flowers)\n\nStep 2: Compare the number of flowers found on each path (excluding the blocked path)\n- Path 1: 50 flowers\n- Path 2: 10 flowers\n- Path 3: 22 flowers\n- Path 5: 56 flowers\n\nStep 3: Choose the path with the maximum number of flowers (excluding the blocked path)\n- Path 5 has the maximum number of flowers (56 tulip flowers)\n\nAnswer: Entrance, Lily field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: entrance, lily, tulip"
+            "parsed_response": "Answer: Entrance, Lily field, Tulip field"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

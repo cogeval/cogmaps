@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers available at each field.\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n\nStep 2: Identify the paths and the total number of flowers in each path.\n- Path 1: Entrance, right (sunflower field), right (hydrangea field) -> Total flowers: 50\n- Path 2: Entrance, right (sunflower field), left (orchid field) -> Total flowers: 10\n- Path 3: Entrance, left (rose field), right (daisy field) -> Total flowers: 22\n- Path 4: Entrance, left (rose field), left (tulip field) -> Total flowers: 56\n\nStep 3: Determine the path with the maximum number of flowers.\n- Path 4 has the highest number of flowers (56).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Recall the number of flowers in each field.\nSunflower field: 0\nHydrangea field: 50\nOrchid field: 10\nRose field: 0\nDaisy field: 22\nTulip field: 56\n\nStep 2: Identify the paths and the total number of flowers for each path.\nPath 1: Entrance, right, right, right (Hydrangea) - 50 flowers\nPath 2: Entrance, right, right, left (Orchid) - 10 flowers\nPath 3: Entrance, left, right, right (Daisy) - 22 flowers\nPath 4: Entrance, left, right, left (Tulip) - 56 flowers\n\nStep 3: Determine which path provides the maximum number of flowers.\nPath 4 has the highest number of flowers (56).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers available at each field.\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n- Lily field: Unknown\n\nStep 2: The path to the tulip field is now blocked, so eliminate the path with the tulip field.\n- Path 1: Entrance, right (sunflower field), right (hydrangea field) -> Total flowers: 50\n- Path 2: Entrance, right (sunflower field), left (orchid field) -> Total flowers: 10\n- Path 3: Entrance, left (rose field), right (daisy field) -> Total flowers: 22\n\nStep 3: Consider the new path through the lily field.\n- Path 5: Entrance, lily field, tulip field\n\nStep 4: Since the number of flowers in the lily field is unknown, assume it can have any value from 0 to the maximum number of flowers in the other paths.\n\nStep 5: Determine the path with the maximum number of flowers, considering the new path.\n- If the lily field has 0 flowers, Path 1 has the highest number of flowers (50).\n- If the lily field has more than 0 flowers, Path 5 has the highest number of flowers (lily field flowers + 56 tulip flowers).\n\nStep 6: List the flower names in order, including the entrance, separated by commas.\n- If Path 1 has the highest number of flowers: Answer: Entrance, Sunflower, Hydrangea\n- If Path 5 has the highest number of flowers: Answer: Entrance, Lily, Tulip"
+            "content": "Step 1: Recall the number of flowers in each field.\nSunflower field: 0\nHydrangea field: 50\nOrchid field: 10\nRose field: 0\nDaisy field: 22\nTulip field: 56\nLily field: Unknown\n\nStep 2: Identify the available paths and the total number of flowers for each path, considering the blocked path to the Tulip field.\nPath 1: Entrance, right, right, right (Hydrangea) - 50 flowers\nPath 2: Entrance, right, right, left (Orchid) - 10 flowers\nPath 3: Entrance, left, right, right (Daisy) - 22 flowers\nPath 4: Entrance, left, left (Lily) - Unknown\nPath 5: Entrance, left, left, right (Tulip) - Unknown\n\nStep 3: Determine the number of flowers in the Lily field.\nTo get the maximum number of flowers, the number of flowers in the Lily field plus the number of flowers in the Tulip field should be higher than the number of flowers in the Hydrangea field (50).\n\nStep 4: List the flower names in order, including the entrance, separated by commas, considering the new available path with the highest number of flowers.\nAnswer: Entrance, Rose, Lily, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower, Hydrangea"
+            "parsed_response": "Answer: Entrance, Rose, Lily, Tulip"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

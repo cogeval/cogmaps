@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers for each path.\n- Right path: Sunflower field (0 flowers) -> Hydrangea field (50 flowers)\n- Left path: Sunflower field (0 flowers) -> Orchid field (10 flowers)\n- Right path: Rose field (0 flowers) -> Daisy field (22 flowers)\n- Left path: Rose field (0 flowers) -> Tulip field (56 flowers)\n\nStep 2: Determine which path has the maximum number of flowers.\n- Hydrangea field (50 flowers)\n- Orchid field (10 flowers)\n- Daisy field (22 flowers)\n- Tulip field (56 flowers)\n\nStep 3: Identify the path with the maximum number of flowers.\n- Entrance -> Rose field -> Tulip field\n\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\nStep 2: Path 1 - Entrance, right, right: 50 hydrangea flowers.\nStep 3: Path 2 - Entrance, right, left: 10 orchid flowers.\nStep 4: Path 3 - Entrance, left, right: 22 daisy flowers.\nStep 5: Path 4 - Entrance, left, left: 56 tulip flowers.\nStep 6: Compare the number of flowers in each path to find the maximum.\nStep 7: Path 4 has the maximum number of flowers.\n\nAnswer: Entrance, left, left"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers for each path.\n- Right path: Sunflower field (0 flowers) -> Hydrangea field (50 flowers)\n- Left path: Sunflower field (0 flowers) -> Orchid field (10 flowers)\n- Right path: Rose field (0 flowers) -> Daisy field (22 flowers)\n- Left path: Rose field (0 flowers) -> Tulip field (56 flowers)\n- New possibility: Rose field (0 flowers) -> Neighboring zone (unknown flowers)\n\nStep 2: Since we don't have information about the number of flowers in the neighboring zone, we cannot determine the path that leads to the maximum number of flowers.\n\nAnswer: Insufficient information"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\nStep 2: Path 1 - Entrance, right, right: 50 hydrangea flowers.\nStep 3: Path 2 - Entrance, right, left: 10 orchid flowers.\nStep 4: Path 3 - Entrance, left, right: 22 daisy flowers.\nStep 5: Path 4 - Entrance, left, left: 56 tulip flowers.\nStep 6: Path 5 - Entrance, left (directly to a neighboring zone of the rose field): unknown number of flowers.\nStep 7: Compare the number of flowers in each path to find the maximum. If Path 5 has an unknown number of flowers, we cannot determine if it has more or fewer flowers than the other paths.\nStep 8: Since we do not have information about the number of flowers in Path 5, the maximum among the known paths is still Path 4.\n\nAnswer: Entrance, left, left"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Insufficient information"
+            "parsed_response": "Answer: Entrance, left, left"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine the Great Pacific Mall with 15 stores. Starbucks is connected to Paris Baguette, H&M, Zara, and Sephora. Pete's Coffee is connected to Carter Children, Nike, Sephora, and Bath and Body Works. Chickflea is connected to Baskins and Robins, Levis, GNC Live Well, and Nike. Marshalls is connected to Paris Baguette, H&M, Zara, and Target. Carter Children is connected to Nike, Sephora, and Bath and Body Works. Baskins and Robins is connected to Levis, GNC Live Well, and Target. Paris Baguette is connected to H&M and Zara. Nike is connected to Bath and Body Works. Levis is connected to GNC Live Well and Target. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. How many densely-connected store clusters do we have in this mall? A densely-connected cluster is a group of stores that are connected to themselves with a max of 2 stores."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. How many densely-connected field clusters do we have in this county? A densely-connected cluster is a group of fields that are connected to themselves with a minimum of 2 fields."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify stores connected to themselves with a max of 2 stores.\nStep 2: Group stores that are part of the same cluster.\nStep 3: Count the number of unique densely-connected clusters.\n\nClusters:\n1. Starbucks, Paris Baguette, H&M, Zara\n2. Starbucks, Sephora, Pete's Coffee, Carter Children, Nike, Bath and Body Works\n3. Chickflea, Baskins and Robins, Levis, GNC Live Well, Nike\n4. Marshalls, Paris Baguette, H&M, Zara, Target\n5. Baskins and Robins, Levis, GNC Live Well, Target\n\nAnswer: there are 5 clusters."
+            "content": "Step 1: Identify the connected fields.\n1. Rose - Lily, Chrysanthemum, Poppy, Carnation\n2. Sunflower - Orchid, Peony, Carnation, Zinnia\n3. Tulip - Hydrangea, Daffodil, Marigold, Peony\n4. Daisy - Lily, Chrysanthemum, Poppy, Lavender\n5. Orchid - Peony, Carnation, Zinnia\n6. Hydrangea - Daffodil, Marigold, Lavender\n7. Lily - Chrysanthemum, Poppy\n8. Peony - Zinnia\n9. Daffodil - Marigold, Lavender\n10. Chrysanthemum - Poppy\n11. Carnation - Zinnia\n12. Marigold - Lavender\n\nStep 2: Identify densely-connected clusters (minimum of 2 fields connected to each other).\n1. Rose, Lily, Chrysanthemum, Poppy, Carnation, Daisy (Cluster 1)\n2. Sunflower, Orchid, Peony, Zinnia, Carnation (Cluster 2)\n3. Tulip, Hydrangea, Daffodil, Marigold, Peony, Lavender (Cluster 3)\n\nAnswer: there are 3 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 5 clusters"
+            "parsed_response": "Answer: there are 3 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

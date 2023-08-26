@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two main paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers and choose the path with the maximum number of flowers.\nStep 4: List the flower names in order, including the entrance, separated by commas.\n\nPath 1: Entrance, Sunflower Field, Hydrangea Field (50 flowers), Orchid Field (10 flowers)\nTotal flowers in Path 1: 50 + 10 = 60 flowers\n\nPath 2: Entrance, Rose Field, Daisy Field (22 flowers), Tulip Field (56 flowers)\nTotal flowers in Path 2: 22 + 56 = 78 flowers\n\nSince Path 2 has more flowers, you should choose Path 2.\n\nAnswer: Entrance, Rose Field, Daisy Field, Tulip Field"
+            "content": "Step 1: Identify the available paths and the number of flowers found at each field.\nStep 2: Compare the total flowers found in each path.\nStep 3: Choose the path with the maximum number of flowers.\n\nAvailable paths:\n1. Entrance, right (Sunflower), right (Hydrangea) = 50 hydrangea flowers.\n2. Entrance, right (Sunflower), left (Orchid) = 10 orchid flowers.\n3. Entrance, left (Rose), right (Daisy) = 22 daisy flowers.\n4. Entrance, left (Rose), left (Tulip) = 56 tulip flowers.\n\nComparing total flowers in each path:\n1. 50 hydrangea flowers\n2. 10 orchid flowers\n3. 22 daisy flowers\n4. 56 tulip flowers\n\nPath 4 has the maximum number of flowers.\n\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the new paths from the entrance through the rose field and its neighboring zones.\nStep 2: Calculate the total number of flowers in each new path.\nStep 3: Compare the total number of flowers of the new paths with the previously identified paths and choose the path with the maximum number of flowers.\nStep 4: List the flower names in order, including the entrance, separated by commas.\n\nRecap:\n\nPath 1: Entrance, Sunflower Field, Hydrangea Field (50 flowers), Orchid Field (10 flowers)\nTotal flowers in Path 1: 50 + 10 = 60 flowers\n\nPath 2: Entrance, Rose Field, Daisy Field (22 flowers), Tulip Field (56 flowers)\nTotal flowers in Path 2: 22 + 56 = 78 flowers\n\nNew Paths:\n\nPath 3: Entrance, Hydrangea Field (50 flowers), Orchid Field (10 flowers)\nTotal flowers in Path 3: 50 + 10 = 60 flowers\n\nPath 4: Entrance, Orchid Field (10 flowers)\nTotal flowers in Path 4: 10 flowers\n\nPath 5: Entrance, Daisy Field (22 flowers), Tulip Field (56 flowers)\nTotal flowers in Path 5: 22 + 56 = 78 flowers\n\nSince Path 2 and Path 5 have the maximum number of flowers, you can choose either of these paths.\n\nAnswer: Entrance, Rose Field, Daisy Field, Tulip Field or Entrance, Daisy Field, Tulip Field"
+            "content": "Step 1: Identify the available paths and the number of flowers found at each field, considering the new information.\nStep 2: Compare the total flowers found in each path.\nStep 3: Choose the path with the maximum number of flowers.\n\nUpdated available paths:\n1. Entrance, right (Sunflower), right (Hydrangea) = 50 hydrangea flowers.\n2. Entrance, right (Sunflower), left (Orchid) = 10 orchid flowers.\n3. Entrance, left (Rose) = 0 flowers (only considering the Rose field)\n4. Entrance, left (Rose), right (Daisy) = 22 daisy flowers.\n5. Entrance, left (Rose), left (Tulip) = 56 tulip flowers.\n\nComparing total flowers in each path:\n1. 50 hydrangea flowers\n2. 10 orchid flowers\n3. 0 flowers\n4. 22 daisy flowers\n5. 56 tulip flowers\n\nPath 5 still has the maximum number of flowers.\n\nAnswer: Entrance, Rose, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose Field, Daisy Field, Tulip Field or Entrance, Daisy Field, Tulip Field"
+            "parsed_response": "Answer: Entrance, Rose, Tulip"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two paths from the entrance.\n- Path 1: Rose field -> Tulip field -> Orchid field\n- Path 2: Sunflower field -> Daisy field -> Hydrangea field\n\nStep 2: Identify the maximum number of flowers for each path.\n- Path 1: Orchid field offers 10 flowers\n- Path 2: Hydrangea field offers 50 flowers\n\nStep 3: Compare the maximum number of flowers between the two paths.\n- 10 flowers (Path 1) vs 50 flowers (Path 2)\n\nStep 4: Determine which field from the entrance leads to the path with the maximum number of flowers.\n- Path 2 (Sunflower field -> Daisy field -> Hydrangea field) offers more flowers.\n\nAnswer: Sunflower field"
+            "content": "Step 1: Identify the two paths from the entrance\n- Path 1: Rose field -> Tulip field -> Orchid field\n- Path 2: Sunflower field -> Daisy field -> Hydrangea field\n\nStep 2: Count the number of flowers that can be taken for free in each path\n- Path 1: 0 roses + 0 tulips + 10 orchids = 10 flowers\n- Path 2: 0 sunflowers + 0 daisies + 50 hydrangeas = 50 flowers\n\nStep 3: Compare the number of flowers in both paths and choose the path with the maximum number of flowers.\n\nAnswer: Sunflower field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify all available paths from the entrance.\n- Path 1: Rose field -> Tulip field -> Orchid field\n- Path 2: Sunflower field -> Daisy field -> Hydrangea field (blocked)\n- Path 3: Lily field -> Peony field -> Daffodil field -> Portal\n\nStep 2: Identify the maximum number of flowers for each unblocked path.\n- Path 1: Orchid field offers 10 flowers\n- Path 3: Portal allows access to neighbor fields of the Daisy field (including the Hydrangea field with 50 flowers)\n\nStep 3: Compare the maximum number of flowers between the unblocked paths.\n- 10 flowers (Path 1) vs 50 flowers (Path 3 through Portal)\n\nStep 4: Determine which field from the entrance leads to the path with the maximum number of flowers.\n- Path 3 (Lily field -> Peony field -> Daffodil field -> Portal -> Hydrangea field) offers more flowers.\n\nAnswer: Lily field"
+            "content": "Step 1: Identify the three paths from the entrance\n- Path 1: Rose field -> Tulip field -> Orchid field\n- Path 2: Sunflower field -> Daisy field -> Hydrangea field\n- Path 3: Lily field -> Peony field -> Daffodil field -> Portal to neighbor field of Daisy field\n\nStep 2: Count the number of flowers that can be taken for free in each path\n- Path 1: 0 roses + 0 tulips + 10 orchids = 10 flowers\n- Path 2: 0 sunflowers + 0 daisies + 50 hydrangeas = 50 flowers (but this path is blocked)\n- Path 3: 0 lilies + 0 peonies + 0 daffodils + unknown flowers from neighbor field of Daisy field\n\nStep 3: Since the regular path to the Hydrangea field is blocked, we need to check if the portal in the Daffodil field connects to the Hydrangea field, as it would also have the maximum number of flowers.\n\nStep 4: Identify the neighbor field of Daisy field\n- The Hydrangea field is a neighbor field of the Daisy field (it's connected by a door)\n\nStep 5: Calculate the number of flowers in Path 3 if the portal connects to the Hydrangea field\n- Path 3: 0 lilies + 0 peonies + 0 daffodils + 50 hydrangeas = 50 flowers\n\nStep 6: Compare the number of flowers in all paths and choose the path with the maximum number of flowers.\n\nAnswer: Lily field"
         }
     ],
     "tests": {
@@ -36,6 +36,13 @@
                 "Answer: lily"
             ],
             "parsed_response": "Answer: Lily field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

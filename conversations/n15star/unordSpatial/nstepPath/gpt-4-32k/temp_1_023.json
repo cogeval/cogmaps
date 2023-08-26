@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": " Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. What is the shortest path from Starbucks to GNC Live Well? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. What is the shortest path from the zinnia field to the daisy field? Starting from the zinnia field, please list the flower names in order, including zinnia, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Find stores connected to Starbucks.\nStep 2: Find the next connected stores from the first step.\nStep 3: Repeat step 2 until GNC Live Well is in the connected stores.\nStep 4: Trace back the path from GNC Live Well to Starbucks.\n\nStep 1: Connected to Starbucks: Paris Baguette, H&M, Zara, Sephora.\nStep 2: Connected from Paris Baguette: Marshalls, H&M, Zara.\nConnected from H&M: Paris Baguette, Zara, Marshalls.\nConnected from Zara: Paris Baguette, H&M, Marshalls.\nConnected from Sephora: Pete\u2019s Coffee, Carter Children, Nike, Bath and Body Works.\nStep 3: Connected from Marshalls: Paris Baguette, H&M, Zara, Target.\nConnected from Pete\u2019s Coffee: Carter Children, Nike, Sephora, Bath and Body Works.\nConnected from Carter Children: Pete\u2019s Coffee, Nike, Sephora, Bath and Body Works.\nConnected from Nike: Pete\u2019s Coffee, Carter Children, Sephora, Bath and Body Works, Chickflea, Baskins and Robins, Levis.\nConnected from Bath and Body Works: Pete\u2019s Coffee, Carter Children, Nike, Sephora.\nConnected from Chickflea: Baskins and Robins, Levis, GNC Live Well, Nike.\nConnected from Baskins and Robins: Chickflea, Levis, GNC Live Well.\nConnected from Levis: Chickflea, Baskins and Robins, GNC Live Well, Target.\nConnected from Target: Marshalls, Paris Baguette, H&M, Zara, Baskins and Robins, Levis, GNC Live Well.\n\nStep 4: Trace back the path from GNC Live Well to Starbucks:\nGNC Live Well -> Levis -> Nike -> Sephora -> Starbucks.\n\nAnswer: Starbucks, Sephora, Nike, Levis, GNC Live Well"
+            "content": "1. Start at the zinnia field.\n2. Go to the sunflower field.\n3. Go to the carnation field.\n4. Go to the rose field.\n5. Go to the lily field.\n6. Go to the daisy field.\n\nAnswer: Zinnia, Sunflower, Carnation, Rose, Lily, Daisy"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Starbucks, Paris Baguette, Marshalls, Target, GNC Live Well",
-                "Answer: Starbucks, H&M, Marshalls, Target, GNC Live Well ",
-                "Answer: Starbucks, Zara, Marshalls, Target, GNC Live Well "
+                "Answer: zinnia, carnation, rose, lily, daisy",
+                "Answer: zinnia, carnation, rose, chrysanthemum, daisy",
+                "Answer: zinnia, carnation, rose, poppy, daisy"
             ],
-            "parsed_response": "Answer: Starbucks, Sephora, Nike, Levis, GNC Live "
+            "parsed_response": "Answer: Zinnia, Sunflower, Carnation, Rose, Lily, Daisy"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

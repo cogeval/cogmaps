@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the paths and the number of flowers in each field.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Rose Field, Tulip Field"
+            "content": "Step 1: Analyze the two main paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nPath 1 (Right):\nEntrance -> Sunflower field -> Hydrangea field (50 hydrangea flowers)\nEntrance -> Sunflower field -> Orchid field (10 orchid flowers)\nTotal flowers in Path 1: 50 + 10 = 60\n\nPath 2 (Left):\nEntrance -> Rose field -> Daisy field (22 daisy flowers)\nEntrance -> Rose field -> Tulip field (56 tulip flowers)\nTotal flowers in Path 2: 22 + 56 = 78\n\nSince Path 2 has more flowers than Path 1, choose Path 2.\n\nAnswer: Entrance, Rose field, Daisy field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the paths and the number of flowers in each field.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, separated by commas.\n\nFrom the entrance, the paths are:\n1. Entrance, Sunflower Field, Hydrangea Field (50 hydrangea flowers)\n2. Entrance, Sunflower Field, Orchid Field (10 orchid flowers)\n3. Entrance, Rose Field, Daisy Field (22 daisy flowers)\n4. Entrance, Rose Field, Tulip Field (56 tulip flowers)\n\nSince the rose field can connect to any neighboring zone, we can consider the following additional paths:\n5. Entrance, Rose Field, Sunflower Field, Hydrangea Field (50 hydrangea flowers)\n6. Entrance, Rose Field, Sunflower Field, Orchid Field (10 orchid flowers)\n\nComparing the total number of flowers in each path, the path with the maximum number of flowers remains the same:\n\nAnswer: Entrance, Rose Field, Tulip Field"
+            "content": "Step 1: Analyze the three main paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nPath 1 (Right):\nEntrance -> Sunflower field -> Hydrangea field (50 hydrangea flowers)\nEntrance -> Sunflower field -> Orchid field (10 orchid flowers)\nTotal flowers in Path 1: 50 + 10 = 60\n\nPath 2 (Left - Original):\nEntrance -> Rose field -> Daisy field (22 daisy flowers)\nEntrance -> Rose field -> Tulip field (56 tulip flowers)\nTotal flowers in Path 2: 22 + 56 = 78\n\nPath 3 (Left - Neighboring zones):\nEntrance -> Neighboring zone of Rose field -> Daisy field (22 daisy flowers)\nEntrance -> Neighboring zone of Rose field -> Tulip field (56 tulip flowers)\nTotal flowers in Path 3: 22 + 56 = 78\n\nSince Path 2 and Path 3 both have the same number of flowers (78), you can choose either of them to get the maximum number of flowers.\n\nAnswer: Entrance, Rose field, Daisy field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose Field, Tulip Field"
+            "parsed_response": "Answer: Entrance, Rose field, Daisy field, Tulip field"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

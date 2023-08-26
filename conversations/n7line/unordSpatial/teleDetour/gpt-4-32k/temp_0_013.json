@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two paths from the entrance.\nPath 1: Rose field -> Tulip field -> Orchid field\nPath 2: Sunflower field -> Daisy field -> Hydrangea field\n\nStep 2: Determine the number of flowers available for free in each path.\nPath 1: 0 roses + 0 tulips + 10 orchids = 10 flowers\nPath 2: 0 sunflowers + 0 daisies + 50 hydrangeas = 50 flowers\n\nStep 3: Compare the number of flowers in each path.\nPath 1: 10 flowers\nPath 2: 50 flowers\n\nStep 4: Identify the field from the entrance that leads to the path with the maximum number of flowers.\nSince Path 2 has more flowers, the field from the entrance that leads to this path is the sunflower field.\n\nAnswer: Sunflower field"
+            "content": "Step 1: Identify the two paths from the entrance.\nPath 1: Rose field -> Tulip field -> Orchid field\nPath 2: Sunflower field -> Daisy field -> Hydrangea field\n\nStep 2: Determine the number of flowers available for free in each path.\nPath 1: 0 roses + 0 tulips + 10 orchids = 10 flowers\nPath 2: 0 sunflowers + 0 daisies + 50 hydrangeas = 50 flowers\n\nStep 3: Compare the number of flowers in each path.\nPath 1: 10 flowers\nPath 2: 50 flowers\n\nStep 4: Determine which path has the maximum number of flowers.\nPath 2 has the maximum number of flowers.\n\nStep 5: Identify the field from the entrance that leads to the path with the maximum number of flowers.\nAnswer: Sunflower field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the three paths from the entrance.\nPath 1: Rose field -> Tulip field -> Orchid field\nPath 2: Sunflower field -> Daisy field -> Hydrangea field\nPath 3: Lily field -> Peony field -> Daffodil field -> Portal -> Neighbor field of Daisy field\n\nStep 2: Determine the number of flowers available for free in each path.\nPath 1: 0 roses + 0 tulips + 10 orchids = 10 flowers\nPath 2: 0 sunflowers + 0 daisies + 50 hydrangeas = 50 flowers\nPath 3: 0 lilies + 0 peonies + 0 daffodils + unknown flowers from neighbor field of Daisy field\n\nStep 3: Since the regular path to the field with the maximum number of flowers (Path 2) is blocked, we need to compare Path 1 and Path 3.\n\nStep 4: Identify the field from the entrance that leads to the path with the maximum number of flowers, considering the blocked path.\nSince we don't know the exact number of flowers in the neighbor field of the Daisy field, we cannot determine if Path 3 has more flowers than Path 1. However, Path 1 is not blocked and guarantees 10 flowers. Therefore, we choose the path that is not blocked and has a known number of flowers.\n\nAnswer: Rose field"
+            "content": "Step 1: Identify the three paths from the entrance.\nPath 1: Rose field -> Tulip field -> Orchid field\nPath 2: Sunflower field -> Daisy field -> Hydrangea field\nPath 3: Lily field -> Peony field -> Daffodil field -> Portal -> Neighbor field of Daisy field\n\nStep 2: Determine the number of flowers available for free in each path.\nPath 1: 0 roses + 0 tulips + 10 orchids = 10 flowers\nPath 2: 0 sunflowers + 0 daisies + 50 hydrangeas = 50 flowers\nPath 3: 0 lilies + 0 peonies + 0 daffodils + flowers from neighbor field of Daisy field (unknown)\n\nStep 3: The regular path to the field with the maximum number of flowers (Path 2) is blocked.\n\nStep 4: Compare the number of flowers in the remaining paths (Path 1 and Path 3).\nPath 1: 10 flowers\nPath 3: Unknown number of flowers from the neighbor field of Daisy field\n\nStep 5: Determine if Path 3 can lead to more flowers than Path 1.\nSince the portal in the daffodil field allows access to any neighbor field of the daisy field, it is possible to reach the hydrangea field through the portal, which has 50 flowers.\n\nStep 6: Identify the field from the entrance that leads to the path with the maximum number of flowers, considering the blocked path.\nAnswer: Lily field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: lily"
             ],
-            "parsed_response": "Answer: Rose field"
+            "parsed_response": "Answer: Lily field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

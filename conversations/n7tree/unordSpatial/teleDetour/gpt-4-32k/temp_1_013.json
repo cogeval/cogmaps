@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the paths and the number of flowers in each path.\n- Path 1: Entrance, Sunflower, Hydrangea (50 flowers)\n- Path 2: Entrance, Sunflower, Orchid (10 flowers)\n- Path 3: Entrance, Rose, Daisy (22 flowers)\n- Path 4: Entrance, Rose, Tulip (56 flowers)\n\nStep 2: Compare the number of flowers in each path.\n- Path 1: 50 flowers\n- Path 2: 10 flowers\n- Path 3: 22 flowers\n- Path 4: 56 flowers\n\nStep 3: Identify the path with the maximum number of flowers.\n- Path 4 has the maximum number of flowers (56 flowers).\n\nStep 4: List the flower names in order, separated by commas, for the path with the maximum number of flowers.\nAnswer: Entrance, Rose, Tulip"
+            "content": "Let's compare the number of flowers in each path:\n\nPath 1: Entrance, Sunflower field, Hydrangea field - 50 hydrangea flowers\nPath 2: Entrance, Sunflower field, Orchid field - 10 orchid flowers\nPath 3: Entrance, Rose field, Daisy field - 22 daisy flowers\nPath 4: Entrance, Rose field, Tulip field - 56 tulip flowers\n\nThe path with the maximum number of flowers is Path 4.\n\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the new path and the number of flowers in each path.\n- Path 1: Entrance, Sunflower, Hydrangea (50 flowers) - blocked\n- Path 2: Entrance, Sunflower, Orchid (10 flowers)\n- Path 3: Entrance, Rose, Daisy (22 flowers) - blocked\n- Path 4: Entrance, Rose, Tulip (56 flowers) - blocked\n- Path 5: Entrance, Lily (0 flowers), Portal to Rose field neighbors\n\nStep 2: Identify the neighbors of the Rose field that can be reached through the Lily field portal.\n- Neighbor 1: Daisy (22 flowers)\n- Neighbor 2: Tulip (56 flowers)\n\nStep 3: Compare the number of flowers in each accessible path.\n- Path 2: 10 flowers\n- Path 5 with Neighbor 1: 22 flowers\n- Path 5 with Neighbor 2: 56 flowers\n\nStep 4: Identify the path with the maximum number of flowers.\n- Path 5 with Neighbor 2 has the maximum number of flowers (56 flowers).\n\nStep 5: List the flower names in order, separated by commas, for the path with the maximum number of flowers.\nAnswer: Entrance, Lily, Tulip"
+            "content": "Since the previous maximum flower path (Entrance, Rose field, Tulip field) is now blocked, we need to find the next path with the maximum number of flowers using the new information about the lily field and its portal. \n\nThe available paths now are:\n\nPath 1: Entrance, Sunflower field, Hydrangea field - 50 hydrangea flowers\nPath 2: Entrance, Sunflower field, Orchid field - 10 orchid flowers\nPath 3: Entrance, Lily field, (portal to) Rose field, Daisy field - 22 daisy flowers\nPath 4: Entrance, Lily field, (portal to) Rose field, Tulip field - 56 tulip flowers\n\nThe path with the maximum number of flowers is still Path 4 (including the lily field and portal this time).\n\nAnswer: Entrance, Lily field, Rose field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily, Tulip"
+            "parsed_response": "Answer: Entrance, Lily field, Rose field, Tulip field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

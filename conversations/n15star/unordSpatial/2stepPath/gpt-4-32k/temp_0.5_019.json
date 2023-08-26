@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. What is the shortest path from Starbucks to Pete\u2019s Coffee? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. What is the shortest path from the peony field to the hydrangea field? Starting from the peony field, please list the flower names in order, including peony, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start at Starbucks\n2. Go to Paris Baguette (connected to Starbucks)\n3. Go to H&M (connected to Paris Baguette)\n4. Go to Zara (connected to H&M)\n5. Go to Sephora (connected to Zara)\n6. Go to Pete's Coffee (connected to Sephora)\n\nAnswer: Starbucks, Paris Baguette, H&M, Zara, Sephora, Pete's Coffee"
+            "content": "Step 1: Identify the connections between fields.\nStep 2: List all possible paths from the peony field to the hydrangea field.\nStep 3: Determine the shortest path from the peony field to the hydrangea field.\n\nConnections:\n1. Peony -> Zinnia\n2. Zinnia -> Sunflower\n3. Sunflower -> Orchid\n4. Orchid -> Peony\n5. Orchid -> Carnation\n6. Carnation -> Rose\n7. Rose -> Lily\n8. Lily -> Chrysanthemum\n9. Chrysanthemum -> Poppy\n10. Poppy -> Daisy\n11. Daisy -> Lavender\n12. Lavender -> Hydrangea\n13. Hydrangea -> Daffodil\n14. Daffodil -> Marigold\n15. Marigold -> Lavender\n\nPossible paths from Peony to Hydrangea:\n1. Peony -> Zinnia -> Sunflower -> Orchid -> Carnation -> Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender -> Hydrangea\n2. Peony -> Zinnia -> Sunflower -> Orchid -> Carnation -> Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender -> Marigold -> Daffodil -> Hydrangea\n\nShortest path from Peony to Hydrangea:\nPeony -> Zinnia -> Sunflower -> Orchid -> Carnation -> Rose -> Lily -> Chrysanthemum -> Poppy -> Daisy -> Lavender -> Hydrangea\n\nAnswer: Peony, Zinnia, Sunflower, Orchid, Carnation, Rose, Lily, Chrysanthemum, Poppy, Daisy, Lavender, Hydrangea"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Starbucks, Sephora, Pete\u2019s Coffee"
+                "Answer: peony, tulip, hydrangea"
             ],
-            "parsed_response": "1. Start at Starbucks\n2. Go to Paris Baguette (connected to Starbucks)\n3. Go to H&M (connected to Paris Baguette)\n4. Go to Zara (connected to H&M)\n5. Go to Sephora (connected to Zara)\n6. Go to Pete's Coffee (connected to Sephora)\n\nAnswer: Starbucks, Paris Baguette, H&M, Zara, Sephora, Pete's Coffee"
+            "parsed_response": "Answer: Peony, Zinnia, Sunflower, Orchid, Carnation, Rose, Lily, Chrysanthemum, Poppy, Daisy, Lavender, Hydrangea"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

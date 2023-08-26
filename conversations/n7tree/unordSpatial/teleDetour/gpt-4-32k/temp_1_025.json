@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Consider the fields available from the entrance.\nStep 2: Calculate the maximum number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nFrom the entrance, the two paths are:\n1. Entrance -> Sunflower Field -> Hydrangea Field = 50 hydrangea flowers\n2. Entrance -> Sunflower Field -> Orchid Field = 10 orchid flowers\n3. Entrance -> Rose Field -> Daisy Field = 22 daisy flowers\n4. Entrance -> Rose Field -> Tulip Field = 56 tulip flowers\n\nComparing the total number of flowers in each path, the path with the maximum number of flowers is:\nEntrance -> Rose Field -> Tulip Field\n\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Identify the number of flowers in each path.\nStep 2: Path 1: Entrance, right, right (hydrangea field) - 50 hydrangea flowers\nStep 3: Path 2: Entrance, right, left (orchid field) - 10 orchid flowers\nStep 4: Path 3: Entrance, left, right (daisy field) - 22 daisy flowers\nStep 5: Path 4: Entrance, left, left (tulip field) - 56 tulip flowers\nStep 6: Compare the number of flowers in each path to find the path with the maximum number of flowers.\nStep 7: Path 4 has the maximum number of flowers (56 tulip flowers).\n\nAnswer: Entrance, left, left"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Consider the available fields and the new information about the lily field portal.\nStep 2: Calculate the maximum number of flowers in each path using the new information.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nFrom the entrance, the paths are:\n1. Entrance -> Sunflower Field -> Hydrangea Field = 50 hydrangea flowers\n2. Entrance -> Sunflower Field -> Orchid Field = 10 orchid flowers\n3. Entrance -> Lily Field -> Rose Field -> Daisy Field = 22 daisy flowers\n4. Entrance -> Lily Field -> Rose Field -> Tulip Field = 56 tulip flowers\n\nComparing the total number of flowers in each path, the path with the maximum number of flowers is:\nEntrance -> Lily Field -> Rose Field -> Tulip Field\n\nAnswer: Entrance, Lily, Rose, Tulip"
+            "content": "Step 1: Recall the previously identified paths and their corresponding flower counts.\nStep 2: Path 1: Entrance, right, right (hydrangea field) - 50 hydrangea flowers\nStep 3: Path 2: Entrance, right, left (orchid field) - 10 orchid flowers\nStep 4: Path 3: Entrance, left, right (daisy field) - 22 daisy flowers\nStep 5: Path 4: Entrance, left, left (tulip field) - 56 tulip flowers - This path is now blocked.\nStep 6: Identify the new path - Entrance, lily field, portal to a neighboring field of the rose field.\nStep 7: Calculate the total flowers in the new path based on the neighboring fields of the rose field.\nStep 8: Neighboring fields of the rose field are the daisy field and the tulip field.\nStep 9: New Path: Entrance, lily field, portal, daisy field - unknown number of lilies + 22 daisy flowers\nStep 10: New Path: Entrance, lily field, portal, tulip field - unknown number of lilies + 56 tulip flowers\nStep 11: Since the path with the highest number of flowers (Path 4) is blocked, consider the new path with the tulip field (with a known total of 56 tulip flowers) as it has more flowers than the daisy field (22 daisy flowers).\nStep 12: Choose the new path to the tulip field.\n\nAnswer: Entrance, lily field, portal, tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily, Rose, Tulip"
+            "parsed_response": "Answer: Entrance, lily field, portal, tulip field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Remember the number of flowers in each field.\nSunflower field: 0\nHydrangea field: 50\nOrchid field: 10\nRose field: 0\nDaisy field: 22\nTulip field: 56\n\nStep 2: Calculate the total number of flowers in each path.\nPath 1 (Right, Right): Sunflower field + Hydrangea field = 0 + 50 = 50\nPath 2 (Right, Left): Sunflower field + Orchid field = 0 + 10 = 10\nPath 3 (Left, Right): Rose field + Daisy field = 0 + 22 = 22\nPath 4 (Left, Left): Rose field + Tulip field = 0 + 56 = 56\n\nStep 3: Determine the path with the maximum number of flowers.\nPath 4 (Left, Left) has the maximum number of flowers (56).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: entrance, Rose field, Tulip field"
+            "content": "Step 1: Identify the two paths from the entrance.\nPath 1: Entrance -> Sunflower Field -> Hydrangea Field (50 flowers)\nPath 1: Entrance -> Sunflower Field -> Orchid Field (10 flowers)\nPath 2: Entrance -> Rose Field -> Daisy Field (22 flowers)\nPath 2: Entrance -> Rose Field -> Tulip Field (56 flowers)\n\nStep 2: Compare the maximum number of flowers in each path.\nPath 1 maximum: 50 flowers (Hydrangea Field)\nPath 2 maximum: 56 flowers (Tulip Field)\n\nStep 3: Determine the path with the maximum number of flowers.\nPath 2 has the maximum number of flowers (56 flowers in the Tulip Field).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose Field, Tulip Field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Add the new field to the list of fields and remember the number of flowers in each field.\nLily field: Unknown number of flowers\n\nStep 2: Update the paths to include the new field.\nPath 1 (Right, Right): Sunflower field + Hydrangea field = 0 + 50 = 50\nPath 2 (Right, Left): Sunflower field + Orchid field = 0 + 10 = 10\nPath 3 (Left, Right): Rose field + Daisy field = 0 + 22 = 22\nPath 4 (Left, Left): Rose field + Tulip field = 0 + 56 = 56 (blocked)\nPath 5 (New path): entrance + Lily field + Tulip field\n\nStep 3: Since the Tulip field still has the maximum number of flowers (56) and the regular path (Path 4) is blocked, we need to choose the new path (Path 5) to get the maximum number of flowers.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: entrance, Lily field, Tulip field"
+            "content": "Step 1: Identify the new path and the blocked path.\nNew Path: Entrance -> Lily Field -> Tulip Field (56 flowers)\nBlocked Path: Entrance -> Rose Field -> Tulip Field (previously maximum number of flowers)\n\nStep 2: Determine the path with the maximum number of flowers considering the new path and the blocked path.\nSince the path to the Tulip Field through the Rose Field is blocked, the new path with the maximum number of flowers is the path through the Lily Field.\n\nStep 3: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Lily Field, Tulip Field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: entrance, Lily field, Tulip field"
+            "parsed_response": "Answer: Entrance, Lily Field, Tulip Field"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

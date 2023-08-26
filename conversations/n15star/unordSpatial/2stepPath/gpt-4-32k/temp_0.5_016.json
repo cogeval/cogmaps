@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,19 +15,26 @@
         },
         {
             "role": "user",
-            "content": "Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. What is the shortest path from Starbucks to Pete\u2019s Coffee? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. What is the shortest path from the orchid field to the tulip field? Starting from the orchid field, please list the flower names in order, including orchid, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start at Starbucks\n2. Go to Paris Baguette\n3. Go to H&M\n4. Go to Zara\n5. Go to Sephora\n6. Go to Bath and Body Works\n7. Go to Pete's Coffee\n\nAnswer: Starbucks, Paris Baguette, H&M, Zara, Sephora, Bath and Body Works, Pete's Coffee"
+            "content": "Step 1: Identify the starting point (Orchid field) and the destination (Tulip field).\nStep 2: List all the connections of the Orchid field (Peony, Carnation, Zinnia).\nStep 3: Check the connections for a direct path to the Tulip field. There isn't any.\nStep 4: Check the connections of Peony (Zinnia), Carnation (Zinnia), and Zinnia (Peony, Carnation) for a path to the Tulip field. There isn't any.\nStep 5: Check the connections of the Sunflower field (Orchid, Peony, Carnation, Zinnia) for a path to the Tulip field. There isn't any.\nStep 6: Check the connections of the Rose field (Lily, Chrysanthemum, Poppy, Carnation) for a path to the Tulip field. There isn't any.\nStep 7: Check the connections of the Daisy field (Lily, Chrysanthemum, Poppy, Lavender) for a path to the Tulip field. There isn't any.\nStep 8: Check the connections of the Hydrangea field (Daffodil, Marigold, Lavender) for a path to the Tulip field. Found it! Hydrangea is connected to the Tulip field.\nStep 9: Now we need to find the shortest path from Orchid to Hydrangea. Orchid is connected to the Sunflower field, which is connected to the Carnation field, which is connected to the Rose field, which is connected to the Lily field, which is connected to the Chrysanthemum field, which is connected to the Poppy field, which is connected to the Daisy field, which is connected to the Lavender field, which is connected to the Marigold field, which is connected to the Daffodil field, and finally to the Hydrangea field.\nStep 10: Combine the path from Orchid to Hydrangea and from Hydrangea to Tulip.\n\nAnswer: Orchid, Sunflower, Carnation, Rose, Lily, Chrysanthemum, Poppy, Daisy, Lavender, Marigold, Daffodil, Hydrangea, Tulip"
         }
     ],
     "tests": {
         "2stepPath": {
             "expected_answer": [
-                "Answer: Starbucks, Sephora, Pete\u2019s Coffee"
+                "Answer: orchid, peony, tulip"
             ],
-            "parsed_response": "1. Start at Starbucks\n2. Go to Paris Baguette\n3. Go to H&M\n4. Go to Zara\n5. Go to Sephora\n6. Go to Bath and Body Works\n7. Go to Pete's Coffee\n\nAnswer: Starbucks, Paris Baguette, H&M, Zara, Sephora, Bath and Body Works, Pete's Coffee"
+            "parsed_response": "Answer: Orchid, Sunflower, Carnation, Rose, Lily, Chrysanthemum, Poppy, Daisy, Lavender, Marigold, Daffodil, Hydrangea, Tulip"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

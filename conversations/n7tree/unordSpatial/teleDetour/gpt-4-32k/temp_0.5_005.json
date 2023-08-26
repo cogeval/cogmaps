@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the flower fields and their respective free flowers.\nSunflower field: 0 free flowers\nHydrangea field: 50 free flowers\nOrchid field: 10 free flowers\nRose field: 0 free flowers\nDaisy field: 22 free flowers\nTulip field: 56 free flowers\n\nStep 2: Determine the paths and their total number of free flowers.\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 free flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 free flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 free flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) - 56 free flowers\n\nStep 3: Compare the total number of free flowers in each path and select the path with the maximum number of flowers.\n\nAnswer: Entrance, Left, Left"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Hydrangea field (50 flowers) or Orchid field (10 flowers)\n- Left path: Rose field -> Daisy field (22 flowers) or Tulip field (56 flowers)\n\nStep 2: Compare the maximum number of flowers in each path.\n- Right path: 50 flowers (Hydrangea field)\n- Left path: 56 flowers (Tulip field)\n\nStep 3: Determine the path with the maximum number of flowers.\n- The left path has more flowers (56 in the Tulip field).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the flower fields, their respective free flowers, and the new lily field information.\nSunflower field: 0 free flowers\nHydrangea field: 50 free flowers\nOrchid field: 10 free flowers\nRose field: 0 free flowers\nDaisy field: 22 free flowers\nTulip field: 56 free flowers\nLily field: 0 free flowers, with a portal to any neighboring field of the rose field\n\nStep 2: Determine the new paths and their total number of free flowers, considering the blocked path from the previous step.\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 free flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 free flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 free flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) - Blocked\nPath 5: Entrance, New Field (Lily), Portal to Rose Field, Right (Daisy) - 22 free flowers\nPath 6: Entrance, New Field (Lily), Portal to Rose Field, Left (Tulip) - 56 free flowers\n\nStep 3: Compare the total number of free flowers in each path and select the path with the maximum number of flowers, considering the blocked path.\n\nAnswer: Entrance, New Field, Portal, Left"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Hydrangea field (50 flowers) or Orchid field (10 flowers)\n- Left path: Rose field -> Daisy field (22 flowers) or Tulip field (56 flowers) - This path is now blocked.\n- New path: Lily field -> Portal -> Any neighboring field of the Rose field\n\nStep 2: Determine the neighboring fields of the Rose field.\n- Daisy field (22 flowers)\n- Tulip field (56 flowers)\n\nStep 3: Compare the maximum number of flowers in each path.\n- Right path: 50 flowers (Hydrangea field)\n- New path: 56 flowers (Tulip field through the portal)\n\nStep 4: Determine the path with the maximum number of flowers.\n- The new path has more flowers (56 in the Tulip field).\n\nStep 5: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Lily field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, New Field, Portal, Left"
+            "parsed_response": "Answer: Entrance, Lily field, Tulip field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

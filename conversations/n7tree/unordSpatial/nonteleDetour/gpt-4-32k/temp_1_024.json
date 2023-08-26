@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Let's summarize the number of flowers in each path:\n\nPath 1: Entrance, Sunflower, Hydrangea - 50 hydrangea flowers\nPath 2: Entrance, Sunflower, Orchid - 10 orchid flowers\nPath 3: Entrance, Rose, Daisy - 22 daisy flowers\nPath 4: Entrance, Rose, Tulip - 56 tulip flowers\n\nNow, let's find the path with the maximum number of flowers:\nPath 4 has the highest number of flowers.\n\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: List the fields and their free flowers.\nSunflower: 0\nHydrangea: 50\nOrchid: 10\nRose: 0\nDaisy: 22\nTulip: 56\n\nStep 2: Determine the paths and their total free flowers.\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) = 50 flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) = 10 flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) = 22 flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) = 56 flowers\n\nStep 3: Identify the path with the maximum number of flowers.\nPath 4: Entrance, Left (Rose), Left (Tulip) = 56 flowers\n\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Since the path to the Tulip field from the Rose field is blocked, you can now use the new path discovered from the Lily field. \n\nNew Path: Entrance, Lily, Tulip - 56 tulip flowers\n\nAs this new path still leads to the maximum number of flowers, follow this path:\n\nAnswer: Entrance, Lily, Tulip"
+            "content": "Step 1: List the fields and their free flowers.\nSunflower: 0\nHydrangea: 50\nOrchid: 10\nRose: 0\nDaisy: 22\nTulip: 56\nLily: 0 (assuming no flowers are available for free in the lily field)\n\nStep 2: Update the paths and their total free flowers considering the lily field and the blocked path.\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) = 50 flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) = 10 flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) = 22 flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) = Blocked\nPath 5: Entrance, Lily, Tulip = 56 flowers (as the lily field connects to the tulip field)\n\nStep 3: Identify the path with the maximum number of flowers considering the new conditions.\nPath 5: Entrance, Lily, Tulip = 56 flowers\n\nAnswer: Entrance, Lily, Tulip"
         }
     ],
     "tests": {
@@ -36,6 +36,13 @@
                 "Answer: rose, peony, daisy"
             ],
             "parsed_response": "Answer: Entrance, Lily, Tulip"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

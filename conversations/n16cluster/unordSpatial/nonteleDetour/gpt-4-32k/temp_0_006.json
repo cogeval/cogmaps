@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,19 +15,34 @@
         },
         {
             "role": "user",
-            "content": " Imagine a university campus with 16 buildings. Electrical engineering building is connected to law school building, computer science building, heath center, and art library. Law school building is connected to electrical engineering building, computer science building, health center, and gym. Computer science building is connected to rooms electrical engineering building, law school building , health center and Starbucks. Health center is also connected to electrical engineering building, computer science building, law school buildings, and Yogurtland. Starbucks is connected to bioscience building, art library, student union building, and computer science building. Bioscience building is connected to Starbucks, art library, student union building, and KFC. Art library is connected to electrical engineering building, student union building, bioscience building, and Starbucks. Student union building is also connected to Starbucks, bioscience building, art library, and football stadium. Musical theater is connected to football stadium, swimming center, KFC, and science library. Football stadium is connected to musical theater, swimming center, student union building, and KFC. Swimming center is connected to Panda Express, musical theater, KFC, and football stadium. KFC is also connected to musical theater, football stadium, swimming center, and bioscience building. Panda Express is connected to Yogurtland, science library, gym, and swimming center. Yogurtland is connected to health center, Panda Express, science library and gym. Science library is connected to Panda Express, Yogurtland, gym, and musical theater. Gym is also connected to Panda Express, Yogurtland, science library, and law school building. Initially, you were told that there is a reward of 5 for visiting gym, and a reward of 10 for visiting football stadium. Also, there is a penalty of 15 for visiting Starbucks. You are in the electrical engineering building and you have been told that there is no path between Panda Express and KFC and also there is no path between science library and musical theater. From electrical engineering building what is the path to the building that yields the most reward? Please list the buildings in order, separated by commas."
+            "content": "Imagine a flower county with 16 flower fields. The rose field is connected to the sunflower field, tulip field, daisy field, and lily field. The sunflower field is connected to the rose field, tulip field, daisy field, and aster fields. The tulip field is connected to the rose field, sunflower field, daisy field and orchid field. The daisy field is also connected to the rose field, sunflower field, tulip field, and zinnia field. The orchid field is connected to the hydrangea field, lily field, daffodil field, and tulip field. The hydrangea field is connected to the orchid field, lily field, peony field, and marigold field. The lily field is connected to rose field, peony field, hydrangea field, and orchid field. The peony field is also connected to the orchid field, hydrangea field, lily field, and chrysanthemum field. The daffodil field is connected to the chrysanthemum field, carnation field, marigold field, and lavender field. The chrysanthemum field is connected to the daffodil field, carnation field, peony field, and marigold field. The carnation field is connected to the poppy field, daffodil field, marigold field, and chrysanthemum field. The marigold field is also connected to the daffodil field, chrysanthemum field, carnation field, and hydrangea field. The poppy field is connected to the zinnia field, lavender field, aster field, and carnation field. The zinnia field is connected to the daisy field, poppy field, lavender field, and aster field. The lavender field is connected to poppy field, zinnia field, aster field, and daffodil field. The aster field is also connected to the poppy field, zinnia field, lavender field, and sunflower field. You have been told that you can get a bunch of 50 chrysanthemum flowers for free if you visit the chrysanthemum field and you can get a bunch of 10 lavender flowers for free if you choose to visit the lavender field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from rose, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the buildings with rewards and penalties.\n- Gym: Reward of 5\n- Football Stadium: Reward of 10\n- Starbucks: Penalty of 15\n\nStep 2: Determine the possible paths from the Electrical Engineering building to the buildings with rewards and penalties, considering the restrictions (no path between Panda Express and KFC, and no path between Science Library and Musical Theater).\n\nPath 1: Electrical Engineering Building -> Law School Building -> Gym (Reward: 5)\nPath 2: Electrical Engineering Building -> Computer Science Building -> Starbucks -> Student Union Building -> Football Stadium (Reward: 10 - 15 = -5)\n\nStep 3: Compare the rewards of the possible paths and choose the path with the highest reward.\n\nPath 1 has a reward of 5, while Path 2 has a reward of -5. Therefore, Path 1 is the best option.\n\nAnswer: Electrical Engineering Building, Law School Building, Gym"
+            "content": "Step 1: Identify the target fields (Chrysanthemum and Lavender fields).\nStep 2: Find the shortest paths from the Rose field to both target fields.\nStep 3: Compare the number of flowers obtained from each path and choose the path with the maximum number of flowers.\n\nShortest path to Chrysanthemum field:\nRose -> Sunflower -> Tulip -> Daisy -> Orchid -> Hydrangea -> Lily -> Peony -> Chrysanthemum (9 fields, 50 flowers)\n\nShortest path to Lavender field:\nRose -> Sunflower -> Tulip -> Daisy -> Zinnia -> Poppy -> Lavender (7 fields, 10 flowers)\n\nAnswer: Rose, Sunflower, Tulip, Daisy, Orchid, Hydrangea, Lily, Peony, Chrysanthemum"
+        },
+        {
+            "role": "user",
+            "content": "The path from the rose to lily field is blocked. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from rose, please list the flower names in order, including rose, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Since the path from Rose to Lily field is blocked, we need to find an alternative path to the Chrysanthemum field.\n\nStep 1: Identify the target fields (Chrysanthemum and Lavender fields).\nStep 2: Find the shortest paths from the Rose field to both target fields, considering the blocked path.\nStep 3: Compare the number of flowers obtained from each path and choose the path with the maximum number of flowers.\n\nAlternative shortest path to Chrysanthemum field:\nRose -> Sunflower -> Tulip -> Daisy -> Orchid -> Hydrangea -> Peony -> Chrysanthemum (8 fields, 50 flowers)\n\nShortest path to Lavender field (unchanged):\nRose -> Sunflower -> Tulip -> Daisy -> Zinnia -> Poppy -> Lavender (7 fields, 10 flowers)\n\nAnswer: Rose, Sunflower, Tulip, Daisy, Orchid, Hydrangea, Peony, Chrysanthemum"
         }
     ],
     "tests": {
         "nonteleDetour": {
             "expected_answer": [
-                "Answer: Electrical engineering building, law school building, gym, law school building, electrical engineering building, art library, bioscience library, KFC, football stadium"
+                "Answer: Rose, Tulip, Orchid, Peony, Chrysanthemum"
             ],
-            "parsed_response": "Answer: Electrical Engineering Building, Law School Building, Gym"
+            "parsed_response": "Answer: Rose, Sunflower, Tulip, Daisy, Orchid, Hydrangea, Peony, Chrysanthemum"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

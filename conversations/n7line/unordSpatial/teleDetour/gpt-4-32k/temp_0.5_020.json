@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two paths from the entrance.\nPath 1: Rose field -> Tulip field -> Orchid field\nPath 2: Sunflower field -> Daisy field -> Hydrangea field\n\nStep 2: Determine the number of flowers available in each path.\nPath 1: 0 roses + 0 tulips + 10 orchids = 10 flowers\nPath 2: 0 sunflowers + 0 daisies + 50 hydrangeas = 50 flowers\n\nStep 3: Compare the number of flowers in each path.\nPath 1 has 10 flowers, while Path 2 has 50 flowers.\n\nStep 4: Determine the field from the entrance that leads to the path with the maximum number of flowers.\nSince Path 2 has more flowers, the field from the entrance that leads to the path with the maximum number of flowers is the Sunflower field.\n\nAnswer: Sunflower field"
+            "content": "Step 1: Identify the two paths from the entrance and the number of flowers in each path.\nPath 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers)\nPath 2: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers)\n\nStep 2: Compare the number of flowers in each path.\nPath 1: 10 orchid flowers\nPath 2: 50 hydrangea flowers\n\nStep 3: Determine which path has the maximum number of flowers.\nPath 2 has more flowers (50 hydrangea flowers) compared to Path 1 (10 orchid flowers).\n\nAnswer: Sunflower field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the three paths from the entrance.\nPath 1: Rose field -> Tulip field -> Orchid field\nPath 2: Sunflower field -> Daisy field -> Hydrangea field\nPath 3: Lily field -> Peony field -> Daffodil field -> Portal -> Neighbor field of Daisy field\n\nStep 2: Determine the number of flowers available in each path.\nPath 1: 0 roses + 0 tulips + 10 orchids = 10 flowers\nPath 2: 0 sunflowers + 0 daisies + 50 hydrangeas = 50 flowers\nPath 3: 0 lilies + 0 peonies + 0 daffodils + flowers from the neighbor field of Daisy field\n\nStep 3: Identify the neighbor fields of the Daisy field.\nThe neighbor field of the Daisy field is the Hydrangea field.\n\nStep 4: Determine the number of flowers available in Path 3.\nPath 3: 0 lilies + 0 peonies + 0 daffodils + 50 hydrangeas = 50 flowers\n\nStep 5: Compare the number of flowers in each path.\nPath 1 has 10 flowers, Path 2 has 50 flowers, and Path 3 has 50 flowers.\n\nStep 6: Determine which path is blocked.\nThe regular path to the field with the maximum number of flowers (Path 2) is blocked.\n\nStep 7: Choose the path that leads to the maximum number of flowers and is not blocked.\nSince Path 3 also has 50 flowers and is not blocked, the field from the entrance that leads to the path with the maximum number of flowers is the Lily field.\n\nAnswer: Lily field"
+            "content": "Step 1: Identify the three paths from the entrance and the number of flowers in each path.\nPath 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers)\nPath 2: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers)\nPath 3: Lily field -> Peony field -> Daffodil field -> Portal -> Neighbor field of Daisy field\n\nStep 2: The regular path to the field with the maximum number of flowers is blocked. So, Path 2 is not an option anymore.\n\nStep 3: Determine if Path 3 can lead to a field with more flowers than Path 1.\nSince the portal in the daffodil field can lead to any neighbor field of the daisy field, it might be possible to access the hydrangea field (which has 50 flowers) through the portal.\n\nStep 4: Compare the number of flowers in the remaining paths.\nPath 1: 10 orchid flowers\nPath 3: Possibly 50 hydrangea flowers (if the portal leads to the hydrangea field)\n\nStep 5: Determine which path has the maximum number of flowers.\nPath 3 has the potential to lead to more flowers (50 hydrangea flowers) compared to Path 1 (10 orchid flowers).\n\nAnswer: Lily field"
         }
     ],
     "tests": {
@@ -36,6 +36,13 @@
                 "Answer: lily"
             ],
             "parsed_response": "Answer: Lily field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

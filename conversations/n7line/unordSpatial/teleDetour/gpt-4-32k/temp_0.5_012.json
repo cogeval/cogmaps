@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the number of flowers in each path.\nPath 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers)\nPath 2: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers)\n\nStep 2: Compare the number of flowers in each path.\nPath 1: 10 orchid flowers\nPath 2: 50 hydrangea flowers\n\nStep 3: Determine the path with the maximum number of flowers.\nPath 2 has the maximum number of flowers (50 hydrangea flowers).\n\nStep 4: Identify the field from the entrance that leads to the path with the maximum number of flowers.\nAnswer: Sunflower field"
+            "content": "Step 1: Identify the paths and the number of flowers in each path.\n- Path 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers)\n- Path 2: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers)\n\nStep 2: Compare the number of flowers in each path.\n- Path 1: 10 orchid flowers\n- Path 2: 50 hydrangea flowers\n\nStep 3: Determine which path has the maximum number of flowers.\n- Path 2 has the maximum number of flowers (50 hydrangea flowers).\n\nStep 4: Identify the field from the entrance that leads to the path with the maximum number of flowers.\n- The sunflower field leads to Path 2, which has the maximum number of flowers.\n\nAnswer: Sunflower field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the new path and its connection to the existing paths.\nNew Path: Lily field -> Peony field -> Daffodil field (portal to any neighbor field of the daisy field)\n\nStep 2: Determine the neighbor fields of the daisy field.\nNeighbor field: Sunflower field\n\nStep 3: Determine the path with the maximum number of flowers from the entrance, considering the new path and the blocked regular path.\nPath 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers) [Regular path, not blocked]\nPath 2: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers) [Regular path, blocked]\nPath 3: Lily field -> Peony field -> Daffodil field -> Portal -> Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers) [New path]\n\nStep 4: Determine the field from the entrance that leads to the path with the maximum number of flowers, considering the blocked regular path.\nAnswer: Lily field"
+            "content": "Step 1: Identify the new path and the number of flowers in each path.\n- Path 3: Lily field -> Peony field -> Daffodil field -> Portal -> Neighbor field of the daisy field\n\nStep 2: Determine the neighbor field of the daisy field.\n- The daisy field is connected to the sunflower field and the hydrangea field. Since the regular path to the field with the maximum number of flowers (hydrangea field with 50 flowers) is blocked, the only available neighbor field is the sunflower field.\n\nStep 3: Identify the paths and the number of flowers in each path.\n- Path 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers)\n- Path 2: Sunflower field -> Daisy field -> Hydrangea field (blocked)\n- Path 3: Lily field -> Peony field -> Daffodil field -> Portal -> Sunflower field (0 flowers)\n\nStep 4: Compare the number of flowers in each path.\n- Path 1: 10 orchid flowers\n- Path 2: Blocked\n- Path 3: 0 flowers\n\nStep 5: Determine which path has the maximum number of flowers.\n- Path 1 has the maximum number of flowers (10 orchid flowers).\n\nStep 6: Identify the field from the entrance that leads to the path with the maximum number of flowers.\n- The rose field leads to Path 1, which has the maximum number of flowers.\n\nAnswer: Rose field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: lily"
             ],
-            "parsed_response": "Answer: Lily field"
+            "parsed_response": "Answer: Rose field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

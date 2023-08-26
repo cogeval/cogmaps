@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field.\n- Sunflower field: 0 flowers\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Rose field: 0 flowers\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n\nStep 2: Calculate the total number of flowers for each path.\n- Path 1 (right, right): Sunflower field + Hydrangea field = 0 + 50 = 50 flowers\n- Path 2 (right, left): Sunflower field + Orchid field = 0 + 10 = 10 flowers\n- Path 3 (left, right): Rose field + Daisy field = 0 + 22 = 22 flowers\n- Path 4 (left, left): Rose field + Tulip field = 0 + 56 = 56 flowers\n\nStep 3: Determine the path with the maximum number of flowers.\n- Path 4 (left, left) has the maximum number of flowers (56 flowers).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\n- Answer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Right: Hydrangea field (50 flowers) -> Left: Orchid field (10 flowers)\n- Left path: Rose field -> Right: Daisy field (22 flowers) -> Left: Tulip field (56 flowers)\n\nStep 2: Calculate the total number of flowers for each path.\n- Right path: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\n- Left path: 22 (Daisy) + 56 (Tulip) = 78 flowers\n\nStep 3: Compare the total number of flowers for each path and determine the path with the maximum number of flowers.\n- Right path: 60 flowers\n- Left path: 78 flowers\n\nStep 4: Since the left path has the maximum number of flowers, list the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Rose, Daisy, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the order of the fields and the paths.\n- Entrance: Two fields (right: Sunflower field, left: Rose field)\n- Sunflower field: Two fields (right: Hydrangea field, left: Orchid field)\n- Rose field: Two fields (right: Daisy field, left: Tulip field)\n\nStep 2: Determine the shortest path to the Daisy field.\n- From the Entrance, go to the Rose field (left), and then go to the Daisy field (right).\n\nStep 3: List the flower names in order, including the entrance, separated by commas.\n- Answer: Entrance, Rose field, Daisy field"
+            "content": "Step 1: Recall the paths to the daisy field.\n- From the entrance, go to the left field (Rose field)\n- From the Rose field, go to the right field (Daisy field)\n\nStep 2: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Rose, Daisy"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: entrance, rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose field, Daisy field"
+            "parsed_response": "Answer: Entrance, Rose, Daisy"
+        }
+    },
+    "scores": {
+        "2stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

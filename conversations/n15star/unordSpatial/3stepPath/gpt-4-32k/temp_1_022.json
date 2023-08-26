@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,21 +15,26 @@
         },
         {
             "role": "user",
-            "content": " Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. What is the shortest path from Starbucks to Target? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. What is the shortest path from the sunflower field to the hydrangea field? Starting from the sunflower field, please list the flower names in order, including sunflower, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start at Starbucks\n2. Move to Paris Baguette\n3. Go to H&M\n4. Head to Zara\n5. Arrive at Target\n\nAnswer: Starbucks, Paris Baguette, H&M, Zara, Target"
+            "content": "Step 1: List the direct connections from the sunflower field.\nSunflower connections: Orchid, Peony, Carnation, Zinnia.\n\nStep 2: Check if any of these connections directly connects to the hydrangea field.\nNone of these fields directly connects to the hydrangea field.\n\nStep 3: List the secondary connections from the sunflower field.\nOrchid connections: Peony, Carnation, Zinnia.\nPeony connections: Zinnia.\nCarnation connections: Zinnia.\nZinnia connections: None.\n\nStep 4: Check if any of these secondary connections directly connect to the hydrangea field.\nNone of these fields directly connects to the hydrangea field.\n\nStep 5: List the tertiary connections from the sunflower field.\nPeony connections: Zinnia.\nCarnation connections: Zinnia.\nZinnia connections: None.\nOrchid connections: Peony, Carnation, Zinnia.\n    Peony connections (from Orchid): Zinnia.\n    Carnation connections (from Orchid): Zinnia.\n    Zinnia connections (from Orchid): None.\n\nStep 6: Check if any of these tertiary connections directly connects to the hydrangea field.\nNone of these fields directly connects to the hydrangea field.\n\nStep 7: List the quaternary connections from the sunflower field.\nOrchid connections: Peony, Carnation, Zinnia.\n    Peony connections (from Orchid): Zinnia.\n        Zinnia connections (from Peony): None.\n    Carnation connections (from Orchid): Zinnia.\n        Zinnia connections (from Carnation): None.\n    Zinnia connections (from Orchid): None.\n\nStep 8: Check if any of these quaternary connections directly connects to the hydrangea field.\nNone of these fields directly connects to the hydrangea field.\n\nStep 9: List the quinary connections from the sunflower field.\nOrchid connections: Peony, Carnation, Zinnia.\n    Peony connections (from Orchid): Zinnia.\n        Zinnia connections (from Peony): None.\n    Carnation connections (from Orchid): Zinnia.\n        Zinnia connections (from Carnation): None.\n    Zinnia connections (from Orchid): None.\nPeony connections: Zinnia.\n    Zinnia connections (from Peony): None.\nCarnation connections: Zinnia.\n    Zinnia connections (from Carnation): None.\n\nStep 10: Check if any of these quinary connections directly connects to the hydrangea field.\nNone of these fields directly connects to the hydrangea field.\n\nAt this point, we should re-evaluate the connections and their paths because there seems to be no direct or indirect connection between the sunflower field and the hydrangea field. Thus, there is no valid path between the two.\n\nAnswer: No valid path."
         }
     ],
     "tests": {
         "3stepPath": {
             "expected_answer": [
-                "Answer: Starbucks, Paris Baguette, Marshalls, Target",
-                "Answer: Starbucks, H&M, Marshalls, Target",
-                "Answer: Starbucks, Zara, Marshalls, Target"
+                "Answer: sunflower, peony, tulip, hydrangea"
             ],
-            "parsed_response": "Answer: Starbucks, Paris "
+            "parsed_response": "Answer: No valid path."
+        }
+    },
+    "scores": {
+        "3stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

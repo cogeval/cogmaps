@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To determine the path that allows for the maximum number of flowers, let's evaluate the flower count for each path:\n\nPath 1: Entrance -> Right (Sunflower) -> Right (Hydrangea) -> Left (Orchid) -> Entrance\nTotal flowers collected: 0\n\nPath 2: Entrance -> Right (Sunflower) -> Left (Orchid) -> Entrance\nTotal flowers collected: 0\n\nPath 3: Entrance -> Left (Rose) -> Right (Daisy) -> Entrance\nTotal flowers collected: 22\n\nPath 4: Entrance -> Left (Rose) -> Left (Tulip) -> Entrance\nTotal flowers collected: 56\n\nFrom the above analysis, we can see that the path that allows for the maximum number of flowers is Path 4, which includes the Rose field and the Tulip field. Therefore, the path with the maximum number of flowers, including the entrance, is:\n\nAnswer: Entrance, Rose, Tulip"
+            "content": "Answer: Hydrangea, Orchid, Tulip, Daisy, Rose, Sunflower, Entrance"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Given the new information that the path which previously led to the maximum number of flowers is now blocked, let's evaluate the flower count for the remaining available paths:\n\nPath 1: Entrance -> Right (Sunflower) -> Right (Hydrangea) -> Left (Orchid) -> Entrance\nTotal flowers collected: 0\n\nPath 2: Entrance -> Right (Sunflower) -> Left (Orchid) -> Entrance\nTotal flowers collected: 0\n\nPath 3: Entrance -> Left (Rose) -> Right (Daisy) -> Entrance\nTotal flowers collected: 22\n\nPath 4: Entrance -> Left (Rose) -> Left (Tulip) -> Entrance\nTotal flowers collected: 56\n\nPath 5: Entrance -> New Field (Lily) -> Portal (to neighboring fields)\nRemaining available fields from Rose: Daisy, Tulip\n\nLet's evaluate the remaining paths after going through the portal:\n\nPath 5.1: Entrance -> New Field (Lily) -> Portal -> Daisy -> Entrance\nTotal flowers collected: 22\n\nPath 5.2: Entrance -> New Field (Lily) -> Portal -> Tulip -> Entrance\nTotal flowers collected: 56\n\nComparing the flower counts, we can see that Path 5.2, which includes the Lily field, the Portal, and the Tulip field, allows for the maximum number of flowers. Therefore, the path with the maximum number of flowers, including the entrance, is:\n\nAnswer: Entrance, New Field (Lily), Portal, Tulip"
+            "content": "Answer: Lily, Rose, Daisy, Tulip, Orchid, Sunflower, Entrance"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, New Field (Lily), Portal, Tulip"
+            "parsed_response": "Answer: Lily, Rose, Daisy, Tulip, Orchid, Sunflower, Entrance"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

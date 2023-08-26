@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the path that allows you to collect the maximum number of flowers, we need to calculate the total number of flowers in each path and choose the path with the highest count. \n\nLet's go through the different paths and calculate the total number of flowers in each:\n\n1. Entrance -> Right (Sunflower) -> Right (Hydrangea) -> Sunflower: 0 flowers\n2. Entrance -> Right (Sunflower) -> Left (Orchid) -> Sunflower, Orchid: 0 flowers\n3. Entrance -> Left (Rose) -> Right (Daisy) -> Rose, Daisy: 22 flowers\n4. Entrance -> Left (Rose) -> Left (Tulip) -> Rose, Tulip: 0 flowers\n\nThe path with the highest number of flowers is path 3, which includes the Rose and Daisy fields. \n\nAnswer: Entrance, Rose, Daisy"
+            "content": "Answer: Hydrangea, Orchid, Tulip, Daisy, Rose, Sunflower, Entrance."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Since the previous path that led to the maximum number of flowers is now blocked, we need to find an alternative path to maximize the number of flowers. Let's explore the available paths:\n\n1. Entrance -> Right (Sunflower) -> Right (Hydrangea) -> Sunflower: 0 flowers\n2. Entrance -> Right (Sunflower) -> Left (Orchid) -> Sunflower, Orchid: 0 flowers\n3. Entrance -> Left (Rose) -> Right (Daisy) -> Rose, Daisy: 22 flowers\n4. Entrance -> Left (Rose) -> Left (Tulip) -> Rose, Tulip: 0 flowers\n5. Entrance -> New Field (Lily): unknown flower count\n\nBased on the available information, the Lily field is a new field with an unknown flower count, but it has the potential to connect to any neighboring field of the Rose field. Since we're looking for the path that leads to the maximum number of flowers, we should choose the Lily field to explore new possibilities.\n\nAnswer: Entrance, Lily"
+            "content": "Answer: Lily, Rose, Daisy, Tulip, Orchid, Hydrangea, Sunflower, Entrance."
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily"
+            "parsed_response": "Answer: Lily, Rose, Daisy, Tulip, Orchid, Hydrangea, Sunflower, Entrance."
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

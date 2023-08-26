@@ -1,0 +1,40 @@
+{
+    "conversation_id": "task_n21star_unordSpatial_exp_valuePath_temp_0.5_16",
+    "model": "gpt-35-turbo",
+    "version": "2023-03-15-preview",
+    "temperature": 0.5,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 2048,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([A-Za-z ]+,\\s*)*[A-Za-z ]+'"
+        },
+        {
+            "role": "user",
+            "content": "Imagine a flower county with 21 flower fields. The rose field is connected to the sunflower, tulip, daisy, orchid, hydrangea, and lily fields. The marigold field is connected to the poppy, zinnia, peony, daffodil, chrysanthemum, and carnation fields. The iris field is connected to the lavender, aster, dahlia, hyacinth, jasmine, and snapdragon fields. The hydrangea field is connected to the lily, sunflower, tulip, daisy, and orchid fields. The tulip field is connected to the daisy, orchid, lily, and sunflower. The zinnia field is connected to the daisy, peony, daffodil, chrysanthemum, and carnation fields. The chrysanthemum field is connected to the carnation, poppy, peony, and daffodil fields. The jasmine field is connected to iris, lavender, aster, dahlia, and hyacinth fields. The orchid field is connected to the lily, sunflower, and aster fields. The peony field is connected to the daffodil, carnation, and poppy fields. The daffodil field is connected to the carnation, and poppy fields. The hyacinth field is connected to the snapdragon, lavender, aster, and dahlia fields. The lily field is connected to the sunflower, and daisy fields. The carnation field is connected to the poppy field. The snapdragon field is connected to the lavender, aster, and dahlia fields. The sunflower field is connected to the daisy field. The poppy field is connected to the dahlia field. The dahlia field is connected to the lavender field. The lavender field is connected to the aster field. You have been told that if you visit snapdragon field, you can get a bunch of 50 snapdragon flowers for free and if you visit chrysanthemum field, you can get a bunch of 10 chrysanthemum flowers for free. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "To find the shortest path from the rose field that yields the maximum number of flowers, we will use a breadth-first search algorithm. Here are the steps:\n\n1. Start from the rose field.\n2. Create a queue to store the fields to be visited.\n3. Create a dictionary to store the number of flowers obtained from each field.\n4. Initialize the number of flowers obtained from the rose field as 0.\n5. Enqueue the rose field into the queue.\n6. While the queue is not empty, do the following:\n   - Dequeue a field from the queue.\n   - Check if the number of flowers obtained from this field is greater than the current maximum number of flowers obtained.\n   - If yes, update the current maximum number of flowers obtained.\n   - Check the neighboring fields connected to the current field.\n   - For each neighboring field, calculate the total number of flowers obtained if we visit that field.\n   - If the total number of flowers obtained is greater than the number of flowers obtained from the neighboring field, update the number of flowers obtained and enqueue the neighboring field into the queue.\n7. Repeat step 6 until all the fields have been visited.\n8. The final number of flowers obtained will be the maximum number of flowers obtained from any field.\n9. Trace back the path that yields the maximum number of flowers by starting from the field with the maximum number of flowers and following the path with the highest number of flowers at each step.\n10. List the flower names in order, including rose, separated by commas.\n\nAnswer: Rose, Daisy, Zinnia, Poppy, Dahlia, Snapdragon"
+        }
+    ],
+    "tests": {
+        "valuePath": {
+            "expected_answer": [
+                "Answer: Rose, Orchid, Aster, Snapdragon"
+            ],
+            "parsed_response": "Answer: Rose, Daisy, Zinnia, Poppy, Dahlia, Snapdragon"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}

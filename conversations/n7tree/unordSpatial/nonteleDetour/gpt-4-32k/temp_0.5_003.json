@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Consider the two paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nPath 1 (Right):\n1. Entrance\n2. Sunflower Field\n3. Hydrangea Field (50 flowers) and Orchid Field (10 flowers)\nTotal flowers in Path 1: 50 + 10 = 60\n\nPath 2 (Left):\n1. Entrance\n2. Rose Field\n3. Daisy Field (22 flowers) and Tulip Field (56 flowers)\nTotal flowers in Path 2: 22 + 56 = 78\n\nAnswer: Entrance, Rose Field, Daisy Field, Tulip Field"
+            "content": "Step 1: Identify the two main paths from the entrance.\nPath 1: Entrance, Sunflower field (Right field)\nPath 2: Entrance, Rose field (Left field)\n\nStep 2: Identify the sub-paths from each main path.\nPath 1A: Sunflower field, Hydrangea field (Right field)\nPath 1B: Sunflower field, Orchid field (Left field)\nPath 2A: Rose field, Daisy field (Right field)\nPath 2B: Rose field, Tulip field (Left field)\n\nStep 3: Calculate the number of free flowers in each sub-path.\nPath 1A: 50 hydrangea flowers\nPath 1B: 10 orchid flowers\nPath 2A: 22 daisy flowers\nPath 2B: 56 tulip flowers\n\nStep 4: Compare the number of free flowers in each sub-path and determine the path with the maximum number of flowers.\nPath 1A: 50 flowers\nPath 1B: 10 flowers\nPath 2A: 22 flowers\nPath 2B: 56 flowers\n\nStep 5: Determine the path from the entrance to the field with the maximum number of flowers.\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Consider the three paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nPath 1 (Right):\n1. Entrance\n2. Sunflower Field\n3. Hydrangea Field (50 flowers) and Orchid Field (10 flowers)\nTotal flowers in Path 1: 50 + 10 = 60\n\nPath 2 (Left):\n1. Entrance\n2. Rose Field\n3. Daisy Field (22 flowers) and Tulip Field (56 flowers) - blocked\nTotal flowers in Path 2: 22\n\nPath 3 (New Path):\n1. Entrance\n2. Lily Field\n3. Tulip Field (56 flowers)\nTotal flowers in Path 3: 56\n\nAnswer: Entrance, Lily Field, Tulip Field"
+            "content": "Step 1: Identify the new path from the entrance.\nPath 3: Entrance, Lily field\n\nStep 2: Identify the sub-path from the new main path.\nPath 3A: Lily field, Tulip field\n\nStep 3: Recall the number of free flowers in the previously determined path with the maximum number of flowers.\nPath 2B: Rose field, Tulip field - 56 tulip flowers (blocked)\n\nStep 4: Calculate the number of free flowers in the new sub-path.\nPath 3A: Unknown number of lily flowers + 56 tulip flowers\n\nStep 5: Since the regular path (Path 2B) to the field with the maximum number of flowers is blocked, choose the new path that leads to the same field with the maximum number of flowers.\nAnswer: Entrance, Lily field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily Field, Tulip Field"
+            "parsed_response": "Answer: Entrance, Lily field, Tulip field"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

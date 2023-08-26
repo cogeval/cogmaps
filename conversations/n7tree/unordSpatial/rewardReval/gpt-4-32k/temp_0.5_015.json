@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Entrance -> Right -> Sunflower -> Right -> Hydrangea (50 flowers)\n- Entrance -> Right -> Sunflower -> Left -> Orchid (10 flowers)\n- Entrance -> Left -> Rose -> Right -> Daisy (22 flowers)\n- Entrance -> Left -> Rose -> Left -> Tulip (56 flowers)\n\nStep 2: Compare the number of flowers in each field to determine the path with the maximum number of flowers.\n\nStep 3: Identify the path with the maximum number of flowers.\n- Entrance -> Left -> Rose -> Left -> Tulip (56 flowers)\n\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Identify the two main paths from the entrance.\nPath 1: Entrance, Sunflower Field\nPath 2: Entrance, Rose Field\n\nStep 2: Identify the sub-paths from each main path.\nPath 1A: Sunflower Field, Hydrangea Field (50 flowers)\nPath 1B: Sunflower Field, Orchid Field (10 flowers)\nPath 2A: Rose Field, Daisy Field (22 flowers)\nPath 2B: Rose Field, Tulip Field (56 flowers)\n\nStep 3: Compare the number of flowers in each sub-path.\nPath 1A: 50 flowers\nPath 1B: 10 flowers\nPath 2A: 22 flowers\nPath 2B: 56 flowers\n\nStep 4: Identify the path with the maximum number of flowers.\nPath 2B: 56 flowers\n\nStep 5: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose Field, Tulip Field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Update the paths and the number of flowers in each field with the new information.\n- Entrance -> Right -> Sunflower -> Right -> Hydrangea (20 flowers)\n- Entrance -> Right -> Sunflower -> Left -> Orchid (60 flowers)\n- Entrance -> Left -> Rose -> Right -> Daisy (40 flowers)\n- Entrance -> Left -> Rose -> Left -> Tulip (30 flowers)\n\nStep 2: Compare the number of flowers in each field to determine the path with the maximum number of flowers.\n\nStep 3: Identify the path with the maximum number of flowers.\n- Entrance -> Right -> Sunflower -> Left -> Orchid (60 flowers)\n\nAnswer: Entrance, Sunflower, Orchid"
+            "content": "Step 1: Update the number of flowers in each sub-path based on the new information.\nPath 1A: Sunflower Field, Hydrangea Field (20 flowers)\nPath 1B: Sunflower Field, Orchid Field (60 flowers)\nPath 2A: Rose Field, Daisy Field (40 flowers)\nPath 2B: Rose Field, Tulip Field (30 flowers)\n\nStep 2: Compare the number of flowers in each sub-path.\nPath 1A: 20 flowers\nPath 1B: 60 flowers\nPath 2A: 40 flowers\nPath 2B: 30 flowers\n\nStep 3: Identify the path with the maximum number of flowers.\nPath 1B: 60 flowers\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Sunflower Field, Orchid Field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, tulip, hydrangea"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower, Orchid"
+            "parsed_response": "Answer: Entrance, Sunflower Field, Orchid Field"
+        }
+    },
+    "scores": {
+        "rewardReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

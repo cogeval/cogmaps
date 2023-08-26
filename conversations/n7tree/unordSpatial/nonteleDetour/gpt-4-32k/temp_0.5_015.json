@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field.\n- Sunflower field: 0\n- Hydrangea field: 50\n- Orchid field: 10\n- Rose field: 0\n- Daisy field: 22\n- Tulip field: 56\n\nStep 2: Determine the maximum number of flowers available in each path.\n- Path 1 (right): Sunflower field -> Hydrangea field -> Orchid field = 0 + 50 + 10 = 60\n- Path 2 (left): Rose field -> Daisy field -> Tulip field = 0 + 22 + 56 = 78\n\nStep 3: Compare the total number of flowers in each path and choose the one with the maximum number of flowers.\n- Path 1: 60 flowers\n- Path 2: 78 flowers\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Daisy field, Tulip field"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Right: Hydrangea field (50 flowers) -> Left: Orchid field (10 flowers)\n- Left path: Rose field -> Right: Daisy field (22 flowers) -> Left: Tulip field (56 flowers)\n\nStep 2: Calculate the total number of flowers for each path.\n- Right path: 50 hydrangea flowers + 10 orchid flowers = 60 flowers\n- Left path: 22 daisy flowers + 56 tulip flowers = 78 flowers\n\nStep 3: Compare the total number of flowers for each path to determine the path with the maximum number of flowers.\n- Right path: 60 flowers\n- Left path: 78 flowers\n\nStep 4: Choose the path with the maximum number of flowers and list the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Rose, Daisy, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field and add the new lily field.\n- Sunflower field: 0\n- Hydrangea field: 50\n- Orchid field: 10\n- Rose field: 0\n- Daisy field: 22\n- Tulip field: 56\n- Lily field: (unknown number of flowers)\n\nStep 2: Determine the maximum number of flowers available in each path, considering the blocked path and the new lily field.\n- Path 1 (right): Sunflower field -> Hydrangea field -> Orchid field = 0 + 50 + 10 = 60\n- Path 2 (left, blocked): Rose field -> Daisy field -> Tulip field = 0 + 22 + 56 = 78 (blocked)\n- Path 3 (new): Entrance -> Lily field -> Tulip field = (unknown number of flowers in Lily field) + 56\n\nStep 3: Compare the total number of flowers in each path and choose the one with the maximum number of flowers, considering the blocked path.\n- Path 1: 60 flowers\n- Path 2: 78 flowers (blocked)\n- Path 3: (unknown number of flowers in Lily field) + 56\n\nSince Path 2 is blocked, and we don't know the number of flowers in the Lily field, we'll choose Path 1 as it has the maximum number of flowers available in the remaining paths.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Sunflower field, Hydrangea field, Orchid field"
+            "content": "Step 1: Recall the previous paths and the number of flowers in each field.\n- Right path: Sunflower field -> Right: Hydrangea field (50 flowers) -> Left: Orchid field (10 flowers)\n- Left path: Rose field -> Right: Daisy field (22 flowers) -> Left: Tulip field (56 flowers) (blocked)\n\nStep 2: Consider the new field discovered at the entrance.\n- New path: Lily field -> Tulip field\n\nStep 3: Determine the number of flowers in the new path.\n- New path: Lily field (unknown number of flowers) + Tulip field (56 flowers)\n\nStep 4: Since the previous path with the maximum number of flowers is blocked, compare the remaining paths.\n- Right path: 60 flowers (Hydrangea + Orchid)\n- New path: Unknown number of flowers (Lily) + 56 flowers (Tulip)\n\nStep 5: Choose the path with the maximum number of flowers, considering the available options, and list the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Lily, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower field, Hydrangea field, Orchid field"
+            "parsed_response": "Answer: Entrance, Lily, Tulip"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": " Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. What is the shortest path from Starbucks to GNC Live Well? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. What is the shortest path from the poppy field to the peony field? Starting from the poppy field, please list the flower names in order, including poppy, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start at Starbucks.\n2. Move to Paris Baguette.\n3. Move to H&M.\n4. Move to Zara.\n5. Move to Target.\n6. Move to GNC Live Well.\n\nAnswer: Starbucks, Paris Baguette, H&M, Zara, Target, GNC Live Well"
+            "content": "Step 1: Identify the connections between the flower fields.\nStep 2: Create a graph to represent the connections between the fields.\nStep 3: Apply a shortest path algorithm, such as Dijkstra's algorithm, to find the shortest path between the poppy field and the peony field.\nStep 4: Identify the fields in the shortest path and list them in order.\n\nFollowing these steps:\n\nShortest path from Poppy field to Peony field: Poppy, Rose, Carnation, Zinnia, Peony\n\nAnswer: Poppy, Rose, Carnation, Zinnia, Peony"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Starbucks, Paris Baguette, Marshalls, Target, GNC Live Well",
-                "Answer: Starbucks, H&M, Marshalls, Target, GNC Live Well ",
-                "Answer: Starbucks, Zara, Marshalls, Target, GNC Live Well "
+                "Answer: poppy, rose, carnation, sunflower, peony",
+                "Answer: poppy, rose, carnation, orchid, peony",
+                "Answer: poppy, rose, carnation, zinnia, peony"
             ],
-            "parsed_response": "Answer: Starbucks, Paris "
+            "parsed_response": "Answer: Poppy, Rose, Carnation, Zinnia, Peony"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

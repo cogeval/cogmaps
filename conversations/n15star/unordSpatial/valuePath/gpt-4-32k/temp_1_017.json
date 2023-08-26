@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": " Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. Now you have been told that there is a reward of winning sneakers worth $100 for visiting Nike. From Starbucks what is the path that yields the most reward? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. You have been told that you can get a bunch of 50 peony flowers for free if you visit peony field and you can get a bunch of 10 lavender flowers for free if you choose to visit lavender field. Now, from the rose field what is the shortest path that yields the maximum number of flowers? Remember that you can only take one bunch of flowers and only from one field. Starting from the rose field, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "First, I will identify the groups of connected stores:\n\nGroup 1: Starbucks, Paris Baguette, H&M, Zara, Sephora\nGroup 2: Pete\u2019s Coffee, Carter Children, Nike, Sephora, Bath and Body Works\nGroup 3: Chickflea, Baskins and Robins, Levis, GNC Live Well, Nike\nGroup 4: Marshalls, Paris Baguette, H&M, Zara, Target\nGroup 5: Carter Children, Nike, Sephora, Bath and Body Works\nGroup 6: Baskins and Robins, Levis, GNC Live Well, Target\nGroup 7: Paris Baguette, H&M, Zara\nGroup 8: Nike, Bath and Body Works\nGroup 9: Levis, GNC Live Well, Target\nGroup 10: H&M, Zara\nGroup 11: Sephora, Bath and Body Works\nGroup 12: GNC Live Well, Target\n\nStarting from Starbucks, I will find the shortest path to Nike:\n\n1. Starbucks is in Group 1.\n2. Sephora is also in Group 1 and connects to Group 2.\n3. From Sephora in Group 2, we can visit Nike.\n\nSo, the shortest path that yields the most reward is:\n\nAnswer: Starbucks, Sephora, Nike"
+            "content": "Step 1: Identify the target fields, which are the peony field and the lavender field.\nStep 2: Check the connections between the rose field and the target fields.\nStep 3: Find the shortest path from the rose field to the peony field and calculate the number of flowers obtained.\nStep 4: Find the shortest path from the rose field to the lavender field and calculate the number of flowers obtained.\nStep 5: Compare the number of flowers obtained in each path and select the path with the maximum number of flowers.\n\nAfter analyzing the connections, the shortest path from the rose field to the peony field is:\nRose -> Sunflower -> Orchid -> Peony (yields 50 peony flowers)\n\nThe shortest path from the rose field to the lavender field is:\nRose -> Daisy -> Lavender (yields 10 lavender flowers)\n\nComparing the two paths, the path yielding the maximum number of flowers is the one leading to the peony field.\n\nAnswer: Rose, Sunflower, Orchid, Peony"
         }
     ],
     "tests": {
         "valuePath": {
             "expected_answer": [
-                "Answer: Starbucks, Sephora, Pete\u2019s Coffee, Nike",
-                "Answer: Starbucks, Sephora, Bath and Body Works, Nike",
-                "Answer: Starbucks, Sephora, Carter Children, Nike"
+                "Answer: Rose, Carnation, Sunflower, Peony",
+                "Answer: Rose, Carnation, Zinnia, Peony",
+                "Answer: Rose, Carnation, Orchid, Peony"
             ],
-            "parsed_response": "Answer: Starbucks, Sephora, Nike"
+            "parsed_response": "Answer: Rose, Sunflower, Orchid, Peony"
+        }
+    },
+    "scores": {
+        "valuePath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Review the paths and the number of flowers in each field.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers for each path.\nStep 4: Determine the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Remember the flower fields and the number of flowers in each field.\n- Sunflower field (entrance right)\n  - Hydrangea field (right): 50 hydrangeas\n  - Orchid field (left): 10 orchids\n- Rose field (entrance left)\n  - Daisy field (right): 22 daisies\n  - Tulip field (left): 56 tulips\n\nStep 2: Compare the total number of flowers in each path.\n- Entrance, right, right: 50 hydrangeas\n- Entrance, right, left: 10 orchids\n- Entrance, left, right: 22 daisies\n- Entrance, left, left: 56 tulips\n\nStep 3: Identify the path with the maximum number of flowers.\n- The path with the maximum number of flowers is the one leading to the tulip field.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Review the paths and the number of flowers in each field.\nStep 2: Calculate the total number of flowers for each path, including the possibility of going to any neighboring zone of the rose field.\nStep 3: Compare the total number of flowers for each path.\nStep 4: Determine the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Reevaluate the paths and the number of flowers in each field.\n- Sunflower field (entrance right)\n  - Hydrangea field (right): 50 hydrangeas\n  - Orchid field (left): 10 orchids\n- Rose field (entrance left)\n  - Daisy field (right): 22 daisies\n  - Tulip field (left): 56 tulips\n  - Any neighboring zone of the rose field\n\nStep 2: Compare the total number of flowers in each path, including the possibility of going to any neighboring zone of the rose field.\n- Entrance, right, right: 50 hydrangeas\n- Entrance, right, left: 10 orchids\n- Entrance, left, right: 22 daisies\n- Entrance, left, left: 56 tulips\n- Entrance, left, any neighboring zone: Unknown number of flowers\n\nStep 3: Identify the path with the maximum number of flowers.\n- Without knowing the number of flowers in the neighboring zones of the rose field, we cannot determine if any of these paths would lead to a higher number of flowers than the path to the tulip field.\n\nStep 4: List the flower names in order, including the entrance, separated by commas, assuming the path to the tulip field remains the maximum.\nAnswer: Entrance, Rose, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose field, Tulip field"
+            "parsed_response": "Answer: Entrance, Rose, Tulip"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

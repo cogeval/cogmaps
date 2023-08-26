@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two paths starting at the entrance.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers and determine which path yields the maximum number of flowers.\n\nPath 1 (Right): Entrance, Sunflower Field, Hydrangea Field (50 flowers) + Entrance, Sunflower Field, Orchid Field (10 flowers) = 60 flowers\nPath 2 (Left): Entrance, Rose Field, Daisy Field (22 flowers) + Entrance, Rose Field, Tulip Field (56 flowers) = 78 flowers\n\nAnswer: Entrance, Rose Field, Daisy Field, Tulip Field"
+            "content": "Step 1: Evaluate the number of flowers in each path.\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) = 50 Hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) = 10 Orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) = 22 Daisy flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) = 56 Tulip flowers\n\nStep 2: Compare the number of flowers in each path.\nPath 1: 50 flowers\nPath 2: 10 flowers\nPath 3: 22 flowers\nPath 4: 56 flowers\n\nStep 3: Determine the path with the maximum number of flowers.\nPath 4 has the maximum number of flowers (56 Tulip flowers).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two new available paths starting at the entrance.\nStep 2: Calculate the total number of flowers for each path including the lily field portal.\nStep 3: Compare the total number of flowers and determine which path yields the maximum number of flowers.\n\nPath 1 (New path): Entrance, Lily Field, (Portal) Rose Field, Daisy Field (22 flowers) + Entrance, Lily Field, (Portal) Rose Field, Tulip Field (56 flowers) = 78 flowers\nPath 2 (Right): Entrance, Sunflower Field, Hydrangea Field (50 flowers) + Entrance, Sunflower Field, Orchid Field (10 flowers) = 60 flowers\n\nAnswer: Entrance, Lily Field, Rose Field, Daisy Field, Tulip Field"
+            "content": "Step 1: Recall the previous paths with their number of flowers.\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) = 50 Hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) = 10 Orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) = 22 Daisy flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) = 56 Tulip flowers (blocked)\n\nStep 2: Evaluate the new path.\nNew Path: Entrance, Lily field, Portal (Rose field's neighbors)\n\nStep 3: Find the neighbors of Rose field and their respective flowers.\nNeighbor 1: Daisy field (22 Daisy flowers)\nNeighbor 2: Tulip field (56 Tulip flowers)\n\nStep 4: Determine the maximum number of flowers achievable through the new path.\nEntrance, Lily field, Portal, Tulip field = 56 Tulip flowers\n\nStep 5: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Lily, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily Field, Rose Field, Daisy Field, Tulip Field"
+            "parsed_response": "Answer: Entrance, Lily, Tulip"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

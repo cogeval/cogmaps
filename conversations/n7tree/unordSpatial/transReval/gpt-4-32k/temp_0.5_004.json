@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Review the given information about the fields and the number of flowers in each field.\nStep 2: Identify the two main paths from the entrance: right path and left path.\nStep 3: Calculate the total number of flowers in each path.\nStep 4: Compare the total number of flowers in each path.\nStep 5: Choose the path with the maximum number of flowers.\n\nRight path:\nEntrance -> Sunflower field -> Hydrangea field (50 flowers)\nEntrance -> Sunflower field -> Orchid field (10 flowers)\nTotal flowers in the right path: 50 + 10 = 60 flowers\n\nLeft path:\nEntrance -> Rose field -> Daisy field (22 flowers)\nEntrance -> Rose field -> Tulip field (56 flowers)\nTotal flowers in the left path: 22 + 56 = 78 flowers\n\nSince the left path has more flowers (78) than the right path (60), the left path should be chosen to collect the maximum number of flowers.\n\nAnswer: Entrance, Rose field, Daisy field, Tulip field"
+            "content": "Step 1: Recall the number of flowers in each field.\nSunflower Field: 0\nHydrangea Field: 50\nOrchid Field: 10\nRose Field: 0\nDaisy Field: 22\nTulip Field: 56\n\nStep 2: Calculate the total number of flowers in each path.\nPath 1 (Right, Right): Sunflower, Hydrangea = 0 + 50 = 50\nPath 2 (Right, Left): Sunflower, Orchid = 0 + 10 = 10\nPath 3 (Left, Right): Rose, Daisy = 0 + 22 = 22\nPath 4 (Left, Left): Rose, Tulip = 0 + 56 = 56\n\nStep 3: Identify the path with the maximum number of flowers.\nPath 4 (Left, Left) has the maximum number of flowers (56).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Review the given information about the fields and the number of flowers in each field.\nStep 2: Identify the two main paths from the entrance: right path and left path.\nStep 3: Update the paths based on the blocked tulip field.\nStep 4: Calculate the total number of flowers in each updated path.\nStep 5: Compare the total number of flowers in each updated path.\nStep 6: Choose the path with the maximum number of flowers.\n\nRight path:\nEntrance -> Sunflower field -> Hydrangea field (50 flowers)\nEntrance -> Sunflower field -> Orchid field (10 flowers)\nTotal flowers in the right path: 50 + 10 = 60 flowers\n\nLeft path (with Tulip field blocked):\nEntrance -> Rose field -> Daisy field (22 flowers)\nTotal flowers in the left path: 22 flowers\n\nSince the right path has more flowers (60) than the left path (22), the right path should be chosen to collect the maximum number of flowers.\n\nAnswer: Entrance, Sunflower field, Hydrangea field, Orchid field"
+            "content": "Step 1: Recall the number of flowers in each field.\nSunflower Field: 0\nHydrangea Field: 50\nOrchid Field: 10\nRose Field: 0\nDaisy Field: 22\nTulip Field: 56 (blocked)\n\nStep 2: Calculate the total number of flowers in each path excluding the blocked path.\nPath 1 (Right, Right): Sunflower, Hydrangea = 0 + 50 = 50\nPath 2 (Right, Left): Sunflower, Orchid = 0 + 10 = 10\nPath 3 (Left, Right): Rose, Daisy = 0 + 22 = 22\nPath 4 (Left, Left): Rose, Tulip = blocked\n\nStep 3: Identify the path with the maximum number of flowers, excluding the blocked path.\nPath 1 (Right, Right) has the maximum number of flowers (50).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Sunflower, Hydrangea"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, tulip, lily"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower field, Hydrangea field, Orchid field"
+            "parsed_response": "Answer: Entrance, Sunflower, Hydrangea"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

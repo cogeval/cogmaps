@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field.\n- Sunflower field: 0\n- Hydrangea field: 50\n- Orchid field: 10\n- Rose field: 0\n- Daisy field: 22\n- Tulip field: 56\n\nStep 2: Determine the maximum number of flowers available in each path.\n- Path 1: Entrance, right, right (Sunflower, Hydrangea) = 50 flowers\n- Path 2: Entrance, right, left (Sunflower, Orchid) = 10 flowers\n- Path 3: Entrance, left, right (Rose, Daisy) = 22 flowers\n- Path 4: Entrance, left, left (Rose, Tulip) = 56 flowers\n\nStep 3: Identify the path with the maximum number of flowers.\n- Path 4 has the maximum number of flowers (56).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Hydrangea field (50 flowers) or Orchid field (10 flowers)\n- Left path: Rose field -> Daisy field (22 flowers) or Tulip field (56 flowers)\n\nStep 2: Determine the maximum number of flowers in each path.\n- Right path: 50 flowers (Hydrangea field)\n- Left path: 56 flowers (Tulip field)\n\nStep 3: Compare the maximum number of flowers in each path and choose the path with the highest number of flowers.\n\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field and the new information about the rose field.\n- Sunflower field: 0\n- Hydrangea field: 50\n- Orchid field: 10\n- Rose field: 0 (can go to any neighboring zone)\n- Daisy field: 22\n- Tulip field: 56\n\nStep 2: Determine the maximum number of flowers available in each path, including the new paths from the rose field.\n- Path 1: Entrance, right, right (Sunflower, Hydrangea) = 50 flowers\n- Path 2: Entrance, right, left (Sunflower, Orchid) = 10 flowers\n- Path 3: Entrance, left, right (Rose, Daisy) = 22 flowers\n- Path 4: Entrance, left, left (Rose, Tulip) = 56 flowers\n- Path 5: Entrance, left, neighboring zone (Rose, Hydrangea) = 50 flowers\n- Path 6: Entrance, left, neighboring zone (Rose, Orchid) = 10 flowers\n- Path 7: Entrance, left, neighboring zone (Rose, Sunflower) = 0 flowers\n\nStep 3: Identify the path with the maximum number of flowers.\n- Path 4 still has the maximum number of flowers (56).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Hydrangea field (50 flowers) or Orchid field (10 flowers)\n- Left path: Rose field -> Daisy field (22 flowers) or Tulip field (56 flowers)\n\nStep 2: Determine the maximum number of flowers in each path.\n- Right path: 50 flowers (Hydrangea field)\n- Left path: 56 flowers (Tulip field)\n\nStep 3: Consider the new information about the left path (Rose field) having access to any neighboring zone.\n- Since we don't have information about the number of flowers in the neighboring zones, we cannot determine if any of these zones have more flowers than the Tulip field.\n\nStep 4: Based on the available information, choose the path with the highest number of flowers.\n\nAnswer: Entrance, Rose field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose, Tulip"
+            "parsed_response": "Answer: Entrance, Rose field, Tulip field"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

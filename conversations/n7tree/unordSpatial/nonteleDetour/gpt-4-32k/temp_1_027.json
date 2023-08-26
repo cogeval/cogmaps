@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths from the entrance\nPath A: Entrance, Right - Sunflower field\nPath B: Entrance, Left - Rose field\n\nStep 2: Calculate the number of flowers available in Path A\nSunflower field, Right - Hydrangea field: 50 flowers\nSunflower field, Left - Orchid field: 10 flowers\nTotal in Path A: 50 + 10 = 60 flowers\n\nStep 3: Calculate the number of flowers available in Path B\nRose field, Right - Daisy field: 22 flowers\nRose field, Left - Tulip field: 56 flowers\nTotal in Path B: 22 + 56 = 78 flowers\n\nStep 4: Compare the totals from both paths and choose the path with the maximum number of flowers\nPath A: 60 flowers\nPath B: 78 flowers\n\nStep 5: List the flower names in order for the chosen path\nAnswer: Entrance, Rose, Daisy, Tulip"
+            "content": "Step 1: Recall the paths and flower fields visited during exploration.\nStep 2: Calculate the total number of free flowers found on each path.\nStep 3: Compare the number of flowers on each path to determine the maximum.\nStep 4: Write down the order of flower fields visited to collect the maximum number of flowers.\n\nAnswer: entrance, rose field, tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the previously blocked paths from the entrance\nPath A: Entrance, Right - Sunflower field (60 flowers)\nPath B: Entrance, Left - Rose field (78 flowers) - currently blocked\n\nStep 2: Add the new path discovered from the entrance\nPath C: Entrance, Lily field\n\nStep 3: Calculate the number of flowers available in the new Path C\nLily field, Tulip field: 56 flowers\n\nStep 4: Compare the total flowers available in the new path with the previously chosen path A\nPath A: 60 flowers\nPath C: 56 flowers\n\nStep 5: Since the Path B is blocked, choose the path with the maximum number of flowers among the remaining paths (Path A and Path C)\nPath A: 60 flowers\n\nStep 6: List the flower names in order for the chosen path\nAnswer: Entrance, Sunflower, Hydrangea, Orchid"
+            "content": "Step 1: Recall the paths and flower fields visited during exploration, including the new lily field.\nStep 2: Calculate the total number of free flowers found on each path, considering the new lily field path to the tulip field.\nStep 3: Compare the number of flowers on each path to determine the maximum, keeping in mind that the regular path to the tulip field is now blocked.\nStep 4: Write down the order of flower fields visited to collect the maximum number of flowers, given the new constraints.\n\nAnswer: entrance, lily field, tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower, Hydrangea, Orchid"
+            "parsed_response": "Answer: entrance, lily field, tulip field"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

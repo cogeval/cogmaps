@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and number of flowers.\n- Right path: Sunflower field -> Hydrangea field (50 flowers) or Orchid field (10 flowers)\n- Left path: Rose field -> Daisy field (22 flowers) or Tulip field (56 flowers)\n\nStep 2: Compare the maximum number of flowers in each path.\n- Right path: 50 flowers (Hydrangea field)\n- Left path: 56 flowers (Tulip field)\n\nStep 3: Choose the path with the maximum number of flowers.\n\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Recall the first path: entrance, right, sunflower field, right, hydrangea field (50 hydrangea flowers)\nStep 2: Recall the second path: entrance, right, sunflower field, left, orchid field (10 orchid flowers)\nStep 3: Recall the third path: entrance, left, rose field, right, daisy field (22 daisy flowers)\nStep 4: Recall the fourth path: entrance, left, rose field, left, tulip field (56 tulip flowers)\nStep 5: Compare the number of flowers in each path: 50 hydrangeas, 10 orchids, 22 daisies, 56 tulips\nStep 6: Determine the path with the maximum number of flowers: entrance, left, rose field, left, tulip field (56 tulip flowers)\n\nAnswer: entrance, rose field, tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and number of flowers, including the new information.\n- Right path: Sunflower field -> Hydrangea field (50 flowers) or Orchid field (10 flowers)\n- Left path: Rose field -> Daisy field (22 flowers) or Tulip field (56 flowers) or any neighboring zone of the Rose field\n\nStep 2: Since we do not have information about the number of flowers in the neighboring zones of the Rose field, we cannot determine if any of these zones have more flowers than the Tulip field.\n\nStep 3: Compare the known maximum number of flowers in each path.\n- Right path: 50 flowers (Hydrangea field)\n- Left path: 56 flowers (Tulip field)\n\nStep 4: Choose the path with the known maximum number of flowers, as we cannot determine if any neighboring zones of the Rose field have more flowers.\n\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Recall the previous paths and their flower counts:\n- entrance, right, sunflower field, right, hydrangea field (50 hydrangea flowers)\n- entrance, right, sunflower field, left, orchid field (10 orchid flowers)\n- entrance, left, rose field, right, daisy field (22 daisy flowers)\n- entrance, left, rose field, left, tulip field (56 tulip flowers)\n\nStep 2: Consider the new information about the left field of the entrance (rose field) having neighboring zones:\n- entrance, left, rose field (unknown number of flowers)\n- entrance, left, neighboring zone 1 (unknown number of flowers)\n- entrance, left, neighboring zone 2 (unknown number of flowers)\n- ...\n- entrance, left, neighboring zone n (unknown number of flowers)\n\nStep 3: Since we don't have any information about the number of flowers in the rose field itself or in its neighboring zones, we cannot determine if any of these paths will lead to a higher number of flowers than the existing paths.\n\nAnswer: entrance, rose field, tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose field, Tulip field"
+            "parsed_response": "Answer: entrance, rose field, tulip field"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

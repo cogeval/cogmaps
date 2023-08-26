@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two main paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nPath 1 (Right): Entrance, Sunflower Field, Hydrangea Field (50 flowers), Orchid Field (10 flowers)\nPath 2 (Left): Entrance, Rose Field, Daisy Field (22 flowers), Tulip Field (56 flowers)\n\nTotal flowers in Path 1: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\nTotal flowers in Path 2: 22 (Daisy) + 56 (Tulip) = 78 flowers\n\nAnswer: Entrance, Rose Field, Daisy Field, Tulip Field"
+            "content": "Step 1: Identify the number of flowers in each path.\nStep 2: Compare the total number of flowers in each path.\nStep 3: Choose the path with the maximum number of flowers.\n\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 daisy flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) - 56 tulip flowers\n\nAnswer: Entrance, Left, Left"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the new option of using the portal from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nPath 1 (Right): Entrance, Sunflower Field, Hydrangea Field (50 flowers), Orchid Field (10 flowers)\nPath 2 (Left): Entrance, Rose Field, Daisy Field (22 flowers), Tulip Field (56 flowers)\nPath 3 (Portal): Entrance, Rose Field, Hydrangea Field (50 flowers), Orchid Field (10 flowers)\n\nTotal flowers in Path 1: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\nTotal flowers in Path 2: 22 (Daisy) + 56 (Tulip) = 78 flowers\nTotal flowers in Path 3: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\n\nAnswer: Entrance, Rose Field, Daisy Field, Tulip Field"
+            "content": "Step 1: Identify the number of flowers in each path through the portal.\nStep 2: Compare the total number of flowers in each path.\nStep 3: Choose the path with the maximum number of flowers.\n\nFrom the previous answer, we know the number of flowers in the neighboring fields of the rose field:\n\nPath 1: Entrance, Portal (Daisy) - 22 daisy flowers\nPath 2: Entrance, Portal (Tulip) - 56 tulip flowers\n\nAnswer: Entrance, Portal, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose Field, Daisy Field, Tulip Field"
+            "parsed_response": "Answer: Entrance, Portal, Tulip"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

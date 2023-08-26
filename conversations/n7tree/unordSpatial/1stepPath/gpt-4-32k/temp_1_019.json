@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two initial paths (right and left) from the entrance.\nStep 2: Determine the number of flowers in each path.\n\nRight Path:\n- Sunflower field\n  - Right: Hydrangea field (50 hydrangea flowers)\n  - Left: Orchid field (10 orchid flowers)\n\nLeft Path:\n- Rose field\n  - Right: Daisy field (22 daisy flowers)\n  - Left: Tulip field (56 tulip flowers)\n\nStep 3: Compare the maximum number of flowers in each path.\nRight Path: 50 hydrangea flowers\nLeft Path: 56 tulip flowers\n\nStep 4: Choose the path with the maximum number of flowers.\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Recall the paths taken and the number of free flowers in each field.\n- Sunflower field: right from entrance\n  - Hydrangea field: 50 hydrangeas, right from sunflower field\n  - Orchid field: 10 orchids, left from sunflower field\n- Rose field: left from entrance\n  - Daisy field: 22 daisies, right from rose field\n  - Tulip field: 56 tulips, left from rose field\n\nStep 2: Calculate the maximum number of flowers that can be collected along each path.\n- Entrance, Sunflower, Hydrangea: 50 hydrangeas\n- Entrance, Sunflower, Orchid: 10 orchids\n- Entrance, Rose, Daisy: 22 daisies\n- Entrance, Rose, Tulip: 56 tulips\n\nStep 3: Compare the maximum number of flowers collected along each path and choose the path with the most flowers.\n- Entrance, Rose, Tulip: 56 tulips\n\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "The shortest path to the sunflower field from the entrance is to choose the field on the right.\n\nAnswer: Entrance, Sunflower field"
+            "content": "The shortest path from the entrance field to the sunflower field is quite simple, as the sunflower field is directly accessible from the entrance. \n\nAnswer: Entrance, Sunflower"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: entrance, sunflower"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower field"
+            "parsed_response": "Answer: Entrance, Sunflower"
+        }
+    },
+    "scores": {
+        "1stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

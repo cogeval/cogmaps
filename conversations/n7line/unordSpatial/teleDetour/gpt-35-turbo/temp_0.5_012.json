@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To determine which field from the entrance will lead to the path with the maximum number of flowers, let's evaluate the number of flowers in each possible path:\n\n1. Choose the rose field:\n   - Rose field -> Tulip field -> Orchid field (0 flowers)\n\n2. Choose the sunflower field:\n   - Sunflower field -> Daisy field -> Hydrangea field (50 flowers)\n\nBased on the evaluation, choosing the sunflower field from the entrance will lead to the path with the maximum number of flowers.\n\nAnswer: Sunflower field"
+            "content": "To find the field with the maximum number of flowers, we need to add up the number of flowers we can have from each field. From the rose field, we can reach the orchid field and get 10 orchid flowers for free. From the sunflower field, we can reach the hydrangea field and get 50 hydrangea flowers for free. Therefore, the path with the maximum number of flowers is the one that starts from the sunflower field. \n\nAnswer: Sunflower field."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "To determine which field from the entrance will lead to the path with the maximum number of flowers, let's evaluate the number of flowers in each possible path:\n\n1. Choose the rose field:\n   - Rose field -> Tulip field -> Orchid field (0 flowers)\n\n2. Choose the sunflower field:\n   - Sunflower field -> Daisy field -> Hydrangea field (50 flowers)\n\n3. Choose the lily field:\n   - Lily field -> Peony field -> Daffodil field -> Portal (unknown flowers)\n\nSince the regular path to the field with the maximum number of flowers is blocked, we need to consider the unknown number of flowers through the portal from the daffodil field. Without knowing the number of flowers, we cannot determine which field from the entrance will lead to the path with the maximum number of flowers.\n\nAnswer: Unknown"
+            "content": "To find the field with the maximum number of flowers, we need to consider all possible paths. From the entrance, we can go to the rose field or the sunflower field. If we go to the sunflower field, we can get 50 hydrangea flowers from the hydrangea field. If we go to the rose field, we can reach the orchid field and get 10 orchid flowers for free. From the orchid field, we can go to the lily field, which leads to the peony field and then to the daffodil field. From the daffodil field portal, we can go to any neighbor field of the daisy field. \n\nTherefore, the path with the maximum number of flowers is the one that starts from the rose field, goes through the orchid field, lily field, peony field, and daffodil field portal to reach the neighbor field of the daisy field with the maximum number of flowers.\n\nAnswer: Rose field."
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: lily"
             ],
-            "parsed_response": "Answer: Unknown"
+            "parsed_response": "Answer: Rose field."
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine the Great Pacific Mall with 15 stores. Starbucks is connected to Paris Baguette, H&M, Zara, and Sephora. Pete's Coffee is connected to Carter Children, Nike, Sephora, and Bath and Body Works. Chickflea is connected to Baskins and Robins, Levis, GNC Live Well, and Nike. Marshalls is connected to Paris Baguette, H&M, Zara, and Target. Carter Children is connected to Nike, Sephora, and Bath and Body Works. Baskins and Robins is connected to Levis, GNC Live Well, and Target. Paris Baguette is connected to H&M and Zara. Nike is connected to Bath and Body Works. Levis is connected to GNC Live Well and Target. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. How many densely-connected store clusters do we have in this mall? A densely-connected cluster is a group of stores that are connected to themselves with a max of 2 stores."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. How many densely-connected field clusters do we have in this county? A densely-connected cluster is a group of fields that are connected to themselves with a minimum of 2 fields."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify store connections with a max of 2 stores.\n- Paris Baguette is connected to H&M and Zara\n- Nike is connected to Bath and Body Works\n- Levis is connected to GNC Live Well and Target\n- H&M is connected to Zara\n- Sephora is connected to Bath and Body Works\n- GNC Live Well is connected to Target\n\nStep 2: Identify densely-connected store clusters.\nCluster 1: Paris Baguette - H&M - Zara\nCluster 2: Nike - Bath and Body Works\nCluster 3: Levis - GNC Live Well - Target\n\nAnswer: there are 3 clusters"
+            "content": "Step 1: Identify the connected fields and group them into clusters\n- Cluster 1: Rose, Lily, Chrysanthemum, Poppy, Carnation\n- Cluster 2: Sunflower, Orchid, Peony, Zinnia, Carnation\n- Cluster 3: Tulip, Hydrangea, Daffodil, Marigold, Peony\n- Cluster 4: Daisy, Lily, Chrysanthemum, Poppy, Lavender\n- Cluster 5: Orchid, Peony, Carnation, Zinnia\n- Cluster 6: Hydrangea, Daffodil, Marigold, Lavender\n- Cluster 7: Lily, Chrysanthemum, Poppy\n- Cluster 8: Peony, Zinnia\n- Cluster 9: Daffodil, Marigold, Lavender\n- Cluster 10: Chrysanthemum, Poppy\n- Cluster 11: Carnation, Zinnia\n- Cluster 12: Marigold, Lavender\n\nStep 2: Combine overlapping clusters\n- Cluster 1 + 4 + 7: Rose, Lily, Chrysanthemum, Poppy, Carnation, Daisy, Lavender\n- Cluster 2 + 5 + 8 + 11: Sunflower, Orchid, Peony, Zinnia, Carnation\n- Cluster 3 + 6 + 9 + 12: Tulip, Hydrangea, Daffodil, Marigold, Peony, Lavender\n\nStep 3: Count the number of densely-connected clusters\nWe have 3 densely-connected clusters after combining the overlapping ones.\n\nAnswer: there are 3 clusters."
         }
     ],
     "tests": {
@@ -28,6 +28,13 @@
                 "Answer: there are 3 clusters"
             ],
             "parsed_response": "Answer: there are 3 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

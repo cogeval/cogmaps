@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field.\nHydrangea: 50\nOrchid: 10\nDaisy: 22\nTulip: 56\n\nStep 2: Calculate the total number of flowers for each path.\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) = 50\nPath 2: Entrance, Right (Sunflower), Left (Orchid) = 10\nPath 3: Entrance, Left (Rose), Right (Daisy) = 22\nPath 4: Entrance, Left (Rose), Left (Tulip) = 56\n\nStep 3: Determine the path with the maximum number of flowers.\nPath 4 has the maximum number of flowers (56).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: Recall the paths and the number of flowers found in each field.\n- Sunflower field -> Hydrangea field (50 hydrangea flowers)\n- Sunflower field -> Orchid field (10 orchid flowers)\n- Rose field -> Daisy field (22 daisy flowers)\n- Rose field -> Tulip field (56 tulip flowers)\n\nStep 2: Compare the number of flowers found in each path.\n- 50 hydrangea flowers\n- 10 orchid flowers\n- 22 daisy flowers\n- 56 tulip flowers\n\nStep 3: Identify the path with the maximum number of flowers.\n- The path with the maximum number of flowers is the one leading to the tulip field (56 tulip flowers).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field.\nHydrangea: 50\nOrchid: 10\nDaisy: 22\nTulip: 56\nLily: Unknown\n\nStep 2: Consider the new path.\nPath 5: Entrance, Lily (portal to neighboring fields of the Rose field)\n\nStep 3: Determine the maximum number of flowers that can be collected through the Lily portal.\nSince the Tulip field has the highest number of flowers (56) and is a neighboring field of the Rose field, going through the Lily portal will lead to the Tulip field.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Lily, Tulip"
+            "content": "Step 1: Recall the paths and the number of flowers found in each field.\n- Sunflower field -> Hydrangea field (50 hydrangea flowers)\n- Sunflower field -> Orchid field (10 orchid flowers)\n- Rose field -> Daisy field (22 daisy flowers)\n- Rose field -> Tulip field (56 tulip flowers) - This path is now blocked.\n- New path: Entrance -> Lily field -> Portal -> Any neighboring field of the rose field\n\nStep 2: Identify the neighboring fields of the rose field.\n- The neighboring fields of the rose field are the daisy field and the tulip field.\n\nStep 3: Compare the number of flowers found in each path, excluding the blocked path.\n- 50 hydrangea flowers\n- 10 orchid flowers\n- 22 daisy flowers (accessible through the lily field portal)\n- The tulip field path is blocked.\n\nStep 4: Identify the path with the maximum number of flowers.\n- The path with the maximum number of flowers is the one leading to the hydrangea field (50 hydrangea flowers).\n\nStep 5: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Sunflower field, Hydrangea field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily, Tulip"
+            "parsed_response": "Answer: Entrance, Sunflower field, Hydrangea field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

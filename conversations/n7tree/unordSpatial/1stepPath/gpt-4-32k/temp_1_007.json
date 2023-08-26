@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Evaluate the number of flowers on each path.\nStep 2: Path 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 Hydrangeas\nStep 3: Path 2: Entrance, Right (Sunflower), Left (Orchid) - 10 Orchids\nStep 4: Path 3: Entrance, Left (Rose), Right (Daisy) - 22 Daisies\nStep 5: Path 4: Entrance, Left (Rose), Left (Tulip) - 56 Tulips\nStep 6: Compare the number of flowers in each path.\nStep 7: Select the path with the maximum number of flowers.\n\nAnswer: Entrance, Left, Left"
+            "content": "Step 1: Remember the fields visited and the number of flowers available for free.\nSunflower field -> Right: Hydrangea field (50 flowers) -> Left: Orchid field (10 flowers)\nRose field -> Right: Daisy field (22 flowers) -> Left: Tulip field (56 flowers)\n\nStep 2: Compare the number of flowers available in each path.\nPath 1 (Sunflower, Hydrangea, Orchid): 50 + 10 = 60 flowers\nPath 2 (Rose, Daisy, Tulip): 22 + 56 = 78 flowers\n\nStep 3: Determine which path offers the maximum number of flowers.\nPath 2 has more flowers (78) compared to Path 1 (60).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Daisy, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the initial directions given for reaching the sunflower field from the entrance.\nStep 2: Entrance, Right (Sunflower)\n\nAnswer: Entrance, Right"
+            "content": "The shortest path to the sunflower field starts at the entrance field. Here are the flower names in order, including entrance, separated by commas:\n\nAnswer: Entrance, Sunflower"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: entrance, sunflower"
             ],
-            "parsed_response": "Answer: Entrance, Right"
+            "parsed_response": "Answer: Entrance, Sunflower"
+        }
+    },
+    "scores": {
+        "1stepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

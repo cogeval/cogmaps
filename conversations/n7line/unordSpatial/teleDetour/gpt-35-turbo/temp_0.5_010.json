@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To determine the field that leads to the path with the maximum number of flowers, let's calculate the number of flowers in each possible path:\n\n1. Rose field -> Tulip field -> Orchid field: This path does not yield any flowers.\n2. Sunflower field -> Daisy field -> Hydrangea field: This path yields 50 hydrangea flowers.\n\nTherefore, the field that leads to the path with the maximum number of flowers is the Sunflower field. \n\nAnswer: Sunflower field."
+            "content": "To maximize the number of flowers, we need to choose the path that leads to the hydrangea field since we can get 50 flowers from there. Therefore, we start from the entrance and choose the sunflower field, then the daisy field, and finally the hydrangea field. \n\nAnswer: The hydrangea field."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "To determine the field that leads to the path with the maximum number of flowers, let's calculate the number of flowers in each possible path:\n\n1. Rose field -> Tulip field -> Orchid field: This path does not yield any flowers.\n2. Sunflower field -> Daisy field -> Hydrangea field: This path yields 50 hydrangea flowers.\n3. Lily field -> Peony field -> Daffodil field: This path does not yield any flowers.\n\nSince the regular path to the field with the maximum number of flowers is blocked, we need to consider alternative paths. Since the portal from the Daffodil field allows access to any neighbor field of the Daisy field, we can choose to go from the Daffodil field to the Daisy field, which leads to the Hydrangea field. This path yields 50 hydrangea flowers.\n\nTherefore, the field that leads to the path with the maximum number of flowers is the Sunflower field.\n\nAnswer: Sunflower field."
+            "content": "Since the regular path to the field with the maximum number of flowers is blocked, we need to find an alternative path. The daffodil field has a portal that can take us to any neighbor field of the daisy field. Since we don't know which field has the maximum number of flowers, we can use the portal to check all the neighbor fields of the daisy field. This way, we can find the field with the maximum number of flowers and take that path.\n\nAnswer: We need to take the path to the daffodil field, use the portal to check all the neighbor fields of the daisy field, and choose the field with the maximum number of flowers."
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: lily"
             ],
-            "parsed_response": "Answer: Sunflower field."
+            "parsed_response": "Answer: We need to take the path to the daffodil field, use the portal to check all the neighbor fields of the daisy field, and choose the field with the maximum number of flowers."
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

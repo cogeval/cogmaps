@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the paths and flower fields.\nStep 2: Identify the path with the maximum number of flowers.\nStep 3: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Rose Field, Tulip Field"
+            "content": "Step 1: List down the possible paths from the entrance and their corresponding number of free flowers.\n\nPath 1: Entrance, Right, Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right, Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left, Right (Daisy) - 22 daisy flowers\nPath 4: Entrance, Left, Left (Tulip) - 56 tulip flowers\n\nStep 2: Compare the number of free flowers in each path.\n\nStep 3: Identify the path with the maximum number of free flowers.\n\nAnswer: Entrance, Left, Left"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the remaining accessible paths and flower fields.\nStep 2: Identify the path with the maximum number of flowers, excluding the path to the tulip field.\nStep 3: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Sunflower Field, Hydrangea Field"
+            "content": "Step 1: Update the possible paths from the entrance and their corresponding number of free flowers, considering the tulip field is blocked.\n\nPath 1: Entrance, Right, Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right, Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left, Right (Daisy) - 22 daisy flowers\nPath 4: Entrance, Left, Left (Tulip) - Blocked\n\nStep 2: Compare the number of free flowers in the remaining accessible paths.\n\nStep 3: Identify the path with the maximum number of free flowers considering the blocked path.\n\nAnswer: Entrance, Right, Right"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, tulip, lily"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower Field, Hydrangea Field"
+            "parsed_response": "Answer: Entrance, Right, Right"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

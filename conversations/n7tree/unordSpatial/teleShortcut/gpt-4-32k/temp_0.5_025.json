@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Sunflower field -> Hydrangea field (50 hydrangea flowers)\n- Sunflower field -> Orchid field (10 orchid flowers)\n- Rose field -> Daisy field (22 daisy flowers)\n- Rose field -> Tulip field (56 tulip flowers)\n\nStep 2: Compare the number of flowers in each path.\n- Hydrangea: 50\n- Orchid: 10\n- Daisy: 22\n- Tulip: 56\n\nStep 3: Determine the path with the maximum number of flowers.\n- The path with the maximum number of flowers is the Tulip field with 56 tulip flowers.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Analyze the paths and the number of flowers available in each field.\nStep 2: Identify the path with the maximum number of flowers.\nStep 3: List the flower names in order, including the entrance, separated by commas.\n\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 daisy flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) - 56 tulip flowers\n\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers in each neighboring field of the Rose field.\n- Rose field -> Daisy field (22 daisy flowers)\n- Rose field -> Tulip field (56 tulip flowers)\n\nStep 2: Compare the number of flowers in each path.\n- Daisy: 22\n- Tulip: 56\n\nStep 3: Determine the path with the maximum number of flowers.\n- The path with the maximum number of flowers is the Tulip field with 56 tulip flowers.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Analyze the new information about the portal.\nStep 2: Identify the path with the maximum number of flowers, considering the portal.\nStep 3: List the flower names in order, including the entrance, separated by commas.\n\nNew Paths:\nPath 5: Entrance, Portal, Right (Daisy) - 22 daisy flowers\nPath 6: Entrance, Portal, Left (Tulip) - 56 tulip flowers\n\nComparing all paths:\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 daisy flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) - 56 tulip flowers\nPath 5: Entrance, Portal, Right (Daisy) - 22 daisy flowers\nPath 6: Entrance, Portal, Left (Tulip) - 56 tulip flowers\n\nAnswer: Entrance, Portal, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose field, Tulip field"
+            "parsed_response": "Answer: Entrance, Portal, Tulip"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

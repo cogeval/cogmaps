@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two possible paths and the number of flowers at each field:\n- Path 1: Entrance, Sunflower, Hydrangea (50 flowers), Orchid (10 flowers)\n- Path 2: Entrance, Rose, Daisy (22 flowers), Tulip (56 flowers)\n\nStep 2: Calculate the total number of flowers for each path:\n- Path 1: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\n- Path 2: 22 (Daisy) + 56 (Tulip) = 78 flowers\n\nStep 3: Compare the total number of flowers for each path to determine which path has the maximum number of flowers. In this case, Path 2 has 78 flowers, while Path 1 has 60 flowers.\n\nAnswer: Entrance, Rose, Daisy, Tulip"
+            "content": "Step 1: Identify the paths from the entrance to the final fields.\nStep 2: Calculate the number of flowers in each final field.\nStep 3: Compare the number of flowers in the final fields to determine which path has the maximum number of flowers.\n\nPaths and number of flowers:\n1. Entrance, right, right (Hydrangea field) - 50 flowers\n2. Entrance, right, left (Orchid field) - 10 flowers\n3. Entrance, left, right (Daisy field) - 22 flowers\n4. Entrance, left, left (Tulip field) - 56 flowers\n\nAnswer: Entrance, left, left"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the two possible paths and the number of flowers at each field, including the newly discovered lily field:\n- Path 1: Entrance, Sunflower, Hydrangea (50 flowers), Orchid (10 flowers)\n- Path 2: Entrance, Rose, Daisy (22 flowers), Tulip (56 flowers) - This path is now blocked\n- Path 3: Entrance, Lily, Tulip (56 flowers)\n\nStep 2: Calculate the total number of flowers for each available path:\n- Path 1: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\n- Path 3: 56 (Tulip) = 56 flowers\n\nStep 3: Compare the total number of flowers for each available path to determine which path has the maximum number of flowers. In this case, Path 1 has 60 flowers, while Path 3 has 56 flowers.\n\nAnswer: Entrance, Sunflower, Hydrangea, Orchid"
+            "content": "Step 1: Identify the new path with the lily field.\nStep 2: Calculate the number of flowers in the lily and tulip fields.\nStep 3: Compare the number of flowers in the final fields, excluding the blocked path (Entrance, left, left), to determine which path has the maximum number of flowers.\n\nPaths and number of flowers:\n1. Entrance, right, right (Hydrangea field) - 50 flowers\n2. Entrance, right, left (Orchid field) - 10 flowers\n3. Entrance, left, right (Daisy field) - 22 flowers\n4. Entrance, left, left (Tulip field) - Blocked\n5. Entrance, lily, tulip (Lily and Tulip fields combined) - Unknown number of flowers + 56 tulips\n\nAnswer: Entrance, lily, tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower, Hydrangea, Orchid"
+            "parsed_response": "Answer: Entrance, lily, tulip"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two paths from the entrance.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers for each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nPath 1 (Right side):\nEntrance, Sunflower field, Hydrangea field: 50 hydrangea flowers\nEntrance, Sunflower field, Orchid field: 10 orchid flowers\nTotal flowers for Path 1: 50 + 10 = 60 flowers\n\nPath 2 (Left side):\nEntrance, Rose field, Daisy field: 22 daisy flowers\nEntrance, Rose field, Tulip field: 56 tulip flowers\nTotal flowers for Path 2: 22 + 56 = 78 flowers\n\nPath 2 has more flowers than Path 1.\n\nAnswer: Entrance, Rose field, Daisy field, Tulip field"
+            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Right: Hydrangea (50) -> Left: Orchid (10)\n- Left path: Rose field -> Right: Daisy (22) -> Left: Tulip (56)\n\nStep 2: Compare the total number of flowers in each path.\n- Right path: 50 (Hydrangea) + 10 (Orchid) = 60\n- Left path: 22 (Daisy) + 56 (Tulip) = 78\n\nStep 3: Determine the path with the maximum number of flowers.\n- The left path has more flowers (78) than the right path (60).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Daisy, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the two paths from the entrance.\nStep 2: Calculate the total number of flowers for each path.\nStep 3: Compare the total number of flowers for each path.\nStep 4: Choose the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nSince the portal allows you to go to any neighboring field of the rose field, you can visit both the daisy field and the tulip field in one path.\n\nPath 1 (Portal):\nEntrance, Portal, Daisy field: 22 daisy flowers\nEntrance, Portal, Tulip field: 56 tulip flowers\nTotal flowers for Path 1: 22 + 56 = 78 flowers\n\nPath 2 (Left side):\nEntrance, Rose field, Daisy field: 22 daisy flowers\nEntrance, Rose field, Tulip field: 56 tulip flowers\nTotal flowers for Path 2: 22 + 56 = 78 flowers\n\nBoth paths have the same number of flowers.\n\nAnswer: Entrance, Portal, Daisy field, Tulip field"
+            "content": "Step 1: Recall the paths and the number of flowers in each neighboring field of the rose field.\n- Rose field -> Right: Daisy (22)\n- Rose field -> Left: Tulip (56)\n\nStep 2: Compare the total number of flowers in each path.\n- Right path: 22 (Daisy)\n- Left path: 56 (Tulip)\n\nStep 3: Determine the path with the maximum number of flowers.\n- The left path (Tulip) has more flowers (56) than the right path (Daisy, 22).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Portal, Daisy field, Tulip field"
+            "parsed_response": "Answer: Entrance, Tulip"
+        }
+    },
+    "scores": {
+        "teleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

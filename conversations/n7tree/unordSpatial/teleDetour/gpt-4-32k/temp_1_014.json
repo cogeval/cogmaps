@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths taken.\nStep 2: Identify the fields visited and the number of flowers found in each.\nStep 3: Determine the path with the maximum number of flowers.\nStep 4: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Rose Field, Tulip Field"
+            "content": "Step 1: Recall the number of flowers for each path\n- Sunflower field -> Hydrangea field: 50 hydrangea flowers\n- Sunflower field -> Orchid field: 10 orchid flowers\n- Rose field -> Daisy field: 22 daisy flowers\n- Rose field -> Tulip field: 56 tulip flowers\n\nStep 2: Compare the number of flowers for each path\n- Hydrangea field has more flowers than Orchid field\n- Tulip field has more flowers than Daisy field\n\nStep 3: Compare the maximum number of flowers for each side (right and left)\n- Sunflower field -> Hydrangea field has 50 flowers\n- Rose field -> Tulip field has 56 flowers\n\nStep 4: Choose the path with the maximum number of flowers\n- Rose field -> Tulip field has the maximum number of flowers (56)\n\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths taken and the new field.\nStep 2: Identify the fields visited and the number of flowers found in each.\nStep 3: Consider the portal in the lily field to any neighboring field of the rose field.\nStep 4: Determine the path with the maximum number of flowers considering the blocked path.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: Entrance, Lily Field, Portal, Tulip Field"
+            "content": "Step 1: Recall the number of flowers for each accessible path\n- Sunflower field -> Hydrangea field: 50 hydrangea flowers\n- Sunflower field -> Orchid field: 10 orchid flowers\n- Lily field -> (Portal) -> Rose field -> Daisy field: 22 daisy flowers\n- Lily field -> (Portal) -> Rose field -> Tulip field: 56 tulip flowers\n\nStep 2: Compare the number of flowers for each path\n- Hydrangea field has more flowers than Orchid field\n- Tulip field has more flowers than Daisy field\n\nStep 3: Compare the maximum number of flowers for each accessible side (Sunflower field and Lily field)\n- Sunflower field -> Hydrangea field has 50 flowers\n- Lily field -> (Portal) -> Rose field -> Tulip field has 56 flowers\n\nStep 4: Choose the path with the maximum number of flowers\n- Lily field -> (Portal) -> Rose field -> Tulip field has the maximum number of flowers (56)\n\nAnswer: Entrance, Lily field, Portal, Rose field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily Field, Portal, Tulip Field"
+            "parsed_response": "Answer: Entrance, Lily field, Portal, Rose field, Tulip field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

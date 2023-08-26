@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Right (Hydrangea field, 50 flowers) -> Left (Orchid field, 10 flowers)\n- Left path: Rose field -> Right (Daisy field, 22 flowers) -> Left (Tulip field, 56 flowers)\n\nStep 2: Calculate the total number of flowers for each path.\n- Right path: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\n- Left path: 22 (Daisy) + 56 (Tulip) = 78 flowers\n\nStep 3: Compare the total number of flowers for each path and select the path with the maximum number of flowers.\n- Left path has 78 flowers, which is greater than the 60 flowers on the right path.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Daisy, Tulip"
+            "content": "Step 1: Identify the paths and the number of flowers in each path.\nPath 1: Entrance, Right, Right (Sunflower, Hydrangea) - 50 Hydrangea flowers\nPath 2: Entrance, Right, Left (Sunflower, Orchid) - 10 Orchid flowers\nPath 3: Entrance, Left, Right (Rose, Daisy) - 22 Daisy flowers\nPath 4: Entrance, Left, Left (Rose, Tulip) - 56 Tulip flowers\n\nStep 2: Determine the path with the maximum number of flowers.\nPath 4 has the highest number of flowers with 56 Tulip flowers.\n\nStep 3: List the flower names in order for the path with the maximum number of flowers.\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Right (Hydrangea field, 50 flowers) -> Left (Orchid field, 10 flowers)\n- Left path: Rose field -> Right (Daisy field, 22 flowers) -> Left (Tulip field, 56 flowers) - This path is now blocked.\n- New path: Lily field -> Tulip field (56 flowers)\n\nStep 2: Calculate the total number of flowers for each available path.\n- Right path: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\n- New path: 56 (Tulip) = 56 flowers\n\nStep 3: Compare the total number of flowers for each available path and select the path with the maximum number of flowers.\n- Right path has 60 flowers, which is greater than the 56 flowers on the new path.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Sunflower, Hydrangea, Orchid"
+            "content": "Step 1: Identify the new path and the number of flowers in each path.\nPath 1: Entrance, Right, Right (Sunflower, Hydrangea) - 50 Hydrangea flowers\nPath 2: Entrance, Right, Left (Sunflower, Orchid) - 10 Orchid flowers\nPath 3: Entrance, Left, Right (Rose, Daisy) - 22 Daisy flowers\nPath 4: Entrance, Left, Left (Rose, Tulip) - 56 Tulip flowers (blocked)\nPath 5: Entrance, Lily, Tulip - Unknown number of Lily flowers + 56 Tulip flowers\n\nStep 2: Since the path to the Tulip field (Path 4) is blocked, we need to find the path with the next highest number of flowers.\nPath 1 has the next highest number of flowers with 50 Hydrangea flowers.\n\nStep 3: List the flower names in order for the path with the next highest number of flowers.\nAnswer: Entrance, Sunflower, Hydrangea"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Sunflower, Hydrangea, Orchid"
+            "parsed_response": "Answer: Entrance, Sunflower, Hydrangea"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

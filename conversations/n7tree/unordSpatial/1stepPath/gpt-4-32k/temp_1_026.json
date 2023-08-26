@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field.\nSunflower field: 0 flowers\nHydrangea field: 50 flowers\nOrchid field: 10 flowers\nRose field: 0 flowers\nDaisy field: 22 flowers\nTulip field: 56 flowers\n\nStep 2: Identify the maximum number of flowers in one path.\nPath 1: Entrance, Right, Sunflower field, Right, Hydrangea field (50 flowers)\nPath 2: Entrance, Right, Sunflower field, Left, Orchid field (10 flowers)\nPath 3: Entrance, Left, Rose field, Right, Daisy field (22 flowers)\nPath 4: Entrance, Left, Rose field, Left, Tulip field (56 flowers)\n\nStep 3: Determine the path with the maximum number of flowers.\nPath 4 has the maximum number of flowers (56 tulip flowers).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Analyze the choices and the number of flowers at each field.\nStep 2: Compare the two main paths from the entrance.\nStep 3: Identify the path with the maximum number of flowers.\n\nFrom the entrance, there are two main paths:\n\nPath 1: Entrance -> Sunflower Field -> Hydrangea Field (50 flowers)\n             -> Sunflower Field -> Orchid Field (10 flowers)\n\nPath 2: Entrance -> Rose Field -> Daisy Field (22 flowers)\n             -> Rose Field -> Tulip Field (56 flowers)\n\nCalculating the total number of flowers for each path:\n\nPath 1: 50 (Hydrangea) + 10 (Orchid) = 60 flowers\nPath 2: 22 (Daisy) + 56 (Tulip) = 78 flowers\n\nSince Path 2 has more flowers, the optimal choice is to follow that path.\n\nAnswer: Entrance, Rose Field, Daisy Field, Rose Field, Tulip Field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the shortest path from the rose field to the tulip field. \n\nSince the tulip field is directly connected to the rose field, the shortest path is going from the rose field directly to the tulip field.\n\nStep 2: List the flower names in order, separated by commas.\n\nAnswer: Rose field, Tulip field"
+            "content": "The shortest path from the Rose Field to the Tulip Field is a direct one. Starting from the Rose Field, you would go to the field on the left to reach the Tulip Field.\n\nAnswer: Rose Field, Tulip Field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, tulip"
             ],
-            "parsed_response": "Answer: Rose field, Tulip field"
+            "parsed_response": "Answer: Rose Field, Tulip Field"
+        }
+    },
+    "scores": {
+        "1stepPath": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

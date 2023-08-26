@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,21 +15,28 @@
         },
         {
             "role": "user",
-            "content": " Imagine the Great Pacific Mall with 15 stores. Starbucks, Paris Baguette, H&M, Zara, and Sephora are all connected to each other. Pete\u2019s Coffee, Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Chickflea, Baskins and Robins, Levis, GNC Live Well, and Nike are all connected to each other. Marshalls, Paris Baguette, H&M, Zara, and Target are connected to each other. Carter Children, Nike, Sephora, and Bath and Body Works are connected to each other. Baskins and Robins, Levis, GNC Live Well, and Target are connected to each other. Paris Baguette, H&M, and Zara are connected to each other. Nike is connected to Bath and Body Works. Levis, GNC Live Well and Target are connected to each other. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. What is the shortest path from Starbucks to GNC Live Well? Please list the store names in order, separated by commas."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. What is the shortest path from the zinnia field to the lavender field? Starting from the zinnia field, please list the flower names in order, including zinnia, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "1. Start at Starbucks.\n2. Go to Paris Baguette.\n3. Proceed to H&M.\n4. Head to Zara.\n5. Move to Marshalls.\n6. Go to Target.\n7. Finally, reach GNC Live Well.\n\nAnswer: Starbucks, Paris Baguette, H&M, Zara, Marshalls, Target, GNC Live Well"
+            "content": "Step 1: Identify the connections for the zinnia field, which are: sunflower, orchid, peony, and carnation.\n\nStep 2: Determine the connections for each of the fields connected to the zinnia field:\n\n- Sunflower: orchid, peony, carnation\n- Orchid: sunflower, peony, carnation\n- Peony: sunflower, orchid, tulip, zinnia\n- Carnation: rose, sunflower, orchid, zinnia\n\nStep 3: Check if any of the connected fields has a direct connection to the lavender field:\n\n- Sunflower: no\n- Orchid: no\n- Peony: no\n- Carnation: no\n\nStep 4: Investigate the next layer of connections:\n\n- Sunflower: (orchid - peony, carnation), (peony - orchid, tulip), (carnation - rose, orchid)\n- Orchid: (sunflower - peony, carnation), (peony - sunflower, tulip), (carnation - rose, sunflower)\n- Peony: (sunflower - orchid, carnation), (orchid - sunflower, carnation), (tulip - hydrangea, daffodil, marigold)\n- Carnation: (rose - lily, chrysanthemum, poppy), (sunflower - orchid, peony), (orchid - sunflower, peony)\n\nStep 5: Check if any of the next layer fields has a direct connection to the lavender field:\n\n- Tulip: yes (through marigold field)\n\nStep 6: Build the shortest path using the information gathered:\n\nZinnia -> Peony -> Tulip -> Marigold -> Lavender\n\nAnswer: Zinnia, Peony, Tulip, Marigold, Lavender"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Starbucks, Paris Baguette, Marshalls, Target, GNC Live Well",
-                "Answer: Starbucks, H&M, Marshalls, Target, GNC Live Well ",
-                "Answer: Starbucks, Zara, Marshalls, Target, GNC Live Well "
+                "Answer: zinnia, peony, tulip, hydrangea, lavender",
+                "Answer: zinnia, peony, tulip, daffodil, lavender",
+                "Answer: zinnia, peony, tulip, marigold, lavender"
             ],
-            "parsed_response": "Answer: Starbucks, Paris "
+            "parsed_response": "Answer: Zinnia, Peony, Tulip, Marigold, Lavender"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

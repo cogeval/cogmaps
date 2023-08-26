@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the fields and the number of flowers given away for free in each field.\n- Sunflower field: 0\n- Hydrangea field: 50\n- Orchid field: 10\n- Rose field: 0\n- Daisy field: 22\n- Tulip field: 56\n\nStep 2: Calculate the total number of flowers you can collect in each path from the entrance.\n- Entrance, right, right (Sunflower, Hydrangea): 50\n- Entrance, right, left (Sunflower, Orchid): 10\n- Entrance, left, right (Rose, Daisy): 22\n- Entrance, left, left (Rose, Tulip): 56\n\nStep 3: Determine which path allows you to collect the maximum number of flowers.\n- Entrance, left, left (Rose, Tulip) with 56 flowers\n\nAnswer: Entrance, Rose, Tulip"
+            "content": "Step 1: List the number of flowers in each field.\n- Sunflower field: 0 flowers\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Rose field: 0 flowers\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n\nStep 2: Determine the maximum number of flowers that can be collected on each path.\nPath 1: Entrance, Sunflower field, Hydrangea field (50 flowers)\nPath 2: Entrance, Sunflower field, Orchid field (10 flowers)\nPath 3: Entrance, Rose field, Daisy field (22 flowers)\nPath 4: Entrance, Rose field, Tulip field (56 flowers)\n\nStep 3: Compare the maximum number of flowers on each path and identify the path with the most flowers.\nPath 4 has the most flowers (56 tulips).\n\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the fields and the number of flowers given away for free in each field.\n- Sunflower field: 0\n- Hydrangea field: 50\n- Orchid field: 10\n- Rose field: 0\n- Daisy field: 22\n- Tulip field: 56\n- Lily field: 0 (assuming no flowers are given away for free in the new lily field)\n\nStep 2: Calculate the total number of flowers you can collect in each available path from the entrance, considering the blocked path to the tulip field from the rose field.\n- Entrance, right, right (Sunflower, Hydrangea): 50\n- Entrance, right, left (Sunflower, Orchid): 10\n- Entrance, left, right (Rose, Daisy): 22\n- Entrance, left, left, Lily, Tulip: 56 (the new path to the Tulip field through the Lily field)\n\nStep 3: Determine which path allows you to collect the maximum number of flowers, considering the blocked path.\n- Entrance, left, left, Lily, Tulip with 56 flowers\n\nAnswer: Entrance, Rose, Lily, Tulip"
+            "content": "Since the previous path with the maximum number of flowers (Entrance, Rose field, Tulip field) is blocked, let's explore the new field and then reevaluate the possible paths.\n\nStep 1: Check the new field.\n- Lily field: 0 flowers\n- Path from Lily field to Tulip field: unknown number of flowers\n\nStep 2: Add the new field to the existing path options.\nPath 5: Entrance, Lily field, Tulip field (unknown number of flowers)\n\nStep 3: Reevaluate the maximum number of flowers on each path, taking into account the blocked path.\nPath 1: Entrance, Sunflower field, Hydrangea field (50 flowers)\nPath 2: Entrance, Sunflower field, Orchid field (10 flowers)\nPath 3: Entrance, Rose field, Daisy field (22 flowers)\nPath 4: Entrance, Rose field, Tulip field (blocked)\nPath 5: Entrance, Lily field, Tulip field (unknown number of flowers)\n\nStep 4: Compare the maximum number of flowers on the available paths (excluding the blocked path).\nPath 1 has the most flowers among the known paths (50 hydrangeas).\n\nStep 5: Decide on the path to take, considering the unknown number of flowers in Path 5.\nSince the number of flowers in Path 5 is unknown, the safer option is to choose Path 1, as it is the path with the highest number of known flowers.\n\nAnswer: Entrance, Sunflower field, Hydrangea field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose, Lily, Tulip"
+            "parsed_response": "Answer: Entrance, Sunflower field, Hydrangea field"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

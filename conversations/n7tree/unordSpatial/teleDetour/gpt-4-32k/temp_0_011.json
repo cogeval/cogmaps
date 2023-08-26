@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Hydrangea field (50 flowers) or Orchid field (10 flowers)\n- Left path: Rose field -> Daisy field (22 flowers) or Tulip field (56 flowers)\n\nStep 2: Determine the maximum number of flowers in each path.\n- Right path: 50 flowers (Hydrangea field)\n- Left path: 56 flowers (Tulip field)\n\nStep 3: Compare the maximum number of flowers in each path and choose the path with the highest number of flowers.\n\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Recall the number of flowers in each field.\n- Sunflower field: 0 flowers\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Rose field: 0 flowers\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n\nStep 2: Calculate the total number of flowers for each path.\n- Path 1 (right, right): Sunflower field + Hydrangea field = 0 + 50 = 50 flowers\n- Path 2 (right, left): Sunflower field + Orchid field = 0 + 10 = 10 flowers\n- Path 3 (left, right): Rose field + Daisy field = 0 + 22 = 22 flowers\n- Path 4 (left, left): Rose field + Tulip field = 0 + 56 = 56 flowers\n\nStep 3: Determine the path with the maximum number of flowers.\n- Path 4 (left, left) has the maximum number of flowers (56 flowers).\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\n- Answer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths and the number of flowers in each field.\n- Right path: Sunflower field -> Hydrangea field (50 flowers) or Orchid field (10 flowers)\n- Left path: Rose field -> Daisy field (22 flowers) or Tulip field (56 flowers) (blocked)\n- New path: Lily field -> Portal to any neighboring field of the Rose field\n\nStep 2: Determine the maximum number of flowers in each available path.\n- Right path: 50 flowers (Hydrangea field)\n- New path: Since the portal in the Lily field can lead to any neighboring field of the Rose field, it can lead to the Daisy field (22 flowers) or the Tulip field (56 flowers).\n\nStep 3: Compare the maximum number of flowers in each available path and choose the path with the highest number of flowers.\n\nAnswer: Entrance, Lily field, Tulip field"
+            "content": "Step 1: Recall the number of flowers in each field and the new information about the lily field.\n- Sunflower field: 0 flowers\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Rose field: 0 flowers (blocked)\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers (blocked)\n- Lily field: 0 flowers (portal to neighboring fields of the rose field)\n\nStep 2: Calculate the total number of flowers for each available path.\n- Path 1 (right, right): Sunflower field + Hydrangea field = 0 + 50 = 50 flowers\n- Path 2 (right, left): Sunflower field + Orchid field = 0 + 10 = 10 flowers\n- Path 3 (new path): Entrance + Lily field = 0 + 0 = 0 flowers (but has a portal to neighboring fields of the rose field)\n\nStep 3: Determine the neighboring fields of the rose field and their flower counts.\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n\nStep 4: Calculate the total number of flowers for the path through the lily field portal.\n- Path 3 (new path): Lily field + Tulip field = 0 + 56 = 56 flowers (maximum flowers among neighboring fields of the rose field)\n\nStep 5: Determine the path with the maximum number of flowers.\n- Path 3 (new path) has the maximum number of flowers (56 flowers).\n\nStep 6: List the flower names in order, including the entrance, separated by commas.\n- Answer: Entrance, Lily field, Tulip field"
         }
     ],
     "tests": {
@@ -36,6 +36,13 @@
                 "Answer: rose, peony, daisy"
             ],
             "parsed_response": "Answer: Entrance, Lily field, Tulip field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

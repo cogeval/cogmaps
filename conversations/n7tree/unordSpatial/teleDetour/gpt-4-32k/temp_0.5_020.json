@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the flower fields visited and the number of free flowers in each field.\n- Sunflower field (entrance right): no free flowers\n- Hydrangea field (sunflower field right): 50 free flowers\n- Orchid field (sunflower field left): 10 free flowers\n- Rose field (entrance left): no free flowers\n- Daisy field (rose field right): 22 free flowers\n- Tulip field (rose field left): 56 free flowers\n\nStep 2: Calculate the total number of free flowers for each path.\n- Path 1 (entrance right, sunflower field, hydrangea field): 50 flowers\n- Path 2 (entrance right, sunflower field, orchid field): 10 flowers\n- Path 3 (entrance left, rose field, daisy field): 22 flowers\n- Path 4 (entrance left, rose field, tulip field): 56 flowers\n\nStep 3: Determine the path with the maximum number of free flowers.\n- Path 4 has the most free flowers (56).\n\nStep 4: List the flower names in order for the path with the maximum number of free flowers.\n- Entrance, Rose field, Tulip field\n\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Identify the two main paths from the entrance.\nStep 2: Calculate the total number of flowers in each path.\nStep 3: Compare the total number of flowers in each path.\nStep 4: Choose the path with the maximum number of flowers.\n\nPath 1: Entrance, Sunflower Field, Hydrangea Field (50 flowers), Orchid Field (10 flowers)\nTotal flowers in Path 1: 50 + 10 = 60\n\nPath 2: Entrance, Rose Field, Daisy Field (22 flowers), Tulip Field (56 flowers)\nTotal flowers in Path 2: 22 + 56 = 78\n\nSince Path 2 has more flowers, choose Path 2.\n\nAnswer: Entrance, Rose Field, Daisy Field, Tulip Field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the previously calculated number of free flowers in each field.\n- Hydrangea field: 50 free flowers\n- Orchid field: 10 free flowers\n- Daisy field: 22 free flowers\n- Tulip field: 56 free flowers\n- Lily field: unknown number of free flowers\n\nStep 2: Determine the new available paths through the lily field and portal.\n- Path 5 (entrance, lily field, portal, daisy field): 22 flowers\n- Path 6 (entrance, lily field, portal, tulip field): 56 flowers\n\nStep 3: Compare the new paths with the previously calculated paths.\n- Path 1 (entrance right, sunflower field, hydrangea field): 50 flowers (blocked)\n- Path 2 (entrance right, sunflower field, orchid field): 10 flowers (blocked)\n- Path 3 (entrance left, rose field, daisy field): 22 flowers (blocked)\n- Path 4 (entrance left, rose field, tulip field): 56 flowers (blocked)\n- Path 5 (entrance, lily field, portal, daisy field): 22 flowers\n- Path 6 (entrance, lily field, portal, tulip field): 56 flowers\n\nStep 4: Determine the path with the maximum number of free flowers.\n- Path 6 has the most free flowers (56).\n\nStep 5: List the flower names in order for the path with the maximum number of free flowers.\n- Entrance, Lily field, Tulip field\n\nAnswer: Entrance, Lily field, Tulip field"
+            "content": "Step 1: Identify the new path from the entrance.\nStep 2: Calculate the total number of flowers in the new path.\nStep 3: Use the portal in the lily field to access the neighboring fields of the rose field.\nStep 4: Calculate the total number of flowers in the neighboring fields of the rose field.\nStep 5: Add the total number of flowers in the new path and the neighboring fields of the rose field.\nStep 6: Choose the path with the maximum number of flowers.\n\nNew Path: Entrance, Lily Field, Portal\n\nNeighboring fields of the Rose Field: Daisy Field (22 flowers), Tulip Field (56 flowers)\nTotal flowers in neighboring fields of the Rose Field: 22 + 56 = 78\n\nSince the previous maximum path (Entrance, Rose Field, Daisy Field, Tulip Field) is now blocked, choose the new path and use the portal to access the neighboring fields of the rose field.\n\nAnswer: Entrance, Lily Field, Portal, Daisy Field, Tulip Field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily field, Tulip field"
+            "parsed_response": "Answer: Entrance, Lily Field, Portal, Daisy Field, Tulip Field"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

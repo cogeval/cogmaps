@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the number of flowers in each path.\nPath 1: Rose field -> Tulip field -> Orchid field -> 10 orchid flowers\nPath 2: Sunflower field -> Daisy field -> Hydrangea field -> 50 hydrangea flowers\n\nStep 2: Compare the number of flowers in both paths.\n\nStep 3: Determine the path with the maximum number of flowers.\n\nAnswer: Sunflower field"
+            "content": "Step 1: Identify the number of flowers in each path.\nPath 1 (Rose field): Rose field -> Tulip field -> Orchid field (10 orchid flowers)\nPath 2 (Sunflower field): Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers)\n\nStep 2: Compare the number of flowers in each path.\nPath 1 has 10 flowers, and Path 2 has 50 flowers.\n\nStep 3: Choose the path with the maximum number of flowers.\nPath 2 (Sunflower field) leads to the maximum number of flowers.\n\nAnswer: Sunflower field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the number of flowers in each path.\nPath 1: Rose field -> Tulip field -> Orchid field -> 10 orchid flowers\nPath 2: Sunflower field -> Daisy field -> Hydrangea field -> 50 hydrangea flowers\nPath 3: Lily field -> Peony field -> Hydrangea field -> 50 hydrangea flowers\n\nStep 2: Compare the number of flowers in all paths.\n\nStep 3: Determine the path with the maximum number of flowers.\n\nStep 4: Since the regular path to the field with the maximum number of flowers (Path 2) is blocked, choose the next path with the maximum number of flowers.\n\nAnswer: Lily field"
+            "content": "Step 1: Identify the number of flowers in each path.\nPath 1 (Rose field): Rose field -> Tulip field -> Orchid field (10 orchid flowers)\nPath 2 (Sunflower field): Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers) - This path is now blocked.\nPath 3 (Lily field): Lily field -> Peony field -> Hydrangea field (unknown number of hydrangea flowers)\n\nStep 2: Compare the number of flowers in each available path.\nPath 1 has 10 flowers, and Path 3 has an unknown number of hydrangea flowers.\n\nStep 3: Choose the path with the maximum known number of flowers since Path 2 is blocked.\nPath 1 (Rose field) leads to 10 orchid flowers. Path 3 (Lily field) leads to an unknown number of hydrangea flowers. Without knowing the number of hydrangea flowers in Path 3, we cannot determine if it has more flowers than Path 1. \n\nAnswer: Rose field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: lily"
             ],
-            "parsed_response": "Answer: Lily field"
+            "parsed_response": "Answer: Rose field"
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

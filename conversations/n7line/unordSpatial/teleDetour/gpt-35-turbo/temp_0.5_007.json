@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To determine which field from the entrance will lead to the path with the maximum number of flowers, let's calculate the number of flowers in each path:\n\n1. Choosing the rose field:\n   - Rose field -> Tulip field -> Orchid field: 10 orchid flowers\n\n2. Choosing the sunflower field:\n   - Sunflower field -> Daisy field -> Hydrangea field: 50 hydrangea flowers\n\nBased on the calculations, choosing the sunflower field will lead to the path with the maximum number of flowers, which is 50 hydrangea flowers.\n\nAnswer: Sunflower field"
+            "content": "To maximize the number of flowers, we need to calculate the total number of flowers we can get from each path. \n\nPath 1: Rose field -> Tulip field -> Orchid field (10 orchid flowers) = 10 flowers \nPath 2: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers) = 50 flowers \n\nTherefore, the path that leads to the maximum number of flowers is the second path, which starts at the sunflower field and leads to the hydrangea field. \n\nAnswer: Hydrangea field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "To determine which field from the entrance will lead to the path with the maximum number of flowers, let's calculate the number of flowers in each available path:\n\n1. Choosing the rose field:\n   - Rose field -> Tulip field -> Orchid field: 10 orchid flowers\n\n2. Choosing the sunflower field:\n   - Sunflower field -> Daisy field -> Hydrangea field: 50 hydrangea flowers\n\n3. Choosing the lily field:\n   - Lily field -> Peony field -> Daffodil field: Unknown number of flowers\n\nSince the regular path to the field with the maximum number of flowers is blocked, we need to consider the unknown number of flowers in the Daffodil field when choosing the Lily field.\n\nWithout information about the number of flowers in the Daffodil field, we cannot determine which field from the entrance will lead to the path with the maximum number of flowers.\n\nAnswer: Cannot determine without information about the number of flowers in the Daffodil field."
+            "content": "We need to calculate the total number of flowers that we can get from each path. \n\nPath 1: Sunflower field -> Daisy field -> Hydrangea field (50 hydrangea flowers) = 50 flowers \nPath 2: Lily field -> Peony field -> Daffodil field -> Portal to any neighbor field of the Daisy field = Maximum number of flowers \n\nSince the regular path to the field with the maximum number of flowers is blocked, we need to take the second path that leads to the maximum number of flowers. This path starts at the lily field and leads to the peony field, then to the daffodil field, and finally to the portal that can take us to any neighbor field of the daisy field. \n\nAnswer: Daffodil field (via the Lily field and Peony field)"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: lily"
             ],
-            "parsed_response": "Answer: Cannot determine without information about the number of flowers in the Daffodil field."
+            "parsed_response": "Answer: Daffodil field (via the Lily field and Peony field)"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

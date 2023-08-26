@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Remember the number of flowers in each field.\nSunflower field: 0\nHydrangea field: 50\nOrchid field: 10\nRose field: 0\nDaisy field: 22\nTulip field: 56\n\nStep 2: Compare the number of flowers in the Hydrangea and Orchid fields.\nHydrangea field has more flowers than Orchid field (50 > 10).\n\nStep 3: Compare the number of flowers in the Daisy and Tulip fields.\nTulip field has more flowers than Daisy field (56 > 22).\n\nStep 4: Compare the number of flowers in the Hydrangea field and Tulip field.\nTulip field has more flowers than Hydrangea field (56 > 50).\n\nStep 5: Provide the path to the field with the maximum number of flowers.\nAnswer: entrance, rose field, tulip field"
+            "content": "Step 1: Recall the paths taken and the number of flowers found in each field.\nStep 2: Compare the total number of flowers found along each path.\nStep 3: Determine the path with the maximum number of flowers.\n\nPath 1: Entrance, Sunflower field, Hydrangea field (50 flowers)\nPath 2: Entrance, Sunflower field, Orchid field (10 flowers)\nPath 3: Entrance, Rose field, Daisy field (22 flowers)\nPath 4: Entrance, Rose field, Tulip field (56 flowers)\n\nStep 4: List the flower names in order for the path with the maximum number of flowers.\n\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Remember the number of flowers in each field.\nSunflower field: 0\nHydrangea field: 50\nOrchid field: 10\nRose field: 0\nDaisy field: 22\nTulip field: 56\n\nStep 2: Identify the neighboring fields to the rose field.\nNeighboring fields to the rose field are Daisy field and Tulip field.\n\nStep 3: Compare the number of flowers in the Daisy and Tulip fields.\nTulip field has more flowers than Daisy field (56 > 22).\n\nStep 4: Identify the path to the rose field that leads to the maximum number of flowers.\nThe path to the rose field that leads to the maximum number of flowers is the path to the Tulip field.\n\nStep 5: Provide the path that includes the entrance, rose field, and the neighboring field with the maximum number of flowers.\nAnswer: entrance, rose field, tulip field"
+            "content": "Step 1: Recall the paths taken and the number of flowers found in each field.\nStep 2: Consider the new information: you can now go to the rose field or any neighboring zone of the rose field.\nStep 3: Compare the total number of flowers found along each possible path.\n\nPath 1: Entrance, Sunflower field, Hydrangea field (50 flowers)\nPath 2: Entrance, Sunflower field, Orchid field (10 flowers)\nPath 3: Entrance, Rose field, Daisy field (22 flowers)\nPath 4: Entrance, Rose field, Tulip field (56 flowers)\nPath 5: Entrance, Rose field (unknown number of flowers, will not change the current max)\n\nStep 4: List the flower names in order for the path with the maximum number of flowers, since the new information does not provide details on other neighboring zones and their flower counts.\n\nAnswer: Entrance, Rose field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: entrance, rose field, tulip field"
+            "parsed_response": "Answer: Entrance, Rose field, Tulip field"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

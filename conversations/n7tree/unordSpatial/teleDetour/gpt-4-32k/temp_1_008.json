@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the different paths and the number of flowers in each path.\nStep 2: Compare the total number of flowers in each path.\nStep 3: Determine the path with the maximum number of flowers.\nStep 4: List the flower names in order, including the entrance, separated by commas.\n\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 daisy flowers\nPath 4: Entrance, Left (Rose), Left (Tulip) - 56 tulip flowers\n\nAnswer: Entrance, Left, Tulip"
+            "content": "Step 1: Recall the flower fields and the number of free flowers found in each:\n- Sunflower field: N/A (no flowers mentioned)\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Rose field: N/A (no flowers mentioned)\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n\nStep 2: Evaluate the two paths from the entrance and sum the flowers:\n1. Entrance, Right (Sunflower field), Right (Hydrangea field), Left (Orchid field) = 50 + 10 = 60 flowers\n2. Entrance, Left (Rose field), Right (Daisy field), Left (Tulip field) = 22 + 56 = 78 flowers\n\nStep 3: Determine which path provides the maximum number of flowers:\nPath 2 has more flowers (78 > 60).\n\nStep 4: Provide the flower names in order for the path with the maximum number of flowers:\nAnswer: Entrance, Rose, Daisy, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Analyze the new path and the number of flowers in each path.\nStep 2: Take note of the blocked path.\nStep 3: Compare the total number of flowers in the remaining paths and the new path.\nStep 4: Determine the path with the maximum number of flowers.\nStep 5: List the flower names in order, including the entrance, separated by commas.\n\nNew Path: Entrance, Lily, Portal\n\nBlocked Path: Entrance, Left (Rose), Left (Tulip) - 56 tulip flowers (previously the path with the maximum number of flowers)\n\nRemaining Paths:\nPath 1: Entrance, Right (Sunflower), Right (Hydrangea) - 50 hydrangea flowers\nPath 2: Entrance, Right (Sunflower), Left (Orchid) - 10 orchid flowers\nPath 3: Entrance, Left (Rose), Right (Daisy) - 22 daisy flowers\n\nThrough the Lily field's portal, you can access any neighboring field of the Rose field which are the Daisy and Tulip fields. So, you can access the Tulip field through the new path.\n\nNew Path with Maximum Flowers: Entrance, Lily, Portal (Tulip) - 56 tulip flowers\n\nAnswer: Entrance, Lily, Tulip"
+            "content": "Step 1: Recall the available flower fields and the number of free flowers found in each:\n- Sunflower field: N/A (no flowers mentioned)\n- Hydrangea field: 50 flowers\n- Orchid field: 10 flowers\n- Rose field: N/A (no flowers mentioned)\n- Daisy field: 22 flowers\n- Tulip field: 56 flowers\n- Lily field: N/A (no flowers mentioned)\n- Portal in the Lily field: allows access to any neighboring field of the Rose field\n\nStep 2: Since the previous maximum path (Entrance, Rose, Daisy, Tulip) is now blocked, we need to find a new path.\n\nStep 3: Consider the new Lily field and portal option from the entrance:\n1. Entrance, Lily, Portal to Daisy field, Tulip field = 22 + 56 = 78 flowers\n\nStep 4: Compare with the remaining old path (Entrance, Sunflower, Hydrangea, Orchid):\n1. Entrance, Sunflower, Hydrangea, Orchid = 50 + 10 = 60 flowers\n\nStep 5: Determine which path provides the maximum number of flowers:\nNew Lily field path has more flowers (78 > 60).\n\nStep 6: Provide the flower names in order for the path with the maximum number of flowers:\nAnswer: Entrance, Lily, Daisy, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Lily, Tulip"
+            "parsed_response": "Answer: Entrance, Lily, Daisy, Tulip"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

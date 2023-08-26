@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Remember the number of flowers in each field.\nHydrangea field: 50\nOrchid field: 10\nDaisy field: 22\nTulip field: 56\n\nStep 2: Compare the number of flowers in each final field.\nHydrangea field (50) vs Orchid field (10) - Choose Hydrangea field.\nDaisy field (22) vs Tulip field (56) - Choose Tulip field.\n\nStep 3: Compare the number of flowers in the chosen fields.\nHydrangea field (50) vs Tulip field (56) - Choose Tulip field.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Recall the number of flowers found in each field.\n- Hydrangea field: 50 hydrangeas\n- Orchid field: 10 orchids\n- Daisy field: 22 daisies\n- Tulip field: 56 tulips\n\nStep 2: Determine the path with the maximum number of flowers.\n- Right path (from entrance): Sunflower field -> Hydrangea field (50 hydrangeas) -> Orchid field (10 orchids) -> Total: 60 flowers\n- Left path (from entrance): Rose field -> Daisy field (22 daisies) -> Tulip field (56 tulips) -> Total: 78 flowers\n\nStep 3: Identify the path with the maximum number of flowers.\n- The left path has a total of 78 flowers, which is greater than the right path's total of 60 flowers.\n\nStep 4: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Daisy, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field and consider the possibility of going to neighboring zones of the rose field.\nHydrangea field: 50\nOrchid field: 10\nDaisy field: 22\nTulip field: 56\n\nStep 2: Compare the number of flowers in each final field.\nHydrangea field (50) vs Orchid field (10) - Choose Hydrangea field.\nDaisy field (22) vs Tulip field (56) - Choose Tulip field.\nRose field + neighboring zones vs Tulip field (56) - No information about the number of flowers in neighboring zones, so cannot determine.\n\nStep 3: Since we do not have enough information about the number of flowers in neighboring zones of the rose field, we cannot determine which path will lead to the maximum number of flowers starting from the entrance.\n\nAnswer: Insufficient information"
+            "content": "Step 1: Recall the number of flowers found in each neighboring field of the rose field.\n- Daisy field: 22 daisies\n- Tulip field: 56 tulips\n\nStep 2: Recall the number of flowers found in each neighboring field of the sunflower field (right side of entrance).\n- Hydrangea field: 50 hydrangeas\n- Orchid field: 10 orchids\n\nStep 3: Determine the path with the maximum number of flowers for each neighboring field of the rose field.\n- Rose field -> Daisy field (22 daisies) -> Tulip field (56 tulips) -> Total: 78 flowers\n- Rose field -> Tulip field (56 tulips) -> Total: 56 flowers\n\nStep 4: Determine the path with the maximum number of flowers for each neighboring field of the sunflower field (right side of entrance).\n- Sunflower field -> Hydrangea field (50 hydrangeas) -> Orchid field (10 orchids) -> Total: 60 flowers\n- Sunflower field -> Orchid field (10 orchids) -> Total: 10 flowers\n\nStep 5: Identify the path with the maximum number of flowers.\n- The path through the rose field's neighboring zones (Daisy and Tulip fields) has a total of 78 flowers, which is greater than the right path's total of 60 flowers.\n\nStep 6: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose, Daisy, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Insufficient information"
+            "parsed_response": "Answer: Entrance, Rose, Daisy, Tulip"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

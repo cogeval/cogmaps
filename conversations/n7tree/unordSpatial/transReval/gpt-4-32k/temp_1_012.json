@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths visited and the number of free flowers found in each field.\nStep 2: Identify the path with the maximum number of free flowers.\nStep 3: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: entrance, rose field, tulip field"
+            "content": "Step 1: Recall the fields and their connections from the entrance\n- Entrance: Right (Sunflower field) or Left (Rose field)\n- Sunflower field: Right (Hydrangea field) or Left (Orchid field)\n- Rose field: Right (Daisy field) or Left (Tulip field)\n\nStep 2: Identify the number of free flowers in each final field\n- Hydrangea field: 50 hydrangea flowers\n- Orchid field: 10 orchid flowers\n- Daisy field: 22 daisy flowers\n- Tulip field: 56 tulip flowers\n\nStep 3: Determine which field has the maximum number of free flowers\n- Tulip field has the most flowers with 56 tulips\n\nStep 4: List the flower names in order, from the entrance to the field with the maximum number of flowers\n- Entrance, Rose field, Tulip field\n\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the paths visited and the number of free flowers found in each field, excluding the blocked path to the tulip field.\nStep 2: Identify the path with the maximum number of free flowers, excluding the tulip field.\nStep 3: List the flower names in order, including the entrance, separated by commas.\n\nAnswer: entrance, rose field, daisy field"
+            "content": "Step 1: Recall the fields and their connections from the entrance (excluding the blocked Tulip field)\n- Entrance: Right (Sunflower field) or Left (Rose field)\n- Sunflower field: Right (Hydrangea field) or Left (Orchid field)\n- Rose field: Right (Daisy field)\n\nStep 2: Identify the number of free flowers in each final field (excluding the blocked Tulip field)\n- Hydrangea field: 50 hydrangea flowers\n- Orchid field: 10 orchid flowers\n- Daisy field: 22 daisy flowers\n\nStep 3: Determine which field has the maximum number of free flowers (excluding the blocked Tulip field)\n- Hydrangea field has the most flowers with 50 hydrangeas\n\nStep 4: List the flower names in order, from the entrance to the field with the maximum number of flowers (excluding the blocked Tulip field)\n- Entrance, Sunflower field, Hydrangea field\n\nAnswer: Entrance, Sunflower field, Hydrangea field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, tulip, lily"
             ],
-            "parsed_response": "Answer: entrance, rose field, daisy field"
+            "parsed_response": "Answer: Entrance, Sunflower field, Hydrangea field"
+        }
+    },
+    "scores": {
+        "transReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

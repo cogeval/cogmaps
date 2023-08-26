@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine the Great Pacific Mall with 15 stores. Starbucks is connected to Paris Baguette, H&M, Zara, and Sephora. Pete's Coffee is connected to Carter Children, Nike, Sephora, and Bath and Body Works. Chickflea is connected to Baskins and Robins, Levis, GNC Live Well, and Nike. Marshalls is connected to Paris Baguette, H&M, Zara, and Target. Carter Children is connected to Nike, Sephora, and Bath and Body Works. Baskins and Robins is connected to Levis, GNC Live Well, and Target. Paris Baguette is connected to H&M and Zara. Nike is connected to Bath and Body Works. Levis is connected to GNC Live Well and Target. H&M is connected to Zara. Sephora is connected to Bath and Body Works. GNC Live Well is connected to Target. How many densely-connected store clusters do we have in this mall? A densely-connected cluster is a group of stores that are connected to themselves with a max of 2 stores."
+            "content": "Imagine a flower county with 15 flower fields. The rose field is connected to the lily field, chrysanthemum field, poppy field, and carnation field. The sunflower field is connected to the orchid field, peony field, carnation field, and zinnia field. The tulip field is connected to the hydrangea field, daffodil field, marigold field, and peony field. The daisy field is connected to the lily field, chrysanthemum field, poppy field, and lavender field. The orchid field is connected to the peony field, carnation field, and zinnia field. The hydrangea field is connected to the daffodil field, marigold field, and lavender field. The lily field is connected to the chrysanthemum field, and poppy field. The peony field is connected to the zinnia field. The daffodil field is connected to the marigold field and lavender field. The chrysanthemum field is connected to poppy field. The carnation field is connected to the zinnia field. The marigold field is connected to the lavender field. How many densely-connected field clusters do we have in this county? A densely-connected cluster is a group of fields that are connected to themselves with a minimum of 2 fields."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the connections between stores.\nStep 2: Determine the densely-connected clusters based on the connections.\nStep 3: Count the number of densely-connected clusters.\n\nStep 1:\n- Starbucks: Paris Baguette, H&M, Zara, Sephora\n- Pete's Coffee: Carter Children, Nike, Sephora, Bath and Body Works\n- Chickflea: Baskins and Robins, Levis, GNC Live Well, Nike\n- Marshalls: Paris Baguette, H&M, Zara, Target\n- Carter Children: Nike, Sephora, Bath and Body Works\n- Baskins and Robins: Levis, GNC Live Well, Target\n- Paris Baguette: H&M, Zara\n- Nike: Bath and Body Works\n- Levis: GNC Live Well, Target\n- H&M: Zara\n- Sephora: Bath and Body Works\n- GNC Live Well: Target\n\nStep 2:\nCluster 1: Starbucks, Paris Baguette, H&M, Zara\nCluster 2: Pete's Coffee, Carter Children, Nike, Sephora, Bath and Body Works\nCluster 3: Chickflea, Baskins and Robins, Levis, GNC Live Well, Nike\nCluster 4: Marshalls, Paris Baguette, H&M, Zara, Target\nCluster 5: Baskins and Robins, Levis, GNC Live Well, Target\n\nStep 3:\nThere are 5 densely-connected clusters.\n\nAnswer: there are 5 clusters"
+            "content": "Step 1: Identify the densely-connected clusters by examining the connections between fields.\n\nCluster 1: Rose, Lily, Chrysanthemum, Poppy, Carnation\n- Rose is connected to Lily, Chrysanthemum, Poppy, and Carnation.\n- Lily is connected to Chrysanthemum and Poppy.\n- Chrysanthemum is connected to Poppy.\n- Carnation is connected to Zinnia.\n\nCluster 2: Sunflower, Orchid, Peony, Zinnia, Carnation\n- Sunflower is connected to Orchid, Peony, Carnation, and Zinnia.\n- Orchid is connected to Peony, Carnation, and Zinnia.\n- Peony is connected to Zinnia.\n- Zinnia is connected to Carnation.\n\nCluster 3: Tulip, Hydrangea, Daffodil, Marigold, Lavender, Peony\n- Tulip is connected to Hydrangea, Daffodil, Marigold, and Peony.\n- Hydrangea is connected to Daffodil, Marigold, and Lavender.\n- Daffodil is connected to Marigold and Lavender.\n- Marigold is connected to Lavender.\n- Peony is connected to Zinnia (already in Cluster 2).\n\nCluster 4: Daisy, Lily, Chrysanthemum, Poppy, Lavender\n- Daisy is connected to Lily, Chrysanthemum, Poppy, and Lavender.\n- Lily, Chrysanthemum, and Poppy are already in Cluster 1.\n- Lavender is connected to Marigold (already in Cluster 3).\n\nStep 2: Combine overlapping clusters.\n\n- Cluster 1 and Cluster 4 share Lily, Chrysanthemum, and Poppy, so they can be combined.\n- Cluster 2 and Cluster 3 share Peony, so they can be combined.\n\nCombined Cluster 1: Rose, Lily, Chrysanthemum, Poppy, Carnation, Daisy, Lavender\nCombined Cluster 2: Sunflower, Orchid, Peony, Zinnia, Carnation, Tulip, Hydrangea, Daffodil, Marigold, Lavender\n\nStep 3: Count the number of densely-connected clusters.\n\nAnswer: there are 2 clusters."
         }
     ],
     "tests": {
@@ -27,7 +27,14 @@
             "expected_answer": [
                 "Answer: there are 3 clusters"
             ],
-            "parsed_response": "Answer: there are 5 clusters"
+            "parsed_response": "Answer: there are 2 clusters"
+        }
+    },
+    "scores": {
+        "nClusters": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

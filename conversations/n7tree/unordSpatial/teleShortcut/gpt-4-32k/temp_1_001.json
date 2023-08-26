@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Review the information given about the fields and the number of flowers available for free.\n- Entrance\n  - Right: Sunflower field\n    - Right: Hydrangea field (50 flowers)\n    - Left: Orchid field (10 flowers)\n  - Left: Rose field\n    - Right: Daisy field (22 flowers)\n    - Left: Tulip field (56 flowers)\n\nStep 2: Compare the number of flowers in each path.\n- Right path: Entrance -> Sunflower field -> Hydrangea field = 50 flowers\n- Left path: Entrance -> Rose field -> Tulip field = 56 flowers\n\nStep 3: Determine which path has the maximum number of flowers.\n- Left path (56 flowers) > Right path (50 flowers)\n\nStep 4: Provide the final outcome following the regular expression 'Answer: [A-Za-z ]+'.\n\nAnswer: Entrance, Rose field, Tulip field"
+            "content": "Step 1: Review the available paths and the number of flowers in each field.\nStep 2: Identify the fields visited on each path.\nStep 3: Calculate the total number of flowers in each path.\nStep 4: Compare the total number of flowers and choose the path with the maximum number of flowers.\nStep 5: List the flower fields in order on the chosen path.\n\nPath 1: Entrance, Sunflower, Hydrangea (50 flowers)\nPath 2: Entrance, Sunflower, Orchid (10 flowers)\nPath 3: Entrance, Rose, Daisy (22 flowers)\nPath 4: Entrance, Rose, Tulip (56 flowers)\n\nComparing the total number of flowers, Path 4 has the maximum number of flowers.\n\nAnswer: Entrance, Rose, Tulip"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Reevaluate the information considering the portal from the entrance to any neighboring field of the Rose field.\n- Entrance (with portal)\n  - Right: Sunflower field\n    - Right: Hydrangea field (50 flowers)\n    - Left: Orchid field (10 flowers)\n  - Left: Rose field\n    - Right: Daisy field (22 flowers)\n    - Left: Tulip field (56 flowers)\n\nStep 2: Determine possible paths to the neighboring fields of the Rose field through the portal.\n- Portal paths:\n  1. Entrance -> Daisy field (22 flowers)\n  2. Entrance -> Tulip field (56 flowers)\n\nStep 3: Compare the number of flowers in each path, including the previously evaluated paths without the portal.\n- Right path without portal: Entrance -> Sunflower field -> Hydrangea field = 50 flowers\n- Left path without portal: Entrance -> Rose field -> Tulip field = 56 flowers\n- Portal path 1: Entrance -> Daisy field = 22 flowers\n- Portal path 2: Entrance -> Tulip field = 56 flowers\n\nStep 4: Determine which path has the maximum number of flowers.\n- Left path without portal (56 flowers) = Portal path 2 (56 flowers) > Right path without portal (50 flowers) > Portal path 1 (22 flowers)\n\nStep 5: Provide the final outcome following the regular expression 'Answer: [A-Za-z ]+'.\n\nAnswer: Entrance, Tulip field"
+            "content": "Step 1: Review the updated options for paths, now including the portal to neighboring fields of the rose field.\nStep 2: Identify the fields visited on each new path.\nStep 3: Calculate the total number of flowers in each new path.\nStep 4: Compare the total number of flowers and choose the path with the maximum number of flowers.\nStep 5: List the flower fields in order on the chosen path.\n\nNew paths with portal access:\nPath 1: Entrance, Portal, Daisy (22 flowers)\nPath 2: Entrance, Portal, Tulip (56 flowers)\nPath 3: Entrance, Portal, Rose, Sunflower, Hydrangea (50 flowers)\nPath 4: Entrance, Portal, Rose, Sunflower, Orchid (10 flowers)\n\nComparing the total number of flowers, Path 2 still has the maximum number of flowers.\n\nAnswer: Entrance, Portal, Tulip"
         }
     ],
     "tests": {
@@ -35,7 +35,7 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: [A-Za-z ]+'."
+            "parsed_response": "Answer: Entrance, Portal, Tulip"
         }
     },
     "scores": {

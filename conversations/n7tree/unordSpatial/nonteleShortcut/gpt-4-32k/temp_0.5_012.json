@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field.\n- Sunflower field: not specified\n- Hydrangea field: 50 hydrangea flowers\n- Orchid field: 10 orchid flowers\n- Rose field: not specified\n- Daisy field: 22 daisy flowers\n- Tulip field: 56 tulip flowers\n\nStep 2: Calculate the maximum number of flowers for each path.\n- Right path (Sunflower, Hydrangea, Orchid): 50 hydrangea flowers + 10 orchid flowers = 60 flowers\n- Left path (Rose, Daisy, Tulip): 22 daisy flowers + 56 tulip flowers = 78 flowers\n\nStep 3: Compare the total number of flowers for each path and determine the path with the maximum number of flowers.\n- Right path: 60 flowers\n- Left path: 78 flowers\n\nStep 4: List the flower names in order, including the entrance, separated by commas for the path with the maximum number of flowers.\nAnswer: Entrance, Rose, Daisy, Tulip"
+            "content": "Step 1: Identify the two main paths from the entrance.\nPath 1: Entrance, Right field (Sunflower field)\nPath 2: Entrance, Left field (Rose field)\n\nStep 2: Identify the number of flowers in each sub-path.\nPath 1A: Sunflower field, Right field (Hydrangea field) - 50 hydrangea flowers\nPath 1B: Sunflower field, Left field (Orchid field) - 10 orchid flowers\nPath 2A: Rose field, Right field (Daisy field) - 22 daisy flowers\nPath 2B: Rose field, Left field (Tulip field) - 56 tulip flowers\n\nStep 3: Compare the number of flowers in each path.\nPath 1A: 50 hydrangea flowers\nPath 1B: 10 orchid flowers\nPath 2A: 22 daisy flowers\nPath 2B: 56 tulip flowers\n\nStep 4: Determine the path with the maximum number of flowers.\nPath 2B has the maximum number of flowers (56 tulip flowers).\n\nStep 5: List the flower names in order, including the entrance, separated by commas.\nAnswer: Entrance, Rose field, Tulip field"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Step 1: Recall the number of flowers in each field and the new information about the left path (Rose field and its neighboring zones).\n- Sunflower field: not specified\n- Hydrangea field: 50 hydrangea flowers\n- Orchid field: 10 orchid flowers\n- Rose field: not specified\n- Daisy field: 22 daisy flowers\n- Tulip field: 56 tulip flowers\n\nStep 2: Identify the neighboring zones of the Rose field.\n- Daisy field\n- Tulip field\n\nStep 3: Calculate the maximum number of flowers for each path.\n- Right path (Sunflower, Hydrangea, Orchid): 50 hydrangea flowers + 10 orchid flowers = 60 flowers\n- Left path (Rose, Daisy, Tulip): 22 daisy flowers + 56 tulip flowers = 78 flowers\n- Left path with neighboring zones (Rose, Daisy): 22 daisy flowers\n- Left path with neighboring zones (Rose, Tulip): 56 tulip flowers\n\nStep 4: Compare the total number of flowers for each path and determine the path with the maximum number of flowers.\n- Right path: 60 flowers\n- Left path: 78 flowers\n- Left path with neighboring zones (Rose, Daisy): 22 flowers\n- Left path with neighboring zones (Rose, Tulip): 56 flowers\n\nStep 5: List the flower names in order, including the entrance, separated by commas for the path with the maximum number of flowers.\nAnswer: Entrance, Rose, Daisy, Tulip"
+            "content": "Step 1: Identify the two main paths from the entrance and the new information.\nPath 1: Entrance, Right field (Sunflower field)\nPath 2: Entrance, Left field (Rose field) - now with access to neighboring zones\n\nStep 2: Identify the number of flowers in each sub-path and neighboring zones.\nPath 1A: Sunflower field, Right field (Hydrangea field) - 50 hydrangea flowers\nPath 1B: Sunflower field, Left field (Orchid field) - 10 orchid flowers\nPath 2A: Rose field, Right field (Daisy field) - 22 daisy flowers\nPath 2B: Rose field, Left field (Tulip field) - 56 tulip flowers\nPath 2C: Rose field, neighboring zones (unknown)\n\nStep 3: Compare the number of flowers in each path.\nPath 1A: 50 hydrangea flowers\nPath 1B: 10 orchid flowers\nPath 2A: 22 daisy flowers\nPath 2B: 56 tulip flowers\nPath 2C: unknown\n\nStep 4: Determine if any neighboring zones have more flowers than the current maximum.\nSince we don't have information about the neighboring zones, we cannot determine if they have more flowers than the current maximum (56 tulip flowers in Path 2B).\n\nStep 5: List the flower names in order, including the entrance, separated by commas, based on the current maximum.\nAnswer: Entrance, Rose field, Tulip field"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Rose, Daisy, Tulip"
+            "parsed_response": "Answer: Entrance, Rose field, Tulip field"
+        }
+    },
+    "scores": {
+        "nonteleShortcut": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

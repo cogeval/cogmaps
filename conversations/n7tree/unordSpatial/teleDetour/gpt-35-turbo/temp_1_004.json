@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To get the maximum number of flowers, we need to choose the path that leads us to the fields with the most flowers. Let's go through the options step by step:\n\n1. Enter through the entrance.\n2. Choose the field on the left and go to the orchid field (10 orchid flowers).\n3. Go back to the entrance.\n4. Choose the field on the right and go to the sunflower field.\n5. Choose the field on the right again and go to the hydrangea field (50 hydrangea flowers).\n6. Go back to the sunflower field.\n7. Choose the field on the left and go to the daisy field (22 daisy flowers).\n8. Go back to the entrance.\n9. Choose the field on the left and go to the rose field.\n10. Choose the field on the right and go to the tulip field (56 tulip flowers).\n\nSo, the path that allows us to collect the maximum number of flowers is: entrance, orchid field, sunflower field, hydrangea field, daisy field, rose field, tulip field.\n\nAnswer: Entrance, Orchid Field, Sunflower Field, Hydrangea Field, Daisy Field, Rose Field, Tulip Field."
+            "content": "Answer: Hydrangea, Orchid, Tulip, Daisy, Rose, Sunflower, Entrance"
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Since the previous path that led to the maximum number of flowers is now blocked, we need to find an alternate path. Let's reconsider our options step by step:\n\n1. Enter through the entrance.\n2. Choose the field on the left and go to the orchid field (10 orchid flowers).\n3. Go back to the entrance.\n4. Choose the new field that leads to the lily field.\n5. Through the portal in the lily field, go to the neighboring field of the rose field.\n6. Go back to the entrance.\n7. Choose the field on the right and go to the sunflower field.\n8. Choose the field on the right again and go to the hydrangea field (50 hydrangea flowers).\n9. Go back to the sunflower field.\n10. Choose the field on the left and go to the daisy field (22 daisy flowers).\n11. Go back to the entrance.\n12. Choose the field on the left and go to the rose field.\n13. Choose the field on the right (through the portal in the rose field) to go to the neighboring field.\n14. Go to the neighboring field again.\n15. Choose the field on the right and go to the tulip field (56 tulip flowers).\n\nSo, the new path that allows us to collect the maximum number of flowers is: entrance, orchid field, lily field (through the new field), neighboring field (through the lily field portal), sunflower field, hydrangea field, daisy field, rose field, neighboring field (through the rose field portal), tulip field.\n\nAnswer: Entrance, Orchid Field, Lily Field, Neighboring Field, Sunflower Field, Hydrangea Field, Daisy Field, Rose Field, Neighboring Field, Tulip Field."
+            "content": "Answer: Hydrangea, Orchid, Lily, [any neighboring field of Rose], Rose, Sunflower, Entrance"
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: rose, peony, daisy"
             ],
-            "parsed_response": "Answer: Entrance, Orchid Field, Lily Field, Neighboring Field, Sunflower Field, Hydrangea Field, Daisy Field, Rose Field, Neighboring Field, Tulip Field."
+            "parsed_response": "Answer: Hydrangea, Orchid, Lily, [any neighboring field of Rose], Rose, Sunflower, Entrance"
+        }
+    },
+    "scores": {
+        "teleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

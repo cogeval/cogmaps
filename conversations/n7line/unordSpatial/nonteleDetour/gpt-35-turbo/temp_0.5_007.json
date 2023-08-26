@@ -19,7 +19,7 @@
         },
         {
             "role": "assistant",
-            "content": "To find the field that leads to the path with the maximum number of flowers, let's analyze the options:\n\n1. If we choose the rose field, we can go to the tulip field and then to the orchid field. However, we don't take any flowers in the orchid field, so the total number of flowers is 0.\n\n2. If we choose the sunflower field, we can go to the daisy field and then to the hydrangea field. Again, we don't take any flowers in the hydrangea field, so the total number of flowers is 0.\n\nBased on these options, both paths result in 0 flowers. Therefore, neither field from the entrance leads to the path with the maximum number of flowers.\n\nAnswer: None"
+            "content": "To get the maximum number of flowers, we need to calculate the total number of flowers we can get from each path. \n\nPath 1: Entrance -> Rose field -> Tulip field -> Orchid field (10 orchids)\nTotal flowers = 10 orchids\n\nPath 2: Entrance -> Sunflower field -> Daisy field -> Hydrangea field (50 hydrangeas)\nTotal flowers = 50 hydrangeas\n\nTherefore, the path that leads to the maximum number of flowers is the second path that starts from the entrance and goes through the sunflower field, daisy field and finally the hydrangea field. \n\nAnswer: Hydrangea field."
         },
         {
             "role": "user",
@@ -27,7 +27,7 @@
         },
         {
             "role": "assistant",
-            "content": "Let's analyze the new options:\n\n1. If we choose the rose field, we can go to the tulip field and then to the orchid field, but we don't take any flowers in the orchid field.\n\n2. If we choose the sunflower field, we can go to the daisy field and then to the hydrangea field, but we don't take any flowers in the hydrangea field.\n\n3. If we choose the lily field, we can go to the peony field and then to the hydrangea field. Since the regular path to the hydrangea field is blocked, this is the only path available to us.\n\nBased on this, the lily field is the only field from the entrance that leads to the path with the maximum number of flowers.\n\nAnswer: Lily field"
+            "content": "Since the regular path to the field with the maximum number of flowers is blocked, we need to calculate the total number of flowers we can get from each path that is still available.\n\nPath 1: Entrance -> Rose field -> Tulip field -> Orchid field (10 orchids)\nTotal flowers = 10 orchids\n\nPath 2: Entrance -> Sunflower field -> Daisy field -> Hydrangea field (50 hydrangeas)\nTotal flowers = 50 hydrangeas\n\nPath 3: Entrance -> Lily field -> Peony field -> Hydrangea field (20 peonies + 50 hydrangeas)\nTotal flowers = 20 peonies + 50 hydrangeas = 70 flowers\n\nTherefore, the path that leads to the maximum number of flowers is the third path that starts from the entrance and goes through the lily field, peony field and finally the hydrangea field.\n\nAnswer: Hydrangea field."
         }
     ],
     "tests": {
@@ -35,7 +35,14 @@
             "expected_answer": [
                 "Answer: lily"
             ],
-            "parsed_response": "Answer: Lily field"
+            "parsed_response": "Answer: Hydrangea field."
+        }
+    },
+    "scores": {
+        "nonteleDetour": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }
