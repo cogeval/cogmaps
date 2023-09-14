@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,20 +15,29 @@
         },
         {
             "role": "user",
-            "content": " Imagine a university campus with 16 buildings. Electrical engineering building is connected to law school building, computer science building, heath center, and art library. Law school building is connected to electrical engineering building, computer science building, health center, and gym. Computer science building is connected to rooms electrical engineering building, law school building , health center and Starbucks. Health center is also connected to electrical engineering building, computer science building, law school buildings, and Yogurtland. Starbucks is connected to bioscience building, art library, student union building, and computer science building. Bioscience building is connected to Starbucks, art library, student union building, and KFC. Art library is connected to electrical engineering building, student union building, bioscience building, and Starbucks. Student union building is also connected to Starbucks, bioscience building, art library, and football stadium. Musical theater is connected to football stadium, swimming center, KFC, and science library. Football stadium is connected to musical theater, swimming center, student union building, and KFC. Swimming center is connected to Panda Express, musical theater, KFC, and football stadium. KFC is also connected to musical theater, football stadium, swimming center, and bioscience building. Panda Express is connected to Yogurtland, science library, gym, and swimming center. Yogurtland is connected to health center, Panda Express, science library and gym. Science library is connected to Panda Express, Yogurtland, gym, and musical theater. Gym is also connected to Panda Express, Yogurtland, science library, and law school building. What is the shortest path from the science library to the art library? Please list the buildings in order, separated by commas."
+            "content": "Imagine a flower county with 16 flower fields. The rose field is connected to the sunflower field, tulip field, daisy field, and lily field. The sunflower field is connected to the rose field, tulip field, daisy field, and aster fields. The tulip field is connected to the rose field, sunflower field, daisy field and orchid field. The daisy field is also connected to the rose field, sunflower field, tulip field, and zinnia field. The orchid field is connected to the hydrangea field, lily field, daffodil field, and tulip field. The hydrangea field is connected to the orchid field, lily field, peony field, and marigold field. The lily field is connected to rose field, peony field, hydrangea field, and orchid field. The peony field is also connected to the orchid field, hydrangea field, lily field, and chrysanthemum field. The daffodil field is connected to the chrysanthemum field, carnation field, marigold field, and lavender field. The chrysanthemum field is connected to the daffodil field, carnation field, peony field, and marigold field. The carnation field is connected to the poppy field, daffodil field, marigold field, and chrysanthemum field. The marigold field is also connected to the daffodil field, chrysanthemum field, carnation field, and hydrangea field. The poppy field is connected to the zinnia field, lavender field, aster field, and carnation field. The zinnia field is connected to the daisy field, poppy field, lavender field, and aster field. The lavender field is connected to poppy field, zinnia field, aster field, and daffodil field. The aster field is also connected to the poppy field, zinnia field, lavender field, and sunflower field. From the chrysanthemum field what is the shortest path to the sunflower field? Starting from chrysanthemum, please list the flower names in order, including chrysanthemum, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the starting point (science library) and the destination (art library).\nStep 2: Identify the buildings connected to the science library (Panda Express, Yogurtland, gym, and musical theater).\nStep 3: Determine the connections between the intermediate buildings identified in step 2 and the destination (art library).\n- Panda Express: No direct connection to the art library.\n- Yogurtland: No direct connection to the art library.\n- Gym: Connected to the law school building, which is connected to the electrical engineering building, which is connected to the art library.\n- Musical Theater: No direct connection to the art library.\nStep 4: Identify the shortest path.\n- The shortest path is through the gym, law school building, and electrical engineering building.\nStep 5: List the buildings in order, separated by commas.\n\nAnswer: Science library, gym, law school building, electrical engineering building, art library"
+            "content": "Step 1: Identify the starting point, which is the chrysanthemum field.\nStep 2: List the fields connected to the chrysanthemum field: daffodil, carnation, peony, and marigold.\nStep 3: Check each connected field to see if it is connected to the sunflower field directly or through one more connection:\n- Daffodil is connected to lavender, which is connected to the sunflower field through the aster field.\n- Carnation is connected to the poppy field, which is connected to the sunflower field through the aster field.\n- Peony is connected to the lily field, which is connected to the sunflower field through the rose field.\n- Marigold is connected to the hydrangea field, which is not directly connected to the sunflower field but is connected to the sunflower field through the tulip field, which is connected to the sunflower field.\n\nStep 4: Determine the shortest path to the sunflower field:\n- Chrysanthemum -> Daffodil -> Lavender -> Aster -> Sunflower (4 connections)\n- Chrysanthemum -> Carnation -> Poppy -> Aster -> Sunflower (4 connections)\n- Chrysanthemum -> Peony -> Lily -> Rose -> Sunflower (4 connections)\n- Chrysanthemum -> Marigold -> Hydrangea -> Tulip -> Sunflower (4 connections)\n\nAll paths have the same number of connections. Therefore, any of them can be considered the shortest path. We can choose one of them as the answer.\n\nAnswer: Chrysanthemum, Daffodil, Lavender, Aster, Sunflower"
         }
     ],
     "tests": {
         "nstepPath": {
             "expected_answer": [
-                "Answer: Science library, musical theater, KFC, bioscience building, art library",
-                "Answer: Science library, Yogurtland, health center, electrical engineering building, art library"
+                "Answer: chrysanthemum, peony, orchid, tulip, sunflower",
+                "Answer: chrysanthemum, peony, lily, rose, sunflower",
+                "Answer: chrysanthemum, daffodil, lavender, aster, sunflower",
+                "Answer: chrysanthemum, carnation, poppy, aster, sunflower"
             ],
-            "parsed_response": "Answer: Science library, gym, law school building, electrical engineering building, art library"
+            "parsed_response": "Answer: Chrysanthemum, Daffodil, Lavender, Aster, Sunflower"
+        }
+    },
+    "scores": {
+        "nstepPath": {
+            "score": 1.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
         }
     }
 }

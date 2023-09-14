@@ -6,7 +6,7 @@
     "top_p": 0.95,
     "frequency_penalty": 0,
     "presence_penalty": 0,
-    "max_tokens": 2048,
+    "max_tokens": 1024,
     "stop": null,
     "messages": [
         {
@@ -15,11 +15,11 @@
         },
         {
             "role": "user",
-            "content": "Imagine a flower county with 16 flower fields. The rose field is connected to the sunflower field, tulip field, daisy field, and lily field. The sunflower field is connected to the rose field, tulip field, daisy field, and aster fields. The tulip field is connected to the rose field, sunflower field, daisy field and orchid field. The daisy field is also connected to the rose field, sunflower field, tulip field, and zinnia field. The orchid field is connected to the hydrangea field, lily field, daffodil field, and tulip field. The hydrangea field is connected to the orchid field, lily field, peony field, and marigold field. The lily field is connected to rose field, peony field, hydrangea field, and orchid field. The peony field is also connected to the orchid field, hydrangea field, lily field, and chrysanthemum field. The daffodil field is connected to the chrysanthemum field, carnation field, marigold field, and lavender field. The chrysanthemum field is connected to the daffodil field, carnation field, peony field, and marigold field. The carnation field is connected to the poppy field, daffodil field, marigold field, and chrysanthemum field. The marigold field is also connected to the daffodil field, chrysanthemum field, carnation field, and hydrangea field. The poppy field is connected to the zinnia field, lavender field, aster field, and carnation field. The zinnia field is connected to the daisy field, poppy field, lavender field, and aster field. The lavender field is connected to poppy field, zinnia field, aster field, and daffodil field. The aster field is also connected to the poppy field, zinnia field, lavender field, and sunflower field. From the tulip field what is the shortest path to the lavender field? Starting from tulip, please list the flower names in order, including tulip, separated by commas."
+            "content": "Imagine a flower county with 16 flower fields. The rose field is connected to the sunflower field, tulip field, daisy field, and lily field. The sunflower field is connected to the rose field, tulip field, daisy field, and aster fields. The tulip field is connected to the rose field, sunflower field, daisy field and orchid field. The daisy field is also connected to the rose field, sunflower field, tulip field, and zinnia field. The orchid field is connected to the hydrangea field, lily field, daffodil field, and tulip field. The hydrangea field is connected to the orchid field, lily field, peony field, and marigold field. The lily field is connected to rose field, peony field, hydrangea field, and orchid field. The peony field is also connected to the orchid field, hydrangea field, lily field, and chrysanthemum field. The daffodil field is connected to the chrysanthemum field, carnation field, marigold field, and lavender field. The chrysanthemum field is connected to the daffodil field, carnation field, peony field, and marigold field. The carnation field is connected to the poppy field, daffodil field, marigold field, and chrysanthemum field. The marigold field is also connected to the daffodil field, chrysanthemum field, carnation field, and hydrangea field. The poppy field is connected to the zinnia field, lavender field, aster field, and carnation field. The zinnia field is connected to the daisy field, poppy field, lavender field, and aster field. The lavender field is connected to poppy field, zinnia field, aster field, and daffodil field. The aster field is also connected to the poppy field, zinnia field, lavender field, and sunflower field. From the rose field what is the shortest path to the poppy field? Starting from rose, please list the flower names in order, including rose, separated by commas."
         },
         {
             "role": "assistant",
-            "content": "Step 1: Identify the starting point, the tulip field.\nStep 2: List the fields connected to the tulip field: rose, sunflower, daisy, and orchid.\nStep 3: Determine the fields connected to each field in step 2 and their connection to the lavender field.\n- Rose: sunflower, tulip, daisy, lily - No direct connection to lavender.\n- Sunflower: rose, tulip, daisy, aster - Aster is connected to lavender.\n- Daisy: rose, sunflower, tulip, zinnia - Zinnia is connected to lavender.\n- Orchid: hydrangea, lily, daffodil, tulip - No direct connection to lavender.\nStep 4: Compare the paths found in step 3.\n- Tulip to lavender via sunflower and aster: tulip, sunflower, aster, lavender (3 connections)\n- Tulip to lavender via daisy and zinnia: tulip, daisy, zinnia, lavender (3 connections)\n\nAnswer: Tulip, Sunflower, Aster, Lavender"
+            "content": "Step 1: Identify the starting point - Rose field\nStep 2: Identify the destination - Poppy field\nStep 3: Analyze the connections from the Rose field to find the shortest path to the Poppy field.\n\nThe fields connected to the rose field are:\n1. Sunflower\n2. Tulip\n3. Daisy\n4. Lily\n\nStep 4: Check the connections from these fields to find the shortest path to the Poppy field.\n\n1. Sunflower connects to Aster, which connects to Poppy.\n   Path: Rose, Sunflower, Aster, Poppy (4 fields)\n   \n2. Tulip connects to Daisy, which connects to Zinnia, which connects to Poppy.\n   Path: Rose, Tulip, Daisy, Zinnia, Poppy (5 fields)\n\n3. Daisy connects to Zinnia, which connects to Poppy.\n   Path: Rose, Daisy, Zinnia, Poppy (4 fields)\n\n4. Lily connects to Orchid, which connects to Tulip, which connects to Daisy, which connects to Zinnia, which connects to Poppy.\n   Path: Rose, Lily, Orchid, Tulip, Daisy, Zinnia, Poppy (7 fields)\n\nStep 5: Choose the shortest path.\nThe shortest path is through Rose, Sunflower, Aster, Poppy or Rose, Daisy, Zinnia, Poppy (both paths include 4 fields).\n\nAnswer: Rose, Sunflower, Aster, Poppy"
         }
     ],
     "tests": {
@@ -28,12 +28,12 @@
                 "Answer: rose, sunflower, aster, poppy",
                 "Answer: rose, daisy, zinnia, poppy"
             ],
-            "parsed_response": "Answer: Tulip, Sunflower, Aster, Lavender"
+            "parsed_response": "Answer: Rose, Sunflower, Aster, Poppy"
         }
     },
     "scores": {
         "3stepPath": {
-            "score": 0.0,
+            "score": 1.0,
             "max_score": 1.0,
             "rubric": "gpt_rubric"
         }
