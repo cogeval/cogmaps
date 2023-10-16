@@ -29,10 +29,8 @@ const models = [
   "anthropic-claude-v1",
   "bard",
   "cohere-xlarge",
-  "forefront-pythia-20b",
   "gpt-4-32k",
   "gpt-35-turbo",
-  "huggingface-bigscience-bloombz",
   "replicate-alpaca-7b",
   "replicate-llama-13b",
   "text-davinci-003"
@@ -43,13 +41,13 @@ const temperatures = [
   "1"
 ];
 
-// const convIds = [
-//   "000", "001", "002", "003", "004", "005", "006", "007", "008", "009",
-//   "010", "011", "012", "013", "014", "015", "016", "017", "018", "019",
-//   "020", "021", "022", "023", "024", "025", "026", "027", "028", "029"
-// ]
+const convIdsAll= [
+  "000", "001", "002", "003", "004", "005", "006", "007", "008", "009",
+  "010", "011", "012", "013", "014", "015", "016", "017", "018", "019",
+  "020", "021", "022", "023", "024", "025", "026", "027", "028", "029"
+]
 
-const convIds = [
+const convIdsFirst = [
   "000"
 ]
 
@@ -61,7 +59,8 @@ const domainContainer = createDropdownContainer("Domain:", "domain", domains);
 const conditionContainer = createDropdownContainer("Condition:", "condition", conditions);
 const modelContainer = createDropdownContainer("Model:", "model", models);
 const temperatureContainer = createDropdownContainer("Temperature:", "temperature", temperatures);
-const convIdsContainer = createDropdownContainer("Conversation ID:", "convId", convIds);
+const convIdsContainer = createDropdownContainer("Conversation ID:", "convId", convIdsAll);
+
 
 // Append dropdown containers to select container
 selectContainer.appendChild(graphTypeContainer);
@@ -183,7 +182,12 @@ function displayChat() {
   const condition = conditionSelect.value;
   const model = modelSelect.value;
   const temperature = temperatureSelect.value;
-  const convId = convIdsSelect.value;
+  var convId = convIdsSelect.value;
+
+  if (!["gpt-4-32k", "gpt-35-turbo", "text-davinci-003"].includes(model)){
+    convIdsSelect.value = "000";
+    convId = convIdsSelect.value;
+  }
 
   // Construct JSON file path
   const jsonFilePath = `${baseUrl}/conversations/${graphType}/${domain}/${condition}/${model}/temp_${temperature}_${convId}.json`;
