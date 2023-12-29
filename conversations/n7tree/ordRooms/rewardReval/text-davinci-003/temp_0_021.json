@@ -1,0 +1,49 @@
+{
+    "conversation_id": "task_n7tree_ordRooms_exp_rewardReval_temp_0_21",
+    "model": "text-davinci-003",
+    "version": "2022-12-01",
+    "temperature": 0,
+    "top_p": 0.95,
+    "frequency_penalty": 0,
+    "presence_penalty": 0,
+    "max_tokens": 1024,
+    "stop": null,
+    "messages": [
+        {
+            "role": "system",
+            "content": "You are an AI assistant that helps people find information. You will receive a task and think step by step. Then provide your final outcome following the regular expression 'Answer: ([0-9]+,\\s*)*[0-9]+'"
+        },
+        {
+            "role": "user",
+            "content": "You are exploring a zoo. You enter zone 1 and you see two passages one on the right and one on the left. You choose the passage on the right and enter zone 3. You see two passages in zone 3. You can choose the passage on the left or the passage on the right. You choose the passage on the right, and your enter zone 7 and there's a cage. You open it and find $50 but remember you're only exploring so you don't take any money. Then you go back to zone 3, and this time you go to the passage on the left to zone 6. You find another cage; you open it and there's $10 (but you don't take any money). You go back to zone 1. This time you choose the passage on the left and you go to zone 2. Again, you see two passages, one on the left and one on the right. You enter the passage on the right, and you find yourself in zone 5. There's a cage in zone 5. You open it and find $22. Then you go back to zone 2, and this time you go to the passage on the left, and you find yourself in zone 4. You find a cage in zone 4; you open it and there's 56$ (you still don't take any money). You go back to zone 1. Given you didn't take any money during exploration, assume you can pick one path to collect money. From zone 1, where do you go to make the most money? Please list the zone numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Answer: 1, 3, 7, 6, 2, 5, 4"
+        },
+        {
+            "role": "user",
+            "content": "Now imagine before you can act on that decision, someone comes back from zone 2 and says the passage on the left leads to $30 and the passage on the right leads to $40. Another person comes back from zone 3 and says the passage on the left leads to $60 and the passage on the right leads to $20. Given you didn't take any money yet, assume you can pick one path to collect money. Starting from and including zone 1, which path will lead to the most money? Please list all zone numbers in order, separated by commas."
+        },
+        {
+            "role": "assistant",
+            "content": "Assistant: Answer: 1, 3, 6, 2, 5"
+        }
+    ],
+    "tests": {
+        "rewardReval": {
+            "expected_answer": [
+                "Answer: 1, 3, 6",
+                "Answer: 1,3,6"
+            ],
+            "parsed_response": "Answer: 1, 3, 6, 2, 5"
+        }
+    },
+    "scores": {
+        "rewardReval": {
+            "score": 0.0,
+            "max_score": 1.0,
+            "rubric": "gpt_rubric"
+        }
+    }
+}
